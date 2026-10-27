@@ -23,6 +23,7 @@ outside a placeholder or condition. Its rules and its allowlist are documented a
 from __future__ import annotations
 
 import html
+import itertools
 import json
 import re
 from pathlib import Path
@@ -1496,7 +1497,7 @@ def check_tables(
                     )
                 )
         if order and len(vals) > 1 and name.split("/")[-2:-1] != ["compare"] and "/compare/" not in name:
-            for (i1, a, sa), (i2, b, sb) in zip(vals, vals[1:]):
+            for (i1, a, sa), (i2, b, sb) in itertools.pairwise(vals):
                 tol = (sa + sb) / 2 + 1e-9
                 bad = (
                     (order == "desc" and a < b - tol)
@@ -1710,23 +1711,41 @@ _UNIT_SMALL = r"m|Mio\.|M|mln|млн"
 def research_files(root: Path, cfg: dict) -> dict[str, dict]:
     """The research files of seo_families.json research, by the name the pages mark them with."""
     out = {}
-    for name in ("sanctions", "frozen", "revenue"):
+    for name in ("sanctions", "frozen", "revenue", "fuel", "military", "deficit"):
         f = (cfg.get(name) or {}).get("file")
         if f and (root / f).exists():
             out[name] = json.loads((root / f).read_text())
     return out
 
 
+_AT_KEYS = ("ym", "date", "y", "year", "as_of", "iso3")
+
+
 def research_value(doc: dict, path: str):
-    """A value of a research file by its path ("countries.BEL.cbr_eur.v", "monthly@2026-09.share"); None if absent."""
+    """A value of a research file by its path ("countries.BEL.cbr_eur.v", "monthly@2026-09.share", "yearly@2025.x",
+    "military_range.0"); None if absent. Round 59b: a figure the page works out from the file is its paths joined with
+    " + " and " - " (a sum of years, a difference), each read and added up in order."""
+    if " + " in path or " - " in path:
+        toks = re.split(r" ([+-]) ", path)
+        total = 0.0
+        for i in range(0, len(toks), 2):
+            v = research_value(doc, toks[i])
+            if v is None or isinstance(v, (bool, str)):
+                return None
+            total = total + v if i == 0 or toks[i - 1] == "+" else total - v
+        return total
     x = doc
     for seg in path.split("."):
         if "@" in seg:
             name, key = seg.split("@", 1)
             lst = x.get(name) if isinstance(x, dict) else None
-            x = next((i for i in lst or [] if key in (i.get("ym"), i.get("date"), i.get("y"))), None)
+            x = next(
+                (i for i in lst or [] if key in tuple(str(i.get(k)) for k in _AT_KEYS if i.get(k) is not None)), None
+            )
         elif isinstance(x, dict):
             x = x.get(seg)
+        elif isinstance(x, list) and seg.isdigit() and int(seg) < len(x):
+            x = x[int(seg)]
         else:
             return None
         if x is None:
@@ -1735,26 +1754,39 @@ def research_value(doc: dict, path: str):
 
 
 def _research_num(text: str, unit: str, lang: str) -> tuple[float, float] | None:
-    """The figure a research cell shows, in the file's unit (bn, or percent for a share), and half its last step."""
+    """The figure a research cell shows, in the file's unit (bn, or percent for a share), and half its last step.
+    Round 59b: with its sign ("−RUB 5,186bn", "−2.6%"), a figure already in percent (pct) and one per person (pp,
+    in euros)."""
     t = SPACES.sub(" ", html.unescape(re.sub(r"<[^>]+>", "", text))).strip()
+    sg = -1.0 if t[:1] in "−-" else 1.0
+    if t[:1] in "−-+":
+        t = t[1:].strip()
     if unit == "eur":
         f = parse_fig(t, lang)
         if not f or f["kind"] != "eur":
             return None
-        return (0.0 if f["tiny"] else f["v"]), (0.001 if f["tiny"] else f["step"] / 2)
-    if unit == "share":
-        m = re.search(r"(\d[\d.,]*) ?%", t)
+        return (0.0 if f["tiny"] else sg * f["v"]), (0.001 if f["tiny"] else f["step"] / 2)
+    if unit in ("share", "pct"):
+        m = re.search(r"(<)?(\d[\d.,]*) ?%", t)
         if not m:
             return None
-        v, d = _num(m.group(1), lang)
-        return v, 10.0**-d / 2
+        v, d = _num(m.group(2), lang)
+        if m.group(1):
+            return 0.0, v
+        return sg * v, 10.0**-d / 2
+    if unit == "pp":
+        f = parse_fig(t, lang)
+        if not f or f["kind"] != "pp":
+            return None
+        return (0.0, 1.0) if f["tiny"] else (sg * f["v"], 0.5)
     m = re.search(rf"(\d[\d., ]*?)(?: )?({_UNIT_BIG}|{_UNIT_SMALL})(?![\w])", t.replace("RUB ", ""))
     if not m:
         return None
     v, d = _num(m.group(1), lang)
     if re.fullmatch(_UNIT_SMALL, m.group(2)):
-        return v / 1000, 10.0**-d / 2000
-    return v, 10.0**-d / 2
+        # Spanish writes amounts from 100 million in whole hundreds of millions ("40.283.300 M RUB")
+        return sg * v / 1000, (0.05 if lang == "es" and v >= 100 else 10.0**-d / 2000)
+    return sg * v, 10.0**-d / 2
 
 
 def check_research_marks(text: str, name: str, lang: str, files: dict[str, dict]) -> list[str]:
@@ -1785,7 +1817,9 @@ def check_research_marks(text: str, name: str, lang: str, files: dict[str, dict]
         if not unit:
             continue
         shown = _research_num(re.split(r'<span class="s">', inner)[0], unit, lang)
-        v = float(want) * (100 if unit == "share" else 1)
+        v = float(want) * (100 if unit == "share" else 1) * float(a.get("sg", "1"))
+        if unit == "pp":
+            v = v * 1000 / float(a.get("pop") or "nan")
         if shown is None:
             out.append(f"{name}: {fname}:{path} figure not read in {_plain(inner)[:40]!r}")
         elif not (unit == "eur" and 0 < v < 0.0005 and shown[0] == 0.0) and abs(shown[0] - v) > shown[1] + 1e-6:
@@ -1862,6 +1896,148 @@ def check_research(site: Path, root: Path, cfg: dict, model: dict | None, langs:
                 for k in ("cbr_eur", "private_eur"):
                     if f'data-rv="frozen:countries.{iso}.{k}.v"' not in tr:
                         out.append(f"/{path}: {iso} has no {k} amount")
+    fuel, mil, dfc = files.get("fuel"), files.get("military"), files.get("deficit")
+    # round 59b: the buyers page's fuel tables: one per fuel, its rows sorted by customs with the file's buyers by
+    # customs first, each row's customs and map-basis figures and its quality marked (an estimate said as one), and the
+    # questions' figures among those the page shows
+    fuels = ("crude", "products", "pipeline_gas", "lng", "coal")
+    if fuel and cfg.get("fuel", {}).get("topic"):
+        n = cfg["fuel"].get("rows", 15)
+        for lang in langs:
+            path = f"{pre(lang)}{cfg['fuel']['topic']}/"
+            f = site / path / "index.html"
+            if not f.exists():
+                continue
+            text = f.read_text()
+            out += check_research_marks(text, "/" + path, lang, files)
+            out += research_faq_figures(text, "/" + path, lang)
+            for fu in fuels:
+                t = re.search(rf'<table class="fuel" data-fuel="{fu}">(.*?)</table>', text, re.DOTALL)
+                if not t:
+                    out.append(f"/{path}: no table of {fu}")
+                    continue
+                rows = re.findall(r'<tr id="\w+-([A-Z]{3})">(.*?)</tr>', t.group(1), re.DOTALL)
+                want = [x["iso3"] for x in fuel["top_buyers_2022_2026"][fu]["gross_customs"]][:n]
+                if [i for i, _ in rows][: len(want)] != want:
+                    out.append(f"/{path} {fu}: the rows are not the file's buyers by customs {want[:3]}…")
+                vals = [research_value(fuel, f"countries.{i}.gross_customs_sum_2022_2026.{fu}") for i, _ in rows]
+                if [v for v in vals if v is not None] != sorted((v for v in vals if v is not None), reverse=True):
+                    out.append(f"/{path} {fu}: the rows are not sorted by customs")
+                for iso, tr in rows:
+                    for k in (f"gross_customs_sum_2022_2026.{fu}", f"sum_2022_2026.{fu}.central"):
+                        if f'data-rv="fuel:countries.{iso}.{k}"' not in tr:
+                            out.append(f"/{path} {fu} {iso}: {k} not shown")
+                    q = re.search(
+                        rf'<td data-rv="fuel:countries\.{iso}\.years\.\d{{4}}\.quality" data-v="([A-D])">(.*?)</td>', tr
+                    )
+                    if not q:
+                        out.append(f"/{path} {fu} {iso}: no quality")
+                    elif q.group(1) in "CD" and '<span class="sub">' not in q.group(2):
+                        out.append(f"/{path} {fu} {iso}: quality {q.group(1)} not said to be an estimate")
+    # the country pages: what each bought by fuel, where the config's rule shows it; the crude by year and its question
+    # where the rule asks for them; the support by type for every country of the military file with support
+    for iso, c in (model or {}).get("countries", {}).items():
+        for lang in langs:
+            f = site / pre(lang) / "country" / c["slug"] / "index.html"
+            if not f.exists():
+                continue
+            text = f.read_text()
+            name = f"/{pre(lang)}country/{c['slug']}/"
+            if fuel and iso in fuel["countries"] and cfg.get("fuel"):
+                want = fuel_shown(fuel, iso, cfg["fuel"])
+                has = '<details class="fold" id="by-fuel">' in text
+                if want and not c.get("noData") and not has:
+                    out.append(f"{name}: no section by fuel")
+                if has and not want[0]:
+                    out.append(f"{name}: a section by fuel the rule does not show")
+                if has and want[1] != ('id="crude-by-year"' in text):
+                    out.append(f"{name}: crude by year {'missing' if want[1] else 'shown'}")
+            if mil and iso in mil["countries"] and abs(mil["countries"][iso].get("total_site") or 0) >= 0.0005:
+                if not c.get("noData") and f'data-rv="military:countries.{iso}.total_site"' not in text:
+                    out.append(f"{name}: no support by type")
+                if (
+                    research_value(mil, f"countries.{iso}.military") == 0
+                    and mil["countries"][iso].get("basis") != "kiel"
+                ):
+                    m = re.search(
+                        rf'<td class="n" data-rv="military:countries\.{iso}\.military" data-v="[^"]*"( data-u)?', text
+                    )
+                    if m and m.group(1):
+                        out.append(
+                            f"{name}: a military aid of zero outside Kiel written as a figure, not 'no record found'"
+                        )
+    # the support by type adds up to the map's own support for Ukraine (the research rebuilt it; a change of the map since
+    # then shows here)
+    for iso, x in (mil or {}).get("countries", {}).items():
+        c = (model or {}).get("countries", {}).get(iso)
+        if c and c.get("uaEur") is not None and abs((x.get("total_site") or 0) - c["uaEur"]) > 0.002:
+            out.append(
+                f"mil_split_r59.json {iso}: support by type adds up to {x.get('total_site')}, the map says {c['uaEur']:.3f}"
+            )
+    # the military aid page: every donor with military aid on record, by the map's figure; no zero outside Kiel
+    if mil and cfg.get("military", {}).get("slug"):
+        slug = cfg["military"]["slug"]
+        donors = [
+            i
+            for i, x in mil["countries"].items()
+            if abs(x.get("military") or 0) >= 0.0005 or abs(x.get("kiel_military") or 0) >= 0.0005
+        ]
+        for lang in langs:
+            f = site / pre(lang) / slug / "index.html"
+            if not f.exists():
+                out.append(f"/{pre(lang)}{slug}/ not written")
+                continue
+            text = f.read_text()
+            out += check_research_marks(text, f"/{pre(lang)}{slug}/", lang, files)
+            out += research_faq_figures(text, f"/{pre(lang)}{slug}/", lang)
+            rows = re.findall(r'<tr id="([A-Z]{3})">', text)
+            if set(rows) != set(donors):
+                out.append(f"/{pre(lang)}{slug}/: donors {sorted(set(rows) ^ set(donors))[:5]} missing or extra")
+            ms = [mil["countries"][i]["military"] for i in rows if i in mil["countries"]]
+            if ms != sorted(ms, reverse=True):
+                out.append(f"/{pre(lang)}{slug}/: the donors are not sorted by the map's military figure")
+            for iso, x in mil["countries"].items():
+                if x.get("basis") != "kiel" and abs(x.get("military") or 0) < 0.0005 and iso in rows:
+                    out.append(f"/{pre(lang)}{slug}/ {iso}: zero outside Kiel listed as aid")
+        # the support tracker's columns by type: every row of its table has them
+        sup = cfg["military"].get("support")
+        for lang in langs if sup else []:
+            f = site / pre(lang) / sup / "index.html"
+            if not f.exists():
+                continue
+            text = f.read_text()
+            out += check_research_marks(text, f"/{pre(lang)}{sup}/", lang, files)
+            t = re.search(r'<table class="topic"[^>]*>(.*?)</table>', text, re.DOTALL)
+            for iso, tr in re.findall(r'<tr data-iso="([A-Z]{3})"[^>]*>(.*?)</tr>', t.group(1) if t else "", re.DOTALL):
+                if iso in mil["countries"] and f'data-rv="military:countries.{iso}.military"' not in tr:
+                    out.append(f"/{pre(lang)}{sup}/: {iso} has no support by type")
+    # the revenue page: the budget balance by year, the months the config names and the fund's dates
+    if dfc and cfg.get("revenue", {}).get("slug"):
+        n = cfg["revenue"].get("months", 24)
+        months = [m["ym"] for m in dfc["monthly"]][-n:]
+        nwf = [
+            x["as_of"]
+            for x in dfc["nwf"]
+            if x["as_of"].endswith("-01-01") or x["as_of"] == dfc["meta"]["latest_nwf_date"]
+        ]
+        for lang in langs:
+            slug = cfg["revenue"]["slug"]
+            f = site / pre(lang) / slug / "index.html"
+            if not f.exists():
+                continue
+            text = f.read_text()
+            out += research_faq_figures(text, f"/{pre(lang)}{slug}/", lang)
+            ys = re.findall(r'data-rv="deficit:yearly@(\d{4})\.balance_rub"', text)
+            if ys != [str(y["year"]) for y in dfc["yearly"]]:
+                out.append(f"/{pre(lang)}{slug}/: balance years {ys} are not the file's")
+            ms = re.findall(r'data-rv="deficit:monthly@([\d-]+)\.balance_rub"', text)
+            if sorted(ms) != months:
+                out.append(f"/{pre(lang)}{slug}/: balance months {ms[:2]}… are not the file's last {n}")
+            ns = re.findall(r'data-rv="deficit:nwf@([\d-]+)\.liquid_rub_bn"', text)
+            if ns != nwf:
+                out.append(f"/{pre(lang)}{slug}/: the fund's dates {ns[:2]}… are not the file's")
+            if "deficit:plans." not in text:
+                out.append(f"/{pre(lang)}{slug}/: the budget law and the estimate are not shown")
     # the downloads: the revenue series as the file has them
     if rev:
         fm = site / "downloads" / "russia-oil-gas-revenue-monthly.csv"
@@ -1905,4 +2081,147 @@ def check_research(site: Path, root: Path, cfg: dict, model: dict | None, langs:
                 got = _research_num(txt, unit, "en")
                 if not got or abs(got[0] - v) > got[1] + 1e-6:
                     out.append(f"llms-full.txt {y}: {txt}, the file says {v}")
+    # round 59b: the fuel and military CSV files are the files' figures, and llms-full.txt's lines
+    if fuel:
+        fc = site / "downloads" / "war-balance-fuel-split.csv"
+        if not fc.exists():
+            out.append("downloads: war-balance-fuel-split.csv is missing")
+        else:
+            rows = list(csv.DictReader(io.StringIO(fc.read_text().lstrip("\ufeff"))))
+            want = sum(len(x["years"]) for x in fuel["countries"].values()) * 7
+            if len(rows) != want:
+                out.append(f"war-balance-fuel-split.csv: {len(rows)} rows, the file has {want}")
+            for r in rows:
+                y = fuel["countries"][r["iso3"]]["years"][r["year"]]
+                k = "total_site" if r["fuel"] == "total" else r["fuel"]
+                pairs = [("site_basis_fob_eur_bn", (y.get(k) or {}).get("central"))]
+                pairs.append(
+                    ("customs_cif_eur_bn", (y.get("gross_customs") or {}).get("total" if k == "total_site" else k))
+                )
+                if k in fuels:
+                    pairs.append(("tracker_crea_eur_bn", (y.get("tracker_crea") or {}).get(k)))
+                for col, v in pairs:
+                    got = r[col]
+                    if (v is None) != (got == "") or (v is not None and abs(float(got) - v) > 1e-9):
+                        out.append(
+                            f"war-balance-fuel-split.csv {r['iso3']} {r['year']} {r['fuel']} {col}: {got}, the file {v}"
+                        )
+                        break
+                if r["quality"] != y["quality"]:
+                    out.append(
+                        f"war-balance-fuel-split.csv {r['iso3']} {r['year']}: quality {r['quality']}, the file {y['quality']}"
+                    )
+        full = site / "llms-full.txt"
+        if full.exists():
+            for fu in fuels:
+                lab = {
+                    "crude": "Crude oil",
+                    "products": "Oil products",
+                    "pipeline_gas": "Pipeline gas",
+                    "lng": "LNG",
+                    "coal": "Coal",
+                }[fu]
+                ln = re.search(rf"(?m)^- {lab}, [^:]*: (.*)$", full.read_text())
+                if not ln:
+                    out.append(f"llms-full.txt: no line of {fu}")
+                    continue
+                first = fuel["top_buyers_2022_2026"][fu]["gross_customs"][0]
+                v = research_value(fuel, f"countries.{first['iso3']}.gross_customs_sum_2022_2026.{fu}")
+                m = re.search(r"(€[\d,.]+(?:bn|m)) customs", ln.group(1))
+                got = _research_num(m.group(1), "eur", "en") if m else None
+                if not got or abs(got[0] - v) > got[1] + 1e-6:
+                    out.append(f"llms-full.txt {fu}: the first buyer's customs figure is not the file's {v}")
+    if mil:
+        mc = site / "downloads" / "war-balance-military-split.csv"
+        if not mc.exists():
+            out.append("downloads: war-balance-military-split.csv is missing")
+        else:
+            rows = {r["iso3"]: r for r in csv.DictReader(io.StringIO(mc.read_text().lstrip("\ufeff")))}
+            if set(rows) != set(mil["countries"]):
+                out.append("war-balance-military-split.csv: the countries are not the file's")
+            for iso, x in mil["countries"].items():
+                r = rows.get(iso)
+                if not r:
+                    continue
+                other = research_value(
+                    mil, f"countries.{iso}.other.private_donations + countries.{iso}.other.extra_purchases_from_ukraine"
+                )
+                for col, v in (
+                    ("military_eur_bn", x["military"]),
+                    ("kiel_military_eur_bn", x.get("kiel_military")),
+                    ("financial_eur_bn", x["financial"]),
+                    ("humanitarian_eur_bn", x["humanitarian"]),
+                    ("refugees_eur_bn", x["refugees"]),
+                    ("eu_share_eur_bn", x["eu_share"]),
+                    ("other_eur_bn", other),
+                    ("flowback_eur_bn", x["flowback"]),
+                    ("support_total_eur_bn", x["total_site"]),
+                ):
+                    if (v is None) != (r[col] == "") or (v is not None and abs(float(r[col]) - v) > 1e-9):
+                        out.append(f"war-balance-military-split.csv {iso} {col}: {r[col]}, the file {v}")
+                if (r["military_record"] == "no record found") != (
+                    x.get("basis") != "kiel" and abs(x["military"]) < 0.0005
+                ):
+                    out.append(f"war-balance-military-split.csv {iso}: 'no record found' is not the file's")
+        full = site / "llms-full.txt"
+        if full.exists():
+            for name, mv in re.findall(
+                r"(?m)^- ([^:\n]+): military aid (€[\d,.]+(?:bn|m)) \(delivered", full.read_text()
+            ):
+                iso = next((i for i, x in mil["countries"].items() if x["name"] == name), None)
+                got = _research_num(mv, "eur", "en")
+                if iso is None or not got or abs(got[0] - mil["countries"][iso]["military"]) > got[1] + 1e-6:
+                    out.append(f"llms-full.txt military {name}: {mv} is not the file's")
+    return out
+
+
+def fuel_shown(doc: dict, iso: str, cfg: dict) -> tuple[bool, bool] | None:
+    """Round 59b: whether a country page shows its purchases by fuel (the five fuels on the map's basis, 2022 to the
+    data's month, at least country.minEur and a war year of a quality in country.quality) and its crude by year (the
+    last full year's customs crude at least crudeYears.minEur, every war year's quality in crudeYears.quality), as
+    seo_research.mjs fuelOf decides; None when not."""
+    c = doc["countries"].get(iso)
+    if not c:
+        return None
+    ys = [str(y) for y in doc["years"] if int(y) >= 2022]
+    ok = (cfg.get("country") or {}).get("quality", ["A", "B", "C"])
+    fuel = sum(
+        ((c.get("sum_2022_2026") or {}).get(f) or {}).get("central") or 0
+        for f in ("crude", "products", "pipeline_gas", "lng", "coal")
+    )
+    if fuel < (cfg.get("country") or {}).get("minEur", 0.1) or not any(
+        y in c["years"] and c["years"][y]["quality"] in ok for y in ys
+    ):
+        return None
+    cy = cfg.get("crudeYears") or {}
+    full = [y for y in ys if y in c["years"] and not c["years"][y].get("partial_year")]
+    last = full[-1] if full else None
+    crude = (((c["years"][last].get("gross_customs") or {}).get("crude") or 0) if last else 0) >= cy.get(
+        "minEur", float("inf")
+    )
+    return (
+        True,
+        bool(crude and all(y in c["years"] and c["years"][y]["quality"] in cy.get("quality", ["A", "B"]) for y in ys)),
+    )
+
+
+def research_faq_figures(text: str, name: str, lang: str) -> list[str]:
+    """Round 59b: every euro figure and share a research question's answer writes (data-rq) is one the page shows
+    outside its questions, in the same words: the answers say nothing the marked tables do not."""
+    out = []
+    faq = re.search(r'<section class="faq"[^>]*>.*?</section>', text, re.DOTALL)
+    body = text.replace(faq.group(0), "") if faq else text
+    main = _MAIN.search(body)
+    # (stripped: figs_in steps by what parse_fig leaves, which it strips at its end)
+    spaced = SPACES.sub(" ", re.sub(r"<[^>]+>", " ", main.group(1) if main else body)).strip()
+    shown = {(f["kind"], round(_signed(f, 1), 6)) for f in figs_in(spaced, lang)}
+    for a in re.findall(r'<p data-rq="\w+">(.*?)</p>', faq.group(0) if faq else "", re.DOTALL):
+        for f in figs_in(SPACES.sub(" ", re.sub(r"<[^>]+>", " ", a)).strip(), lang):
+            if (
+                f["kind"] in ("eur", "pct")
+                and not f["tiny"]
+                and (f["kind"], round(_signed(f, 1), 6)) not in shown
+                and (f["kind"], round(-_signed(f, 1), 6)) not in shown
+            ):
+                out.append(f"{name}: an answer writes {f['kind']} {f['v']}, which the page does not show")
     return out

@@ -5,7 +5,7 @@
       "slug": "ukraine-support-tracker",
       "kind": "topic",
       "label": "Ukraine support tracker",
-      "title": ["Ukraine support tracker: aid and Russia trade by country", "Ukraine support tracker: aid and trade with Russia"],
+      "title": ["Ukraine support tracker: total aid to Ukraine by country", "Total aid to Ukraine by country: support tracker"],
       "description": [
         "Support for Ukraine since 2022 by country, sorted by euros, with % of GDP, per person and trade with Russia vs a no-war world. Ranges, sources.",
         "Support for Ukraine since 2022 by country, in euros, % of GDP and per person, with trade with Russia counted. Ranges and sources."
@@ -64,15 +64,15 @@
       "limit": 40,
       "map": "#view=rank&lens=payments&tags=windfall",
       "faq": [
-        { "q": "Who buys Russian oil and gas?", "a": "By what they paid Russia from 2022 to {dataTo}, the table starts with {top3list}: {top1} paid {top1_eur}. The {n} countries listed paid {sum:paid_eur} in all. The model does not split these payments by fuel for the war years; the fuel share column gives the share of fuel in each country's purchases before the war (2018 to 2021)." },
+        { "q": "Who paid Russia the most since 2022?", "a": "By everything they paid Russia from 2022 to {dataTo}, fuel and other goods, the table starts with {top3list}: {top1} paid {top1_eur}. The {n} countries listed paid {sum:paid_eur} in all. The tables by fuel further down split these purchases into crude oil, oil products, pipeline gas, LNG and coal." },
         { "q": "Did buying Russian fuel help Russia?", "a": "What counts is not the sales value but how much more or less Russia kept (taxes and profit) than without the war. From the purchases of the {n} countries listed, Russia kept {sum:paidGain_eur} {if:sum:paidGain>=0|less|more} than in a world without the war, with what each of them would then have bought. War-time fuel prices and Russian oil refined elsewhere are shown separately." },
-        { "q": "How much Russian oil did each country buy, in barrels?", "a": "This site does not give volumes. It measures money: what was paid to Russia, and the change in what Russia kept from it. For volumes, see energy trade trackers and customs statistics." }
+        { "q": "How much Russian oil did each country buy, in barrels?", "a": "This site does not give volumes. It measures money: what was paid to Russia, and the change in what Russia kept from it. The tables by fuel give each country's purchases in euros, by its customs records, on the map's basis and by CREA's tracker. For volumes, see energy trade trackers and customs statistics." }
       ],
       "sections": [
         {
           "h2": "What the data can and cannot say",
           "p": [
-            "The model does not separate oil, gas and other goods in what each country paid Russia during the war: \"Paid Russia\" is everything bought from Russia, recorded in customs and partner data (fuel and other goods, services, company taxes in Russia, gold and other payments). The fuel share column is from before the war (2018 to 2021) and shows how much of a country's purchases from Russia were fuel then.",
+            "\"Paid Russia\" is everything bought from Russia, recorded in customs and partner data (fuel and other goods, services, company taxes in Russia, gold and other payments). The site's research splits it by fuel for each year: the tables by fuel further down, with each fuel by the importer's customs records, on the map's basis and by CREA's tracker. The fuel share column is from before the war (2018 to 2021) and shows how much of a country's purchases from Russia were fuel then.",
             "The parts about fuel: the extra Russia earned from war-time fuel prices, and Russian oil bought after refining in another country. Volumes (barrels, cubic metres) are not given here."
           ]
         }
@@ -86,12 +86,12 @@
       "slug": "frozen-russian-assets",
       "kind": "topic",
       "label": "Frozen Russian assets",
-      "title": ["Frozen Russian assets by country: the return Russia lost", "Frozen Russian assets by country"],
+      "title": ["Frozen Russian assets and Euroclear by country", "Frozen Russian assets by country"],
       "description": [
         "Russian reserves and private money frozen abroad since 2022: the return Russia lost in each country. {top1}: {top1_eur}. Ranges and sources.",
         "Russian reserves and private money frozen abroad since 2022: the return Russia lost in each country, with ranges and sources."
       ],
-      "h1": "Frozen Russian assets: what Russia lost on money frozen in each country",
+      "h1": "Frozen Russian assets and Euroclear: the return Russia lost in each country",
       "intro": "Russia's central bank reserves and Russian private assets frozen abroad since 2022 earn Russia nothing. The number here is the return Russia lost on them from February 2022 to {dataTo}, not the amount frozen: {sum:frozen_eur} across the {n} countries listed; in {top1} it comes to {top1_eur}.",
       "explain": ["frozenAssets", "reparationsLoan"],
       "rank": "frozen",
@@ -291,13 +291,14 @@
       "slug": "countries-helping-russia",
       "kind": "topic",
       "label": "Which countries help Russia?",
-      "title": ["Which countries help Russia? The money since 2022", "{q:Countries helping Russia}, in money terms"],
+      "title": ["{q:Russia's allies? Which countries moved money toward Russia}", "{q:Russia's allies?} The money since 2022", "Which countries help Russia? The money since 2022"],
       "description": [
+        "Russia's allies? Which countries' money moved toward Russia since 2022, through trade, fuel and arms, against a no-war world? With ranges and sources.",
         "Which countries' money moved toward Russia since 2022, through trade, fuel and arms, against a no-war world? Sorted by share of GDP, with ranges and sources.",
         "Which countries' money moved toward Russia since 2022, through trade, fuel and arms, against a world without the war? With ranges and sources."
       ],
-      "h1": "Which countries help Russia? Where the money moved since 2022",
-      "intro": "Listed here: the countries whose net, from February 2022 to {dataTo}, is negative: what Russia kept from trade with them, against a world without the war, outweighs their support for Ukraine. It is a money measure, not a list of allies, and each row gives the chance of its direction. As a share of their economy the table starts with {top1}, {top2} and {top3}.{if:nParty| {partyList}, parties to the war, are listed apart.|}",
+      "h1": "{q:Russia's allies? Which countries' money moved toward Russia since 2022}",
+      "intro": "Listed here: the countries whose net, from February 2022 to {dataTo}, is negative: what Russia kept from trade with them, against a world without the war, outweighs their support for Ukraine. Each row gives the chance of its direction. As a share of their economy the table starts with {top1}, {top2} and {top3}.{if:nParty| {partyList}, parties to the war, are listed apart.|}",
       "explain": ["unfriendlyList"],
       "rank": "net",
       "order": "asc",

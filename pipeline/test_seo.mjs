@@ -21,10 +21,12 @@ const W_DE = { leanU: "Tendenz Richtung Ukraine", leanR: "Tendenz Richtung Russl
 const en = f => T.countryCopy("en", { ...f, words: W });
 
 test("the templates give the copy of the one country template", () => {
-  assert.equal(en(FX.DEU).title, "How much has Germany given Ukraine? €74.7bn since 2022");
+  assert.equal(en(FX.DEU).title, "How much has Germany given to Ukraine? €74.7bn since 2022");
   // round 57: every chance and direction word is the map's ({sureWord}, {netDir})
   assert.equal(en(FX.DEU).description, "Support for Ukraine from Germany since 2022: €74.7bn (1.8% of one year's GDP). With trade with Russia counted: 3.7% of GDP toward Ukraine, very likely.");
   assert.equal(en(FX.SVK).title, "Is Slovakia helping Ukraine or Russia? Too close to call");
+  // round 59b: without searches for the question about Russia, a page keeps its chance level's own title ("Does X support
+  // Russia?" only where it is searched: seo_families.json has no default verb any more)
   assert.equal(en(FX.HUN).title, "Is Hungary helping Russia? 6.0% of GDP toward Russia");
   assert.equal(en(FX.BLR).title, "Is Belarus helping Russia? Party to the war, 3.6% of GDP");
   // round 57: Australia's hand-written override is gone; it has the title of its chance level
@@ -489,7 +491,14 @@ test("sanctions: every entry answered from its category in every language; Russi
   const p = RS.sanctionsPage("en", SANC, { nameOf: i => SANC.countries[i].name, href: () => "" });
   assert.deepEqual(p.counts, SANC.summary.by_category);
   assert.equal((p.body.match(/<tr id="[A-Z]{3}"/g) || []).length, Object.keys(SANC.countries).length);
-  assert.match(p.faq[1].a, /Micronesia/);
+  assert.match(p.faq[2].a, /Micronesia/);
+  // round 59: "What are the EU sanctions on Russia?", from the file's EU category, its members and adopters
+  assert.equal(p.faq[1].q, "What are the EU sanctions on Russia?");
+  assert.match(p.faq[1].a, /^The EU's sanctions on Russia are set in Council Regulations 833\/2014 and 269\/2014, which every member agreed to in the Council\. The EU's 27 members apply them, and 10 other European countries adopt them/);
+  assert.doesNotMatch(p.faq[1].a, /immobilised/);   // no frozen file given: no amount
+  const p2 = RS.sanctionsPage("de", SANC, { nameOf: i => SANC.countries[i].name, href: () => "", frozen: RS.frozenFacts(FROZ) });
+  assert.match(p2.faq[1].a, /in der EU immobilisiert/);
+  assert.equal(p2.title, "Sanktionen gegen Russland nach Ländern: EU, USA, UK u. a.");
 });
 
 test("frozen amounts: the file's figure with its date, never zero where there is none, an estimate marked; explainers' amounts from the file", () => {
@@ -539,4 +548,184 @@ test("a country page gets the sanctions section and question; the frozen section
   const nd = SC.countryDyn(mkC({ net: null, noData: true }), OPT({ regime }));
   assert.deepEqual(nd.faq.map(x => x.id), ["nodata", "regime"]);
   assert.deepEqual(nd.sections.map(s => s.id), ["sanctions-on-russia"]);
+});
+
+// ----- round 59 (owner approved: "titles in the words people search") -----
+const DEMAND = JSON.parse(readFileSync(join(HERE, "seo_demand.json"), "utf8"));
+const PHR = JSON.parse(readFileSync(join(HERE, "seo_families.json"), "utf8")).country.phrasing;
+const W_FR = { ...W, leanU: "Tendance vers l'Ukraine", leanR: "Tendance vers la Russie", party: "Partie à la guerre", sure: "très probable" };
+
+test("round 59: the country page asks the question searched in its language, where the data answer it", () => {
+  // the rule, from seo_families.json and the volumes in seo_demand.json
+  assert.deepEqual(T.askOf("en", "u_sure", DEMAND.CAN, PHR), { title: "given", verb: "", given: true, trade: false });
+  // round 59b: no default verb: a country without searches for the question about Russia is not asked it in that verb
+  assert.equal(PHR.defaultHelp, undefined);
+  // and a phrasing searched less than minDemand on its own is not used (Germany: "support" 40, "helping" 10)
+  assert.equal(T.askOf("en", "u_sure", DEMAND.DEU, PHR).verb, "");
+  assert.equal(T.askOf("en", "u_sure", DEMAND.USA, PHR).verb, "");
+  assert.equal(T.askOf("en", "r_sure", DEMAND.HUN, PHR).verb, "support");
+  assert.equal(T.askOf("en", "party", DEMAND.BLR, PHR).title, "support");
+  assert.equal(T.askOf("en", "party", DEMAND.PRK, PHR).title, "helping");   // "is North Korea helping Russia" is searched more
+  assert.equal(T.askOf("en", "r_sure", DEMAND.IND, PHR).trade, true);
+  assert.equal(T.askOf("de", "r_sure", {}, PHR).title, null);                 // no searches in German: the level's own title
+  assert.equal(T.askOf("en", "u_sure", DEMAND.HUN, PHR).title, "support");    // a very likely page answers the question too
+  // the titles: English, and the searched forms in French, German, Polish and Dutch
+  const C = (l, f, nameL, words, iso) => T.countryCopy(l, { ...f, nameL, words, demand: DEMAND[iso], phrasing: PHR });
+  assert.equal(C("en", FX.DEU, "Germany", W, "DEU").title, "How much has Germany given to Ukraine? €74.7bn since 2022");
+  assert.equal(C("en", FX.BLR, "Belarus", W, "BLR").title, "Does Belarus support Russia? Party to the war, 3.6% of GDP");
+  assert.equal(C("en", FX.BLR, "Belarus", W, "BLR").h1, "Does Belarus support Russia? Party to the war (with Russia)");
+  assert.equal(C("de", FX.DEU, "Deutschland", W_DE, "DEU").title, "Ukraine-Hilfe Deutschland: 74,7 Mrd. € seit 2022");
+  assert.equal(C("fr", FX.DEU, "France", W_FR, "FRA").title, "Combien la France a donné à l'Ukraine ? 74,7 Md€ depuis 2022");
+  assert.equal(C("fr", FX.DEU, "France", W_FR, "FRA").h1, "Combien la France a donné à l'Ukraine depuis 2022 ?");
+  assert.match(C("pl", FX.DEU, "Polska", W_DE, "POL").title, /^Ile Polska dała Ukrainie\? /);
+  assert.match(C("nl", FX.DEU, "Nederland", W_DE, "NLD").title, /^Hoeveel heeft Nederland aan Oekraïne gegeven\? /);
+  // a level that is not very likely keeps the map's chance words in the title
+  assert.equal(C("en", FX.SVK, "Slovakia", W, "SVK").title, "Does Slovakia support Russia? Too close to call");
+  assert.equal(C("en", { ...FX.BLR, party: false, name: "Serbia" }, "Serbia", W, "SRB").title, "Does Serbia support Russia? Leaning toward Russia");
+  for (const l of T.LANGS) for (const iso of Object.keys(FX)) for (const which of ["given", "support", "helping"]) {
+    const cat = T.category(FX[iso]); if (which === "given" && cat !== "u_sure") continue;
+    const a = I.askText(l, which, cat, { N: "Testland", Nt: "Testland", ua: "€1bn", netP: "1%", netDir: "x", rus: "€1bn", leanWord: "L", uncWordCap: "U", zeroWord: "Z", partyWord: "P" }, { rusX: 1 }, "fallback");
+    assert.ok(a.title.length <= 60 && !/[{}]/.test(a.title + a.h1), `${l} ${iso} ${which}`);
+  }
+});
+
+test("round 59: the names' grammar for the localized questions", () => {
+  const g = (l, n) => I.grammar(l, n);
+  assert.equal(g("fr", "France").Na, "la France"); assert.equal(g("fr", "Allemagne").Na, "l'Allemagne"); assert.equal(g("fr", "Canada").Na, "le Canada");
+  assert.equal(g("fr", "Pays-Bas").Na, "les Pays-Bas"); assert.ok(g("fr", "États-Unis").plural); assert.equal(g("fr", "Royaume-Uni").Na, "le Royaume-Uni");
+  assert.equal(g("fr", "Corée du Sud").Na, "la Corée du Sud"); assert.equal(g("fr", "Israël").Na, "Israël"); assert.equal(g("fr", "Mexique").Na, "le Mexique");
+  assert.equal(g("nl", "Verenigde Staten").Na, "de Verenigde Staten"); assert.equal(g("nl", "Verenigd Koninkrijk").Na, "het Verenigd Koninkrijk");
+  assert.equal(I.askQ("pl", "qGiven", "Polska"), "Ile Polska dała Ukrainie?"); assert.equal(I.askQ("pl", "qGiven", "Niemcy"), "Ile Niemcy dały Ukrainie?");
+  assert.equal(I.askQ("pl", "qGiven", "Izrael"), "Ile Izrael dał Ukrainie?"); assert.equal(I.askQ("pl", "qGiven", "Peru"), "Ile Peru dało Ukrainie?");
+  assert.equal(I.askQ("fr", "qGiven", "Pays-Bas"), "Combien les Pays-Bas ont donné à l'Ukraine ?");
+});
+
+test("round 59: the country page's questions and trade heading in the searched phrasing; their scores add the volumes", () => {
+  const ask = { title: "support", verb: "support", given: false, trade: true };
+  const r = SC.countryDyn(mkC(), OPT({ ask }));
+  assert.equal(r.faq.find(x => x.id === "help").q, "Does Testland support Russia?");
+  assert.equal(r.sections.find(s => s.id === "trade").title, "Testland–Russia trade");
+  const t = r.faq.find(x => x.id === "trade");
+  if (t) assert.equal(t.q, "Testland–Russia trade: how much since 2022?");
+  const r0 = SC.countryDyn(mkC(), OPT());
+  assert.equal(r0.faq.find(x => x.id === "help").q, "Is Testland helping Russia?");
+  assert.equal(r0.sections.find(s => s.id === "trade").title, I.dyn("en", "tTrade"));
+  // the volumes raise a question's score
+  const x = SC.facts(mkC(), OPT()), base = SC.pickFaq(x).find(q => q.id === "trade");
+  const up = SC.pickFaq({ ...x, ask: { trade: 880 } }).find(q => q.id === "trade");
+  assert.ok(up && (!base || up.score > base.score));
+});
+
+test("round 59: the topic pages' notes and questions, every language; the revenue page's defence question and the balance hook", () => {
+  const vars = { n: 9, tops: "A, B and C", t1: "A", topV: "€1bn", sumUa: "€9bn", nSure: 2, sureWord: "very likely", partyList: "P", partyWord: "Party", partyWordLc: "party", euroclear: "€1bn", euroclearDate: "June 2026", euCbr: "€2bn", euCbrDate: "May 2026" };
+  const FUEL0 = RJ("fuel_split_r59.json");
+  for (const l of I.LANGS) for (const slug of Object.keys(I.TOPIC_X)) {
+    const fv = I.TOPIC_X_NEEDS[slug] === "fuel" ? RS.fuelVars(l, FUEL0, iso => FUEL0.countries[iso].name) : { vars: {}, nums: {} };
+    const x = I.topicExtra(l, slug, { ...vars, ...fv.vars }, { nParty: 1, nSure: 2, ...fv.nums });
+    assert.ok(x.faq.length >= 1 && x.faq.every(f => f.q.trim().endsWith("?") && !/[{}]/.test(f.q + f.a)), `${l} ${slug}`);
+  }
+  assert.match(I.topicExtra("en", "countries-helping-russia", vars, { nParty: 1, nSure: 2 }).note, /^Looking for Russia's allies\?/);
+  for (const l of I.LANGS) {
+    const p = RS.revenuePage(l, REV, { warIncome: "/russia-war-income/", published: "2026-10-09", months: 24, yearWord: "Year" });
+    assert.ok(p.title.length <= 60 && p.description.length <= 155, l);
+    assert.equal(p.faq[1].q, I.res(l, "rQ3"));
+    assert.ok(!p.faq.some(f => f.q === I.res(l, "rQ4")), l);   // without the deficit file: no question
+  }
+  const en = RS.revenuePage("en", REV, { warIncome: "/x/", published: "2026-10-09", months: 24, yearWord: "Year" });
+  assert.equal(en.title, "Russia's war budget: defence spending vs oil and gas income");
+  assert.equal(en.faq[0].q, "How much does Russia earn from oil?");
+  assert.match(en.faq[1].a, /^Russia's budget law, as adopted, plans RUB 12,900bn for “national defence” in 2026, after RUB 13,500bn in 2025\. On a broader definition, SIPRI estimates Russia's military spending in 2025 at RUB 15,964bn, 7\.5% of GDP\./);
+  // round 59b: the balance hook reads russia_deficit_r59.json (seo_families.json research.revenue.balance)
+  const withBal = RS.revenuePage("en", REV, { warIncome: "/x/", published: "", months: 24, yearWord: "Year", deficit: RJ("russia_deficit_r59.json") });
+  assert.match(withBal.faq[withBal.faq.length - 1].a, /^Russia's federal budget had a deficit of RUB 5,627bn \(€59bn, 2\.6% of GDP\) in 2025, from the Ministry of Finance's execution data\. From January to September 2026 the balance was a deficit of RUB 5,186bn \(€57\.9bn\)\. The budget law for 2026 set a deficit of RUB 3,786bn \(1\.6% of GDP\)\. The Ministry's estimate of 30 September 2026 is RUB 7,345bn \(3\.2% of GDP\) for the full year\.$/);
+});
+
+// ----- round 59b: the fuel split, the support by type and military aid, the budget balance (seo_research.mjs) -----
+const FUEL = RJ("fuel_split_r59.json"), MIL = RJ("mil_split_r59.json"), DEF = RJ("russia_deficit_r59.json");
+test("round 59b: the buyers of each fuel by their customs records, the three bases marked, estimates said as such", () => {
+  for (const f of RS.FUELS) {
+    const rows = RS.fuelRows(FUEL, f, 15);
+    assert.deepEqual(rows.slice(0, 15), FUEL.top_buyers_2022_2026[f].gross_customs.map(x => x.iso3));
+    // the map's own list adds the buyers its basis lists, after them
+    for (const x of FUEL.top_buyers_2022_2026[f].site_basis) assert.ok(rows.includes(x.iso3), `${f} ${x.iso3}`);
+  }
+  const html = RS.fuelSection("en", FUEL, { nameOf: i => FUEL.countries[i].name, href: () => "", rows: 15 });
+  assert.match(html, /<tr id="crude-CHN"><td class="r">1<\/td><td>China<\/td><td class="n" data-rv="fuel:countries\.CHN\.gross_customs_sum_2022_2026\.crude" data-v="257\.4619" data-u="eur">€257bn<\/td><td class="n" data-rv="fuel:countries\.CHN\.sum_2022_2026\.crude\.central"/);
+  assert.match(html, /<tr id="crude-TUR">.*?data-v="C">C <span class="sub">\(estimate; customs do not name the supplier\)<\/span>/);
+  assert.match(html, /<tr id="crude-BLR">.*?not tracked/);
+  assert.match(html, /<tr id="crude-IND">.*?data-v="A">A<\/td>/);
+  assert.doesNotMatch(html, /funded the war|bankroll|propping up|laundered/i);
+  const v = RS.fuelVars("en", FUEL, i => FUEL.countries[i].name);
+  assert.equal(v.vars.c1, "China"); assert.equal(v.vars.c1v, "€257bn"); assert.equal(v.vars.cTops, "China, India and Turkey"); assert.equal(v.nums.hidden, 1);
+  for (const l of I.LANGS) {
+    const h = RS.fuelSection(l, FUEL, { nameOf: i => FUEL.countries[i].name, href: () => "", rows: 15 });
+    assert.ok(!/[{}]/.test(h) && h.includes('data-fuel="lng"'), l);
+    const x = I.topicExtra(l, "russian-oil-gas-buyers", RS.fuelVars(l, FUEL, i => FUEL.countries[i].name).vars, RS.fuelVars(l, FUEL, i => FUEL.countries[i].name).nums);
+    assert.equal(x.faq.length, 3, l);
+    assert.ok(x.note && x.faq.every(f => f.q.endsWith("?") && !/[{}]/.test(f.a)), l);
+  }
+});
+
+test("round 59b: a country's purchases by fuel where measured; the crude by year and its question where large and measured", () => {
+  const cfg = { minEur: 0.1, quality: ["A", "B", "C"], crudeYears: { minEur: 10, quality: ["A", "B"] } };
+  const names = { N: "India", Nt: "India", NtCap: "India", dataTo: "August 2026" };
+  const ind = RS.fuelCountry("en", FUEL, "IND", cfg, names, "/russian-oil-gas-buyers/");
+  assert.equal(ind.faq.q, "How much Russian oil does India buy?");
+  assert.match(ind.faq.a, /^India's customs recorded these imports of crude oil from Russia \(CIF, by country of origin\): 2022 <span data-rv="fuel:countries\.IND\.years\.2022\.gross_customs\.crude" data-v="24\.\d+" data-u="eur">€24\.2bn<\/span>; 2023 .*2024 <span[^>]*>€48\.7bn<\/span>.*CREA's tracker, from ship data, estimates <span[^>]*>€31\.9bn<\/span> for 2025\./);
+  assert.match(ind.html, /id="crude-by-year"/);
+  // Germany: measured, but its customs recorded no crude to speak of in the last full year: no crude by year
+  const deu = RS.fuelCountry("en", FUEL, "DEU", cfg, { N: "Germany", Nt: "Germany", NtCap: "Germany", dataTo: "August 2026" }, "/x/");
+  assert.ok(deu && !deu.faq && !/crude-by-year/.test(deu.html));
+  // China: large, but an estimate in a war year: the section, no question
+  assert.equal(RS.fuelCountry("en", FUEL, "CHN", cfg, names, "/x/").faq, null);
+  // no fuel split (quality D only) or too little fuel: no section
+  const none = Object.keys(FUEL.countries).filter(i => !RS.fuelOf(FUEL, i, cfg));
+  assert.ok(none.length > 0 && none.every(i => RS.fuelCountry("en", FUEL, i, cfg, names, "/x/") === null));
+  for (const l of I.LANGS) {
+    const b = RS.fuelCountry(l, FUEL, "IND", cfg, names, "/x/");
+    assert.ok(b.faq.q.endsWith("?") && !/[{}]/.test(b.html + b.faq.a), l);
+  }
+});
+
+test("round 59b: military aid by country, its steps from Kiel's figure, and no zero outside Kiel", () => {
+  const o = { nameOf: i => MIL.countries[i].name, nameIn: i => I.inSentence("en", MIL.countries[i].name), href: () => "", pop: () => 10, dataTo: "August 2026", stepsMin: 1, gdpMin: 5 };
+  const p = RS.milPage("en", MIL, o);
+  const ms = p.rows.map(i => MIL.countries[i].military);
+  assert.deepEqual(ms, ms.slice().sort((a, b) => b - a));
+  assert.equal(p.rows[0], "USA");
+  assert.match(p.body, /<tr id="MKD">.*?not in Kiel/);
+  assert.match(p.body, /No military aid record found/);
+  assert.ok(!p.rows.includes("BRA") && /Brazil/.test(p.body.split('id="no-record"')[1]));
+  assert.equal(p.faq[0].q, "Which country gave the most military aid to Ukraine?");
+  assert.match(p.faq[0].a, /the table starts with the United States, Germany and the United Kingdom: the United States €47\.4bn\. By the Kiel Institute's allocations, the United States with €64\.6bn\./);
+  assert.match(p.faq[1].a, /€28\.1bn of the aid Kiel records was not yet delivered by August 2026.*The United Kingdom's ERA loan \(€2\.6bn\)|€28\.1bn of the aid Kiel records was not yet delivered by August 2026.*The United Kingdom's ERA loan \(€2\.7bn\)/);
+  for (const l of I.LANGS) {
+    const x = RS.milPage(l, MIL, { ...o, nameIn: i => I.inSentence(l, MIL.countries[i].name) });
+    assert.ok(x.title.length <= 60 && x.description.length <= 155 && x.faq.every(f => f.q.endsWith("?") && !/[{}]/.test(f.a)) && !/[{}]/.test(x.body), l);
+  }
+  // the country page: the parts add up to the map's figure; a zero outside Kiel is "no record found"
+  const gbr = RS.milCountry("en", MIL, "GBR", { Nt: "the United Kingdom", NtCap: "The United Kingdom", dataTo: "August 2026" }, "/m/");
+  assert.match(gbr.html, /Kiel: €16\.2bn/);
+  const nr = Object.keys(MIL.countries).find(i => RS.milNoRecord(MIL, i) && Math.abs(MIL.countries[i].total_site) >= 0.0005);
+  assert.match(RS.milCountry("en", MIL, nr, { Nt: "X", NtCap: "X", dataTo: "August 2026" }, "/m/").html, /data-rv="military:countries\.\w+\.military" data-v="0">no record found/);
+  assert.match(RS.milCells("en", MIL, nr), /no record found/);
+});
+
+test("round 59b: the budget balance, the plans labelled, the fund; the CSV files are the files' figures", () => {
+  const b = RS.deficitBlock("en", DEF, { months: 24 });
+  for (const y of DEF.yearly) assert.ok(b.includes(`data-rv="deficit:yearly@${y.year}.balance_rub"`), y.year);
+  assert.match(b, /<td>Budget law, as signed<\/td><td>28 November 2025<\/td>/);
+  assert.match(b, /Ministry of Finance estimate, with the draft budget for the next years<\/td><td>30 September 2026<\/td>.*?>RUB 7,345bn<\/td><td class="n"[^>]*>3\.2%<\/td>/);
+  assert.match(b, /data-rv="deficit:plans\.2026_execution_to_date\.balance_rub" data-v="-5185\.6" data-u="rub" data-sg="-1">RUB 5,186bn</);
+  assert.match(b, /data-rv="deficit:yearly@2025\.balance_rub" data-v="-5626\.5" data-u="rub">−RUB 5,627bn</);
+  assert.match(b, /data-rv="deficit:nwf@2026-10-01\.liquid_rub_bn"[^>]*>RUB 3,800bn</);
+  assert.doesNotMatch(b, /pays for the war|drained|because of the war/i);
+  const fc = RS.fuelCsv(FUEL).split("\n");
+  assert.equal(fc.length - 1, Object.values(FUEL.countries).reduce((a, c) => a + Object.keys(c.years).length, 0) * 7);
+  assert.ok(fc.some(r => r.startsWith("IND,India,2024,January-December,crude,31.2287,") && r.endsWith(",48.7148,38.4319,A")));
+  const mc = RS.milCsv(MIL).split("\n");
+  assert.equal(mc.length - 1, Object.keys(MIL.countries).length);
+  assert.ok(mc.some(r => r.startsWith("DEU,Germany,21.882,16.418,32.496,recorded,25.004,")));
+  assert.ok(mc.some(r => /,no record found,/.test(r)));
+  assert.match(RS.fuelLlms(FUEL, i => FUEL.countries[i].name)[0], /^- Crude oil, 2022 to August 2026: China €257bn customs \(CIF\), €217bn map basis \(FOB\), €236bn CREA tracker; India /);
 });

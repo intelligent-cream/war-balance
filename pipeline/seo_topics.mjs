@@ -265,6 +265,6 @@ ${m.notes.map(n => `<p class="sub">${esc(n)}</p>`).join("")}
 <p class="sub">${esc(m.year ? T("eachRowYear") : CHANCE_KEYS.includes(m.key) ? T("eachRow") : T("eachRowPart"))}</p>
 ${others}
 ${m.sections.map(s => `${s.h2 ? `<h2>${esc(s.h2)}</h2>` : ""}${s.p.map(p => `<p>${esc(p)}</p>`).join("")}${s.list.length ? `<ul class="bul">${s.list.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}`).join("\n")}
-${m.faq.length ? `<section class="faq"><h2>${esc(T("questions"))}</h2>${m.faq.map(x => `<h3>${esc(x.q)}</h3><p>${esc(x.a)}</p>`).join("\n")}</section>` : ""}`;
+${m.faq.length ? `<section class="faq"><h2>${esc(T("questions"))}</h2>${m.faq.map(x => `<h3>${esc(x.q)}</h3><p${x.rq ? ` data-rq="${x.rq}"` : ""}>${esc(x.a)}</p>`).join("\n")}</section>` : ""}`;
 }
 const cap1 = s => s.charAt(0).toUpperCase() + s.slice(1);

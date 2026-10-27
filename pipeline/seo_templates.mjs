@@ -12,8 +12,13 @@
 // for the country's chance level and fills it with the map's figures, names and words (the hand-written titles of the
 // ten most searched countries and the per-country English overrides of round 54 are folded into these rules). The
 // rule that asks about trade instead of aid is in pipeline/seo_families.json (country.tradeFirst).
+//
+// Round 59 (owner approved: "titles in the words people search"): the title and heading may instead ask the question
+// people search in the page's language ("How much has Canada given to Ukraine?", "Does Belarus support Russia?",
+// "Combien la France a donné à l'Ukraine ?"), by the volumes in seo_demand.json ask and the rule in seo_families.json
+// (country.phrasing); askOf below, the phrases in seo_i18n.mjs ASK.
 
-import { P as PL, E as EL, L as LL, cap, list3, inSentence, countryText, homeText, staticText, fit } from "./seo_i18n.mjs";
+import { P as PL, E as EL, L as LL, cap, list3, inSentence, countryText, homeText, staticText, fit, askText } from "./seo_i18n.mjs";
 
 export const TITLE_MAX = 60, DESC_MAX = 155;
 export const LANGS = ["en", "uk", "de", "fr", "pl", "nl", "es"];
@@ -31,6 +36,27 @@ const EU = new Set("AUT BEL BGR HRV CYP CZE DNK EST FIN FRA DEU GRC HUN IRL ITA 
 // round 56's rule, in seo_families.json (country.tradeFirst): ask whether it trades with Russia where people search for that
 // at least this often, this many times more than for its aid or help, and its aid is searched for less than this
 export const TRADE_FIRST = { minTrade: 400, ratio: 1.5, maxAid: 800 };
+// round 59's rule, in seo_families.json (country.phrasing): the phrasing people search in the page's language
+export const PHRASING = { minDemand: 50, minTrade: 100 };
+const HELP_CATS = new Set(["u_sure", "r_sure", "u_lean", "r_lean", "unc", "zero", "party"]);
+// the chance level's key in seo_i18n.mjs ASK (tHelp, h1Help): both leaning sides are "lean"
+const askCat = cat => (cat === "u_lean" || cat === "r_lean" ? "lean" : cat);
+
+// Round 59 (owner approved: "titles in the words people search"): which of a country page's phrasings the searches in
+// its language ask for (seo_demand.json ask: Google's monthly volumes). cat: the page's copy category (after the trade
+// rule). { title: "given" | "support" | "helping" | null (the chance level's own), verb: the question about Russia's
+// verb, given: the question about what it gave in the searched form, trade: its trade section named as a pair }
+export function askOf(l, cat, dm, R = PHRASING) {
+  const A = (((dm || {}).ask || {})[l]) || {}, n = k => A[k] || 0, min = R.minDemand ?? Infinity;
+  // round 59b (owner: "Does X support Russia?" only where it is actually searched): no default verb, and the verb's own
+  // phrasing must be searched at least minDemand times (not the two phrasings added up)
+  const given = n("given"), help = n("support") + n("helping"), best = n("support") >= n("helping") ? "support" : "helping";
+  const verb = n(best) >= min ? best : "";
+  let title = null;
+  if (cat === "u_sure" && given >= min && given >= help) title = "given";
+  else if (HELP_CATS.has(cat) && verb && help >= given) title = verb;
+  return { title, verb, given: title === "given", trade: n("trade") >= (R.minTrade ?? Infinity) };
+}
 
 // the copy's category: very likely toward Ukraine or Russia, leaning, too close to call, near or essentially zero, a party
 export function category(f) {
@@ -62,8 +88,11 @@ export function countryCopy(l, f) {
   // numbers are very likely, the English title asks that and answers it with what Russia kept
   const dm = f.demand || {}, R = f.tradeFirst || TRADE_FIRST;
   if (l === "en" && cat === "u_sure" && cR.level === "sure" && (dm.trade || 0) >= R.minTrade && dm.trade >= R.ratio * Math.max(dm.aid || 0, dm.help || 0) && (dm.aid || 0) < R.maxAid) cat = "u_trade";
-  const c = countryText(l, cat, v, nums);
-  const out = { ...c, intro: c.intro || (cat === "nodata" ? v.noDataText : ""), category: category(f) };
+  let c = countryText(l, cat, v, nums);
+  // round 59: the phrasing people search in this language (seo_families.json country.phrasing), where the data answer it
+  const ask = askOf(l, cat, dm, f.phrasing || PHRASING);
+  if (ask.title) c = { ...c, ...askText(l, ask.title, askCat(cat), v, nums, c.title) };
+  const out = { ...c, intro: c.intro || (cat === "nodata" ? v.noDataText : ""), category: category(f), ask };
   out.og_title = out.title; out.og_description = out.description;
   return out;
 }

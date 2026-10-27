@@ -1,5 +1,5 @@
 {
-"_note": "Round 56: search demand per country from the keyword research of 26 October 2026 (autocomplete in 16 languages, keywords.csv): the summed demand scores (0-100 each) of queries naming one country, by intent: trade (trade, oil, gas, sanctions), help (is it helping Russia, relations) and aid (how much it gave Ukraine). Relative only; used to choose a country page title variant and its questions (seo_templates.mjs). Round 57b: clusters, per country, the summed demand scores of the single-country queries of each keyword cluster (keywords.csv, \"dont\" clusters left out), for the country pages' questions (seo_country.mjs FAQ scoring). Round 58: _topics, the summed demand scores of every query of a topic cluster by site language (the topic pages' explainers are also FAQ entries where a language's demand reaches seo_families.json explain.minDemand); per country, byLang, the single-country queries of country_russia_relations, groups_blocs, military_support_russia, sanctions_evasion_hubs by site language (the country page's relations and military questions, seo_country.mjs).",
+"_note": "Round 56: search demand per country from the keyword research of 26 October 2026 (autocomplete in 16 languages, keywords.csv): the summed demand scores (0-100 each) of queries naming one country, by intent: trade (trade, oil, gas, sanctions), help (is it helping Russia, relations) and aid (how much it gave Ukraine). Relative only; used to choose a country page title variant and its questions (seo_templates.mjs). Round 57b: clusters, per country, the summed demand scores of the single-country queries of each keyword cluster (keywords.csv, \"dont\" clusters left out), for the country pages' questions (seo_country.mjs FAQ scoring). Round 58: _topics, the summed demand scores of every query of a topic cluster by site language (the topic pages' explainers are also FAQ entries where a language's demand reaches seo_families.json explain.minDemand); per country, byLang, the single-country queries of country_russia_relations, groups_blocs, military_support_russia, sanctions_evasion_hubs by site language (the country page's relations and military questions, seo_country.mjs). Round 59: per country, ask: Google's monthly search volumes (keyword discovery of 27 October 2026, merged.csv) of the phrasings a country page answers, by site language: given (how much it gave Ukraine, its aid to Ukraine; in other languages their searched forms: Ukraine-Hilfe Deutschland, combien la France a donné à l'Ukraine, ile Polska dała Ukrainie, steun Oekraïne Nederland), support (does it support Russia), helping (is it helping Russia), trade (its trade with Russia); spellings of one query counted once. Read by seo_families.json country.phrasing.",
 "_topics": {
 "shadow_fleet": {
 "en": 13734,
@@ -125,6 +125,13 @@
 "sanctions_evasion_hubs": {
 "en": 57
 }
+},
+"ask": {
+"en": {
+"given": 10,
+"support": 30,
+"trade": 20
+}
 }
 },
 "ARE CHN": {
@@ -182,6 +189,11 @@
 "sanctions_evasion_hubs": {
 "en": 49
 }
+},
+"ask": {
+"en": {
+"support": 10
+}
 }
 },
 "AUS": {
@@ -206,6 +218,13 @@
 "byLang": {
 "country_russia_relations": {
 "en": 262
+}
+},
+"ask": {
+"en": {
+"given": 330,
+"support": 10,
+"trade": 10
 }
 }
 },
@@ -239,6 +258,15 @@
 "country_russia_relations": {
 "en": 119,
 "de": 48
+}
+},
+"ask": {
+"de": {
+"given": 20
+},
+"en": {
+"given": 20,
+"support": 10
 }
 }
 },
@@ -298,6 +326,16 @@
 "en": 127,
 "fr": 65
 }
+},
+"ask": {
+"en": {
+"given": 20,
+"support": 10,
+"trade": 10
+},
+"fr": {
+"given": 10
+}
 }
 },
 "BEL DEU": {
@@ -329,6 +367,14 @@
 "byLang": {
 "country_russia_relations": {
 "en": 278
+}
+},
+"ask": {
+"en": {
+"given": 50,
+"helping": 10,
+"support": 80,
+"trade": 10
 }
 }
 },
@@ -363,6 +409,12 @@
 "sanctions_evasion_hubs": {
 "en": 42
 }
+},
+"ask": {
+"en": {
+"helping": 30,
+"support": 550
+}
 }
 },
 "BRA": {
@@ -387,6 +439,13 @@
 },
 "groups_blocs": {
 "en": 131
+}
+},
+"ask": {
+"en": {
+"given": 10,
+"support": 50,
+"trade": 20
 }
 }
 },
@@ -424,6 +483,17 @@
 "country_russia_relations": {
 "en": 186
 }
+},
+"ask": {
+"en": {
+"given": 1360,
+"helping": 10,
+"support": 20,
+"trade": 30
+},
+"fr": {
+"given": 20
+}
 }
 },
 "CAN USA": {
@@ -456,6 +526,18 @@
 },
 "military_support_russia": {
 "fr": 42
+}
+},
+"ask": {
+"de": {
+"given": 20
+},
+"en": {
+"given": 30,
+"support": 10
+},
+"fr": {
+"given": 10
 }
 }
 },
@@ -512,6 +594,23 @@
 },
 "sanctions_evasion_hubs": {
 "en": 47
+}
+},
+"ask": {
+"de": {
+"support": 100
+},
+"en": {
+"given": 40,
+"helping": 170,
+"support": 370,
+"trade": 720
+},
+"es": {
+"support": 10
+},
+"fr": {
+"support": 20
 }
 }
 },
@@ -625,6 +724,11 @@
 "country_russia_relations": {
 "en": 255
 }
+},
+"ask": {
+"en": {
+"given": 10
+}
 }
 },
 "DEU": {
@@ -661,6 +765,20 @@
 },
 "military_support_russia": {
 "de": 48
+}
+},
+"ask": {
+"de": {
+"given": 740
+},
+"en": {
+"given": 500,
+"helping": 10,
+"support": 40,
+"trade": 30
+},
+"fr": {
+"given": 20
 }
 }
 },
@@ -706,6 +824,11 @@
 "country_russia_relations": {
 "en": 166
 }
+},
+"ask": {
+"en": {
+"given": 60
+}
 }
 },
 "DZA": {
@@ -738,6 +861,11 @@
 "country_russia_relations": {
 "en": 136
 }
+},
+"ask": {
+"en": {
+"support": 10
+}
 }
 },
 "ESP": {
@@ -762,6 +890,15 @@
 "country_russia_relations": {
 "en": 317,
 "es": 775
+}
+},
+"ask": {
+"en": {
+"given": 70,
+"support": 10
+},
+"fr": {
+"given": 10
 }
 }
 },
@@ -792,6 +929,12 @@
 "country_russia_relations": {
 "en": 168
 }
+},
+"ask": {
+"en": {
+"given": 30,
+"support": 20
+}
 }
 },
 "FIN": {
@@ -815,6 +958,13 @@
 "byLang": {
 "country_russia_relations": {
 "en": 513
+}
+},
+"ask": {
+"en": {
+"given": 50,
+"support": 10,
+"trade": 10
 }
 }
 },
@@ -852,6 +1002,20 @@
 },
 "military_support_russia": {
 "fr": 18
+}
+},
+"ask": {
+"de": {
+"given": 20
+},
+"en": {
+"given": 120,
+"helping": 10,
+"support": 30,
+"trade": 10
+},
+"fr": {
+"given": 1160
 }
 }
 },
@@ -892,6 +1056,16 @@
 },
 "groups_blocs": {
 "en": 18
+}
+},
+"ask": {
+"en": {
+"given": 760,
+"helping": 10,
+"trade": 50
+},
+"fr": {
+"given": 10
 }
 }
 },
@@ -938,6 +1112,12 @@
 "sanctions_evasion_hubs": {
 "en": 49
 }
+},
+"ask": {
+"en": {
+"support": 50,
+"trade": 10
+}
 }
 },
 "GRC": {
@@ -963,6 +1143,12 @@
 },
 "groups_blocs": {
 "en": 42
+}
+},
+"ask": {
+"en": {
+"given": 40,
+"support": 30
 }
 }
 },
@@ -1016,6 +1202,11 @@
 "country_russia_relations": {
 "en": 96
 }
+},
+"ask": {
+"en": {
+"given": 10
+}
 }
 },
 "HRV HUN": {
@@ -1054,6 +1245,16 @@
 "groups_blocs": {
 "en": 180,
 "de": 24
+}
+},
+"ask": {
+"de": {
+"given": 10
+},
+"en": {
+"given": 40,
+"helping": 10,
+"support": 140
 }
 }
 },
@@ -1138,6 +1339,20 @@
 "military_support_russia": {
 "en": 24
 }
+},
+"ask": {
+"de": {
+"support": 10
+},
+"en": {
+"given": 60,
+"helping": 30,
+"support": 170,
+"trade": 880
+},
+"es": {
+"support": 10
+}
 }
 },
 "IND ARE": {
@@ -1198,6 +1413,14 @@
 "groups_blocs": {
 "en": 42
 }
+},
+"ask": {
+"en": {
+"given": 190,
+"helping": 10,
+"support": 20,
+"trade": 10
+}
 }
 },
 "IRL OMN": {
@@ -1229,6 +1452,16 @@
 },
 "sanctions_evasion_hubs": {
 "en": 47
+}
+},
+"ask": {
+"de": {
+"support": 10
+},
+"en": {
+"helping": 30,
+"support": 120,
+"trade": 110
 }
 }
 },
@@ -1271,6 +1504,14 @@
 "sanctions_evasion_hubs": {
 "en": 47
 }
+},
+"ask": {
+"en": {
+"given": 70,
+"helping": 10,
+"support": 90,
+"trade": 50
+}
 }
 },
 "ITA": {
@@ -1295,6 +1536,16 @@
 "country_russia_relations": {
 "en": 120,
 "fr": 73
+}
+},
+"ask": {
+"de": {
+"given": 10
+},
+"en": {
+"given": 100,
+"support": 30,
+"trade": 10
 }
 }
 },
@@ -1328,6 +1579,17 @@
 "de": 44,
 "fr": 171,
 "es": 39
+}
+},
+"ask": {
+"en": {
+"given": 90,
+"helping": 10,
+"support": 30,
+"trade": 20
+},
+"fr": {
+"given": 10
 }
 }
 },
@@ -1366,6 +1628,14 @@
 },
 "sanctions_evasion_hubs": {
 "en": 94
+}
+},
+"ask": {
+"en": {
+"given": 10,
+"helping": 10,
+"support": 230,
+"trade": 10
 }
 }
 },
@@ -1430,6 +1700,14 @@
 "en": 80,
 "fr": 50
 }
+},
+"ask": {
+"en": {
+"given": 60,
+"helping": 10,
+"support": 10,
+"trade": 10
+}
 }
 },
 "LTU": {
@@ -1450,6 +1728,13 @@
 "byLang": {
 "country_russia_relations": {
 "en": 231
+}
+},
+"ask": {
+"en": {
+"given": 20,
+"support": 20,
+"trade": 10
 }
 }
 },
@@ -1488,6 +1773,12 @@
 "country_russia_relations": {
 "en": 383
 }
+},
+"ask": {
+"en": {
+"given": 20,
+"support": 20
+}
 }
 },
 "MAR": {
@@ -1521,6 +1812,11 @@
 "country_russia_relations": {
 "en": 269
 }
+},
+"ask": {
+"en": {
+"helping": 10
+}
 }
 },
 "MEX": {
@@ -1550,6 +1846,12 @@
 },
 "military_support_russia": {
 "en": 40
+}
+},
+"ask": {
+"en": {
+"support": 10,
+"trade": 10
 }
 }
 },
@@ -1659,6 +1961,15 @@
 "en": 199,
 "nl": 70
 }
+},
+"ask": {
+"en": {
+"given": 40,
+"trade": 10
+},
+"nl": {
+"given": 100
+}
 }
 },
 "NLD ARG": {
@@ -1693,6 +2004,15 @@
 "country_russia_relations": {
 "en": 177
 }
+},
+"ask": {
+"en": {
+"given": 70,
+"support": 10
+},
+"uk": {
+"given": 50
+}
 }
 },
 "NZL": {
@@ -1710,6 +2030,11 @@
 "byLang": {
 "country_russia_relations": {
 "en": 42
+}
+},
+"ask": {
+"en": {
+"given": 30
 }
 }
 },
@@ -1735,6 +2060,12 @@
 },
 "groups_blocs": {
 "en": 34
+}
+},
+"ask": {
+"en": {
+"given": 10,
+"support": 40
 }
 }
 },
@@ -1784,6 +2115,23 @@
 "groups_blocs": {
 "pl": 18
 }
+},
+"ask": {
+"de": {
+"given": 10
+},
+"en": {
+"given": 190,
+"helping": 10,
+"support": 60,
+"trade": 10
+},
+"fr": {
+"given": 10
+},
+"pl": {
+"given": 270
+}
 }
 },
 "PRK": {
@@ -1807,6 +2155,16 @@
 "pl": 593,
 "es": 3432
 }
+},
+"ask": {
+"en": {
+"helping": 110,
+"support": 80,
+"trade": 70
+},
+"es": {
+"support": 10
+}
 }
 },
 "PRT": {
@@ -1822,6 +2180,11 @@
 "byLang": {
 "country_russia_relations": {
 "en": 168
+}
+},
+"ask": {
+"en": {
+"given": 40
 }
 }
 },
@@ -1865,6 +2228,12 @@
 "country_russia_relations": {
 "en": 100
 }
+},
+"ask": {
+"en": {
+"given": 70,
+"support": 30
+}
 }
 },
 "SAU": {
@@ -1884,6 +2253,13 @@
 "groups_blocs": {
 "en": 564,
 "fr": 24
+}
+},
+"ask": {
+"en": {
+"given": 10,
+"helping": 10,
+"support": 20
 }
 }
 },
@@ -1942,6 +2318,19 @@
 "country_russia_relations": {
 "en": 134
 }
+},
+"ask": {
+"de": {
+"support": 10
+},
+"en": {
+"given": 10,
+"helping": 10,
+"support": 130
+},
+"fr": {
+"support": 10
+}
 }
 },
 "SVK": {
@@ -1971,6 +2360,15 @@
 "military_support_russia": {
 "uk": 49
 }
+},
+"ask": {
+"en": {
+"given": 50,
+"support": 80
+},
+"fr": {
+"given": 10
+}
 }
 },
 "SVK DEU": {
@@ -1994,6 +2392,11 @@
 "country_russia_relations": {
 "en": 408
 }
+},
+"ask": {
+"en": {
+"support": 10
+}
 }
 },
 "SWE": {
@@ -2016,6 +2419,11 @@
 "byLang": {
 "country_russia_relations": {
 "en": 202
+}
+},
+"ask": {
+"en": {
+"given": 170
 }
 }
 },
@@ -2111,6 +2519,17 @@
 },
 "sanctions_evasion_hubs": {
 "en": 127
+}
+},
+"ask": {
+"de": {
+"support": 10
+},
+"en": {
+"given": 90,
+"helping": 10,
+"support": 100,
+"trade": 50
 }
 }
 },
@@ -2233,6 +2652,14 @@
 "uk": 40,
 "de": 18
 }
+},
+"ask": {
+"en": {
+"given": 4540,
+"helping": 10,
+"support": 40,
+"trade": 390
+}
 }
 },
 "USA BLR": {
@@ -2342,6 +2769,13 @@
 "byLang": {
 "groups_blocs": {
 "en": 994
+}
+},
+"ask": {
+"en": {
+"helping": 10,
+"support": 30,
+"trade": 10
 }
 }
 },
