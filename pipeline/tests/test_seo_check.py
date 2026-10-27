@@ -674,3 +674,100 @@ def test_a_table_row_of_the_page_must_be_in_its_markdown(tmp_path):
     assert sc.check_site(s, U, MODEL)["markdown"] == []
     md.write_text(md.read_text().replace("| 2019 | RUB 7,924bn |", "| 2019 | RUB 7,294bn |"))
     assert any("table row" in x or "not on the page" in x for x in sc.check_site(s, U, MODEL)["markdown"])
+
+
+# ----- round 59b: the fuel split, the support by type and the budget balance -----
+R59 = {
+    "fuel": {
+        "years": [2021, 2022, 2023],
+        "countries": {
+            "IND": {
+                "years": {
+                    "2022": {"tracker_crea": {"crude": 18.7}, "gross_customs": {"crude": 24.2}, "quality": "A"},
+                    "2023": {"tracker_crea": {"crude": 35.5}, "gross_customs": {"crude": 45.0}, "quality": "A"},
+                },
+                "sum_2022_2026": {"crude": {"central": 121.0}},
+            }
+        },
+    },
+    "military": {
+        "countries": {
+            "GBR": {
+                "kiel_military": 16.184,
+                "military_parts": {"kiel_allocated_less_era": 13.534},
+                "military_range": [6.6, 12.038],
+                "military": 9.009,
+            }
+        }
+    },
+    "deficit": {
+        "yearly": [{"year": 2025, "balance_rub": -5626.5, "balance_pct_gdp": -0.0263}],
+        "nwf": [{"as_of": "2026-10-01", "liquid_rub_bn": 3799.7}],
+    },
+}
+
+
+def test_a_research_figure_may_be_a_sum_or_a_difference_of_the_files_values():
+    s = "countries.IND.years.2022.tracker_crea.crude + countries.IND.years.2023.tracker_crea.crude"
+    assert abs(sc.research_value(R59["fuel"], s) - 54.2) < 1e-9
+    era = "countries.GBR.kiel_military - countries.GBR.military_parts.kiel_allocated_less_era"
+    assert abs(sc.research_value(R59["military"], era) - 2.65) < 1e-9
+    assert sc.research_value(R59["military"], "countries.GBR.military_range.1") == 12.038
+    assert sc.research_value(R59["deficit"], "yearly@2025.balance_rub") == -5626.5
+    assert sc.research_value(R59["deficit"], "nwf@2026-10-01.liquid_rub_bn") == 3799.7
+    ok = f'<td class="n" data-rv="fuel:{s}" data-v="54.2" data-u="eur">€54.2bn</td>'
+    assert sc.check_research_marks(ok, "/p/", "en", R59) == []
+    assert any("written" in x for x in sc.check_research_marks(ok.replace("€54.2bn", "€45.2bn"), "/p/", "en", R59))
+
+
+def test_a_research_figure_keeps_its_sign_unless_marked_otherwise():
+    neg = '<td class="n" data-rv="deficit:yearly@2025.balance_rub" data-v="-5626.5" data-u="rub">−RUB 5,627bn</td>'
+    assert sc.check_research_marks(neg, "/p/", "en", R59) == []
+    # a deficit written without its sign is not the file's balance, unless the page says it shows the opposite sign
+    assert any("written" in x for x in sc.check_research_marks(neg.replace("−RUB", "RUB"), "/p/", "en", R59))
+    flipped = neg.replace('data-u="rub">−RUB', 'data-u="rub" data-sg="-1">RUB')
+    assert sc.check_research_marks(flipped, "/p/", "en", R59) == []
+    pct = '<td class="n" data-rv="deficit:yearly@2025.balance_pct_gdp" data-v="-0.0263" data-u="share">−2,6 %</td>'
+    assert sc.check_research_marks(pct, "/fr/p/", "fr", R59) == []
+    # a figure per person: the file's euros over the population (millions)
+    pp = '<td class="n" data-rv="military:countries.GBR.military" data-v="9.009" data-u="pp" data-pop="69.3">€130</td>'
+    assert sc.check_research_marks(pp, "/p/", "en", R59) == []
+    assert any("written" in x for x in sc.check_research_marks(pp.replace("€130", "€150"), "/p/", "en", R59))
+
+
+def test_a_research_answer_may_only_write_figures_the_page_shows():
+    page = (
+        '<main><table><tr><td class="n" data-rv="fuel:x" data-v="1" data-u="eur">€257bn</td></tr></table>'
+        '<section class="faq" id="faq"><h3>Who buys Russian oil?</h3><p data-rq="fuel">China recorded €257bn.</p>'
+        "<h3>Other?</h3><p>Not a research answer: €999bn.</p></section></main>"
+    )
+    assert sc.research_faq_figures(page, "/p/", "en") == []
+    bad = page.replace("China recorded €257bn.", "China recorded €275bn.")
+    assert any("275" in x for x in sc.research_faq_figures(bad, "/p/", "en"))
+
+
+def test_the_fuel_rule_of_the_country_pages_is_the_scripts():
+    doc = {
+        "years": [2021, 2022, 2023],
+        "countries": {
+            "IND": {
+                "years": {
+                    "2022": {"quality": "A", "gross_customs": {"crude": 24.2}},
+                    "2023": {"quality": "A", "gross_customs": {"crude": 45.0}, "partial_year": None},
+                },
+                "sum_2022_2026": {"crude": {"central": 57.0}},
+            },
+            "XXA": {
+                "years": {"2022": {"quality": "D"}, "2023": {"quality": "D"}},
+                "sum_2022_2026": {"crude": {"central": 5.0}},
+            },
+            "XXB": {
+                "years": {"2022": {"quality": "A"}, "2023": {"quality": "A"}},
+                "sum_2022_2026": {"crude": {"central": 0.05}},
+            },
+        },
+    }
+    cfg = {"country": {"minEur": 0.1, "quality": ["A", "B", "C"]}, "crudeYears": {"minEur": 10, "quality": ["A", "B"]}}
+    assert sc.fuel_shown(doc, "IND", cfg) == (True, True)
+    assert sc.fuel_shown(doc, "XXA", cfg) is None  # no split by fuel
+    assert sc.fuel_shown(doc, "XXB", cfg) is None  # too little fuel

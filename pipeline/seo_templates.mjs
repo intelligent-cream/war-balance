@@ -37,7 +37,7 @@ const EU = new Set("AUT BEL BGR HRV CYP CZE DNK EST FIN FRA DEU GRC HUN IRL ITA 
 // at least this often, this many times more than for its aid or help, and its aid is searched for less than this
 export const TRADE_FIRST = { minTrade: 400, ratio: 1.5, maxAid: 800 };
 // round 59's rule, in seo_families.json (country.phrasing): the phrasing people search in the page's language
-export const PHRASING = { minDemand: 50, minTrade: 100, defaultHelp: { en: "support" } };
+export const PHRASING = { minDemand: 50, minTrade: 100 };
 const HELP_CATS = new Set(["u_sure", "r_sure", "u_lean", "r_lean", "unc", "zero", "party"]);
 // the chance level's key in seo_i18n.mjs ASK (tHelp, h1Help): both leaning sides are "lean"
 const askCat = cat => (cat === "u_lean" || cat === "r_lean" ? "lean" : cat);
@@ -48,12 +48,13 @@ const askCat = cat => (cat === "u_lean" || cat === "r_lean" ? "lean" : cat);
 // verb, given: the question about what it gave in the searched form, trade: its trade section named as a pair }
 export function askOf(l, cat, dm, R = PHRASING) {
   const A = (((dm || {}).ask || {})[l]) || {}, n = k => A[k] || 0, min = R.minDemand ?? Infinity;
-  const given = n("given"), help = n("support") + n("helping"), dflt = (R.defaultHelp || {})[l] || "";
-  const verb = help >= min ? (n("support") >= n("helping") ? "support" : "helping") : dflt;
+  // round 59b (owner: "Does X support Russia?" only where it is actually searched): no default verb, and the verb's own
+  // phrasing must be searched at least minDemand times (not the two phrasings added up)
+  const given = n("given"), help = n("support") + n("helping"), best = n("support") >= n("helping") ? "support" : "helping";
+  const verb = n(best) >= min ? best : "";
   let title = null;
   if (cat === "u_sure" && given >= min && given >= help) title = "given";
-  else if (HELP_CATS.has(cat) && help >= min && help >= given) title = verb;
-  else if (dflt && (cat === "r_sure" || cat === "party")) title = dflt;
+  else if (HELP_CATS.has(cat) && verb && help >= given) title = verb;
   return { title, verb, given: title === "given", trade: n("trade") >= (R.minTrade ?? Infinity) };
 }
 

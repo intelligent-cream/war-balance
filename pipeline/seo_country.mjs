@@ -178,6 +178,8 @@ export function countryDyn(c, o) {
   }
   // year by year: the sentences beside the table (the table is seo_pages.mjs's)
   out.years = yearsText(c, x, o, F);
+  // round 59b: its support for Ukraine by type (mil_split_r59.json, seo_research.mjs milCountry)
+  if (o.mil) sec("support-by-type", o.mil.title, o.mil.html);
   // trade with Russia before and after (sales values), the fuel share where it is measured, the price effect
   {
     const s = [];
@@ -194,6 +196,8 @@ export function countryDyn(c, o) {
       sec("trade", o.ask && o.ask.trade ? I.askQ(l, "tTradeAsk", name) : I.dyn(l, "tTrade"), P(s.join(" ")));
     }
   }
+  // round 59b: what it bought from Russia by fuel, on three bases (fuel_split_r59.json, seo_research.mjs fuelCountry)
+  if (o.fuel) sec("by-fuel", o.fuel.title, o.fuel.html);
   // sanctions, Russia's own cut-offs, or a choice: the panel's split, and the pipeline exemption
   if (x.notes.sanction || tag("exempt")) sec("sanctions", I.dyn(l, "tSanctions"), P([x.notes.sanction, tag("exempt") && tag("exempt").body].filter(Boolean).map(esc).join(" ")));
   if (o.regime) sec("sanctions-on-russia", o.regime.title, o.regime.html);
@@ -254,6 +258,8 @@ export function countryDyn(c, o) {
   // how the number is backed, and its sources by part (every source a link)
   if (x.srcIds.length) sec("backing", I.dyn(l, "tBacking"), backing(c, x, o, F));
   out.faq = faqOf(c, x, o, F);
+  // round 59b: how much Russian oil it buys, by year from its customs, where the fuel section shows the crude by year
+  if (o.fuel && o.fuel.faq) out.faq.push({ id: "fuel", fam: "fuel", score: 0, q: o.fuel.faq.q, a: o.fuel.faq.a.replace(/[ \t\r\n]+/g, " ").trim() });
   // the sanctions question after the pool's picks (not one of them: every page has it)
   if (o.regime) out.faq.push({ id: "regime", fam: "regime", score: 0, q: o.regime.q, a: o.regime.a.replace(/[ \t\r\n]+/g, " ").trim() });
   return out;
@@ -333,7 +339,7 @@ function faqOf(c, x, o, F) {
         keptCap: esc(cap(c.kept)), fair: esc(x.notes.fairness), armedEur: esc(I.E(l, o.armedFull || 0)) }, { party: x.party, chance: !!c.net.chanceSentence, fair: !!x.notes.fairness, armed: (o.armedFull || 0) >= 0.05 }); break;
       case "decide": a = A("decide", { chance: esc(c.net.chanceSentence), why: esc(x.decide.why), flip: esc(x.decide.flip) }); break;
       case "close": a = A("close", { zeroWord: esc(x.level === "near" ? o.words.near : o.words.zero), netSigned: esc(c.net.signed), range: esc(c.net.range), why: esc(x.decide.why) }); break;
-      case "oilgas": a = A("oilgas", { fs: F("q", "fuelShare", x.fuelShare), years: "2018–2021", b1: F("e", "tb1", x.tb1), b0: F("e", "tb0", x.tb0), y0, y1 }); break;
+      case "oilgas": a = A("oilgas", { fs: F("q", "fuelShare", x.fuelShare), years: "2018–2021", b1: F("e", "tb1", x.tb1), b0: F("e", "tb0", x.tb0), y0, y1 }, { split: o.fuel ? 1 : 0 }); break;
       case "frozen": a = A("frozen", { frozen: esc(x.notes.frozen) }) + (o.stock ? " " + o.stock.replace(/<\/?p[^>]*>/g, "") : ""); break;
       case "refugees": a = A("refugees", { hosted: esc(x.notes.refHosted || ""), cost: D(l, "refCost", { v: F("e", "part_ref", x.refCost), p: F("p", "part_ref", x.refCost) }),
         gross: esc(x.notes.refGross || ""), perYear: esc(x.notes.refPerYear || "") }, { gross: !!x.notes.refGross, perYear: !!x.notes.refPerYear }); break;

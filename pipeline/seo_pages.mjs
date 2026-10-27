@@ -16,6 +16,9 @@
 //   round 58b (seo_research.mjs, seo_families.json research): countries-with-sanctions-on-russia/ and
 //   russia-oil-gas-revenue/ (every language), a sanctions section and question and the amounts frozen on every country
 //   page, two columns of amounts on frozen-russian-assets/, the explainers' amounts, and the revenue series as CSV
+//   round 59b: military-aid-to-ukraine-by-country/ (every language), the fuel tables on russian-oil-gas-buyers/, the
+//   support by type on the support tracker and the country pages, what each country bought by fuel on its page, the
+//   budget balance and the National Wealth Fund on russia-oil-gas-revenue/, and the fuel and military CSV files
 // and, in git, the A–Z list of country pages and the data date in site/index.html (between markers; unchanged unless the
 // data change) and pipeline/seo_lastmod.json (each page's content hash and the date it last changed, for lastmod).
 
@@ -148,9 +151,15 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   // round 58b: the research files the pages read (seo_families.json research)
   const RCFG = FAM.research || {}, readRes = async x => (x && x.file ? JSON.parse(await readFile(join(HERE, "..", x.file), "utf8")) : null);
   const SANC = await readRes(RCFG.sanctions), FROZ = await readRes(RCFG.frozen), REV = await readRes(RCFG.revenue);
-  const RPAGES = [RCFG.sanctions, RCFG.revenue].filter(x => x && x.slug);
-  const RPAGE = [SANC && RCFG.sanctions && { key: "sanctions", cfg: RCFG.sanctions, path: "/" + RCFG.sanctions.slug + "/" }, REV && RCFG.revenue && { key: "revenue", cfg: RCFG.revenue, path: "/" + RCFG.revenue.slug + "/" }].filter(Boolean);
-  const rLabel = (x, l) => I.res(l, x.key === "sanctions" ? "sLabel" : "rLabel");
+  // round 59b: what each country bought by fuel, support for Ukraine by type, Russia's budget balance
+  const FUEL = await readRes(RCFG.fuel), MIL = await readRes(RCFG.military), DEF = await readRes(RCFG.deficit);
+  // the research entry whose file has the budget's balance by year (seo_families.json research.revenue.balance)
+  const BAL = RCFG.revenue && RCFG.revenue.balance ? await readRes(RCFG[RCFG.revenue.balance]) : null;
+  if (RCFG.revenue && RCFG.revenue.balance && !(BAL && Array.isArray(BAL.yearly))) throw new Error(`seo_families.json research.revenue.balance: ${RCFG.revenue.balance} has no balance by year`);
+  const RPAGES = [RCFG.sanctions, RCFG.revenue, RCFG.military].filter(x => x && x.slug);
+  const RPAGE = [SANC && RCFG.sanctions && { key: "sanctions", cfg: RCFG.sanctions, path: "/" + RCFG.sanctions.slug + "/" }, REV && RCFG.revenue && { key: "revenue", cfg: RCFG.revenue, path: "/" + RCFG.revenue.slug + "/" },
+    MIL && RCFG.military && { key: "military", cfg: RCFG.military, path: "/" + RCFG.military.slug + "/" }].filter(Boolean);
+  const rLabel = (x, l) => I.res(l, { sanctions: "sLabel", revenue: "rLabel", military: "mLabel" }[x.key]);
   const RESERVED = new Set([...RPAGES.map(x => x.slug), "c", "country", "group", "compare", "topics", "downloads", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", "content", "i18n", "share", ...T.LANGS]);
   for (const e of TOPICS) {
     if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(e.slug) || (e.kind === "topic" && RESERVED.has(e.slug)) || !["topic", "group"].includes(e.kind)) throw new Error("seo_topics.json: bad slug or kind " + e.slug);
@@ -202,6 +211,9 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const monthL = l => I.monthYear(dataTo, l), monthOnlyL = l => I.monthOnly(dataTo, l);
   // a country's name in a language: the map's own (site/i18n.js regionName, with its NAME_FIX table), the same on every page
   const nameL = (iso, l) => (LANG_DATA[l][iso] || byIso[iso]).name;
+  // round 59b: a research file's country by its name in a language (the map's; the file's own for one without a page)
+  const nameAnyL = (iso, l) => ((LANG_DATA[l][iso] || byIso[iso] || {}).name) || ((FUEL || {}).countries || {})[iso]?.name || ((MIL || {}).countries || {})[iso]?.name || iso;
+  const nameIn = (iso, l) => I.inSentence(l, nameAnyL(iso, l));
   const labelOf = (e, l) => {
     if (e.kind === "part") return I.partName(l, e.key);
     if (e.kind === "year") return I.yearCopy(l, { kind: e.yearKind, y: e.year, partial: e.partial, month: monthOnlyL(l), n: 0, top: [], topV: "", dataTo: monthL(l) }).label;
@@ -238,7 +250,9 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     "\n.explain{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:4px 16px 2px;margin:14px 0}.explain h2{text-transform:none;letter-spacing:0;color:var(--ink);font-size:17px;margin:12px 0 4px}.explain p{margin:4px 0 12px}" +
     ".cite{color:var(--soft);font-size:13.5px;margin-top:26px;overflow-wrap:anywhere}" +
     // round 58b: the tables of every country's sanctions and of Russia's oil and gas revenue
-    "\ntable.sanc td,table.rev td{font-size:14px}table.sanc td:first-child{min-width:8em}table.rev td.n{white-space:nowrap}p.stock a,div.sanc a{overflow-wrap:anywhere}";
+    "\ntable.sanc td,table.rev td{font-size:14px}table.sanc td:first-child{min-width:8em}table.rev td.n{white-space:nowrap}p.stock a,div.sanc a{overflow-wrap:anywhere}" +
+    // round 59b: the fuel, military and budget balance tables (a range or a label beneath a figure)
+    "\ntable.fuel td,table.mil td{font-size:14px}td.n .s{display:block;font-size:12.5px;line-height:1.35;color:var(--soft);white-space:normal;font-weight:400}table.fuel td:nth-child(2),table.mil td:nth-child(2){min-width:7em}";
   await writeFile(join(site, "pages.css"), allCss + "\n");
   CSS_HREF = "/pages.css?v=" + createHash("sha256").update(allCss).digest("hex").slice(0, 8);
 
@@ -348,9 +362,13 @@ ${ps.length ? `<h3>${esc(I.s(l, "partsRanked"))}</h3>${relList(l, ps)}` : ""}
       const rr = SANC ? RS.sanctionsOf(SANC, c0.iso) : null;
       const regime = rr ? RS.sanctionsBlock(l, rr, { N: c.name, Nt: I.inSentence(l, c.name), sov: rr.sov ? ((LANG_DATA[l][rr.sov] || byIso[rr.sov] || {}).name || rr.sov) : "" }, lp(l, "/" + RCFG.sanctions.slug + "/")) : null;
       const stock = FROZ ? RS.frozenLines(l, FROZ, c0.iso) : "";
+      // round 59b: what it bought from Russia by fuel, and its support for Ukraine by type
+      const Nt0 = I.inSentence(l, c.name), names0 = { N: c.name, Nt: Nt0, NtCap: cap(Nt0), dataTo: dataToL[l] };
+      const fuelB = FUEL ? RS.fuelCountry(l, FUEL, c0.iso, { ...(RCFG.fuel.country || {}), crudeYears: RCFG.fuel.crudeYears }, names0, lp(l, "/" + RCFG.fuel.topic + "/")) : null;
+      const milB = MIL ? RS.milCountry(l, MIL, c0.iso, names0, lp(l, "/" + RCFG.military.slug + "/")) : null;
       const dyn = countryDyn(c, { l, words: WORDS[l], dw: DYNW[l], srcs: SRCS[l], L: k => T.L(l, k), dataTo: dataToL[l], month: monthOnlyL(l), tradeYears: [data.years[0], data.years[4]],
         peers: { ...pr, groups: pr.groups.map(g => ({ slug: g.e.slug, label: labelOf(g.e, l), n: g.n, of: g.of })) }, row: iso => rowL(l, iso), home: home(l), fuelDefault,
-        demand: c0.demand, eu: EU27.has(c0.iso), armedFull: c0.armedFull, relations: (FAM.country || {}).relations, armed: armedItemsOf(c0.iso), regime, stock, ask: copy.ask });
+        demand: c0.demand, eu: EU27.has(c0.iso), armedFull: c0.armedFull, relations: (FAM.country || {}).relations, armed: armedItemsOf(c0.iso), regime, stock, ask: copy.ask, fuel: fuelB, mil: milB });
       const faq = dyn.faq;
       const url = abs(cPath(c0, l));
       const crumbItems = [[T.L(l, "map"), home(l)], [T.L(l, "ranking"), "/ranking/"], [c.name, cPath(c0, l)]];
@@ -506,13 +524,18 @@ ${foot("en")}`;
   // round 59: a topic page's note and questions in the words people search (seo_i18n.mjs TOPIC_X), from its table (the
   // rows on the page's side the map gives as very likely, the parties to the war) and the research files
   const topicX = (e, l, m) => {
-    if (!I.TOPIC_X[e.slug] || (I.TOPIC_X_NEEDS[e.slug] === "frozen" && !FROZ)) return { note: "", faq: [] };
+    const NEEDS = { frozen: FROZ, fuel: FUEL };
+    if (!I.TOPIC_X[e.slug] || (I.TOPIC_X_NEEDS[e.slug] && !NEEDS[I.TOPIC_X_NEEDS[e.slug]])) return { note: "", faq: [] };
     const side = e.onlySide || (e.order === "asc" ? "russia" : "ukraine"), names = m.rows.slice(0, 3).map(c => rowName(l, c));
     const nSure = m.rows.filter(c => { const x = mv(c, m.key, m.year); return x && x.level === "sure" && x.side === side; }).length;
     const ua = m.totals.find(x => x.key === "ua") || { v: 0 }, pw = WORDS[l].party || "";
     const vars = { n: m.rows.length, tops: I.list3(l, names), t1: names[0] || "", topV: topV(l, m), sumUa: I.E(l, ua.v), nSure, sureWord: WORDS[l].sure || "",
       partyList: I.list3(l, m.party.map(c => rowName(l, c))), partyWord: pw, partyWordLc: pw.charAt(0).toLowerCase() + pw.slice(1), ...(FROZ && I.TOPIC_X_NEEDS[e.slug] === "frozen" ? RS.frozenVars(l, FROZ) : {}) };
-    return I.topicExtra(l, e.slug, vars, { nParty: m.party.length, nSure });
+    // round 59b: the buyers of each fuel by their customs records (fuel_split_r59.json)
+    const fv = I.TOPIC_X_NEEDS[e.slug] === "fuel" ? RS.fuelVars(l, FUEL, iso => nameIn(iso, l), RCFG.fuel.rows || 15) : { vars: {}, nums: {} };
+    // (a question answered from a research file is marked, data-rq: check 48 finds its figures in the page's tables)
+    const x = I.topicExtra(l, e.slug, { ...vars, ...fv.vars }, { nParty: m.party.length, nSure, ...fv.nums });
+    return { ...x, faq: x.faq.map(f => ({ ...f, rq: I.TOPIC_X_NEEDS[e.slug] === "fuel" ? "fuel" : "" })) };
   };
   const famRelated = e => {
     if (e.kind === "part") return PARTS.filter(x => x !== e && x.side === e.side).slice(0, 8);
@@ -547,6 +570,10 @@ ${foot("en")}`;
       if (X.faq.length) m.faq = X.faq.filter(f => !m.faq.some(g => g.q === f.q)).concat(m.faq);
       // round 58b: the amounts frozen in each holding country, beside the return (frozen_amounts_r58.json)
       const stockCols = FROZ && RCFG.frozen && e.slug === RCFG.frozen.topic ? { heads: [I.res(l, "colCbr"), I.res(l, "colPriv")], cell: c => RS.frozenCells(l, FROZ, c.iso) } : null;
+      // round 59b: support for Ukraine by type beside the support tracker's table (mil_split_r59.json), and the fuel
+      // tables on the buyers page (fuel_split_r59.json)
+      const milCols = MIL && RCFG.military && e.slug === RCFG.military.support ? { heads: RS.milHeads(l), cell: c => RS.milCells(l, MIL, c.iso) } : null;
+      const fuelHtml = FUEL && RCFG.fuel && e.slug === RCFG.fuel.topic ? RS.fuelSection(l, FUEL, { nameOf: iso => nameAnyL(iso, l), href: iso => (byIso[iso] ? cPath(byIso[iso], l) : ""), rows: RCFG.fuel.rows }) : "";
       const body = `${top(l)}
 <main class="wrap">
 ${crumbs(l, items)}
@@ -556,8 +583,10 @@ ${X.note ? `<p>${esc(X.note)}</p>` : ""}
 ${explains.map(x => `<section class="explain" id="what-${x.id}"><h2>${esc(x.q)}</h2><p>${esc(x.a)}${x.link ? ` <a href="#table">${esc(x.link)} ↓</a>` : ""}</p></section>`).join("\n")}
 <p><a class="btn" href="${home(l)}${m.map}">${esc(T.L(l, "openMap"))} →</a></p>
 <p class="note">${esc(moneyNote(l, m))}</p>
-${renderTopic(m, { esc, cPath: c => cPath(c, l), l, extra: stockCols })}
+${renderTopic(m, { esc, cPath: c => cPath(c, l), l, extra: stockCols || milCols })}
 ${stockCols ? `<p class="sub">${esc(I.res(l, "stockNote"))}</p>` : ""}
+${milCols ? `<p class="sub">${esc(I.res(l, "mTrackerNote"))} <a href="${lp(l, "/" + RCFG.military.slug + "/")}">${esc(I.res(l, "mAll"))} →</a></p>` : ""}
+${fuelHtml}
 ${rel.length ? `<h2 id="related">${esc(I.s(l, "related"))}</h2>${relList(l, rel)}` : ""}
 <p><a href="/ranking/">${esc(T.L(l, "ranking"))}</a> · <a href="/support-for-ukraine/">${esc(T.L(l, "supportPage"))}</a> · <a href="/trade-with-russia/">${esc(T.L(l, "tradePage"))}</a> · <a href="${hub}">${esc(I.s(l, "allTopics"))}</a> · <a href="/how-it-works/">${esc(T.L(l, "how"))}</a></p>
 ${langLinks(l, path)}
@@ -662,7 +691,10 @@ ${foot(l)}`;
         const url = abs(lp(l, path)), hub = lp(l, "/topics/");
         const pg = x.key === "sanctions"
           ? RS.sanctionsPage(l, SANC, { nameOf: iso => nameAny(iso, l), href: iso => (byIso[iso] ? cPath(byIso[iso], l) : ""), frozen: FROZ ? RS.frozenFacts(FROZ) : null })
-          : RS.revenuePage(l, REV, { warIncome: lp(l, "/" + x.cfg.warIncome + "/"), published: published ? published[1] : "", months: x.cfg.months || 24, yearWord: T.L(l, "year"), balance: x.cfg.balance });
+          : x.key === "military"
+            ? RS.milPage(l, MIL, { nameOf: iso => nameAny(iso, l), nameIn: iso => I.inSentence(l, nameAny(iso, l)), href: iso => (byIso[iso] ? cPath(byIso[iso], l) : ""), pop: iso => (byIso[iso] || {}).pop || null,
+              dataTo: dataToL[l], stepsMin: x.cfg.stepsMin, gdpMin: x.cfg.gdpMin })
+            : RS.revenuePage(l, REV, { warIncome: lp(l, "/" + x.cfg.warIncome + "/"), published: published ? published[1] : "", months: x.cfg.months || 24, yearWord: T.L(l, "year"), deficit: BAL });
         const explains = (x.cfg.explain || []).map(id => explainOf(l, id));
         const rel = (x.cfg.related || []).map(sl => { const t = related(sl); if (t) return [labelOf(t, l), lp(l, pathOf(t))]; const r2 = RPAGE.find(y => y.cfg.slug === sl); return r2 ? [rLabel(r2, l), lp(l, r2.path)] : null; }).filter(Boolean);
         const items = [[T.L(l, "map"), home(l)], [I.s(l, "topics"), hub], [pg.label, lp(l, path)]];
@@ -673,7 +705,7 @@ ${crumbs(l, items)}
 <p class="intro">${esc(pg.intro)}</p>
 ${explains.map(e2 => `<section class="explain" id="what-${e2.id}"><h2>${esc(e2.q)}</h2><p>${esc(e2.a)}</p></section>`).join("\n")}
 ${pg.body}
-<section class="faq" id="faq"><h2>${esc(I.s(l, "questions"))}</h2>${pg.faq.map(q => `<h3>${esc(q.q)}</h3><p>${esc(q.a)}</p>`).join("\n")}</section>
+<section class="faq" id="faq"><h2>${esc(I.s(l, "questions"))}</h2>${pg.faq.map(q => `<h3>${esc(q.q)}</h3><p${x.key === "sanctions" ? "" : ` data-rq="${x.key}"`}>${esc(q.a)}</p>`).join("\n")}</section>
 <h2 id="related">${esc(I.s(l, "related"))}</h2><ul class="rel">${rel.map(([t, h]) => `<li><a href="${h}">${esc(t)}</a></li>`).join("")}<li><a href="${lp(l, "/downloads/")}">${esc(I.s(l, "downloads"))}</a></li><li><a href="${hub}">${esc(I.s(l, "allTopics"))}</a></li></ul>
 ${langLinks(l, path)}
 </main>
@@ -737,8 +769,10 @@ ${foot("en")}`;
   // round 58b: Russia's federal oil and gas revenue, month by month and by year (russia_revenue_r58.json)
   const REVCSV = REV ? RS.revenueCsv(REV) : null;
   const DL = [["war-balance-countries.csv", CSV.full, "dlCountries"], ["war-balance-parts.csv", CSV.parts, "dlParts"], ["war-balance-years.csv", yearsCsv, "dlYears"],
-    ...(REVCSV ? [["russia-oil-gas-revenue-monthly.csv", REVCSV.monthly, "dlRevMonthly"], ["russia-oil-gas-revenue-yearly.csv", REVCSV.yearly, "dlRevYearly"]] : [])];
-  const dlText = (l, k) => (k.startsWith("dlRev") ? I.res(l, k) : I.s(l, k));
+    ...(REVCSV ? [["russia-oil-gas-revenue-monthly.csv", REVCSV.monthly, "dlRevMonthly"], ["russia-oil-gas-revenue-yearly.csv", REVCSV.yearly, "dlRevYearly"]] : []),
+    // round 59b: what each country bought by fuel and year, and support for Ukraine by type (the research files)
+    ...(FUEL ? [["war-balance-fuel-split.csv", RS.fuelCsv(FUEL), "dlFuel"]] : []), ...(MIL ? [["war-balance-military-split.csv", RS.milCsv(MIL), "dlMil"]] : [])];
+  const dlText = (l, k) => (I.RES_KEYS.includes(k) ? I.res(l, k) : I.s(l, k));
   await mkdir(join(site, "downloads"), { recursive: true });
   // the byte order mark makes spreadsheets read the file as UTF-8, as the map's own download does
   for (const [f, text] of DL) await writeFile(join(site, "downloads", f), "\ufeff" + text + "\n");
@@ -786,8 +820,12 @@ ${foot(l)}`;
     // round 58b: Russia's federal oil and gas revenue by year (check 48 compares each line with the file)
     const revLines = REV ? RS.revenueModel(REV).years.map(y => "- " + I.fmt(X.revLine, { y: y.complete ? y.y : I.res("en", "partYear", { y: y.y, month: I.monthOnly(REV.meta.latest_budget_month + "-15", "en") }),
       ogRub: I.CUR("en", y.og_rev_rub, "RUB"), ogEur: I.E("en", y.og_rev_eur), share: I.P("en", 100 * y.share) })) : [];
+    // round 59b: the buyers of each fuel and each military donor (check 48 compares each line with the files)
+    const nameEn = iso => (byIso[iso] || {}).nameEn || ((FUEL || MIL || {}).countries || {})[iso]?.name || iso;
+    const fuelLines = FUEL ? RS.fuelLlms(FUEL, nameEn) : [], milLines = MIL ? RS.milLlms(MIL, nameEn) : [];
     await writeFile(join(site, "llms-full.txt"), head.join("\n") + `\n## ${X.hCountries}\n\n${X.fullIntro}\n\n` + all.map(line).join("\n") + "\n"
-      + (revLines.length ? `\n## ${X.hRevenue}\n\n${revLines.join("\n")}\n` : ""));
+      + (revLines.length ? `\n## ${X.hRevenue}\n\n${revLines.join("\n")}\n` : "")
+      + (fuelLines.length ? `\n## ${X.hFuel}\n\n${fuelLines.join("\n")}\n` : "") + (milLines.length ? `\n## ${X.hMil}\n\n${milLines.join("\n")}\n` : ""));
   }
 
   // ----- the map: the A–Z list, the Topics list and the data date in index.html, and a copy per language -----
