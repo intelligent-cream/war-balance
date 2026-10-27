@@ -1,0 +1,10 @@
+URL: https://interfax.com/newsroom/top-stories/117483/
+Fetched: 2026-10-27
+HTTP: 200
+Extract (short passages around the figures used):
+
+s and retaliatory measures from Russia at 38 million euros, and lost business income at 9 million euros. As of the end of March 2026, Euroclear's balance sheet amounted to 237 billion euros, of which 200 billion euros are attributable to Russian assets under sanctions. According to Euroclear, it has so far transferred around 6.6 billion euros of income from frozen Russian assets to the European fund for Ukraine. The next payment, estimated at 1.4 billion euros, is expected in July 2026. Assets Banking Company Information Debt Markets economic sanction Euroclear Europe Freeze Government Debt Securities Stock broking Interfax Group Who We Are Products Due Diligence & KYC Reputational Risk News Products Newsroom Top Stories Exclusive Interviews Contact Us Privacy Policy Interfax Group Who We Are Product
+
+---
+
+n Q1 2026 caused by sanctions and retaliatory measures from Russia at 38 million euros, and lost business income at 9 million euros. As of the end of March 2026, Euroclear's balance sheet amounted to 237 billion euros, of which 200 billion euros are attributable to Russian assets under sanctions. According to Euroclear, it has so far transferred around 6.6 billion euros of income from frozen Russian assets to the European fund for Ukraine. The next payment, estimated at 1.4 billion euros, is expected in July 2026. Assets Banking Company Information Debt Markets economic sanction Euroclear Europe Freeze Government Debt Securities Stock broking Interfax Group Who We Are Products Due Diligence & KYC Reputational Risk News Products Newsroom Top Stories Exclusive Interviews Contact Us Privacy Poli

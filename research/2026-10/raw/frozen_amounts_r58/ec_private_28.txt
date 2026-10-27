@@ -1,0 +1,14 @@
+URL: https://commission.europa.eu/topics/eu-solidarity-ukraine/eu-sanctions-against-russia-following-invasion-ukraine/sanctions-against-individuals-companies-and-organisations_en
+Fetched: 2026-10-27
+HTTP: 200
+Extract (short passages around the figures used):
+
+ndividuals, companies and organisations This information is also available in: Ukrainian | українська | Russian | русский Facts and figures Nearly 4,600 individuals and entities sanctioned More than €28 billion of private assets in the EU frozen Who is being sanctioned The European Union has sanctioned nearly 4,600 individuals and entities. This includes: the Russian leadership high-ranking officials military staff Wagner group commanders prominent businesspeople and oligarchs pro-Kremlin and anti-Ukrainian propagandists persons and entities operating in the Russian military and IT sector orchestrators of the recent illegal so-called “elections” in the Ukrainian territories that Russia has temporarily occupied key figures involved in the forced “re-education” of Ukrainian children or the illegal dep
+
+---
+
+uals, companies and organisations Sanctions against individuals, companies and organisations This information is also available in: Ukrainian | українська | Russian | русский Facts and figures Nearly 4,600 individuals and entities sanctioned More than €28 billion of private assets in the EU frozen Who is being sanctioned The European Union has sanctioned nearly 4,600 individuals and entities. This includes: the Russian leadership high-ranking officials military staff Wagner group commanders prominent businesspeople and oligarchs pro-Kremlin and anti-Ukrainian propagandists persons and entities operating in the Russian military and IT sector orchestrators of the recent illegal so-called “elections” in the Ukrainian territories that Russia has temporarily occupied key figures involved in the forc
+
+---
+
+| русский Facts and figures Nearly 4,600 individuals and entities sanctioned More than €28 billion of private assets in the EU frozen Who is being sanctioned The European Union has sanctioned nearly 4,600 individuals and entities. This includes: the Russian leadership high-ranking officials military staff Wagner group commanders prominent businesspeople and oligarchs pro-Kremlin and anti-Ukrainian propagandists persons and entities operating in the Russian military and IT sector orchestrators of the recent illegal so-called “elections” in the Ukrainian territories that Russia has temporarily occupied key figures involved in the forced “re-education” of Ukrainian children or the illegal deportation of Ukrainian children to Russia companies active in space engineering, in the chemical sector, th

@@ -1,0 +1,10 @@
+URL: https://verfassungsblog.de/from-security-to-economics/
+Fetched: 2026-10-27
+HTTP: 200
+Extract (short passages around the figures used):
+
+emocracy Under Threat Til Leichsenring Julia Popp 23 December 2025 From Security to Economics Freezing Russian Assets under Article 122(1) TFEU Violates the Treaties Last week, by adopting Regulation 2025/2600 of 12 December (Russian Assets Regulation), the Council effectively froze Russian state assets permanently. The assets had already been frozen under the EU sanctions regime established by Council Decision 2014/512/CFSP , which required unanimous approval for renewal every six months. In our view, this de facto permanent freezing of Russian state assets, in its current form under Article 122(1) TFEU, remains primarily designed to address matters of foreign policy and, being based on qualified majority decision-making, violates the conferral of competence under the Treaties. In the long term, given that the f
+
+---
+
+ery six months by unanimous Council decision. In the past, Hungary in particular has threatened to withhold its consent to renewal. Since the value of the frozen Russian state assets amounts to up to EUR 210 billion, proposals for how these funds might be used to support Ukraine have existed for some time (see here and here ). One such suggestion is a so‑called reparations loan. The original plan presented by the Commission, though not adopted, essentially envisages the implementation of a bundle of Regulations enabling the Union to lend the frozen assets from the financial institutions in which they are held, and subsequently onward‑lend them as an interest‑free loan to Ukraine. Ukraine would be required to repay the loan only if Russia were to make reparation payments for its war of aggression (see her
