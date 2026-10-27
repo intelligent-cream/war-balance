@@ -13,7 +13,7 @@
 // one year) and in every site language (renderTopic(m, { lang }): the frames from seo_i18n.mjs, each country's range and
 // chance words from the map in that language). An entry with a year ranks that year's own amounts.
 
-import { P as PL, E as EL, PP as PPL, s as S, measureName, list3 as list3L, fitTitle, fitDesc, fmt, inSentence, cap } from "./seo_i18n.mjs";
+import { P as PL, E as EL, PP as PPL, s as S, measureName, list3 as list3L, fitTitle, fitDesc, fmt, inSentence, cap, armedPair } from "./seo_i18n.mjs";
 
 const P = x => PL("en", x), E = bn => EL("en", bn).replace(/ /g, " ");
 // the measures a page can rank by or show, with their column labels (seo_i18n.mjs MEASURE and PART)
@@ -50,8 +50,10 @@ export function mv(c, key, year) {
 const inUnit = (c, v, sort) => (sort === "eur" ? v : sort === "pp" ? pp(v, c.pop) : c.gdp ? (100 * v) / c.gdp : null);
 
 // the page's model: which countries, in which order, the totals and every filled-in text.
-// opts: dataTo (the data's last month), words (the map's chance words: {word:sure} ...), l (the language of the names)
-export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en" }) {
+// opts: dataTo (the data's last month), words (the map's chance words: {word:sure} ...), l (the language of the names),
+// armed (round 58: [{ iso, items }], the countries whose data have the kinds of supplies they sent to Russia, in the
+// config's order: seo_families.json armedItems, already checked against the data by armedOf below)
+export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en", armed = [] }) {
   const byIso = Object.fromEntries(countries.map(c => [c.iso, c]));
   const year = e.year || null, mv0 = mv, mvY = (c, k) => mv0(c, k, year);
   const sort = e.sort || "gdp", key = e.rank || "net", minGdp = e.minGdp ?? (e.kind === "group" ? 0 : sort === "eur" ? 0 : 5);
@@ -140,7 +142,13 @@ export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en" }) 
     if ((m = ph.match(/^n(ToU|ToR|Unsure):([\w:]+)$/))) return bySet(m[1], m[2]).length;
     return undefined;
   };
-  const fill = s => { try { return capSentences(fmt(String(s), text, num)); } catch (err) { throw new Error(`seo_topics.json ${e.slug}: ${err.message}`); } };
+  // round 58: the searchers' words for weapons sent to Russia ("North Korea soldiers and shells, Iran drones")
+  const armedOne = x => (byIso[x.iso] ? armedPair(l, nameOf(byIso[x.iso]), x.items) : "");
+  const armedList = armed.map(armedOne).filter(Boolean).join(", ");
+  const text0 = text, num0 = num;
+  const text1 = ph => { let m; if (ph === "armedList") return armedList; if ((m = ph.match(/^armed:([A-Z]{3})$/))) { const x = armed.find(a => a.iso === m[1]); return x ? armedOne(x) : ""; } return text0(ph); };
+  const num1 = ph => { let m; if (ph === "nArmed") return armedList ? armed.length : 0; if ((m = ph.match(/^armed:([A-Z]{3})$/))) return armed.some(a => a.iso === m[1] && byIso[a.iso]) ? 1 : 0; return num0(ph); };
+  const fill = s => { try { return capSentences(fmt(String(s), text1, num1)); } catch (err) { throw new Error(`seo_topics.json ${e.slug}: ${err.message}`); } };
   const forms = x => (x == null ? [""] : Array.isArray(x) ? x : [x]).map(fill);
   // an entry of a generated family (seo_families.mjs) or a page in another language has its words from seo_i18n.mjs
   const title = fitTitle(forms(e.title)), description = fitDesc(forms(e.description));
@@ -151,18 +159,31 @@ export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en" }) 
     // a column every listed country has nothing in (frozen money in the Gulf states) is left out
     columns: (e.columns || (e.kind === "group" ? ["ua", "rus", "frozen"] : [])).filter(k => k !== key && rows.some(c => mvY(c, k) && Math.abs(mvY(c, k).v) >= 0.0005)), rows, party, noData, sides, missing, extra,
     faq: (e.faq || []).map(x => ({ q: fill(x.q), a: fill(x.a) })), sections: (e.sections || []).map(s => ({ h2: s.h2 && fill(s.h2), p: (s.p || []).map(fill), list: (s.list || []).map(fill) })),
-    notes: (e.notes || []).map(fill), totals, subtotals, map: e.map || "#view=rank", related: e.related || [], minGdp,
+    notes: (e.notes || []).map(fill), armedList, nArmed: num1("nArmed"), explain: e.explain || [], totals, subtotals, map: e.map || "#view=rank", related: e.related || [], minGdp,
   };
+}
+
+// round 58: the countries of seo_families.json armedItems whose data have what the config names: weapons and troops
+// sent to Russia of at least minEur at full value (the extract's armedFull) and the config's source among the sources of
+// their military_rus entry (data.json). cfg: armedItems; countries: the extract's; sources: { iso: [source ids] }
+export function armedOf(cfg, countries, sources) {
+  if (!cfg || !cfg.list) return [];
+  const byIso = Object.fromEntries(countries.map(c => [c.iso, c]));
+  return Object.entries(cfg.list).filter(([iso, x]) => byIso[iso] && (byIso[iso].armedFull || 0) >= (cfg.minEur ?? 0.05) && (sources[iso] || []).includes(x.src) && (x.items || []).length)
+    .map(([iso, x]) => ({ iso, items: x.items }));
 }
 
 // ----- the HTML of a page's main part (the shell, header and footer are seo_pages.mjs's) -----
 export const TOPIC_CSS = `td.m i,.tot i{font-style:normal;white-space:nowrap}td.m{text-align:right;min-width:8.6em}td.m b{font-size:15.5px;white-space:nowrap}td.m .s{display:block;font-size:12.5px;line-height:1.35;color:var(--soft);white-space:normal}
 td.m .pos,b.pos{color:var(--ukr)}td.m .neg,b.neg{color:var(--rus-t)}th.m{text-align:right;min-width:8.6em}td.r{color:var(--soft);font-size:13px;width:2em}
 .tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px;margin:14px 0}.tot div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}.tot b{display:block;font:800 22px/1.2 var(--fd)}.tot span{font-size:13.5px;color:var(--soft)}
-ul.bul{padding-left:20px}ul.bul li{margin:0 0 6px}`;
+ul.bul{padding-left:20px}ul.bul li{margin:0 0 6px}
+td.k,th.k{text-align:right;min-width:7.5em}td.k .s{display:block;font-size:12.5px;line-height:1.35;color:var(--soft)}`;
 
 // l: the page's language; the countries in m are that language's (their names, ranges and chance words the map's)
-export function renderTopic(m, { esc, cPath, l = "en" }) {
+// extra (round 58b): columns beside the model's, from a research file ({ heads: [label], cell: country => '<td>…</td>…' }):
+// the amounts frozen on /frozen-russian-assets/ (seo_research.mjs frozenCells), outside the checked figure cells (td.m)
+export function renderTopic(m, { esc, cPath, l = "en", extra = null }) {
   const T = (k, v, n) => S(l, k, v, n), Pl = x => PL(l, x), El = x => EL(l, x), PPl = x => PPL(l, x), lab = k => label(k, l);
   const name = c => (l === "en" ? c.nameEn : c.name || c.nameEn);
   const cls = v => (v >= 0.0005 ? "pos" : v <= -0.0005 ? "neg" : "");
@@ -209,8 +230,8 @@ export function renderTopic(m, { esc, cPath, l = "en" }) {
     const data = ` data-v="${+x.v.toFixed(6)}"` + (main ? `${!m.year && x.lo != null && x.hi != null && !CHANCE_KEYS.includes(k) ? ` data-lo="${+Math.min(x.lo, x.hi).toFixed(6)}" data-hi="${+Math.max(x.lo, x.hi).toFixed(6)}"` : ""}` : "");
     return `<td class="m" data-q="${k}"${yr}${x.level ? ` data-level="${x.level}"` : ""} data-st="${style(k)}"${data}><b class="${style(k) !== "amount" ? cls(x.v) : ""}">${esc(first)}</b><span class="s">${rest.map(keep).join(" · ")}</span>${rg ? `<span class="s rg">${esc(rg).replace(/\u0001/g, "<i>").replace(/\u0002/g, "</i>")}</span>` : ""}${ch ? `<span class="s ch">${esc(ch)}</span>` : ""}</td>`;
   };
-  const head = `<thead><tr><th>#</th><th>${esc(T("country"))}</th><th class="m">${esc(lab(m.key))}</th>${m.columns.map(k => `<th class="m">${esc(lab(k))}</th>`).join("")}</tr></thead>`;
-  const row = (c, i) => `<tr data-iso="${c.iso}" data-gdp="${c.gdp}"${c.pop ? ` data-pop="${c.pop}"` : ""}><td class="r">${i == null || m.kind === "compare" ? "" : i + 1}</td><td><a href="${cPath(c)}">${esc(name(c))}</a>${c.gdp < 5 ? ` <span class="ev">${esc(T("small"))}</span>` : ""}</td>${cell(c, m.key, true)}${m.columns.map(k => cell(c, k, false)).join("")}</tr>`;
+  const head = `<thead><tr><th>#</th><th>${esc(T("country"))}</th><th class="m">${esc(lab(m.key))}</th>${m.columns.map(k => `<th class="m">${esc(lab(k))}</th>`).join("")}${extra ? extra.heads.map(h => `<th class="k">${esc(h)}</th>`).join("") : ""}</tr></thead>`;
+  const row = (c, i) => `<tr data-iso="${c.iso}" data-gdp="${c.gdp}"${c.pop ? ` data-pop="${c.pop}"` : ""}><td class="r">${i == null || m.kind === "compare" ? "" : i + 1}</td><td><a href="${cPath(c)}">${esc(name(c))}</a>${c.gdp < 5 ? ` <span class="ev">${esc(T("small"))}</span>` : ""}</td>${cell(c, m.key, true)}${m.columns.map(k => cell(c, k, false)).join("")}${extra ? extra.cell(c) : ""}</tr>`;
   const tot = m.kind === "group" && m.rows.length ? `<div class="tot" aria-label="${esc(T("groupTotals"))}">${m.totals.filter(t => t.n && Math.abs(t.v) >= 0.0005).map(t => {
     const what = t.key === "rus" ? T("totRus", { v: El(t.v) }, { x: t.v }) : t.key === "ua" ? T("totUa", { v: El(t.v) }) : t.key === "frozen" ? T("totFrozen", { v: El(t.v) }) : T("totNet", { v: El(t.v) }, { x: t.v });
     return `<div data-total="${t.key}"><span>${esc(lab(t.key))}</span><b class="${cls(t.v)}">${esc(say(t.key, t.v, Pl(t.pct)))}</b><span>${[T("ofCombined"), what, t.key === "net" || t.key === "ua" ? say(t.key, t.v, PPl(pp(t.v, t.pop))) + " " + T("perPerson") : ""].filter(Boolean).map(keep).join(" · ")}</span></div>`;

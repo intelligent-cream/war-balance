@@ -1,0 +1,14 @@
+URL: https://home.treasury.gov/news/press-releases/jy1329
+Fetched: 2026-10-27
+HTTP: 200
+Extract (short passages around the figures used):
+
+Task Force has leveraged extensive multilateral coordination to exert unprecedented pressure on sanctioned Russians. The members of the REPO Task Force have successfully blocked or frozen more than $58 billion worth of sanctioned Russians’ assets, tracked sanctioned Russian assets across the globe, and heavily restricted sanctioned Russians from the international financial system. REPO members have achieved notable successes through close and extensive national and international coordination, collaboration, and information sharing. The Task Force continues to leverage financial intelligence, law enforcement information, joint investigations, and the assistance of the private sector to deny the Kremlin access to the revenue streams and economic resources Russia uses to wage its illegal war. In the y
+
+---
+
+to wage its illegal war. In the year since Finance, Justice, Home Affairs, and Trade Ministers and European Commissioners launched the REPO Task Force, REPO members have: Blocked or frozen more than $58 billion worth of sanctioned Russians’ assets in financial accounts and economic resources. Ensured that Russian Central Bank and Russian National Wealth Fund assets in our jurisdictions remain immobilized, and cannot be used to support Russia’s war effort. Seized or frozen luxury real estate and other luxury assets owned, held, or controlled by sanctioned Russians, valued in the many billions of dollars. Seized, frozen, or detained yachts and other vessels owned, held, or controlled by sanctioned Russians, and conducted asset tracing activities to identify, locate, freeze and seize yachts, aircraft,
+
+---
+
+Commissioners launched the REPO Task Force, REPO members have: Blocked or frozen more than $58 billion worth of sanctioned Russians’ assets in financial accounts and economic resources. Ensured that Russian Central Bank and Russian National Wealth Fund assets in our jurisdictions remain immobilized, and cannot be used to support Russia’s war effort. Seized or frozen luxury real estate and other luxury assets owned, held, or controlled by sanctioned Russians, valued in the many billions of dollars. Seized, frozen, or detained yachts and other vessels owned, held, or controlled by sanctioned Russians, and conducted asset tracing activities to identify, locate, freeze and seize yachts, aircraft, and other property located around the globe. Convened six multilateral meetings, consistently shared information, and

@@ -17,7 +17,7 @@ The largest parts, EUR bn:
 | Share of EU aid | 11.6<!-- n:DEU.part_euaid --> (8.4<!-- n:DEU.part_euaidLo --> to 17.3<!-- n:DEU.part_euaidHi -->) | Ukraine |
 | Its firms pay Russia less tax | 5.4<!-- n:DEU.part_tax --> (1.9<!-- n:DEU.part_taxLo --> to 10.5<!-- n:DEU.part_taxHi -->) | Ukraine |
 | Less Russian oil via other countries | 4.3<!-- n:DEU.part_laund --> (2.3<!-- n:DEU.part_laundLo --> to 6.4<!-- n:DEU.part_laundHi -->) | Ukraine |
-| Russian money frozen | 3.2<!-- n:DEU.part_frozen --> (2.1<!-- n:DEU.part_frozenLo --> to 3.8<!-- n:DEU.part_frozenHi -->) | Ukraine |
+| Russian money frozen | 3.1<!-- n:DEU.part_frozen --> (2.1<!-- n:DEU.part_frozenLo --> to 3.8<!-- n:DEU.part_frozenHi -->) | Ukraine |
 | Paid Russia war-time fuel prices | 16.5<!-- n:DEU.part_windfall abs --> (1.3<!-- n:DEU.part_windfallHi abs --> to 29.3<!-- n:DEU.part_windfallLo abs -->) | Russia |
 
 What to look at:

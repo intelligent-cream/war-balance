@@ -56,6 +56,23 @@
   },
   "country": {
     "_note": "Round 57: the rule of round 56 that gives an English country page the title \"Does ... trade with Russia?\" (seo_templates.mjs): where its trade with Russia is searched at least minTrade times (pipeline/seo_demand.json), at least ratio times more than its aid or help, and its aid is searched fewer than maxAid times (the countries whose aid is much searched keep the aid question). It replaces the list of ten countries with hand-written titles.",
-    "tradeFirst": { "minTrade": 400, "ratio": 1.5, "maxAid": 800 }
+    "tradeFirst": { "minTrade": 400, "ratio": 1.5, "maxAid": 800 },
+    "relations": { "_note": "Round 58: the country page's question on its relations with Russia, in the searchers' words ('Turkey Russia relations', 'Türkei Russland Beziehung', 'russia and south africa'), answered from its trade, support and net: in a language where the single-country queries of these clusters (seo_demand.json byLang) reach minDemand.", "minDemand": 150, "clusters": ["country_russia_relations", "groups_blocs"] }
+  },
+  "explain": {
+    "_note": "Round 58: the explainers of seo_i18n.mjs EXPLAIN, shown where a topic page of seo_topics.json lists them (explain), and each also an FAQ entry (JSON-LD) in a language where the search demand of its keyword cluster (seo_demand.json _topics) reaches minDemand. An explainer without a cluster is never an FAQ entry.",
+    "minDemand": 100,
+    "clusters": { "shadowFleet": "shadow_fleet", "priceCap": "price_cap", "reparationsLoan": "reparations_loan", "reexportHubs": "sanctions_evasion_hubs", "frozenAssets": "frozen_assets", "unfriendlyList": null }
+  },
+  "armedItems": {
+    "_note": "Round 58: the kinds of military supplies a country sent to Russia, in the searchers' words ('North Korea soldiers and shells', 'Iran drones'), named in titles, headings and questions only where the data have them: the country's weapons and troops sent to Russia come to at least minEur (EUR bn, full value) and src is one of the sources of its military_rus entry in data.json (the research that names those supplies). Their words in each language are in seo_i18n.mjs (S item).",
+    "minEur": 0.05,
+    "list": { "PRK": { "items": ["soldiers", "shells"], "src": "north_korea_r24" }, "IRN": { "items": ["drones"], "src": "military_rus_r6" } }
+  },
+  "research": {
+    "_note": "Round 58b (owner approved): three research files the pages read at deploy (seo_research.mjs), in every language. sanctions: the sanctions on Russia that apply in each country and territory, a section and a question on every country page and the page of every country (slug); frozen: the amounts frozen in each holding country, on the country pages and as two columns of the topic page named in topic, and the totals in its explainers; revenue: Russia's federal oil and gas revenue, its page (slug), the months its monthly table shows, the topic page it links for the map's own measure (warIncome), and two CSV files in the downloads. check 48 reads every figure they write back against the file.",
+    "sanctions": { "file": "research/2026-10/gaps/sanctions_r58.json", "slug": "countries-with-sanctions-on-russia", "explain": ["unfriendlyList"], "related": ["frozen-russian-assets", "russia-trade-hubs", "countries-helping-russia", "russia-oil-gas-revenue"] },
+    "frozen": { "file": "research/2026-10/gaps/frozen_amounts_r58.json", "topic": "frozen-russian-assets" },
+    "revenue": { "file": "research/2026-10/gaps/russia_revenue_r58.json", "slug": "russia-oil-gas-revenue", "months": 24, "warIncome": "russia-war-income", "related": ["russia-war-income", "russian-oil-gas-buyers", "russian-oil-discount", "countries-with-sanctions-on-russia"] }
   }
 }

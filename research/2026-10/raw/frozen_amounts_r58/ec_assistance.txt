@@ -1,0 +1,10 @@
+URL: https://commission.europa.eu/topics/eu-solidarity-ukraine/eu-assistance-ukraine_en
+Fetched: 2026-10-27
+HTTP: 200
+Extract (short passages around the figures used):
+
+n in military assistance measures €17 billion to help Member States cater to the needs of Ukrainians in the EU €15.5 billion in support from EU Member States €3.8 billion from the proceeds of Russian immobilised assets Support mobilised via the EU budget Since the start of the aggression, €117.3 billion in support for Ukraine has been provided or guaranteed by the EU budget. This includes: €43.9 billion in direct and indirect assistance under the Ukraine Facility €43.3 billion in disbursed macro-financial assistance to help Ukraine address urgent needs on the ground €19.8 billion disbursed under the Ukraine Support Loan €2.8 billion in loans and guarantees by the EIB, EBRD and other international financial institutions guaranteed by the EU €1.4 billion in humanitarian assistance €1.2 billion in bilateral co
+
+---
+
+in direct and indirect assistance under the Ukraine Facility €43.3 billion in disbursed macro-financial assistance to help Ukraine address urgent needs on the ground €19.8 billion disbursed under the Ukraine Support Loan €2.8 billion in loans and guarantees by the EIB, EBRD and other international financial institutions guaranteed by the EU €1.4 billion in humanitarian assistance €1.2 billion in bilateral cooperation €4.5 billion in other types of support Other types of support include Macro-financial assistance+ interest rate subsidy: €1.7 billion Connecting Europe Facility support for Solidarity Lanes: €1.6 billion Emergency package: €330 million Crisis response measures: €319 million Ongoing projects adjusted to meet urgent needs on the ground: €315 million School rehabilitation and school buses: €114 mill

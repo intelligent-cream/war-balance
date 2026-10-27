@@ -554,6 +554,10 @@ def check_site(
         "az": [],
         "topics": [],
         "dyn": [],
+        "cite": [],
+        "markdown": [],
+        "llms": [],
+        "downloads": [],
         "sanity": [],
     }
     smap = site / "sitemap.xml"
@@ -631,12 +635,159 @@ def check_site(
         p["sanity"] = check_sanity(
             site, model, paths if paths is not None else [topic_path(e) for e in topics], phrases
         )
+        # round 58b: and the figures and pages from the research files (seo_families.json research)
+        if families is not None and families.get("research"):
+            p["sanity"] += check_research(site, site.parent, families["research"], model, langs)
+    # round 58: every page's cite line and Markdown version; llms.txt; the downloads
+    p["cite"], p["markdown"] = check_cite_markdown(site, site_url, urls)
+    p["llms"] = check_llms(site, site_url, model) if model else []
+    p["downloads"] = check_downloads(site, model)
     idx = (site / "index.html").read_text()
     if model:
         p["az"] = [c["slug"] for c in model["countries"].values() if f'href="/country/{c["slug"]}/"' not in idx]
     if topics:
         p["az"] += [f"topic {topic_path(e)}" for e in topics if f'href="/{topic_path(e)}"' not in idx]
     return p
+
+
+# ----- round 58: the cite line, the Markdown versions, llms.txt and the downloads -----
+_MAIN = re.compile(r"<main[^>]*>([\s\S]*?)</main>")
+_DIGITS = re.compile(r"\d(?:[\d.,\u00a0\u202f]*\d)?")
+
+
+def _figs(text: str) -> set[str]:
+    """The digit groups a text writes, with their separators taken out ("€1,234.5bn" -> "12345")."""
+    return {re.sub(r"\D", "", x) for x in _DIGITS.findall(text)}
+
+
+def check_cite_markdown(site: Path, site_url: str, urls: list[str]) -> tuple[list[str], list[str]]:
+    """Every page in the sitemap has its cite line (with its own address) and links its Markdown version, which exists,
+    has the same cite line and writes no figure the page does not (seo_markdown.mjs)."""
+    cite, md = [], []
+    for u in urls:
+        f = file_for(site, site_url, u)
+        name = urlparse(u).path
+        # the map's own home pages (one per language) are the app, not generated pages
+        if not f.exists() or f.name != "index.html" or re.fullmatch(r"/(\w\w/)?", name):
+            continue
+        text = f.read_text()
+        m = re.search(r'<p class="cite">([^<]*)</p>', text)
+        if not m or html.unescape(m.group(1)).split(", ")[-1] != u:
+            cite.append(name)
+        href = re.search(r'<link rel="alternate" type="text/markdown" href="([^"]+)">', text)
+        mf = f.parent / "index.md"
+        if not href or href.group(1) != name + "index.md" or not mf.exists():
+            md.append(f"{name}: no Markdown version")
+            continue
+        mtext = mf.read_text()
+        if m and html.unescape(m.group(1)) not in mtext.replace("\\", ""):
+            md.append(f"{name}index.md: no cite line")
+        main = _MAIN.search(text)
+        page_figs = _figs(html.unescape(re.sub(r"<[^>]+>", " ", main.group(1) if main else text)))
+        md_plain = re.sub(r"(?m)^\d+\. ", "", re.sub(r"\]\([^)]*\)", "]", mtext)).replace("\\", "")
+        extra = sorted(_figs(md_plain) - page_figs)
+        if extra:
+            md.append(f"{name}index.md: figures not on the page {extra[:3]}")
+        # round 58b: and every table row of the page is a row of the Markdown version, with the same figures in the
+        # same order (a row's digit groups: the Markdown cannot contradict the page row by row)
+        if main and "<table" in main.group(1):
+            md_rows = {tuple(_DIGITS.findall(ln)) for ln in md_plain.splitlines() if ln.startswith("|")}
+            for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", main.group(1), re.DOTALL):
+                cells = re.sub(r"<(td|th)[^>]*>", " ", re.sub(r"</t[dh]>", " | ", tr))
+                row = tuple(_DIGITS.findall(html.unescape(re.sub(r"<[^>]+>", " ", cells))))
+                if row and row not in md_rows:
+                    md.append(f"{name}index.md: a table row of the page is not in it {list(row)[:4]}")
+                    break
+    return cite, md
+
+
+def check_llms(site: Path, site_url: str, model: dict) -> list[str]:
+    """llms.txt and llms-full.txt exist; each country's line in llms-full.txt has the model's net (% of GDP) and
+    support for Ukraine (EUR) and links its page."""
+    out = []
+    short, full = site / "llms.txt", site / "llms-full.txt"
+    if not short.exists() or not full.exists():
+        return ["llms.txt or llms-full.txt missing"]
+    if "(https://" not in short.read_text():
+        out.append("llms.txt: no links")
+    lines = {}
+    for ln in full.read_text().splitlines():
+        m = re.search(r"\| (https://\S+/country/([\w-]+)/)$", ln)
+        if m:
+            lines[m.group(2)] = ln
+    for iso, c in model["countries"].items():
+        ln = lines.get(c["slug"])
+        if ln is None:
+            out.append(f"llms-full.txt: no line for {iso}")
+            continue
+        if c.get("noData"):
+            continue
+        sg = "+" if c["netEur"] >= 0 else "−"
+        nets = {sg + fmt_pct(c["net"] + d) for d in (-5e-5, 0, 5e-5)}
+        uas = {fmt_eur(c["uaEur"] + d) for d in (-5e-5, 0, 5e-5)}
+        if not any(f"net {n} " in ln for n in nets):
+            out.append(f"llms-full.txt {iso}: net is not the model's {min(nets)}")
+        if not any(f"support for Ukraine {x} " in ln for x in uas):
+            out.append(f"llms-full.txt {iso}: support is not the model's {min(uas)}")
+    return out
+
+
+def check_downloads(site: Path, model: dict | None) -> list[str]:
+    """The downloads page's links resolve, and the countries CSV (the map's own export) has the model's net, support
+    and trade figures for every country."""
+    import csv
+    import io
+
+    out = []
+    page = site / "downloads" / "index.html"
+    if not page.exists():
+        return ["downloads/ missing"]
+    for href in re.findall(r'href="(/(?:downloads/[\w.-]+|data\.json))"', page.read_text()):
+        if not (site / href.lstrip("/")).exists():
+            out.append(f"downloads: {href} does not resolve")
+    f = site / "downloads" / "war-balance-countries.csv"
+    if not f.exists() or not model:
+        return out + ([] if f.exists() else ["war-balance-countries.csv missing"])
+    rows = {r["iso3"]: r for r in csv.DictReader(io.StringIO(f.read_text().lstrip("\ufeff")))}
+    cols = {
+        "netEur": "net_shift_eur_bn",
+        "uaEur": "support_ukraine_eur_bn",
+        "rusEur": "trade_with_russia_toward_ukraine_eur_bn",
+    }
+    for iso, c in model["countries"].items():
+        r = rows.get(iso)
+        if r is None:
+            out.append(f"countries CSV: no row for {iso}")
+            continue
+        for k, col in cols.items():
+            v = float(r[col] or 0)
+            if abs(v - c[k]) > 2e-4 + 1e-6 * abs(c[k]):
+                out.append(f"countries CSV {iso} {col}: {v}, the model says {c[k]}")
+    # round 58b: the years file: each row adds up (support + trade + the frozen-money return = the net), and each year's
+    # own amounts are the model's
+    fy = site / "downloads" / "war-balance-years.csv"
+    if fy.exists():
+        cols = {
+            "ua": "support_ukraine_eur_bn",
+            "rus": "trade_with_russia_toward_ukraine_eur_bn",
+            "frozen": "frozen_return_lost_eur_bn",
+            "net": "net_shift_eur_bn",
+        }
+        for r in csv.DictReader(io.StringIO(fy.read_text().lstrip("\ufeff"))):
+            if not all(col in r for col in cols.values()):
+                out.append("years CSV: a column is missing")
+                break
+            v = {q: float(r[col] or 0) for q, col in cols.items()}
+            if abs(v["ua"] + v["rus"] + v["frozen"] - v["net"]) > 5e-4:
+                out.append(
+                    f"years CSV {r['iso3']} {r['year']}: support + trade + frozen = {v['ua'] + v['rus'] + v['frozen']:+.4f}, the net {v['net']:+.4f}"
+                )
+            c = model["countries"].get(r["iso3"])
+            for q in ("ua", "rus", "net", "frozen"):
+                want = year_amount(c, int(r["year"]), q) if c else None
+                if want is not None and abs(v[q] - want) > 2e-4:
+                    out.append(f"years CSV {r['iso3']} {r['year']} {q}: {v[q]}, the model says {want:.4f}")
+    return out
 
 
 # ----- round 57: the wording guard (owner: "fail if any hand-written text ... contains a claim that can go stale") -----
@@ -670,6 +821,20 @@ ALLOW = {
     "above a normal return": "the method's definition of what Russia keeps: taxes and profit beyond a normal return",
     "above a no-war normal": "the same definition, against the world without the war",
     "below Brent": "the definition of the discount on Russian crude since March 2022: a fixed historical fact",
+    # round 58 (explainers): the dates of the price cap's rules, fixed historical facts. The cap on oil products took
+    # effect in February 2023 (with the EU embargo on them); the EU, the UK and others cut the cap on crude from
+    # September 2025 (the cap on crude since December 2022 needs no entry: the war's first year is allowed)
+    **{
+        t: "the price cap's own dates (round 58 explainer): fixed historical facts"
+        for t in (
+            "February 2023 September 2025 Februar 2023 September 2025 février 2023 septembre 2025 "
+            "febrero de 2023|septiembre de 2025|lutego 2023|września 2025|februari 2023|september 2025|"
+            "лютого 2023|вересня 2025"
+        )
+        .replace("2023 ", "2023|")
+        .replace("2025 ", "2025|")
+        .split("|")
+    },
 }
 YEAR = r"(?<!\d)(?:201[4-9]|202\d)(?!\d)"
 WAR_START_YEAR = "2022"
@@ -968,6 +1133,16 @@ NOT_TEXT = {
     "moneyNote",
     "columns",
     "pairs",
+    # round 58: keys and config values, not words (seo_families.json explain, armedItems, country.relations)
+    "cluster",
+    "clusters",
+    "items",
+    "src",
+    "explain",
+    # round 58b: the research files' paths and the pages they feed (seo_families.json research)
+    "file",
+    "topic",
+    "warIncome",
 }
 
 
@@ -1516,4 +1691,218 @@ def check_sanity(
         f = site / path / "index.html"
         if f.exists():
             out += check_rank_lists(f.read_text(), "/" + path)
+    return out
+
+
+# ----- round 58b (owner approved: the three research results wired in, seo_research.mjs) -----
+# Every figure a page writes from a research file carries the file, its path in it and its value (data-rv, data-v; data-u
+# its unit: eur, rub in bn, share as a fraction). Here each is read back: the value is the file's, and the text the
+# reader sees is that value in the page's language (within the shown rounding; "<€1m" for an official figure under a
+# million; no figure where the file has none). And the pages are complete: every country page in every language has its
+# sanctions section, the page of every country's sanctions lists every entry, the revenue page every year and the months
+# the config names to the file's latest, the frozen-assets topic page an amount for every row; the revenue CSV files in
+# the downloads and the revenue lines of llms-full.txt are the file's.
+RV = re.compile(r'<(td|span|tr|div)\b([^>]*\bdata-rv="(\w+):([^"]+)"[^>]*)>')
+_UNIT_BIG = r"bn|Mrd\.|Md|mld|млрд"
+_UNIT_SMALL = r"m|Mio\.|M|mln|млн"
+
+
+def research_files(root: Path, cfg: dict) -> dict[str, dict]:
+    """The research files of seo_families.json research, by the name the pages mark them with."""
+    out = {}
+    for name in ("sanctions", "frozen", "revenue"):
+        f = (cfg.get(name) or {}).get("file")
+        if f and (root / f).exists():
+            out[name] = json.loads((root / f).read_text())
+    return out
+
+
+def research_value(doc: dict, path: str):
+    """A value of a research file by its path ("countries.BEL.cbr_eur.v", "monthly@2026-09.share"); None if absent."""
+    x = doc
+    for seg in path.split("."):
+        if "@" in seg:
+            name, key = seg.split("@", 1)
+            lst = x.get(name) if isinstance(x, dict) else None
+            x = next((i for i in lst or [] if key in (i.get("ym"), i.get("date"), i.get("y"))), None)
+        elif isinstance(x, dict):
+            x = x.get(seg)
+        else:
+            return None
+        if x is None:
+            return None
+    return x
+
+
+def _research_num(text: str, unit: str, lang: str) -> tuple[float, float] | None:
+    """The figure a research cell shows, in the file's unit (bn, or percent for a share), and half its last step."""
+    t = SPACES.sub(" ", html.unescape(re.sub(r"<[^>]+>", "", text))).strip()
+    if unit == "eur":
+        f = parse_fig(t, lang)
+        if not f or f["kind"] != "eur":
+            return None
+        return (0.0 if f["tiny"] else f["v"]), (0.001 if f["tiny"] else f["step"] / 2)
+    if unit == "share":
+        m = re.search(r"(\d[\d.,]*) ?%", t)
+        if not m:
+            return None
+        v, d = _num(m.group(1), lang)
+        return v, 10.0**-d / 2
+    m = re.search(rf"(\d[\d., ]*?)(?: )?({_UNIT_BIG}|{_UNIT_SMALL})(?![\w])", t.replace("RUB ", ""))
+    if not m:
+        return None
+    v, d = _num(m.group(1), lang)
+    if re.fullmatch(_UNIT_SMALL, m.group(2)):
+        return v / 1000, 10.0**-d / 2000
+    return v, 10.0**-d / 2
+
+
+def check_research_marks(text: str, name: str, lang: str, files: dict[str, dict]) -> list[str]:
+    """Every marked research figure of a page: its value is the file's, and its text that value."""
+    out = []
+    for m in RV.finditer(text):
+        tag, attrs, fname, path = m.groups()
+        # a cell's or a span's own text (a row or a block is marked with a word, its cells are read on their own)
+        inner = text[m.end() : text.find(f"</{tag}>", m.end())] if tag in ("td", "span") else ""
+        a = _attrs(attrs)
+        doc = files.get(fname)
+        if doc is None:
+            out.append(f"{name}: {fname}:{path} marked, but the file is not configured")
+            continue
+        want = research_value(doc, path)
+        got = a.get("v", "")
+        if isinstance(want, bool) or want is None or isinstance(want, str):
+            w = "true" if want is True else "false" if want is False else "null" if want is None else want
+            if got != w:
+                out.append(f"{name}: {fname}:{path} is {got!r}, the file says {w!r}")
+            if want is None and a.get("u") and re.search(r"\d", re.split(r'<span class="s">', inner)[0]):
+                out.append(f"{name}: {fname}:{path} has no figure in the file, the page writes one")
+            continue
+        if got == "null" or abs(float(got) - float(want)) > 1e-9 + 1e-9 * abs(float(want)):
+            out.append(f"{name}: {fname}:{path} is {got}, the file says {want}")
+            continue
+        unit = a.get("u")
+        if not unit:
+            continue
+        shown = _research_num(re.split(r'<span class="s">', inner)[0], unit, lang)
+        v = float(want) * (100 if unit == "share" else 1)
+        if shown is None:
+            out.append(f"{name}: {fname}:{path} figure not read in {_plain(inner)[:40]!r}")
+        elif not (unit == "eur" and 0 < v < 0.0005 and shown[0] == 0.0) and abs(shown[0] - v) > shown[1] + 1e-6:
+            out.append(f"{name}: {fname}:{path} written {_plain(inner)[:30]!r}, the file says {want}")
+    return out
+
+
+def check_research(site: Path, root: Path, cfg: dict, model: dict | None, langs: list[str]) -> list[str]:
+    """Round 58b: the pages fed by the research files (seo_families.json research), in every language."""
+    import csv
+    import io
+
+    files = research_files(root, cfg)
+    out = []
+
+    def pre(lang):
+        return "" if lang == "en" else lang + "/"
+
+    sanc, froz, rev = files.get("sanctions"), files.get("frozen"), files.get("revenue")
+    # every country page: its marked figures, and its sanctions section
+    for iso, c in (model or {}).get("countries", {}).items():
+        for lang in langs:
+            f = site / pre(lang) / "country" / c["slug"] / "index.html"
+            if not f.exists():
+                continue
+            text = f.read_text()
+            name = f"/{pre(lang)}country/{c['slug']}/"
+            out += check_research_marks(text, name, lang, files)
+            if sanc and iso in sanc["countries"] and f'data-rv="sanctions:countries.{iso}.category"' not in text:
+                out.append(f"{name}: no sanctions section")
+    # the page of every country's sanctions: every entry, by its category
+    if sanc and cfg.get("sanctions", {}).get("slug"):
+        for lang in langs:
+            f = site / pre(lang) / cfg["sanctions"]["slug"] / "index.html"
+            if not f.exists():
+                out.append(f"/{pre(lang)}{cfg['sanctions']['slug']}/ not written")
+                continue
+            text = f.read_text()
+            out += check_research_marks(text, f"/{pre(lang)}{cfg['sanctions']['slug']}/", lang, files)
+            rows = set(re.findall(r'<tr id="([A-Z]{3})" data-rv="sanctions:countries\.\1\.category"', text))
+            if rows != set(sanc["countries"]):
+                out.append(
+                    f"/{pre(lang)}{cfg['sanctions']['slug']}/: entries {sorted(set(sanc['countries']) ^ rows)[:5]} missing or extra"
+                )
+    # the revenue page: every year, and the months the config names to the file's latest
+    if rev and cfg.get("revenue", {}).get("slug"):
+        n = cfg["revenue"].get("months", 24)
+        months = [m["ym"] for m in rev["monthly"]][-n:]
+        for lang in langs:
+            slug = cfg["revenue"]["slug"]
+            f = site / pre(lang) / slug / "index.html"
+            if not f.exists():
+                out.append(f"/{pre(lang)}{slug}/ not written")
+                continue
+            text = f.read_text()
+            out += check_research_marks(text, f"/{pre(lang)}{slug}/", lang, files)
+            ys = set(re.findall(r'data-rv="revenue:yearly\.(\d{4})\.og_rev_rub"', text))
+            if ys != set(rev["yearly"]):
+                out.append(f"/{pre(lang)}{slug}/: years {sorted(ys)} are not the file's {sorted(rev['yearly'])}")
+            ms = re.findall(r'data-rv="revenue:monthly@([\d-]+)\.og_rev_rub"', text)
+            if sorted(ms) != months:
+                out.append(f"/{pre(lang)}{slug}/: months {ms[:2]}… are not the file's last {n}")
+    # the frozen-assets topic page: an amount of each kind for every row
+    if froz and cfg.get("frozen", {}).get("topic"):
+        for lang in langs:
+            path = f"{pre(lang)}{cfg['frozen']['topic']}/"
+            f = site / path / "index.html"
+            if not f.exists():
+                continue
+            text = f.read_text()
+            out += check_research_marks(text, "/" + path, lang, files)
+            t = re.search(r'<table class="topic"[^>]*>(.*?)</table>', text, re.DOTALL)
+            for iso, tr in re.findall(r'<tr data-iso="([A-Z]{3})"[^>]*>(.*?)</tr>', t.group(1) if t else "", re.DOTALL):
+                for k in ("cbr_eur", "private_eur"):
+                    if f'data-rv="frozen:countries.{iso}.{k}.v"' not in tr:
+                        out.append(f"/{path}: {iso} has no {k} amount")
+    # the downloads: the revenue series as the file has them
+    if rev:
+        fm = site / "downloads" / "russia-oil-gas-revenue-monthly.csv"
+        fy = site / "downloads" / "russia-oil-gas-revenue-yearly.csv"
+        if not fm.exists() or not fy.exists():
+            out.append("downloads: the revenue CSV files are missing")
+        else:
+            rows = list(csv.DictReader(io.StringIO(fm.read_text().lstrip("﻿"))))
+            if [r["month"] for r in rows] != [m["ym"] for m in rev["monthly"]]:
+                out.append("russia-oil-gas-revenue-monthly.csv: months are not the file's")
+            for r, m in zip(rows, rev["monthly"]):
+                for col, k in (
+                    ("oil_gas_revenue_rub_bn", "og_rev_rub"),
+                    ("oil_gas_revenue_eur_bn", "og_rev_eur"),
+                    ("oil_gas_share", "share"),
+                ):
+                    if abs(float(r[col]) - m[k]) > 1e-9:
+                        out.append(f"russia-oil-gas-revenue-monthly.csv {m['ym']} {col}: {r[col]}, the file {m[k]}")
+            for r in csv.DictReader(io.StringIO(fy.read_text().lstrip("﻿"))):
+                y = rev["yearly"].get(r["year"])
+                if y and abs(float(r["oil_gas_revenue_rub_bn"]) - y["og_rev_rub"]) > 1e-9:
+                    out.append(
+                        f"russia-oil-gas-revenue-yearly.csv {r['year']}: {r['oil_gas_revenue_rub_bn']}, the file {y['og_rev_rub']}"
+                    )
+        # llms-full.txt: a line per year, its figures the file's
+        full = site / "llms-full.txt"
+        lines = (
+            re.findall(r"(?m)^- (\d{4})\b[^:]*: (RUB [\d,.]+bn) \((€[\d,.]+(?:bn|m))\), ([\d.]+%)", full.read_text())
+            if full.exists()
+            else []
+        )
+        if {y for y, *_ in lines} != set(rev["yearly"]):
+            out.append("llms-full.txt: the revenue lines are not one per year of the file")
+        for y, rub, eur, share in lines:
+            x = rev["yearly"][y]
+            for txt, unit, v in (
+                (rub, "rub", x["og_rev_rub"]),
+                (eur, "eur", x["og_rev_eur"]),
+                (share, "share", 100 * x["share"]),
+            ):
+                got = _research_num(txt, unit, "en")
+                if not got or abs(got[0] - v) > got[1] + 1e-6:
+                    out.append(f"llms-full.txt {y}: {txt}, the file says {v}")
     return out

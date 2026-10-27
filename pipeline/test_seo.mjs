@@ -309,7 +309,7 @@ test("the question pool: a data condition each, 4 to 6 by score, at most 2 per f
   const fams = {}; for (const x of r.faq) fams[x.fam] = (fams[x.fam] || 0) + 1;
   assert.ok(Object.values(fams).every(n => n <= SC.FAQ_PER_FAMILY));
   assert.ok(!ids.includes("decide") && ids.includes("close"));   // essentially zero: why so small, never "what flips it"
-  assert.equal(SC.POOL.length, 15);
+  assert.equal(SC.POOL.length, 17);   // round 58: relations and armed
   assert.ok(!SC.POOL.some(p => /forced|strike|druzhba/.test(p.id)));   // not shown on the map yet, so not on the pages
   // a country without data gets the one question about that
   const nd = SC.countryDyn(mkC({ net: null, noData: true }), OPT());
@@ -379,4 +379,164 @@ test("the country page's phrases: every language, the same placeholders, no mark
     assert.ok(r.faq.length >= 4 && r.sections.length >= 4, l);
     assert.ok(!/\{\w|undefined|NaN/.test(JSON.stringify(r)), l);
   }
+});
+
+// ----- round 58: explainers and search wording; the Markdown versions -----
+import { htmlToMarkdown } from "./seo_markdown.mjs";
+import { armedOf } from "./seo_topics.mjs";
+
+test("the explainers: every one in every language, filled, the amount hook left out until the data give one", () => {
+  for (const l of I.LANGS) for (const id of I.EXPLAIN_IDS) {
+    const x = I.explainText(l, id);
+    assert.ok(x.q.endsWith("?") || x.q.endsWith(" ?") || x.q.endsWith("?»"), l + " " + id + " " + x.q);
+    assert.ok(x.a.length > 200 && !/[{}]/.test(x.a), l + " " + id);
+    const n = x.a.split(/(?<=[.!?])\s+(?=\p{Lu})/u).length;
+    assert.ok(n >= 3 && n <= 5, `${l} ${id}: ${n} sentences`);
+  }
+  assert.equal(I.explainText("de", "shadowFleet").q, "Was ist die Schattenflotte?");
+  assert.equal(I.explainText("pl", "shadowFleet").q, "Co to jest flota cieni?");
+  assert.equal(I.explainText("fr", "priceCap").q, "Qu'est-ce que le plafonnement du prix du pétrole russe ?");
+  assert.ok(I.explainText("en", "shadowFleet").link);
+  // the downloads page's title and description fit, in every language
+  for (const l of I.LANGS) assert.ok(I.s(l, "dlTitle").length <= T.TITLE_MAX && I.s(l, "dlDescription").length <= T.DESC_MAX, l);
+  // the hook: a sentence on the amount only when the code gives one
+  assert.doesNotMatch(I.explainText("en", "reparationsLoan").a, /€/);
+  assert.match(I.explainText("en", "reparationsLoan", { amountText: "The data put it at €1bn." }, { amount: 1 }).a, /€1bn\.$/);
+  // every explainer named by a topic page exists, and its cluster is in the config
+  const fam = JSON.parse(readFileSync(join(HERE, "seo_families.json"), "utf8"));
+  for (const e of TOPICS) for (const id of e.explain || []) { assert.ok(I.EXPLAIN_IDS.includes(id), id); assert.ok(id in fam.explain.clusters, id); }
+});
+
+test("the searchers' words for weapons sent to Russia, only where the data have them", () => {
+  assert.equal(I.armedPair("en", "North Korea", ["soldiers", "shells"]), "North Korea soldiers and shells");
+  assert.equal(I.armedPair("de", "Iran", ["drones"]), "Iran – Drohnen");
+  const cfg = { minEur: 0.05, list: { PRK: { items: ["soldiers", "shells"], src: "nk" }, IRN: { items: ["drones"], src: "mr" } } };
+  const cs = [{ iso: "PRK", armedFull: 10 }, { iso: "IRN", armedFull: 0.01 }];
+  assert.deepEqual(armedOf(cfg, cs, { PRK: ["nk"], IRN: ["mr"] }), [{ iso: "PRK", items: ["soldiers", "shells"] }]);   // Iran under minEur
+  assert.deepEqual(armedOf(cfg, cs, { PRK: ["other"] }), []);   // the research is not among its sources
+  const e = TOPICS.find(x => x.slug === "military-support-to-russia");
+  const C = [{ iso: "PRK", name: "North Korea", nameEn: "North Korea", gdp: 30, measures: { armed: { v: 10 }, net: { v: -3 } } }, { iso: "IRN", name: "Iran", nameEn: "Iran", gdp: 400, measures: { armed: { v: 3.5 }, net: { v: -0.1 } } }, { iso: "CHN", name: "China", nameEn: "China", gdp: 17000, measures: { armed: { v: 1 }, net: { v: -100 } } }];
+  const m = buildTopic(e, C, TOPICS, { dataTo: "August 2026", l: "en", armed: [{ iso: "PRK", items: ["soldiers", "shells"] }, { iso: "IRN", items: ["drones"] }] });
+  assert.equal(m.title, "North Korea soldiers and shells, Iran drones: arms to Russia");
+  assert.equal(m.faq[0].q, "Iran drones for Russia: what are they worth?");
+  const none = buildTopic(e, C, TOPICS, { dataTo: "August 2026", l: "en", armed: [] });
+  assert.equal(none.title, "Who sends Russia weapons? Drones, shells and missiles");
+  assert.equal(none.faq[1].q, "Are North Korea's troops counted?");
+  const de = I.topicCopyLang("de", e, { n: 3, top: ["A"], topV: "1", measure: "x", unitKey: "eur", dataTo: "August 2026", sumUa: "1", sumNetPct: "1", isGroup: false, armedList: m.armedList.replace("soldiers and shells", "Soldaten und Granaten"), nArmed: 2 });
+  assert.match(de.h1, /Nordkorea|North Korea/);
+  assert.ok(de.title.length <= T.TITLE_MAX);
+  // the trade hubs in the searchers' words, neutral
+  const hubs = TOPICS.find(x => x.slug === "russia-trade-hubs");
+  assert.match(hubs.title[0], /sanctions evasion/);
+  for (const [l, w] of [["de", "Sanktionsumgehung"], ["pl", "omijanie sankcji"], ["fr", "contournement des sanctions"]]) assert.ok(JSON.stringify(I.TOPIC_T["russia-trade-hubs"][l]).includes(w), l);
+});
+
+test("the country page's questions in the searchers' words: relations where searched in that language, the supplies sent where the data have them", () => {
+  const byLang = { byLang: { country_russia_relations: { de: 3589, es: 20 } }, clusters: { country_russia_relations: 4472 }, help: 4718 };
+  const rel = { minDemand: 150, clusters: ["country_russia_relations", "groups_blocs"] };
+  const de = SC.countryDyn(mkC(), OPT({ l: "de", demand: byLang, relations: rel }));
+  const es = SC.countryDyn(mkC(), OPT({ l: "es", demand: byLang, relations: rel }));
+  assert.ok(de.faq.some(x => x.id === "relations"));
+  assert.ok(!es.faq.some(x => x.id === "relations"));
+  const a = de.faq.find(x => x.id === "relations");
+  assert.match(a.q, /^Testland und Russland/);
+  assert.match(a.a, /data-k="tb1"/);   // its figures are marked for check 48
+  const arm = SC.countryDyn(mkC(), OPT({ armed: ["drones"], armedFull: 3.5 }));
+  const q = arm.faq.find(x => x.id === "armed");
+  assert.equal(q.q, "Testland drones for Russia: what are they worth?");
+  assert.match(q.a, /€3\.5bn at full value/);
+  assert.ok(!SC.countryDyn(mkC(), OPT({ armedFull: 3.5 })).faq.some(x => x.id === "armed"));   // no config, no question
+});
+
+test("a page's Markdown version: its headings, text, lists and tables, full links, nothing else", () => {
+  const html = `<html><head><title>x</title></head><body><header>menu</header><main class="wrap"><nav class="crumbs"><a href="/">Map</a></nav>
+<h1>Shadow fleet</h1><p class="intro">For <a href="/country/greece/">Greece</a>: −€1.5bn &amp; more_x.</p>
+<details class="fold"><summary><h2>Parts</h2></summary><div class="tbl"><table><thead><tr><th>#</th><th>Country</th></tr></thead><tbody><tr><td>1</td><td class="m"><b>+1.8%</b><span class="s">€5.2bn</span><span class="s">likely</span></td></tr></tbody></table></div></details>
+<ul class="rel"><li><a href="https://x.org/a(b)">A</a></li><li>B</li></ul><script>var x = 1;</script></main><footer>foot</footer></body></html>`;
+  const md = htmlToMarkdown(html, "https://warbalance.org/shadow-fleet/");
+  assert.equal(md, "# Shadow fleet\n\nFor [Greece](https://warbalance.org/country/greece/): −€1.5bn & more\\_x.\n\n## Parts\n\n| # | Country |\n| --- | --- |\n| 1 | +1.8% · €5.2bn · likely |\n\n- [A](https://x.org/a%28b%29)\n- B\n");
+});
+
+// ----- round 58b: the three research results (seo_research.mjs) -----
+import * as RS from "./seo_research.mjs";
+const RJ = f => JSON.parse(readFileSync(join(HERE, "..", "research", "2026-10", "gaps", f), "utf8"));
+const SANC = RJ("sanctions_r58.json"), FROZ = RJ("frozen_amounts_r58.json"), REV = RJ("russia_revenue_r58.json");
+
+test("sanctions: every entry answered from its category in every language; Russia's list said apart, never as a sanction", () => {
+  for (const iso of Object.keys(SANC.countries)) {
+    const r = RS.sanctionsOf(SANC, iso);
+    assert.ok(RS.SANCTION_CATS.includes(r.cat), iso);
+    for (const l of I.LANGS) {
+      const a = RS.sanctionsAnswer(l, r, { N: "X", Nt: "X", sov: r.sov || "" });
+      assert.ok(a.length > 40 && !/[{}]/.test(a), `${iso} ${l}`);
+    }
+  }
+  const kaz = RS.sanctionsAnswer("en", RS.sanctionsOf(SANC, "KAZ"), { N: "Kazakhstan", Nt: "Kazakhstan" });
+  assert.match(kaz, /^No\. Kazakhstan has not imposed sanctions of its own/);
+  assert.match(kaz, /get around other countries' sanctions/);
+  assert.doesNotMatch(kaz, /refuses|sides with/);
+  const twn = RS.sanctionsAnswer("en", RS.sanctionsOf(SANC, "TWN"), { N: "Taiwan", Nt: "Taiwan" });
+  assert.match(twn, /export controls on listed high-tech goods/);
+  assert.match(twn, /Separately, Russia lists Taiwan as an “unfriendly” state \(government order 430-r, 5 March 2022\): that is Russia's own list/);
+  const deu = RS.sanctionsOf(SANC, "DEU");
+  assert.equal(deu.cat, "eu_member");
+  assert.ok(deu.cap.member && deu.cap.viaEU === false);   // a G7 member in its own right
+  // a fact read only through a search engine's extract is marked where its source is listed
+  const b = RS.sanctionsBlock("en", RS.sanctionsOf(SANC, "KAZ"), { N: "Kazakhstan", Nt: "Kazakhstan" }, "/countries-with-sanctions-on-russia/");
+  assert.match(b.html, /search summary/);
+  assert.equal(b.q, "Does Kazakhstan have sanctions on Russia?");
+  // the page of every country: every entry, the counts by category the file's own
+  const p = RS.sanctionsPage("en", SANC, { nameOf: i => SANC.countries[i].name, href: () => "" });
+  assert.deepEqual(p.counts, SANC.summary.by_category);
+  assert.equal((p.body.match(/<tr id="[A-Z]{3}"/g) || []).length, Object.keys(SANC.countries).length);
+  assert.match(p.faq[1].a, /Micronesia/);
+});
+
+test("frozen amounts: the file's figure with its date, never zero where there is none, an estimate marked; explainers' amounts from the file", () => {
+  assert.match(RS.frozenLines("en", FROZ, "BEL"), /data-v="185"[^>]*>€185bn<\/span> \(December 2025/);
+  assert.match(RS.frozenLines("en", FROZ, "BEL"), /€202bn<\/span> of sanctioned Russian assets on its balance sheet \(June 2026\); that figure overlaps/);
+  const jpn = RS.frozenLines("en", FROZ, "JPN");
+  assert.match(jpn, />no public figure<\/span> \(estimate: about €28bn\)/);
+  assert.doesNotMatch(jpn, /€0/);
+  assert.match(RS.frozenLines("en", FROZ, "LUX"), />&lt;€1m<\/span>/);   // "below EUR 10,000", not zero
+  assert.match(RS.frozenLines("en", FROZ, "PRT"), /No public figure has been published/);
+  assert.equal(RS.frozenLines("en", FROZ, "CHN"), "");
+  for (const l of I.LANGS) {
+    const a = RS.explainAmount(l, "frozenAssets", FROZ).vars.amountText, b = RS.explainAmount(l, "reparationsLoan", FROZ).vars.amountText;
+    assert.ok(a.includes(I.E(l, FROZ.totals.eu_cbr.v)) && a.includes(I.E(l, 202)), l);
+    assert.ok(b.includes(I.E(l, 90)) && b.includes(I.E(l, 19.8)), l);
+    assert.doesNotMatch(I.explainText(l, "reparationsLoan", { amountText: b }, { amount: 1 }).a, /\{|\}/);
+  }
+  assert.match(RS.explainAmount("en", "reparationsLoan", FROZ).vars.amountText, /^Where it stands: proposed, not adopted\./);
+  assert.doesNotMatch(RS.explainAmount("en", "reparationsLoan", FROZ).vars.amountText, /funded by Russian assets/);
+});
+
+test("Russia's oil and gas revenue: every figure on the page and in the CSV is the file's", () => {
+  for (const l of I.LANGS) {
+    const p = RS.revenuePage(l, REV, { warIncome: "/russia-war-income/", published: "2026-10-09", months: 24, yearWord: "Year" });
+    const marks = [...p.body.matchAll(/data-rv="revenue:([^"]+)" data-v="([^"]+)"/g)];
+    assert.ok(marks.length > 150, l);
+    for (const [, path, v] of marks) {
+      const segs = path.split("."); let x = REV;
+      for (const s of segs) x = s.includes("@") ? x[s.split("@")[0]].find(m => m.ym === s.split("@")[1]) : x[s];
+      assert.equal(String(x === null ? "null" : x), v, `${l} ${path}`);
+    }
+    assert.equal(new Set(marks.filter(([, p0]) => p0.startsWith("monthly@")).map(([, p0]) => p0.split(".")[0])).size, 24);
+    assert.doesNotMatch(p.body + p.intro, /pays for the army|who funds/i);
+    assert.match(p.body, /href="\/russia-war-income\/"/);
+  }
+  const csv = RS.revenueCsv(REV);
+  assert.equal(csv.monthly.split("\n").length, REV.monthly.length + 1);
+  assert.ok(csv.yearly.includes("\n2019,12,true,7924.3,"));
+});
+
+test("a country page gets the sanctions section and question; the frozen section the amounts", () => {
+  const regime = { title: "Sanctions on Russia", q: "Does Testland have sanctions on Russia?", a: "No. x", html: "<div>x</div>" };
+  const r = SC.countryDyn(mkC(), OPT({ regime, stock: '<p class="stock">Amounts</p>' }));
+  assert.equal(r.faq[r.faq.length - 1].id, "regime");
+  assert.ok(r.sections.some(s => s.id === "sanctions-on-russia"));
+  assert.ok(r.sections.find(s => s.id === "frozen").html.includes("Amounts"));
+  const nd = SC.countryDyn(mkC({ net: null, noData: true }), OPT({ regime }));
+  assert.deepEqual(nd.faq.map(x => x.id), ["nodata", "regime"]);
+  assert.deepEqual(nd.sections.map(s => s.id), ["sanctions-on-russia"]);
 });
