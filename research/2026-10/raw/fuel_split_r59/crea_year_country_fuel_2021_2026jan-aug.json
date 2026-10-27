@@ -1,0 +1,4732 @@
+{
+ "what": "CREA Russia Fossil Tracker: value of Russian fossil fuel by destination and fuel, EUR bn, calendar years 2021-2025 and January-August 2026, aggregated from the monthly repository copy",
+ "url": "https://api.russiafossiltracker.com/v0/counter?aggregate_by=month%2Cdestination_iso2%2Cdestination_country%2Ccommodity_group&commodity_grouping=split_gas_oil&currency=EUR%2CUSD&date_to=2026-10-22&date_from=2021-01-01&format=csv",
+ "retrieved": "2026-10-23",
+ "aggregated": "2026-10-27",
+ "from": "research/2026-10/raw/crea_api/counter_month_country_fuel_2026-10-23.json.gz",
+ "basis": "Kpler-tracked shipments x CREA modelled prices (pricing_scenario default); destination = first discharge port or pipeline border, not customs origin",
+ "world_by_fuel": {
+  "2021": {
+   "crude": 80.983,
+   "products": 63.658,
+   "pipeline_gas": 55.38,
+   "lng": 15.975,
+   "coal": 21.323
+  },
+  "2022": {
+   "crude": 135.943,
+   "products": 94.427,
+   "pipeline_gas": 77.099,
+   "lng": 32.278,
+   "coal": 35.858
+  },
+  "2023": {
+   "crude": 103.147,
+   "products": 74.577,
+   "pipeline_gas": 25.407,
+   "lng": 17.776,
+   "coal": 23.882
+  },
+  "2024": {
+   "crude": 107.729,
+   "products": 68.425,
+   "pipeline_gas": 26.768,
+   "lng": 15.576,
+   "coal": 17.457
+  },
+  "2025": {
+   "crude": 86.54,
+   "products": 52.936,
+   "pipeline_gas": 20.829,
+   "lng": 15.449,
+   "coal": 17.499
+  },
+  "2026": {
+   "crude": 69.055,
+   "products": 33.158,
+   "pipeline_gas": 15.423,
+   "lng": 11.714,
+   "coal": 13.08
+  }
+ },
+ "unmapped_destinations_eur_bn": {},
+ "countries": {
+  "AGO": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0169,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0158,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.1936,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "ALB": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0518,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0021
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0001
+   }
+  },
+  "ARE": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.8038,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0076
+   },
+   "2022": {
+    "crude": 0.2818,
+    "products": 5.2756,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0658
+   },
+   "2023": {
+    "crude": 0.0945,
+    "products": 5.8756,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0817
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 2.1284,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0088
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 1.5875,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0084
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.1941,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "ARG": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0025,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0016
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0618,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0339,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0011
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0514,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0717,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0352,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0046
+   }
+  },
+  "AUS": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0161,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0021
+   },
+   "2022": {
+    "crude": 0.1744,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "AUT": {
+   "2021": {
+    "crude": 0.2461,
+    "products": 0.0653,
+    "pipeline_gas": 2.7642,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0652,
+    "products": 0.0478,
+    "pipeline_gas": 6.9675,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0049,
+    "products": 0.0018,
+    "pipeline_gas": 1.9239,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 1.8192,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0061,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0015,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "AZE": {
+   "2021": {
+    "crude": 0.6527,
+    "products": 0.0282,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0011
+   },
+   "2022": {
+    "crude": 0.7409,
+    "products": 0.0235,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.4963,
+    "products": 0.0066,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.4461,
+    "products": 0.0013,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.3171,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0194,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "BEL": {
+   "2021": {
+    "crude": 0.0,
+    "products": 2.6674,
+    "pipeline_gas": 0.1024,
+    "lng": 0.6986,
+    "coal": 0.1712
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 7.1412,
+    "pipeline_gas": 0.013,
+    "lng": 4.3381,
+    "coal": 0.2458
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.4633,
+    "pipeline_gas": 0.0,
+    "lng": 2.9136,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 1.9095,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 2.1104,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 1.6551,
+    "coal": 0.0
+   }
+  },
+  "BEN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0219,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0425,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.184,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.2055,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.3544,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.3386,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "BGD": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0021,
+    "pipeline_gas": 0.0,
+    "lng": 0.0308,
+    "coal": 0.0031
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.011,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0117
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0004
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0032
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0016
+   }
+  },
+  "BGR": {
+   "2021": {
+    "crude": 1.1522,
+    "products": 0.1927,
+    "pipeline_gas": 1.282,
+    "lng": 0.0,
+    "coal": 0.0202
+   },
+   "2022": {
+    "crude": 3.4348,
+    "products": 0.5055,
+    "pipeline_gas": 2.0523,
+    "lng": 0.0,
+    "coal": 0.0114
+   },
+   "2023": {
+    "crude": 2.2997,
+    "products": 0.2138,
+    "pipeline_gas": 0.6187,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0241,
+    "pipeline_gas": 0.6237,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0105,
+    "pipeline_gas": 0.5609,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.6721,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "BHR": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0019
+   }
+  },
+  "BHS": {
+   "2021": {
+    "crude": 0.0313,
+    "products": 0.4857,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.2527,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0982,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.089,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "BRA": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.5733,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.4952
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.8549,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.3528
+   },
+   "2023": {
+    "crude": 0.0897,
+    "products": 5.5827,
+    "pipeline_gas": 0.0,
+    "lng": 0.035,
+    "coal": 0.1414
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 8.0337,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0916
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 4.9502,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0671
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 3.5315,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0311
+   }
+  },
+  "BRN": {
+   "2021": {
+    "crude": 0.2663,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.1522,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0082
+   },
+   "2023": {
+    "crude": 0.0972,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.4566,
+    "products": 0.5851,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.5915,
+    "products": 0.1247,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.6893,
+    "products": 0.1451,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "CAN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.1615,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0094
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0505,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0012
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0004
+   }
+  },
+  "CHE": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.35,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.1295,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0002,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0002,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "CHL": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0501
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0528,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.2559,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0217,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "CHN": {
+   "2021": {
+    "crude": 15.4578,
+    "products": 0.9927,
+    "pipeline_gas": 1.2839,
+    "lng": 2.4944,
+    "coal": 5.0352
+   },
+   "2022": {
+    "crude": 51.1101,
+    "products": 3.5989,
+    "pipeline_gas": 3.8274,
+    "lng": 5.8237,
+    "coal": 10.9392
+   },
+   "2023": {
+    "crude": 51.6874,
+    "products": 8.2614,
+    "pipeline_gas": 5.9819,
+    "lng": 3.7158,
+    "coal": 9.6947
+   },
+   "2024": {
+    "crude": 53.8481,
+    "products": 8.1487,
+    "pipeline_gas": 7.4695,
+    "lng": 3.6307,
+    "coal": 6.6864
+   },
+   "2025": {
+    "crude": 42.9509,
+    "products": 4.9562,
+    "pipeline_gas": 8.4061,
+    "lng": 3.6638,
+    "coal": 5.8292
+   },
+   "2026": {
+    "crude": 36.8498,
+    "products": 3.5894,
+    "pipeline_gas": 5.6275,
+    "lng": 3.1244,
+    "coal": 3.9519
+   }
+  },
+  "CIV": {
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0929,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0009
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.3283,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.1248,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.4131,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0696,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "CMR": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0694,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0781,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0435,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0211,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "COD": {
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0283,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0407,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0055,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "COG": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0016,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0664,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0328,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0106,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0107,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "COL": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0163,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0059,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "CPV": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0092,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0125,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0067,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0448,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0036,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "CRI": {
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0043,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0047
+   }
+  },
+  "CUB": {
+   "2021": {
+    "crude": 0.2587,
+    "products": 0.033,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.3131,
+    "products": 0.2315,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0533,
+    "products": 0.1103,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0438,
+    "products": 0.1146,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0821,
+    "products": 0.0568,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0399,
+    "products": 0.0037,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "CUW": {
+   "2023": {
+    "crude": 0.0,
+    "products": 0.008,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0014,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "CYP": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0177,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0087
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.1396,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0094
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0151,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0043,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "CZE": {
+   "2021": {
+    "crude": 1.4281,
+    "products": 0.0,
+    "pipeline_gas": 1.8076,
+    "lng": 0.0,
+    "coal": 0.0241
+   },
+   "2022": {
+    "crude": 2.3483,
+    "products": 0.0,
+    "pipeline_gas": 2.1556,
+    "lng": 0.0,
+    "coal": 0.0066
+   },
+   "2023": {
+    "crude": 2.0547,
+    "products": 0.0,
+    "pipeline_gas": 0.265,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 1.2611,
+    "products": 0.0,
+    "pipeline_gas": 1.0861,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.237,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "DEU": {
+   "2021": {
+    "crude": 9.0655,
+    "products": 4.0568,
+    "pipeline_gas": 18.1769,
+    "lng": 0.0,
+    "coal": 0.8311
+   },
+   "2022": {
+    "crude": 10.4432,
+    "products": 5.7966,
+    "pipeline_gas": 19.2685,
+    "lng": 0.0,
+    "coal": 0.97
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.6031,
+    "pipeline_gas": 0.0511,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0117,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "DJI": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0106
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0149,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0086,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0398,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0063
+   }
+  },
+  "DNK": {
+   "2021": {
+    "crude": 0.1984,
+    "products": 0.4971,
+    "pipeline_gas": 0.5466,
+    "lng": 0.0,
+    "coal": 0.0542
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0148,
+    "pipeline_gas": 0.4977,
+    "lng": 0.0,
+    "coal": 0.0217
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "DZA": {
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0143
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0643,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.012
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0085,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0106
+   },
+   "2025": {
+    "crude": 0.0015,
+    "products": 0.0043,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0045
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0073
+   }
+  },
+  "ECU": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.17,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.128,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0149,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0012
+   }
+  },
+  "EGY": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.451,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0462
+   },
+   "2022": {
+    "crude": 0.1173,
+    "products": 1.695,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0945
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 1.0213,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.1216
+   },
+   "2024": {
+    "crude": 0.0405,
+    "products": 2.2152,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0834
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 2.1549,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.1504
+   },
+   "2026": {
+    "crude": 0.8979,
+    "products": 1.471,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.1782
+   }
+  },
+  "ESP": {
+   "2021": {
+    "crude": 1.2624,
+    "products": 2.8013,
+    "pipeline_gas": 0.0771,
+    "lng": 1.3187,
+    "coal": 0.2631
+   },
+   "2022": {
+    "crude": 0.4193,
+    "products": 1.9918,
+    "pipeline_gas": 0.0032,
+    "lng": 4.3513,
+    "coal": 0.3891
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.1404,
+    "pipeline_gas": 0.0,
+    "lng": 2.7324,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 2.0973,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 1.3858,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 1.4746,
+    "coal": 0.0
+   }
+  },
+  "EST": {
+   "2021": {
+    "crude": 0.0,
+    "products": 1.2713,
+    "pipeline_gas": 0.0148,
+    "lng": 0.0,
+    "coal": 0.0006
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 2.01,
+    "pipeline_gas": 0.0898,
+    "lng": 0.0,
+    "coal": 0.0004
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.003,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "FIN": {
+   "2021": {
+    "crude": 2.8001,
+    "products": 0.4189,
+    "pipeline_gas": 0.6882,
+    "lng": 0.1163,
+    "coal": 0.0602
+   },
+   "2022": {
+    "crude": 0.9231,
+    "products": 0.4803,
+    "pipeline_gas": 0.3641,
+    "lng": 0.2349,
+    "coal": 0.0384
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0067,
+    "pipeline_gas": 0.0,
+    "lng": 0.044,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "FRA": {
+   "2021": {
+    "crude": 1.2624,
+    "products": 4.6104,
+    "pipeline_gas": 1.1534,
+    "lng": 2.0649,
+    "coal": 0.2631
+   },
+   "2022": {
+    "crude": 1.1107,
+    "products": 6.7958,
+    "pipeline_gas": 0.3872,
+    "lng": 6.2716,
+    "coal": 0.2063
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0595,
+    "pipeline_gas": 0.0001,
+    "lng": 1.9409,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 2.8146,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 3.0896,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 2.2924,
+    "coal": 0.0
+   }
+  },
+  "GAB": {
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0285,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "GBR": {
+   "2021": {
+    "crude": 1.1375,
+    "products": 3.371,
+    "pipeline_gas": 0.0312,
+    "lng": 1.0794,
+    "coal": 0.1553
+   },
+   "2022": {
+    "crude": 0.2208,
+    "products": 2.0179,
+    "pipeline_gas": 0.0001,
+    "lng": 0.402,
+    "coal": 0.1742
+   }
+  },
+  "GEO": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.1931,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.291,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.1726,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.3318,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0532,
+    "products": 0.3126,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.2274,
+    "products": 0.1109,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "GHA": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.023,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.1537,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0074
+   },
+   "2023": {
+    "crude": 0.1588,
+    "products": 1.2415,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0589,
+    "products": 1.4497,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0462,
+    "products": 0.825,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.7897,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "GIB": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0117,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0029,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "GIN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0133,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0691,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.093,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0875,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0581,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0753,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "GMB": {
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0053,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0538,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0599,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0801,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0646,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "GNQ": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0004,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0017,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0027,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "GRC": {
+   "2021": {
+    "crude": 1.4396,
+    "products": 1.9574,
+    "pipeline_gas": 0.4898,
+    "lng": 0.0,
+    "coal": 0.0248
+   },
+   "2022": {
+    "crude": 0.4248,
+    "products": 5.0195,
+    "pipeline_gas": 0.2874,
+    "lng": 0.2094,
+    "coal": 0.0031
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.5928,
+    "pipeline_gas": 0.0432,
+    "lng": 0.2978,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0571,
+    "pipeline_gas": 0.2125,
+    "lng": 0.0919,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0031,
+    "pipeline_gas": 0.1518,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0413,
+    "pipeline_gas": 0.0936,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "GTM": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0078
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0016
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0033
+   }
+  },
+  "HKG": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0731
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.1497,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0858
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0127,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0037
+   }
+  },
+  "HND": {
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0007
+   }
+  },
+  "HRV": {
+   "2021": {
+    "crude": 0.2914,
+    "products": 0.1879,
+    "pipeline_gas": 0.1469,
+    "lng": 0.0195,
+    "coal": 0.1021
+   },
+   "2022": {
+    "crude": 0.9837,
+    "products": 0.1761,
+    "pipeline_gas": 0.1599,
+    "lng": 0.0,
+    "coal": 0.0867
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.2029,
+    "pipeline_gas": 0.0213,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.1784,
+    "pipeline_gas": 0.0011,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.1513,
+    "pipeline_gas": 0.0264,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0086,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "HTI": {
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0301,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "HUN": {
+   "2021": {
+    "crude": 1.4185,
+    "products": 0.0163,
+    "pipeline_gas": 2.64,
+    "lng": 0.0,
+    "coal": 0.0256
+   },
+   "2022": {
+    "crude": 2.8798,
+    "products": 0.0166,
+    "pipeline_gas": 8.2651,
+    "lng": 0.0,
+    "coal": 0.008
+   },
+   "2023": {
+    "crude": 2.2569,
+    "products": 0.0,
+    "pipeline_gas": 3.0457,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 2.2535,
+    "products": 0.0,
+    "pipeline_gas": 2.1454,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 1.7865,
+    "products": 0.0,
+    "pipeline_gas": 2.4536,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.5748,
+    "products": 0.0,
+    "pipeline_gas": 2.279,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "IDN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0401,
+    "pipeline_gas": 0.0,
+    "lng": 0.0117,
+    "coal": 0.1699
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.1093,
+    "pipeline_gas": 0.0,
+    "lng": 0.2201,
+    "coal": 0.3781
+   },
+   "2023": {
+    "crude": 0.0492,
+    "products": 0.4672,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.4455
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.4828,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.4497
+   },
+   "2025": {
+    "crude": 0.0334,
+    "products": 1.1778,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.5446
+   },
+   "2026": {
+    "crude": 0.0929,
+    "products": 1.0735,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.61
+   }
+  },
+  "IND": {
+   "2021": {
+    "crude": 0.9445,
+    "products": 1.0499,
+    "pipeline_gas": 0.0,
+    "lng": 0.1857,
+    "coal": 0.8597
+   },
+   "2022": {
+    "crude": 18.7252,
+    "products": 3.6265,
+    "pipeline_gas": 0.0,
+    "lng": 0.2428,
+    "coal": 3.7048
+   },
+   "2023": {
+    "crude": 35.4718,
+    "products": 5.0153,
+    "pipeline_gas": 0.0,
+    "lng": 0.2114,
+    "coal": 3.5969
+   },
+   "2024": {
+    "crude": 38.4319,
+    "products": 4.7483,
+    "pipeline_gas": 0.0,
+    "lng": 0.0318,
+    "coal": 3.2371
+   },
+   "2025": {
+    "crude": 31.8816,
+    "products": 3.7902,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 3.8198
+   },
+   "2026": {
+    "crude": 25.5052,
+    "products": 1.8066,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 3.07
+   }
+  },
+  "IRL": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.1789,
+    "pipeline_gas": 0.0026,
+    "lng": 0.0,
+    "coal": 0.1599
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0818,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0201
+   }
+  },
+  "IRN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0167,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0001
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0127,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0003
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0007,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0058,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0032,
+    "products": 0.0045,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0003
+   }
+  },
+  "IRQ": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0546,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0791,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0559,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "ISR": {
+   "2021": {
+    "crude": 0.1341,
+    "products": 0.3031,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.207
+   },
+   "2022": {
+    "crude": 0.182,
+    "products": 0.5338,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.3056
+   },
+   "2023": {
+    "crude": 0.0313,
+    "products": 0.3726,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.1251
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.5364,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0972
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.262,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0058
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.1004,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0176
+   }
+  },
+  "ITA": {
+   "2021": {
+    "crude": 4.0011,
+    "products": 1.4171,
+    "pipeline_gas": 10.1442,
+    "lng": 0.0,
+    "coal": 0.4948
+   },
+   "2022": {
+    "crude": 8.6361,
+    "products": 2.3696,
+    "pipeline_gas": 8.2203,
+    "lng": 0.1443,
+    "coal": 0.6426
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.1393,
+    "pipeline_gas": 0.6848,
+    "lng": 0.0397,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 1.9049,
+    "lng": 0.0351,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.2158,
+    "lng": 0.035,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.1434,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "JAM": {
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0246,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.3264,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.1272,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0437,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0428,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "JOR": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.006
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0062
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0312,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0082
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0089
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0115
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0061
+   }
+  },
+  "JPN": {
+   "2021": {
+    "crude": 1.86,
+    "products": 0.2553,
+    "pipeline_gas": 0.0,
+    "lng": 3.6001,
+    "coal": 2.3662
+   },
+   "2022": {
+    "crude": 0.9285,
+    "products": 0.1825,
+    "pipeline_gas": 0.0,
+    "lng": 4.8706,
+    "coal": 2.0656
+   },
+   "2023": {
+    "crude": 0.043,
+    "products": 0.0046,
+    "pipeline_gas": 0.0,
+    "lng": 3.3053,
+    "coal": 0.4764
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 2.8213,
+    "coal": 0.1112
+   },
+   "2025": {
+    "crude": 0.0356,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 2.9752,
+    "coal": 0.0936
+   },
+   "2026": {
+    "crude": 0.122,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 1.8079,
+    "coal": 0.0525
+   }
+  },
+  "KAZ": {
+   "2021": {
+    "crude": 0.004,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0004
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0008,
+    "products": 0.0013,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "KEN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0242,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0109
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0008
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0012
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0066,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "KHM": {
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0059
+   }
+  },
+  "KOR": {
+   "2021": {
+    "crude": 3.3546,
+    "products": 4.6713,
+    "pipeline_gas": 0.0,
+    "lng": 1.539,
+    "coal": 2.2354
+   },
+   "2022": {
+    "crude": 1.7344,
+    "products": 2.9739,
+    "pipeline_gas": 0.0,
+    "lng": 1.4506,
+    "coal": 4.84
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.9231,
+    "pipeline_gas": 0.0,
+    "lng": 0.8947,
+    "coal": 3.4655
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 1.5854,
+    "pipeline_gas": 0.0,
+    "lng": 0.9344,
+    "coal": 1.7816
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.6702,
+    "pipeline_gas": 0.0,
+    "lng": 1.1488,
+    "coal": 1.994
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.2848,
+    "pipeline_gas": 0.0,
+    "lng": 0.5985,
+    "coal": 1.6383
+   }
+  },
+  "KWT": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0054,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.1046,
+    "pipeline_gas": 0.0,
+    "lng": 0.1087,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0395,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.1014,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0054
+   }
+  },
+  "LBN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.3942,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0056
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.22,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.2344,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.178,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0091
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.3244,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "LBR": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0033,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0233,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "LBY": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.1645,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.2335,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 2.163,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 2.7784,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 1.7546,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.2084,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "LKA": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0449
+   },
+   "2022": {
+    "crude": 0.2246,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0605
+   },
+   "2023": {
+    "crude": 0.0519,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.1524
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0541,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.2356
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.1824
+   }
+  },
+  "LTU": {
+   "2021": {
+    "crude": 2.7555,
+    "products": 0.2925,
+    "pipeline_gas": 0.0,
+    "lng": 0.1372,
+    "coal": 0.0999
+   },
+   "2022": {
+    "crude": 0.7716,
+    "products": 0.1701,
+    "pipeline_gas": 0.0,
+    "lng": 0.0519,
+    "coal": 0.0817
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0212,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "LUX": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0304,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.002,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "LVA": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.7327,
+    "pipeline_gas": 0.277,
+    "lng": 0.0,
+    "coal": 0.0075
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 2.0079,
+    "pipeline_gas": 0.3054,
+    "lng": 0.0,
+    "coal": 0.0572
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.1787,
+    "pipeline_gas": 0.0001,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0149,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "MAR": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.2246,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.7203
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.9313,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.9302
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 1.4455,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.234
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.6182,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0979
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 1.2215,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0004
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 1.2079,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0065
+   }
+  },
+  "MDA": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0359,
+    "pipeline_gas": 0.8716,
+    "lng": 0.0,
+    "coal": 0.0002
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0023,
+    "pipeline_gas": 1.616,
+    "lng": 0.0,
+    "coal": 0.0008
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0045,
+    "pipeline_gas": 0.959,
+    "lng": 0.0,
+    "coal": 0.0003
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.9532,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.4998,
+    "lng": 0.0,
+    "coal": 0.0001
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.4045,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "MDG": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0025
+   }
+  },
+  "MEX": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0155,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0185
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0419,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.014
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0114
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.018
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0131
+   }
+  },
+  "MKD": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.1381,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.1553,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.1227,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.1146,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0952,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0454,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "MLT": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0536,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0679,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.03,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "MMR": {
+   "2023": {
+    "crude": 0.9564,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0039
+   },
+   "2024": {
+    "crude": 1.3776,
+    "products": 0.0067,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0051
+   },
+   "2025": {
+    "crude": 0.2798,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0145,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "MOZ": {
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0008
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0079,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "MRT": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.1462,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0704,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.006,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0103,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0144,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "MUS": {
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0197,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0185,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "MYS": {
+   "2021": {
+    "crude": 0.2916,
+    "products": 0.2116,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.3446
+   },
+   "2022": {
+    "crude": 0.1207,
+    "products": 1.7873,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.6499
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 2.8259,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.5229
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.9786,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.485
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.3198,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.5696
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.3866,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.5134
+   }
+  },
+  "NAM": {
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0632,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0006
+   }
+  },
+  "NGA": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0042,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.2337,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 1.5517,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 1.033,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.1898,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0347,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0016
+   }
+  },
+  "NLD": {
+   "2021": {
+    "crude": 10.5876,
+    "products": 6.9402,
+    "pipeline_gas": 0.0271,
+    "lng": 1.2054,
+    "coal": 1.7521
+   },
+   "2022": {
+    "crude": 8.4964,
+    "products": 9.5941,
+    "pipeline_gas": 0.0012,
+    "lng": 2.0512,
+    "coal": 1.6399
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.5882,
+    "pipeline_gas": 0.0,
+    "lng": 0.4227,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.6064,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.716,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.5979,
+    "coal": 0.0
+   }
+  },
+  "NOR": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.4886,
+    "pipeline_gas": 0.0,
+    "lng": 0.0336,
+    "coal": 0.0001
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.5466,
+    "pipeline_gas": 0.0,
+    "lng": 0.0198,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0251,
+    "coal": 0.0
+   }
+  },
+  "NZL": {
+   "2021": {
+    "crude": 0.0321,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0001,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "OMN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0013
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.176,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0103
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.4888,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0201
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0539,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.034,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.1638,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "PAK": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0611
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.024
+   },
+   "2023": {
+    "crude": 0.1541,
+    "products": 0.032,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.3285,
+    "products": 0.0172,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0262,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0492,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "PAN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0989,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0977,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.2568,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0538,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "PHL": {
+   "2021": {
+    "crude": 0.0503,
+    "products": 0.0539,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0708
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0988,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0891
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0367,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0183
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0058
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0237
+   },
+   "2026": {
+    "crude": 0.1575,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0303
+   }
+  },
+  "PNG": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0014,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0014
+   }
+  },
+  "POL": {
+   "2021": {
+    "crude": 6.8605,
+    "products": 2.186,
+    "pipeline_gas": 0.4731,
+    "lng": 0.0,
+    "coal": 0.9732
+   },
+   "2022": {
+    "crude": 7.1053,
+    "products": 2.353,
+    "pipeline_gas": 1.9472,
+    "lng": 0.0,
+    "coal": 0.4793
+   },
+   "2023": {
+    "crude": 0.5139,
+    "products": 0.1951,
+    "pipeline_gas": 0.2909,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.5208,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.016,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0022,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "PRI": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.156,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0271,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0093,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "PRT": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.3433,
+    "pipeline_gas": 0.0007,
+    "lng": 0.2577,
+    "coal": 0.0039
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.197,
+    "pipeline_gas": 0.0,
+    "lng": 0.2463,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0325,
+    "pipeline_gas": 0.0,
+    "lng": 0.1568,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.105,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.1081,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0798,
+    "coal": 0.0
+   }
+  },
+  "ROU": {
+   "2021": {
+    "crude": 2.2777,
+    "products": 1.1487,
+    "pipeline_gas": 1.2422,
+    "lng": 0.0,
+    "coal": 0.0507
+   },
+   "2022": {
+    "crude": 2.2573,
+    "products": 1.8347,
+    "pipeline_gas": 1.9358,
+    "lng": 0.0,
+    "coal": 0.0195
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0756,
+    "pipeline_gas": 0.502,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0327,
+    "pipeline_gas": 0.2922,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0177,
+    "pipeline_gas": 0.4055,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.1858,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "SAU": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.668,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 1.3366,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 5.0778,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 3.1331,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 3.7031,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0252,
+    "products": 3.7605,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0044
+   }
+  },
+  "SDN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0109,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0772,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.031,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.2799,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0978,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0179
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.3691,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0066
+   }
+  },
+  "SEN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.3176,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0119
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.5476,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.057
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.9884,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0801
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 1.0923,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0336
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 1.0048,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0516
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.5739,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0514
+   }
+  },
+  "SGP": {
+   "2021": {
+    "crude": 0.1673,
+    "products": 1.2697,
+    "pipeline_gas": 0.0,
+    "lng": 0.0196,
+    "coal": 0.0006
+   },
+   "2022": {
+    "crude": 0.0456,
+    "products": 1.7474,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 4.735,
+    "pipeline_gas": 0.0,
+    "lng": 0.0376,
+    "coal": 0.0035
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 4.6921,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0085
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 3.8018,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0548,
+    "products": 3.0534,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0011
+   }
+  },
+  "SLE": {
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0142,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0314,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0938,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "SMR": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.006,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0039,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0004,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0009,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0001,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0001,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "SOM": {
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0063,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "SRB": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.8344,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 1.6912,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 1.009,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.8582,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.8408,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.5754,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "SVK": {
+   "2021": {
+    "crude": 2.155,
+    "products": 0.0004,
+    "pipeline_gas": 1.4045,
+    "lng": 0.0,
+    "coal": 0.1121
+   },
+   "2022": {
+    "crude": 2.899,
+    "products": 0.0004,
+    "pipeline_gas": 3.9082,
+    "lng": 0.0,
+    "coal": 0.0406
+   },
+   "2023": {
+    "crude": 2.2118,
+    "products": 0.0,
+    "pipeline_gas": 2.1157,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 1.9494,
+    "products": 0.0,
+    "pipeline_gas": 1.4549,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 2.0475,
+    "products": 0.0,
+    "pipeline_gas": 0.6735,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 1.0167,
+    "products": 0.0,
+    "pipeline_gas": 0.7248,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "SVN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.1547,
+    "pipeline_gas": 0.3067,
+    "lng": 0.0,
+    "coal": 0.0293
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.9283,
+    "pipeline_gas": 0.4645,
+    "lng": 0.0,
+    "coal": 0.0205
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0499,
+    "pipeline_gas": 0.144,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.1848,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0024,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0004,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "SWE": {
+   "2021": {
+    "crude": 0.6523,
+    "products": 0.4279,
+    "pipeline_gas": 0.0,
+    "lng": 0.0985,
+    "coal": 0.0535
+   },
+   "2022": {
+    "crude": 0.1708,
+    "products": 0.209,
+    "pipeline_gas": 0.0,
+    "lng": 0.0854,
+    "coal": 0.0042
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0036,
+    "pipeline_gas": 0.0,
+    "lng": 0.0317,
+    "coal": 0.0
+   }
+  },
+  "SYR": {
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.003
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0102,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.809,
+    "products": 0.3108,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0098
+   },
+   "2026": {
+    "crude": 0.659,
+    "products": 0.5897,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0154
+   }
+  },
+  "TGO": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.1681,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.1782,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.2586,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.2954,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.3345,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.1088,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "THA": {
+   "2021": {
+    "crude": 0.5503,
+    "products": 0.0045,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0478
+   },
+   "2022": {
+    "crude": 0.1893,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0631,
+    "coal": 0.1091
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0556,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.031
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0202,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0171
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0039,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.003
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0747,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0577
+   }
+  },
+  "TKM": {
+   "2021": {
+    "crude": 0.0139,
+    "products": 0.0068,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0003
+   },
+   "2022": {
+    "crude": 0.0015,
+    "products": 0.0035,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0008,
+    "products": 0.0011,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0013,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0015,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "TTO": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0045,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.1599,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.182,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0786,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0011
+   }
+  },
+  "TUN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0336,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.8298,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0025
+   },
+   "2023": {
+    "crude": 0.0279,
+    "products": 2.2265,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 1.858,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 1.188,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0071,
+    "products": 0.6498,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "TUR": {
+   "2021": {
+    "crude": 2.7129,
+    "products": 3.5974,
+    "pipeline_gas": 8.0661,
+    "lng": 0.0,
+    "coal": 1.0738
+   },
+   "2022": {
+    "crude": 6.9127,
+    "products": 8.4002,
+    "pipeline_gas": 12.3798,
+    "lng": 0.2351,
+    "coal": 3.957
+   },
+   "2023": {
+    "crude": 4.3417,
+    "products": 16.0829,
+    "pipeline_gas": 7.6271,
+    "lng": 0.7165,
+    "coal": 3.0203
+   },
+   "2024": {
+    "crude": 7.1487,
+    "products": 16.6676,
+    "pipeline_gas": 7.0995,
+    "lng": 0.2549,
+    "coal": 2.4437
+   },
+   "2025": {
+    "crude": 5.3753,
+    "products": 12.1839,
+    "pipeline_gas": 6.4746,
+    "lng": 0.0,
+    "coal": 3.0904
+   },
+   "2026": {
+    "crude": 2.0634,
+    "products": 7.3319,
+    "pipeline_gas": 4.6584,
+    "lng": 0.0,
+    "coal": 1.658
+   }
+  },
+  "TWN": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.6674,
+    "pipeline_gas": 0.0,
+    "lng": 1.0635,
+    "coal": 1.1164
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.5258,
+    "pipeline_gas": 0.0,
+    "lng": 0.857,
+    "coal": 1.4788
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 1.1738,
+    "pipeline_gas": 0.0,
+    "lng": 0.2154,
+    "coal": 1.0567
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 2.229,
+    "pipeline_gas": 0.0,
+    "lng": 0.1417,
+    "coal": 0.8917
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 2.4684,
+    "pipeline_gas": 0.0,
+    "lng": 0.1841,
+    "coal": 0.3231
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.3385,
+    "pipeline_gas": 0.0,
+    "lng": 0.0835,
+    "coal": 0.2925
+   }
+  },
+  "TZA": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0006
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0012
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0548,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0012
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0228,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0035
+   }
+  },
+  "UKR": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0116,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0078
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0284
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0025,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "URY": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0026
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0307,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "USA": {
+   "2021": {
+    "crude": 3.1678,
+    "products": 8.2688,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.173
+   },
+   "2022": {
+    "crude": 0.3979,
+    "products": 3.2628,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0517
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.1308,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "VEN": {
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0068
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0831,
+    "products": 0.0771,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0118,
+    "products": 0.9538,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0444,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "VIR": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0216,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "VNM": {
+   "2021": {
+    "crude": 0.0412,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.2684
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.3681
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0026,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.4946
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0121,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.6104
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.06,
+    "pipeline_gas": 0.0,
+    "lng": 0.0323,
+    "coal": 0.6536
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0849,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.8439
+   }
+  },
+  "YEM": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0327,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.2723,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.2407,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.3511,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.2659,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.1194,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   }
+  },
+  "ZAF": {
+   "2021": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0064
+   },
+   "2022": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.002
+   },
+   "2023": {
+    "crude": 0.0,
+    "products": 0.0862,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0418
+   },
+   "2024": {
+    "crude": 0.0,
+    "products": 0.0644,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0
+   },
+   "2025": {
+    "crude": 0.0,
+    "products": 0.0,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0132
+   },
+   "2026": {
+    "crude": 0.0,
+    "products": 0.0376,
+    "pipeline_gas": 0.0,
+    "lng": 0.0,
+    "coal": 0.0021
+   }
+  }
+ }
+}
