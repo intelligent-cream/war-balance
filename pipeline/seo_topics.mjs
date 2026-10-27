@@ -25,8 +25,11 @@ export const label = (key, l = "en") => measureName(l, key);
 const AMOUNT_PART = new Set(["frozen", "frozen_priv", "prem", "disc", "seized", "exits", "trapped", "aidge", "margin", "tariff"]);
 export const style = k => (k === "net" || k === "ua" ? "signed" : k === "rus" || k === "paidGain" ? "kept"
   : k.startsWith("part:") ? (AMOUNT_PART.has(k.slice(5)) ? "amount" : "signed") : "amount");
-// measures whose cell carries the panel's chance (checked against the model by check 48)
+// measures whose cell carries the panel's chance (checked against the model by check 48); only these have the map's
+// range words ("likely 2.6% to 5.0% toward Ukraine") too. Every other measure's range is written in its own figures
 export const CHANCE_KEYS = ["net", "ua", "rus"];
+// round 58: a part's side in the model (seo_extract.mjs partSide): ua, back, rus, frozen or cost
+export const sideOfKey = (rows, k) => { if (!k.startsWith("part:")) return ""; for (const c of rows) { const m = c.measures && c.measures[k]; if (m && m.partSide) return m.partSide; } return ""; };
 export const pathOf = e => (e.kind === "group" ? `/group/${e.slug}/` : e.kind === "compare" ? `/compare/${e.slug}/` : `/${e.slug}/`);
 const SIDES = new Set(["RUS", "UKR"]);   // the two sides the money is measured toward: no figure of their own
 
@@ -37,7 +40,7 @@ const list3 = a => list3L("en", a);
 const capSentences = s => s.replace(/(^|[.?!]\s+)the /g, "$1The ");
 
 // a measure's value for one country (null when it has none); with a year, that year's own amount (net, ua or rus)
-const YEAR_KEY = { ua: "uaBn", rus: "rusBn", net: "netBn" };
+const YEAR_KEY = { ua: "uaBn", rus: "rusBn", net: "netBn", frozen: "frozenBn" };
 export function mv(c, key, year) {
   if (key === "fuelShare") return c.fuelSharePreWar == null ? null : { v: c.fuelSharePreWar };
   if (year && YEAR_KEY[key]) { const r = (c.years || []).find(x => x.y === year); return r && r[YEAR_KEY[key]] != null ? { v: r[YEAR_KEY[key]], year, ytd: r.ytd } : null; }
@@ -144,7 +147,7 @@ export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en" }) 
   const totals = ["net", "ua", "rus", "frozen"].map(k => ({ key: k, ...sumOf(rows, k) }));
   const subtotals = (e.subtotals || []).filter(s => groups[s]).map(s => ({ slug: s, label: groups[s].label, n: subSet(s).length, sums: ["ua", "paid", "paidGain", "net"].map(k => ({ key: k, ...sumOf(subSet(s), k) })) }));
   return {
-    path: pathOf(e), kind: e.kind, slug: e.slug, label: e.label, key, sort, order: e.order || "desc", title, description, h1: fill(e.h1 || ""), intro: fill(e.intro || ""), year, side: e.side || "", moneyNote: e.moneyNote || "",
+    path: pathOf(e), kind: e.kind, slug: e.slug, label: e.label, key, keySide: sideOfKey(countries, key), sort, order: e.order || "desc", title, description, h1: fill(e.h1 || ""), intro: fill(e.intro || ""), year, side: e.side || "", moneyNote: e.moneyNote || "",
     // a column every listed country has nothing in (frozen money in the Gulf states) is left out
     columns: (e.columns || (e.kind === "group" ? ["ua", "rus", "frozen"] : [])).filter(k => k !== key && rows.some(c => mvY(c, k) && Math.abs(mvY(c, k).v) >= 0.0005)), rows, party, noData, sides, missing, extra,
     faq: (e.faq || []).map(x => ({ q: fill(x.q), a: fill(x.a) })), sections: (e.sections || []).map(s => ({ h2: s.h2 && fill(s.h2), p: (s.p || []).map(fill), list: (s.list || []).map(fill) })),
@@ -165,23 +168,49 @@ export function renderTopic(m, { esc, cPath, l = "en" }) {
   const cls = v => (v >= 0.0005 ? "pos" : v <= -0.0005 ? "neg" : "");
   // a short figure is kept on one line ("+€0.25bn"); a longer phrase may wrap
   const keep = x => (x.length <= 24 ? `<i>${esc(x)}</i>` : esc(x));
-  // a figure in the measure's own way of writing: "+1.8%", "€5.2bn more", "€547bn"
-  const say = (k, v, s, g = "") => { const st = style(k); if (Math.abs(v) < 0.0005 || /^(<|€0m|0\u00a0)/.test(s)) return s + g; return st === "kept" ? T("figKept", { s: s + g }, { x: v }) : (st === "signed" && !/^<?0[.,]01/.test(s) && !s.startsWith("<") ? fmtSigned(v) + s : s) + g; };
-  // a measure in its own cell: the main figure in the page's unit, the others beside it, then the range and chance
+  // a figure in the measure's own way of writing: "+1.8%", "€5.2bn more", "€547bn". Round 58 (owner: the part pages'
+  // numbers "make no sense"): every figure of a measure keeps its sign the same way (a signed figure "+" or "−", a plain
+  // sum "−" only when below zero), "0.01%" too; only a size under the smallest step ("<0.01%", "<€1", "€0m") has none
+  const say = (k, v, s, g = "") => {
+    const st = style(k);
+    if (Math.abs(v) < 0.0005 || s.startsWith("<") || /^(€0m|0\u00a0)/.test(s)) return s + g;
+    return st === "kept" ? T("figKept", { s: s + g }, { x: v }) : (st === "signed" ? fmtSigned(v) : v < 0 ? "−" : "") + s + g;
+  };
+  const inU = (c, v, u) => (u === "gdp" ? Pl((100 * v) / c.gdp) : u === "pp" ? PPl(pp(v, c.pop)) : El(v));
+  // a measure's likely range in its own figures and sign, low to high (round 58; the headline measures, which have a
+  // chance, keep the map's own range words)
+  const rangeOf = (c, k, x, u) => {
+    if (CHANCE_KEYS.includes(k)) return x.range || "";
+    if (x.lo == null || x.hi == null) return "";
+    // each figure marked (\u0001 … \u0002) to be kept on one line ("−€87m", not "−" at a line's end)
+    const lo = Math.min(x.lo, x.hi), hi = Math.max(x.lo, x.hi), f0 = v => inU(c, v, u), f = v => "\u0001" + f0(v) + "\u0002", g = u === "pp" ? " " + T("perPerson") : "";
+    if (hi - lo < 1e-9 || f0(lo) === f0(hi)) return "";
+    if (style(k) === "kept") {
+      if (lo >= 0) return T("rangeOf", { r: T("figKept", { s: T("rangeTo", { lo: f(lo), hi: f(hi) }) + g }, { x: 1 }) });
+      if (hi <= 0) return T("rangeOf", { r: T("figKept", { s: T("rangeTo", { lo: f(hi), hi: f(lo) }) + g }, { x: -1 }) });
+      return T("rangeOf", { r: T("rangeKeptMix", { more: f(lo) + g, less: f(hi) + g }) });
+    }
+    return T("rangeOf", { r: T("rangeTo", { lo: "\u0001" + say(k, lo, f0(lo)) + "\u0002", hi: "\u0001" + say(k, hi, f0(hi)) + "\u0002" }) + g });
+  };
+  // a measure in its own cell: the main figure in the page's unit, the others beside it, then (in the main cell) its
+  // range, and its chance where the map gives the measure one. Round 58: no words that every row repeats (the part's
+  // name is the column's, said once above the table)
   const cell = (c, k, main) => {
     const x = mv(c, k, m.year);
     const yr = m.year && YEAR_KEY[k] ? ` data-year="${m.year}"` : "";
-    if (!x) return `<td class="m" data-q="${k}"${yr}>–</td>`;
-    if (k === "fuelShare") return `<td class="m" data-q="${k}"><b>${Math.round(x.v * 100)}%</b><span class="s">${esc(T("fuelShare"))}</span></td>`;
+    if (!x || (!main && Math.abs(x.v) < 0.0005 && k !== "fuelShare")) return `<td class="m" data-q="${k}"${yr}>–</td>`;
+    // (round 58: the column's name says what the share is of; no words repeated in every row)
+    if (k === "fuelShare") return `<td class="m" data-q="${k}"><b>${Math.round(x.v * 100)}%</b></td>`;
     const pct = c.gdp ? (100 * x.v) / c.gdp : null, per = pp(x.v, c.pop);
-    const f = { gdp: pct == null ? "" : say(k, x.v, Pl(pct)), eur: say(k, x.v, El(x.v)), pp: per == null ? "" : say(k, x.v, PPl(per) + " " + T("perPerson")) };
+    const f = { gdp: pct == null ? "" : say(k, x.v, Pl(pct)), eur: say(k, x.v, El(x.v)), pp: per == null ? "" : say(k, x.v, PPl(per), " " + T("perPerson")) };
     const unit = main ? m.sort : "eur", first = f[unit];
     const rest = ["gdp", "eur", "pp"].filter(u => u !== unit && f[u] && (main || u === "gdp")).map(u => (u === "gdp" ? say(k, x.v, Pl(pct), " " + T("ofGdp")) : f[u]));
-    const words = [x.range, x.chance].filter(Boolean).join(" · ");
-    return `<td class="m" data-q="${k}"${yr}${x.level ? ` data-level="${x.level}"` : ""}><b class="${style(k) !== "amount" ? cls(x.v) : ""}">${esc(first)}</b><span class="s">${rest.map(keep).join(" · ")}</span>${main && words ? `<span class="s">${esc(words)}</span>` : ""}${main && x.name && k.startsWith("part:") ? `<span class="s">${esc(x.name)}</span>` : ""}${!main && x.chance ? `<span class="s">${esc(x.chance)}</span>` : ""}</td>`;
+    const rg = main && !m.year ? rangeOf(c, k, x, unit) : "", ch = x.chance || "";
+    const data = ` data-v="${+x.v.toFixed(6)}"` + (main ? `${!m.year && x.lo != null && x.hi != null && !CHANCE_KEYS.includes(k) ? ` data-lo="${+Math.min(x.lo, x.hi).toFixed(6)}" data-hi="${+Math.max(x.lo, x.hi).toFixed(6)}"` : ""}` : "");
+    return `<td class="m" data-q="${k}"${yr}${x.level ? ` data-level="${x.level}"` : ""} data-st="${style(k)}"${data}><b class="${style(k) !== "amount" ? cls(x.v) : ""}">${esc(first)}</b><span class="s">${rest.map(keep).join(" · ")}</span>${rg ? `<span class="s rg">${esc(rg).replace(/\u0001/g, "<i>").replace(/\u0002/g, "</i>")}</span>` : ""}${ch ? `<span class="s ch">${esc(ch)}</span>` : ""}</td>`;
   };
   const head = `<thead><tr><th>#</th><th>${esc(T("country"))}</th><th class="m">${esc(lab(m.key))}</th>${m.columns.map(k => `<th class="m">${esc(lab(k))}</th>`).join("")}</tr></thead>`;
-  const row = (c, i) => `<tr data-iso="${c.iso}"><td class="r">${i == null || m.kind === "compare" ? "" : i + 1}</td><td><a href="${cPath(c)}">${esc(name(c))}</a>${c.gdp < 5 ? ` <span class="ev">${esc(T("small"))}</span>` : ""}</td>${cell(c, m.key, true)}${m.columns.map(k => cell(c, k, false)).join("")}</tr>`;
+  const row = (c, i) => `<tr data-iso="${c.iso}" data-gdp="${c.gdp}"${c.pop ? ` data-pop="${c.pop}"` : ""}><td class="r">${i == null || m.kind === "compare" ? "" : i + 1}</td><td><a href="${cPath(c)}">${esc(name(c))}</a>${c.gdp < 5 ? ` <span class="ev">${esc(T("small"))}</span>` : ""}</td>${cell(c, m.key, true)}${m.columns.map(k => cell(c, k, false)).join("")}</tr>`;
   const tot = m.kind === "group" && m.rows.length ? `<div class="tot" aria-label="${esc(T("groupTotals"))}">${m.totals.filter(t => t.n && Math.abs(t.v) >= 0.0005).map(t => {
     const what = t.key === "rus" ? T("totRus", { v: El(t.v) }, { x: t.v }) : t.key === "ua" ? T("totUa", { v: El(t.v) }) : t.key === "frozen" ? T("totFrozen", { v: El(t.v) }) : T("totNet", { v: El(t.v) }, { x: t.v });
     return `<div data-total="${t.key}"><span>${esc(lab(t.key))}</span><b class="${cls(t.v)}">${esc(say(t.key, t.v, Pl(t.pct)))}</b><span>${[T("ofCombined"), what, t.key === "net" || t.key === "ua" ? say(t.key, t.v, PPl(pp(t.v, t.pop))) + " " + T("perPerson") : ""].filter(Boolean).map(keep).join(" · ")}</span></div>`;
@@ -193,18 +222,26 @@ export function renderTopic(m, { esc, cPath, l = "en" }) {
     m.kind === "group" && m.noData.length ? `<h2 id="no-data">${esc(T("noData"))}</h2><p class="sub">${esc(T("noDataText"))} ${m.noData.map(c => `<a href="${cPath(c)}">${esc(name(c))}</a>`).join(", ")}</p>` : "",
     m.extra.length ? `<h2 id="outside">${esc(T("outside"))}</h2><div class="tbl"><table>${head}<tbody>${m.extra.map(c => row(c, null)).join("")}</tbody></table></div>` : "",
   ].join("\n");
-  // the order of the table, said neutrally (round 57: no "largest first")
-  const O = T("order"), st0 = style(m.key), ord = m.order === "abs" ? O.bySize : m.order === "asc" ? (st0 === "kept" ? O.keptMoreLess : st0 === "amount" ? O.bySize : O.ruUa) : st0 === "kept" ? O.keptLessMore : m.key === "net" ? O.uaRu : O.hiLo;
-  const legend = [...new Set([m.key, ...m.columns].map(style))].map(st => (st === "kept" ? T("legendKept") : st === "signed" ? T("legendSigned") : "")).filter(Boolean);
+  // the order of the table, said neutrally (round 57: no "largest first"). Round 58: in the words of the measure's own
+  // side: money flowing back is subtracted from support, so its table runs from the most subtracted ("asc" on the
+  // signed value); a plain sum runs high to low or low to high; a signed measure from one side to the other
+  const O = T("order"), st0 = style(m.key), side0 = m.keySide;
+  const ord = m.order === "abs" ? O.bySize : side0 === "back" ? O.back
+    : m.order === "asc" ? (st0 === "kept" ? O.keptMoreLess : st0 === "amount" ? O.loHi : O.ruUa)
+    : st0 === "kept" ? O.keptLessMore : st0 === "amount" || side0 === "ua" || m.key === "ua" ? O.hiLo : O.uaRu;
+  // what the signs mean, once for the table: support (+ more, − less than without the war), money flowing back (−:
+  // subtracted from support), the net and trade parts (+ toward Ukraine, − toward Russia), what Russia kept (more or less)
+  const legendOf = k => { const st = style(k), sd = sideOfKey(m.rows, k); return st === "kept" ? "legendKept" : st !== "signed" ? "" : sd === "back" ? "legendBack" : sd === "ua" || k === "ua" ? "legendUa" : "legendSigned"; };
+  const legend = [...new Set([m.key, ...m.columns].map(legendOf))].filter(Boolean).map(x => T(x));
   const rankNote = `${m.year ? T("rankByYear", { m: lab(m.key), unit: T("unit")[m.sort], order: ord, y: m.yearL || m.year }) : T("rankBy", { m: lab(m.key), unit: T("unit")[m.sort], order: ord, to: m.dataToL || "" })}${m.kind !== "group" && m.minGdp > 0 ? " " + T("minGdp", { gdpMin: El(m.minGdp) }) : ""} ${legend.length ? cap1(legend.join("; ")) + "." : ""}`;
   return `${tot}
 ${subs}
 <h2 id="table">${esc(m.kind === "group" ? T("members") : T("ranking"))} · ${m.rows.length}</h2>
-<p class="sub">${esc(rankNote.trim())}</p>
+<p class="sub" data-note="order">${esc(rankNote.trim())}</p>
 ${m.side === "cost" ? `<p class="sub">${esc(T("notInTotals"))}</p>` : ""}
 ${m.notes.map(n => `<p class="sub">${esc(n)}</p>`).join("")}
-<div class="tbl"><table class="topic">${head}<tbody>${m.rows.map(row).join("")}</tbody></table></div>
-<p class="sub">${esc(m.year ? T("eachRowYear") : T("eachRow"))}</p>
+<div class="tbl"><table class="topic" data-order="${m.order}" data-sort="${m.sort}" data-key="${m.key}"${side0 ? ` data-side="${side0}"` : ""}>${head}<tbody>${m.rows.map(row).join("")}</tbody></table></div>
+<p class="sub">${esc(m.year ? T("eachRowYear") : CHANCE_KEYS.includes(m.key) ? T("eachRow") : T("eachRowPart"))}</p>
 ${others}
 ${m.sections.map(s => `${s.h2 ? `<h2>${esc(s.h2)}</h2>` : ""}${s.p.map(p => `<p>${esc(p)}</p>`).join("")}${s.list.length ? `<ul class="bul">${s.list.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}`).join("\n")}
 ${m.faq.length ? `<section class="faq"><h2>${esc(T("questions"))}</h2>${m.faq.map(x => `<h3>${esc(x.q)}</h3><p>${esc(x.a)}</p>`).join("\n")}</section>` : ""}`;

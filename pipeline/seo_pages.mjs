@@ -21,7 +21,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { extractSite, extractDocs } from "./seo_extract.mjs";
 import * as T from "./seo_templates.mjs";
-import { buildTopic, renderTopic, TOPIC_CSS, pathOf, mv } from "./seo_topics.mjs";
+import { buildTopic, renderTopic, TOPIC_CSS, pathOf, mv, style } from "./seo_topics.mjs";
 import { partEntries, yearEntries, compareEntries } from "./seo_families.mjs";
 import * as I from "./seo_i18n.mjs";
 import { countryDyn, plainText, mapRank, rankable, sameRegion, similarOf } from "./seo_country.mjs";
@@ -441,7 +441,9 @@ ${foot("en")}`;
 
   // ----- the topic and group pages (round 55) and the generated families (round 56), in every language -----
   const moneyNote = (l, m) => I.s(l, m.moneyNote === "mil" || m.key === "part:mil" || m.key === "armed" || m.columns.includes("part:mil") ? "moneyMil" : "moneyOnly");
-  const topV = (l, m) => { const c = m.rows[0]; if (!c) return ""; const x = mv(c, m.key, m.year); if (!x) return ""; const v = m.sort === "eur" ? I.E(l, x.v) : m.sort === "pp" ? (c.pop ? I.PP(l, (x.v * 1000) / c.pop) + " " + I.s(l, "perPerson") : "") : I.P(l, (100 * x.v) / c.gdp); return v; };
+  // the first row's figure (round 58: with its sign, as in the table, for a signed measure or a sum below zero)
+  const topV = (l, m) => { const c = m.rows[0]; if (!c) return ""; const x = mv(c, m.key, m.year); if (!x) return ""; const v = m.sort === "eur" ? I.E(l, x.v) : m.sort === "pp" ? (c.pop ? I.PP(l, (x.v * 1000) / c.pop) + " " + I.s(l, "perPerson") : "") : I.P(l, (100 * x.v) / c.gdp);
+    const st = style(m.key), sg = v.startsWith("<") || Math.abs(x.v) < 0.0005 ? "" : st === "signed" ? (x.v > 0 ? "+" : "−") : st === "amount" && x.v < 0 ? "−" : ""; return sg + v; };
   const capThe = x => String(x || "").replace(/(^|[.?!]\s+)the /g, "$1The ");
   const rowName = (l, c) => I.inSentence(l, c.name);
   const famRelated = e => {
@@ -507,7 +509,8 @@ ${foot(l)}`;
       const keys = [];
       for (const c of [a, b]) for (const sec of c.sections || []) for (const p of sec.parts) if (!keys.find(k => k.k === p.k)) keys.push({ k: p.k, q: sec.q });
       keys.sort((x, y) => ["ua", "rus", "frozen"].indexOf(x.q) - ["ua", "rus", "frozen"].indexOf(y.q));
-      const pv = (c, k) => { const x = mv(c, "part:" + k); if (!x || Math.abs(x.v) < 0.0005) return `<td class="m" data-q="part:${k}" data-iso="${c.iso}">–</td>`; const sgn = x.v > 0 ? "+" : x.v < 0 ? "−" : ""; return `<td class="m" data-q="part:${k}" data-iso="${c.iso}"><b class="${x.v > 0 ? "pos" : "neg"}">${esc((k.startsWith("frozen") ? "" : sgn) + I.E(l, x.v))}</b><span class="s"><i>${esc(I.P(l, (100 * x.v) / c.gdp) + " " + I.s(l, "ofGdp"))}</i></span></td>`; };
+      // round 58: the share of GDP keeps the sign of the euros (a size under 0.01% has none)
+      const pv = (c, k) => { const x = mv(c, "part:" + k); if (!x || Math.abs(x.v) < 0.0005) return `<td class="m" data-q="part:${k}" data-iso="${c.iso}">–</td>`; const sgn = k.startsWith("frozen") ? "" : x.v > 0 ? "+" : x.v < 0 ? "−" : "", P0 = I.P(l, (100 * x.v) / c.gdp); return `<td class="m" data-q="part:${k}" data-iso="${c.iso}" data-st="${k.startsWith("frozen") ? "amount" : "signed"}"><b class="${x.v > 0 ? "pos" : "neg"}">${esc(sgn + I.E(l, x.v))}</b><span class="s"><i>${esc((P0.startsWith("<") ? "" : sgn) + P0 + " " + I.s(l, "ofGdp"))}</i></span></td>`; };
       const partsTable = keys.length ? `<h2 id="parts">${esc(I.s(l, "theParts"))}</h2><div class="tbl"><table><thead><tr><th>${esc(I.s(l, "measure"))}</th><th class="m">${esc(a.name)}</th><th class="m">${esc(b.name)}</th></tr></thead><tbody>${keys.map(({ k }) => `<tr><td>${esc(I.partName(l, k))}</td>${pv(a, k)}${pv(b, k)}</tr>`).join("")}</tbody></table></div><p class="sub">${esc(I.s(l, "legendSigned"))}</p>` : "";
       const yr = c => Object.fromEntries((c.years || []).map(y => [y.y, y]));
       const ya = yr(a), yb = yr(b), ys = [...new Set([...Object.keys(ya), ...Object.keys(yb)])].sort();
@@ -525,7 +528,7 @@ ${line ? `<p>${esc(line)}</p>` : ""}
 <p><a class="btn" href="${home(l)}#${e.a}">${esc(a.name)} →</a> <a class="btn" href="${home(l)}#${e.b}">${esc(b.name)} →</a></p>
 <p class="note">${esc(I.s(l, "moneyOnly"))}</p>
 <h2 id="side-by-side">${esc(I.s(l, "sideBySide"))}</h2>
-${renderTopic(m, { esc, cPath: c => cPath(c, l), l }).replace(/<h2 id="table">[^<]*<\/h2>\n<p class="sub">[^<]*<\/p>\n/, "")}
+${renderTopic(m, { esc, cPath: c => cPath(c, l), l }).replace(/<h2 id="table">[^<]*<\/h2>\n<p class="sub"[^>]*>[^<]*<\/p>\n/, "")}
 ${partsTable}
 ${yearTable}
 <h2 id="related">${esc(I.s(l, "related"))}</h2><ul class="rel"><li><a href="${cPath(byIso[e.a], l)}">${esc(a.name)}</a></li><li><a href="${cPath(byIso[e.b], l)}">${esc(b.name)}</a></li>${groupsBoth.concat(others).map(x => `<li><a href="${lp(l, pathOf(x))}">${esc(labelOf(x, l))}</a></li>`).join("")}<li><a href="${hub}">${esc(I.s(l, "allTopics"))}</a></li></ul>
