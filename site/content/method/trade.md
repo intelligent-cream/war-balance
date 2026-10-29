@@ -27,8 +27,20 @@ Each flow is compared with its expected no-war level, usually 2021 at pre-war pr
 |---|---|---|
 | bought from Russia | less or more paid to Russia | Russia's net gain on that mix of goods |
 | sold to Russia | income lost or gained | seller's net gain × genuinely extra |
-| bought from Ukraine | extra purchases from Ukraine | Ukraine's net gain; a fall is not held against a country |
+| bought from Ukraine | bought more or less from Ukraine than without the war | Ukraine's net gain; more counts for a country, less against it, against what Ukraine could export |
 | sold to Ukraine | extra sales to Ukraine | seller's net gain × genuinely extra, subtracted as money flowing back |
+
+### Purchases from Ukraine, both ways
+
+Purchases from Ukraine count both ways, like purchases from Russia (round 60): buying more than without the war counts toward Ukraine, buying less toward Russia, each at Ukraine's net gain on what it sells (2 to 7 cents per euro), so a shortfall of EUR 10bn counts as about EUR 0.5bn.
+
+**The no-war level takes out Ukraine's own losses.** Ukraine could not sell what it could not make or ship: its ports were blocked in 2022, farmland was occupied and the steel works of Mariupol were destroyed. In 2023 it exported 27% of its 2021 steel and 28% of its iron ore, but 77% of its grain and all its oilseeds. So each buyer's 2021 purchases are scaled, product group by group (grain, oilseeds, other food, iron ore, steel, other metals, wood, machinery, chemicals, other), by what Ukraine actually exported of that group each year against 2021: the **supply factor**. A country that kept its pre-war share of what Ukraine could still sell is neutral; one that took more helped Ukraine; one that took less (an import ban, a switch to other suppliers) counts the other way. The war's damage to Ukraine's exports is held against no one. Poland (+EUR 0.41bn<!-- n:POL.part_buy -->), Germany and Türkiye kept buying close to their 2021 amounts while Ukraine's exports fell; China (−EUR 0.57bn<!-- n:CHN.part_buy abs -->) and India bought far less of what Ukraine could sell.
+
+**Bans are measured against the no-war level.** Poland, Hungary and Slovakia have banned some Ukrainian farm goods (wheat, maize, rapeseed, sunflower seed) since September 2023. Before the war they bought almost none of them (Poland EUR 47m in 2021), so against a world without the war the bans change little (Poland about −EUR 0.01bn at Ukraine's gain). What they ended was the extra trade of 2022–2023, which counted for these countries in those years.
+
+**Belarus** bought almost nothing from Ukraine after the invasion, because Ukraine stopped trading with it. That counts (−EUR 0.16bn<!-- n:BLR.part_buy abs -->): Ukraine's embargo is a foreseeable answer to Belarus hosting the invasion, as Russia's gas cut-offs are counted for the buyers of Russian gas.
+
+**How sure.** The range keeps the measured band of the no-war level, applied to the lower expected level, and it is wide (China −3.4 to +0.2bn). The method band holds the other reasonable choice: the land neighbours (Poland, Hungary, Slovakia, Romania, Moldova) measured against Ukraine's exports to its neighbours and everyone else against its exports to the rest, which treats the overland rerouting of 2022 as forced. It lowers the neighbours' credit (Poland about −0.2bn instead of +0.4bn) and raises distant buyers'. The EU opened the land routes on purpose (Solidarity Lanes, duty-free access), so those purchases were partly a choice, and the central value uses all of Ukraine's exports.
 
 ## Profit, not revenue
 
@@ -90,8 +102,33 @@ Denmark's sales to Russia sit between Danish and Eurostat figures. Small-country
 
 ## Sanctions-mandated or own choice
 
-A **label only**; totals do not change. For 42 economies with sanctions, it estimates which share of each cut was required by bans (EU Regulation 833/2014 and national regimes). A ban counts as "required" only for what was still flowing when it took effect: a fuel a country stopped before the ban was its own choice. Required share of the fall, 2022–2026: Lithuania 21%, Finland 27%, Poland 38%, Germany 30%. Poland's pipeline crude, which Russia halted in February 2023, is labelled as cut off by Russia, like the gas Gazprom cut off. For a gas cut after 2022 (Austria 2024, the end of transit through Ukraine in 2025), only the gas still flowing the year before counts as cut off by Russia: about 4% of Italy's fall, 30% of Austria's.
+A **label only**; totals do not change. For 42 economies with sanctions, it estimates which share of each cut was required by bans (EU Regulation 833/2014 and national regimes). A ban counts as "required" only for what was still flowing when it took effect: a fuel a country stopped before the ban was its own choice. Required share of the fall, 2022–2026: Lithuania 21%, Finland 27%, Poland 38%, Germany 30%. Poland's pipeline crude, which Russia halted in February 2023, is labelled as cut off by Russia, like the gas Gazprom cut off. For a gas cut after 2022 (Austria 2024 by Gazprom; the end of transit through Ukraine in 2025, which was Ukraine's decision not to renew its contract), only the gas still flowing the year before is labelled as stopped: about 4% of Italy's fall, 30% of Austria's.
 
 ## The sanctions premium
 
 Sanctions make Russia pay more for what it still buys: the same goods cost Russia more than the same seller charges others. Until round 38 the map read that higher price as more volume, counted at the thin margin of an ordinary sale. Since round 39 it is measured: each seller's unit values to Russia against the same goods to everyone else, against 2021 (UN Comtrade, by product, fuel and gold left out). The premium comes off the seller's sales to Russia, and the part that really stays with the seller (not compliance and payment costs, changes in the mix, over-invoicing or Russian-owned front companies; about half for producers, a quarter for trade hubs) is a part toward Russia. About EUR 23bn (5 to 74) in all, mostly China (+0.1% of GDP toward Russia), then Türkiye, Kazakhstan and Uzbekistan. Re-exports keep their hub margin instead, so nothing is counted twice.
+
+## Russia's gain and the country's own gain
+
+"Russia's earnings from trade" adds two different things, so the data split it in two lines per country and year, each with its own range: **Russia's own gain**, what Russia itself kept more or less, and **the country's own gain from Russia**, what the country's firms and state earned from selling to Russia. Both stay in the total: a country that earns more from Russia's war economy counts toward Russia, as a seller to Ukraine counts toward Ukraine's side. The two lines add up to Russia's earnings from trade; their ranges do not add up.
+
+| part | line |
+|---|---|
+| Less or more paid to Russia (fuel and goods Russia sold) | Russia's gain |
+| War-time fuel prices (the windfall, after any discount) | Russia's gain |
+| Russian oil via other countries | Russia's gain |
+| Services bought from Russia | Russia's gain |
+| Taxes paid in Russia by the country's companies | Russia's gain |
+| Profits sent home by Russian-owned firms in the country | Russia's gain |
+| Weapons bought from Russia; Wagner and the Africa Corps | Russia's gain |
+| Rosatom and Russian state loans | Russia's gain |
+| Gold and hidden payments to Russia | Russia's gain |
+| Weapons and troops given to Russia (the unpaid share) | Russia's gain |
+| Sales to Russia, and the sanctions premium on them | country's own gain |
+| Services sold to Russia (tourism, business services) | country's own gain |
+| Shipping and insuring Russian oil, tankers sold to the shadow fleet | country's own gain |
+| Payment agents' fees | country's own gain |
+| Its companies' profits in Russia and stakes in Russian oil and gas projects | country's own gain |
+| Weapons sold to Russia (the paid share) | country's own gain |
+
+Examples, 2022 to August 2026: China raised Russia's own gain by EUR 102.6bn<!-- n:CHN.rusPaidEur abs --> and earned EUR 25.3bn<!-- n:CHN.rusEarnedEur abs --> more from Russia itself; Germany cut Russia's own gain by EUR 64.6bn<!-- n:DEU.rusPaidEur --> and gave up EUR 8.0bn<!-- n:DEU.rusEarnedEur --> of its own earnings; most of Greece's figure is its own gain (EUR 1.26bn<!-- n:GRC.rusEarnedEur abs --> toward Russia, mostly tankers sold to the shadow fleet), while Russia's own gain from Greece moved by EUR 0.29bn<!-- n:GRC.rusPaidEur abs -->. In `data.json` the lines are `rusGain` and `ownGain` (`years`: each year's change; `cum`: the total to each year with its range, EUR bn).

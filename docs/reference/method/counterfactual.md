@@ -445,4 +445,4 @@ Rounds 44–50 used one rule, fixed before any result: a model replaces the curr
 
 ## 9. The widest case: Belarus
 
-Belarus's 2021 imports from Russia (about EUR 18bn a year) are held flat, and the honest random-walk error on a flow that large is wide enough to cross zero: its net is −3.60%<!-- n:BLR.net --> of GDP, likely −13.28%<!-- n:BLR.netLo --> to +7.34%<!-- n:BLR.netHi --> ([limitations.md](https://warbalance.org/#view=how&sec=limitations)). Belarus is a party to the war and not ranked.
+Belarus's 2021 imports from Russia (about EUR 18bn a year) are held flat, and the honest random-walk error on a flow that large is wide enough to cross zero: its net is −3.83%<!-- n:BLR.net --> of GDP, likely −13.53%<!-- n:BLR.netLo --> to +7.11%<!-- n:BLR.netHi --> ([limitations.md](https://warbalance.org/#view=how&sec=limitations)). Belarus is a party to the war and not ranked.

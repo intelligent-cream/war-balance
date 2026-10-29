@@ -24,7 +24,7 @@ Every one of the 231 entries in `site/data.json` has the fields below. `src` alw
 | category | n | entries |
 |---|---|---|
 | `eu_member` | 27 | the EU27 |
-| `adopts_eu_measures` | 10 | ALB, AND, BIH (partial), CHE, ISL, MDA (partial), MKD, MNE, NOR, SMR |
+| `adopts_eu_measures` | 11 | ALB, AND, BIH (partial), CHE, ISL, MDA (partial), MKD, MNE, NOR, SMR, XKX (partial; added in round 60) |
 | `own_regime` | 9 | USA, GBR, CAN, AUS, NZL, JPN, KOR (export controls and financial measures), SGP (export controls and financial measures), TWN (export controls only) |
 | `financial_directive_only` | 1 | BHS: regulators told banks not to deal with people sanctioned by the US, UK, EU or Canada; it has no list of its own |
 | `no_own_regime_stated` | 9 | CHN, IND, TUR, ARE, BRA, KAZ, GEO, SRB, HKG |
@@ -115,3 +115,7 @@ Each one should be re-checked against the official page before it is quoted word
 - **Micronesia:** cut diplomatic ties on 25 February 2022 and is on Russia's list. No sanctions measures of its own were found.
 - **Belarus, Iran, North Korea, Syria and others:** coded `no_own_regime_found`, which is accurate but bare. Pages for Belarus should add that it is itself under Western sanctions.
 - **The site's existing lists differ:** `site/index.html` (`OWN_REGIME`, `ALIGNED`) and `pipeline/build_data.py` (`STRIKE_EMBARGO`) use narrower sets. `OWN_REGIME` covers USA, GBR, JPN, CAN, AUS, NZL and KOR; `ALIGNED` covers CHE, LIE, NOR, ISL, MNE, ALB, MKD, BIH and MDA. Round 58 adds SGP, TWN, AND, SMR and BHS as having measures. It does not change those files.
+
+## Round 60: Kosovo added
+
+Kosovo (XKX) joined the map in round 60 (it had been left out because it has no ISO or UN M49 numeric code). Its entry was added by hand from `kosovo_r60.json`, not by `sanctions_r58.py`; rerunning the script needs Kosovo's sources added to it, or the entry is lost. Kosovo's government adopted sanctions on 25 February 2022 (asset freezes and travel bans in line with the EU and the US; Exit News) and widened them on 16 May 2022 to Russia and Belarus, including a ban on goods from both (Anadolu Agency); later packages followed EU measures. Kosovo is not invited to the EU High Representative's alignment statements, so `eu_aligned` is `adopts_eu_measures_partial` with `in_hr_statement_2026_508` false. Russia does not recognise Kosovo and does not name it on its unfriendly list. Both sources are press reports (`type: news`); the government decisions themselves were not opened. Summary counts now cover 232 entries.

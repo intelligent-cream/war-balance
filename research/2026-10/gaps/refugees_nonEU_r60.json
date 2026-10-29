@@ -1,0 +1,1954 @@
+{
+ "generated": "2026-10-29",
+ "round": 60,
+ "method": "Non-EU hosts that refugees.json costs as UNHCR's broad count x 0.152 x GDP per head (a rate calibrated on EU hosts' budgets) are rebuilt from the people the host actually protects or supports, at a cost rate that fits non-EU hosts. (1) People: temporary protection holders or equivalent where published (Montenegro, Serbia, North Macedonia, Albania); Georgia from its cash-assistance caseload and budgets; every other middle-income non-EU host keeps UNHCR's count (refugees + asylum seekers) with a wide range, x0.15 / x0.5 / x1.0, because in the hosts with both figures only 1-15% of UNHCR's count held protection or support. (2) Cost per supported person-year = k x GDP per head, k = 0.02 / 0.055 / 0.152 (low / central / high): Moldova's own spending is ~k 0.02 of its refugee count, Montenegro's 2022 appropriation ~0.04 per protection holder, Georgia's cash programme ~0.10 per beneficiary; the central is their geometric middle, the high end is the EU hosts' central rate (no non-EU host spends more per person than the EU middle). These are the host's own costs: UN, EU and NGO-funded aid is not included, so no donor share is taken off. Moldova keeps its budget figures (round4b); Belarus stays a label; high-income hosts (Israel, Korea, Chile, Uruguay, New Zealand, Iceland, Liechtenstein, EU, EFTA, UK, US, Canada, Japan, Australia) are unchanged.",
+ "k_non_eu": {
+  "low": 0.02,
+  "central": 0.055,
+  "high": 0.1524,
+  "evidence": [
+   "mda_r4b",
+   "mne_budget",
+   "geo_mof"
+  ]
+ },
+ "unhcr_share_generic": {
+  "low": 0.15,
+  "central": 0.5,
+  "high": 1.0
+ },
+ "sources": {
+  "unhcr_mne_fs": {
+   "name": "UNHCR Montenegro fact sheet, February 2024: some 10,000 refugees from Ukraine received temporary protection as of 25 December 2023 (UNHCR's broad count: 40,508 refugees from Ukraine, mid-2023)",
+   "url": "https://www.ecoi.net/en/file/local/2105713/bi-annual-fact-sheet-2024-02-montenegro.pdf",
+   "date": "2024-02"
+  },
+  "un_mne_2024": {
+   "name": "UN Montenegro, 1 June 2024: nearly 5,000 people from Ukraine currently hold temporary protection; more than 60,000 Ukrainians hold other residence (short stays, residence permits)",
+   "url": "https://montenegro.un.org/en/270904-montenegro-extends-temporary-protection-ukrainian-refugees-until-2025",
+   "date": "2024-06-01"
+  },
+  "ifrc_mne": {
+   "name": "IFRC Emergency Appeal Montenegro (MDRME018) final report: since the start of 2025, 2,529 people from Ukraine applied for temporary protection and 5,487 requested an extension (Government of Montenegro, 29 December 2025)",
+   "url": "https://go-api.ifrc.org/api/DownloadFile/93971/PME018_Montenegro_Final_Report",
+   "date": "2026"
+  },
+  "mne_budget": {
+   "name": "Government of Montenegro, 31 March 2022: up to EUR 2m redirected to the Ministry of Interior's coordination body for the reception and care of people under temporary protection (SEECheck)",
+   "url": "https://seecheck.org/?p=5270",
+   "date": "2022-04"
+  },
+  "unhcr_mkd_fs": {
+   "name": "UNHCR North Macedonia fact sheet, September 2024: 45 refugees from Ukraine granted temporary protection and residence on humanitarian grounds (UNHCR count 19,187)",
+   "url": "https://www.ecoi.net/en/file/local/2121012/bi-annual-fact-sheet-2024-09-north-macedonia.pdf",
+   "date": "2024-09"
+  },
+  "ifrc_mkd": {
+   "name": "IFRC Emergency Appeal North Macedonia (MDRMK024) final report: the August 2023 temporary protection decision had not been implemented by the end of 2024",
+   "url": "https://go-api.ifrc.org/api/DownloadFile/93972/PMK024_North Macedonia_Final_Report",
+   "date": "2025"
+  },
+  "aida_srb": {
+   "name": "AIDA country report Serbia, 2024 update (ECRE): 375 people (355 Ukrainians) granted temporary protection in 2024, 709 extensions (672 Ukrainians); 1,166 Ukrainians granted by 1 March 2023",
+   "url": "https://ecre.org/aida-country-report-on-serbia-update-on-2024/",
+   "date": "2025"
+  },
+  "bgcentar_srb": {
+   "name": "Belgrade Centre for Human Rights: 1,500-2,000 people with temporary protection present in Serbia in 2024",
+   "url": "https://www.bgcentar.org.rs/en/wp-json/wp/v2/posts/8718",
+   "date": "2025"
+  },
+  "kirs_srb": {
+   "name": "Serbian Commissariat for Refugees and Migration (early 2023): 148,000 Ukrainians transited, 26,000 registered residence, about 4,500 in private accommodation in contact with the Commissariat",
+   "url": "https://kirs.gov.rs/eng/aktuelno/148000-citizens-of-ukraine-have-transited-through-the-republic-of-serbia-since-the-beginning-of-the-conflict-in-ukraine/4194",
+   "date": "2023"
+  },
+  "alb_moi": {
+   "name": "Albania Interior Minister, March 2022: 351 Ukrainians granted temporary protection (Exit News)",
+   "url": "https://exit.al/en/351-ukrainians-sheltering-in-albania-per-interior-minister",
+   "date": "2022-03"
+  },
+  "alb_unhcr_upr": {
+   "name": "UNHCR submission for Albania's UPR, 47th session: ~42,000 refugees from Ukraine entered to end-2023, 38,268 left; 3,802 present end-March 2024; they could stay a year without a residence permit or apply for temporary protection",
+   "url": "https://www.refworld.org/sites/default/files/2024-11/albania_unhcr_submission_for_upr_47th_session.pdf",
+   "date": "2024-11"
+  },
+  "geo_unhcr": {
+   "name": "UNHCR Help Georgia: government support GEL 300 per family and GEL 45 per person per month (Decree 1254 from 1 August 2023, extended)",
+   "url": "https://help.unhcr.org/georgia/protection-for-arrivals-from-ukraine",
+   "date": "2025"
+  },
+  "geo_mof": {
+   "name": "Georgia Ministry of Finance, 2023 budget execution (via search summary): Ukrainian beneficiaries 1,795 families / 3,420 persons (January 2023), 2,061 / 3,929 (February), 206 / 339 (September)",
+   "url": "https://www.mof.ge/en/",
+   "date": "2024"
+  },
+  "geo_tbilisi": {
+   "name": "Tbilisi City Hall hotel programme for Ukrainian refugees, 2022: GEL 11m spent, about GEL 14m by its end (1TV)",
+   "url": "https://1tv.ge/lang/en/news/tbilisi-city-hall-concludes-program-for-ukrainian-refugees/",
+   "date": "2022"
+  },
+  "geo_imedi": {
+   "name": "Imedi, 27 December 2025: the government extends GEL 300 per family and GEL 45 per person to April 2026",
+   "url": "https://imedi.ge/en/politics/8189/georgian-govt-extends-financial-assistance-for-ukrainian-citizens-in-georgia-until-april-2026",
+   "date": "2025-12-27"
+  },
+  "tur_aida": {
+   "name": "AIDA Türkiye: Ukrainians apply for international protection (not the temporary protection regime used for Syrians); most hold ordinary residence permits",
+   "url": "https://asylumineurope.org/reports/country/turkiye/asylum-procedure/differential-treatment-specific-nationalities-procedure/",
+   "date": "2025"
+  },
+  "unhcr_api": {
+   "name": "UNHCR Refugee Data Finder API, population v1, coo=UKR (refugees + asylum seekers), end-year",
+   "url": "https://api.unhcr.org/population/v1/population/?year=2025&coo=UKR&coa_all=true",
+   "date": "2026-10-17"
+  },
+  "mda_r4b": {
+   "name": "Moldova's own refugee spending (round4b, refugees_net.json): EUR 6-20m a year for 73,000-142,000 refugee person-years",
+   "url": "https://www.unhcr.org/md/en/news/press-releases/four-years-full-scale-invasion-refugees-ukraine-moldova-still-need-protection",
+   "date": "2026-02"
+  }
+ },
+ "countries": {
+  "MNE": {
+   "name": "Montenegro",
+   "basis": "protection holders",
+   "gdp_pc_eur": 12261,
+   "person_years": {
+    "2022": {
+     "low": 2400,
+     "central": 4000,
+     "high": 6400
+    },
+    "2023": {
+     "low": 5000,
+     "central": 6500,
+     "high": 10000
+    },
+    "2024": {
+     "low": 4000,
+     "central": 5000,
+     "high": 7000
+    },
+    "2025": {
+     "low": 5000,
+     "central": 7000,
+     "high": 8000
+    },
+    "2026": {
+     "low": 3300,
+     "central": 4700,
+     "high": 5300
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.00059,
+     "central": 0.0027,
+     "high": 0.01196
+    },
+    "2023": {
+     "low": 0.00123,
+     "central": 0.00438,
+     "high": 0.01869
+    },
+    "2024": {
+     "low": 0.00098,
+     "central": 0.00337,
+     "high": 0.01308
+    },
+    "2025": {
+     "low": 0.00123,
+     "central": 0.00472,
+     "high": 0.01495
+    },
+    "2026": {
+     "low": 0.00081,
+     "central": 0.00317,
+     "high": 0.0099
+    }
+   },
+   "certainty": "C",
+   "sources": [
+    "unhcr_mne_fs",
+    "un_mne_2024",
+    "ifrc_mne",
+    "mne_budget",
+    "unhcr_api"
+   ],
+   "note": "Temporary protection holders: ~10,000 granted Mar 2022-Dec 2023 (cumulative), ~5,000 holding it in May 2024, ~8,000 applications and extensions in 2025. UNHCR's broad count (64,640 end-2023) includes Ukrainians on ordinary residence permits and short stays, who receive no hosting support. 2022 = March-December. The government's own appropriation for 2022 (up to EUR 2m for ~4,000 person-years, ~EUR 500 each, k ~0.04) matches the non-EU cost rate.",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.2554,
+    "refugees_net_gross_central_2022_2026": 0.2554,
+    "unhcr_person_years": {
+     "2022": 23051,
+     "2023": 48496,
+     "2024": 41599,
+     "2025": 15374,
+     "2026": 8203
+    }
+   },
+   "new_gross_central_2022_2026": 0.0183
+  },
+  "MKD": {
+   "name": "North Macedonia",
+   "basis": "protection holders",
+   "gdp_pc_eur": 8584,
+   "person_years": {
+    "2022": {
+     "low": 10,
+     "central": 50,
+     "high": 400
+    },
+    "2023": {
+     "low": 45,
+     "central": 100,
+     "high": 405
+    },
+    "2024": {
+     "low": 45,
+     "central": 100,
+     "high": 500
+    },
+    "2025": {
+     "low": 45,
+     "central": 200,
+     "high": 1000
+    },
+    "2026": {
+     "low": 30,
+     "central": 150,
+     "high": 700
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 2e-05,
+     "high": 0.00052
+    },
+    "2023": {
+     "low": 1e-05,
+     "central": 5e-05,
+     "high": 0.00053
+    },
+    "2024": {
+     "low": 1e-05,
+     "central": 5e-05,
+     "high": 0.00065
+    },
+    "2025": {
+     "low": 1e-05,
+     "central": 9e-05,
+     "high": 0.00131
+    },
+    "2026": {
+     "low": 1e-05,
+     "central": 7e-05,
+     "high": 0.00092
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_mkd_fs",
+    "ifrc_mkd",
+    "unhcr_api"
+   ],
+   "note": "45 people granted temporary protection or humanitarian residence by Sep 2024; 405 applications for asylum, temporary protection or similar schemes by Oct 2023. The ~19,000-21,000 in UNHCR's count live on ordinary permits or visa-free stays without state support. High end allows for a later rise after the 2025 extension.",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0943,
+    "refugees_net_gross_central_2022_2026": 0.0943,
+    "unhcr_person_years": {
+     "2022": 4857,
+     "2023": 12760,
+     "2024": 19722,
+     "2025": 20741,
+     "2026": 13957
+    }
+   },
+   "new_gross_central_2022_2026": 0.0003
+  },
+  "SRB": {
+   "name": "Serbia",
+   "basis": "protection holders",
+   "gdp_pc_eur": 12637,
+   "person_years": {
+    "2022": {
+     "low": 600,
+     "central": 900,
+     "high": 4500
+    },
+    "2023": {
+     "low": 800,
+     "central": 1000,
+     "high": 4500
+    },
+    "2024": {
+     "low": 1000,
+     "central": 1100,
+     "high": 2000
+    },
+    "2025": {
+     "low": 700,
+     "central": 1100,
+     "high": 2000
+    },
+    "2026": {
+     "low": 470,
+     "central": 730,
+     "high": 1330
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.00015,
+     "central": 0.00063,
+     "high": 0.00867
+    },
+    "2023": {
+     "low": 0.0002,
+     "central": 0.0007,
+     "high": 0.00867
+    },
+    "2024": {
+     "low": 0.00025,
+     "central": 0.00076,
+     "high": 0.00385
+    },
+    "2025": {
+     "low": 0.00018,
+     "central": 0.00076,
+     "high": 0.00385
+    },
+    "2026": {
+     "low": 0.00012,
+     "central": 0.00051,
+     "high": 0.00256
+    }
+   },
+   "certainty": "C",
+   "sources": [
+    "aida_srb",
+    "bgcentar_srb",
+    "kirs_srb",
+    "unhcr_api"
+   ],
+   "note": "Temporary protection: 1,166 Ukrainians granted by Mar 2023, 861 holders Jul 2023, 355 new grants and 672 extensions in 2024 (~1,000-1,100 holders), 1,500-2,000 present per BCHR. High end in 2022-2023: the ~4,500 privately accommodated Ukrainians the Commissariat was in contact with.",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0675,
+    "refugees_net_gross_central_2022_2026": 0.0675,
+    "unhcr_person_years": {
+     "2022": 789,
+     "2023": 2586,
+     "2024": 7391,
+     "2025": 13430,
+     "2026": 10862
+    }
+   },
+   "new_gross_central_2022_2026": 0.0034
+  },
+  "ALB": {
+   "name": "Albania",
+   "basis": "protection holders",
+   "gdp_pc_eur": 10509,
+   "person_years": {
+    "2022": {
+     "low": 350,
+     "central": 800,
+     "high": 1815
+    },
+    "2023": {
+     "low": 200,
+     "central": 1000,
+     "high": 3753
+    },
+    "2024": {
+     "low": 200,
+     "central": 1000,
+     "high": 7104
+    },
+    "2025": {
+     "low": 200,
+     "central": 1000,
+     "high": 6910
+    },
+    "2026": {
+     "low": 130,
+     "central": 600,
+     "high": 3076
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 7e-05,
+     "central": 0.00046,
+     "high": 0.00291
+    },
+    "2023": {
+     "low": 4e-05,
+     "central": 0.00058,
+     "high": 0.00601
+    },
+    "2024": {
+     "low": 4e-05,
+     "central": 0.00058,
+     "high": 0.01138
+    },
+    "2025": {
+     "low": 4e-05,
+     "central": 0.00058,
+     "high": 0.01107
+    },
+    "2026": {
+     "low": 3e-05,
+     "central": 0.00035,
+     "high": 0.00493
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "alb_moi",
+    "alb_unhcr_upr",
+    "unhcr_api"
+   ],
+   "note": "351 granted temporary protection in Mar 2022; refugees from Ukraine could also stay a year without a permit; 3,802 present end-Mar 2024. No count of later holders: low = the 2022 holders falling off, high = UNHCR's broad count (person-years).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0363,
+    "refugees_net_gross_central_2022_2026": 0.0363,
+    "unhcr_person_years": {
+     "2022": 1815,
+     "2023": 3753,
+     "2024": 7104,
+     "2025": 6910,
+     "2026": 3076
+    }
+   },
+   "new_gross_central_2022_2026": 0.0026
+  },
+  "GEO": {
+   "name": "Georgia",
+   "basis": "budget",
+   "gdp_pc_eur": 8285,
+   "person_years": {
+    "2022": {
+     "low": 4000,
+     "central": 4000,
+     "high": 4000
+    },
+    "2023": {
+     "low": 2000,
+     "central": 2000,
+     "high": 2000
+    },
+    "2024": {
+     "low": 1300,
+     "central": 1300,
+     "high": 1300
+    },
+    "2025": {
+     "low": 1300,
+     "central": 1300,
+     "high": 1300
+    },
+    "2026": {
+     "low": 870,
+     "central": 870,
+     "high": 870
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0045,
+     "central": 0.006,
+     "high": 0.01
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.0015,
+     "high": 0.004
+    },
+    "2024": {
+     "low": 0.0004,
+     "central": 0.0011,
+     "high": 0.0033
+    },
+    "2025": {
+     "low": 0.0004,
+     "central": 0.0011,
+     "high": 0.0033
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.0022
+    }
+   },
+   "certainty": "C",
+   "sources": [
+    "geo_unhcr",
+    "geo_mof",
+    "geo_tbilisi",
+    "geo_imedi",
+    "unhcr_api"
+   ],
+   "note": "Georgia has no temporary protection; the state pays GEL 300 per family and GEL 45 per person a month to registered families (1,795 families / 3,420 persons in Jan 2023, falling to a few hundred families later in 2023), about GEL 4,600 (EUR ~1,600 in 2023) per family-year, ~EUR 850 per person-year (k ~0.10). 2022 adds Tbilisi's hotel programme (GEL 11-14m, EUR 3.6-4.6m). 2024-2026: caseload not published; 300-2,000 families (central 700) x GEL 385 a month. UNHCR's broad count (~25,000-30,000) are mostly Ukrainians living on their own means.",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.1483,
+    "refugees_net_gross_central_2022_2026": 0.126,
+    "unhcr_person_years": {
+     "2022": 18880,
+     "2023": 25640,
+     "2024": 27390,
+     "2025": 27998,
+     "2026": 17493
+    }
+   },
+   "new_gross_central_2022_2026": 0.0104
+  },
+  "ARG": {
+   "name": "Argentina",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 12907,
+   "person_years": {
+    "2022": {
+     "low": 19,
+     "central": 64,
+     "high": 128
+    },
+    "2023": {
+     "low": 26,
+     "central": 85,
+     "high": 170
+    },
+    "2024": {
+     "low": 23,
+     "central": 77,
+     "high": 154
+    },
+    "2025": {
+     "low": 23,
+     "central": 77,
+     "high": 154
+    },
+    "2026": {
+     "low": 16,
+     "central": 54,
+     "high": 109
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 5e-05,
+     "high": 0.00025
+    },
+    "2023": {
+     "low": 1e-05,
+     "central": 6e-05,
+     "high": 0.00033
+    },
+    "2024": {
+     "low": 1e-05,
+     "central": 5e-05,
+     "high": 0.0003
+    },
+    "2025": {
+     "low": 1e-05,
+     "central": 5e-05,
+     "high": 0.0003
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 4e-05,
+     "high": 0.00021
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0014,
+    "refugees_net_gross_central_2022_2026": 0.0014,
+    "unhcr_person_years": {
+     "2022": 128,
+     "2023": 170,
+     "2024": 154,
+     "2025": 154,
+     "2026": 109
+    }
+   },
+   "new_gross_central_2022_2026": 0.0003
+  },
+  "ARM": {
+   "name": "Armenia",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 7905,
+   "person_years": {
+    "2022": {
+     "low": 56,
+     "central": 188,
+     "high": 376
+    },
+    "2023": {
+     "low": 88,
+     "central": 293,
+     "high": 586
+    },
+    "2024": {
+     "low": 106,
+     "central": 354,
+     "high": 707
+    },
+    "2025": {
+     "low": 420,
+     "central": 1400,
+     "high": 2800
+    },
+    "2026": {
+     "low": 488,
+     "central": 1625,
+     "high": 3250
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 1e-05,
+     "central": 8e-05,
+     "high": 0.00045
+    },
+    "2023": {
+     "low": 1e-05,
+     "central": 0.00013,
+     "high": 0.00071
+    },
+    "2024": {
+     "low": 2e-05,
+     "central": 0.00015,
+     "high": 0.00085
+    },
+    "2025": {
+     "low": 7e-05,
+     "central": 0.00061,
+     "high": 0.00337
+    },
+    "2026": {
+     "low": 8e-05,
+     "central": 0.00071,
+     "high": 0.00392
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0094,
+    "refugees_net_gross_central_2022_2026": 0.0065,
+    "unhcr_person_years": {
+     "2022": 376,
+     "2023": 586,
+     "2024": 707,
+     "2025": 2800,
+     "2026": 3250
+    }
+   },
+   "new_gross_central_2022_2026": 0.0017
+  },
+  "AZE": {
+   "name": "Azerbaijan",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 6739,
+   "person_years": {
+    "2022": {
+     "low": 518,
+     "central": 1727,
+     "high": 3454
+    },
+    "2023": {
+     "low": 687,
+     "central": 2290,
+     "high": 4580
+    },
+    "2024": {
+     "low": 707,
+     "central": 2356,
+     "high": 4712
+    },
+    "2025": {
+     "low": 762,
+     "central": 2539,
+     "high": 5078
+    },
+    "2026": {
+     "low": 509,
+     "central": 1696,
+     "high": 3393
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 7e-05,
+     "central": 0.00064,
+     "high": 0.00355
+    },
+    "2023": {
+     "low": 9e-05,
+     "central": 0.00085,
+     "high": 0.0047
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.00087,
+     "high": 0.00484
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.00094,
+     "high": 0.00522
+    },
+    "2026": {
+     "low": 7e-05,
+     "central": 0.00063,
+     "high": 0.00348
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0217,
+    "refugees_net_gross_central_2022_2026": 0.0217,
+    "unhcr_person_years": {
+     "2022": 3454,
+     "2023": 4580,
+     "2024": 4712,
+     "2025": 5078,
+     "2026": 3393
+    }
+   },
+   "new_gross_central_2022_2026": 0.0039
+  },
+  "BIH": {
+   "name": "Bosnia and Herzegovina",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 8682,
+   "person_years": {
+    "2022": {
+     "low": 16,
+     "central": 52,
+     "high": 105
+    },
+    "2023": {
+     "low": 26,
+     "central": 85,
+     "high": 170
+    },
+    "2024": {
+     "low": 35,
+     "central": 116,
+     "high": 232
+    },
+    "2025": {
+     "low": 45,
+     "central": 150,
+     "high": 300
+    },
+    "2026": {
+     "low": 33,
+     "central": 110,
+     "high": 221
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 2e-05,
+     "high": 0.00014
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 4e-05,
+     "high": 0.00022
+    },
+    "2024": {
+     "low": 1e-05,
+     "central": 6e-05,
+     "high": 0.00031
+    },
+    "2025": {
+     "low": 1e-05,
+     "central": 7e-05,
+     "high": 0.0004
+    },
+    "2026": {
+     "low": 1e-05,
+     "central": 5e-05,
+     "high": 0.00029
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0013,
+    "refugees_net_gross_central_2022_2026": 0.0013,
+    "unhcr_person_years": {
+     "2022": 105,
+     "2023": 170,
+     "2024": 232,
+     "2025": 300,
+     "2026": 221
+    }
+   },
+   "new_gross_central_2022_2026": 0.0002
+  },
+  "BRA": {
+   "name": "Brazil",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 9526,
+   "person_years": {
+    "2022": {
+     "low": 12,
+     "central": 38,
+     "high": 77
+    },
+    "2023": {
+     "low": 95,
+     "central": 317,
+     "high": 634
+    },
+    "2024": {
+     "low": 189,
+     "central": 631,
+     "high": 1262
+    },
+    "2025": {
+     "low": 227,
+     "central": 758,
+     "high": 1516
+    },
+    "2026": {
+     "low": 168,
+     "central": 562,
+     "high": 1123
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 2e-05,
+     "high": 0.00011
+    },
+    "2023": {
+     "low": 2e-05,
+     "central": 0.00017,
+     "high": 0.00092
+    },
+    "2024": {
+     "low": 4e-05,
+     "central": 0.00033,
+     "high": 0.00183
+    },
+    "2025": {
+     "low": 4e-05,
+     "central": 0.0004,
+     "high": 0.0022
+    },
+    "2026": {
+     "low": 3e-05,
+     "central": 0.00029,
+     "high": 0.00163
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0066,
+    "refugees_net_gross_central_2022_2026": 0.0066,
+    "unhcr_person_years": {
+     "2022": 77,
+     "2023": 634,
+     "2024": 1262,
+     "2025": 1516,
+     "2026": 1123
+    }
+   },
+   "new_gross_central_2022_2026": 0.0012
+  },
+  "CHN": {
+   "name": "China",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 12281,
+   "person_years": {
+    "2022": {
+     "low": 2,
+     "central": 6,
+     "high": 13
+    },
+    "2023": {
+     "low": 3,
+     "central": 10,
+     "high": 19
+    },
+    "2024": {
+     "low": 3,
+     "central": 10,
+     "high": 19
+    },
+    "2025": {
+     "low": 3,
+     "central": 9,
+     "high": 18
+    },
+    "2026": {
+     "low": 2,
+     "central": 6,
+     "high": 11
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 2e-05
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 4e-05
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 4e-05
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 3e-05
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 2e-05
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0,
+    "refugees_net_gross_central_2022_2026": 0.0,
+    "unhcr_person_years": {
+     "2022": 13,
+     "2023": 19,
+     "2024": 19,
+     "2025": 18,
+     "2026": 11
+    }
+   },
+   "new_gross_central_2022_2026": 0.0
+  },
+  "COL": {
+   "name": "Colombia",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 7346,
+   "person_years": {
+    "2022": {
+     "low": 3,
+     "central": 10,
+     "high": 21
+    },
+    "2023": {
+     "low": 4,
+     "central": 15,
+     "high": 30
+    },
+    "2024": {
+     "low": 5,
+     "central": 16,
+     "high": 33
+    },
+    "2025": {
+     "low": 4,
+     "central": 15,
+     "high": 30
+    },
+    "2026": {
+     "low": 3,
+     "central": 9,
+     "high": 18
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 2e-05
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 3e-05
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 4e-05
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 3e-05
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 2e-05
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0,
+    "refugees_net_gross_central_2022_2026": 0.0,
+    "unhcr_person_years": {
+     "2022": 21,
+     "2023": 30,
+     "2024": 33,
+     "2025": 30,
+     "2026": 18
+    }
+   },
+   "new_gross_central_2022_2026": 0.0
+  },
+  "CRI": {
+   "name": "Costa Rica",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 17418,
+   "person_years": {
+    "2022": {
+     "low": 6,
+     "central": 19,
+     "high": 38
+    },
+    "2023": {
+     "low": 8,
+     "central": 28,
+     "high": 55
+    },
+    "2024": {
+     "low": 8,
+     "central": 28,
+     "high": 55
+    },
+    "2025": {
+     "low": 8,
+     "central": 26,
+     "high": 51
+    },
+    "2026": {
+     "low": 5,
+     "central": 16,
+     "high": 33
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 2e-05,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 3e-05,
+     "high": 0.00015
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 3e-05,
+     "high": 0.00015
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 2e-05,
+     "high": 0.00014
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 2e-05,
+     "high": 9e-05
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0005,
+    "refugees_net_gross_central_2022_2026": 0.0005,
+    "unhcr_person_years": {
+     "2022": 38,
+     "2023": 55,
+     "2024": 55,
+     "2025": 51,
+     "2026": 33
+    }
+   },
+   "new_gross_central_2022_2026": 0.0001
+  },
+  "DOM": {
+   "name": "Dominican Republic",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 10048,
+   "person_years": {
+    "2022": {
+     "low": 2,
+     "central": 5,
+     "high": 10
+    },
+    "2023": {
+     "low": 2,
+     "central": 8,
+     "high": 16
+    },
+    "2024": {
+     "low": 4,
+     "central": 13,
+     "high": 26
+    },
+    "2025": {
+     "low": 5,
+     "central": 17,
+     "high": 34
+    },
+    "2026": {
+     "low": 3,
+     "central": 12,
+     "high": 23
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 2e-05
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 2e-05
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 4e-05
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 5e-05
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 4e-05
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0001,
+    "refugees_net_gross_central_2022_2026": 0.0001,
+    "unhcr_person_years": {
+     "2022": 10,
+     "2023": 16,
+     "2024": 26,
+     "2025": 34,
+     "2026": 23
+    }
+   },
+   "new_gross_central_2022_2026": 0.0
+  },
+  "ECU": {
+   "name": "Ecuador",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 6307,
+   "person_years": {
+    "2022": {
+     "low": 9,
+     "central": 30,
+     "high": 60
+    },
+    "2023": {
+     "low": 13,
+     "central": 44,
+     "high": 88
+    },
+    "2024": {
+     "low": 15,
+     "central": 50,
+     "high": 101
+    },
+    "2025": {
+     "low": 18,
+     "central": 60,
+     "high": 119
+    },
+    "2026": {
+     "low": 13,
+     "central": 43,
+     "high": 86
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 6e-05
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 2e-05,
+     "high": 8e-05
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 2e-05,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 2e-05,
+     "high": 0.00011
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 8e-05
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0005,
+    "refugees_net_gross_central_2022_2026": 0.0005,
+    "unhcr_person_years": {
+     "2022": 60,
+     "2023": 88,
+     "2024": 101,
+     "2025": 119,
+     "2026": 86
+    }
+   },
+   "new_gross_central_2022_2026": 0.0001
+  },
+  "IND": {
+   "name": "India",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 2395,
+   "person_years": {
+    "2022": {
+     "low": 6,
+     "central": 20,
+     "high": 41
+    },
+    "2023": {
+     "low": 9,
+     "central": 31,
+     "high": 62
+    },
+    "2024": {
+     "low": 12,
+     "central": 39,
+     "high": 78
+    },
+    "2025": {
+     "low": 14,
+     "central": 47,
+     "high": 94
+    },
+    "2026": {
+     "low": 10,
+     "central": 33,
+     "high": 66
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-05
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 2e-05
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 3e-05
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 3e-05
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 2e-05
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0,
+    "refugees_net_gross_central_2022_2026": 0.0,
+    "unhcr_person_years": {
+     "2022": 41,
+     "2023": 62,
+     "2024": 78,
+     "2025": 94,
+     "2026": 66
+    }
+   },
+   "new_gross_central_2022_2026": 0.0
+  },
+  "KAZ": {
+   "name": "Kazakhstan",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 13077,
+   "person_years": {
+    "2022": {
+     "low": 59,
+     "central": 196,
+     "high": 392
+    },
+    "2023": {
+     "low": 62,
+     "central": 206,
+     "high": 412
+    },
+    "2024": {
+     "low": 39,
+     "central": 130,
+     "high": 260
+    },
+    "2025": {
+     "low": 336,
+     "central": 1121,
+     "high": 2242
+    },
+    "2026": {
+     "low": 428,
+     "central": 1426,
+     "high": 2853
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 2e-05,
+     "central": 0.00014,
+     "high": 0.00078
+    },
+    "2023": {
+     "low": 2e-05,
+     "central": 0.00015,
+     "high": 0.00082
+    },
+    "2024": {
+     "low": 1e-05,
+     "central": 9e-05,
+     "high": 0.00052
+    },
+    "2025": {
+     "low": 9e-05,
+     "central": 0.00081,
+     "high": 0.00447
+    },
+    "2026": {
+     "low": 0.00011,
+     "central": 0.00103,
+     "high": 0.00569
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0123,
+    "refugees_net_gross_central_2022_2026": 0.0123,
+    "unhcr_person_years": {
+     "2022": 392,
+     "2023": 412,
+     "2024": 260,
+     "2025": 2242,
+     "2026": 2853
+    }
+   },
+   "new_gross_central_2022_2026": 0.0022
+  },
+  "KGZ": {
+   "name": "Kyrgyzstan",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 2323,
+   "person_years": {
+    "2022": {
+     "low": 3,
+     "central": 8,
+     "high": 17
+    },
+    "2023": {
+     "low": 4,
+     "central": 15,
+     "high": 30
+    },
+    "2024": {
+     "low": 6,
+     "central": 22,
+     "high": 43
+    },
+    "2025": {
+     "low": 75,
+     "central": 249,
+     "high": 498
+    },
+    "2026": {
+     "low": 96,
+     "central": 318,
+     "high": 637
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-05
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-05
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 2e-05
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 3e-05,
+     "high": 0.00018
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 4e-05,
+     "high": 0.00023
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0004,
+    "refugees_net_gross_central_2022_2026": 0.0004,
+    "unhcr_person_years": {
+     "2022": 17,
+     "2023": 30,
+     "2024": 43,
+     "2025": 498,
+     "2026": 637
+    }
+   },
+   "new_gross_central_2022_2026": 0.0001
+  },
+  "MEX": {
+   "name": "Mexico",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 12923,
+   "person_years": {
+    "2022": {
+     "low": 19,
+     "central": 64,
+     "high": 128
+    },
+    "2023": {
+     "low": 29,
+     "central": 98,
+     "high": 196
+    },
+    "2024": {
+     "low": 33,
+     "central": 111,
+     "high": 222
+    },
+    "2025": {
+     "low": 29,
+     "central": 96,
+     "high": 191
+    },
+    "2026": {
+     "low": 15,
+     "central": 50,
+     "high": 101
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 5e-05,
+     "high": 0.00025
+    },
+    "2023": {
+     "low": 1e-05,
+     "central": 7e-05,
+     "high": 0.00039
+    },
+    "2024": {
+     "low": 1e-05,
+     "central": 8e-05,
+     "high": 0.00044
+    },
+    "2025": {
+     "low": 1e-05,
+     "central": 7e-05,
+     "high": 0.00038
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 4e-05,
+     "high": 0.0002
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0017,
+    "refugees_net_gross_central_2022_2026": 0.0017,
+    "unhcr_person_years": {
+     "2022": 128,
+     "2023": 196,
+     "2024": 222,
+     "2025": 191,
+     "2026": 101
+    }
+   },
+   "new_gross_central_2022_2026": 0.0003
+  },
+  "PAN": {
+   "name": "Panama",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 17703,
+   "person_years": {
+    "2022": {
+     "low": 2,
+     "central": 8,
+     "high": 15
+    },
+    "2023": {
+     "low": 3,
+     "central": 11,
+     "high": 22
+    },
+    "2024": {
+     "low": 4,
+     "central": 12,
+     "high": 25
+    },
+    "2025": {
+     "low": 4,
+     "central": 14,
+     "high": 28
+    },
+    "2026": {
+     "low": 3,
+     "central": 10,
+     "high": 21
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 4e-05
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 6e-05
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 7e-05
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 8e-05
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 6e-05
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0004,
+    "refugees_net_gross_central_2022_2026": 0.0004,
+    "unhcr_person_years": {
+     "2022": 15,
+     "2023": 22,
+     "2024": 25,
+     "2025": 28,
+     "2026": 21
+    }
+   },
+   "new_gross_central_2022_2026": 0.0001
+  },
+  "PER": {
+   "name": "Peru",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 7877,
+   "person_years": {
+    "2022": {
+     "low": 4,
+     "central": 13,
+     "high": 26
+    },
+    "2023": {
+     "low": 12,
+     "central": 39,
+     "high": 78
+    },
+    "2024": {
+     "low": 20,
+     "central": 65,
+     "high": 130
+    },
+    "2025": {
+     "low": 21,
+     "central": 70,
+     "high": 141
+    },
+    "2026": {
+     "low": 14,
+     "central": 48,
+     "high": 96
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 1e-05,
+     "high": 3e-05
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 2e-05,
+     "high": 9e-05
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 3e-05,
+     "high": 0.00016
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 3e-05,
+     "high": 0.00017
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 2e-05,
+     "high": 0.00012
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0006,
+    "refugees_net_gross_central_2022_2026": 0.0006,
+    "unhcr_person_years": {
+     "2022": 26,
+     "2023": 78,
+     "2024": 130,
+     "2025": 141,
+     "2026": 96
+    }
+   },
+   "new_gross_central_2022_2026": 0.0001
+  },
+  "PHL": {
+   "name": "Philippines",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 3682,
+   "person_years": {
+    "2022": {
+     "low": 2,
+     "central": 5,
+     "high": 10
+    },
+    "2023": {
+     "low": 4,
+     "central": 15,
+     "high": 30
+    },
+    "2024": {
+     "low": 7,
+     "central": 23,
+     "high": 46
+    },
+    "2025": {
+     "low": 5,
+     "central": 16,
+     "high": 32
+    },
+    "2026": {
+     "low": 2,
+     "central": 5,
+     "high": 10
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-05
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 2e-05
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 3e-05
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 2e-05
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-05
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0,
+    "refugees_net_gross_central_2022_2026": 0.0,
+    "unhcr_person_years": {
+     "2022": 10,
+     "2023": 30,
+     "2024": 46,
+     "2025": 32,
+     "2026": 10
+    }
+   },
+   "new_gross_central_2022_2026": 0.0
+  },
+  "PRY": {
+   "name": "Paraguay",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 5965,
+   "person_years": {
+    "2022": {
+     "low": 1,
+     "central": 3,
+     "high": 6
+    },
+    "2023": {
+     "low": 1,
+     "central": 4,
+     "high": 9
+    },
+    "2024": {
+     "low": 2,
+     "central": 6,
+     "high": 12
+    },
+    "2025": {
+     "low": 3,
+     "central": 9,
+     "high": 18
+    },
+    "2026": {
+     "low": 2,
+     "central": 7,
+     "high": 14
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-05
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-05
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-05
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 2e-05
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-05
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0,
+    "refugees_net_gross_central_2022_2026": 0.0,
+    "unhcr_person_years": {
+     "2022": 6,
+     "2023": 9,
+     "2024": 12,
+     "2025": 18,
+     "2026": 14
+    }
+   },
+   "new_gross_central_2022_2026": 0.0
+  },
+  "TUR": {
+   "name": "Turkey",
+   "basis": "UNHCR count, wide range",
+   "gdp_pc_eur": 14683,
+   "person_years": {
+    "2022": {
+     "low": 530,
+     "central": 1766,
+     "high": 3532
+    },
+    "2023": {
+     "low": 614,
+     "central": 2047,
+     "high": 4094
+    },
+    "2024": {
+     "low": 439,
+     "central": 1462,
+     "high": 2924
+    },
+    "2025": {
+     "low": 394,
+     "central": 1315,
+     "high": 2630
+    },
+    "2026": {
+     "low": 267,
+     "central": 890,
+     "high": 1780
+    }
+   },
+   "gross": {
+    "2022": {
+     "low": 0.00016,
+     "central": 0.00143,
+     "high": 0.0079
+    },
+    "2023": {
+     "low": 0.00018,
+     "central": 0.00165,
+     "high": 0.00916
+    },
+    "2024": {
+     "low": 0.00013,
+     "central": 0.00118,
+     "high": 0.00654
+    },
+    "2025": {
+     "low": 0.00012,
+     "central": 0.00106,
+     "high": 0.00589
+    },
+    "2026": {
+     "low": 8e-05,
+     "central": 0.00072,
+     "high": 0.00398
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    "unhcr_api",
+    "tur_aida"
+   ],
+   "note": "No count of protection holders or of people the state supports found; UNHCR's count with a wide range (x0.15-x1.0, central x0.5).",
+   "replaces": {
+    "refugees_json_cost_central_2022_2026": 0.0335,
+    "refugees_net_gross_central_2022_2026": 0.0335,
+    "unhcr_person_years": {
+     "2022": 3532,
+     "2023": 4094,
+     "2024": 2924,
+     "2025": 2630,
+     "2026": 1780
+    }
+   },
+   "new_gross_central_2022_2026": 0.006
+  }
+ }
+}

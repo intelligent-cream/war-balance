@@ -44,6 +44,7 @@ For each year from 2022: what the country paid for Russian fuel, minus the same 
 
 - **Fuel only**: other goods' price rises are mostly general inflation.
 - **Only money flowing to Russia**: higher prices on goods sold to Russia do not count.
+- **A consequence of the choice to buy**: what Russia earns at the price of the day follows from the choice to buy from it, so the spike counts to the buyer though it did not set the price. A buyer that paid less because others' sanctions pushed Russia's prices down (discounts, the price cap) gets no credit for it: that came from others' choices.
 - **On top of volume**: a country that cut volumes still pays the windfall on what it kept buying. Germany: EUR 16.5bn<!-- n:DEU.part_windfall abs --> toward Russia (likely 1.3<!-- n:DEU.part_windfallHi abs --> to 29.3<!-- n:DEU.part_windfallLo abs -->), almost all in 2022.
 
 ## No-war prices
@@ -61,3 +62,9 @@ A change in the volume of gold is valued at the **2021 gold price held flat**, s
 ## 2026 and the Hormuz crisis
 
 Fuel prices in 2026 are high partly because the Strait of Hormuz was shut to tankers from March 2026 (Brent 35% above its pre-crisis futures, diesel about 59%; [CREA](https://energyandcleanair.org/what-the-hormuz-crisis-has-cost-fossil-fuel-importers-march-to-august-2026/)). This war did not cause it, so the 2026 no-war price is the actual world price and only Russia-specific price gaps count. The money still really reached Russia, so 2026 is valued at 2026 prices; the panel notes where valuing 2026 at 2025 prices would change the number, and the method band shows it. Germany: net 3.65%<!-- n:DEU.net --> for 2022–August 2026; with 2026 at 2025 prices it cut Russia's earnings from trade by 1.62%<!-- n:DEU.alt_p26.rus --> instead of 1.74%<!-- n:DEU.rus -->.
+
+### Why January–August 2026 can look larger than all of 2025
+
+For a country that stopped buying, each year's number is the purchases it no longer makes, valued at that year's prices. The no-war world is valued at 2026 prices, which include the Hormuz spike, so each barrel not bought counts for more in 2026 than in 2025. Eight months of 2026 can therefore come out larger than all of 2025: Italy cut Russia's earnings from trade by EUR 6.7bn<!-- n:ITA.rusY2026Eur --> in January–August 2026 against 4.4bn<!-- n:ITA.rusY2025Eur --> in 2025. This does not mean Russia earned more in 2026: its federal oil and gas revenue fell, EUR 56bn in January–August 2026 against 64bn a year earlier (Russian Ministry of Finance). It means the money those buyers keep away from Russia was worth more at 2026 prices. The method band shows 2026 at 2025 prices.
+
+*For year pages:* 2026 covers January–August only, but can look larger than 2025 for countries that stopped buying: the purchases they no longer make are valued at 2026 prices, raised by the Hormuz crisis, while Russia's own oil and gas revenue fell.

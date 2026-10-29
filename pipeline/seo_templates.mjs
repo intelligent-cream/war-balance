@@ -18,7 +18,7 @@
 // "Combien la France a donné à l'Ukraine ?"), by the volumes in seo_demand.json ask and the rule in seo_families.json
 // (country.phrasing); askOf below, the phrases in seo_i18n.mjs ASK.
 
-import { P as PL, E as EL, L as LL, cap, list3, inSentence, countryText, homeText, staticText, fit, askText } from "./seo_i18n.mjs";
+import { P as PL, E as EL, L as LL, cap, list3, inSentence, countryText, homeText, staticText, fit, askText, semi } from "./seo_i18n.mjs";
 
 export const TITLE_MAX = 60, DESC_MAX = 155;
 export const LANGS = ["en", "uk", "de", "fr", "pl", "nl", "es"];
@@ -77,10 +77,15 @@ export function countryCopy(l, f) {
   const loc = f.loc || {}, net = loc.net || {}, w = f.words || {}, cN = (loc.fig && loc.fig.cN) || f.cN || {}, cR = f.cR || { level: "sure" };
   const N = f.nameL || f.name, Nt = inSentence(l, N), side = cN.side === "russia";
   const lean = side ? w.leanR : w.leanU, zero = cN.level === "near" ? w.near : w.zero;
-  const v = { N, Nt, NCap: cap(N), NtCap: cap(Nt), ua: f.cN ? EL(l, f.ua) : "", uaP: f.cN ? PL(l, f.uaPct) : "", netP: f.cN ? PL(l, f.netPct) : "", rus: f.cN ? EL(l, f.rus) : "", rusP: f.cN ? PL(l, f.rusPct) : "",
-    ch: f.cN ? CH(f.cN.p) : "", netDir: cN.sideWords || "", sureWord: w.sure || "", sureWordCap: cap(w.sure || ""), leanWord: lean || "", leanWordLc: lc(lean || ""),
+  // round 60: support for Ukraine can be below zero (it bought less from Ukraine than without the war, or earned more from
+  // the war effort than it gave): the amount then carries its sign
+  const neg = x => (x < 0 && Math.abs(x) >= 0.0005 ? "−" : ""), negP = x => (x < 0 && Math.abs(x) >= 0.01 ? "−" : "");
+  const v = { N, Nt, NCap: cap(N), NtCap: cap(Nt), ua: f.cN ? neg(f.ua) + EL(l, f.ua) : "", uaP: f.cN ? negP(f.uaPct) + PL(l, f.uaPct) : "", netP: f.cN ? PL(l, f.netPct) : "", rus: f.cN ? EL(l, f.rus) : "", rusP: f.cN ? PL(l, f.rusPct) : "",
+    // round 60 (audit: Togo "The net is 0.46% toward Ukraine" for −0.46%): direction words follow the middle value's sign
+    // (dirWords); a chance names the side it is the chance of (chDir: the simulation's side)
+    ch: f.cN ? CH(f.cN.p) : "", netDir: cN.dirWords || cN.sideWords || "", chDir: cN.sideWords || "", sureWord: w.sure || "", sureWordCap: cap(w.sure || ""), leanWord: lean || "", leanWordLc: lc(lean || ""),
     uncWord: w.unc || "", uncWordCap: cap(w.unc || ""), zeroWord: zero || "", zeroWordCap: cap(zero || ""), partyWord: w.party || "", partyWordLc: lc(w.party || ""),
-    dirWords: cN.level === "sure" ? cN.sideWords || "" : lc(lean || ""), netRange: net.range || "", netWords: [net.range, net.chance].filter(Boolean).join("; "),
+    dirWords: cN.level === "sure" ? cN.sideWords || "" : lc(lean || ""), netRange: net.range || "", netWords: [net.range, net.chance].filter(Boolean).join(semi(l)),
     kept: loc.kept || "", keptCap: cap(loc.kept || ""), uaVerb: loc.uaVerb || "", uaEur: (loc.ua && loc.ua.eur) || "", netSigned: net.signed || "", partyWhy: loc.partyWhy || "",
     armedEur: EL(l, f.armedFull || 0), frozenEur: EL(l, f.frozen || 0), noDataText: LL(l, "noDataText") };
   const nums = { rusX: f.rus || 0, eu: EU.has(f.iso), armed: (f.armedFull || 0) > 0.5, frozen: Math.abs(f.frozen || 0) >= 0.05, mostly: !!f.mostly };

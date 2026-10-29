@@ -511,7 +511,7 @@ export function fuelCountry(l, F, iso, cfg, names, page) {
   return { title: R(l, "fCountryH"), html, faq };
 }
 // the CSV (the downloads): every country, year and fuel on the three bases, with the map's range and the quality
-export function fuelCsv(F) {
+export function fuelCsv(F, nameOf = iso => F.countries[iso].name) {
   const q = v => (v === null || v === undefined ? "" : String(v));
   const out = ["iso3,country,year,months,fuel,site_basis_fob_eur_bn,site_basis_low_eur_bn,site_basis_high_eur_bn,customs_cif_eur_bn,tracker_crea_eur_bn,quality"];
   for (const iso of Object.keys(F.countries).sort()) {
@@ -522,7 +522,7 @@ export function fuelCsv(F) {
       const months = x.partial_year ? x.partial_year : "January-December";
       for (const f of [...FUELS, "other", "total_site"]) {
         const s = x[f] || {}, g = x.gross_customs || {}, t = x.tracker_crea || {};
-        const name = /[",]/.test(c.name) ? `"${c.name.replace(/"/g, '""')}"` : c.name;
+        const nm = nameOf(iso), name = /[",]/.test(nm) ? `"${nm.replace(/"/g, '""')}"` : nm;
         out.push([iso, name, y, months, f === "total_site" ? "total" : f, q(s.central), q(s.low), q(s.high), q(f === "total_site" ? g.total : g[f]), q(f === "other" || f === "total_site" ? null : t[f]), x.quality].join(","));
       }
     }
@@ -543,7 +543,8 @@ export const milNoRecord = (M, iso) => { const c = M.countries[iso]; return !!c 
 function milCell(l, M, iso, k, o = {}) {
   const x = milVal(M, iso, k);
   if (!x) return `<td class="${o.cls || "n"}">–</td>`;
-  if (k === "military" && milNoRecord(M, iso)) return `<td class="${o.cls || "n"}"${rv("military", x.path, x.v)}>${esc(R(l, "noRecord"))}</td>`;
+  // round 60 (audit: words in a column of figures): no record is a dash, its words in the cell's title and the notes
+  if (k === "military" && milNoRecord(M, iso)) return `<td class="${o.cls || "n"}"${rv("military", x.path, x.v)} title="${esc(R(l, "noRecord"))}">–</td>`;
   return cellOf(l, "military", x.path, x.v, "eur", o);
 }
 // the columns beside the support tracker's table (td.k: outside the model's checked cells)
@@ -556,7 +557,10 @@ export function milCountry(l, M, iso, names, page) {
   const kiel = c.kiel_military != null ? R(l, "mKiel", { v: I.E(l, c.kiel_military) }) : R(l, "mNotKiel");
   const rng = c.military_range && I.E(l, c.military_range[0]) !== I.E(l, c.military_range[1]) ? R(l, "fRange", { lo: I.E(l, c.military_range[0]), hi: I.E(l, c.military_range[1]) }) : "";
   const eu = c.eu_share_split && Math.abs(c.eu_share_split.military || 0) >= 0.0005 ? R(l, "mEuMil", { v: I.E(l, c.eu_share_split.military) }) : "";
-  const sub = { military: [rng, milNoRecord(M, iso) ? "" : kiel].filter(Boolean).join("; "), eu_share: eu, flowback: R(l, "mBackNote") };
+  // round 60 (audit: Iran's and China's "financial aid" is their share of IMF and World Bank lending): that share is named
+  const imf = (c.financial_parts || {}).imf_world_bank_ebrd_share || 0;
+  const sub = { military: [rng, milNoRecord(M, iso) ? R(l, "noRecord") : kiel].filter(Boolean).join("; "), eu_share: eu, flowback: R(l, "mBackNote"),
+    financial: Math.abs(imf) >= 0.0005 ? R(l, "mImf", { v: I.E(l, imf) }) : "" };
   const row = k => `<tr><td>${esc(R(l, "ty_" + k))}</td>${milCell(l, M, iso, k, { sub: sub[k] || "" })}</tr>`;
   const shown = MIL_PARTS.filter(k => k === "military" || Math.abs(milVal(M, iso, k).v || 0) >= 0.0005);
   const html = `<p>${esc(R(l, "mCountryLead", { ...names, period: R(l, "fPeriod", { to: names.dataTo }) }))}</p>
@@ -612,13 +616,15 @@ ${types}
   return { title: R(l, "mTitle"), description: R(l, "mDesc"), h1: R(l, "mH1", { dataTo: o.dataTo }), intro: R(l, "mIntro", { dataTo: o.dataTo }), label: R(l, "mLabel"), body, faq, rows };
 }
 // the CSV (the downloads): every country's support by type, with Kiel's military figure, the range and the quality
-export function milCsv(M) {
+// round 60: the country's English name as the site writes it (llms-full.txt and the pages: "Türkiye", not "Turkey")
+export function milCsv(M, nameOf = iso => M.countries[iso].name) {
   const q = v => (v === null || v === undefined ? "" : String(v));
-  const out = ["iso3,country,military_eur_bn,military_low_eur_bn,military_high_eur_bn,military_record,kiel_military_eur_bn,military_pct_gdp,financial_eur_bn,humanitarian_eur_bn,refugees_eur_bn,eu_share_eur_bn,other_eur_bn,flowback_eur_bn,support_total_eur_bn,basis,quality"];
+  // round 60: financial aid's share of IMF, World Bank and EBRD lending as its own column (of which)
+  const out = ["iso3,country,military_eur_bn,military_low_eur_bn,military_high_eur_bn,military_record,kiel_military_eur_bn,military_pct_gdp,financial_eur_bn,financial_of_which_imf_world_bank_share_eur_bn,humanitarian_eur_bn,refugees_eur_bn,eu_share_eur_bn,other_eur_bn,flowback_eur_bn,support_total_eur_bn,basis,quality"];
   for (const iso of Object.keys(M.countries).sort()) {
-    const c = M.countries[iso], name = /[",]/.test(c.name) ? `"${c.name.replace(/"/g, '""')}"` : c.name;
+    const c = M.countries[iso], nm = nameOf(iso), name = /[",]/.test(nm) ? `"${nm.replace(/"/g, '""')}"` : nm;
     out.push([iso, name, q(c.military), q((c.military_range || [])[0]), q((c.military_range || [])[1]), milNoRecord(M, iso) ? "no record found" : "recorded", q(c.kiel_military), q(c.military_pct_gdp),
-      q(c.financial), q(c.humanitarian), q(c.refugees), q(c.eu_share), q(milVal(M, iso, "other").v), q(c.flowback), q(c.total_site), c.basis, c.quality].join(","));
+      q(c.financial), q((c.financial_parts || {}).imf_world_bank_ebrd_share), q(c.humanitarian), q(c.refugees), q(c.eu_share), q(milVal(M, iso, "other").v), q(c.flowback), q(c.total_site), c.basis, c.quality].join(","));
   }
   return out.join("\n");
 }

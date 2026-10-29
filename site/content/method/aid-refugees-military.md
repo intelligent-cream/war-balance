@@ -57,6 +57,7 @@ A loan that is repaid is worth less than a grant. Each loan counts at its gift: 
 Hosting refugees from Ukraine counts toward Ukraine at **what all levels of government actually spend on them**, minus what donors paid, minus the host's **real gain on refugees' work** (the extra profit and taxes on production their work creates). Refugees' own wages and the taxes on them are their income, not the host's gain, so they are not subtracted.
 
 - **Sources**: government budgets and audit offices for 27 hosts; elsewhere a model of refugee-years × a cost per person calibrated on those budgets (certainty C).
+- **Hosts outside the EU** (Montenegro, Serbia, North Macedonia, Albania, Georgia, Türkiye and other middle-income hosts) count the people they actually protect or support, not UNHCR's broad count, which includes Ukrainians living there on ordinary permits: Montenegro gave temporary protection to about 5,000–10,000 people, against UNHCR's 64,640. Their cost per person is about 5.5% of GDP per head (2–15%), from Montenegro's, Georgia's and Moldova's own spending, against about 15% for EU hosts. Georgia's comes from its cash-assistance programme. Montenegro: EUR 0.016bn<!-- n:MNE.part_ref --> to August 2026.
 - **One definition**: where a reported figure covers only part of government (Germany's federal budget, Poland's Aid Fund), 2022 is scaled up by the gap broad estimates (OECD, Kiel) show.
 - **Hosting 2022 to August 2026**: Germany EUR 35.5bn<!-- n:DEU.part_ref -->, Poland 10.6bn<!-- n:POL.part_ref -->, Czechia 3.1bn.
 - **Not the aggressor's side**: Russia is not credited as a host (the International Criminal Court's arrest warrants concern the deportation of Ukrainian children). Belarus's hosting (about EUR 0.1bn) is a label, not support: Belarus is a party to the war.
@@ -75,7 +76,15 @@ Money spent hosting refugees is spent in the host's own economy (rent, food, sho
 - **Belarus**: ammunition from army stocks.
 - **China**: only what is **not** in recorded trade (unrecorded military items, smuggled dual-use goods, services), EUR 0.17–0.33bn a year.
 
-**Paid deliveries count as sales**: what Russia paid for, also in kind (technology, fuel, food), counts at the seller's net gain, like any sale; what it did not pay for counts in full. North Korea was largely paid in kind; about half its shells were old stock with no other use. A method-band alternative counts only what was seen flowing back to Pyongyang, which moves North Korea's net from about −11% to −32% of GDP. North Korea is a party to the war and not ranked.
+**Paid deliveries count as sales**: what Russia paid for, also in kind (technology, fuel, food), counts at the seller's net gain, like any sale; what it did not pay for counts in full. North Korea was largely paid in kind; about half its shells were old stock with no other use. A method-band alternative counts only what was seen flowing back to Pyongyang, which moves North Korea's net from −19.9%<!-- n:PRK.net --> to −32.6%<!-- n:PRK.netBandLo --> of GDP. North Korea is a party to the war and not ranked.
+
+**The seller's gain on these sales** is worked out from price against cost, item by item (round 60), not from Western arms makers' average (5 cents per euro), because a state monopoly selling to one buyer with few alternatives keeps far more:
+
+- **Iran's drones and the Alabuga licence**: the leaked contract charged a licence and component fee of about USD 193,000 per drone, while a Shahed costs Iran about USD 50,000 to make. The licence counts at 0.8 of its price (0.6–0.9), the drones Iran delivered itself at 0.7 (0.45–0.85).
+- **Iran's and North Korea's missiles and Iran's shells**: no cost is public, so 0.35 (0.15–0.6), above the 28% operating margin of Rheinmetall's ammunition business, a Western maker in a seller's market.
+- **North Korea's shells and guns**: about half old stock at 0.9, the rest valued at Russia's prices (about USD 800 a round) against a cost of USD 250–500, at 0.35 (0.15–0.6): 0.63 in all (0.32–0.84).
+
+These sales exist only because of the war: no other buyer was turned away for them, so little of the gain is displaced business, and 0.9 (0.8–1.0) of it counts as genuinely extra, not the 0.6 used where a war sale can crowd out other buyers (the round-60 choice). Iran's weapons now count for EUR 1.84bn<!-- n:IRN.part_mil abs --> of the 3.5bn delivered (before: 0.11bn), North Korea's for EUR 5.87bn<!-- n:PRK.part_mil abs --> (before: 3.33bn). Belarus (not paid) and China's unrecorded part (sold by private firms) are unchanged.
 
 The Russia panel's list **"Armed Russia"** shows all deliveries at full value (North Korea EUR 8.8bn, Iran 3.5bn, China 1.3bn, Belarus 1.3bn); the totals do not change.
 
@@ -104,4 +113,4 @@ Weapons Ukraine bought from foreign sellers, with its own budget or donors' cash
 
 ### The all-money ledger
 
-Flowback comes from one ledger of all money that reached Ukraine, EUR 437bn: every Kiel allocation, undisclosed aid, IMF and World Bank money, private donations and Ukraine's own arms purchases abroad, each assigned once to where it was spent. EUR 220bn was spent in Ukraine (mostly pensions, social payments and salaries), 71bn in the payer's own economy, 69bn elsewhere. Weapons given from stocks (EUR 72bn) earn nothing unless the donor bought replacements. The US earns back EUR 2.08bn<!-- n:USA.uaBackEur -->, and its support for Ukraine is EUR 82.5bn<!-- n:USA.uaEur --> (0.32%<!-- n:USA.ua --> of GDP).
+Flowback comes from one ledger of all money that reached Ukraine, EUR 437bn: every Kiel allocation, undisclosed aid, IMF and World Bank money, private donations and Ukraine's own arms purchases abroad, each assigned once to where it was spent. EUR 220bn was spent in Ukraine (mostly pensions, social payments and salaries), 71bn in the payer's own economy, 69bn elsewhere. Weapons given from stocks (EUR 72bn) earn nothing unless the donor bought replacements. The US earns back EUR 2.08bn<!-- n:USA.uaBackEur -->, and its support for Ukraine is EUR 82.6bn<!-- n:USA.uaEur --> (0.32%<!-- n:USA.ua --> of GDP).

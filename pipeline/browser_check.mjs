@@ -104,8 +104,12 @@ for (const [lens, q] of Object.entries(LENS)) {
     // round 38 (owner: "we can create leaning groups"): the groups, only the two certain ones numbered (#)
     // round 39: a sixth group, near zero (2), between leaning toward Ukraine and uncertain
     // round 42: a leaning row is grouped by the side the simulation favours, not the sign of its middle value
-    const pos = c[q] >= 0, g = !c[q + "Unc"] ? (pos ? 0 : 5) : c[q + "Near"] ? 2 : !c[q + "Lean"] ? 3 : c[q + "Lean"] === "ukraine" ? 1 : 4;
-    const exp = (!c[q + "Unc"] ? "" : c[q + "Lean"] ? "lean" : "unc") + ":g" + g + (g === 0 || g === 5 ? "#" : "");
+    // round 60: seven groups by the chance level (index.html rankGroup): essentially zero (3) has its own, and a number whose
+    // whole range is under 0.1% of GDP is essentially zero however sure its sign
+    const pos = c[q] >= 0, tiny = Math.max(Math.abs(c[q + "Lo"] ?? 0), Math.abs(c[q + "Hi"] ?? 0), Math.abs(c[q] ?? 0)) < 0.1;
+    const lv = !c[q + "Unc"] && !tiny ? "sure" : Math.abs(c[q + "Eur"]) < 0.001 * c.gdp ? "zero" : c[q + "Near"] ? "near" : c[q + "Lean"] ? "lean" : "unc";
+    const g = lv === "sure" ? (pos ? 0 : 6) : lv === "lean" ? (c[q + "Lean"] === "ukraine" ? 1 : 5) : lv === "near" ? 2 : lv === "zero" ? 3 : 4;
+    const exp = (lv === "sure" ? "" : lv === "lean" ? "lean" : "unc") + ":g" + g + (g === 0 || g === 6 ? "#" : "");
     return s !== exp;
   }).map(([k, s]) => `${k}=${s || "certain"}`);
   if (wrongSt.length) problems.push(`${lens} ranking: rows not faded and grouped as Node says: ${wrongSt.slice(0, 8).join(" ")}`);
@@ -179,8 +183,8 @@ const r25 = await page.evaluate(() => {
     const c = byIso[iso];
     if (!c) continue;
     select(c.n, false);
-    // the section heads carry no sign; round 28 (owner): each row carries + when it adds to its section's headline and
-    // − when it takes away from it, like a balance sheet
+    // the section heads carry no sign; each row carries + toward Ukraine and − toward Russia (round 60; round 28 had
+    // + for adding to its section's headline)
     const heads = [...document.querySelectorAll("#panel .psec-h")].map(e => e.textContent).join(" | ");
     if (/[+\u2212]\s*[€\d]|(^|\s)-\s*[€\d]/.test(heads)) signs.push(`${iso} head: ${heads.slice(0, 120)}`);
     // round 29: the ranges under an unsigned headline are in words ("likely 2.4% to 4.8% toward Ukraine"), never a bare
@@ -195,7 +199,8 @@ const r25 = await page.evaluate(() => {
       el.querySelectorAll("details.part").forEach(d => {
         const p = sec.parts.find(q => q.k === d.dataset.part), pv = d.querySelector(".pv");
         if (!p || !pv) return;
-        const want = (p.v >= 0 ? 1 : -1) === ss ? "+" : "\u2212";
+        // round 60 (audit): one sign convention, + toward Ukraine and − toward Russia (or, in support, earned back)
+        const want = p.v >= 0 ? "+" : "\u2212";
         if (pv.textContent.trim()[0] !== want) signs.push(`${iso} ${p.k}: "${pv.textContent.trim().slice(0, 20)}" should start with ${want}`);
       });
     });

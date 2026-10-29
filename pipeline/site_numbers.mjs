@@ -4,7 +4,7 @@
 //
 // Run: node pipeline/site_numbers.mjs [year]   (default 2026)
 
-import { readFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -18,6 +18,29 @@ const M = new Function("D", "t", `let YEARS = D.years, FRAC = D.frac, SRC = D.so
 const data = {}, by = {};
 for (const [k, c] of Object.entries(D.countries)) { c.alts = det.alts[k] || {}; M.normalise(c); data[c.n] = c; by[k] = c; }
 M.setData(data, by);
+// round 60 (owner): "Russia's earnings from trade" split in two, per country and year. rusGain: what Russia itself kept
+// more or less (fuel and goods it sold, the war-time windfall, oil via other countries, services it sold, taxes it
+// collected, profits of Russian-owned firms, its arms, state projects, gold and hidden payments, weapons given to it);
+// ownGain: what the country itself earned from Russia (its sales to Russia and the sanctions premium on them, services,
+// shipping, payment agents, its firms' profits and stakes in Russia, weapons it was paid for). The same two lines as
+// calc()'s rusPaid and rusEarned (LINE_EARNED in site/index.html), so rusGain + ownGain = Russia's earnings from trade;
+// the ranges are each line's own and do not add up. Both stay in the total. Sign as on the map: + toward Ukraine.
+// Run: node pipeline/site_numbers.mjs --gain-split out.json  (build_data.py writes the result into data.json)
+if (process.argv[2] === "--gain-split") {
+  const r5 = v => +(+v).toFixed(5), yrs = D.years.filter(y => y >= 2022);
+  const res = {};
+  for (const [k, c] of Object.entries(by)) {
+    if (!c.gdp) continue;
+    const cum = yrs.map(y => M.calc(c, y));
+    const line = (v, lo, hi) => {
+      const tot = cum.map(x => [r5(x[v]), r5(x[lo]), r5(x[hi])]);
+      return { years: [0].concat(tot.map((t, i) => r5(t[0] - (i ? tot[i - 1][0] : 0)))), cum: [null].concat(tot) };
+    };
+    res[k] = { rusGain: line("rusPaid", "rusPaidLo", "rusPaidHi"), ownGain: line("rusEarned", "rusEarnedLo", "rusEarnedHi") };
+  }
+  writeFileSync(process.argv[3], JSON.stringify(res));
+  process.exit(0);
+}
 const Y = +(process.argv[2] || 2026);
 // round 46 (owner: "start on 3"): the choices that never veto a certain direction, written out here as the rule says
 // (site/content/method/ranges.md, "The method band"): rules the project replaced (round 44, and round 46: the windfall at
@@ -41,7 +64,8 @@ for (const [k, c] of Object.entries(by)) {
     // far from zero
     const alts = mb.alts.filter(a => !NOT_A_VETO.has(a.k)).map(a => a[q]);
     const pOwn = v ? M.pSignMC(x.signParts[q], v) : 0;
-    const sameSign = v !== 0 && pOwn >= 0.95 && alts.every(z => z * v > 0);
+    // round 60: and the likely range stays on the value's side (the range and the simulation must both say so)
+    const sameSign = v !== 0 && pOwn >= 0.95 && alts.every(z => z * v > 0) && lo * v > 0 && hi * v > 0;
     Object.assign(o, { [q]: r4(v * g), [q + "Lo"]: r4(lo * g), [q + "Hi"]: r4(hi * g), [q + "BandLo"]: r4(mb[q].lo * g), [q + "BandHi"]: r4(mb[q].hi * g),
       [q + "Eur"]: r4(v), [q + "Unc"]: M.uncertain(c, Y, q), [q + "SameSign"]: sameSign,
       // round 24b (owner): which way a number that is not certain leans ("ukraine", "russia", or null: uncertain direction)
@@ -53,7 +77,10 @@ for (const [k, c] of Object.entries(by)) {
     // bn, with its likely range), the gas and oil Russia cut off itself
     uaGave: r4(x.uaGave), uaBackEur: r4(-x.uaBack), rusCut: r4(x.rusCut), frozenEur: r4(x.frozen),
     // round 24b (owner): business with Russia in two lines, paid Russia and earned from Russia (EUR bn); they add up to it
-    rusPaidEur: r4(x.rusPaid), rusEarnedEur: r4(x.rusEarned) });
+    rusPaidEur: r4(x.rusPaid), rusEarnedEur: r4(x.rusEarned),
+    // round 60: the same two lines as % of GDP with their own ranges (Russia's gain, the country's own gain)
+    rusGain: r4(x.rusPaid * g), rusGainLo: r4(x.rusPaidLo * g), rusGainHi: r4(x.rusPaidHi * g),
+    ownGain: r4(x.rusEarned * g), ownGainLo: r4(x.rusEarnedLo * g), ownGainHi: r4(x.rusEarnedHi * g) });
   for (const p of x.shiftParts.concat(x.backShift)) Object.assign(o, { ["part_" + p.k]: r4(p.v), ["part_" + p.k + "Lo"]: r4(p.lo), ["part_" + p.k + "Hi"]: r4(p.hi) });
   // round 56 (more findable pages): the parts outside the totals (the oil discount, the cost of replacing Russian
   // energy, what Russia took from companies), and each year's cumulative support, trade and net (round 58: and frozen
@@ -68,7 +95,16 @@ for (const [k, c] of Object.entries(by)) {
 
     fuelShare: tr.gain && tr.gain.fossil_share != null ? tr.gain.fossil_share : null, loansFace: r4(ai.loans_face ?? null), loansGE: r4(ai.loans_face ? (ai.loans_grant_eq ?? ai.loans_face * 0.26) : null),
     pledged: r4(ai.pledged_open ?? null), flowGross: r4(x.flowback), flowKept: r4(x.flowbackProfit) };
+  // round 60: Kiel's own figure for its bilateral aid (EUR bn), beside the adjusted amount the map counts (part_aid)
+  o.kielEur = r4(x.kielOwn);
   o.yearsEur = Object.fromEntries(D.years.filter(yy => yy >= 2022 && yy <= Y).map(yy => { const z = yy === Y ? x : M.calc(c, yy); return [yy, [r4(z.uaBal), r4(z.rusBal), r4(z.shift), r4(z.frozen)]]; }));
+  // round 60: each year's own change in Russia's earnings from trade and in Russia's own gain (EUR bn; 2026 =
+  // January-August), flat keys so the docs can tag them (rusY2025Eur, rusGainY2026Eur)
+  for (const yy of Object.keys(o.yearsEur)) {
+    const prev = o.yearsEur[yy - 1], z = +yy === Y ? x : M.calc(c, +yy), zp = prev ? M.calc(c, yy - 1) : null;
+    o["rusY" + yy + "Eur"] = r4(o.yearsEur[yy][1] - (prev ? prev[1] : 0));
+    o["rusGainY" + yy + "Eur"] = r4(z.rusPaid - (zp ? zp.rusPaid : 0));
+  }
   // round 46: the views beside the band (without the war-time windfall) under the same names
   for (const a of mb.alts.concat(mb.views || [])) o["alt_" + a.k] = { ua: r4(a.ua * g), rus: r4(a.rus * g), net: r4(a.net * g) };
   out.countries[k] = o;

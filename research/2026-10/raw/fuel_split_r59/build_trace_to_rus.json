@@ -1,7 +1,7 @@
 {
 "what": "Changes to to_rus.years (EUR bn, central) made by each step of pipeline/build_data.py build(), recorded in memory by research/2026-10/scripts/fuel_split_r59.py; first = the value at the first traced step (after gas by final use and the tracker floor)",
 "url": "repository: pipeline/build_data.py (read-only import)",
-"date": "2026-10-27",
+"date": "2026-10-29",
 "first_step": "reassign_laundered_oil",
 "first": {
 "ABW": [
@@ -1817,6 +1817,14 @@
 0.0,
 0.0,
 0.0,
+0.0,
+0.0
+],
+"XKX": [
+0.0513,
+0.0253,
+0.0014,
+0.0002,
 0.0,
 0.0
 ],
@@ -4408,6 +4416,14 @@
 -0.137,
 -0.146,
 -0.1057
+],
+"XKX": [
+-0.0033,
+-0.0021,
+-0.0001,
+-0.0,
+0.0,
+0.0
 ],
 "YEM": [
 -0.0144,
