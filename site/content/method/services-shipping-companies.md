@@ -14,7 +14,8 @@ Two flows for 199 economies: services **bought from Russia** (at Russia's net ga
 
 Money earned by companies in each country for carrying, insuring, financing and registering Russia's seaborne oil and LNG, and for selling tankers to the shadow fleet. The earner is the country of the **real owner or controller**, never the flag: Russian-owned tankers behind UAE, Indian or Seychelles fronts count for Russia itself. Greek owners carry about half of the mainstream fleet.
 
-- Freight counts at the shipping industry's net gain, insurance at the insurance industry's. Greek water transport earns less than a normal return in national accounts (profits are booked offshore), so Greece's shipping part is about 0 ([limitations](#view=how&sec=limitations)).
+- Freight counts at the shipping industry's net gain, insurance at the insurance industry's. Greek water transport earns less than a normal return in national accounts (profits are booked offshore), so Greece's freight counts at about 0 ([limitations](#view=how&sec=limitations)).
+- The price premium on second-hand tankers sold to shadow-fleet buyers (40% of the sale price) and registry fees are already rent and count in full. Greek owners sold about USD 4bn of tankers, so Greece's shipping part is still EUR 1.52bn<!-- n:GRC.part_ship abs --> toward Russia, almost all of it from ship sales in 2022–2023.
 - Freight already inside services or inside import values is not counted again ([freight](#view=how&sec=m-trade-freight-cif-to-fob)).
 - The expected level grows with Russia's seaborne exports before the war (+3.9% a year). Certainty D.
 

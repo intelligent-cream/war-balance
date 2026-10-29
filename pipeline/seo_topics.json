@@ -11,7 +11,7 @@
         "Support for Ukraine since 2022 by country, in euros, % of GDP and per person, with trade with Russia counted. Ranges and sources."
       ],
       "h1": "Ukraine support tracker: aid, refugees and trade with Russia, every country",
-      "intro": "Support for Ukraine from February 2022 to {dataTo} for every country, sorted by euros: its own aid (loans at their gift value), its share of EU aid and the cost of hosting refugees, minus money flowing back, each also as a share of GDP and per person. Beside it, the net: support plus how much less, or more, Russia kept from trade with that country than in a world without the war. In euros, the table starts with {top3list}.",
+      "intro": "Support for Ukraine from 2022 to {dataTo} for every country, sorted by euros: its own aid (loans at their gift value), its share of EU aid and the cost of hosting refugees, minus money flowing back, each also as a share of GDP and per person. Beside it, the net: support plus how much less, or more, Russia kept from trade with that country than in a world without the war. In euros, the table starts with {top3list}.",
       "rank": "ua",
       "order": "desc",
       "sort": "eur",
@@ -54,7 +54,7 @@
         "What each country paid Russia since 2022 for fuel and goods, and how much more or less Russia kept from it than without the war."
       ],
       "h1": "Who bought Russian oil and gas? What each country paid Russia since 2022",
-      "intro": "This page lists what each country paid Russia from February 2022 to {dataTo}, sorted by euros and starting with {top3list} ({top1}: {top1_eur}), and shows how much more or less Russia kept from those purchases than in a world without the war, the extra it earned from war-time fuel prices and the Russian oil bought refined in other countries.",
+      "intro": "This page lists what each country paid Russia from 2022 to {dataTo}, sorted by euros and starting with {top3list} ({top1}: {top1_eur}), and shows how much more or less Russia kept from those purchases than in a world without the war, the extra it earned from war-time fuel prices and the Russian oil bought refined in other countries.",
       "rank": "paid",
       "order": "desc",
       "sort": "eur",
@@ -92,7 +92,7 @@
         "Russian reserves and private money frozen abroad since 2022: the return Russia lost in each country, with ranges and sources."
       ],
       "h1": "Frozen Russian assets and Euroclear: the return Russia lost in each country",
-      "intro": "Russia's central bank reserves and Russian private assets frozen abroad since 2022 earn Russia nothing. The number here is the return Russia lost on them from February 2022 to {dataTo}, not the amount frozen: {sum:frozen_eur} across the {n} countries listed; in {top1} it comes to {top1_eur}.",
+      "intro": "Russia's central bank reserves and Russian private assets frozen abroad since 2022 earn Russia nothing. The number here is the return Russia lost on them from 2022 to {dataTo}, not the amount frozen: {sum:frozen_eur} across the {n} countries listed; in {top1} it comes to {top1_eur}.",
       "explain": ["frozenAssets", "reparationsLoan"],
       "rank": "frozen",
       "order": "desc",
@@ -122,7 +122,7 @@
         "What European countries paid Russia since 2022, against their support for Ukraine, country by country, in euros and % of GDP."
       ],
       "h1": "Has Europe paid Russia more than it gave Ukraine since 2022?",
-      "intro": "From February 2022 to {dataTo}, the {n} European countries listed paid Russia {sum:paid_eur} for fuel and other goods, {if:abs(sum:paid)~abs(sum:ua)|about the same as|{if:abs(sum:paid)>abs(sum:ua)|more than|less than}} the {sum:ua_eur} they gave Ukraine in support (aid, their share of EU aid and refugee hosting). For the EU's {sub:eu:n} members: {sub:eu:paid_eur} paid to Russia, {sub:eu:ua_eur} in support.",
+      "intro": "From 2022 to {dataTo}, the {n} European countries listed paid Russia {sum:paid_eur} for fuel and other goods, {if:abs(sum:paid)~abs(sum:ua)|about the same as|{if:abs(sum:paid)>abs(sum:ua)|more than|less than}} the {sum:ua_eur} they gave Ukraine in support (aid, their share of EU aid and refugee hosting). For the EU's {sub:eu:n} members: {sub:eu:paid_eur} paid to Russia, {sub:eu:ua_eur} in support.",
       "rank": "ua",
       "order": "desc",
       "sort": "eur",
@@ -152,7 +152,7 @@
         "Whose trade added to Russia's earnings since 2022, against a world without the war? Taxes and profit, not sales, with ranges."
       ],
       "h1": "Russia's war income: whose trade added most to Russia's earnings since 2022?",
-      "intro": "How much more Russia kept from trade with each country, from February 2022 to {dataTo}, than in a world without the war: taxes and profit above a normal return, not the full sales value. With {top1}, Russia kept {top1_eur} {if:top1:rus<0|more|less}; the table continues with {top2} and {top3}.",
+      "intro": "How much more Russia kept from trade with each country, from 2022 to {dataTo}, than in a world without the war: taxes and profit above a normal return, not the full sales value. With {top1}, Russia kept {top1_eur} {if:top1:rus<0|more|less}; the table continues with {top2} and {top3}.",
       "rank": "rus",
       "order": "asc",
       "sort": "eur",
@@ -181,7 +181,7 @@
         "The EU's {members} members since 2022: support for Ukraine, trade with Russia and the net, every member ranked, with ranges."
       ],
       "h1": "The EU: each member's money toward Ukraine or Russia since 2022",
-      "intro": "The {members} EU members' support for Ukraine from February 2022 to {dataTo} comes to {sum:ua_eur} together ({sum:ua_pct} of their combined GDP), including their shares of EU-level aid. With trade with Russia and frozen Russian money counted, the net is {sum:net_pct} of GDP {if:sum:net>=0|toward Ukraine|toward Russia}.",
+      "intro": "The {members} EU members' support for Ukraine from 2022 to {dataTo} comes to {sum:ua_eur} together ({sum:ua_pct} of their combined GDP), including their shares of EU-level aid. With trade with Russia and frozen Russian money counted, the net is {sum:net_pct} of GDP {if:sum:net>=0|toward Ukraine|toward Russia}.",
       "members": ["AUT", "BEL", "BGR", "HRV", "CYP", "CZE", "DNK", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "IRL", "ITA", "LVA", "LTU", "LUX", "MLT", "NLD", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE"],
       "map": "#view=rank",
       "faq": [
@@ -200,7 +200,7 @@
         "The G7 since 2022: support for Ukraine, trade with Russia and the net for each member, with ranges and chances."
       ],
       "h1": "The G7: each member's money toward Ukraine or Russia since 2022",
-      "intro": "Support for Ukraine from the {members} G7 economies, February 2022 to {dataTo}: {sum:ua_eur}, {sum:ua_pct} of their combined GDP. With trade with Russia and frozen Russian money counted, the net is {sum:net_pct} of GDP {if:sum:net>=0|toward Ukraine|toward Russia}. The EU also takes part in the G7; its members are on the EU page.",
+      "intro": "Support for Ukraine from the {members} G7 economies, 2022 to {dataTo}: {sum:ua_eur}, {sum:ua_pct} of their combined GDP. With trade with Russia and frozen Russian money counted, the net is {sum:net_pct} of GDP {if:sum:net>=0|toward Ukraine|toward Russia}. The EU also takes part in the G7; its members are on the EU page.",
       "members": ["USA", "JPN", "DEU", "GBR", "FRA", "ITA", "CAN"],
       "map": "#view=rank",
       "faq": [
@@ -219,7 +219,7 @@
         "NATO's {members} members since 2022: support for Ukraine, trade with Russia and the net, every member ranked, with ranges."
       ],
       "h1": "NATO: each member's money toward Ukraine or Russia since 2022",
-      "intro": "Support for Ukraine from NATO's {members} members, February 2022 to {dataTo}: {sum:ua_eur}, {sum:ua_pct} of their combined GDP. With trade with Russia and frozen Russian money counted, the net is {sum:net_pct} of GDP {if:sum:net>=0|toward Ukraine|toward Russia}. For their size, the table starts with {top1}, {top2} and {top3}.",
+      "intro": "Support for Ukraine from NATO's {members} members, 2022 to {dataTo}: {sum:ua_eur}, {sum:ua_pct} of their combined GDP. With trade with Russia and frozen Russian money counted, the net is {sum:net_pct} of GDP {if:sum:net>=0|toward Ukraine|toward Russia}. For their size, the table starts with {top1}, {top2} and {top3}.",
       "members": ["ALB", "BEL", "BGR", "CAN", "HRV", "CZE", "DNK", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "ISL", "ITA", "LVA", "LTU", "LUX", "MNE", "NLD", "MKD", "NOR", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE", "TUR", "GBR", "USA"],
       "map": "#view=rank",
       "faq": [
@@ -238,7 +238,7 @@
         "BRICS members since 2022: how much more or less Russia kept from trade with each, and their support for Ukraine, with ranges."
       ],
       "h1": "BRICS: each member's money toward Ukraine or Russia since 2022",
-      "intro": "The BRICS members other than Russia, from February 2022 to {dataTo}: Russia kept {sum:rus_eur} {if:sum:rus>=0|less|more} from trade with them together than in a world without the war; with their support for Ukraine the net is {sum:net_pct} of their combined GDP {if:sum:net>=0|toward Ukraine|toward Russia}.",
+      "intro": "The BRICS members other than Russia, from 2022 to {dataTo}: Russia kept {sum:rus_eur} {if:sum:rus>=0|less|more} from trade with them together than in a world without the war; with their support for Ukraine the net is {sum:net_pct} of their combined GDP {if:sum:net>=0|toward Ukraine|toward Russia}.",
       "members": ["BRA", "RUS", "IND", "CHN", "ZAF", "EGY", "ETH", "IRN", "ARE", "IDN"],
       "notes": [
         "Members as of 2026: {memberNames}. {name:SAU} was invited to join in 2024 but has not confirmed membership; it is listed apart, outside the totals."
@@ -261,7 +261,7 @@
         "The {members} Gulf states since 2022: Russia's earnings from trade with each, their support for Ukraine and the net."
       ],
       "h1": "Gulf states: each one's money toward Ukraine or Russia since 2022",
-      "intro": "The {members} Gulf Cooperation Council states, from February 2022 to {dataTo}: Russia kept {sum:rus_eur} {if:sum:rus>=0|less|more} from trade with them together than without the war, and their support for Ukraine came to {sum:ua_eur}. The net is {sum:net_pct} of their combined GDP {if:sum:net>=0|toward Ukraine|toward Russia}.",
+      "intro": "The {members} Gulf Cooperation Council states, from 2022 to {dataTo}: Russia kept {sum:rus_eur} {if:sum:rus>=0|less|more} from trade with them together than without the war, and their support for Ukraine came to {sum:ua_eur}. The net is {sum:net_pct} of their combined GDP {if:sum:net>=0|toward Ukraine|toward Russia}.",
       "members": ["SAU", "ARE", "KWT", "QAT", "BHR", "OMN"],
       "map": "#view=rank&lens=payments",
       "faq": [
@@ -279,7 +279,7 @@
         "{members} Central Asian countries since 2022: Russia's earnings from trade with each and the net, with ranges."
       ],
       "h1": "Central Asia: each country's money toward Ukraine or Russia since 2022",
-      "intro": "{memberNames}, from February 2022 to {dataTo}: Russia kept {sum:rus_eur} {if:sum:rus>=0|less|more} from trade with them together than without the war. The net is {sum:net_pct} of their combined GDP {if:sum:net>=0|toward Ukraine|toward Russia}.",
+      "intro": "{memberNames}, from 2022 to {dataTo}: Russia kept {sum:rus_eur} {if:sum:rus>=0|less|more} from trade with them together than without the war. The net is {sum:net_pct} of their combined GDP {if:sum:net>=0|toward Ukraine|toward Russia}.",
       "members": ["KAZ", "KGZ", "TJK", "TKM", "UZB"],
       "map": "#view=rank&lens=payments",
       "faq": [
@@ -298,14 +298,13 @@
         "Which countries' money moved toward Russia since 2022, through trade, fuel and arms, against a world without the war? With ranges and sources."
       ],
       "h1": "{q:Russia's allies? Which countries' money moved toward Russia since 2022}",
-      "intro": "Listed here: the countries whose net, from February 2022 to {dataTo}, is negative: what Russia kept from trade with them, against a world without the war, outweighs their support for Ukraine. Each row gives the chance of its direction. As a share of their economy the table starts with {top1}, {top2} and {top3}.{if:nParty| {partyList}, parties to the war, are listed apart.|}",
+      "intro": "Listed here: the countries whose net, from 2022 to {dataTo}, is negative: what Russia kept from trade with them, against a world without the war, outweighs their support for Ukraine. Each row gives the chance of its direction. As a share of their economy the table starts with {top1}, {top2} and {top3}.{if:nParty| {partyList}, parties to the war, are listed apart.|}",
       "explain": ["unfriendlyList"],
       "rank": "net",
       "order": "asc",
       "sort": "gdp",
       "onlySide": "russia",
       "columns": ["rus", "ua", "part:mil"],
-      "limit": 60,
       "map": "#view=rank",
       "moneyNote": "mil",
       "faq": [
@@ -325,7 +324,7 @@
         "Which countries earned from shipping and insuring Russian oil since 2022, against a world without the war? Ranges and sources."
       ],
       "h1": "Shadow fleet: which countries earn from shipping Russian oil?",
-      "intro": "Russia's seaborne oil moves on tankers that someone owns, manages and insures. This page sorts the extra each country's shipping and insurance firms earned from carrying Russian oil from February 2022 to {dataTo}, against a world without the war, at their net gain, counted for the country that really controls the tankers, not the flag. It counts money, not ships: for {top1} it comes to {top1_eur}.",
+      "intro": "Russia's seaborne oil moves on tankers that someone owns, manages and insures. This page sorts the extra each country's shipping and insurance firms earned from carrying Russian oil from 2022 to {dataTo}, against a world without the war, at their net gain, counted for the country that really controls the tankers, not the flag. It counts money, not ships: for {top1} it comes to {top1_eur}.",
       "explain": ["shadowFleet"],
       "rank": "part:ship",
       "order": "asc",
@@ -351,7 +350,7 @@
         "What hosting refugees from Ukraine cost each country's government since 2022, as % of GDP and in euros. Ranges and sources."
       ],
       "h1": "What has hosting Ukrainian refugees cost each country since 2022?",
-      "intro": "Refugee hosting is part of each country's support for Ukraine here: what all levels of government actually spent on refugees from February 2022 to {dataTo}, minus what donors paid back and the host's own gain on refugees' work. As a share of their economy the table starts with {top1}, {top2} and {top3}.",
+      "intro": "Refugee hosting is part of each country's support for Ukraine here: what all levels of government actually spent on refugees from 2022 to {dataTo}, minus what donors paid back and the host's own gain on refugees' work. As a share of their economy the table starts with {top1}, {top2} and {top3}.",
       "rank": "part:ref",
       "order": "desc",
       "sort": "gdp",
@@ -375,7 +374,7 @@
         "Europe vs the United States: support for Ukraine since 2022 in euros, % of GDP and per person. Ranges and sources."
       ],
       "h1": "EU vs US: who has given Ukraine more since 2022?",
-      "intro": "From February 2022 to {dataTo}, the support for Ukraine of the EU's {sub:eu:n} members came to {sub:eu:ua_eur} together ({sub:eu:ua_pct} of their combined GDP): their own aid, their shares of EU aid and refugee hosting. {the:USA} gave {iso:USA:ua_eur} ({iso:USA:ua_pct} of its GDP). The table sorts each country in euros, with its share of GDP and per person, where the order changes.",
+      "intro": "From 2022 to {dataTo}, the support for Ukraine of the EU's {sub:eu:n} members came to {sub:eu:ua_eur} together ({sub:eu:ua_pct} of their combined GDP): their own aid, their shares of EU aid and refugee hosting. {the:USA} gave {iso:USA:ua_eur} ({iso:USA:ua_pct} of its GDP). The table sorts each country in euros, with its share of GDP and per person, where the order changes.",
       "rank": "ua",
       "order": "desc",
       "sort": "eur",
@@ -402,7 +401,7 @@
         "Support for Ukraine since 2022 per person in each country, with refugee hosting and loans at gift value. Ranges and sources."
       ],
       "h1": "Ukraine aid per capita: which countries give the most per person?",
-      "intro": "Support for Ukraine from February 2022 to {dataTo}, divided by each country's population. Per person the table starts with {top1} ({top1_pp}), {top2} and {top3}; the order differs from the order in euros.",
+      "intro": "Support for Ukraine from 2022 to {dataTo}, divided by each country's population. Per person the table starts with {top1} ({top1_pp}), {top2} and {top3}; the order differs from the order in euros.",
       "rank": "ua",
       "order": "desc",
       "sort": "pp",
@@ -424,7 +423,7 @@
         "Weapons and troops sent to Russia since 2022, by country: their full value and what counts in the totals, with sources."
       ],
       "h1": "Who sends Russia weapons? {if:nArmed|{armedList} and other military supplies since 2022|Military supplies to Russia since 2022}",
-      "intro": "Weapons, ammunition and troops sent to Russia from February 2022 to {dataTo}, by sending country, at their full value as Russia's panel lists them, beside what counts in the totals: what Russia paid for counts at the seller's net gain, like a sale; what it did not pay for counts in full. The evidence is thinner than for trade, so the figures are rough.{if:nParty| {partyList}, parties to the war, are listed apart.|} Dual-use goods in recorded trade count under trade.",
+      "intro": "Weapons, ammunition and troops sent to Russia from 2022 to {dataTo}, by sending country, at their full value as Russia's panel lists them, beside what counts in the totals: what Russia paid for counts at the seller's net gain, like a sale; what it did not pay for counts in full. The evidence is thinner than for trade, so the figures are rough.{if:nParty| {partyList}, parties to the war, are listed apart.|} Dual-use goods in recorded trade count under trade.",
       "rank": "armed",
       "order": "desc",
       "sort": "eur",
@@ -479,7 +478,7 @@
         "Trade hubs around Russia since 2022: what Russia kept from trade with each, with re-exported goods credited to the countries that made them."
       ],
       "h1": "Re-exports to Russia and sanctions evasion: what passes through the UAE, Türkiye and Central Asia",
-      "intro": "From February 2022 to {dataTo}, Russia kept {sum:rus_eur} {if:sum:rus>=0|less|more} from trade with these {members} hubs together than without the war. Goods they passed on to Russia count for the countries that made them; each hub keeps its trading margin here.",
+      "intro": "From 2022 to {dataTo}, Russia kept {sum:rus_eur} {if:sum:rus>=0|less|more} from trade with these {members} hubs together than without the war. Goods they passed on to Russia count for the countries that made them; each hub keeps its trading margin here.",
       "explain": ["reexportHubs"],
       "members": ["ARE", "TUR", "KAZ", "KGZ", "ARM", "GEO", "UZB", "AZE", "TJK", "MNG", "SRB"],
       "rank": "rus",
@@ -503,7 +502,7 @@
         "Fuel refined from Russian crude in third countries and sold on since 2022, by buying country, against the pre-war level."
       ],
       "h1": "Russian oil through the back door: who bought fuel refined from Russian crude?",
-      "intro": "Diesel and jet fuel refined from Russian crude in {name:IND}, {name:TUR}, {name:CHN}, {the:ARE} or EU refineries reach buyers elsewhere. For each buying country this page counts what Russia kept on the crude inside that fuel, against the pre-war level, from February 2022 to {dataTo}. The table starts with {top1} ({top1_eur} {if:top1:part:laund<0|more|less} for Russia); where buyers took less of it than before the war, Russia kept less.",
+      "intro": "Diesel and jet fuel refined from Russian crude in {name:IND}, {name:TUR}, {name:CHN}, {the:ARE} or EU refineries reach buyers elsewhere. For each buying country this page counts what Russia kept on the crude inside that fuel, against the pre-war level, from 2022 to {dataTo}. The table starts with {top1} ({top1_eur} {if:top1:part:laund<0|more|less} for Russia); where buyers took less of it than before the war, Russia kept less.",
       "rank": "part:laund",
       "order": "asc",
       "sort": "eur",

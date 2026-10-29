@@ -254,4 +254,29 @@ A label only; totals do not change. [`sanctions_share.json`](https://github.com/
 
 **Poland's pipeline crude is "stopped by Russia", not own choice.** Russia (Transneft) halted Druzhba deliveries to Poland on 25 February 2023 (Orlen, [WION](https://www.wionews.com/world/polish-energy-group-says-russia-halted-oil-pipeline-deliveries-565942/amp); monthly customs data: 0.50 Mt in February 2023, nil from March). It goes to the part Russia cut off itself, like the gas Gazprom cut off (`moved_stopped_by_russia` in `stop_dates_r16.json`, `sanctions.to_rus.cut` and `oil_cut_from`; the panel says "gas and pipeline oil that Russia cut off itself"). Poland's fall in purchases from Russia, 2022–2026: 38% required by sanctions, 50% cut off by Russia (gas 18%, pipeline crude 31%), 12% own choice. The method-band alternative "without what Russia cut off itself" leaves out the crude too. Germany's pipeline crude stays own choice (its refineries stopped ordering). Finland's last Russian crude cargo, 20 July 2022, is confirmed on [Neste's own page](https://www.neste.com/nestes-response-to-the-war-in-ukraine).
 
-**Gas cut off by Russia after 2022 counts only what was still flowing.** For a cut after 2022 (Austria's OMV in November 2024; the end of transit through Ukraine on 1 January 2025 for Slovakia and Italy), only the gas the country still bought the year before the cut is labelled as cut off by Russia; the rest of its fall from the pre-war level was its own earlier choice. Italy cut its Russian gas from about 29 bcm in 2021 to 2.9 bcm in 2023 ([Osservatorio CPI, Università Cattolica](https://osservatoriocpi.unicatt.it/ocpi-pubblicazioni-quasi-azzerato-l-import-di-gas-russo)) and about 6 bcm in 2024 ([Il Post, citing Ember](https://www.ilpost.it/2025/05/07/italia-gas-russo-gnl-putin-sanzioni-importazioni-diversificazione/)); so about 4% of Italy's fall is labelled as cut by Russia, and Italy gets no "Gas cut off by Russia" tag. Austria's share is about 30%, Slovakia's about 8%. A label only; totals do not change. <span class="incode">In the code: `cut_part_of_gas_fall()` in `build_data.py`</span>
+**Gas cut off after 2022 counts only what was still flowing.** For a cut after 2022 (Austria's OMV in November 2024, by Gazprom; the end of transit through Ukraine on 1 January 2025 for Slovakia and Italy, which was Ukraine's decision not to renew its transit contract, not Russia's), only the gas the country still bought the year before the cut is labelled as stopped (`RUSSIA_GAS_CUT` keeps both under one label); the rest of its fall from the pre-war level was its own earlier choice. Italy cut its Russian gas from about 29 bcm in 2021 to 2.9 bcm in 2023 ([Osservatorio CPI, Università Cattolica](https://osservatoriocpi.unicatt.it/ocpi-pubblicazioni-quasi-azzerato-l-import-di-gas-russo)) and about 6 bcm in 2024 ([Il Post, citing Ember](https://www.ilpost.it/2025/05/07/italia-gas-russo-gnl-putin-sanzioni-importazioni-diversificazione/)); so about 4% of Italy's fall is labelled as cut by Russia, and Italy gets no "Gas cut off by Russia" tag. Austria's share is about 30%, Slovakia's about 8%. A label only; totals do not change. <span class="incode">In the code: `cut_part_of_gas_fall()` in `build_data.py`</span>
+
+## Russia's gain and the country's own gain (round 60)
+
+`site_numbers.mjs --gain-split` (run by `build_data.py` after it writes `data.json`) splits Russia's earnings from trade into two lines per country with the map's own model (`calc()`'s `rusPaid` and `rusEarned`, `LINE_EARNED` in `site/index.html`) and writes them into `data.json`: `rusGain` and `ownGain`, each `{years: [2021 = 0, change in 2022, ..., change in January–August 2026], cum: [null, [total to 2022, low, high], ..., [total to August 2026, low, high]]}`, EUR bn, + toward Ukraine. The lines add up to the number; their ranges are each line's own (combined in quadrature) and do not add up. The map does not read them, so no total changes. `site_numbers.mjs` also prints `rusGain`/`ownGain` (% of GDP, with `Lo`/`Hi`), `rusY<year>Eur` and `rusGainY<year>Eur` (each year's own change, EUR bn) and `kielEur` (Kiel's bilateral figure).
+
+| part key | line | what |
+|---|---|---|
+| `paid` | Russia | less or more paid to Russia for fuel and goods |
+| `windfall` | Russia | war-time fuel prices (net of discounts) |
+| `laund` | Russia | Russian crude inside fuel bought elsewhere |
+| `svcpaid` | Russia | services bought from Russia |
+| `tax` | Russia | taxes paid in Russia by the country's companies |
+| `rusfirms` | Russia | profits of Russian-owned firms in the country |
+| `rusarms`, `wagner` | Russia | weapons bought from Russia; payments to Wagner and the Africa Corps |
+| `statefin` | Russia | Rosatom projects and Russian state loans |
+| `hidden` | Russia | gold and hidden payments |
+| `mil` (unpaid share) | Russia | weapons and troops given to Russia |
+| `sold`, `premium` | own | sales to Russia; the sanctions premium on them |
+| `svcsold` | own | services sold to Russia |
+| `ship` | own | shipping, insurance, tankers sold to the shadow fleet |
+| `agents` | own | payment agents' fees |
+| `coprofits`, `lngpartners` | own | its companies' profits in Russia; stakes in Russian oil and gas projects |
+| `mil` (paid share, `military_rus.years_paid`) | own | weapons sold to Russia |
+
+Not in either line: `frozen`, `frozen_priv` (the net only) and the cost-view parts (`disc`, `prem`, `margin`), which are in no total.

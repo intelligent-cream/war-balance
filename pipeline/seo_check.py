@@ -101,6 +101,8 @@ def fmt_pct(x: float, lang: str = "en") -> str:
 
 def fmt_eur(bn: float, lang: str = "en") -> str:
     a = abs(bn)
+    if 0 < a < 0.0005:  # round 60: an amount that is not zero but under €0.5m is "<€1m"
+        return "<" + fmt_eur(0.001, lang)
     if lang == "es":
         return (_group(_round(a * 10) * 100, lang) if a >= 0.1 else str(_round(a * 1000))) + NB + "M€"
     big = a >= 0.1
@@ -125,7 +127,11 @@ def fmt_eur(bn: float, lang: str = "en") -> str:
 
 def level(c: dict, q: str = "net") -> str:
     """A headline number's chance level (net, ua or rus), as chanceInfo() in index.html: sure, zero, near, lean or unc."""
-    if not c.get(q + "Unc"):
+    # round 60: a number whose whole likely range is under 0.1% of a year's GDP is essentially zero, however sure its sign
+    tiny = (
+        max(abs(c.get(q + "Lo", 0) or 0), abs(c.get(q + "Hi", 0) or 0), abs(c.get(q, 0) or 0)) < 100 * ESSENTIALLY_ZERO
+    )
+    if not c.get(q + "Unc") and not tiny:
         return "sure"
     if abs(c[q + "Eur"]) < ESSENTIALLY_ZERO * c["gdp"]:
         return "zero"
@@ -145,16 +151,16 @@ def allowed_numbers(c: dict, lang: str = "en") -> set[str]:
     return out
 
 
-NUM = re.compile(r"€\d+(?:,\d{3})*(?:\.\d+)?(?:bn|m)|<?\d+(?:\.\d+)?%")
+NUM = re.compile(r"<?€\d+(?:,\d{3})*(?:\.\d+)?(?:bn|m)|<?\d+(?:\.\d+)?%")
 # round 56: the same numbers as the other languages write them (seo_i18n.mjs)
 _G = r"\d+(?:[.\u202f\u00a0]\d{3})*(?:,\d+)?"
 NUM_L = {
-    "de": re.compile(rf"{_G}\u00a0(?:Mrd\.|Mio\.)\u00a0€|<?\d+(?:,\d+)?\u00a0%"),
-    "fr": re.compile(rf"{_G}\u00a0M[d]?€|<?\d+(?:,\d+)?\u00a0%"),
-    "es": re.compile(rf"{_G}\u00a0M€|<?\d+(?:,\d+)?\u00a0%"),
-    "pl": re.compile(rf"{_G}\u00a0(?:mld|mln)\u00a0€|<?\d+(?:,\d+)?%"),
-    "nl": re.compile(rf"€{_G}\u00a0(?:mld|mln)|<?\d+(?:,\d+)?%"),
-    "uk": re.compile(rf"{_G}\u00a0(?:млрд|млн)\u00a0€|<?\d+(?:,\d+)?%"),
+    "de": re.compile(rf"<?{_G}\u00a0(?:Mrd\.|Mio\.)\u00a0€|<?\d+(?:,\d+)?\u00a0%"),
+    "fr": re.compile(rf"<?{_G}\u00a0M[d]?€|<?\d+(?:,\d+)?\u00a0%"),
+    "es": re.compile(rf"<?{_G}\u00a0M€|<?\d+(?:,\d+)?\u00a0%"),
+    "pl": re.compile(rf"<?{_G}\u00a0(?:mld|mln)\u00a0€|<?\d+(?:,\d+)?%"),
+    "nl": re.compile(rf"<?€{_G}\u00a0(?:mld|mln)|<?\d+(?:,\d+)?%"),
+    "uk": re.compile(rf"<?{_G}\u00a0(?:млрд|млн)\u00a0€|<?\d+(?:,\d+)?%"),
 }
 
 
@@ -1468,7 +1474,11 @@ def check_tables(
                     for f in figs
                 ]
                 # the words of the cell without its figures or the country's name: a label every row repeats
-                for span in re.findall(r"<span[^>]*>(.*?)</span>", td, re.DOTALL):
+                # (round 60: a chance's words are the data's, not a label: "essentially zero" in every row of a group
+                # whose members all moved almost nothing is a finding)
+                for cls, span in re.findall(r"<span([^>]*)>(.*?)</span>", td, re.DOTALL):
+                    if re.search(r'class="[^"]*\bch\b', cls):
+                        continue
                     w = html.unescape(re.sub(r"<[^>]+>", "", span))
                     for nm in names:
                         w = w.replace(nm, "◊")

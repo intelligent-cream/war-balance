@@ -6,7 +6,8 @@
 //
 //   - every figure this file writes is marked with the model quantity it shows (<span data-f data-k>), and check 48
 //     (seo_check.py check_dyn) checks each against the model on every country page in every language;
-//   - direction words follow the chance (the map's words), never the sign of a middle value; a year's own amount has no
+//   - round 60: direction words follow the sign of the middle value, a chance names the side it is the chance of, and the
+//     map's chance words say both where they differ (index.html chanceInfo dirWords, disagree); a year's own amount has no
 //     range, so a change of side between years is said only where the total is very likely and every year is material;
 //   - ranks follow the map's rule: only a very likely country gets a number, among economies of €5bn and more;
 //   - the questions are a pool of templates, each with a data condition, a family and a score (base + 40 × salience
@@ -335,7 +336,7 @@ function faqOf(c, x, o, F) {
     switch (p.id) {
       case "gave": a = A("gave", { ua: F("e", "uaEur", x.ua), uaP: F("p", "uaEur", x.ua), uaRange: esc(c.ua.range), dataTo: esc(o.dataTo), NtCap: esc(cap(Nt)) }, { tiny: x.uaPct < 0.01 && x.ua < 0.05, eu: x.eu }); break;
       case "trade": a = A("trade", { b1: F("e", "tb1", x.tb1), b0: F("e", "tb0", x.tb0), s1: x.ts1 != null ? F("e", "ts1", x.ts1) : "", y0, y1, kept: esc(c.kept) }, { sold: x.ts1 != null && x.ts1 >= 0.0005 }); break;
-      case "help": a = A("help", { partyWhy: esc(c.partyWhy), netSigned: esc(c.net.signed), netWords: esc([c.net.range, c.net.chance].filter(Boolean).join("; ")), chance: esc(c.net.chanceSentence),
+      case "help": a = A("help", { partyWhy: esc(c.partyWhy), netSigned: esc(c.net.signed), netWords: esc([c.net.range, c.net.chance].filter(Boolean).join(I.semi(l))), chance: esc(c.net.chanceSentence),
         keptCap: esc(cap(c.kept)), fair: esc(x.notes.fairness), armedEur: esc(I.E(l, o.armedFull || 0)) }, { party: x.party, chance: !!c.net.chanceSentence, fair: !!x.notes.fairness, armed: (o.armedFull || 0) >= 0.05 }); break;
       case "decide": a = A("decide", { chance: esc(c.net.chanceSentence), why: esc(x.decide.why), flip: esc(x.decide.flip) }); break;
       case "close": a = A("close", { zeroWord: esc(x.level === "near" ? o.words.near : o.words.zero), netSigned: esc(c.net.signed), range: esc(c.net.range), why: esc(x.decide.why) }); break;
@@ -357,13 +358,13 @@ function faqOf(c, x, o, F) {
         const tierOf = id => (o.srcs[id] || {}).tier || "own";
         const list = x.parts.slice(0, 3).map(pt => { const id = pt.src.find(i => tierOf(i) !== "method") || pt.src[0]; if (!id) return ""; const h = (o.srcs[id] && o.srcs[id].href) || "#src-" + id;
           return `${esc(pt.name)}: <a href="${esc(h)}"${/^https?:/.test(h) ? ' rel="noopener"' : ""}>${esc((o.srcs[id] || {}).name || id)}</a>`; }).filter(Boolean);
-        a = A("sources", { n: x.srcIds.length, off: x.srcIds.filter(id => tierOf(id) === "official").length, list: list.join("; ") });
+        a = A("sources", { n: x.srcIds.length, off: x.srcIds.filter(id => tierOf(id) === "official").length, list: list.join(I.semi(l)) });
         break;
       }
       case "hub": a = A("hub", { hub: esc(x.notes.hub), chpl: esc(noMark(x.notes.chpl)) }, { chpl: !!x.notes.chpl }); break;
       case "sanctions": a = A("sanctions", { sanction: esc(x.notes.sanction), exempt: esc(tag("exempt") ? tag("exempt").body : "") }, { exempt: !!tag("exempt") }); break;
       case "relations": a = A("relations", { b1: x.tb1 != null ? F("e", "tb1", x.tb1) : "", b0: x.tb0 != null ? F("e", "tb0", x.tb0) : "", s1: x.ts1 != null ? F("e", "ts1", x.ts1) : "", y0, y1,
-        ua: F("e", "uaEur", x.ua), netSigned: esc(c.net.signed), netWords: esc([c.net.range, c.net.chance].filter(Boolean).join("; ")) },
+        ua: F("e", "uaEur", x.ua), netSigned: esc(c.net.signed), netWords: esc([c.net.range, c.net.chance].filter(Boolean).join(I.semi(l))) },
         { trade: x.tb0 != null && x.tb1 != null, sold: x.ts1 != null && x.ts1 >= 0.0005 }); break;
       case "armed": a = A("armed", { pair: esc(pair), armedEur: esc(I.E(l, x.armedFull)) }, { party: x.party }); break;
       case "nodata": a = A("nodata", { text: esc(c.mostlyNoData && x.notes.noData ? x.notes.noData : o.dw.noDataBig) }); break;

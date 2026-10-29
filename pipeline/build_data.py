@@ -14,6 +14,8 @@ import json
 import math
 import re
 import statistics
+import subprocess
+import tempfile
 from pathlib import Path
 
 import pycountry
@@ -491,7 +493,7 @@ NAMES = {
     "IRN": "Iran", "VNM": "Vietnam", "TWN": "Taiwan", "MDA": "Moldova", "BOL": "Bolivia", "VEN": "Venezuela",
     "TZA": "Tanzania", "SYR": "Syria", "LAO": "Laos", "COD": "DR Congo", "COG": "Congo", "CZE": "Czechia",
     "TUR": "Turkey", "MKD": "North Macedonia", "CIV": "Côte d'Ivoire", "BRN": "Brunei", "PSE": "Palestine",
-    "FSM": "Micronesia", "HKG": "Hong Kong", "MAC": "Macao",
+    "FSM": "Micronesia", "HKG": "Hong Kong", "MAC": "Macao", "XKX": "Kosovo",
 }  # fmt: skip
 
 
@@ -553,7 +555,56 @@ def load(path: Path) -> dict | None:
     if not path.exists():
         return None
     # round 7 actuals first, then the round-11 assumptions backed by data, then round 39's replacements of weak estimates
-    return _r39_replace(name, apply_assumptions_r11(name, _actuals_r7(name, json.loads(path.read_text()))))
+    # round 60: Kosovo is "XKX" (World Bank, IMF); OECD-WTO BaTiS files call it "XKV"
+    text = path.read_text().replace('"XKV"', '"XKX"')
+    return _r60_replace(name, _r39_replace(name, apply_assumptions_r11(name, _actuals_r7(name, json.loads(text)))))
+
+
+def _r60_replace(name: str, d: dict) -> dict:
+    """Round 60 (audit 63). Item 3: Kosovo (XKX) joins the map with its own goods-trade statistics, aid and, for want
+    of a fitted model, Montenegro's no-war trade model (kosovo_r60.json). Item 1: non-EU hosts that refugees.json
+    costed as UNHCR's broad count x the EU hosts' cost rate are rebuilt from the people the host actually protects or
+    supports (temporary protection holders, Georgia's cash caseload; elsewhere UNHCR's count with a wide range) at a
+    non-EU cost rate (refugees_nonEU_r60.json). The new figures are the host's own spending, so no donor share is
+    taken off them (R60_REFUGEES)."""
+    if name in ("trade_full.json", "aid_gaps.json"):
+        # round 60 (audit 63, item 3): Kosovo's goods trade from its own statistics and its aid to Ukraine (kosovo_r60.json)
+        xkx = json.loads((GAPS / "kosovo_r60.json").read_text())
+        d["countries"]["XKX"] = xkx["trade" if name == "trade_full.json" else "aid"]
+        return d
+    if name in ("counterfactual.json", "ua_trade_cf.json") and "MNE" in d["countries"]:
+        # Kosovo's expected trade without the war: no model was fitted for it, so Montenegro's (same region, same size
+        # class) is used: 2021 held flat with the generic band of its size class (multipliers, method and class only)
+        keep = ("multiplier_vs_2021", "method", "size_class")
+        xk = d["countries"].setdefault("XKX", {})
+        for key, v in d["countries"]["MNE"].items():
+            if key in ("to_rus", "from_rus", "buy_ukr", "sell_ukr") and key not in xk:
+                xk[key] = {k: v[k] for k in keep if k in v} | {"analogue": "MNE"}
+        return d
+    if name == "trade.json" and "m49_to_iso3" in d:
+        # the reported values, as the other countries' own reports (which parts are observed)
+        t = json.loads((GAPS / "kosovo_r60.json").read_text())["trade"]
+        d["countries"]["XKX"] = {"name": "Kosovo", "m49": None} | {
+            f: {y: t[f][y]["central"] for y in ("2021", "2022", "2023", "2024", "2025")}
+            for f in ("imports_from_RUS", "exports_to_RUS", "imports_from_UKR", "exports_to_UKR")
+        }
+        return d
+    if name not in ("refugees.json", "refugees_net.json"):
+        return d
+    new = json.loads((GAPS / "refugees_nonEU_r60.json").read_text())["countries"]
+    for iso3, r in new.items():
+        t = d["countries"].get(iso3)
+        if not t:
+            continue
+        py = {y: v["central"] for y, v in r["person_years"].items()}
+        t["person_years"] = py
+        if name == "refugees.json":
+            t["cost"], t["certainty"] = r["gross"], r["certainty"]
+            t["note"] = f"Round 60 ({r['basis']}): {r['note']} See refugees_nonEU_r60-notes.md."
+        else:
+            t["gross"] = t["gross_map_now"] = r["gross"]
+            t["gross_map_now_source"], t["gross_certainty"] = "refugees_nonEU_r60.json", r["certainty"]
+    return d
 
 
 def _r39_replace(name: str, d: dict) -> dict:
@@ -603,6 +654,9 @@ def _r39_replace(name: str, d: dict) -> dict:
 def iso_numeric(iso3: str) -> str | None:
     if iso3 == "TWN":
         return "158"
+    if iso3 == "XKX":
+        # round 60: Kosovo has no ISO 3166 or UN M49 numeric code; its map key is its World Bank / IMF code
+        return "XKX"
     country = pycountry.countries.get(alpha_3=iso3)
     return country.numeric if country else None
 
@@ -1105,6 +1159,9 @@ def build() -> dict:
                 "as_of": "2026" if counts.get("2026") else "2025",
                 "src": [rid],
             }
+            if iso3 in R60_REFUGEES:
+                # round 60: the people the host protects or supports (2025 person-years), beside UNHCR's broad count
+                c["people"]["refugees"]["supported_2025"] = round((d.get("person_years") or {}).get("2025") or 0)
         note(
             iso3,
             "Refugee hosting",
@@ -1116,7 +1173,7 @@ def build() -> dict:
     rdf = load(GAPS / "flowback2.json")["refugee_donor_funding"]
     for iso3, d in rdf.items():
         a = (countries.get(iso3) or {}).get("aid") or {}
-        if not a.get("refugee_years"):
+        if not a.get("refugee_years") or iso3 in R60_REFUGEES:
             continue
         sh = d["donor_share"]
         a["refugee_years"] = [round(v * (1 - sh["central"]), 5) for v in a["refugee_years"]]
@@ -3850,7 +3907,11 @@ def apply_refugees_net(countries: dict[str, dict], src: Sources) -> None:
             continue
         # costs paid by donors are not the host's; Moldova's, Poland's, Bulgaria's, Georgia's and Armenia's figures are
         # already the host's own
-        sh = (donors.get(iso3) or {}).get("donor_share") if iso3 not in ("MDA", "POL", "BGR", "GEO", "ARM") else None
+        sh = (
+            (donors.get(iso3) or {}).get("donor_share")
+            if iso3 not in ("MDA", "POL", "BGR", "GEO", "ARM") and iso3 not in R60_REFUGEES
+            else None
+        )
         sh = sh or {"low": 0, "central": 0, "high": 0}
         gross = d["gross"]
         if iso3 in REFUGEE_SCOPE:
@@ -4044,7 +4105,11 @@ def apply_refugees_gain(countries: dict[str, dict], src: Sources) -> None:
         a = (countries.get(iso3) or {}).get("aid")
         if not a or not d.get("gross"):
             continue
-        sh = (donors.get(iso3) or {}).get("donor_share") if iso3 not in ("MDA", "POL", "BGR", "GEO", "ARM") else None
+        sh = (
+            (donors.get(iso3) or {}).get("donor_share")
+            if iso3 not in ("MDA", "POL", "BGR", "GEO", "ARM") and iso3 not in R60_REFUGEES
+            else None
+        )
         sh = sh or {"low": 0, "central": 0, "high": 0}
         gross = d["gross"]
         if iso3 in REFUGEE_SCOPE:
@@ -4237,6 +4302,8 @@ META_R16: dict = {}
 
 # refugee costs whose figures were checked only against secondary sources (verify_r11_aid-notes.md): letter at most C
 REFUGEE_CERT_CAP = {"POL": "C"}
+# round 60: hosts rebuilt from refugees_nonEU_r60.json at their own spending (no donor share taken off)
+R60_REFUGEES = frozenset(json.loads((GAPS / "refugees_nonEU_r60.json").read_text())["countries"])
 # Round 15 (review 4, M5; approved by the owner): refugee hosting at one definition for every host, the total cost to
 # all levels of government minus the taxes and contributions refugees pay. Hosts whose reported figure covers part of
 # government only are scaled by the gap between broad all-government estimates and that figure in 2022 (refugees-notes.md
@@ -7446,4 +7513,15 @@ if __name__ == "__main__":
     detail["alt_labels"] = METHOD_ALTERNATIVES
     OUT.write_text(json.dumps(data, separators=(",", ":")) + "\n")
     (OUT.parent / "detail.json").write_text(json.dumps(detail, separators=(",", ":")) + "\n")
+    # round 60 (owner): Russia's earnings from trade in two lines per country and year, worked out with the map's own
+    # model on the files just written (site_numbers.mjs --gain-split): rusGain (what Russia itself kept) and ownGain
+    # (what the country earned from Russia). Display fields only: the model does not read them, so no total changes
+    with tempfile.TemporaryDirectory() as tmp:
+        out = Path(tmp) / "gain_split.json"
+        subprocess.run(["node", str(Path(__file__).resolve().parent / "site_numbers.mjs"), "--gain-split", str(out)], check=True)  # fmt: skip
+        split = json.loads(out.read_text())
+    for iso3, c in data["countries"].items():
+        if iso3 in split:
+            c.update(split[iso3])
+    OUT.write_text(json.dumps(data, separators=(",", ":")) + "\n")
     print(f"wrote {OUT} with {len(data['countries'])} entries and {len(data['sources'])} sources")

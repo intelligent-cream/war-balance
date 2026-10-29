@@ -6,7 +6,7 @@ Every trade number on the map is a change against what a country would have boug
 
 > **One rule for what counts.** A country's figure reflects its own choices and the foreseeable answers to them. Things forced on it that it did not choose — Ukraine's strikes on Russian refineries, Russia's sudden export bans — count neither for it nor against it.
 >
-> - **Counted (choices, or foreseeable answers to them):** embargoes, sanctions and the price cap; switching to other suppliers; Russia's 2022 gas cut-off, an answer to the buyers' own sanctions; Russia's counter-sanctions and import bans on "unfriendly" countries; and the war-time prices paid by buyers who kept buying (the windfall).
+> - **Counted (choices, or foreseeable answers to them):** embargoes, sanctions and the price cap; switching to other suppliers; Russia's 2022 gas cut-off, an answer to the buyers' own sanctions; Russia's counter-sanctions and import bans on "unfriendly" countries; the end of gas transit through Ukraine on 1 January 2025 (Ukraine's decision not to renew its contract, announced more than a year ahead, so buyers could switch; labelled, only for gas still flowing in 2024); and the war-time prices paid by buyers who kept buying (the windfall), with no credit for lower prices that others' sanctions caused.
 > - **Not counted (forced):** fuel Russia could not deliver because of Ukraine's strikes, its 2023 ban on gasoline and diesel exports, and the 2026 halt of the Druzhba pipeline to Hungary and Slovakia after a Russian strike.
 > - **The trade-off.** For willing buyers hit by a forced loss, the figure shows what they chose to pay, not what they managed to buy: about EUR 13bn more in total than actually reached Russia (about EUR 4bn of it Russia's earnings).
 

@@ -423,7 +423,7 @@ else:
     ]
     _views_js = (ROOT / "site" / "views.js").read_text()
     _calls = re.findall(r'rankList\([^\n]*?"(ua|rus|net)"(?:\)|, \{)', _html) + re.findall(
-        r"uncertain\(m\.c, y, hq\)", _views_js
+        r"uncertain\(m\.c, y, hq\)|rankGroup\(m\.c, y, hq\)", _views_js
     )
     _unc_n = {
         q: sum(1 for c in _m["countries"].values() if c[q + "Unc"] and c["gdp"] >= 5) for q in ("ua", "rus", "net")
@@ -1030,6 +1030,52 @@ else:
         + ("; ".join(f"{k}: {v[:4]}" for k, v in _seo_bad.items()) if _seo_bad else "none")
         + ("" if _m is not None else "; node not found: titles not checked"),
     )
+
+# 49. round 60 (audit: the translated map apps called the site by another project's name): the site's name is "War
+# Balance" in every language; no translation of the old name appears outside the one line that disowns it
+_brand_bad = []
+for _f in sorted((ROOT / "site" / "i18n").glob("*.js")):
+    _t = _f.read_text()
+    _m_b = re.search(r'^  "War Balance": "([^"]*)",?$', _t, re.M)
+    if not _m_b or _m_b.group(1) != "War Balance":
+        _brand_bad.append(f"{_f.name}: War Balance -> {_m_b.group(1) if _m_b else 'missing'}")
+    for _old in (
+        "Spur des Geldes",
+        "Sigue el dinero",
+        "Suivre l'argent",
+        "Volg het geld",
+        "Śladem pieniędzy",
+        "Слідами грошей",
+    ):
+        if _old in _t:
+            _brand_bad.append(f"{_f.name}: {_old}")
+check("the site's name is War Balance in every language", not _brand_bad, f"problems: {_brand_bad or 'none'}")
+
+# 50. round 60 (audit: ranges crossing zero labelled "very likely"; Russia's earnings from trade in two lines): a number
+# the map calls very likely has its likely range on that side; and data.json's rusGain and ownGain (each line's
+# cumulative middle value to the last year) are the model's two lines of Russia's earnings from trade, adding up to it
+_cross, _split = [], []
+if _m:
+    for _iso, _c in _m["countries"].items():
+        for _q in ("net", "ua", "rus"):
+            if (
+                not _c.get(_q + "Unc") and _c.get(_q + "Lo") is not None and _c[_q + "Lo"] * _c[_q + "Hi"] < 0
+            ):  # (4 decimals: an end of 0.0000 is above zero)
+                _cross.append(f"{_iso} {_q}")
+        _dc = countries.get(_iso) or {}
+        for _k, _mk in (("rusGain", "rusPaidEur"), ("ownGain", "rusEarnedEur")):
+            _cum = ((_dc.get(_k) or {}).get("cum") or [None])[-1]
+            if _cum is not None and _c.get(_mk) is not None and abs(_cum[0] - _c[_mk]) > 2e-3:
+                _split.append(f"{_iso} {_k} {_cum[0]} vs {_c[_mk]}")
+        if _c.get("rusPaidEur") is not None and abs(_c["rusPaidEur"] + _c["rusEarnedEur"] - _c["rusEur"]) > 2e-3:
+            _split.append(f"{_iso} lines do not add up")
+check(
+    "very likely only with the likely range on that side; Russia's gain and own gain add up to the trade number",
+    _m is not None and not _cross and not _split,
+    f"very likely across zero: {_cross[:8] or 'none'}; gain split: {_split[:6] or 'none'}"
+    + ("" if _m is not None else "; node not found: not checked"),
+    warn_only=_m is None and not STRICT,
+)
 
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:

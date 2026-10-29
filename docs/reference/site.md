@@ -92,7 +92,7 @@ check 37 in `check_data.py` holds the rules.
   language are in `pipeline/seo_i18n.mjs`, everything said about a country is the map's own text in that language.
   Check 48 (`pipeline/seo_check.py`) holds the rules.
 - **Structured data.** The map's head has JSON-LD for the website, the publishing organisation ("War Balance",
-  no personal names) and the Dataset (licence CC BY 4.0, coverage February 2022 to August 2026, the JSON
+  no personal names) and the Dataset (licence CC BY 4.0, coverage 2022 to August 2026 (all of 2022), the JSON
   download). Each country page has a WebPage that is part of the Dataset.
 - **The custom domain on GitHub Pages.** The deploy uses GitHub Actions, so `site/CNAME` documents the domain but does
   not set it: in the repository's Settings → Pages → Custom domain, enter `warbalance.org`, then tick Enforce

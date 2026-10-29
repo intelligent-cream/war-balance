@@ -153,7 +153,7 @@ export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en", ar
   // an entry of a generated family (seo_families.mjs) or a page in another language has its words from seo_i18n.mjs
   const title = fitTitle(forms(e.title)), description = fitDesc(forms(e.description));
   const totals = ["net", "ua", "rus", "frozen"].map(k => ({ key: k, ...sumOf(rows, k) }));
-  const subtotals = (e.subtotals || []).filter(s => groups[s]).map(s => ({ slug: s, label: groups[s].label, n: subSet(s).length, sums: ["ua", "paid", "paidGain", "net"].map(k => ({ key: k, ...sumOf(subSet(s), k) })) }));
+  const subtotals = (e.subtotals || []).filter(s => groups[s]).map(s => ({ slug: s, label: groups[s].label, n: subSet(s).length, sums: ["ua", "rus", "frozen", "net"].map(k => ({ key: k, ...sumOf(subSet(s), k) })) }));   // round 60: the group page's own lines, so support + trade + frozen = net
   return {
     path: pathOf(e), kind: e.kind, slug: e.slug, label: e.label, key, keySide: sideOfKey(countries, key), sort, order: e.order || "desc", title, description, h1: fill(e.h1 || ""), intro: fill(e.intro || ""), year, side: e.side || "", moneyNote: e.moneyNote || "",
     // a column every listed country has nothing in (frozen money in the Gulf states) is left out

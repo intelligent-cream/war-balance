@@ -12,19 +12,19 @@
   "territory": "Not a sovereign state; status follows the sovereign only where its law extends there, which was not checked territory by territory."
  },
  "summary": {
-  "entries": 231,
+  "entries": 232,
   "by_category": {
    "no_own_regime_found": 137,
    "territory": 28,
    "eu_member": 27,
    "territory_uk_order": 10,
-   "adopts_eu_measures": 10,
+   "adopts_eu_measures": 11,
    "no_own_regime_stated": 9,
    "own_regime": 9,
    "financial_directive_only": 1
   },
-  "own_regime_yes": 20,
-  "applies_eu_or_uk_regime": 37,
+  "own_regime_yes": 21,
+  "applies_eu_or_uk_regime": 38,
   "own_regime_none_found": 146,
   "own_regime_unknown_territory": 28,
   "eu_members": 27,
@@ -38,7 +38,8 @@
    "MKD",
    "MNE",
    "NOR",
-   "SMR"
+   "SMR",
+   "XKX"
   ],
   "price_cap_coalition": [
    "AUS",
@@ -10885,6 +10886,57 @@
    "notes": null,
    "checked": "2026-10-27"
   },
+  "XKX": {
+   "name": "Kosovo",
+   "kind": "state",
+   "sovereign": null,
+   "own_regime": {
+    "yes": true,
+    "since": "2022-02-25",
+    "basis": "Government of Kosovo decisions of 25 February 2022 (asset freezes, travel bans, in line with the EU and US) and 16 May 2022 (Russia and Belarus: asset freezes, travel bans, ban on imports of goods from both), later extended with further EU packages",
+    "scope": "own decisions following EU and US measures",
+    "src": [
+     "xkx_gov_2022_02",
+     "xkx_gov_2022_05"
+    ]
+   },
+   "eu_aligned": {
+    "status": "adopts_eu_measures_partial",
+    "in_hr_statement_2026_508": false,
+    "note": "Kosovo is not invited to the EU High Representative's alignment statements; it follows EU packages by its own government decisions",
+    "src": [
+     "xkx_gov_2022_05"
+    ]
+   },
+   "price_cap_coalition": {
+    "member": false,
+    "src": [
+     "pricecap_2022"
+    ]
+   },
+   "export_controls": {
+    "russia_controls": null,
+    "basis": "the later packages ban exports of technology to Russia; not in EAR Supplement No. 3",
+    "bis_supp3": null,
+    "src": [
+     "xkx_gov_2022_05",
+     "bis_supp3"
+    ]
+   },
+   "unfriendly_list": {
+    "listed": false,
+    "since": null,
+    "how": "not named; Russia does not recognise Kosovo",
+    "order": "430-r",
+    "src": [
+     "ru_430r",
+     "ru_consultant"
+    ]
+   },
+   "category": "adopts_eu_measures",
+   "notes": "Russia does not recognise Kosovo; it is not on Russia's unfriendly list.",
+   "checked": "2026-10-29"
+  },
   "YEM": {
    "name": "Yemen",
    "kind": "state",
@@ -11414,6 +11466,20 @@
    "type": "search_extract",
    "file": "search_extracts.json#x_hk",
    "date": "2026-10-27"
+  },
+  {
+   "id": "xkx_gov_2022_02",
+   "name": "Exit News, 25 February 2022: Kosovo imposes sanctions on Russia over the invasion of Ukraine (asset freezes, travel bans, in line with the US and EU)",
+   "url": "https://exit.al/en/kosovo-imposes-sanctions-on-russia-over-ukraine-invasion",
+   "type": "news",
+   "date": "2026-10-29"
+  },
+  {
+   "id": "xkx_gov_2022_05",
+   "name": "Anadolu Agency, 16 May 2022: Kosovo expands its sanctions against Russia (and Belarus): asset freezes, travel bans, goods from both countries",
+   "url": "https://aa.com.tr/en/europe/kosovo-expands-its-sanctions-against-russia/2589774",
+   "type": "news",
+   "date": "2026-10-29"
   }
  ]
 }

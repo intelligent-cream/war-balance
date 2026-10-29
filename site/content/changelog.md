@@ -2,6 +2,17 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r60">Round 60: fixes from an independent audit <span class="cl-date">29 October</span></h2>
+
+An independent audit of the pages, the numbers and the method. The fixes below change words, groups and labels; where a chance moved, it is by a fraction of a point.
+
+- **Direction and chance**: direction words follow the sign of the middle value; where the simulations lean the other way, the chance says so ("the middle value is toward Russia, but the simulations lean slightly toward Ukraine (51%)"). Net and trade now take the same simulation draws where they are the same number. "Very likely" also needs the likely range to stay on that side, so a range that crosses zero is never called very likely (the UAE, Hong Kong, Bulgaria and New Zealand's net among them); a number whose whole range is under 0.1% of GDP is "essentially zero".
+- **One classifier**: the ranking, the country pages, the map's ranking view and the downloads use the same groups, with "Essentially zero" as its own group; the "Toward Russia" list on the ranking page starts from number 1. The map's legend says "very likely" and "likely", as the pages do.
+- **Labels by sign**: companies' profits in Russia, stakes in Russian oil and gas, the sanctions premium and Russian forces are named by their direction; "Gave Ukraine less than without the war" is gone ("No support for Ukraine recorded", or "Earned more from Ukraine's war effort than it gave"); support made only of a share of IMF and World Bank lending is named as that.
+- **Accurate boilerplate**: weapons count at their money value (aid at market value when delivered, deliveries to Russia at the seller's gain where Russia paid); votes, diplomacy and intent are not in the numbers. Support for Ukraine is described with all its parts. The sanctions line shows only where trade cut Russia's earnings. Türkiye-type sentences name the war-time price premium of the whole period, largest in 2022.
+- **Tables that add up**: the by-year tables of country and comparison pages have the frozen-money column, and one sign convention everywhere: + toward Ukraine, − toward Russia. Russia's earnings from trade are shown in their two lines: Russia's own gain and the country's own gain from trade with Russia.
+- **Pages and downloads**: the page of countries whose money moved toward Russia lists all of them; year pages say why January–August 2026 can reach a full year; the downloads have a data dictionary of every column, the ranking group, no-data and party columns (and no letters on the headline numbers), sources, the energy switching cost and oil discount, Russia's budget balance and National Wealth Fund, a guide to data.json and checksums. Names, amounts ("<€1m", "€1.0bn"), periods ("2022 to August 2026") and translations were tidied; Kosovo has its own page.
+
 <h2 id="cl-r59">Round 59: titles in the words people search <span class="cl-date">27 October</span></h2>
 
 Page titles, headings and questions now use the phrasing people actually search, in each language, where the page answers it. No number changes.

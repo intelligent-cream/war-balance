@@ -62,7 +62,7 @@
  "CHN": {
   "net": -127.7915,
   "netLo": -192.6116,
-  "netHi": -55.0348,
+  "netHi": -55.0347,
   "ua": 0.0521,
   "rus": -127.8436,
   "frozen": 0,
@@ -70,20 +70,20 @@
   "mostlyNoData": false
  },
  "IND": {
-  "net": -70.462,
+  "net": -70.4619,
   "netLo": -103.9559,
   "netHi": -32.8372,
-  "ua": 0.0376,
+  "ua": 0.0377,
   "rus": -70.4996,
   "frozen": 0,
   "noData": false,
   "mostlyNoData": false
  },
  "TUR": {
-  "net": -32.7843,
-  "netLo": -55.3975,
-  "netHi": -2.0472,
-  "ua": 0.0309,
+  "net": -32.8107,
+  "netLo": -55.4238,
+  "netHi": -2.0736,
+  "ua": 0.0045,
   "rus": -32.8152,
   "frozen": 0,
   "noData": false,
@@ -110,10 +110,10 @@
   "mostlyNoData": false
  },
  "KAZ": {
-  "net": 0.0511,
-  "netLo": -6.6309,
-  "netHi": 6.7703,
-  "ua": 0.0161,
+  "net": 0.0414,
+  "netLo": -6.6406,
+  "netHi": 6.7606,
+  "ua": 0.0064,
   "rus": 0.035,
   "frozen": 0,
   "noData": false,
