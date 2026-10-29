@@ -1,0 +1,388 @@
+{
+ "generated": "2026-10-29",
+ "round": 60,
+ "about": "Kosovo (XKX, the World Bank and IMF code; OECD-WTO BaTiS uses XKV) was missing from the map because it has no ISO or UN M49 numeric code. Its inputs: GDP and population were already in other.json and gdp_avg_r15.json (World Bank WDI), services with Russia in the BaTiS-based files (as XKV), private donations in uncovered.json. Added here: goods trade with Russia and Ukraine from Kosovo's own statistics, government aid to Ukraine, and its sanctions status.",
+ "trade": {
+  "name": "Kosovo",
+  "imports_from_RUS": {
+   "2019": {
+    "low": 0.029904,
+    "central": 0.038388,
+    "high": 0.04929,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2020": {
+    "low": 0.036205,
+    "central": 0.046476,
+    "high": 0.059675,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2021": {
+    "low": 0.039993,
+    "central": 0.051339,
+    "high": 0.065919,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2022": {
+    "low": 0.019696,
+    "central": 0.025284,
+    "high": 0.032465,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2023": {
+    "low": 0.001059,
+    "central": 0.001359,
+    "high": 0.001745,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2024": {
+    "low": 0.000152,
+    "central": 0.000195,
+    "high": 0.00025,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2025": {
+    "low": 2.9e-05,
+    "central": 3.7e-05,
+    "high": 4.8e-05,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2026": {
+    "low": 2.5e-05,
+    "central": 3.2e-05,
+    "high": 4.1e-05,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)",
+    "period": "2026-01..2026-08"
+   },
+   "baseline": {
+    "central_2021": 0.051339,
+    "avg_2019_2021": 0.045401,
+    "low": 0.039993,
+    "high": 0.065919
+   }
+  },
+  "exports_to_RUS": {
+   "2019": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2020": {
+    "low": 1.9e-05,
+    "central": 2.4e-05,
+    "high": 3.1e-05,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2021": {
+    "low": 2.7e-05,
+    "central": 3.5e-05,
+    "high": 4.5e-05,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2022": {
+    "low": 3e-06,
+    "central": 4e-06,
+    "high": 5e-06,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2025": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2026": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)",
+    "period": "2026-01..2026-08"
+   },
+   "baseline": {
+    "central_2021": 3.5e-05,
+    "avg_2019_2021": 2e-05,
+    "low": 2e-05,
+    "high": 4.5e-05
+   }
+  },
+  "imports_from_UKR": {
+   "2019": {
+    "low": 0.017552,
+    "central": 0.022531,
+    "high": 0.02893,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2020": {
+    "low": 0.01479,
+    "central": 0.018986,
+    "high": 0.024378,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2021": {
+    "low": 0.02856,
+    "central": 0.036662,
+    "high": 0.047074,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2022": {
+    "low": 0.013153,
+    "central": 0.016885,
+    "high": 0.02168,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2023": {
+    "low": 0.02499,
+    "central": 0.03208,
+    "high": 0.041191,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2024": {
+    "low": 0.012597,
+    "central": 0.016171,
+    "high": 0.020764,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2025": {
+    "low": 0.016263,
+    "central": 0.020877,
+    "high": 0.026806,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2026": {
+    "low": 0.004785,
+    "central": 0.006142,
+    "high": 0.007886,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)",
+    "period": "2026-01..2026-08"
+   },
+   "baseline": {
+    "central_2021": 0.036662,
+    "avg_2019_2021": 0.02606,
+    "low": 0.02606,
+    "high": 0.047074
+   }
+  },
+  "exports_to_UKR": {
+   "2019": {
+    "low": 1.8e-05,
+    "central": 2.3e-05,
+    "high": 3e-05,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2020": {
+    "low": 5.5e-05,
+    "central": 7e-05,
+    "high": 9e-05,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2021": {
+    "low": 4.5e-05,
+    "central": 5.8e-05,
+    "high": 7.4e-05,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2022": {
+    "low": 0.000393,
+    "central": 0.000505,
+    "high": 0.000648,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2023": {
+    "low": 0.000153,
+    "central": 0.000196,
+    "high": 0.000252,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2024": {
+    "low": 7.2e-05,
+    "central": 9.3e-05,
+    "high": 0.000119,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2025": {
+    "low": 9.3e-05,
+    "central": 0.00012,
+    "high": 0.000154,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)"
+   },
+   "2026": {
+    "low": 9.5e-05,
+    "central": 0.000122,
+    "high": 0.000156,
+    "basis": "reported",
+    "src": "Kosovo Agency of Statistics, ASKdata (tab02.px; 2026: monthly 06/07 tables, January-August)",
+    "period": "2026-01..2026-08"
+   },
+   "baseline": {
+    "central_2021": 5.8e-05,
+    "avg_2019_2021": 5e-05,
+    "low": 4.5e-05,
+    "high": 7.4e-05
+   }
+  }
+ },
+ "trade_note": "Kosovo's imports from Russia (by country of origin) were EUR 38-51m a year in 2019-2021 and fell to EUR 25m in 2022 and almost nothing from 2023 (EUR 0.04m in 2025), after the government banned imports of goods from Russia and Belarus (decision of 16 May 2022). Exports to Russia were never more than EUR 35,000 a year. Russia does not recognise Kosovo and reports no trade with it, so there is no mirror check; Russian goods that reach Kosovo through Serbia or North Macedonia with another origin are not seen. Band: x0.78-1.28, as for other reported own statistics.",
+ "aid": {
+  "name": "Kosovo",
+  "years": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0001,
+    "high": 0.0003
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0002
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0001
+   },
+   "2025": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0001
+   },
+   "2026": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0001
+   }
+  },
+  "total": {
+   "low": 0.0001,
+   "central": 0.0001,
+   "high": 0.0008
+  },
+  "split": {
+   "humanitarian": 0.0001,
+   "financial": 0.0,
+   "military": 0.0
+  },
+  "certainty": "C",
+  "sources": [
+   {
+    "name": "Government of Kosovo decision: EUR 100,000 for the people of Ukraine, first tranche of humanitarian aid (The Geopost)",
+    "url": "https://thegeopost.com/lajme/ne-shenje-solidarizimi-me-ukrainen-qeveria-e-kosoves-ndan-100-mije-euro-ndihma/",
+    "date": "2022",
+    "kind": "press"
+   }
+  ],
+  "note": "Not in the Kiel Ukraine Support Tracker. Documented: EUR 0.1m humanitarian aid (2022). Not counted: the EU rule-of-law mission's (EULEX) vehicle donation from Pristina, which is EU money. High end allows for unrecorded small donations."
+ },
+ "sanctions": {
+  "name": "Kosovo",
+  "kind": "state",
+  "sovereign": null,
+  "own_regime": {
+   "yes": true,
+   "since": "2022-02-25",
+   "basis": "Government of Kosovo decisions of 25 February 2022 (asset freezes, travel bans, in line with the EU and US) and 16 May 2022 (Russia and Belarus: asset freezes, travel bans, ban on imports of goods from both), later extended with further EU packages",
+   "scope": "own decisions following EU and US measures",
+   "src": [
+    "xkx_gov_2022_02",
+    "xkx_gov_2022_05"
+   ]
+  },
+  "eu_aligned": {
+   "status": "adopts_eu_measures_partial",
+   "in_hr_statement_2026_508": false,
+   "note": "Kosovo is not invited to the EU High Representative's alignment statements; it follows EU packages by its own government decisions",
+   "src": [
+    "xkx_gov_2022_05"
+   ]
+  },
+  "price_cap_coalition": {
+   "member": false,
+   "src": [
+    "pricecap_2022"
+   ]
+  },
+  "export_controls": {
+   "russia_controls": null,
+   "basis": "the later packages ban exports of technology to Russia; not in EAR Supplement No. 3",
+   "bis_supp3": null,
+   "src": [
+    "xkx_gov_2022_05",
+    "bis_supp3"
+   ]
+  },
+  "unfriendly_list": {
+   "listed": false,
+   "since": null,
+   "how": "not named; Russia does not recognise Kosovo",
+   "order": "430-r",
+   "src": [
+    "ru_430r",
+    "ru_consultant"
+   ]
+  },
+  "category": "adopts_eu_measures",
+  "notes": "Russia does not recognise Kosovo; it is not on Russia's unfriendly list.",
+  "checked": "2026-10-29"
+ },
+ "sanctions_sources": [
+  {
+   "id": "xkx_gov_2022_02",
+   "name": "Exit News, 25 February 2022: Kosovo imposes sanctions on Russia over the invasion of Ukraine (asset freezes, travel bans, in line with the US and EU)",
+   "url": "https://exit.al/en/kosovo-imposes-sanctions-on-russia-over-ukraine-invasion",
+   "type": "news",
+   "date": "2026-10-29"
+  },
+  {
+   "id": "xkx_gov_2022_05",
+   "name": "Anadolu Agency, 16 May 2022: Kosovo expands its sanctions against Russia (and Belarus): asset freezes, travel bans, goods from both countries",
+   "url": "https://aa.com.tr/en/europe/kosovo-expands-its-sanctions-against-russia/2589774",
+   "type": "news",
+   "date": "2026-10-29"
+  }
+ ],
+ "refugees": "UNHCR publishes no separate count of refugees from Ukraine in Kosovo (its statistics list Kosovo under Serbia, S/RES/1244); no hosting cost is entered.",
+ "map": "Kosovo is in site/countries-50m.json and countries-lite.json as a geometry with no id (properties.name 'Kosovo'); its data key (n) is 'XKX', so the map needs that geometry given id 'XKX' to link it."
+}

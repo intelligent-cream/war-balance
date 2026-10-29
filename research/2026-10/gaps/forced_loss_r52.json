@@ -111,83 +111,99 @@
  "sources": [
   {
    "name": "reuters_2023-09_diesel_first20days.txt",
+   "title": "Reuters (via Hydrocarbon Processing): Russia cuts September seaborne diesel exports to meet domestic shortage, September 2023",
    "url": "https://www.hydrocarbonprocessing.com/news/2023/09/russia-cuts-september-seaborne-diesel-exports-to-meet-domestic-shortage/",
    "extract": "raw/forced_loss_r52/reuters_2023-09_diesel_first20days.txt"
   },
   {
    "name": "reuters_2023-10_diesel_early_october.txt",
+   "title": "Reuters (via Hydrocarbon Processing): Russian seaborne diesel exports fell by 20% in early October, October 2023",
    "url": "https://hydrocarbonprocessing.com/news/2023/10/russian-seaborne-diesel-exports-fell-by-20-in-early-october/",
    "extract": "raw/forced_loss_r52/reuters_2023-10_diesel_early_october.txt"
   },
   {
    "name": "reuters_2023-10_diesel_resumes.txt",
+   "title": "Reuters (via Hydrocarbon Processing): Russia resumes seaborne diesel exports after partially lifting ban, October 2023",
    "url": "https://hydrocarbonprocessing.com/news/2023/10/russia-resumes-seaborne-diesel-exports-after-partially-lifting-ban/",
    "extract": "raw/forced_loss_r52/reuters_2023-10_diesel_resumes.txt"
   },
   {
    "name": "reuters_2023-11_diesel_october.txt",
+   "title": "Reuters (via Hydrocarbon Processing): Russia's October seaborne diesel exports fall on ban, maintenance, November 2023",
    "url": "https://hydrocarbonprocessing.com/news/2023/11/russias-october-seaborne-diesel-exports-fall-on-ban-maintenance/",
    "extract": "raw/forced_loss_r52/reuters_2023-11_diesel_october.txt"
   },
   {
    "name": "reuters_2023-11_gasoline_ban_lifted.txt",
+   "title": "Reuters (via Hydrocarbon Processing): Russia lifts gasoline export ban, energy ministry says, November 2023",
    "url": "https://hydrocarbonprocessing.com/news/2023/11/russia-lifts-gasoline-export-ban-energy-ministry/",
    "extract": "raw/forced_loss_r52/reuters_2023-11_gasoline_ban_lifted.txt"
   },
   {
    "name": "reuters_daryo_2023-10_gasoline_rail.txt",
+   "title": "Daryo (citing Reuters): Russia's gasoline exports plummet by 80% in October after the temporary export ban, October 2023",
    "url": "https://daryo.uz/en/2023/10/21/russias-gasoline-exports-plummet-by-80-in-october-impact-of-temporary-export-ban/",
    "extract": "raw/forced_loss_r52/reuters_daryo_2023-10_gasoline_rail.txt"
   },
   {
    "name": "bloomberg_2023-12-20_fuel_exports.txt",
+   "title": "Bloomberg (via BNN Bloomberg): Russia ramps up fuel exports, undermining part of OPEC+ pledge, 20 December 2023",
    "url": "https://www.bnnbloomberg.ca/russia-ramps-up-fuel-exports-undermining-part-of-opec-pledge-1.2013878",
    "extract": "raw/forced_loss_r52/bloomberg_2023-12-20_fuel_exports.txt",
    "verified": "search summary only (page blocked automated access)"
   },
   {
    "name": "enerdata_2023-11_gasoline_ban_lifted.txt",
+   "title": "Enerdata: Russia lifts its ban on gasoline exports for producers, November 2023",
    "url": "https://www.enerdata.net/publications/daily-energy-news/russia-lifts-its-ban-gasoline-exports-producers.html",
    "extract": "raw/forced_loss_r52/enerdata_2023-11_gasoline_ban_lifted.txt"
   },
   {
    "name": "armenpress_2024-02_ban_exemptions.txt",
+   "title": "Armenpress: Russia's temporary fuel export ban does not apply to the Eurasian Economic Union countries, February 2024",
    "url": "https://armenpress.am/en/article/1131196",
    "extract": "raw/forced_loss_r52/armenpress_2024-02_ban_exemptions.txt"
   },
   {
    "name": "interfax_2023-09_resolution_1564.txt",
+   "title": "Interfax: Russian government clarifies the fuel export ban (resolution No. 1564: marine fuels, gas oils and middle distillates excluded), 25 September 2023",
    "url": "https://interfax.com/newsroom/top-stories/94866/",
    "extract": "raw/forced_loss_r52/interfax_2023-09_resolution_1564.txt"
   },
   {
    "name": "moscowtimes_2026-04-23_druzhba_resumed.txt",
+   "title": "The Moscow Times: Druzhba oil flow to Slovakia resumed, officials say, 23 April 2026",
    "url": "https://www.themoscowtimes.com/2026/04/23/druzhba-oil-flow-to-slovakia-resumed-thursday-officials-say-a92580",
    "extract": "raw/forced_loss_r52/moscowtimes_2026-04-23_druzhba_resumed.txt"
   },
   {
    "name": "oenergetice_2026-04_mol_resumes.txt",
+   "title": "oEnergetice: MOL resumes receiving oil from Druzhba after three months, April 2026",
    "url": "https://oenergetice.cz/en/oil/mol-resumes-receiving-oil-from-druzhba-after-three-months-with-flows-also-reaching-slovakia",
    "extract": "raw/forced_loss_r52/oenergetice_2026-04_mol_resumes.txt"
   },
   {
    "name": "intellinews_2026-06_druzhba_normal.txt",
+   "title": "bne IntelliNews: Russian oil flows through Druzhba return to normal, June 2026",
    "url": "https://www.intellinews.com/russian-oil-flows-through-druzhba-return-to-normal-as-hungary-and-slovakia-resume-russian-oil-and-gas-imports-446680/",
    "extract": "raw/forced_loss_r52/intellinews_2026-06_druzhba_normal.txt",
    "verified": "search summary only (page blocked automated access)"
   },
   {
    "name": "pgj_2026-04_druzhba_resume.txt",
+   "title": "Pipeline & Gas Journal: Druzhba pipeline oil flows resume to Hungary and Slovakia after outage, April 2026",
    "url": "https://pgjonline.com/news/2026/april/druzhba-pipeline-oil-flows-resume-to-hungary-slovakia-after-outage",
    "extract": "raw/forced_loss_r52/pgj_2026-04_druzhba_resume.txt"
   },
   {
    "name": "wikipedia_2026_druzhba_dispute.txt",
+   "title": "Wikipedia: 2026 Druzhba pipeline dispute",
    "url": "https://en.wikipedia.org/wiki/2026_Druzhba_pipeline_dispute",
    "extract": "raw/forced_loss_r52/wikipedia_2026_druzhba_dispute.txt"
   },
   {
    "name": "reuters_2024-07_lukoil_transit.txt",
+   "title": "Reuters (via Hydrocarbon Processing): Slovakia and Hungary say Ukraine has halted Lukoil's Russian oil transit, July 2024",
    "url": "https://www.hydrocarbonprocessing.com/news/2024/07/slovakia-hungary-say-ukraine-has-halted-lukoils-russian-oil-transit/",
    "extract": "raw/forced_loss_r52/reuters_2024-07_lukoil_transit.txt"
   }

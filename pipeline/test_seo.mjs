@@ -55,6 +55,21 @@ test("a title's chance word follows the category", () => {
   assert.match(en({ ...FX.HUN, rus: 1.5 }).description, /Russia kept €1.5bn less/);
 });
 
+// round 60 (audit: Togo's intro said "0.46% toward Ukraine" for a net of −0.46%, its simulations 51% toward Ukraine): the
+// direction words follow the middle value's sign; the chance says the side it is the chance of, and the map's chance words
+// say both where they differ
+test("direction words follow the sign of the middle value; the chance names its own side", () => {
+  const togo = { ...FX.SVK, iso: "XTG", name: "Testland", net: -0.041, netPct: -0.46,
+    cN: { level: "unc", p: 0.51, side: "ukraine", sideWords: "toward Ukraine", dirWords: "toward Russia", disagree: true },
+    loc: { net: { range: "likely from 2.3% toward Russia to 2.5% toward Ukraine", chance: "too close to call: the middle value is toward Russia, but the simulations lean slightly toward Ukraine (51%)" } } };
+  const c = en(togo);
+  assert.match(c.intro, /The net is 0\.46% of a year's GDP toward Russia \(/);
+  assert.match(c.intro, /the middle value is toward Russia, but the simulations lean slightly toward Ukraine \(51%\)/);
+  assert.doesNotMatch(c.intro, /GDP toward Ukraine \(/);
+  // the description's chance is the simulation's side
+  assert.match(c.description, /\(51% toward Ukraine\)/);
+});
+
 test("titles fit in 60 characters and descriptions in 155, for every category and long names", () => {
   const long = ["Saint Vincent and the Grenadines", "Bosnia and Herzegovina", "Turks and Caicos Islands", "Central African Republic", "Holy See (Vatican City State)"];
   const levels = [["sure", "ukraine"], ["sure", "russia"], ["lean", "ukraine"], ["lean", "russia"], ["unc", "russia"], ["near", "ukraine"], ["zero", "russia"]];
@@ -286,8 +301,8 @@ import * as SC from "./seo_country.mjs";
 // Ukraine, the chance toward Russia)
 const mkC = (over = {}) => ({
   iso: "XKZ", name: "Testland", gdp: 250, party: false, noData: false, mostlyNoData: false, partyWhy: "", kept: "Russia kept €35m (0.01% of GDP) less than without the war",
-  kiel: "", fig: { net: 0.05, netPct: 0.02, ua: 0.016, uaPct: 0.006, rusPct: 0.01, frozen: 0, cN: { level: "zero", p: 0.58, side: "russia", sideWords: "toward Russia" } },
-  net: { signed: "+0.02%", range: "likely from 2.7% toward Russia to 2.8% toward Ukraine", chance: "essentially zero", chanceSentence: "A 58% chance toward Russia; 11% of the other method choices agree." },
+  kiel: "", fig: { net: 0.05, netPct: 0.02, ua: 0.016, uaPct: 0.006, rusPct: 0.01, frozen: 0, cN: { level: "zero", p: 0.58, side: "russia", sideWords: "toward Russia", dirWords: "toward Ukraine" } },
+  net: { signed: "+0.02%", range: "likely from 2.7% toward Russia to 2.8% toward Ukraine", chance: "essentially zero", chanceSentence: "Chance toward Russia: 58%; 11% of the other method choices agree." },
   ua: { range: "likely <0.01% to 0.03%" }, measures: { "part:ref": { v: 0.012 }, "part:prem": { v: 0.0035 }, "part:disc": { v: -0.0001 } },
   years: [{ y: 2022, ytd: false, uaBn: 0.003, netBn: -0.33 }, { y: 2023, ytd: false, uaBn: 0.002, netBn: 0.26 }, { y: 2024, ytd: false, uaBn: 0.001, netBn: -0.37 }, { y: 2025, ytd: false, uaBn: 0.005, netBn: 0.07 }, { y: 2026, ytd: true, uaBn: 0.005, netBn: 0.42 }],
   dyn: { story: [{ key: "hub", label: "Trade hub", body: "Goods it passed on. of which some." }], decide: { level: "zero", why: "Not certain, mostly because of how much it would have bought from Russia without the war.", flip: "" },
@@ -322,11 +337,11 @@ test("the question pool: a data condition each, 4 to 6 by score, at most 2 per f
   assert.equal(SC.plainText('<span data-f="p">&lt;0.01%</span> of GDP'), "<0.01% of GDP");
 });
 
-test("direction words follow the chance, not the middle value's sign; years change side only when it is a finding", () => {
+test("a chance names the side it is the chance of; years change side only when it is a finding", () => {
   const r = SC.countryDyn(mkC(), OPT());
   const help = r.faq.find(x => x.id === "help").a;
   assert.match(help, /essentially zero/);
-  assert.match(help, /A 58% chance toward Russia/);
+  assert.match(help, /Chance toward Russia: 58%/);
   assert.doesNotMatch(help.replace(/likely from 2\.7% toward Russia to 2\.8% toward Ukraine/, ""), /toward Ukraine/);
   const peers = r.sections.find(s => s.id === "peers").html;
   assert.match(peers, /Its direction is essentially zero, so the map's ranking gives it no number/);
@@ -494,7 +509,7 @@ test("sanctions: every entry answered from its category in every language; Russi
   assert.match(p.faq[2].a, /Micronesia/);
   // round 59: "What are the EU sanctions on Russia?", from the file's EU category, its members and adopters
   assert.equal(p.faq[1].q, "What are the EU sanctions on Russia?");
-  assert.match(p.faq[1].a, /^The EU's sanctions on Russia are set in Council Regulations 833\/2014 and 269\/2014, which every member agreed to in the Council\. The EU's 27 members apply them, and 10 other European countries adopt them/);
+  assert.match(p.faq[1].a, /^The EU's sanctions on Russia are set in Council Regulations 833\/2014 and 269\/2014, which every member agreed to in the Council\. The EU's 27 members apply them, and \d+ other European countries adopt them/);
   assert.doesNotMatch(p.faq[1].a, /immobilised/);   // no frozen file given: no amount
   const p2 = RS.sanctionsPage("de", SANC, { nameOf: i => SANC.countries[i].name, href: () => "", frozen: RS.frozenFacts(FROZ) });
   assert.match(p2.faq[1].a, /in der EU immobilisiert/);
@@ -707,8 +722,9 @@ test("round 59b: military aid by country, its steps from Kiel's figure, and no z
   const gbr = RS.milCountry("en", MIL, "GBR", { Nt: "the United Kingdom", NtCap: "The United Kingdom", dataTo: "August 2026" }, "/m/");
   assert.match(gbr.html, /Kiel: €16\.2bn/);
   const nr = Object.keys(MIL.countries).find(i => RS.milNoRecord(MIL, i) && Math.abs(MIL.countries[i].total_site) >= 0.0005);
-  assert.match(RS.milCountry("en", MIL, nr, { Nt: "X", NtCap: "X", dataTo: "August 2026" }, "/m/").html, /data-rv="military:countries\.\w+\.military" data-v="0">no record found/);
-  assert.match(RS.milCells("en", MIL, nr), /no record found/);
+  // round 60 (audit: words in a column of figures): no record is a dash in the cell, its words in the title and the note
+  assert.match(RS.milCountry("en", MIL, nr, { Nt: "X", NtCap: "X", dataTo: "August 2026" }, "/m/").html, /data-rv="military:countries\.\w+\.military" data-v="0" title="no record found">–/);
+  assert.match(RS.milCells("en", MIL, nr), /title="no record found">–/);
 });
 
 test("round 59b: the budget balance, the plans labelled, the fund; the CSV files are the files' figures", () => {

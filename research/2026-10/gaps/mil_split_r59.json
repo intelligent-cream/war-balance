@@ -19,34 +19,34 @@
  "eu_military_loan_fraction_2026": 0.3285,
  "kiel_extract_crosscheck_differences": [],
  "coverage": {
-  "countries_with_support": 101,
+  "countries_with_support": 160,
   "with_military_over_1m": 37,
   "basis": {
    "kiel": 41,
-   "aid_gaps": 25,
-   "none": 35
+   "aid_gaps": 26,
+   "none": 93
   },
   "quality": {
    "A": 18,
    "B": 10,
-   "C": 34,
-   "D": 39
+   "C": 35,
+   "D": 97
   },
   "max_abs_reconciliation_difference_eur_bn": [
-   "LVA",
-   -0.0015
+   "DEU",
+   0.0019
   ]
  },
  "totals": {
   "military": 124.568,
   "financial": 43.952,
   "humanitarian": 23.556,
-  "refugees": 104.261,
+  "refugees": 103.666,
   "eu_share": 50.556,
-  "flowback": -9.548,
-  "total_site": 348.219,
+  "flowback": -9.541,
+  "total_site": 347.763,
   "military_incl_eu_share": 124.825,
-  "other": 10.868,
+  "other": 10.993,
   "kiel_military": 177.007,
   "eu_share_split": {
    "military": 0.257,
@@ -64,7 +64,7 @@
  "sources": {
   "kiel": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
   "kiel_extract": "research/2026-10/raw/mil_split_r59/kiel_r31_country_summary_eur.csv",
-  "site_model": "pipeline/site_numbers.mjs on site/data.json (built 2026-10-27)",
+  "site_model": "pipeline/site_numbers.mjs on site/data.json (built 2026-10-29)",
   "weapons_value": "research/2026-10/gaps/weapons_value.json",
   "military_delivered": "research/2026-10/gaps/military_delivered.json",
   "loans_value": "research/2026-10/gaps/loans_value.json",
@@ -102,7 +102,7 @@
    },
    "other": {
     "private_donations": 2.564,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.095
    },
    "flowback": -2.079,
    "flowback_parts": {
@@ -114,10 +114,10 @@
     "extra_services_sold_to_ukraine": -0.057,
     "refugee_hosting_spent_at_home": -0.091
    },
-   "total_site": 82.524,
+   "total_site": 82.62,
    "reconciliation": {
-    "sum_of_parts": 82.523,
-    "difference": -0.0008,
+    "sum_of_parts": 82.618,
+    "difference": -0.0012,
     "aid_part_site": 79.835,
     "aid_part_rebuilt": 79.835,
     "eu_part_site": 0.0,
@@ -128,7 +128,7 @@
    "military_incl_eu_share": 47.412,
    "military_pct_gdp": 0.1835,
    "military_incl_eu_pct_gdp": 0.1835,
-   "military_share_of_total": 0.5745,
+   "military_share_of_total": 0.5739,
    "kiel_military": 64.617,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 25843.769,
@@ -178,7 +178,7 @@
    },
    "other": {
     "private_donations": 1.325,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.159
    },
    "flowback": -1.39,
    "flowback_parts": {
@@ -190,10 +190,10 @@
     "extra_services_sold_to_ukraine": -0.089,
     "refugee_hosting_spent_at_home": -0.804
    },
-   "total_site": 74.666,
+   "total_site": 74.825,
    "reconciliation": {
-    "sum_of_parts": 74.667,
-    "difference": 0.0014,
+    "sum_of_parts": 74.826,
+    "difference": 0.0019,
     "aid_part_site": 25.855,
     "aid_part_rebuilt": 25.855,
     "eu_part_site": 11.579,
@@ -204,7 +204,7 @@
    "military_incl_eu_share": 21.938,
    "military_pct_gdp": 0.5236,
    "military_incl_eu_pct_gdp": 0.5249,
-   "military_share_of_total": 0.2931,
+   "military_share_of_total": 0.2924,
    "kiel_military": 25.004,
    "kiel_military_eu_share": 2.019,
    "gdp_eur_bn": 4179.218,
@@ -256,7 +256,7 @@
    },
    "other": {
     "private_donations": 0.81,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.025
    },
    "flowback": -0.275,
    "flowback_parts": {
@@ -268,10 +268,10 @@
     "extra_services_sold_to_ukraine": -0.021,
     "refugee_hosting_spent_at_home": -0.14
    },
-   "total_site": 18.424,
+   "total_site": 18.45,
    "reconciliation": {
-    "sum_of_parts": 18.424,
-    "difference": -0.0005,
+    "sum_of_parts": 18.449,
+    "difference": -0.0008,
     "aid_part_site": 12.089,
     "aid_part_rebuilt": 12.089,
     "eu_part_site": 0.0,
@@ -282,7 +282,7 @@
    "military_incl_eu_share": 9.01,
    "military_pct_gdp": 0.2816,
    "military_incl_eu_pct_gdp": 0.2816,
-   "military_share_of_total": 0.489,
+   "military_share_of_total": 0.4884,
    "kiel_military": 16.184,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 3199.643,
@@ -332,7 +332,7 @@
    },
    "other": {
     "private_donations": 0.15,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.005
    },
    "flowback": -0.103,
    "flowback_parts": {
@@ -344,9 +344,9 @@
     "extra_services_sold_to_ukraine": -0.002,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 11.22,
+   "total_site": 11.225,
    "reconciliation": {
-    "sum_of_parts": 11.219,
+    "sum_of_parts": 11.224,
     "difference": -0.0011,
     "aid_part_site": 9.058,
     "aid_part_rebuilt": 9.058,
@@ -358,7 +358,7 @@
    "military_incl_eu_share": 7.887,
    "military_pct_gdp": 2.0626,
    "military_incl_eu_pct_gdp": 2.0639,
-   "military_share_of_total": 0.7025,
+   "military_share_of_total": 0.7022,
    "kiel_military": 10.538,
    "kiel_military_eu_share": 0.205,
    "gdp_eur_bn": 382.137,
@@ -409,7 +409,7 @@
    },
    "other": {
     "private_donations": 0.338,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.026
    },
    "flowback": -0.475,
    "flowback_parts": {
@@ -421,10 +421,10 @@
     "extra_services_sold_to_ukraine": -0.035,
     "refugee_hosting_spent_at_home": -0.38
    },
-   "total_site": 22.855,
+   "total_site": 22.829,
    "reconciliation": {
-    "sum_of_parts": 22.854,
-    "difference": -0.0007,
+    "sum_of_parts": 22.828,
+    "difference": -0.0005,
     "aid_part_site": 8.693,
     "aid_part_rebuilt": 8.693,
     "eu_part_site": 2.433,
@@ -435,7 +435,7 @@
    "military_incl_eu_share": 7.083,
    "military_pct_gdp": 0.6702,
    "military_incl_eu_pct_gdp": 0.6713,
-   "military_share_of_total": 0.3094,
+   "military_share_of_total": 0.3098,
    "kiel_military": 9.357,
    "kiel_military_eu_share": 0.424,
    "gdp_eur_bn": 1055.164,
@@ -486,7 +486,7 @@
    },
    "other": {
     "private_donations": 0.113,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.005
    },
    "flowback": -0.451,
    "flowback_parts": {
@@ -498,10 +498,10 @@
     "extra_services_sold_to_ukraine": -0.002,
     "refugee_hosting_spent_at_home": -0.007
    },
-   "total_site": 8.8,
+   "total_site": 8.805,
    "reconciliation": {
-    "sum_of_parts": 8.799,
-    "difference": -0.0003,
+    "sum_of_parts": 8.804,
+    "difference": -0.0007,
     "aid_part_site": 6.587,
     "aid_part_rebuilt": 6.587,
     "eu_part_site": 1.702,
@@ -512,7 +512,7 @@
    "military_incl_eu_share": 4.771,
    "military_pct_gdp": 0.8709,
    "military_incl_eu_pct_gdp": 0.8725,
-   "military_share_of_total": 0.5412,
+   "military_share_of_total": 0.5408,
    "kiel_military": 9.275,
    "kiel_military_eu_share": 0.297,
    "gdp_eur_bn": 546.789,
@@ -563,7 +563,7 @@
    },
    "other": {
     "private_donations": 0.094,
-    "extra_purchases_from_ukraine": 0.004
+    "extra_purchases_from_ukraine": 0.008
    },
    "flowback": -0.162,
    "flowback_parts": {
@@ -575,10 +575,10 @@
     "extra_services_sold_to_ukraine": -0.005,
     "refugee_hosting_spent_at_home": -0.054
    },
-   "total_site": 12.803,
+   "total_site": 12.807,
    "reconciliation": {
-    "sum_of_parts": 12.803,
-    "difference": -0.0,
+    "sum_of_parts": 12.807,
+    "difference": -0.0003,
     "aid_part_site": 8.435,
     "aid_part_rebuilt": 8.435,
     "eu_part_site": 0.0,
@@ -589,7 +589,7 @@
    "military_incl_eu_share": 4.366,
    "military_pct_gdp": 0.8654,
    "military_incl_eu_pct_gdp": 0.8654,
-   "military_share_of_total": 0.341,
+   "military_share_of_total": 0.3409,
    "kiel_military": 7.461,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 504.482,
@@ -639,7 +639,7 @@
    },
    "other": {
     "private_donations": 0.425,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.012
    },
    "flowback": -0.114,
    "flowback_parts": {
@@ -651,10 +651,10 @@
     "extra_services_sold_to_ukraine": -0.013,
     "refugee_hosting_spent_at_home": -0.051
    },
-   "total_site": 8.78,
+   "total_site": 8.792,
    "reconciliation": {
-    "sum_of_parts": 8.779,
-    "difference": -0.0011,
+    "sum_of_parts": 8.791,
+    "difference": -0.0012,
     "aid_part_site": 6.616,
     "aid_part_rebuilt": 6.616,
     "eu_part_site": 0.0,
@@ -665,7 +665,7 @@
    "military_incl_eu_share": 4.326,
    "military_pct_gdp": 0.2087,
    "military_incl_eu_pct_gdp": 0.2087,
-   "military_share_of_total": 0.4927,
+   "military_share_of_total": 0.492,
    "kiel_military": 5.816,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 2072.834,
@@ -715,7 +715,7 @@
    },
    "other": {
     "private_donations": 0.135,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.014
    },
    "flowback": -0.277,
    "flowback_parts": {
@@ -727,10 +727,10 @@
     "extra_services_sold_to_ukraine": -0.005,
     "refugee_hosting_spent_at_home": -0.02
    },
-   "total_site": 16.859,
+   "total_site": 16.874,
    "reconciliation": {
-    "sum_of_parts": 16.858,
-    "difference": -0.0011,
+    "sum_of_parts": 16.872,
+    "difference": -0.0015,
     "aid_part_site": 4.261,
     "aid_part_rebuilt": 4.261,
     "eu_part_site": 9.822,
@@ -741,7 +741,7 @@
    "military_incl_eu_share": 4.01,
    "military_pct_gdp": 0.1415,
    "military_incl_eu_pct_gdp": 0.1432,
-   "military_share_of_total": 0.235,
+   "military_share_of_total": 0.2348,
    "kiel_military": 6.232,
    "kiel_military_eu_share": 1.713,
    "gdp_eur_bn": 2800.142,
@@ -793,7 +793,7 @@
    },
    "other": {
     "private_donations": 0.446,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.018
    },
    "flowback": -0.098,
    "flowback_parts": {
@@ -805,9 +805,9 @@
     "extra_services_sold_to_ukraine": -0.011,
     "refugee_hosting_spent_at_home": -0.04
    },
-   "total_site": 12.637,
+   "total_site": 12.655,
    "reconciliation": {
-    "sum_of_parts": 12.637,
+    "sum_of_parts": 12.655,
     "difference": 0.0001,
     "aid_part_site": 3.377,
     "aid_part_rebuilt": 3.377,
@@ -819,7 +819,7 @@
    "military_incl_eu_share": 2.637,
    "military_pct_gdp": 0.1231,
    "military_incl_eu_pct_gdp": 0.1247,
-   "military_share_of_total": 0.206,
+   "military_share_of_total": 0.2057,
    "kiel_military": 3.0,
    "kiel_military_eu_share": 1.216,
    "gdp_eur_bn": 2114.28,
@@ -871,7 +871,7 @@
    },
    "other": {
     "private_donations": 0.405,
-    "extra_purchases_from_ukraine": 0.034
+    "extra_purchases_from_ukraine": 0.411
    },
    "flowback": -2.259,
    "flowback_parts": {
@@ -883,10 +883,10 @@
     "extra_services_sold_to_ukraine": -0.438,
     "refugee_hosting_spent_at_home": -0.91
    },
-   "total_site": 13.787,
+   "total_site": 14.164,
    "reconciliation": {
-    "sum_of_parts": 13.788,
-    "difference": 0.0002,
+    "sum_of_parts": 14.165,
+    "difference": 0.0008,
     "aid_part_site": 2.954,
     "aid_part_rebuilt": 2.954,
     "eu_part_site": 2.035,
@@ -897,7 +897,7 @@
    "military_incl_eu_share": 2.403,
    "military_pct_gdp": 0.3177,
    "military_incl_eu_pct_gdp": 0.319,
-   "military_share_of_total": 0.1736,
+   "military_share_of_total": 0.169,
    "kiel_military": 4.452,
    "kiel_military_eu_share": 0.355,
    "gdp_eur_bn": 753.287,
@@ -948,7 +948,7 @@
    },
    "other": {
     "private_donations": 0.077,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.006
    },
    "flowback": -0.036,
    "flowback_parts": {
@@ -960,9 +960,9 @@
     "extra_services_sold_to_ukraine": -0.004,
     "refugee_hosting_spent_at_home": -0.013
    },
-   "total_site": 5.279,
+   "total_site": 5.285,
    "reconciliation": {
-    "sum_of_parts": 5.279,
+    "sum_of_parts": 5.285,
     "difference": -0.0003,
     "aid_part_site": 2.747,
     "aid_part_rebuilt": 2.747,
@@ -974,7 +974,7 @@
    "military_incl_eu_share": 2.307,
    "military_pct_gdp": 0.8472,
    "military_incl_eu_pct_gdp": 0.8491,
-   "military_share_of_total": 0.436,
+   "military_share_of_total": 0.4355,
    "kiel_military": 3.337,
    "kiel_military_eu_share": 0.167,
    "gdp_eur_bn": 271.711,
@@ -1025,7 +1025,7 @@
    },
    "other": {
     "private_donations": 0.126,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.004
    },
    "flowback": -0.041,
    "flowback_parts": {
@@ -1037,10 +1037,10 @@
     "extra_services_sold_to_ukraine": -0.007,
     "refugee_hosting_spent_at_home": -0.023
    },
-   "total_site": 5.773,
+   "total_site": 5.769,
    "reconciliation": {
-    "sum_of_parts": 5.774,
-    "difference": 0.001,
+    "sum_of_parts": 5.77,
+    "difference": 0.0014,
     "aid_part_site": 1.696,
     "aid_part_rebuilt": 1.696,
     "eu_part_site": 1.96,
@@ -1051,7 +1051,7 @@
    "military_incl_eu_share": 1.245,
    "military_pct_gdp": 0.2077,
    "military_incl_eu_pct_gdp": 0.2094,
-   "military_share_of_total": 0.2139,
+   "military_share_of_total": 0.2141,
    "kiel_military": 2.836,
    "kiel_military_eu_share": 0.342,
    "gdp_eur_bn": 594.485,
@@ -1103,7 +1103,7 @@
    },
    "other": {
     "private_donations": 0.323,
-    "extra_purchases_from_ukraine": 0.088
+    "extra_purchases_from_ukraine": 0.175
    },
    "flowback": -0.119,
    "flowback_parts": {
@@ -1115,9 +1115,9 @@
     "extra_services_sold_to_ukraine": -0.033,
     "refugee_hosting_spent_at_home": -0.068
    },
-   "total_site": 8.263,
+   "total_site": 8.35,
    "reconciliation": {
-    "sum_of_parts": 8.263,
+    "sum_of_parts": 8.35,
     "difference": -0.0002,
     "aid_part_site": 1.568,
     "aid_part_rebuilt": 1.568,
@@ -1129,7 +1129,7 @@
    "military_incl_eu_share": 0.965,
    "military_pct_gdp": 0.0633,
    "military_incl_eu_pct_gdp": 0.0648,
-   "military_share_of_total": 0.1141,
+   "military_share_of_total": 0.1129,
    "kiel_military": 1.507,
    "kiel_military_eu_share": 0.805,
    "gdp_eur_bn": 1489.315,
@@ -1180,7 +1180,7 @@
    },
    "other": {
     "private_donations": 0.08,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.029
    },
    "flowback": -0.017,
    "flowback_parts": {
@@ -1192,10 +1192,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": -0.004
    },
-   "total_site": 1.276,
+   "total_site": 1.305,
    "reconciliation": {
-    "sum_of_parts": 1.276,
-    "difference": 0.0003,
+    "sum_of_parts": 1.305,
+    "difference": 0.0005,
     "aid_part_site": 0.985,
     "aid_part_rebuilt": 0.985,
     "eu_part_site": 0.182,
@@ -1206,7 +1206,7 @@
    "military_incl_eu_share": 0.712,
    "military_pct_gdp": 0.9678,
    "military_incl_eu_pct_gdp": 0.9692,
-   "military_share_of_total": 0.5572,
+   "military_share_of_total": 0.5449,
    "kiel_military": 1.209,
    "kiel_military_eu_share": 0.032,
    "gdp_eur_bn": 73.465,
@@ -1257,7 +1257,7 @@
    },
    "other": {
     "private_donations": 0.329,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.003
    },
    "flowback": -0.04,
    "flowback_parts": {
@@ -1269,10 +1269,10 @@
     "extra_services_sold_to_ukraine": -0.002,
     "refugee_hosting_spent_at_home": -0.029
    },
-   "total_site": 1.29,
+   "total_site": 1.287,
    "reconciliation": {
-    "sum_of_parts": 1.29,
-    "difference": 0.0005,
+    "sum_of_parts": 1.287,
+    "difference": 0.0006,
     "aid_part_site": 0.841,
     "aid_part_rebuilt": 0.841,
     "eu_part_site": 0.0,
@@ -1283,7 +1283,7 @@
    "military_incl_eu_share": 0.68,
    "military_pct_gdp": 0.0422,
    "military_incl_eu_pct_gdp": 0.0422,
-   "military_share_of_total": 0.5272,
+   "military_share_of_total": 0.5284,
    "kiel_military": 0.912,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 1612.53,
@@ -1333,7 +1333,7 @@
    },
    "other": {
     "private_donations": 0.033,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.002
    },
    "flowback": -0.003,
    "flowback_parts": {
@@ -1345,10 +1345,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": -0.002
    },
-   "total_site": 0.913,
+   "total_site": 0.915,
    "reconciliation": {
-    "sum_of_parts": 0.913,
-    "difference": -0.0007,
+    "sum_of_parts": 0.915,
+    "difference": -0.0008,
     "aid_part_site": 0.555,
     "aid_part_rebuilt": 0.555,
     "eu_part_site": 0.113,
@@ -1359,7 +1359,7 @@
    "military_incl_eu_share": 0.48,
    "military_pct_gdp": 1.255,
    "military_incl_eu_pct_gdp": 1.2576,
-   "military_share_of_total": 0.5245,
+   "military_share_of_total": 0.5233,
    "kiel_military": 0.888,
    "kiel_military_eu_share": 0.02,
    "gdp_eur_bn": 38.167,
@@ -1411,7 +1411,7 @@
    },
    "other": {
     "private_donations": 0.143,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.113
    },
    "flowback": -0.109,
    "flowback_parts": {
@@ -1423,10 +1423,10 @@
     "extra_services_sold_to_ukraine": -0.052,
     "refugee_hosting_spent_at_home": -0.01
    },
-   "total_site": 1.724,
+   "total_site": 1.837,
    "reconciliation": {
-    "sum_of_parts": 1.724,
-    "difference": -0.0004,
+    "sum_of_parts": 1.837,
+    "difference": -0.0001,
     "aid_part_site": 0.424,
     "aid_part_rebuilt": 0.424,
     "eu_part_site": 0.835,
@@ -1437,7 +1437,7 @@
    "military_incl_eu_share": 0.305,
    "military_pct_gdp": 0.0945,
    "military_incl_eu_pct_gdp": 0.0958,
-   "military_share_of_total": 0.1746,
+   "military_share_of_total": 0.1639,
    "kiel_military": 0.414,
    "kiel_military_eu_share": 0.146,
    "gdp_eur_bn": 318.502,
@@ -1489,7 +1489,7 @@
    },
    "other": {
     "private_donations": 0.048,
-    "extra_purchases_from_ukraine": 0.023
+    "extra_purchases_from_ukraine": 0.039
    },
    "flowback": -0.055,
    "flowback_parts": {
@@ -1501,10 +1501,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": -0.014
    },
-   "total_site": 1.422,
+   "total_site": 1.439,
    "reconciliation": {
-    "sum_of_parts": 1.423,
-    "difference": 0.0001,
+    "sum_of_parts": 1.439,
+    "difference": -0.0004,
     "aid_part_site": 0.19,
     "aid_part_rebuilt": 0.19,
     "eu_part_site": 0.688,
@@ -1515,7 +1515,7 @@
    "military_incl_eu_share": 0.294,
    "military_pct_gdp": 0.1302,
    "military_incl_eu_pct_gdp": 0.132,
-   "military_share_of_total": 0.2039,
+   "military_share_of_total": 0.2015,
    "kiel_military": 0.169,
    "kiel_military_eu_share": 0.12,
    "gdp_eur_bn": 222.81,
@@ -1566,7 +1566,7 @@
    },
    "other": {
     "private_donations": 0.224,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.123
    },
    "flowback": -0.273,
    "flowback_parts": {
@@ -1578,10 +1578,10 @@
     "extra_services_sold_to_ukraine": -0.018,
     "refugee_hosting_spent_at_home": -0.017
    },
-   "total_site": 4.01,
+   "total_site": 4.133,
    "reconciliation": {
-    "sum_of_parts": 4.01,
-    "difference": 0.0003,
+    "sum_of_parts": 4.133,
+    "difference": -0.0001,
     "aid_part_site": 0.344,
     "aid_part_rebuilt": 0.344,
     "eu_part_site": 0.571,
@@ -1592,7 +1592,7 @@
    "military_incl_eu_share": 0.291,
    "military_pct_gdp": 0.092,
    "military_incl_eu_pct_gdp": 0.0942,
-   "military_share_of_total": 0.0708,
+   "military_share_of_total": 0.0687,
    "kiel_military": 0.578,
    "kiel_military_eu_share": 0.127,
    "gdp_eur_bn": 308.805,
@@ -1643,7 +1643,7 @@
    },
    "other": {
     "private_donations": 0.033,
-    "extra_purchases_from_ukraine": 0.001
+    "extra_purchases_from_ukraine": 0.017
    },
    "flowback": -0.018,
    "flowback_parts": {
@@ -1655,10 +1655,10 @@
     "extra_services_sold_to_ukraine": -0.003,
     "refugee_hosting_spent_at_home": -0.003
    },
-   "total_site": 0.739,
+   "total_site": 0.755,
    "reconciliation": {
-    "sum_of_parts": 0.737,
-    "difference": -0.0015,
+    "sum_of_parts": 0.753,
+    "difference": -0.0017,
     "aid_part_site": 0.345,
     "aid_part_rebuilt": 0.345,
     "eu_part_site": 0.116,
@@ -1669,7 +1669,7 @@
    "military_incl_eu_share": 0.278,
    "military_pct_gdp": 0.7171,
    "military_incl_eu_pct_gdp": 0.7171,
-   "military_share_of_total": 0.3763,
+   "military_share_of_total": 0.3683,
    "kiel_military": 0.652,
    "kiel_military_eu_share": 0.02,
    "gdp_eur_bn": 38.768,
@@ -1721,7 +1721,7 @@
    },
    "other": {
     "private_donations": 0.053,
-    "extra_purchases_from_ukraine": 0.048
+    "extra_purchases_from_ukraine": 0.174
    },
    "flowback": -0.07,
    "flowback_parts": {
@@ -1733,10 +1733,10 @@
     "extra_services_sold_to_ukraine": -0.012,
     "refugee_hosting_spent_at_home": -0.007
    },
-   "total_site": 0.948,
+   "total_site": 1.074,
    "reconciliation": {
-    "sum_of_parts": 0.948,
-    "difference": -0.0001,
+    "sum_of_parts": 1.074,
+    "difference": 0.0002,
     "aid_part_site": 0.308,
     "aid_part_rebuilt": 0.308,
     "eu_part_site": 0.246,
@@ -1747,7 +1747,7 @@
    "military_incl_eu_share": 0.262,
    "military_pct_gdp": 0.2136,
    "military_incl_eu_pct_gdp": 0.2161,
-   "military_share_of_total": 0.2731,
+   "military_share_of_total": 0.2412,
    "kiel_military": 0.697,
    "kiel_military_eu_share": 0.055,
    "gdp_eur_bn": 121.235,
@@ -1798,7 +1798,7 @@
    },
    "other": {
     "private_donations": 0.059,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.001
    },
    "flowback": -0.025,
    "flowback_parts": {
@@ -1810,10 +1810,10 @@
     "extra_services_sold_to_ukraine": -0.011,
     "refugee_hosting_spent_at_home": -0.011
    },
-   "total_site": 1.325,
+   "total_site": 1.324,
    "reconciliation": {
-    "sum_of_parts": 1.326,
-    "difference": 0.0005,
+    "sum_of_parts": 1.325,
+    "difference": 0.0002,
     "aid_part_site": 0.215,
     "aid_part_rebuilt": 0.215,
     "eu_part_site": 0.822,
@@ -1824,7 +1824,7 @@
    "military_incl_eu_share": 0.216,
    "military_pct_gdp": 0.0791,
    "military_incl_eu_pct_gdp": 0.0806,
-   "military_share_of_total": 0.16,
+   "military_share_of_total": 0.1601,
    "kiel_military": 0.382,
    "kiel_military_eu_share": 0.143,
    "gdp_eur_bn": 268.031,
@@ -1876,7 +1876,7 @@
    },
    "other": {
     "private_donations": 0.114,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.002
    },
    "flowback": -0.334,
    "flowback_parts": {
@@ -1888,10 +1888,10 @@
     "extra_services_sold_to_ukraine": -0.063,
     "refugee_hosting_spent_at_home": -0.243
    },
-   "total_site": 7.53,
+   "total_site": 7.528,
    "reconciliation": {
-    "sum_of_parts": 7.531,
-    "difference": 0.0006,
+    "sum_of_parts": 7.529,
+    "difference": 0.0008,
     "aid_part_site": 0.534,
     "aid_part_rebuilt": 0.535,
     "eu_part_site": 0.967,
@@ -1953,7 +1953,7 @@
    },
    "other": {
     "private_donations": 0.035,
-    "extra_purchases_from_ukraine": 0.005
+    "extra_purchases_from_ukraine": 0.008
    },
    "flowback": -0.01,
    "flowback_parts": {
@@ -1965,10 +1965,10 @@
     "extra_services_sold_to_ukraine": -0.003,
     "refugee_hosting_spent_at_home": -0.004
    },
-   "total_site": 0.656,
+   "total_site": 0.659,
    "reconciliation": {
-    "sum_of_parts": 0.657,
-    "difference": 0.0003,
+    "sum_of_parts": 0.66,
+    "difference": 0.0006,
     "aid_part_site": 0.237,
     "aid_part_rebuilt": 0.237,
     "eu_part_site": 0.209,
@@ -1979,7 +1979,7 @@
    "military_incl_eu_share": 0.14,
    "military_pct_gdp": 0.1792,
    "military_incl_eu_pct_gdp": 0.1805,
-   "military_share_of_total": 0.2118,
+   "military_share_of_total": 0.211,
    "kiel_military": 0.276,
    "kiel_military_eu_share": 0.036,
    "gdp_eur_bn": 77.567,
@@ -2029,7 +2029,7 @@
    },
    "other": {
     "private_donations": 0.017,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.002
    },
    "flowback": -0.01,
    "flowback_parts": {
@@ -2041,10 +2041,10 @@
     "extra_services_sold_to_ukraine": -0.001,
     "refugee_hosting_spent_at_home": -0.009
    },
-   "total_site": 0.764,
+   "total_site": 0.766,
    "reconciliation": {
-    "sum_of_parts": 0.764,
-    "difference": 0.0,
+    "sum_of_parts": 0.766,
+    "difference": 0.0001,
     "aid_part_site": 0.275,
     "aid_part_rebuilt": 0.275,
     "eu_part_site": 0.159,
@@ -2055,7 +2055,7 @@
    "military_incl_eu_share": 0.14,
    "military_pct_gdp": 0.169,
    "military_incl_eu_pct_gdp": 0.1714,
-   "military_share_of_total": 0.1806,
+   "military_share_of_total": 0.1802,
    "kiel_military": 0.239,
    "kiel_military_eu_share": 0.028,
    "gdp_eur_bn": 81.676,
@@ -2105,7 +2105,7 @@
    },
    "other": {
     "private_donations": 0.042,
-    "extra_purchases_from_ukraine": 0.055
+    "extra_purchases_from_ukraine": 0.153
    },
    "flowback": -0.206,
    "flowback_parts": {
@@ -2117,10 +2117,10 @@
     "extra_services_sold_to_ukraine": -0.029,
     "refugee_hosting_spent_at_home": -0.007
    },
-   "total_site": 0.587,
+   "total_site": 0.685,
    "reconciliation": {
-    "sum_of_parts": 0.586,
-    "difference": -0.0013,
+    "sum_of_parts": 0.684,
+    "difference": -0.0007,
     "aid_part_site": 0.132,
     "aid_part_rebuilt": 0.132,
     "eu_part_site": 0.238,
@@ -2131,7 +2131,7 @@
    "military_incl_eu_share": 0.131,
    "military_pct_gdp": 0.1357,
    "military_incl_eu_pct_gdp": 0.1378,
-   "military_share_of_total": 0.2196,
+   "military_share_of_total": 0.1884,
    "kiel_military": 0.254,
    "kiel_military_eu_share": 0.042,
    "gdp_eur_bn": 95.065,
@@ -2173,7 +2173,7 @@
     "imf_world_bank_ebrd_share": 0.0
    },
    "humanitarian": 0.0,
-   "refugees": 0.09,
+   "refugees": 0.0,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -2182,9 +2182,9 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.004
    },
-   "flowback": -0.005,
+   "flowback": -0.003,
    "flowback_parts": {
     "own_aid_spent_at_home": 0.0,
     "others_aid_spent_here": 0.0,
@@ -2192,12 +2192,12 @@
     "arms_ukraine_bought_here": 0.0,
     "aid_spent_here_energy_relief_rebuilding": 0.0,
     "extra_services_sold_to_ukraine": -0.002,
-    "refugee_hosting_spent_at_home": -0.002
+    "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.145,
+   "total_site": 0.061,
    "reconciliation": {
-    "sum_of_parts": 0.145,
-    "difference": -0.0005,
+    "sum_of_parts": 0.061,
+    "difference": -0.0002,
     "aid_part_site": 0.06,
     "aid_part_rebuilt": 0.06,
     "eu_part_site": 0.0,
@@ -2208,7 +2208,7 @@
    "military_incl_eu_share": 0.06,
    "military_pct_gdp": 0.4133,
    "military_incl_eu_pct_gdp": 0.4133,
-   "military_share_of_total": 0.4132,
+   "military_share_of_total": 0.9756,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 14.518,
@@ -2244,7 +2244,7 @@
     "imf_world_bank_ebrd_share": 0.027
    },
    "humanitarian": 0.005,
-   "refugees": 0.033,
+   "refugees": 0.006,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -2253,9 +2253,9 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.156
    },
-   "flowback": -0.083,
+   "flowback": -0.082,
    "flowback_parts": {
     "own_aid_spent_at_home": 0.0,
     "others_aid_spent_here": -0.014,
@@ -2263,12 +2263,12 @@
     "arms_ukraine_bought_here": -0.026,
     "aid_spent_here_energy_relief_rebuilding": -0.013,
     "extra_services_sold_to_ukraine": 0.0,
-    "refugee_hosting_spent_at_home": -0.001
+    "refugee_hosting_spent_at_home": -0.0
    },
-   "total_site": 0.031,
+   "total_site": 0.16,
    "reconciliation": {
-    "sum_of_parts": 0.03,
-    "difference": -0.0008,
+    "sum_of_parts": 0.16,
+    "difference": -0.0003,
     "aid_part_site": 0.054,
     "aid_part_rebuilt": 0.054,
     "eu_part_site": 0.0,
@@ -2279,7 +2279,7 @@
    "military_incl_eu_share": 0.049,
    "military_pct_gdp": 0.0046,
    "military_incl_eu_pct_gdp": 0.0046,
-   "military_share_of_total": 1.5858,
+   "military_share_of_total": 0.3061,
    "kiel_military": 0.066,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 1063.526,
@@ -2343,7 +2343,7 @@
    "total_site": 0.265,
    "reconciliation": {
     "sum_of_parts": 0.264,
-    "difference": -0.0008,
+    "difference": -0.001,
     "aid_part_site": 0.09,
     "aid_part_rebuilt": 0.09,
     "eu_part_site": 0.0,
@@ -2354,7 +2354,7 @@
    "military_incl_eu_share": 0.046,
    "military_pct_gdp": 0.1574,
    "military_incl_eu_pct_gdp": 0.1574,
-   "military_share_of_total": 0.1737,
+   "military_share_of_total": 0.1735,
    "kiel_military": 0.057,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 29.229,
@@ -2403,7 +2403,7 @@
    },
    "other": {
     "private_donations": 0.027,
-    "extra_purchases_from_ukraine": 0.001
+    "extra_purchases_from_ukraine": 0.008
    },
    "flowback": -0.001,
    "flowback_parts": {
@@ -2415,10 +2415,10 @@
     "extra_services_sold_to_ukraine": -0.0,
     "refugee_hosting_spent_at_home": -0.0
    },
-   "total_site": 0.485,
+   "total_site": 0.493,
    "reconciliation": {
-    "sum_of_parts": 0.485,
-    "difference": 0.0,
+    "sum_of_parts": 0.492,
+    "difference": -0.0002,
     "aid_part_site": 0.072,
     "aid_part_rebuilt": 0.072,
     "eu_part_site": 0.188,
@@ -2429,7 +2429,7 @@
    "military_incl_eu_share": 0.046,
    "military_pct_gdp": 0.0717,
    "military_incl_eu_pct_gdp": 0.0733,
-   "military_share_of_total": 0.0927,
+   "military_share_of_total": 0.0914,
    "kiel_military": 0.159,
    "kiel_military_eu_share": 0.033,
    "gdp_eur_bn": 62.783,
@@ -2479,7 +2479,7 @@
    },
    "other": {
     "private_donations": 0.353,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.054
    },
    "flowback": -0.002,
    "flowback_parts": {
@@ -2491,10 +2491,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": -0.0
    },
-   "total_site": 5.383,
+   "total_site": 5.328,
    "reconciliation": {
-    "sum_of_parts": 5.382,
-    "difference": -0.0003,
+    "sum_of_parts": 5.328,
+    "difference": 0.0001,
     "aid_part_site": 4.872,
     "aid_part_rebuilt": 4.872,
     "eu_part_site": 0.0,
@@ -2505,7 +2505,7 @@
    "military_incl_eu_share": 0.043,
    "military_pct_gdp": 0.0011,
    "military_incl_eu_pct_gdp": 0.0011,
-   "military_share_of_total": 0.008,
+   "military_share_of_total": 0.0081,
    "kiel_military": 0.076,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 4050.101,
@@ -2555,7 +2555,7 @@
    },
    "other": {
     "private_donations": 0.049,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.002
    },
    "flowback": -0.0,
    "flowback_parts": {
@@ -2567,10 +2567,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.128,
+   "total_site": 0.127,
    "reconciliation": {
-    "sum_of_parts": 0.128,
-    "difference": -0.0001,
+    "sum_of_parts": 0.126,
+    "difference": -0.0007,
     "aid_part_site": 0.075,
     "aid_part_rebuilt": 0.075,
     "eu_part_site": 0.0,
@@ -2581,7 +2581,7 @@
    "military_incl_eu_share": 0.028,
    "military_pct_gdp": 0.0117,
    "military_incl_eu_pct_gdp": 0.0117,
-   "military_share_of_total": 0.2184,
+   "military_share_of_total": 0.2208,
    "kiel_military": 0.036,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 238.613,
@@ -2621,7 +2621,7 @@
     "imf_world_bank_ebrd_share": 0.0
    },
    "humanitarian": 0.0,
-   "refugees": 0.035,
+   "refugees": 0.002,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -2630,9 +2630,9 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.001
+    "extra_purchases_from_ukraine": 0.003
    },
-   "flowback": -0.002,
+   "flowback": -0.001,
    "flowback_parts": {
     "own_aid_spent_at_home": 0.0,
     "others_aid_spent_here": 0.0,
@@ -2640,12 +2640,12 @@
     "arms_ukraine_bought_here": 0.0,
     "aid_spent_here_energy_relief_rebuilding": 0.0,
     "extra_services_sold_to_ukraine": -0.0,
-    "refugee_hosting_spent_at_home": -0.001
+    "refugee_hosting_spent_at_home": -0.0
    },
-   "total_site": 0.05,
+   "total_site": 0.02,
    "reconciliation": {
-    "sum_of_parts": 0.05,
-    "difference": -0.0003,
+    "sum_of_parts": 0.019,
+    "difference": -0.0007,
     "aid_part_site": 0.015,
     "aid_part_rebuilt": 0.015,
     "eu_part_site": 0.0,
@@ -2656,7 +2656,7 @@
    "military_incl_eu_share": 0.015,
    "military_pct_gdp": 0.0695,
    "military_incl_eu_pct_gdp": 0.0695,
-   "military_share_of_total": 0.3006,
+   "military_share_of_total": 0.7463,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 21.588,
@@ -2701,7 +2701,7 @@
    },
    "other": {
     "private_donations": 0.351,
-    "extra_purchases_from_ukraine": 0.025
+    "extra_purchases_from_ukraine": 0.043
    },
    "flowback": -0.056,
    "flowback_parts": {
@@ -2713,10 +2713,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.859,
+   "total_site": 0.877,
    "reconciliation": {
-    "sum_of_parts": 0.859,
-    "difference": -0.0001,
+    "sum_of_parts": 0.877,
+    "difference": 0.0001,
     "aid_part_site": 0.509,
     "aid_part_rebuilt": 0.509,
     "eu_part_site": 0.0,
@@ -2727,7 +2727,7 @@
    "military_incl_eu_share": 0.012,
    "military_pct_gdp": 0.0007,
    "military_incl_eu_pct_gdp": 0.0007,
-   "military_share_of_total": 0.014,
+   "military_share_of_total": 0.0137,
    "kiel_military": 0.015,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 1715.838,
@@ -2767,7 +2767,7 @@
     "imf_world_bank_ebrd_share": 0.0
    },
    "humanitarian": 0.0,
-   "refugees": 0.245,
+   "refugees": 0.016,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -2778,7 +2778,7 @@
     "private_donations": 0.0,
     "extra_purchases_from_ukraine": 0.002
    },
-   "flowback": -0.011,
+   "flowback": -0.006,
    "flowback_parts": {
     "own_aid_spent_at_home": 0.0,
     "others_aid_spent_here": 0.0,
@@ -2786,12 +2786,12 @@
     "arms_ukraine_bought_here": 0.0,
     "aid_spent_here_energy_relief_rebuilding": 0.0,
     "extra_services_sold_to_ukraine": -0.005,
-    "refugee_hosting_spent_at_home": -0.005
+    "refugee_hosting_spent_at_home": -0.0
    },
-   "total_site": 0.248,
+   "total_site": 0.024,
    "reconciliation": {
-    "sum_of_parts": 0.248,
-    "difference": 0.0006,
+    "sum_of_parts": 0.024,
+    "difference": 0.0004,
     "aid_part_site": 0.012,
     "aid_part_rebuilt": 0.012,
     "eu_part_site": 0.0,
@@ -2802,7 +2802,7 @@
    "military_incl_eu_share": 0.012,
    "military_pct_gdp": 0.1743,
    "military_incl_eu_pct_gdp": 0.1743,
-   "military_share_of_total": 0.0484,
+   "military_share_of_total": 0.5063,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 6.886,
@@ -2847,7 +2847,7 @@
    },
    "other": {
     "private_donations": 0.136,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.052
    },
    "flowback": -0.02,
    "flowback_parts": {
@@ -2859,10 +2859,10 @@
     "extra_services_sold_to_ukraine": -0.004,
     "refugee_hosting_spent_at_home": -0.011
    },
-   "total_site": 3.686,
+   "total_site": 3.738,
    "reconciliation": {
-    "sum_of_parts": 3.687,
-    "difference": 0.0006,
+    "sum_of_parts": 3.739,
+    "difference": 0.0009,
     "aid_part_site": 0.248,
     "aid_part_rebuilt": 0.248,
     "eu_part_site": 1.468,
@@ -2895,6 +2895,134 @@
    ],
    "quality": "C"
   },
+  "AFG": {
+   "name": "Afghanistan",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": -0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 15.352,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "AGO": {
+   "name": "Angola",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.002
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.002,
+   "reconciliation": {
+    "sum_of_parts": -0.002,
+    "difference": 0.0,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 105.027,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
   "ARE": {
    "name": "United Arab Emirates",
    "military": 0.0,
@@ -2925,7 +3053,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.015
    },
    "flowback": -0.005,
    "flowback_parts": {
@@ -2937,10 +3065,10 @@
     "extra_services_sold_to_ukraine": -0.005,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.064,
+   "total_site": 0.048,
    "reconciliation": {
-    "sum_of_parts": 0.064,
-    "difference": 0.0001,
+    "sum_of_parts": 0.049,
+    "difference": 0.0003,
     "aid_part_site": 0.062,
     "aid_part_rebuilt": 0.062,
     "eu_part_site": 0.0,
@@ -2983,7 +3111,7 @@
     "imf_world_bank_ebrd_share": 0.01
    },
    "humanitarian": 0.0,
-   "refugees": 0.001,
+   "refugees": 0.0,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -2992,7 +3120,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.001
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -3007,7 +3135,7 @@
    "total_site": 0.011,
    "reconciliation": {
     "sum_of_parts": 0.011,
-    "difference": 0.0004,
+    "difference": 0.0003,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -3052,7 +3180,7 @@
     "imf_world_bank_ebrd_share": 0.0
    },
    "humanitarian": 0.0,
-   "refugees": 0.006,
+   "refugees": 0.002,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -3061,7 +3189,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.004
    },
    "flowback": -0.001,
    "flowback_parts": {
@@ -3071,12 +3199,12 @@
     "arms_ukraine_bought_here": 0.0,
     "aid_spent_here_energy_relief_rebuilding": 0.0,
     "extra_services_sold_to_ukraine": -0.001,
-    "refugee_hosting_spent_at_home": -0.0
+    "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.005,
+   "total_site": -0.003,
    "reconciliation": {
-    "sum_of_parts": 0.006,
-    "difference": 0.0,
+    "sum_of_parts": -0.003,
+    "difference": 0.0003,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -3087,7 +3215,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 21.626,
@@ -3121,7 +3249,7 @@
     "imf_world_bank_ebrd_share": 0.0
    },
    "humanitarian": 0.042,
-   "refugees": 0.021,
+   "refugees": 0.004,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -3130,7 +3258,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.014
    },
    "flowback": -0.001,
    "flowback_parts": {
@@ -3140,12 +3268,12 @@
     "arms_ukraine_bought_here": 0.0,
     "aid_spent_here_energy_relief_rebuilding": 0.0,
     "extra_services_sold_to_ukraine": -0.001,
-    "refugee_hosting_spent_at_home": -0.001
+    "refugee_hosting_spent_at_home": -0.0
    },
-   "total_site": 0.062,
+   "total_site": 0.031,
    "reconciliation": {
-    "sum_of_parts": 0.062,
-    "difference": 0.0,
+    "sum_of_parts": 0.031,
+    "difference": -0.0004,
     "aid_part_site": 0.042,
     "aid_part_rebuilt": 0.042,
     "eu_part_site": 0.0,
@@ -3168,6 +3296,134 @@
     "refugees_net"
    ],
    "quality": "B"
+  },
+  "BEN": {
+   "name": "Benin",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": 0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 18.197,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "BFA": {
+   "name": "Burkina Faso",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": 0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": 0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
+    "difference": -0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": 0.0,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 19.218,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "BGD": {
    "name": "Bangladesh",
@@ -3199,7 +3455,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.009
    },
    "flowback": -0.002,
    "flowback_parts": {
@@ -3211,10 +3467,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.001,
+   "total_site": -0.008,
    "reconciliation": {
-    "sum_of_parts": 0.001,
-    "difference": 0.0003,
+    "sum_of_parts": -0.008,
+    "difference": 0.0008,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -3225,7 +3481,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 419.118,
@@ -3233,6 +3489,70 @@
    "sources": [
     "loans_value"
    ],
+   "quality": "D"
+  },
+  "BHR": {
+   "name": "Bahrain",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": -0.001,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": -0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": -0.001,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.002,
+   "reconciliation": {
+    "sum_of_parts": -0.002,
+    "difference": 0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 43.485,
+   "basis": "none",
+   "sources": [],
    "quality": "D"
   },
   "BIH": {
@@ -3256,7 +3576,7 @@
     "imf_world_bank_ebrd_share": 0.0
    },
    "humanitarian": 0.0,
-   "refugees": 0.001,
+   "refugees": 0.0,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -3265,7 +3585,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.003
+    "extra_purchases_from_ukraine": 0.005
    },
    "flowback": -0.004,
    "flowback_parts": {
@@ -3277,10 +3597,10 @@
     "extra_services_sold_to_ukraine": -0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.001,
+   "total_site": 0.002,
    "reconciliation": {
-    "sum_of_parts": 0.001,
-    "difference": 0.0002,
+    "sum_of_parts": 0.002,
+    "difference": -0.0001,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -3306,6 +3626,138 @@
    ],
    "quality": "D"
   },
+  "BLR": {
+   "name": "Belarus",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.163
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.163,
+   "reconciliation": {
+    "sum_of_parts": -0.163,
+    "difference": -0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 69.9,
+   "basis": "none",
+   "sources": [
+    "refugees",
+    "refugees_gain",
+    "refugees_net"
+   ],
+   "quality": "D"
+  },
+  "BOL": {
+   "name": "Bolivia",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": -0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 49.167,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
   "BRA": {
    "name": "Brazil",
    "military": 0.0,
@@ -3327,7 +3779,7 @@
     "imf_world_bank_ebrd_share": 0.032
    },
    "humanitarian": 0.0,
-   "refugees": 0.006,
+   "refugees": 0.001,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -3336,7 +3788,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.003
    },
    "flowback": -0.001,
    "flowback_parts": {
@@ -3346,12 +3798,12 @@
     "arms_ukraine_bought_here": 0.0,
     "aid_spent_here_energy_relief_rebuilding": 0.0,
     "extra_services_sold_to_ukraine": -0.001,
-    "refugee_hosting_spent_at_home": -0.0
+    "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.038,
+   "total_site": 0.03,
    "reconciliation": {
-    "sum_of_parts": 0.038,
-    "difference": -0.0,
+    "sum_of_parts": 0.03,
+    "difference": -0.0005,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -3470,7 +3922,7 @@
    },
    "other": {
     "private_donations": 0.567,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.0
    },
    "flowback": -0.151,
    "flowback_parts": {
@@ -3485,7 +3937,7 @@
    "total_site": 8.301,
    "reconciliation": {
     "sum_of_parts": 8.3,
-    "difference": -0.0006,
+    "difference": -0.0004,
     "aid_part_site": 1.37,
     "aid_part_rebuilt": 1.37,
     "eu_part_site": 0.0,
@@ -3544,7 +3996,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.001
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -3556,10 +4008,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.006,
+   "total_site": 0.005,
    "reconciliation": {
-    "sum_of_parts": 0.006,
-    "difference": 0.0005,
+    "sum_of_parts": 0.005,
+    "difference": 0.0,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -3614,7 +4066,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.574
    },
    "flowback": -0.039,
    "flowback_parts": {
@@ -3626,10 +4078,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.052,
+   "total_site": -0.521,
    "reconciliation": {
-    "sum_of_parts": 0.052,
-    "difference": -0.0002,
+    "sum_of_parts": -0.522,
+    "difference": -0.0007,
     "aid_part_site": 0.002,
     "aid_part_rebuilt": 0.002,
     "eu_part_site": 0.0,
@@ -3640,7 +4092,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": 0.0,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 17198.443,
@@ -3656,6 +4108,198 @@
     "value_kept"
    ],
    "quality": "A"
+  },
+  "CIV": {
+   "name": "Côte d'Ivoire",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.002
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.002,
+   "reconciliation": {
+    "sum_of_parts": -0.002,
+    "difference": 0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 74.18,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "CMR": {
+   "name": "Cameroon",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.004
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.004,
+   "reconciliation": {
+    "sum_of_parts": -0.004,
+    "difference": 0.0003,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 45.5,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "COG": {
+   "name": "Congo",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": 0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 14.571,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "COL": {
    "name": "Colombia",
@@ -3687,7 +4331,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.007
    },
    "flowback": -0.001,
    "flowback_parts": {
@@ -3699,10 +4343,10 @@
     "extra_services_sold_to_ukraine": -0.001,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.004,
+   "total_site": -0.002,
    "reconciliation": {
-    "sum_of_parts": 0.004,
-    "difference": -0.0004,
+    "sum_of_parts": -0.003,
+    "difference": -0.0008,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -3713,7 +4357,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 352.015,
@@ -3726,6 +4370,70 @@
     "refugees_net"
    ],
    "quality": "A"
+  },
+  "CPV": {
+   "name": "Cabo Verde",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
+    "difference": 0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 2.319,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "CRI": {
    "name": "Costa Rica",
@@ -3748,7 +4456,7 @@
     "imf_world_bank_ebrd_share": 0.0
    },
    "humanitarian": 0.0,
-   "refugees": 0.001,
+   "refugees": 0.0,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -3757,7 +4465,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.006
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -3769,9 +4477,77 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.0,
+   "total_site": -0.006,
    "reconciliation": {
-    "sum_of_parts": 0.001,
+    "sum_of_parts": -0.006,
+    "difference": -0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 79.238,
+   "basis": "none",
+   "sources": [
+    "refugees",
+    "refugees_gain",
+    "refugees_net"
+   ],
+   "quality": "D"
+  },
+  "CUB": {
+   "name": "Cuba",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
     "difference": 0.0001,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
@@ -3783,16 +4559,12 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
-   "gdp_eur_bn": 79.238,
+   "gdp_eur_bn": 21.063508,
    "basis": "none",
-   "sources": [
-    "refugees",
-    "refugees_gain",
-    "refugees_net"
-   ],
+   "sources": [],
    "quality": "D"
   },
   "CYP": {
@@ -3825,7 +4597,7 @@
    },
    "other": {
     "private_donations": 0.007,
-    "extra_purchases_from_ukraine": 0.014
+    "extra_purchases_from_ukraine": 0.015
    },
    "flowback": -0.007,
    "flowback_parts": {
@@ -3837,10 +4609,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": -0.007
    },
-   "total_site": 0.419,
+   "total_site": 0.42,
    "reconciliation": {
-    "sum_of_parts": 0.419,
-    "difference": -0.0001,
+    "sum_of_parts": 0.42,
+    "difference": -0.0003,
     "aid_part_site": 0.004,
     "aid_part_rebuilt": 0.004,
     "eu_part_site": 0.09,
@@ -3870,8 +4642,206 @@
    ],
    "quality": "A"
   },
+  "DJI": {
+   "name": "Djibouti",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": 0.0003,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 3.608,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
   "DOM": {
    "name": "Dominican Republic",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.011
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.011,
+   "reconciliation": {
+    "sum_of_parts": -0.011,
+    "difference": -0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 111.329,
+   "basis": "none",
+   "sources": [
+    "refugees",
+    "refugees_gain",
+    "refugees_net"
+   ],
+   "quality": "D"
+  },
+  "DZA": {
+   "name": "Algeria",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.005,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.005
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": 0.035
+   },
+   "flowback": -0.001,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": -0.001,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": -0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": 0.038,
+   "reconciliation": {
+    "sum_of_parts": 0.039,
+    "difference": 0.0005,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": 0.0,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 230.777,
+   "basis": "none",
+   "sources": [
+    "loans_value"
+   ],
+   "quality": "D"
+  },
+  "ECU": {
+   "name": "Ecuador",
    "military": 0.0,
    "military_range": [
     0.0,
@@ -3915,141 +4885,7 @@
    "total_site": 0.0,
    "reconciliation": {
     "sum_of_parts": 0.0,
-    "difference": 0.0,
-    "aid_part_site": 0.0,
-    "aid_part_rebuilt": 0.0,
-    "eu_part_site": 0.0,
-    "eu_part_rebuilt": 0.0,
-    "years_vs_categories_residual_bilateral": 0.0,
-    "years_vs_categories_residual_eu": 0.0
-   },
-   "military_incl_eu_share": 0.0,
-   "military_pct_gdp": 0.0,
-   "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
-   "kiel_military": null,
-   "kiel_military_eu_share": null,
-   "gdp_eur_bn": 111.329,
-   "basis": "none",
-   "sources": [
-    "refugees",
-    "refugees_gain",
-    "refugees_net"
-   ],
-   "quality": "D"
-  },
-  "DZA": {
-   "name": "Algeria",
-   "military": 0.0,
-   "military_range": [
-    0.0,
-    0.0
-   ],
-   "military_parts": {
-    "kiel_allocated_less_era": 0.0,
-    "weapons_at_market_value": 0.0,
-    "not_yet_delivered": 0.0,
-    "loans_guarantees_at_gift_value": 0.0,
-    "undisclosed_estimate": 0.0
-   },
-   "financial": 0.005,
-   "financial_parts": {
-    "kiel_allocated_less_era": 0.0,
-    "loans_at_gift_value": 0.0,
-    "imf_world_bank_ebrd_share": 0.005
-   },
-   "humanitarian": 0.0,
-   "refugees": 0.0,
-   "eu_share": 0.0,
-   "eu_share_split": {
-    "military": 0.0,
-    "financial": 0.0,
-    "humanitarian": 0.0
-   },
-   "other": {
-    "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
-   },
-   "flowback": -0.001,
-   "flowback_parts": {
-    "own_aid_spent_at_home": 0.0,
-    "others_aid_spent_here": 0.0,
-    "extra_sales_to_ukraine": -0.001,
-    "arms_ukraine_bought_here": 0.0,
-    "aid_spent_here_energy_relief_rebuilding": 0.0,
-    "extra_services_sold_to_ukraine": -0.0,
-    "refugee_hosting_spent_at_home": 0.0
-   },
-   "total_site": 0.004,
-   "reconciliation": {
-    "sum_of_parts": 0.004,
-    "difference": 0.0,
-    "aid_part_site": 0.0,
-    "aid_part_rebuilt": 0.0,
-    "eu_part_site": 0.0,
-    "eu_part_rebuilt": 0.0,
-    "years_vs_categories_residual_bilateral": 0.0,
-    "years_vs_categories_residual_eu": 0.0
-   },
-   "military_incl_eu_share": 0.0,
-   "military_pct_gdp": 0.0,
-   "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
-   "kiel_military": null,
-   "kiel_military_eu_share": null,
-   "gdp_eur_bn": 230.777,
-   "basis": "none",
-   "sources": [
-    "loans_value"
-   ],
-   "quality": "D"
-  },
-  "ECU": {
-   "name": "Ecuador",
-   "military": 0.0,
-   "military_range": [
-    0.0,
-    0.0
-   ],
-   "military_parts": {
-    "kiel_allocated_less_era": 0.0,
-    "weapons_at_market_value": 0.0,
-    "not_yet_delivered": 0.0,
-    "loans_guarantees_at_gift_value": 0.0,
-    "undisclosed_estimate": 0.0
-   },
-   "financial": 0.0,
-   "financial_parts": {
-    "kiel_allocated_less_era": 0.0,
-    "loans_at_gift_value": 0.0,
-    "imf_world_bank_ebrd_share": 0.0
-   },
-   "humanitarian": 0.0,
-   "refugees": 0.001,
-   "eu_share": 0.0,
-   "eu_share_split": {
-    "military": 0.0,
-    "financial": 0.0,
-    "humanitarian": 0.0
-   },
-   "other": {
-    "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
-   },
-   "flowback": 0.0,
-   "flowback_parts": {
-    "own_aid_spent_at_home": 0.0,
-    "others_aid_spent_here": 0.0,
-    "extra_sales_to_ukraine": 0.0,
-    "arms_ukraine_bought_here": 0.0,
-    "aid_spent_here_energy_relief_rebuilding": 0.0,
-    "extra_services_sold_to_ukraine": 0.0,
-    "refugee_hosting_spent_at_home": 0.0
-   },
-   "total_site": 0.001,
-   "reconciliation": {
-    "sum_of_parts": 0.001,
-    "difference": -0.0001,
+    "difference": -0.0002,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -4102,7 +4938,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.079
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -4114,10 +4950,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.007,
+   "total_site": 0.086,
    "reconciliation": {
-    "sum_of_parts": 0.007,
-    "difference": 0.0002,
+    "sum_of_parts": 0.086,
+    "difference": 0.0,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -4136,6 +4972,134 @@
    "sources": [
     "loans_value"
    ],
+   "quality": "D"
+  },
+  "ERI": {
+   "name": "Eritrea",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": 0.0003,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 2.078752,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "ETH": {
+   "name": "Ethiopia",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.04
+   },
+   "flowback": -0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": -0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.04,
+   "reconciliation": {
+    "sum_of_parts": -0.04,
+    "difference": -0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 126.98,
+   "basis": "none",
+   "sources": [],
    "quality": "D"
   },
   "FRO": {
@@ -4204,6 +5168,70 @@
    ],
    "quality": "A"
   },
+  "GAB": {
+   "name": "Gabon",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.002
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.002,
+   "reconciliation": {
+    "sum_of_parts": -0.002,
+    "difference": -0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 18.882,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
   "GEO": {
    "name": "Georgia",
    "military": 0.0,
@@ -4225,7 +5253,7 @@
     "imf_world_bank_ebrd_share": 0.0
    },
    "humanitarian": 0.001,
-   "refugees": 0.121,
+   "refugees": 0.01,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -4234,9 +5262,9 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.014
    },
-   "flowback": -0.007,
+   "flowback": -0.004,
    "flowback_parts": {
     "own_aid_spent_at_home": 0.0,
     "others_aid_spent_here": 0.0,
@@ -4244,12 +5272,12 @@
     "arms_ukraine_bought_here": 0.0,
     "aid_spent_here_energy_relief_rebuilding": 0.0,
     "extra_services_sold_to_ukraine": -0.004,
-    "refugee_hosting_spent_at_home": -0.003
+    "refugee_hosting_spent_at_home": -0.0
    },
-   "total_site": 0.115,
+   "total_site": -0.007,
    "reconciliation": {
-    "sum_of_parts": 0.115,
-    "difference": -0.0001,
+    "sum_of_parts": -0.007,
+    "difference": -0.0,
     "aid_part_site": 0.001,
     "aid_part_rebuilt": 0.001,
     "eu_part_site": 0.0,
@@ -4260,7 +5288,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 27.926,
@@ -4273,6 +5301,454 @@
     "refugees_net"
    ],
    "quality": "C"
+  },
+  "GHA": {
+   "name": "Ghana",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.013
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.013,
+   "reconciliation": {
+    "sum_of_parts": -0.013,
+    "difference": 0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 73.879,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "GIN": {
+   "name": "Guinea",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.002
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.002,
+   "reconciliation": {
+    "sum_of_parts": -0.002,
+    "difference": -0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 20.912,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "GNQ": {
+   "name": "Equatorial Guinea",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
+    "difference": 0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 12.281,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "GTM": {
+   "name": "Guatemala",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": -0.0005,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 97.283,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "HKG": {
+   "name": "Hong Kong",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.011
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.011,
+   "reconciliation": {
+    "sum_of_parts": -0.011,
+    "difference": -0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 356.678,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "HND": {
+   "name": "Honduras",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
+    "difference": 0.0003,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 31.927,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "HTI": {
+   "name": "Haiti",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.002
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.002,
+   "reconciliation": {
+    "sum_of_parts": -0.002,
+    "difference": -0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 19.87,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "HUN": {
    "name": "Hungary",
@@ -4304,7 +5780,7 @@
    },
    "other": {
     "private_donations": 0.083,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.006
    },
    "flowback": -0.004,
    "flowback_parts": {
@@ -4316,10 +5792,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": -0.004
    },
-   "total_site": 0.67,
+   "total_site": 0.676,
    "reconciliation": {
-    "sum_of_parts": 0.67,
-    "difference": -0.0003,
+    "sum_of_parts": 0.676,
+    "difference": 0.0002,
     "aid_part_site": 0.054,
     "aid_part_rebuilt": 0.054,
     "eu_part_site": 0.364,
@@ -4380,7 +5856,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.054
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -4392,10 +5868,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.014,
+   "total_site": -0.041,
    "reconciliation": {
-    "sum_of_parts": 0.014,
-    "difference": 0.0002,
+    "sum_of_parts": -0.04,
+    "difference": 0.0007,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -4406,7 +5882,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 1270.262,
@@ -4447,7 +5923,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.183
    },
    "flowback": -0.004,
    "flowback_parts": {
@@ -4459,10 +5935,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.038,
+   "total_site": -0.145,
    "reconciliation": {
-    "sum_of_parts": 0.038,
-    "difference": 0.0002,
+    "sum_of_parts": -0.145,
+    "difference": 0.0003,
     "aid_part_site": 0.003,
     "aid_part_rebuilt": 0.003,
     "eu_part_site": 0.0,
@@ -4473,7 +5949,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": 0.0,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 3266.186,
@@ -4520,7 +5996,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.013
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -4532,10 +6008,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.012,
+   "total_site": -0.001,
    "reconciliation": {
-    "sum_of_parts": 0.012,
-    "difference": 0.0004,
+    "sum_of_parts": -0.001,
+    "difference": 0.0003,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -4546,7 +6022,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 421.191,
@@ -4586,7 +6062,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.062
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -4598,10 +6074,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.004,
+   "total_site": -0.057,
    "reconciliation": {
-    "sum_of_parts": 0.004,
-    "difference": -0.0004,
+    "sum_of_parts": -0.058,
+    "difference": -0.0007,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -4612,7 +6088,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 259.975,
@@ -4652,7 +6128,7 @@
    },
    "other": {
     "private_donations": 0.102,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.01
    },
    "flowback": -0.005,
    "flowback_parts": {
@@ -4664,10 +6140,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": -0.0
    },
-   "total_site": 0.128,
+   "total_site": 0.139,
    "reconciliation": {
-    "sum_of_parts": 0.129,
-    "difference": 0.0004,
+    "sum_of_parts": 0.139,
+    "difference": 0.0002,
     "aid_part_site": 0.012,
     "aid_part_rebuilt": 0.012,
     "eu_part_site": 0.0,
@@ -4695,6 +6171,70 @@
    ],
    "quality": "C"
   },
+  "JOR": {
+   "name": "Jordan",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.003
+   },
+   "flowback": -0.002,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": -0.002,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.005,
+   "reconciliation": {
+    "sum_of_parts": -0.005,
+    "difference": 0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 52.294,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
   "KAZ": {
    "name": "Kazakhstan",
    "military": 0.0,
@@ -4716,7 +6256,7 @@
     "imf_world_bank_ebrd_share": 0.004
    },
    "humanitarian": 0.002,
-   "refugees": 0.012,
+   "refugees": 0.002,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -4725,9 +6265,9 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.014
    },
-   "flowback": -0.003,
+   "flowback": -0.002,
    "flowback_parts": {
     "own_aid_spent_at_home": 0.0,
     "others_aid_spent_here": 0.0,
@@ -4735,12 +6275,12 @@
     "arms_ukraine_bought_here": 0.0,
     "aid_spent_here_energy_relief_rebuilding": 0.0,
     "extra_services_sold_to_ukraine": -0.002,
-    "refugee_hosting_spent_at_home": -0.0
+    "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.016,
+   "total_site": 0.02,
    "reconciliation": {
-    "sum_of_parts": 0.016,
-    "difference": -0.0005,
+    "sum_of_parts": 0.02,
+    "difference": -0.0001,
     "aid_part_site": 0.002,
     "aid_part_rebuilt": 0.002,
     "eu_part_site": 0.0,
@@ -4764,6 +6304,70 @@
     "refugees_net"
    ],
    "quality": "A"
+  },
+  "KEN": {
+   "name": "Kenya",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.009
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.009,
+   "reconciliation": {
+    "sum_of_parts": -0.009,
+    "difference": 0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 106.446,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "KGZ": {
    "name": "Kyrgyzstan",
@@ -4795,7 +6399,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.001
    },
    "flowback": -0.0,
    "flowback_parts": {
@@ -4807,10 +6411,10 @@
     "extra_services_sold_to_ukraine": -0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.0,
+   "total_site": -0.001,
    "reconciliation": {
-    "sum_of_parts": 0.0,
-    "difference": 0.0,
+    "sum_of_parts": -0.001,
+    "difference": 0.0002,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -4821,7 +6425,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 14.114,
@@ -4863,7 +6467,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.001
    },
    "flowback": -0.0,
    "flowback_parts": {
@@ -4877,8 +6481,8 @@
    },
    "total_site": 0.0,
    "reconciliation": {
-    "sum_of_parts": -0.0,
-    "difference": -0.0005,
+    "sum_of_parts": 0.001,
+    "difference": 0.0005,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -4991,7 +6595,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.001
    },
    "flowback": -0.001,
    "flowback_parts": {
@@ -5003,10 +6607,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.008,
+   "total_site": 0.007,
    "reconciliation": {
-    "sum_of_parts": 0.008,
-    "difference": 0.0,
+    "sum_of_parts": 0.007,
+    "difference": 0.0001,
     "aid_part_site": 0.003,
     "aid_part_rebuilt": 0.003,
     "eu_part_site": 0.0,
@@ -5027,6 +6631,70 @@
     "loans_value"
    ],
    "quality": "A"
+  },
+  "LAO": {
+   "name": "Laos",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.0
+   },
+   "flowback": -0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": -0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.0,
+   "reconciliation": {
+    "sum_of_parts": -0.0,
+    "difference": 0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 14.863,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "LBN": {
    "name": "Lebanon",
@@ -5058,7 +6726,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.021
+    "extra_purchases_from_ukraine": 0.04
    },
    "flowback": -0.0,
    "flowback_parts": {
@@ -5070,10 +6738,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.021,
+   "total_site": 0.04,
    "reconciliation": {
-    "sum_of_parts": 0.021,
-    "difference": -0.0003,
+    "sum_of_parts": 0.04,
+    "difference": -0.0002,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -5088,6 +6756,262 @@
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 20.833,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "LBR": {
+   "name": "Liberia",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": -0.0005,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 4.092,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "LBY": {
+   "name": "Libya",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.013
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.013,
+   "reconciliation": {
+    "sum_of_parts": -0.013,
+    "difference": 0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 42.194,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "LKA": {
+   "name": "Sri Lanka",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.008
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.008,
+   "reconciliation": {
+    "sum_of_parts": -0.008,
+    "difference": -0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 80.067,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "MAC": {
+   "name": "Macao",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": 0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": 0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
+    "difference": -0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": 0.0,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 37.191,
    "basis": "none",
    "sources": [],
    "quality": "D"
@@ -5122,7 +7046,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.042
    },
    "flowback": -0.002,
    "flowback_parts": {
@@ -5134,10 +7058,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.001,
+   "total_site": -0.041,
    "reconciliation": {
-    "sum_of_parts": 0.002,
-    "difference": 0.0005,
+    "sum_of_parts": -0.041,
+    "difference": 0.0,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -5148,7 +7072,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 136.027,
@@ -5188,7 +7112,7 @@
    },
    "other": {
     "private_donations": 0.007,
-    "extra_purchases_from_ukraine": 0.044
+    "extra_purchases_from_ukraine": 0.072
    },
    "flowback": -0.028,
    "flowback_parts": {
@@ -5200,10 +7124,10 @@
     "extra_services_sold_to_ukraine": -0.011,
     "refugee_hosting_spent_at_home": -0.001
    },
-   "total_site": 0.065,
+   "total_site": 0.093,
    "reconciliation": {
-    "sum_of_parts": 0.066,
-    "difference": 0.0005,
+    "sum_of_parts": 0.094,
+    "difference": 0.0006,
     "aid_part_site": 0.002,
     "aid_part_rebuilt": 0.002,
     "eu_part_site": 0.0,
@@ -5231,6 +7155,134 @@
    ],
    "quality": "B"
   },
+  "MDG": {
+   "name": "Madagascar",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.002
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.002,
+   "reconciliation": {
+    "sum_of_parts": -0.002,
+    "difference": -0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 15.218,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "MDV": {
+   "name": "Maldives",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
+    "difference": 0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 6.171,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
   "MEX": {
    "name": "Mexico",
    "military": 0.0,
@@ -5252,7 +7304,7 @@
     "imf_world_bank_ebrd_share": 0.027
    },
    "humanitarian": 0.0,
-   "refugees": 0.002,
+   "refugees": 0.0,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -5261,7 +7313,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.009
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -5273,10 +7325,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.028,
+   "total_site": 0.018,
    "reconciliation": {
-    "sum_of_parts": 0.029,
-    "difference": 0.0004,
+    "sum_of_parts": 0.018,
+    "difference": 0.0,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -5330,7 +7382,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.001
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -5342,10 +7394,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.0,
+   "total_site": 0.001,
    "reconciliation": {
-    "sum_of_parts": 0.0,
-    "difference": -0.0004,
+    "sum_of_parts": 0.001,
+    "difference": 0.0005,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -5360,6 +7412,70 @@
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 0.251,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "MLI": {
+   "name": "Mali",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.003
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.003,
+   "reconciliation": {
+    "sum_of_parts": -0.003,
+    "difference": -0.0003,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 23.015,
    "basis": "none",
    "sources": [],
    "quality": "D"
@@ -5439,6 +7555,262 @@
    ],
    "quality": "A"
   },
+  "MMR": {
+   "name": "Myanmar",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.004
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.004,
+   "reconciliation": {
+    "sum_of_parts": -0.004,
+    "difference": -0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 63.096,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "MNG": {
+   "name": "Mongolia",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.002
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.002,
+   "reconciliation": {
+    "sum_of_parts": -0.002,
+    "difference": 0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 19.021,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "MOZ": {
+   "name": "Mozambique",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": -0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 19.436,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "MRT": {
+   "name": "Mauritania",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.006
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.006,
+   "reconciliation": {
+    "sum_of_parts": -0.006,
+    "difference": 0.0,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 9.672,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
   "MUS": {
    "name": "Mauritius",
    "military": 0.0,
@@ -5469,7 +7841,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.001
    },
    "flowback": -0.0,
    "flowback_parts": {
@@ -5483,8 +7855,8 @@
    },
    "total_site": 0.0,
    "reconciliation": {
-    "sum_of_parts": -0.0,
-    "difference": -0.0004,
+    "sum_of_parts": 0.001,
+    "difference": 0.0005,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -5548,7 +7920,7 @@
    "total_site": 0.0,
    "reconciliation": {
     "sum_of_parts": 0.0,
-    "difference": -0.0002,
+    "difference": -0.0003,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -5597,7 +7969,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.007
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -5609,10 +7981,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.01,
+   "total_site": 0.003,
    "reconciliation": {
-    "sum_of_parts": 0.01,
-    "difference": -0.0002,
+    "sum_of_parts": 0.003,
+    "difference": 0.0003,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -5631,6 +8003,70 @@
    "sources": [
     "loans_value"
    ],
+   "quality": "D"
+  },
+  "NER": {
+   "name": "Niger",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
+    "difference": 0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 16.218,
+   "basis": "none",
+   "sources": [],
    "quality": "D"
   },
   "NGA": {
@@ -5663,7 +8099,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.057
    },
    "flowback": -0.0,
    "flowback_parts": {
@@ -5675,9 +8111,9 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.007,
+   "total_site": -0.05,
    "reconciliation": {
-    "sum_of_parts": 0.008,
+    "sum_of_parts": -0.049,
     "difference": 0.0004,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
@@ -5689,7 +8125,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 432.729,
@@ -5763,6 +8199,134 @@
    "sources": [],
    "quality": "D"
   },
+  "NPL": {
+   "name": "Nepal",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.022
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.022,
+   "reconciliation": {
+    "sum_of_parts": -0.022,
+    "difference": -0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 39.025,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "OMN": {
+   "name": "Oman",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.015
+   },
+   "flowback": -0.001,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": -0.001,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": -0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.015,
+   "reconciliation": {
+    "sum_of_parts": -0.016,
+    "difference": -0.0003,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 100.499,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
   "PAK": {
    "name": "Pakistan",
    "military": 0.0,
@@ -5793,7 +8357,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.067
    },
    "flowback": -0.006,
    "flowback_parts": {
@@ -5805,10 +8369,10 @@
     "extra_services_sold_to_ukraine": -0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.001,
+   "total_site": -0.066,
    "reconciliation": {
-    "sum_of_parts": 0.0,
-    "difference": -0.0003,
+    "sum_of_parts": -0.067,
+    "difference": -0.0006,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -5819,7 +8383,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 336.947,
@@ -5921,7 +8485,7 @@
     "imf_world_bank_ebrd_share": 0.004
    },
    "humanitarian": 0.0,
-   "refugees": 0.001,
+   "refugees": 0.0,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -5930,7 +8494,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.007
    },
    "flowback": -0.001,
    "flowback_parts": {
@@ -5942,10 +8506,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.004,
+   "total_site": -0.004,
    "reconciliation": {
-    "sum_of_parts": 0.004,
-    "difference": 0.0,
+    "sum_of_parts": -0.004,
+    "difference": -0.0001,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -5956,7 +8520,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 250.398,
@@ -5999,7 +8563,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.017
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -6011,10 +8575,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.005,
+   "total_site": -0.011,
    "reconciliation": {
-    "sum_of_parts": 0.005,
-    "difference": -0.0003,
+    "sum_of_parts": -0.012,
+    "difference": -0.0006,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -6025,7 +8589,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 404.907,
@@ -6038,6 +8602,70 @@
     "refugees_net"
    ],
    "quality": "A"
+  },
+  "PSE": {
+   "name": "Palestine",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.005
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.005,
+   "reconciliation": {
+    "sum_of_parts": -0.005,
+    "difference": -0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 16.744,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "QAT": {
    "name": "Qatar",
@@ -6069,7 +8697,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.006
    },
    "flowback": -0.002,
    "flowback_parts": {
@@ -6081,10 +8709,10 @@
     "extra_services_sold_to_ukraine": -0.002,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.062,
+   "total_site": 0.056,
    "reconciliation": {
-    "sum_of_parts": 0.062,
-    "difference": -0.0,
+    "sum_of_parts": 0.056,
+    "difference": -0.0001,
     "aid_part_site": 0.061,
     "aid_part_rebuilt": 0.061,
     "eu_part_site": 0.0,
@@ -6105,6 +8733,70 @@
     "loans_value"
    ],
    "quality": "B"
+  },
+  "RWA": {
+   "name": "Rwanda",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": 0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 13.57,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "SAU": {
    "name": "Saudi Arabia",
@@ -6136,7 +8828,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.038
    },
    "flowback": -0.0,
    "flowback_parts": {
@@ -6148,10 +8840,10 @@
     "extra_services_sold_to_ukraine": -0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.397,
+   "total_site": 0.359,
    "reconciliation": {
-    "sum_of_parts": 0.396,
-    "difference": -0.0005,
+    "sum_of_parts": 0.358,
+    "difference": -0.0008,
     "aid_part_site": 0.366,
     "aid_part_rebuilt": 0.366,
     "eu_part_site": 0.0,
@@ -6172,6 +8864,134 @@
     "loans_value"
    ],
    "quality": "A"
+  },
+  "SDN": {
+   "name": "Sudan",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.006
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.006,
+   "reconciliation": {
+    "sum_of_parts": -0.006,
+    "difference": -0.0003,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 43.952,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "SEN": {
+   "name": "Senegal",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.002
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.002,
+   "reconciliation": {
+    "sum_of_parts": -0.002,
+    "difference": -0.0005,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 28.165,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "SGP": {
    "name": "Singapore",
@@ -6203,7 +9023,7 @@
    },
    "other": {
     "private_donations": 0.107,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.002
    },
    "flowback": -0.0,
    "flowback_parts": {
@@ -6215,10 +9035,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.117,
+   "total_site": 0.119,
    "reconciliation": {
-    "sum_of_parts": 0.118,
-    "difference": 0.0004,
+    "sum_of_parts": 0.12,
+    "difference": 0.0002,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -6242,6 +9062,134 @@
     "value_kept"
    ],
    "quality": "A"
+  },
+  "SLE": {
+   "name": "Sierra Leone",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": -0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 6.379,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "SMR": {
+   "name": "San Marino",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
+    "difference": 0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 1.848,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "SOM": {
    "name": "Somalia",
@@ -6273,7 +9221,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.003
+    "extra_purchases_from_ukraine": 0.004
    },
    "flowback": -0.0,
    "flowback_parts": {
@@ -6285,10 +9233,10 @@
     "extra_services_sold_to_ukraine": -0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.003,
+   "total_site": 0.004,
    "reconciliation": {
-    "sum_of_parts": 0.003,
-    "difference": 0.0001,
+    "sum_of_parts": 0.004,
+    "difference": 0.0003,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -6328,7 +9276,7 @@
     "imf_world_bank_ebrd_share": 0.0
    },
    "humanitarian": 0.003,
-   "refugees": 0.065,
+   "refugees": 0.003,
    "eu_share": 0.0,
    "eu_share_split": {
     "military": 0.0,
@@ -6337,9 +9285,9 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.016
    },
-   "flowback": -0.025,
+   "flowback": -0.024,
    "flowback_parts": {
     "own_aid_spent_at_home": 0.0,
     "others_aid_spent_here": -0.011,
@@ -6347,12 +9295,12 @@
     "arms_ukraine_bought_here": -0.012,
     "aid_spent_here_energy_relief_rebuilding": 0.0,
     "extra_services_sold_to_ukraine": -0.001,
-    "refugee_hosting_spent_at_home": -0.001
+    "refugee_hosting_spent_at_home": -0.0
    },
-   "total_site": 0.042,
+   "total_site": -0.002,
    "reconciliation": {
-    "sum_of_parts": 0.042,
-    "difference": -0.0001,
+    "sum_of_parts": -0.002,
+    "difference": 0.0004,
     "aid_part_site": 0.003,
     "aid_part_rebuilt": 0.003,
     "eu_part_site": 0.0,
@@ -6363,7 +9311,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 73.968,
@@ -6378,6 +9326,134 @@
     "value_kept"
    ],
    "quality": "A"
+  },
+  "SSD": {
+   "name": "South Sudan",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
+    "difference": 0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 6.138,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "SUR": {
+   "name": "Suriname",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
+    "difference": 0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 3.631,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "SYC": {
    "name": "Seychelles",
@@ -6488,7 +9564,7 @@
    "total_site": 0.004,
    "reconciliation": {
     "sum_of_parts": 0.004,
-    "difference": 0.0001,
+    "difference": -0.0001,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -6503,6 +9579,134 @@
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 19.771245,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "TCD": {
+   "name": "Chad",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
+    "difference": 0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 17.432,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "TGO": {
+   "name": "Togo",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.002
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.002,
+   "reconciliation": {
+    "sum_of_parts": -0.002,
+    "difference": 0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 9.012,
    "basis": "none",
    "sources": [],
    "quality": "D"
@@ -6537,7 +9741,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.001
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -6549,10 +9753,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.009,
+   "total_site": 0.011,
    "reconciliation": {
-    "sum_of_parts": 0.009,
-    "difference": -0.0003,
+    "sum_of_parts": 0.01,
+    "difference": -0.0007,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -6571,6 +9775,134 @@
    "sources": [
     "loans_value"
    ],
+   "quality": "D"
+  },
+  "TJK": {
+   "name": "Tajikistan",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": -0.0003,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 11.608,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "TKM": {
+   "name": "Turkmenistan",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": -0.003,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": -0.002,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": -0.001,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.004,
+   "reconciliation": {
+    "sum_of_parts": -0.004,
+    "difference": 0.0005,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 37.553,
+   "basis": "none",
+   "sources": [],
    "quality": "D"
   },
   "TLS": {
@@ -6639,6 +9971,134 @@
    ],
    "quality": "A"
   },
+  "TTO": {
+   "name": "Trinidad and Tobago",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.0
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.0,
+   "reconciliation": {
+    "sum_of_parts": 0.0,
+    "difference": 0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 24.584,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "TUN": {
+   "name": "Tunisia",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": 0.008
+   },
+   "flowback": -0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": -0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": -0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": 0.007,
+   "reconciliation": {
+    "sum_of_parts": 0.008,
+    "difference": 0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": 0.0,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 44.916,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
   "TWN": {
    "name": "Taiwan",
    "military": 0.0,
@@ -6669,7 +10129,7 @@
    },
    "other": {
     "private_donations": 0.15,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.009
    },
    "flowback": -0.001,
    "flowback_parts": {
@@ -6681,9 +10141,9 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.206,
+   "total_site": 0.197,
    "reconciliation": {
-    "sum_of_parts": 0.206,
+    "sum_of_parts": 0.197,
     "difference": 0.0,
     "aid_part_site": 0.057,
     "aid_part_rebuilt": 0.057,
@@ -6707,6 +10167,134 @@
     "value_kept"
    ],
    "quality": "A"
+  },
+  "TZA": {
+   "name": "Tanzania",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.006
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.006,
+   "reconciliation": {
+    "sum_of_parts": -0.006,
+    "difference": -0.0004,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 72.743,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
+  },
+  "UGA": {
+   "name": "Uganda",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.003
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.003,
+   "reconciliation": {
+    "sum_of_parts": -0.003,
+    "difference": -0.0002,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 46.061,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "URY": {
    "name": "Uruguay",
@@ -6738,7 +10326,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.0
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -6753,7 +10341,7 @@
    "total_site": 0.0,
    "reconciliation": {
     "sum_of_parts": 0.0,
-    "difference": 0.0,
+    "difference": 0.0001,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -6806,7 +10394,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.004
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -6818,10 +10406,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.001,
+   "total_site": -0.003,
    "reconciliation": {
-    "sum_of_parts": 0.001,
-    "difference": -0.0,
+    "sum_of_parts": -0.003,
+    "difference": 0.0002,
     "aid_part_site": 0.001,
     "aid_part_rebuilt": 0.001,
     "eu_part_site": 0.0,
@@ -6832,7 +10420,7 @@
    "military_incl_eu_share": 0.0,
    "military_pct_gdp": 0.0,
    "military_incl_eu_pct_gdp": 0.0,
-   "military_share_of_total": 0.0,
+   "military_share_of_total": null,
    "kiel_military": null,
    "kiel_military_eu_share": null,
    "gdp_eur_bn": 100.367,
@@ -7068,7 +10656,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.024
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -7080,10 +10668,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.003,
+   "total_site": 0.027,
    "reconciliation": {
-    "sum_of_parts": 0.003,
-    "difference": -0.0,
+    "sum_of_parts": 0.027,
+    "difference": -0.0002,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -7104,6 +10692,136 @@
     "loans_value"
    ],
    "quality": "A"
+  },
+  "XKX": {
+   "name": "Kosovo",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": -0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": -0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": 0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 9.642,
+   "basis": "aid_gaps",
+   "sources": [
+    "aid_gaps"
+   ],
+   "quality": "C"
+  },
+  "YEM": {
+   "name": "Yemen",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.003
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.003,
+   "reconciliation": {
+    "sum_of_parts": -0.003,
+    "difference": -0.0001,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 8.888,
+   "basis": "none",
+   "sources": [],
+   "quality": "D"
   },
   "ZAF": {
    "name": "South Africa",
@@ -7135,7 +10853,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": -0.002
    },
    "flowback": -0.01,
    "flowback_parts": {
@@ -7147,10 +10865,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": -0.001,
+   "total_site": -0.003,
    "reconciliation": {
-    "sum_of_parts": -0.001,
-    "difference": -0.0002,
+    "sum_of_parts": -0.003,
+    "difference": 0.0001,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,
@@ -7172,6 +10890,70 @@
     "net_gain_sellers",
     "value_kept"
    ],
+   "quality": "D"
+  },
+  "ZMB": {
+   "name": "Zambia",
+   "military": 0.0,
+   "military_range": [
+    0.0,
+    0.0
+   ],
+   "military_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "weapons_at_market_value": 0.0,
+    "not_yet_delivered": 0.0,
+    "loans_guarantees_at_gift_value": 0.0,
+    "undisclosed_estimate": 0.0
+   },
+   "financial": 0.0,
+   "financial_parts": {
+    "kiel_allocated_less_era": 0.0,
+    "loans_at_gift_value": 0.0,
+    "imf_world_bank_ebrd_share": 0.0
+   },
+   "humanitarian": 0.0,
+   "refugees": 0.0,
+   "eu_share": 0.0,
+   "eu_share_split": {
+    "military": 0.0,
+    "financial": 0.0,
+    "humanitarian": 0.0
+   },
+   "other": {
+    "private_donations": 0.0,
+    "extra_purchases_from_ukraine": -0.001
+   },
+   "flowback": 0.0,
+   "flowback_parts": {
+    "own_aid_spent_at_home": 0.0,
+    "others_aid_spent_here": 0.0,
+    "extra_sales_to_ukraine": 0.0,
+    "arms_ukraine_bought_here": 0.0,
+    "aid_spent_here_energy_relief_rebuilding": 0.0,
+    "extra_services_sold_to_ukraine": 0.0,
+    "refugee_hosting_spent_at_home": 0.0
+   },
+   "total_site": -0.001,
+   "reconciliation": {
+    "sum_of_parts": -0.001,
+    "difference": -0.0005,
+    "aid_part_site": 0.0,
+    "aid_part_rebuilt": 0.0,
+    "eu_part_site": 0.0,
+    "eu_part_rebuilt": 0.0,
+    "years_vs_categories_residual_bilateral": 0.0,
+    "years_vs_categories_residual_eu": 0.0
+   },
+   "military_incl_eu_share": 0.0,
+   "military_pct_gdp": 0.0,
+   "military_incl_eu_pct_gdp": 0.0,
+   "military_share_of_total": null,
+   "kiel_military": null,
+   "kiel_military_eu_share": null,
+   "gdp_eur_bn": 25.526,
+   "basis": "none",
+   "sources": [],
    "quality": "D"
   },
   "ZWE": {
@@ -7204,7 +10986,7 @@
    },
    "other": {
     "private_donations": 0.0,
-    "extra_purchases_from_ukraine": 0.0
+    "extra_purchases_from_ukraine": 0.001
    },
    "flowback": 0.0,
    "flowback_parts": {
@@ -7216,10 +10998,10 @@
     "extra_services_sold_to_ukraine": 0.0,
     "refugee_hosting_spent_at_home": 0.0
    },
-   "total_site": 0.0,
+   "total_site": 0.001,
    "reconciliation": {
-    "sum_of_parts": 0.0,
-    "difference": -0.0004,
+    "sum_of_parts": 0.001,
+    "difference": 0.0004,
     "aid_part_site": 0.0,
     "aid_part_rebuilt": 0.0,
     "eu_part_site": 0.0,

@@ -4,7 +4,7 @@
 // state (view, measure, what's counted, region, group, size, year) and re-renders whenever it changes (paint() calls
 // renderView()). Round 20 (owner): only Map, Ranking and Sources remain, and the ranking is as clean as the map: the
 // header line names it and its explanation is in the header's ⓘ (rankInfo)
-/* global leaning, chance, pct, isNearZero, noDataAt, PARTY_TO_WAR, state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
+/* global leaning, chance, pct, isNearZero, rankGroup, RANK_GROUPS, chanceInfo, noDataAt, PARTY_TO_WAR, state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
    num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, renderDrawer, renderInfo, verb, rangeWords, countryPath */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
@@ -47,7 +47,7 @@ function measureText() {
 function periodText() {
   if (state.year === 2021) return t("2021 (before the war)");
   const y = state.year;
-  return `2022–${y}${y === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : ""}`;
+  return `2022–${y}${y === 2026 && FRAC[5] < 1 ? t(" (2026: January–August)") : ""}`;
 }
 function tick(v) {
   const sg = v < 0 ? "−" : "", a = Math.abs(v);
@@ -60,7 +60,7 @@ const fitName = (name, max) => (name.length > max ? name.slice(0, max - 1).trimE
 // chart rows act like buttons: Enter and Space open the country, as a click does
 function activateOnKey(el, fn) { el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } }); }
 function tipFor(m) {
-  const range = m.loBn != null ? "<br>" + rangeWords(m.c, m.loBn, m.hiBn, HEAD_LENS[state.lens] === "ua" ? "ua" : "net") + (m.st ? " · " + t(m.st === "lean" ? "leaning" : "too close to call") : "") : "";
+  const range = m.loBn != null ? "<br>" + rangeWords(m.c, m.loBn, m.hiBn, HEAD_LENS[state.lens] === "ua" ? "ua" : "net") + (m.st ? " · " + t({ lean: "likely", unc: "too close to call", near: "near zero", zero: "essentially zero" }[m.lv] || "too close to call") : "") : "";
   // round 22 (owner): a verb and an amount ("Toward Ukraine by 3.2% of GDP · €134 bn"); the chart itself keeps its signed axis
   return `<b>${m.c.name}</b>${verb(HEAD_LENS[state.lens], m.bn, m.c)}${state.measure !== "total" ? ` · ${eur(Math.abs(m.bn))}` : ""}${range}<br><span style="opacity:.75">${t("Click for the full breakdown")}</span>`;
 }
@@ -91,20 +91,23 @@ function renderRanking(root) {
   // Round 38 (owner, 23 October 2026: "we can create leaning groups"): the rows come in five groups, each under its own
   // heading: a certain direction either way, leaning either way (at least a 65% chance), and uncertain. Only the certain
   // groups are numbered: toward Ukraine from the top, toward Russia from the bottom (1 = furthest toward Russia)
-  const status = m => (!hq || y <= 2021 || !uncertain(m.c, y, hq) ? "" : leaning(m.c, y, hq) ? "lean" : "unc");
-  rows.forEach(m => (m.st = status(m)));
-  // round 39 (owner: "do B"): a sixth group in the middle, near zero (range and method band within ±0.5% of GDP)
-  rows.forEach(m => (m.nz = !!m.st && isNearZero(m.c, y, hq)));
-  // round 42 (certainty audit): a leaning row goes to the side the simulation favours, which can differ from the sign of
-  // its middle value; each row shows that side's chance
-  rows.forEach(m => { m.ch = hq && y > 2021 ? chance(m.c, y, hq) : null; });
-  const grp = m => (m.nz ? 2 : m.st === "unc" ? 3 : m.st === "lean" ? (m.ch.side === "ukraine" ? 1 : 4) : m.v >= 0 ? 0 : 5);
-  const GROUP_LABEL = state.lens === "support"
-    ? ["Supported Ukraine", "Leaning: supported Ukraine", "Near zero", "Too close to call", "Leaning: below zero", "Below zero"]
-    : ["Toward Ukraine", "Leaning toward Ukraine", "Near zero", "Too close to call", "Leaning toward Russia", "Toward Russia"];
+  // round 60 (audit: groups that differed from the country pages): the groups are the chance levels (rankGroup in
+  // index.html, the same classifier as the pages): very likely either way (numbered), leaning either way, near zero,
+  // essentially zero and too close to call. A leaning row goes to the side the simulation favours, which can differ from
+  // the sign of its middle value; each row shows that side's chance
+  rows.forEach(m => {
+    const i = hq && y > 2021 ? chanceInfo(m.c, y, hq) : null;
+    m.g = i ? rankGroup(m.c, y, hq) : m.v >= 0 ? 0 : 6;
+    m.st = !i || i.level === "sure" ? "" : i.level === "lean" ? "lean" : "unc";
+    m.nz = !!i && (i.level === "near" || i.level === "zero");
+    m.lv = i ? i.level : "sure";
+    m.ch = i ? chance(m.c, y, hq) : null;
+  });
+  const grp = m => m.g;
+  const GROUP_LABEL = RANK_GROUPS[state.lens === "support" ? "ua" : "net"];
   rows.sort((a, b) => grp(a) - grp(b) || b.v - a.v);
-  const groups = [0, 1, 2, 3, 4, 5].map(g => rows.filter(m => grp(m) === g)).map((list, g) => ({ g, list })).filter(x => x.list.length);
-  groups.forEach(({ g, list }) => list.forEach((m, i) => (m.rank = g === 0 ? i + 1 : g === 5 ? list.length - i : null)));
+  const groups = [0, 1, 2, 3, 4, 5, 6].map(g => rows.filter(m => grp(m) === g)).map((list, g) => ({ g, list })).filter(x => x.list.length);
+  groups.forEach(({ g, list }) => list.forEach((m, i) => (m.rank = g === 0 ? i + 1 : g === 6 ? list.length - i : null)));
   // one layout list: a heading line before each group, then its rows
   const lines = groups.flatMap(({ g, list }) => [{ head: g, n: list.length }, ...list]);
   const diverging = true;   // every view can go either way around zero
@@ -125,7 +128,7 @@ function renderRanking(root) {
   for (const t of cand) if (ticks.every(u => Math.abs(x(u) - x(t)) >= (narrowScreen ? 38 : 46))) ticks.push(t);
   // one colour rule; below zero is orange only where it is money toward Russia (not support)
   const col = v => (v >= 0 ? "var(--ukr)" : state.lens === "support" ? "var(--ink-soft)" : "var(--rus)");
-  const stLabel = { lean: t("leaning"), unc: t("too close to call") };
+  const stLabel = { lean: t("likely"), unc: t("too close to call"), near: t("near zero"), zero: t("essentially zero") };
   // a group, not an image: its rows are buttons that keyboard and screen reader users reach one by one
   const title = t(LENS_TITLE[state.lens]);
   const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("{title}, {n} countries, ranked", { title, n: rows.length })}">
@@ -135,21 +138,21 @@ function renderRanking(root) {
       const y = top + i * rowH + rowH / 2;
       if (m.head != null) return `<text class="rk-gh rk-gh${m.head}" x="0" y="${y + 6}">${t(GROUP_LABEL[m.head])} · ${m.n}</text>`;
       const w = m.lo != null ? `<line class="whisk" x1="${x(m.lo)}" x2="${x(m.hi)}" y1="${y}" y2="${y}"/>` : `<line class="whisk" x1="${x(0)}" x2="${x(m.v)}" y1="${y}" y2="${y}" style="stroke:${col(m.v)};stroke-opacity:.35;stroke-width:6"/>`;
-      const tag = (m.st ? ` · ${stLabel[m.st]}` : "") + (m.ch ? ` · ${t("chance {p}", { p: pct(m.ch.p) })}` : "");
+      const tag = (m.st ? ` · ${stLabel[m.lv] || stLabel[m.st]}` : "") + (m.ch && m.lv !== "zero" ? ` · ${t("chance {p}", { p: pct(m.ch.p) })}` : "");
       // round 54: each row sits in a link to the country's own page, for search engines (out of the Tab order: the row
       // itself is the button; a click opens the panel, as before)
       return `<a href="${countryPath(m.c)}" tabindex="-1" class="rk-a"><g class="row${m.st ? " rk-" + m.st : ""}${m.nz ? " rk-nz" : ""}" tabindex="0" role="button" data-n="${m.c.n}" data-g="${grp(m)}" aria-label="${m.c.name}: ${verb(HEAD_LENS[state.lens], m.bn, m.c)}${tag}">
         <rect class="hit" x="0" y="${y - rowH / 2}" width="${W}" height="${rowH}" fill="transparent"/>
         <text class="lbl" x="${labelW - 10}" y="${y + 4}" text-anchor="end">${m.rank ? m.rank + ". " : ""}${fitName(m.c.name, narrowScreen ? 12 : 20)}<title>${m.c.name}${tag}</title></text>
         ${w}<circle class="dot" cx="${x(m.v)}" cy="${y}" r="5.5" fill="${col(m.v)}"/>
-        ${m.ch ? `<text class="rk-ch" x="${W - valW + 6}" y="${y + 4}" text-anchor="start" style="fill:${m.ch.side === "ukraine" ? "var(--ukr)" : state.lens === "support" ? "var(--ink-soft)" : "var(--rus)"}">${pct(m.ch.p)}</text>` : ""}
+        ${m.ch && m.lv !== "zero" ? `<text class="rk-ch" x="${W - valW + 6}" y="${y + 4}" text-anchor="start" style="fill:${m.ch.side === "ukraine" ? "var(--ukr)" : state.lens === "support" ? "var(--ink-soft)" : "var(--rus)"}">${pct(m.ch.p)}</text>` : ""}
         <text x="${W}" y="${y + 4}" text-anchor="end" style="font-family:var(--font-data);font-size:12px;fill:var(--ink)">${fmtMeasure(m.c, m.bn, state.measure, diverging, false)}</text>
       </g></a>`;
     }).join("")}
   </svg>`;
   const tagNote = ts ? `<p class="rk-tags" role="status"><span>${t("Showing {n} countries tagged: {tags}.", { n: rows.length + party.length, tags: tagNames() })}</span> <button class="linkbtn tclear" data-tag-clear>${t("Clear tags")}</button></p>` : "";
   root.innerHTML = `<div class="view-inner">
-    ${tagNote}<p class="rk-key"><span class="rk-k rk-k-sure"></span>${t("certain (≥95%)")} <span class="rk-k rk-k-lean"></span>${t("leaning (≥65%)")} <span class="rk-k rk-k-unc"></span>${t("too close to call")} · ${t("% = chance of the more likely direction")}</p>
+    ${tagNote}<p class="rk-key"><span class="rk-k rk-k-sure"></span>${t("very likely (≥95%)")} <span class="rk-k rk-k-lean"></span>${t("likely (≥65%)")} <span class="rk-k rk-k-unc"></span>${t("too close to call, near or essentially zero")} · ${t("% = chance of the more likely direction")}</p>
     <div class="chart">${svg}</div>
     <p class="note-small">${t("Compressed scale: the axis labels give the true values.")}</p>
     ${party.length ? chipGroup(party, t("Party to the war (with Russia), not ranked:"), "party") : ""}

@@ -18,7 +18,7 @@ LUXLU LVALV MACMO MARMA MDAMD MDGMG MDVMV MEXMX MHLMH MKDMK MLIML MLTMT MMRMM MN
 NFKNF NGANG NICNI NIUNU NLDNL NORNO NPLNP NRUNR NZLNZ OMNOM PAKPK PANPA PCNPN PERPE PHLPH PLWPW PNGPG POLPL PRKKP PRTPT PRYPY PSEPS PYFPF QATQA ROURO
 RWARW SAUSA SDNSD SENSN SGPSG SGSGS SHNSH SLBSB SLESL SLVSV SMRSM SOMSO SPMPM SRBRS SSDSS STPST SURSR SVKSK SVNSI SWESE SWZSZ SXMSX SYCSC SYRSY TCATC
 TCDTD TGOTG THATH TJKTJ TKLTK TKMTM TLSTL TONTO TTOTT TUNTN TURTR TUVTV TWNTW TZATZ UGAUG UMIUM URYUY USAUS UZBUZ VATVA VCTVC VENVE VGBVG VNMVN VUTVU
-WLFWF WSMWS YEMYE ZAFZA ZMBZM ZWEZW`.split(/\s+/).filter(Boolean).map(x => [x.slice(0, 3), x.slice(3)]));
+WLFWF WSMWS XKXXK YEMYE ZAFZA ZMBZM ZWEZW`.split(/\s+/).filter(Boolean).map(x => [x.slice(0, 3), x.slice(3)]));
 // map shapes without their own entry in data.json (numeric ids of the world atlas), for the tooltip name
 const NUM_ISO2 = { "804": "UA", "643": "RU", "850": "VI", "630": "PR", "832": "JE", "831": "GG", "833": "IM", "492": "MC", "438": "LI", "663": "MF", "248": "AX", "334": "HM" };
 
@@ -37,7 +37,8 @@ let LANG = pickLang();
 
 function t(str, vars) {
   const s = (LANG !== "en" && I18N[LANG] && I18N[LANG][str]) || str;
-  return vars ? s.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m)) : s;
+  // round 60 (audit: "United States's"): a name ending in s takes only the apostrophe
+  return vars ? s.replace(/\{(\w+)\}('s(?![\w]))?/g, (m, k, ps) => (k in vars ? (ps && /s$/.test(String(vars[k])) ? vars[k] + "'" : vars[k] + (ps || "")) : m)) : s;
 }
 // Text that comes from data.json (source names, notes, the status line): looked up like t(); numbers inside it are
 // matched as {n0}, {n1}... so one translation covers "only the paid share (90%) counts" and "(30%)". Untranslated text
@@ -70,6 +71,10 @@ const NAME_FIX = {
   MO: { de: "Macau", fr: "Macao", es: "Macao", pl: "Makau", nl: "Macau", uk: "Макао" },
   MM: { fr: "Myanmar", es: "Myanmar", pl: "Mjanma", nl: "Myanmar", uk: "Мʼянма" },
   VA: { en: "Vatican City" },
+  // round 60 (audit): the British territory, not "Virgin Islands"; names without the data's bracketed notes
+  VG: { en: "British Virgin Islands" },
+  SX: { en: "Sint Maarten" },
+  FK: { en: "Falkland Islands" },
 };
 // the browser's name for a country in the chosen language (NAME_FIX first); English (and any failure) keeps the name given
 function regionName(iso2, fallback) {

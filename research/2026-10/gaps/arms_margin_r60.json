@@ -1,0 +1,778 @@
+{
+ "generated": "2026-10-29",
+ "meta": {
+  "what": "Round 60 (research only): the seller's gain on weapons sold to Russia, by supplier and item, from price-versus-cost evidence, replacing the OECD median weapons gain (0.051; 0.027-0.100) for Iran and North Korea. Same concept as net_gain_sellers.json: price minus the seller's full cost incl. a normal return, as a share of the price",
+  "formula": "counted = value x (paid x gain x extra + (1 - paid)); troops' pay in full (pipeline apply_military_payment, unchanged)",
+  "extra": "value_kept.json flowback_weapons extra (0.4/0.6/0.8) kept; scenario 'extra_09' sets it to 0.8/0.9/1.0 for Iran and North Korea, whose sales exist only because of the war",
+  "script": "research/2026-10/scripts/arms_margin_r60.py"
+ },
+ "proposed": {
+  "IRN": {
+   "drones_direct_2022_23": {
+    "rate": {
+     "low": 0.45,
+     "central": 0.7,
+     "high": 0.85
+    },
+    "basis": "price USD 150k (model; 50-290k) vs Iranian unit cost about USD 50k (TWZ: 'quite realistic'; engine alone USD 12-17k; sanctions procurement premium); low = cost 80k on price 150k"
+   },
+   "alabuga_contract_drones_licence": {
+    "rate": {
+     "low": 0.6,
+     "central": 0.8,
+     "high": 0.9
+    },
+    "basis": "USD 1.75bn for licence, technology, equipment, software and a per-unit 'licensing and component fee' of USD 193k (Defense One: six times the drone's estimated cost; about 10% of components from abroad); the plan was full localisation with minimal Iranian components (Russian unit cost USD 48.8k). Iran's own costs (early kits, engines, equipment, engineers) judged USD 0.2-0.6bn of 1.75bn"
+   },
+   "missiles_ballistic_and_sam": {
+    "rate": {
+     "low": 0.15,
+     "central": 0.35,
+     "high": 0.6
+    },
+    "basis": "no unit cost or price is public (Fath-360, Fateh-110). A state monopoly selling to a buyer with few alternatives: at least a Western ammunition maker's operating margin in a seller's market (Rheinmetall Weapon & Ammunition 28.4% in 2024, 29% in 2025; low 0.15 = typical defence operating margin), centre a third, high if the price was near Russian prices for comparable missiles"
+   },
+   "ammunition": {
+    "rate": {
+     "low": 0.15,
+     "central": 0.35,
+     "high": 0.6
+    },
+    "basis": "as missiles: largely shells from Iran's stocks; no outdated-share evidence, so no stock blend"
+   }
+  },
+  "PRK": {
+   "artillery_ammunition": {
+    "stock_blend": {
+     "outdated_share": {
+      "low": 0.3,
+      "central": 0.5,
+      "high": 0.6
+     },
+     "gain_on_outdated": {
+      "low": 0.7,
+      "central": 0.9,
+      "high": 1.0
+     },
+     "gain_on_rest": {
+      "low": 0.15,
+      "central": 0.35,
+      "high": 0.6
+     }
+    },
+    "basis": "outdated half unchanged (military_payment_r13). The rest is valued at Russian procurement prices (USD 400/800/1,100 per round) but produced by a state monopoly with near-zero wages; the price estimates for North Korean shells start at USD 150-300 (Guseinova, low case), so a cost of 250-500 on a price of 800 gives 0.4-0.7; centre set lower (0.35) because steel, explosives and propellant are imported or scarce and the stock must be replaced at that cost"
+   },
+   "artillery_systems": {
+    "same_as": "artillery_ammunition",
+    "basis": "treated as stock, as in round 13"
+   },
+   "ballistic_missiles": {
+    "rate": {
+     "low": 0.15,
+     "central": 0.35,
+     "high": 0.6
+    },
+    "basis": "KN-23/24, new production valued at USD 1.5/2.5/3.5m; no cost evidence; as Iran's missiles"
+   }
+  }
+ },
+ "current_gain": {
+  "weapons_oecd_median": {
+   "low": 0.0266,
+   "central": 0.051,
+   "high": 0.0999,
+   "n": 28
+  },
+  "PRK_stock": {
+   "outdated_share": {
+    "low": 0.3,
+    "central": 0.5,
+    "high": 0.6
+   },
+   "gain_on_outdated": {
+    "low": 0.7,
+    "central": 0.9,
+    "high": 1.0
+   },
+   "basis": "Ukraine's intelligence (Vadym Skibitsky to Reuters, via PRM.ua; a belligerent source): about half the ammunition in one shipment was so outdated that Russian factories had to rework it. Outdated stock has almost no other use, so nearly all of its price is a gain (judgement: 0.7-1.0). The other half at the weapons gain of new production"
+  }
+ },
+ "effect_site_model": {
+  "how": "site model (calc, chance) on site/data.json of 2026-10-27, military_rus series replaced; full-value 'alt' series unchanged",
+  "IRN": {
+   "current": {
+    "mil_eur_bn": -0.108,
+    "net_pct_gdp": -0.03,
+    "chance_net_russia": 0.837,
+    "uncertain": true
+   },
+   "proposed": {
+    "mil_eur_bn": -1.227,
+    "net_pct_gdp": -0.29,
+    "chance_net_russia": 0.995,
+    "uncertain": false
+   },
+   "proposed_extra_09": {
+    "mil_eur_bn": -1.84,
+    "net_pct_gdp": -0.44,
+    "chance_net_russia": 0.999,
+    "uncertain": false
+   }
+  },
+  "PRK": {
+   "current": {
+    "mil_eur_bn": -3.333,
+    "net_pct_gdp": -11.34,
+    "chance_net_russia": 0.999,
+    "uncertain": false
+   },
+   "proposed": {
+    "mil_eur_bn": -4.203,
+    "net_pct_gdp": -14.28,
+    "chance_net_russia": 0.999,
+    "uncertain": false
+   },
+   "proposed_extra_09": {
+    "mil_eur_bn": -5.867,
+    "net_pct_gdp": -19.91,
+    "chance_net_russia": 0.999,
+    "uncertain": false
+   }
+  }
+ },
+ "sources": [
+  {
+   "page": "twz",
+   "url": "https://www.twz.com/news-features/what-does-a-shahed-136-really-cost",
+   "retrieved": "2026-10-29",
+   "extract": "research/2026-10/raw/arms_margin_r60/twz.txt"
+  },
+  {
+   "page": "defone",
+   "url": "https://www.defenseone.com/threats/2024/02/russia-may-be-trying-build-10000-attack-drones-year-use-ukraine/394015/",
+   "retrieved": "2026-10-29",
+   "extract": "research/2026-10/raw/arms_margin_r60/defone.txt"
+  },
+  {
+   "page": "militarnyi",
+   "url": "https://militarnyi.com/en/news/the-cost-of-shahed-136-for-russia-has-been-reported/",
+   "retrieved": "2026-10-29",
+   "extract": "research/2026-10/raw/arms_margin_r60/militarnyi.txt"
+  },
+  {
+   "page": "statewatch",
+   "url": "https://statewatch.org.ua/en/publications/novynu/sanktsii/russia-pays-iran-for-drones-with-gold-bars/",
+   "retrieved": "2026-10-29",
+   "extract": "research/2026-10/raw/arms_margin_r60/statewatch.txt"
+  },
+  {
+   "page": "aljaz",
+   "url": "https://www.aljazeera.com/news/2025/9/18/north-korea-getting-a-raw-deal-on-support-for-russias-war-report",
+   "retrieved": "2026-10-29",
+   "extract": "research/2026-10/raw/arms_margin_r60/aljaz.txt"
+  },
+  {
+   "page": "kyivpost",
+   "url": "https://www.kyivpost.com/post/41325",
+   "retrieved": "2026-10-29",
+   "extract": "research/2026-10/raw/arms_margin_r60/kyivpost.txt"
+  },
+  {
+   "page": "rhm",
+   "url": "https://www.rheinmetall.com/en/media/news-watch/news/2025/03/2025-03-12-rheinmetall-financial-figures-fiscal-year-2024",
+   "retrieved": "2026-10-29",
+   "extract": "research/2026-10/raw/arms_margin_r60/rhm.txt"
+  }
+ ],
+ "countries": {
+  "IRN": {
+   "gain_current": {
+    "drones_direct_2022_23": {
+     "low": 0.0266,
+     "central": 0.051,
+     "high": 0.0999
+    },
+    "alabuga_contract_drones_licence": {
+     "low": 0.0266,
+     "central": 0.051,
+     "high": 0.0999
+    },
+    "missiles_ballistic_and_sam": {
+     "low": 0.0266,
+     "central": 0.051,
+     "high": 0.0999
+    },
+    "ammunition": {
+     "low": 0.0266,
+     "central": 0.051,
+     "high": 0.0999
+    }
+   },
+   "gain_proposed": {
+    "drones_direct_2022_23": {
+     "low": 0.45,
+     "central": 0.7,
+     "high": 0.85
+    },
+    "alabuga_contract_drones_licence": {
+     "low": 0.6,
+     "central": 0.8,
+     "high": 0.9
+    },
+    "missiles_ballistic_and_sam": {
+     "low": 0.15,
+     "central": 0.35,
+     "high": 0.6
+    },
+    "ammunition": {
+     "low": 0.15,
+     "central": 0.35,
+     "high": 0.6
+    }
+   },
+   "current": {
+    "years": [
+     0.0,
+     0.01184,
+     0.0399,
+     0.0406,
+     0.01577,
+     0.0
+    ],
+    "years_lo": [
+     0.0,
+     0.00465,
+     0.01833,
+     0.01481,
+     0.0057,
+     0.0
+    ],
+    "years_hi": [
+     0.0,
+     0.06025,
+     0.21506,
+     0.22762,
+     0.0893,
+     0.0
+    ],
+    "years_paid": [
+     0.0,
+     0.01184,
+     0.0399,
+     0.0406,
+     0.01577,
+     0.0
+    ],
+    "full": [
+     0.0,
+     0.3869,
+     1.3039,
+     1.3268,
+     0.5155,
+     0.0
+    ],
+    "total": {
+     "years": 0.1081,
+     "years_lo": 0.0435,
+     "years_hi": 0.5922,
+     "years_paid": 0.1081,
+     "full": 3.5331
+    }
+   },
+   "proposed": {
+    "years": [
+     0.0,
+     0.11684,
+     0.50722,
+     0.43147,
+     0.17098,
+     0.0
+    ],
+    "years_lo": [
+     0.0,
+     0.03868,
+     0.24116,
+     0.19316,
+     0.07597,
+     0.0
+    ],
+    "years_hi": [
+     0.0,
+     0.26183,
+     0.76354,
+     0.72993,
+     0.2875,
+     0.0
+    ],
+    "years_paid": [
+     0.0,
+     0.11684,
+     0.50723,
+     0.43147,
+     0.17098,
+     0.0
+    ],
+    "full": [
+     0.0,
+     0.3869,
+     1.3039,
+     1.3268,
+     0.5155,
+     0.0
+    ],
+    "total": {
+     "years": 1.2265,
+     "years_lo": 0.549,
+     "years_hi": 2.0428,
+     "years_paid": 1.2265,
+     "full": 3.5331
+    }
+   },
+   "proposed_extra_09": {
+    "years": [
+     0.0,
+     0.17527,
+     0.76084,
+     0.64721,
+     0.25646,
+     0.0
+    ],
+    "years_lo": [
+     0.0,
+     0.06677,
+     0.4284,
+     0.33446,
+     0.13231,
+     0.0
+    ],
+    "years_hi": [
+     0.0,
+     0.37605,
+     0.99982,
+     0.95818,
+     0.37696,
+     0.0
+    ],
+    "years_paid": [
+     0.0,
+     0.17527,
+     0.76084,
+     0.64721,
+     0.25646,
+     0.0
+    ],
+    "full": [
+     0.0,
+     0.3869,
+     1.3039,
+     1.3268,
+     0.5155,
+     0.0
+    ],
+    "total": {
+     "years": 1.8398,
+     "years_lo": 0.9619,
+     "years_hi": 2.711,
+     "years_paid": 1.8398,
+     "full": 3.5331
+    }
+   },
+   "weighted_gain_current": {
+    "low": 0.0266,
+    "central": 0.051,
+    "high": 0.0999
+   },
+   "weighted_gain_proposed": {
+    "low": 0.3752,
+    "central": 0.5786,
+    "high": 0.7535
+   }
+  },
+  "PRK": {
+   "gain_current": {
+    "artillery_ammunition": {
+     "low": 0.22862,
+     "central": 0.47550000000000003,
+     "high": 0.63996
+    },
+    "artillery_systems": {
+     "low": 0.22862,
+     "central": 0.47550000000000003,
+     "high": 0.63996
+    },
+    "ballistic_missiles": {
+     "low": 0.0266,
+     "central": 0.051,
+     "high": 0.0999
+    }
+   },
+   "gain_proposed": {
+    "artillery_ammunition": {
+     "low": 0.315,
+     "central": 0.625,
+     "high": 0.84
+    },
+    "artillery_systems": {
+     "low": 0.315,
+     "central": 0.625,
+     "high": 0.84
+    },
+    "ballistic_missiles": {
+     "low": 0.15,
+     "central": 0.35,
+     "high": 0.6
+    }
+   },
+   "current": {
+    "years": [
+     0.0,
+     0.0,
+     0.41246,
+     1.17562,
+     1.35406,
+     0.39095
+    ],
+    "years_lo": [
+     0.0,
+     0.0,
+     0.0995,
+     0.40188,
+     0.67152,
+     0.28157
+    ],
+    "years_hi": [
+     0.0,
+     0.0,
+     0.9514,
+     2.50921,
+     2.52858,
+     0.57479
+    ],
+    "years_paid": [
+     0.0,
+     0.0,
+     0.41246,
+     1.17562,
+     1.35406,
+     0.39095
+    ],
+    "full": [
+     0.0,
+     0.0,
+     1.47172,
+     4.10306,
+     3.81203,
+     0.61319
+    ],
+    "total": {
+     "years": 3.3331,
+     "years_lo": 1.4545,
+     "years_hi": 6.564,
+     "years_paid": 3.3331,
+     "full": 10.0
+    }
+   },
+   "proposed": {
+    "years": [
+     0.0,
+     0.0,
+     0.54709,
+     1.55987,
+     1.67383,
+     0.42198
+    ],
+    "years_lo": [
+     0.0,
+     0.0,
+     0.14316,
+     0.56069,
+     0.79915,
+     0.30452
+    ],
+    "years_hi": [
+     0.0,
+     0.0,
+     1.22513,
+     3.23838,
+     3.14245,
+     0.61844
+    ],
+    "years_paid": [
+     0.0,
+     0.0,
+     0.54709,
+     1.55987,
+     1.67383,
+     0.42198
+    ],
+    "full": [
+     0.0,
+     0.0,
+     1.47172,
+     4.10306,
+     3.81203,
+     0.61319
+    ],
+    "total": {
+     "years": 4.2028,
+     "years_lo": 1.8075,
+     "years_hi": 8.2244,
+     "years_paid": 4.2028,
+     "full": 10.0
+    }
+   },
+   "proposed_extra_09": {
+    "years": [
+     0.0,
+     0.0,
+     0.82063,
+     2.28435,
+     2.2895,
+     0.47217
+    ],
+    "years_lo": [
+     0.0,
+     0.0,
+     0.29393,
+     0.9818,
+     1.15439,
+     0.34201
+    ],
+    "years_hi": [
+     0.0,
+     0.0,
+     1.67169,
+     4.38993,
+     4.12481,
+     0.68624
+    ],
+    "years_paid": [
+     0.0,
+     0.0,
+     0.82063,
+     2.28435,
+     2.2895,
+     0.47217
+    ],
+    "full": [
+     0.0,
+     0.0,
+     1.47172,
+     4.10306,
+     3.81203,
+     0.61319
+    ],
+    "total": {
+     "years": 5.8666,
+     "years_lo": 2.7721,
+     "years_hi": 10.8727,
+     "years_paid": 5.8666,
+     "full": 10.0
+    }
+   },
+   "weighted_gain_current": {
+    "low": 0.216,
+    "central": 0.449,
+    "high": 0.6062
+   },
+   "weighted_gain_proposed": {
+    "low": 0.3047,
+    "central": 0.6078,
+    "high": 0.825
+   }
+  },
+  "BLR": {
+   "gain_current": {
+    "ammunition_from_stocks": {
+     "low": 0.0266,
+     "central": 0.051,
+     "high": 0.0999
+    },
+    "armour_from_storage": {
+     "low": 0.0266,
+     "central": 0.051,
+     "high": 0.0999
+    },
+    "production_outside_trade": {
+     "low": 0.0266,
+     "central": 0.051,
+     "high": 0.0999
+    }
+   },
+   "gain_proposed": {
+    "ammunition_from_stocks": {
+     "low": 0.0266,
+     "central": 0.051,
+     "high": 0.0999
+    },
+    "armour_from_storage": {
+     "low": 0.0266,
+     "central": 0.051,
+     "high": 0.0999
+    },
+    "production_outside_trade": {
+     "low": 0.0266,
+     "central": 0.051,
+     "high": 0.0999
+    }
+   },
+   "current": {
+    "years": [
+     0.0,
+     0.9242,
+     0.2298,
+     0.0473,
+     0.0453,
+     0.0259
+    ],
+    "years_lo": [
+     0.0,
+     0.2472,
+     0.07883,
+     0.01218,
+     0.01165,
+     0.01335
+    ],
+    "years_hi": [
+     0.0,
+     1.90715,
+     0.44791,
+     0.0983,
+     0.0942,
+     0.1293
+    ],
+    "years_paid": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "full": [
+     0.0,
+     0.9242,
+     0.2298,
+     0.0473,
+     0.0453,
+     0.0259
+    ],
+    "total": {
+     "years": 1.2725,
+     "years_lo": 0.3632,
+     "years_hi": 2.6769,
+     "years_paid": 0.0,
+     "full": 1.2725
+    }
+   },
+   "proposed": {
+    "years": [
+     0.0,
+     0.9242,
+     0.2298,
+     0.0473,
+     0.0453,
+     0.0259
+    ],
+    "years_lo": [
+     0.0,
+     0.2472,
+     0.07883,
+     0.01218,
+     0.01165,
+     0.01335
+    ],
+    "years_hi": [
+     0.0,
+     1.90715,
+     0.44791,
+     0.0983,
+     0.0942,
+     0.1293
+    ],
+    "years_paid": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "full": [
+     0.0,
+     0.9242,
+     0.2298,
+     0.0473,
+     0.0453,
+     0.0259
+    ],
+    "total": {
+     "years": 1.2725,
+     "years_lo": 0.3632,
+     "years_hi": 2.6769,
+     "years_paid": 0.0,
+     "full": 1.2725
+    }
+   },
+   "proposed_extra_09": {
+    "years": [
+     0.0,
+     0.9242,
+     0.2298,
+     0.0473,
+     0.0453,
+     0.0259
+    ],
+    "years_lo": [
+     0.0,
+     0.25173,
+     0.07984,
+     0.01242,
+     0.01187,
+     0.01354
+    ],
+    "years_hi": [
+     0.0,
+     1.90715,
+     0.44791,
+     0.0983,
+     0.0942,
+     0.1293
+    ],
+    "years_paid": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "full": [
+     0.0,
+     0.9242,
+     0.2298,
+     0.0473,
+     0.0453,
+     0.0259
+    ],
+    "total": {
+     "years": 1.2725,
+     "years_lo": 0.3694,
+     "years_hi": 2.6769,
+     "years_paid": 0.0,
+     "full": 1.2725
+    }
+   },
+   "weighted_gain_current": {
+    "low": 0.0266,
+    "central": 0.051,
+    "high": 0.0999
+   },
+   "weighted_gain_proposed": {
+    "low": 0.0266,
+    "central": 0.051,
+    "high": 0.0999
+   }
+  }
+ }
+}

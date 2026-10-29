@@ -4,7 +4,7 @@
 // range and chance word on a country page is the one its panel shows. Nothing here computes a number of its own.
 
 /* global DATA, byIso, LANG, methodBands, loadLang, regionName, ISO2, calc, chance, chanceInfo, chanceText, chanceSentence, uncertain, leaning, isNearZero,
-   noDataAt, scaled, fmtMeasure, rangeWords, eur, headVerb, verbAround, verb, netSentence, keptWords, leadLine, partSections, plainName,
+   noDataAt, scaled, rankGroup, RANK_GROUPS, evMark, hubText, cName, gainSplit, fmtMeasure, rangeWords, eur, headVerb, verbAround, verb, netSentence, keptWords, leadLine, partSections, plainName,
    partGrade, evidence, UA_PARTS, OWN_LINE, kielLine, partSourceIds, SRC, tData, docsOf, yearsOf, YEARS, FRAC, yi, PARTY_TO_WAR, PARTY_WHY, t, countrySlug,
    HEAD3, refs, kielFigure, REGION_OF, storyTags, decideLine, uncReason, frozenLine, sanctionNote, chplNote, remitNote, takenNote, noDataLine,
    fairnessNote, structuralNote, dualUseNote, partNote, dataText, num, money, METHOD_INPUTS, srcTier, REPO */
@@ -32,21 +32,25 @@ export async function extractSite({ lang, isos }) {
     const all = Object.values(DATA).map(c => { const k = calc(c, Y); return { c, k, bn: val(k), v: scaled(c, val(k), "gdp") }; }).filter(m => m.v != null).sort((a, b) => b.v - a.v);
     const party = all.filter(m => PARTY_TO_WAR.has(m.c.iso3)), nod = all.filter(m => noDataAt(m.c, Y));
     const rows = all.filter(m => !party.includes(m) && !nod.includes(m));
+    // round 60 (audit: the ranking's groups differed from the country pages' chance words): the map's one classifier
+    // (rankGroup, index.html): very likely, leaning, near zero, essentially zero, too close to call
     for (const m of rows) {
-      m.st = !uncertain(m.c, Y, q) ? "" : leaning(m.c, Y, q) ? "lean" : "unc";
-      m.nz = !!m.st && isNearZero(m.c, Y, q);
-      m.ch = chance(m.c, Y, q);
+      const i = chanceInfo(m.c, Y, q);
+      m.lv = i.level; m.g = rankGroup(m.c, Y, q);
+      m.st = i.level === "sure" ? "" : i.level;
+      m.ch = chance(m.c, Y, q); m.info = i;
     }
-    const grp = m => (m.nz ? 2 : m.st === "unc" ? 3 : m.st === "lean" ? (m.ch.side === "ukraine" ? 1 : 4) : m.v >= 0 ? 0 : 5);
+    const grp = m => m.g;
     rows.sort((a, b) => grp(a) - grp(b) || b.v - a.v);
-    const LABEL = q === "ua" ? ["Supported Ukraine", "Leaning: supported Ukraine", "Near zero", "Too close to call", "Leaning: below zero", "Below zero"]
-      : ["Toward Ukraine", "Leaning toward Ukraine", "Near zero", "Too close to call", "Leaning toward Russia", "Toward Russia"];
-    const groups = [0, 1, 2, 3, 4, 5].map(g => ({ g, label: t(LABEL[g]), list: rows.filter(m => grp(m) === g) })).filter(x => x.list.length);
+    const LABEL = RANK_GROUPS[q === "ua" ? "ua" : "net"];
+    const groups = [0, 1, 2, 3, 4, 5, 6].map(g => ({ g, label: t(LABEL[g]), list: rows.filter(m => grp(m) === g) })).filter(x => x.list.length);
     // numbered as in the map's Ranking view, which shows economies of €5bn of GDP and more by default (state.size)
     const MIN = 5;
-    groups.forEach(({ g, list }) => { const bigs = list.filter(m => m.c.gdp >= MIN); bigs.forEach((m, i) => (m.rank = g === 0 ? i + 1 : g === 5 ? bigs.length - i : null)); });
-    const row = m => ({ iso: m.c.iso3, rank: m.rank ?? null, small: m.c.gdp < 5, st: m.st, value: fmtMeasure(m.c, m.bn, "gdp", true), pct: m.v, eurBn: m.bn, eur: eur(m.bn, true),
-      pp: m.c.pop ? fmtMeasure(m.c, m.bn, "pp", true) : "", chance: pct(m.ch.p), side: m.ch.side, sure: !m.st });
+    groups.forEach(({ g, list }) => { const bigs = list.filter(m => m.c.gdp >= MIN); bigs.forEach((m, i) => (m.rank = g === 0 ? i + 1 : g === 6 ? bigs.length - i : null)); });
+    // round 60: each row's chance in the map's words (chanceText: the middle value's direction and, where the simulations
+    // lean the other way, both), and the direction of its middle value
+    const row = m => ({ iso: m.c.iso3, rank: m.rank ?? null, small: m.c.gdp < 5, st: m.st, level: m.lv, value: fmtMeasure(m.c, m.bn, "gdp", true), pct: m.v, eurBn: m.bn, eur: eur(m.bn, true),
+      pp: m.c.pop ? fmtMeasure(m.c, m.bn, "pp", true) : "", chance: pct(m.ch.p), side: m.ch.side, sure: !m.st, words: chanceText(m.c, Y, q), disagree: !!m.info.disagree });
     return { groups: groups.map(x => ({ g: x.g, label: x.label, rows: x.list.map(row) })), party: party.map(m => ({ iso: m.c.iso3, value: fmtMeasure(m.c, m.bn, "gdp", true), eur: eur(m.bn, true) })),
       noData: nod.map(m => m.c.iso3), order: rows.map(m => m.c.iso3) };
   }
@@ -58,7 +62,7 @@ export async function extractSite({ lang, isos }) {
     const k = calc(c, Y), party = PARTY_TO_WAR.has(c.iso3), noData = !!k.noData, mostly = !!k.mostlyNoData;
     refs.splice(0, refs.length);
     const g = (v, signed = false) => fmtMeasure(c, v, "gdp", signed);
-    const level = q => { const i = chanceInfo(c, Y, q); return i ? { level: i.level, p: i.p, side: i.side, pct: pct(i.p), sideWords: i.sideWords } : null; };
+    const level = q => { const i = chanceInfo(c, Y, q); return i ? { level: i.level, p: i.p, side: i.side, pct: pct(i.p), sideWords: i.sideWords, dirWords: i.dirWords, disagree: !!i.disagree } : null; };
     const num = (q, v, lo, hi) => {
       const hv = headVerb(c, Y, q, v), [pre, post] = verbAround(q !== "net" && hv.key === "netLean" ? q : hv.key, hv.s);
       const unc = uncertain(c, Y, q) && !party;
@@ -79,6 +83,8 @@ export async function extractSite({ lang, isos }) {
     out.netSentence = netSentence(c, k, "gdp");
     out.lead = noData || mostly ? "" : strip(leadLine(c, k));
     out.kept = keptWords(c, k, "gdp", true);
+    // round 60: Russia's earnings from trade in its two lines (index.html gainSplit), for the country page
+    out.gainSplit = typeof gainSplit === "function" ? gainSplit(c, k) : null;
     out.uaVerb = verb("ua", k.uaBal, c, "gdp");
     out.frozen = Math.abs(k.frozen) >= 0.0005 ? { verb: verb("frozen", k.frozen, c, "gdp"), eur: eur(Math.abs(k.frozen)), value: g(Math.abs(k.frozen)) } : null;
     const ap = k.shiftParts.find(p => p.k === "aid");
@@ -123,8 +129,10 @@ export async function extractSite({ lang, isos }) {
       return { q: sec.q, pre, post, amount: fmtMeasure(c, Math.abs(sec.tile), "gdp", false, true), eur: eur(Math.abs(sec.tile)),
         parts: sec.parts.filter(p => Math.abs(p.v) >= 0.0005).map(p => {
           const ev = evidence(p);
-          return { k: p.k, name: strip(plainName(p, c)), sign: (p.v >= 0 ? 1 : -1) === ss ? "+" : "−", amount: fmtMeasure(c, Math.abs(p.v), "gdp", false, true), eur: eur(Math.abs(p.v)),
-            letter: partGrade(p), ev: ev.kind === "press" ? t("press only") : ev.kind === "own" || ev.kind === "none" ? t("own estimate") : ev.off >= 2 ? t("{n} official sources", { n: ev.off }) : "",
+          // round 60 (audit: "+" meant opposite things in different sections): one sign convention, + toward Ukraine
+          // and − toward Russia (or, in support, taken off it)
+          return { k: p.k, name: strip(plainName(p, c)), sign: p.v >= 0 ? "+" : "−", amount: fmtMeasure(c, Math.abs(p.v), "gdp", false, true), eur: eur(Math.abs(p.v)),
+            letter: partGrade(p), ev: ev.kind === "press" ? t("press only") : ev.kind === "own" || ev.kind === "none" ? t("own estimate") : (typeof evMark === "function" ? evMark(p) === "off" : ev.off >= 2) ? t("{n} official sources", { n: ev.off }) : "",
             dir: p.v >= 0 ? "ua" : sec.q === "rus" ? "ru" : "mid" };
         }) };
     });
@@ -132,6 +140,7 @@ export async function extractSite({ lang, isos }) {
     let prev = { shift: 0, uaBal: 0, rusBal: 0, frozen: 0 };
     out.years = YEARS.filter(y => y >= 2022).map(y => {
       const kk = calc(c, y), row = { y, ytd: FRAC[yi(y)] < 1, ua: eur(kk.uaBal - prev.uaBal, true), rus: eur(kk.rusBal - prev.rusBal, true), net: eur(kk.shift - prev.shift, true),
+        frozen: eur(kk.frozen - prev.frozen, true),
         uaBn: kk.uaBal - prev.uaBal, rusBn: kk.rusBal - prev.rusBal, frozenBn: kk.frozen - prev.frozen, netBn: kk.shift - prev.shift, cum: g(kk.shift, true) };
       prev = kk;
       return row;
@@ -181,7 +190,7 @@ export async function extractSite({ lang, isos }) {
     n.fairness = plain(fairnessNote(c, k));
     n.structural = plain(structuralNote(c, k));
     n.dualUse = plain(dualUseNote(c));
-    n.hub = c.hub ? plain(t("Transit hub:") + " " + dataText(c.hub)) + "." : "";
+    n.hub = c.hub ? plain(hubText(c)) + "." : "";
     const wf = part("windfall");
     n.windfall = wf && c.windfall && c.windfall.years ? plain(partNote(c, wf)) : "";
     // aid: what the Kiel Institute lists and what is not yet delivered (partNote "aid")
@@ -198,7 +207,7 @@ export async function extractSite({ lang, isos }) {
       const reported = (c.coverage || []).some(x => x.part === "Refugee hosting" && x.status === "ok");
       if (a.refugee_work_gain) {
         const g = sumY(a.refugee_work_gain), gross = sumY(a.refugee_gross_years);
-        n.refGross = gross > 0.0005 ? plain(t("For {c}: {gross} spent on refugees, less {g}, its gain on the work refugees did here.", { c: c.name, gross: eur(gross), g: eur(g) })) : "";
+        n.refGross = gross > 0.0005 ? plain(t("For {c}: {gross} spent on refugees, less {g}, its gain on the work refugees did here.", { c: cName(c), gross: eur(gross), g: eur(g) })) : "";
         const py = sumY(a.refugee_person_years);
         n.refPerYear = reported && py >= 1000 && refP && refP.v > 0 ? plain(t("That is about {v} per refugee per year ({n} refugee-years).", { v: money(num(Math.round(refP.v * 1e9 / py))), n: num(Math.round(py)) })) : "";
       }
@@ -231,7 +240,7 @@ export async function extractSite({ lang, isos }) {
       const note = ((s.note || "").match(/research\/[\w./-]+?\.(?:md|json)/) || [])[0];
       return [id, { name: tData(s.name).s, href: (d && d.url) || s.url || (note ? REPO + note : ""), tier: METHOD_INPUTS.has(id) ? "method" : srcTier(id) || "own" }];
     })),
-    dynWords: { story: t("Its story in short"), coverage: t("Data coverage"), loansFace: t("Loans, full amount"), loansGE: t("Loans, grant equivalent"),
+    dynWords: { gainNote: t("The two lines add up to Russia's earnings from trade; their ranges do not."), story: t("Its story in short"), coverage: t("Data coverage"), loansFace: t("Loans, full amount"), loansGE: t("Loans, grant equivalent"),
       pledged: t("Promised but not yet delivered"), noData: t("No data"),
       noDataBig: t("There is no observation of its own for the war years: no customs or partner records of its trade with Russia or Ukraine, no aid, no refugees counted. Nothing is counted, it is not ranked, and it is drawn hatched on the map.") } };
   if (lang === "en") {
@@ -282,7 +291,9 @@ export async function extractDocs() {
     box.querySelectorAll("table").forEach(t => { const w = document.createElement("div"); w.className = "tbl"; t.parentNode.insertBefore(w, t); w.appendChild(t); });
     return box.innerHTML;
   }
-  const firstPara = html => { const b = document.createElement("div"); b.innerHTML = html; const p = b.querySelector("p"); return p ? p.textContent : ""; };
+  // round 60 (audit: "Germany, 2022 to August 2026, in the current build:" as a page's teaser): the first paragraph
+  // that is a sentence, not one that leads into a list or a table
+  const firstPara = html => { const b = document.createElement("div"); b.innerHTML = html; const ps = [...b.querySelectorAll("p")].map(p => p.textContent.trim()).filter(Boolean); return ps.find(x => /[.!?]$/.test(x) && x.length >= 40) || ps[0] || ""; };
   const method = MD_PAGES.map(pg => { const html = rewrite(pageHtml(c, pg)); return { page: pg, title: c.method[pg].title, html, first: firstPara(html) }; });
   const lim = rewrite(mdRender(c.limitations.replace(/^# .+\n/, ""), "lim-"));
   const cl = rewrite(mdRender(c.changelog.replace(/^# .+\n/, ""), "clx-"));

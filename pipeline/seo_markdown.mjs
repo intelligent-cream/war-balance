@@ -52,8 +52,15 @@ export function htmlToMarkdown(html, base) {
     else if (t === "p") { const x = inline(body, base); if (x) out.push(x); }
     else if (t === "table") { const x = table(body, base); if (x) out.push(x); }
     else {
-      const items = [...body.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)].map(li => inline(li[1], base)).filter(Boolean);
-      if (items.length) out.push(items.map((x, i) => (t === "ol" ? `${i + 1}. ` : "- ") + x).join("\n"));
+      // round 60 (audit: the ranking's index.md read "1. 1.Lithuania+11.9%+€8.7 bn"): a list item's own number (the
+      // ranking's <span class="r">) is its marker, an item without one a bullet, and its fields are joined with " · "
+      const items = [...body.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)].map((li, i) => {
+        const own = li[1].match(/^\s*<span class="r">(\d*)\.?<\/span>/);
+        const rest = (own ? li[1].slice(own[0].length) : li[1]).replace(/(<\/(?:span|a|b)>)\s*(?=<(?:span|a|b)[\s>])/g, "$1 · ");
+        const x = inline(rest, base);
+        return x ? (own ? (own[1] ? `${own[1]}. ` : "- ") : t === "ol" ? `${i + 1}. ` : "- ") + x : "";
+      }).filter(Boolean);
+      if (items.length) out.push(items.join("\n"));
     }
   }
   return out.join("\n\n") + "\n";

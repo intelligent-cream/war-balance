@@ -64,8 +64,23 @@ How the four flows enter the net shift (`calc()` in [`site/index.html`](https://
 |---|---|---|
 | `to_rus` | Less / more paid to Russia | change in volume, valued at each year's prices, × Russia's net gain per euro; the mix of what was bought from customs values per fuel |
 | `from_rus` | Income lost on sales given up / income from extra sales | change in volume at each year's prices × the seller's net gain (taxes plus profit above a normal return of 5% a year above inflation plus the country's risk premium) × genuinely extra ([the net-gain rule](https://warbalance.org/#view=how&sec=m-overview-the-net-gain-rule)) |
-| `buy_ukr` | Extra purchases from Ukraine | rise above expected, each year, × Ukraine's net gain per euro; a fall is not held against a country |
+| `buy_ukr` | Bought more / less from Ukraine than without the war | change against expected, the years summed with their signs (`neg(delta3(T.buyUkr))`, no floor), × Ukraine's net gain per euro; the expected level is 2021 held flat × the supply factor (round 60, below) |
 | `sell_ukr` | Extra sales to Ukraine | rise above expected, × the seller's net gain × genuinely extra, subtracted as flowback |
+
+**Purchases from Ukraine count both ways (round 60; owner: "Yes, we should definitely count buying less from Ukraine … just like Russia").** Data: [`ua_trade_sym_r60.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/ua_trade_sym_r60.json), [notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/ua_trade_sym_r60-notes.md). Until round 59 only the rise above 2021 held flat counted (`above3()`, the total floored at zero), so a buyer that stopped buying was never charged. Now:
+
+    expected(c,t) = base(c) × FRAC(t) × bmul(c,t) × supply(c,t)
+    supply(c,t)   = pidx(c,2021) / pidx(c,t) × Σ_p w(c,p) × R(p,t)
+    part          = Σ_t (actual − expected) × Ukraine's gain(t)          (signed, no floor)
+
+`w(c,p)` is product group p's share of Ukraine's 2021 exports to c (UN Comtrade, Ukraine as reporter; the world mix where Ukraine recorded under USD 1m to c), over the ten groups of `net_gain_ukraine.json`; `R(p,t)` is Ukraine's exports of p to all destinations in year t against 2021, in euros at current prices (UN Comtrade 2021–2024, State Customs Service 2025 and January–August 2026 at an annual rate, ECB rates). `ua_supply_share()` in `build_data.py` multiplies `buy_ukr.bmul`, `bmul_lo` and `bmul_hi` by the supply factor after `strike_supply()`; the cumulative band `cb` is kept and applies to the lower expected level. Over 2022 to August 2026 the expected level of all buyers falls from EUR 317bn (2021 held flat) to 192bn, against 210bn bought. This takes Ukraine's forced supply loss (closed ports, occupied land, Mariupol) off the buyers: a buyer keeps its 2021 share of what Ukraine could export. Without the supply factor, the symmetric rule would charge China EUR 1.49bn and Italy 0.33bn for Ukraine's own losses.
+
+- **Bans** (Poland, Hungary and Slovakia on four crops since September 2023, Romania's licences) are measured against the no-war level: the five countries bought almost none of these crops in 2021, so the bans cost little (Poland −EUR 0.008bn at gain, 2024 to August 2026); the 2022–2023 surge counts for them in those years. A ban against a war-time level without it would be a war-time counterfactual, which no other part uses, so it is not applied (sized at −0.03 to −0.06bn for Poland).
+- **Belarus**: −EUR 0.16bn<!-- n:BLR.part_buy abs -->, mostly Ukraine's own embargo on trade with Belarus, counted as a foreseeable answer to Belarus hosting the invasion (as Russia's own gas cut-offs stay in the totals).
+- **The EU's duty-free access** (June 2022 to June 2025) counts once: the extra purchases here; the tariffs given up only in the cost view.
+- **Method band `ua_route`**: the land neighbours (`UA_ROUTE_NEIGHBOURS`: POL, HUN, SVK, ROU, MDA) against Ukraine's exports to the neighbours, everyone else against its exports to the rest (2025–2026 at the 2024 split), which treats the overland rerouting of 2022 as forced. Poland's part goes to about −0.18bn, China's to −0.34bn.
+- **Effect** (EUR bn, change in net): Poland +0.38 (part +0.41<!-- n:POL.part_buy -->), Germany +0.16, Türkiye +0.16, Slovakia +0.13, Romania +0.11, Bulgaria +0.10, the US +0.10; China −0.57<!-- n:CHN.part_buy -->, India −0.18, Belarus −0.16. No country's net changes sign; the world sum of the part goes from +0.38 to +0.50.
+- **Doubts**: the share rule is zero-sum given Ukraine's supply, right where Ukraine was supply-limited (steel, ore, 2022 grain) and less so for 2024–2026 farm goods; importers' records (CIF, by origin) grew faster than Ukraine's own (FOB, by destination), which tilts the result slightly toward EU entry countries; the 2026 product mix is an estimate (C).
 
 ## Profit, not revenue
 
@@ -73,7 +88,7 @@ Selling EUR 10bn less to Russia does not cost the seller EUR 10bn: the goods wou
 
 **Every sale counts at the seller's net gain × genuinely extra.** Income from sales to Russia counts at the seller's net gain (taxes on production plus profit above a normal return on capital, 5% a year above inflation plus the country's risk premium, as a share of output ([overview](https://warbalance.org/#view=how&sec=m-overview-the-net-gain-rule)), by country and industry, from OECD STAN: [`net_gain_sellers.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/net_gain_sellers.json), [notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/net_gain_sellers-notes.md)) times the share that is genuinely extra business (not sold elsewhere instead). Manufacturing earns little above that return, so sales given up or gained count at a small share of their value. Economies outside STAN use the OECD median of the industry. There are separate factors for sales lost and extra sales, and for goods and services (`c.vk` in `data.json`; `earned3()` in `calc()`). In the cost view this is "Income lost on sales to Russia". <span class="incode">In the code: `value_kept.json`</span>
 
-**Purchases count at the seller's net gain too.** A purchase from Russia counts at Russia's net gain on that mix of goods (about 0.6 of the price for oil and gas, 0.1–0.2 for other goods), and an extra purchase from Ukraine at Ukraine's, so that trade and aid are on the same scale ([overview.md](https://warbalance.org/#view=how&sec=m-overview-the-net-gain-rule)).
+**Purchases count at the seller's net gain too.** A purchase from Russia counts at Russia's net gain on that mix of goods (about 0.6 of the price for oil and gas, 0.1–0.2 for other goods), and a purchase from Ukraine above or below its expected level at Ukraine's, so that trade and aid are on the same scale ([overview.md](https://warbalance.org/#view=how&sec=m-overview-the-net-gain-rule)).
 
 Counting sales at gross revenue would put Cyprus at +30% of GDP and Lithuania at +45% ([notes §5](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/audit2-notes.md)). `META.lost_margin` (a flat 20% margin) is still written to `data.json`, but `calc()` uses it only for a country without `vk`, and every country has one.
 
@@ -254,4 +269,29 @@ A label only; totals do not change. [`sanctions_share.json`](https://github.com/
 
 **Poland's pipeline crude is "stopped by Russia", not own choice.** Russia (Transneft) halted Druzhba deliveries to Poland on 25 February 2023 (Orlen, [WION](https://www.wionews.com/world/polish-energy-group-says-russia-halted-oil-pipeline-deliveries-565942/amp); monthly customs data: 0.50 Mt in February 2023, nil from March). It goes to the part Russia cut off itself, like the gas Gazprom cut off (`moved_stopped_by_russia` in `stop_dates_r16.json`, `sanctions.to_rus.cut` and `oil_cut_from`; the panel says "gas and pipeline oil that Russia cut off itself"). Poland's fall in purchases from Russia, 2022–2026: 38% required by sanctions, 50% cut off by Russia (gas 18%, pipeline crude 31%), 12% own choice. The method-band alternative "without what Russia cut off itself" leaves out the crude too. Germany's pipeline crude stays own choice (its refineries stopped ordering). Finland's last Russian crude cargo, 20 July 2022, is confirmed on [Neste's own page](https://www.neste.com/nestes-response-to-the-war-in-ukraine).
 
-**Gas cut off by Russia after 2022 counts only what was still flowing.** For a cut after 2022 (Austria's OMV in November 2024; the end of transit through Ukraine on 1 January 2025 for Slovakia and Italy), only the gas the country still bought the year before the cut is labelled as cut off by Russia; the rest of its fall from the pre-war level was its own earlier choice. Italy cut its Russian gas from about 29 bcm in 2021 to 2.9 bcm in 2023 ([Osservatorio CPI, Università Cattolica](https://osservatoriocpi.unicatt.it/ocpi-pubblicazioni-quasi-azzerato-l-import-di-gas-russo)) and about 6 bcm in 2024 ([Il Post, citing Ember](https://www.ilpost.it/2025/05/07/italia-gas-russo-gnl-putin-sanzioni-importazioni-diversificazione/)); so about 4% of Italy's fall is labelled as cut by Russia, and Italy gets no "Gas cut off by Russia" tag. Austria's share is about 30%, Slovakia's about 8%. A label only; totals do not change. <span class="incode">In the code: `cut_part_of_gas_fall()` in `build_data.py`</span>
+**Gas cut off after 2022 counts only what was still flowing.** For a cut after 2022 (Austria's OMV in November 2024, by Gazprom; the end of transit through Ukraine on 1 January 2025 for Slovakia and Italy, which was Ukraine's decision not to renew its transit contract, not Russia's), only the gas the country still bought the year before the cut is labelled as stopped (`RUSSIA_GAS_CUT` keeps both under one label); the rest of its fall from the pre-war level was its own earlier choice. Italy cut its Russian gas from about 29 bcm in 2021 to 2.9 bcm in 2023 ([Osservatorio CPI, Università Cattolica](https://osservatoriocpi.unicatt.it/ocpi-pubblicazioni-quasi-azzerato-l-import-di-gas-russo)) and about 6 bcm in 2024 ([Il Post, citing Ember](https://www.ilpost.it/2025/05/07/italia-gas-russo-gnl-putin-sanzioni-importazioni-diversificazione/)); so about 4% of Italy's fall is labelled as cut by Russia, and Italy gets no "Gas cut off by Russia" tag. Austria's share is about 30%, Slovakia's about 8%. A label only; totals do not change. <span class="incode">In the code: `cut_part_of_gas_fall()` in `build_data.py`</span>
+
+## Russia's gain and the country's own gain (round 60)
+
+`site_numbers.mjs --gain-split` (run by `build_data.py` after it writes `data.json`) splits Russia's earnings from trade into two lines per country with the map's own model (`calc()`'s `rusPaid` and `rusEarned`, `LINE_EARNED` in `site/index.html`) and writes them into `data.json`: `rusGain` and `ownGain`, each `{years: [2021 = 0, change in 2022, ..., change in January–August 2026], cum: [null, [total to 2022, low, high], ..., [total to August 2026, low, high]]}`, EUR bn, + toward Ukraine. The lines add up to the number; their ranges are each line's own (combined in quadrature) and do not add up. The map does not read them, so no total changes. `site_numbers.mjs` also prints `rusGain`/`ownGain` (% of GDP, with `Lo`/`Hi`), `rusY<year>Eur` and `rusGainY<year>Eur` (each year's own change, EUR bn) and `kielEur` (Kiel's bilateral figure).
+
+| part key | line | what |
+|---|---|---|
+| `paid` | Russia | less or more paid to Russia for fuel and goods |
+| `windfall` | Russia | war-time fuel prices (net of discounts) |
+| `laund` | Russia | Russian crude inside fuel bought elsewhere |
+| `svcpaid` | Russia | services bought from Russia |
+| `tax` | Russia | taxes paid in Russia by the country's companies |
+| `rusfirms` | Russia | profits of Russian-owned firms in the country |
+| `rusarms`, `wagner` | Russia | weapons bought from Russia; payments to Wagner and the Africa Corps |
+| `statefin` | Russia | Rosatom projects and Russian state loans |
+| `hidden` | Russia | gold and hidden payments |
+| `mil` (unpaid share) | Russia | weapons and troops given to Russia |
+| `sold`, `premium` | own | sales to Russia; the sanctions premium on them |
+| `svcsold` | own | services sold to Russia |
+| `ship` | own | shipping, insurance, tankers sold to the shadow fleet |
+| `agents` | own | payment agents' fees |
+| `coprofits`, `lngpartners` | own | its companies' profits in Russia; stakes in Russian oil and gas projects |
+| `mil` (paid share, `military_rus.years_paid`) | own | weapons sold to Russia |
+
+Not in either line: `frozen`, `frozen_priv` (the net only) and the cost-view parts (`disc`, `prem`, `margin`), which are in no total.

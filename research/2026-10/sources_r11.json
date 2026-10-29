@@ -2115,7 +2115,7 @@
      "checked": "fetched"
     },
     {
-     "title": "Method: Trade with Ukraine (round 6)",
+     "title": "Method: Trade with Ukraine",
      "url": "https://warbalance.org/#view=how&sec=m-counterfactual-trade-with-ukraine",
      "kind": "method",
      "what": "2021 held flat for both flows",
@@ -2137,7 +2137,7 @@
      "checked": "anchor checked on GitHub"
     },
     {
-     "title": "Method: Russia's neighbours and Moldova (round 6)",
+     "title": "Method: Russia's neighbours and Moldova",
      "url": "https://warbalance.org/#view=how&sec=m-counterfactual-russias-neighbours-and-moldova",
      "kind": "method",
      "what": "own bands for Mongolia, Yemen, Tajikistan, Moldova",
@@ -2910,7 +2910,7 @@
      "checked": "fetched"
     },
     {
-     "title": "Method: Payment agents (round 6)",
+     "title": "Method: Payment agents",
      "url": "https://warbalance.org/#view=how&sec=m-trade-payment-agents",
      "kind": "method",
      "what": "fees kept by residents of the agent's country",
@@ -2972,7 +2972,7 @@
      "checked": "fetched"
     },
     {
-     "title": "Method: Frozen central-bank reserves (round 7)",
+     "title": "Method: Frozen central-bank reserves",
      "url": "https://warbalance.org/#view=how&sec=m-russia-state-and-companies-frozen-central-bank-reserves",
      "kind": "method",
      "what": "rates per currency and year",
@@ -3142,7 +3142,7 @@
      "checked": "fetched"
     },
     {
-     "title": "Method: The money rule (round 6)",
+     "title": "Method: The money rule",
      "url": "https://warbalance.org/#view=how&sec=m-overview-one-rule-for-every-seller",
      "kind": "method",
      "what": "value kept x genuinely extra",
@@ -3204,7 +3204,7 @@
      "checked": "fetched"
     },
     {
-     "title": "Method: The net-gain rule (round 10)",
+     "title": "Method: The net-gain rule",
      "url": "https://warbalance.org/#view=how&sec=m-overview-the-net-gain-rule",
      "kind": "method",
      "what": "taxes plus profit above a normal return",
@@ -3322,7 +3322,7 @@
      "checked": "fetched"
     },
     {
-     "title": "Method: The net-gain rule (round 10)",
+     "title": "Method: The net-gain rule",
      "url": "https://warbalance.org/#view=how&sec=m-overview-the-net-gain-rule",
      "kind": "method",
      "what": "taxes plus profit above a normal return",
@@ -3890,7 +3890,7 @@
    "model": false,
    "links": [
     {
-     "title": "Price levels: method and data (prices-notes.md)",
+     "title": "Price levels: method and data",
      "url": "https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/prices-notes.md",
      "kind": "model",
      "what": "own customs unit values per fuel and benchmarks",
@@ -3906,7 +3906,7 @@
      "checked": "the trade source link (sources_r11.json trade)"
     },
     {
-     "title": "Gas prices by buyer (gas_prices-notes.md)",
+     "title": "Gas prices by buyer",
      "url": "https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/gas_prices-notes.md",
      "kind": "model",
      "what": "gas contract and border prices",
@@ -3914,7 +3914,7 @@
      "checked": "repository file"
     },
     {
-     "title": "Sea freight on Russian oil (shipping-notes.md, freight pool)",
+     "title": "Sea freight on Russian oil (freight pool)",
      "url": "https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/shipping-notes.md",
      "kind": "model",
      "what": "freight taken out of customs values (round 14)",

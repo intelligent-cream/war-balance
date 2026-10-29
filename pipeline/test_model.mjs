@@ -151,7 +151,9 @@ test("retired, simulated and view-only alternatives never veto", () => {
     for (const q of ["net", "rus"]) {
       const f = { net: "shift", rus: "rusBal" }[q], v = M.calc(c, Y)[f], ch = M.chance(c, Y, q);
       // a number the main rule makes certain stays certain when only these alternatives have the other sign
-      const sure = v && ch.p >= M.CHANCE.sure && ch.side === (v > 0 ? "ukraine" : "russia") && mb.alts.every(a => a[q] * v > 0);
+      // (round 60: and the likely range stays on that side)
+      const k0 = M.calc(c, Y), [lo, hi] = q === "net" ? [k0.shiftLo, k0.shiftHi] : [k0.rusLo, k0.rusHi];
+      const sure = v && ch.p >= M.CHANCE.sure && ch.side === (v > 0 ? "ukraine" : "russia") && mb.alts.every(a => a[q] * v > 0) && lo * v > 0 && hi * v > 0;
       if (!sure) continue;
       assert.ok(!M.uncertain(c, Y, q), `${c.iso3} ${q}: not certain`);
       if (others.some(k => k[f] * v <= 0)) bites++;
@@ -174,4 +176,30 @@ test("the headline numbers of a dozen countries match the snapshot", () => {
       else assert.equal(got[iso][f], v, `${iso}.${f}`);
     }
   }
+});
+
+// round 60 (audit: Togo's net and its trade, the same number, read 51% and 52%): a part takes the same draws in every
+// simulation, by its key, so a number made of the same parts gets the same chance, whatever else is in its list
+test("the same parts get the same draws: net and trade agree where they are the same number", () => {
+  const parts = [{ k: "paid", v: 0.018, lo: -0.053, hi: 0.323 }, { k: "windfall", v: -0.018, lo: -0.041, hi: 0.016 }, { k: "laund", v: -0.041, lo: -0.23, hi: 0.126 }];
+  const withTiny = [{ k: "aid", v: 0, lo: 0, hi: 1e-9 }, ...parts, { k: "buy", v: 0, lo: 0, hi: 1e-9 }];
+  assert.equal(M.pSignMC(withTiny, 1), M.pSignMC(parts, 1));
+  assert.equal(M.pSignMC(parts.slice().reverse(), 1), M.pSignMC(parts, 1));
+  for (const c of all) {
+    const k = M.calc(c, Y), key = l => l.filter(p => Math.abs(p.v) > 1e-6 || p.hi - p.lo > 1e-6).map(p => p.k).sort().join();
+    if (k.uaBal || k.frozen || key(k.signParts.net) !== key(k.signParts.rus)) continue;
+    assert.ok(Math.abs(M.chance(c, Y, "net").pUa - M.chance(c, Y, "rus").pUa) < 1e-9, c.iso3);
+  }
+});
+
+// round 60 (audit: the UAE "very likely toward Russia, 97%" with a likely range reaching +€1.1bn): the range adds the
+// parts' distances as errors, the simulation draws each skewed part whole, so they can disagree; very likely needs both
+test("very likely only when the likely range stays on the same side", () => {
+  let bites = 0;
+  for (const c of all) for (const q of ["net", "ua", "rus"]) {
+    const k = M.calc(c, Y), [lo, hi] = { ua: [k.uaLo, k.uaHi], rus: [k.rusLo, k.rusHi], net: [k.shiftLo, k.shiftHi] }[q];
+    if (!M.uncertain(c, Y, q)) assert.ok(lo * hi > 0, `${c.iso3} ${q}: certain with a range from ${lo} to ${hi}`);
+    else if (lo * hi <= 0 && M.chance(c, Y, q).p >= M.CHANCE.sure) bites++;
+  }
+  assert.ok(bites > 0, "no number has a 95% chance and a range across zero: the test does not bite");
 });

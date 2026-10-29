@@ -1,0 +1,33 @@
+name: Monthly link check
+
+# Round 60 (audit: source links that no longer open): once a month, every external link the site cites (data.json
+# sources and the research files the pages read) is asked once; the report is kept as an artifact and shown in the run's
+# summary. A report only: it never fails (broken links are fixed by hand in research/2026-10/link_fixes.json).
+on:
+  schedule:
+    - cron: "17 4 3 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check every cited link
+        run: node pipeline/seo_link_check.mjs link-check-report.md || true
+      - name: Show the report
+        if: always()
+        run: cat link-check-report.md >> "$GITHUB_STEP_SUMMARY" || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: link-check-report
+          path: link-check-report.md
