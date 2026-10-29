@@ -44,7 +44,7 @@
 <link rel="alternate" hreflang="es" href="https://warbalance.org/es/">
 <link rel="alternate" hreflang="x-default" href="https://warbalance.org/">
 <link rel="sitemap" type="application/xml" href="https://warbalance.org/sitemap.xml">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://warbalance.org/#website", "name": "War Balance", "url": "https://warbalance.org/", "inLanguage": ["en", "uk", "de", "fr", "pl", "nl", "es"], "publisher": {"@id": "https://warbalance.org/#org"}}, {"@context": "https://schema.org", "@type": "Organization", "@id": "https://warbalance.org/#org", "name": "War Balance", "url": "https://warbalance.org/", "logo": "https://warbalance.org/icon-512.png"}, {"@context": "https://schema.org", "@type": "Dataset", "@id": "https://warbalance.org/#dataset", "name": "War Balance — where each country's money moved since 2022", "description": "Research preview. For every country, its support for Ukraine and how much less, or more, Russia kept from trade with it (taxes and profit above a normal return, not the full price), against a world without the war, from 2022 to August 2026, as totals against one year's GDP. Every number has a likely range, a certainty letter and its sources.", "url": "https://warbalance.org/", "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": true, "creator": {"@id": "https://warbalance.org/#org"}, "publisher": {"@id": "https://warbalance.org/#org"}, "dateModified": "2026-10-27", "temporalCoverage": "2022-01/2026-08", "variableMeasured": [{"@type": "PropertyValue", "name": "Net: support for Ukraine plus the cut in Russia's earnings from trade and the return lost on frozen reserves", "unitText": "% of one year's GDP; EUR"}, {"@type": "PropertyValue", "name": "Support for Ukraine", "unitText": "% of one year's GDP; EUR"}, {"@type": "PropertyValue", "name": "Russia's earnings from trade (change against a world without the war)", "unitText": "% of one year's GDP; EUR"}, {"@type": "PropertyValue", "name": "Russian money frozen (return lost)", "unitText": "EUR"}], "spatialCoverage": {"@type": "Place", "name": "World"}, "keywords": ["Ukraine", "Russia", "war", "aid to Ukraine", "sanctions", "trade with Russia", "fossil fuels", "refugees", "frozen assets", "Kiel Ukraine Support Tracker"], "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://warbalance.org/data.json", "name": "Full data (JSON)"}]}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://warbalance.org/#website", "name": "War Balance", "url": "https://warbalance.org/", "inLanguage": ["en", "uk", "de", "fr", "pl", "nl", "es"], "publisher": {"@id": "https://warbalance.org/#org"}}, {"@context": "https://schema.org", "@type": "Organization", "@id": "https://warbalance.org/#org", "name": "War Balance", "url": "https://warbalance.org/", "logo": "https://warbalance.org/icon-512.png"}, {"@context": "https://schema.org", "@type": "Dataset", "@id": "https://warbalance.org/#dataset", "name": "War Balance — where each country's money moved since 2022", "description": "Research preview. For every country, its support for Ukraine and how much less, or more, Russia kept from trade with it (taxes and profit above a normal return, not the full price), against a world without the war, from 2022 to August 2026, as totals against one year's GDP. Every number has a likely range, a certainty letter and its sources.", "url": "https://warbalance.org/", "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": true, "creator": {"@id": "https://warbalance.org/#org"}, "publisher": {"@id": "https://warbalance.org/#org"}, "dateModified": "2026-10-29", "temporalCoverage": "2022-01/2026-08", "variableMeasured": [{"@type": "PropertyValue", "name": "Net: support for Ukraine plus the cut in Russia's earnings from trade and the return lost on frozen reserves", "unitText": "% of one year's GDP; EUR"}, {"@type": "PropertyValue", "name": "Support for Ukraine", "unitText": "% of one year's GDP; EUR"}, {"@type": "PropertyValue", "name": "Russia's earnings from trade (change against a world without the war)", "unitText": "% of one year's GDP; EUR"}, {"@type": "PropertyValue", "name": "Russian money frozen (return lost)", "unitText": "EUR"}], "spatialCoverage": {"@type": "Place", "name": "World"}, "keywords": ["Ukraine", "Russia", "war", "aid to Ukraine", "sanctions", "trade with Russia", "fossil fuels", "refugees", "frozen assets", "Kiel Ukraine Support Tracker"], "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://warbalance.org/data.json", "name": "Full data (JSON)"}]}]</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -1813,12 +1813,16 @@ function calc(c, y, opt = {}) {
   };
   // without a windfall line, the path's end widens "paid", which then carries the no-war price band
   if (!wfOn && g21) lessPaid3 = [lessPaid3[0], Math.min(lessPaid3[1], lessPaid3[0] + Math.min(0, g21)), Math.max(lessPaid3[2], lessPaid3[0] + Math.max(0, g21))];
+  const buy3 = neg(delta3(T.buyUkr));
   const shiftParts = [
     // Kiel's figure, adjusted (round 13 audit: the label says so): weapons at market value, loans at their gift
     part("aid", "Aid to Ukraine (Kiel, adjusted: weapons at market value, loans as gifts)", ownAid3, aidCert, src("aid")),
     part("euaid", "Share of EU-level aid", eu3, "B", c.aid?.eu_src || ["kiel_eu_share"]),
     part("ref", "Hosting refugees", ref3, c.aid?.refugee_cert || "B", c.aid?.refugee_src || []),
-    part("buy", "Extra purchases from Ukraine", above3(T.buyUkr), cTrade, src("buy_ukr")),
+    // round 60 (owner: "count buying less from Ukraine ... just like Russia"): with its sign, against the no-war level
+    // without Ukraine's own forced supply loss (build_data.py ua_supply_share): more counts toward Ukraine, less
+    // toward Russia
+    part("buy", buy3[0] >= 0 ? "Bought more from Ukraine than without the war" : "Bought less from Ukraine than without the war", buy3, cTrade, src("buy_ukr")),
     part("paid", lessPaid3[0] >= 0 ? "Less paid to Russia" : "More paid to Russia", lessPaid3, cRus, src("to_rus")),
     // against the prices a no-war market expected; negative where Russia sold below them (price cap, discounts)
     part("windfall", sum3(T.windfall)[0] >= 0 ? "Extra paid to Russia because of war-time prices" : "Paid Russia less than no-war prices (discounts, price cap)", opt.windfall === "off" ? wf3 : withNr(wf3), c.windfall?.cert || "C", src("windfall")),
@@ -1952,8 +1956,9 @@ function calc(c, y, opt = {}) {
     rusPaid, rusPaidLo, rusPaidHi, rusEarned, rusEarnedLo, rusEarnedHi, milPaidShare: fPaid, undelivered: -(und3[0] + undEu3[0]),
     // negative overall mainly because it earned from the war effort, not because of money toward Russia
     // (only when it matters: at least EUR 10m and 0.05% of a year's GDP)
-    earnerUa: uaBal < -Math.max(0.01, (c.gdp || 0) * 0.0005),
-    earner: shift < 0 && uaBal < -Math.max(0.01, (c.gdp || 0) * 0.0005) && (rusBal >= 0 || -uaBal > -rusBal),
+    // round 60: only when what it gave was positive; below zero because it bought less from Ukraine is not earning
+    earnerUa: uaBal < -Math.max(0.01, (c.gdp || 0) * 0.0005) && uaGave >= 0,
+    earner: shift < 0 && uaBal < -Math.max(0.01, (c.gdp || 0) * 0.0005) && uaGave >= 0 && (rusBal >= 0 || -uaBal > -rusBal),
     cost, costLo, costHi, costCert: gradeTotal(costAll),
   };
 }
@@ -2456,7 +2461,7 @@ const FLOWS = [
   {"id": "laund", "name": "Refined and laundered Russian oil", "what": "Fuel made from Russian crude in other countries, EU refiners included, or passed on by trading hubs, charged to the final buyer, in volumes against its pre-war level.", "parts": ["laund"], "method": "energy-and-laundered-oil.md#laundered-oil", "files": ["gaps/laundered_r39-notes.md", "gaps/laundered_eu-notes.md", "gaps/hub_buyers-notes.md", "gaps/crude_content-notes.md", "gaps/laundered_r6-notes.md", "gaps/assumptions_r11_hubs-notes.md", "gaps/energy-notes.md", "gaps/round4a-notes.md"], "raw": ["comtrade", "comtrade_2710"], "src": ["laundered_eu", "eu_refiners", "dangote"]},
   {"id": "energy", "name": "Energy switching cost and oil discount", "what": "Not in the totals or on the map: the extra paid to replace Russian energy, and the discount gained on Russian oil (in the full data download).", "parts": [], "costParts": ["prem", "disc"], "method": "energy-and-laundered-oil.md#energy-premium-and-oil-discount", "files": ["gaps/energy-notes.md", "crea-notes.md"], "raw": ["crea"]},
   {"id": "sold", "name": "Sales to Russia", "what": "Goods sold to Russia, counted at the seller's net gain (taxes plus profit above a normal return) times the share that is genuinely extra.", "parts": ["sold", "premium"], "costParts": ["margin"], "method": "trade.md#profit-not-revenue", "files": ["gaps/import_premium_r39-notes.md", "gaps/trade_full-notes.md", "gaps/net_gain_sellers-notes.md", "gaps/value_kept-notes.md", "gaps/reexports-notes.md", "gaps/residual-notes.md", "gaps/counterfactual-notes.md", "gaps/assumptions_r11_rules-notes.md"], "raw": ["comtrade", "eurostat", "oecd_stan"]},
-  {"id": "buy", "name": "Purchases from Ukraine", "what": "Extra goods bought from Ukraine, counted at Ukraine's net gain.", "parts": ["buy"], "costParts": ["tariff"], "method": "overview.md#the-net-gain-rule", "files": ["gaps/trade_full-notes.md", "gaps/net_gain_ukraine-notes.md", "gaps/ua_trade_cf-notes.md", "gaps/counterfactual-notes.md", "gaps/assumptions_r11_gain-notes.md"], "raw": ["comtrade", "eurostat"]},
+  {"id": "buy", "name": "Purchases from Ukraine", "what": "Goods bought from Ukraine against the no-war level, counted at Ukraine's net gain.", "parts": ["buy"], "costParts": ["tariff"], "method": "overview.md#the-net-gain-rule", "files": ["gaps/trade_full-notes.md", "gaps/net_gain_ukraine-notes.md", "gaps/ua_trade_cf-notes.md", "gaps/ua_trade_sym_r60-notes.md", "gaps/counterfactual-notes.md", "gaps/assumptions_r11_gain-notes.md"], "raw": ["comtrade", "eurostat"]},
   {"id": "services", "name": "Services and tourism", "what": "Services bought from and sold to Russia, such as transport, business services and tourism.", "parts": ["svcpaid", "svcsold"], "method": "services-shipping-companies.md#services", "files": ["gaps/uncovered-notes.md", "gaps/trend2-notes.md", "gaps/narrow-notes.md", "gaps/relocants-notes.md"]},
   {"id": "shipping", "name": "Shipping Russian oil", "what": "Income from shipping and insuring Russian oil, counted for the country that really controls the tankers, at the shippers' and insurers' net gain.", "parts": ["ship"], "method": "services-shipping-companies.md#shipping", "files": ["gaps/shipping-notes.md", "gaps/net_gain_sellers-notes.md", "gaps/shadow_fleet_r6-notes.md", "gaps/shadow_fleet-notes.md"]},
   {"id": "companytax", "name": "Company taxes in Russia", "what": "Taxes that foreign-owned companies still pay in Russia: profit tax plus half of other taxes.", "parts": ["tax"], "method": "services-shipping-companies.md#company-taxes", "files": ["companies-notes.md", "gaps/companies_all-notes.md", "gaps/company_taxes_r6-notes.md", "gaps/round4a-notes.md", "gaps/trend2-notes.md"], "src": ["companies"]},
@@ -2468,7 +2473,7 @@ const FLOWS = [
   {"id": "remit", "name": "Remittances from Russia (marker)", "what": "Shown as a marker, not in the totals: the change in what migrants working in Russia sent home, against the level expected without the war.", "parts": [], "method": "trade.md#remittances-and-relocants", "files": ["gaps/remittances-notes.md", "gaps/remittances_r13-notes.md", "gaps/relocants-notes.md", "gaps/assumptions_r11_people-notes.md"], "src": ["remittances", "assumptions_r11_people"]},
   {"id": "statefin", "name": "Rosatom and Russian state loans", "what": "Payments for Russian nuclear projects and repayments of Russian state loans.", "parts": ["statefin"], "method": "russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia", "files": ["gaps/russia_state_finance-notes.md"]},
   {"id": "rusarms", "name": "Weapons bought from Russia", "what": "Payments for Russian weapons, against the level expected without the war, at Russia's net gain.", "parts": ["rusarms", "wagner"], "method": "russia-state-and-companies.md#weapons-bought-from-russia", "files": ["gaps/wagner_r40-notes.md", "gaps/russian_arms_exports-notes.md", "gaps/arms_r6-notes.md", "gaps/assumptions_r11_gain-notes.md"]},
-  {"id": "mil", "name": "Weapons and troops sent to Russia", "what": "Shells, missiles, drones and troops from North Korea, Iran, Belarus and China: what Russia paid for (also in kind) as a sale, at the seller's net gain; what it did not pay for at market value.", "parts": ["mil"], "method": "aid-refugees-military.md#military-support-to-russia", "files": ["gaps/military_payment_r13-notes.md", "gaps/military_rus_r6-notes.md", "gaps/china_military-notes.md", "other-notes.md", "gaps/flowback2-notes.md"], "raw": ["msmt"]},
+  {"id": "mil", "name": "Weapons and troops sent to Russia", "what": "Shells, missiles, drones and troops from North Korea, Iran, Belarus and China: what Russia paid for (also in kind) as a sale, at the seller's net gain; what it did not pay for at market value.", "parts": ["mil"], "method": "aid-refugees-military.md#military-support-to-russia", "files": ["gaps/military_payment_r13-notes.md", "gaps/arms_margin_r60-notes.md", "gaps/military_rus_r6-notes.md", "gaps/china_military-notes.md", "other-notes.md", "gaps/flowback2-notes.md"], "raw": ["msmt"]},
   {"id": "agents", "name": "Payment agents", "what": "Fees earned by firms that settle Russia's trade payments, at the financial industry's net gain.", "parts": ["agents"], "method": "trade.md#payment-agents", "files": ["gaps/payment_channels-notes.md"]},
   {"id": "gold", "name": "Gold and hidden payments to Russia", "what": "Gold and other payments that do not show in customs data, at Russia's gain on them.", "parts": ["hidden"], "method": "trade.md#gold-and-hidden-channels", "files": ["gaps/uncovered-notes.md", "gaps/residual-notes.md", "gaps/audit2-notes.md", "gaps/net_gain_russia-notes.md"], "raw": ["comtrade_hkg"]},
   {"id": "markers", "name": "Labels and counts outside the totals", "what": "The critical-goods marker, the sanctions label and counts of volunteers and fighters. They add nothing to the totals.", "parts": [], "method": "trade.md#goods-russias-weapons-need-the-critical-goods-marker", "files": ["gaps/chpl-notes.md", "gaps/sanctions_share-notes.md", "other-notes.md", "gaps/flowback2-notes.md"], "src": ["chpl", "sanctions_share", "people"]},
@@ -2485,7 +2490,7 @@ const RAW_LISTED = new Set(["kiel", "refugee_budgets", "msmt"]);
 const partNames = k => (PLAIN[k] ? (typeof PLAIN[k] === "function" ? [...new Set([PLAIN[k](1), PLAIN[k](-1)])] : [PLAIN[k]]) : PART_NAMES[k] || [k]);
 const PART_NAMES = {
   aid: ["Aid to Ukraine (Kiel, adjusted: weapons at market value, loans as gifts)"], aidge: ["Aid given (loans at grant equivalent)"], euaid: ["Share of EU-level aid"], ref: ["Hosting refugees"],
-  buy: ["Extra purchases from Ukraine"], paid: ["Less paid to Russia", "More paid to Russia"],
+  buy: ["Bought more from Ukraine than without the war", "Bought less from Ukraine than without the war"], paid: ["Less paid to Russia", "More paid to Russia"],
   windfall: ["Extra paid to Russia because of war-time prices", "Paid Russia less than no-war prices (discounts, price cap)"],
   laund: ["Russian oil bought via other countries"], sold: ["Income lost on sales to Russia given up", "Income from extra sales to Russia"],
   tax: ["Less tax paid in Russia by companies", "More tax paid in Russia by companies"], mil: ["Weapons and troops sent to Russia"],
@@ -2992,7 +2997,7 @@ function scaleFor() {
   const bounds = [...st.slice().reverse().map(x => -x), ...st];    // -4,-1,-0.25,0.25,1,4
   const f = d3.scaleThreshold().domain(bounds).range(colors);
   const labels = bounds.map(x => (x > 0 ? "+" : x < 0 ? "−" : "") + stepLabel(Math.abs(x)));
-  const ends = { support: [t("none, or earned more from the war effort than it gave"), t("support for Ukraine")], payments: [t("paid Russia more"), t("paid Russia less")],
+  const ends = { support: [t("none, or below zero: bought less from Ukraine or earned more from the war effort than it gave"), t("support for Ukraine")], payments: [t("paid Russia more"), t("paid Russia less")],
     net: [t("toward Russia"), t("toward Ukraine")] }[state.lens];
   // round 16 (review 5, L3; approved by the owner): the colour steps are set for economies of at least MIN_GDP_RANK
   // (EUR 5bn, as in the rankings). A smaller economy is coloured within that scale, clamped to the lightest step of its
@@ -3506,14 +3511,20 @@ const VERBS = { net: ["Toward Ukraine by {x}", "Toward Russia by {x}"], ua: ["Su
   // in a range that reaches mostly below it) says the side, then its middle value with its sign
   netLeanMid: ["Leaning toward Ukraine; middle value {x}", "Leaning toward Russia; middle value {x}"],
   rusLeanMid: ["Probably cut Russia's earnings from trade; middle value {x}", "Probably raised Russia's earnings from trade; middle value {x}"],
-  uaLeanMid: ["Probably supported Ukraine; middle value {x}", "Probably earned more from Ukraine's war effort than it gave; middle value {x}"] };
+  uaLeanMid: ["Probably supported Ukraine; middle value {x}", "Probably earned more from Ukraine's war effort than it gave; middle value {x}"],
+  // round 60: support below zero because it bought less from Ukraine than without the war (more than all it gave), not
+  // because it earned from the war effort
+  uaLess: ["Supported Ukraine with {x}", "Bought less from Ukraine than without the war; below zero by {x}"],
+  uaLessLeanMid: ["Probably supported Ukraine; middle value {x}", "Probably below zero, as it bought less from Ukraine than without the war; middle value {x}"] };
+// round 60: a support number below zero that is not earning from the war effort (it bought less from Ukraine)
+const uaLess = (c, y) => !!c && !!c.gdp && y >= 2022 && calc(c, y).uaGave < 0;
 const verbKey = (q, v) => VERBS[q === "ua" && !v ? "uaNone" : q][v >= 0 ? 0 : 1];
 const ofGdp = (c, v) => t("{v} of GDP", { v: fmtMeasure(c, Math.abs(v), "gdp") });
 const amtX = (c, v, m = state.measure) => (m === "total" ? eur(Math.abs(v)) : ofGdp(c, v));
 // round 60 (audit: Iran and China "Supported Ukraine, very likely >99%" on their IMF and World Bank shareholding alone):
 // support made only of the share of IMF and World Bank lending is named as that, not as support given
 const multilatOnly = (c, y) => { if (!c || !c.gdp || y < 2022) return false; const ps = calc(c, y).shiftParts.filter(p => UA_PARTS.has(p.k) && Math.abs(p.v) >= 0.0005); return ps.length > 0 && ps.every(p => p.k === "multilat"); };
-const verb = (q, v, c, m) => { const vq = q === "ua" && v > 0 && multilatOnly(c, Math.max(2022, state.year)) ? "uaMultilat" : q; return t(verbKey(vq, v), { x: amtX(c, v, m), c: cName(c) }); };
+const verb = (q, v, c, m) => { const vq = q === "ua" && v > 0 && multilatOnly(c, Math.max(2022, state.year)) ? "uaMultilat" : q === "ua" && v < 0 && uaLess(c, Math.max(2022, state.year)) ? "uaLess" : q; return t(verbKey(vq, v), { x: amtX(c, v, m), c: cName(c) }); };
 // the meaning of "kept", said wherever a "kept" number appears (round 25)
 const KEPT_MEANS = () => t("“Kept” means what really stays with them: taxes and profit above a normal return, not the full price paid.");
 // round 29: what "Russia's earnings from trade" means, on its tile's tap
@@ -3522,7 +3533,7 @@ const EARN_MEANS = () => t("Earnings = what Russia keeps: taxes and profit above
 const verbAround = (q, v) => t(verbKey(q, v)).split("{x}").map(x => x.trim());
 // the net in words: "Supported Ukraine + cut Russia's earnings from trade + froze Russian money = 3.2% of GDP toward Ukraine"
 function netSentence(c, k, m = state.measure) {
-  const parts = [...(k.uaBal ? [t(k.uaBal > 0 ? (multilatOnly(c, Math.max(2022, state.year)) ? "its share of IMF and World Bank lending" : "supported Ukraine") : "earned more from Ukraine's war effort than it gave")] : []), t(k.rusBal >= 0 ? "cut Russia's earnings from trade" : "raised Russia's earnings from trade")];
+  const parts = [...(k.uaBal ? [t(k.uaBal > 0 ? (multilatOnly(c, Math.max(2022, state.year)) ? "its share of IMF and World Bank lending" : "supported Ukraine") : k.uaGave < 0 ? "bought less from Ukraine than without the war" : "earned more from Ukraine's war effort than it gave")] : []), t(k.rusBal >= 0 ? "cut Russia's earnings from trade" : "raised Russia's earnings from trade")];
   if (Math.abs(k.frozen) >= 0.0005) parts.push(t("froze Russian money"));
   const s = t(k.shift >= 0 ? "{parts} = {x} toward Ukraine" : "{parts} = {x} toward Russia", { parts: parts.join(" + "), x: amtX(c, k.shift, m) });
   return s.charAt(0).toUpperCase() + s.slice(1);
@@ -3961,7 +3972,7 @@ const ALT_WHAT = {
   laund_half: "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)", laund_model: "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs", fuelmix: "the mix of what was bought from the fuel tracker's tonnes, not customs values",
   freight: "fuel prices as customs (CIF) values, freight included", normal_return: "sellers' normal return 9% nominal, services incl. real estate; Russia 9%, Ukraine 8.2%",
   nocut: "without the gas Russia cut off itself", nocut_oil: "without the gas and pipeline oil Russia cut off itself", attrib: "redirected trade: much of what buyers who cut stopped paying, Russia sold to others (most of its oil and coal, little of its gas), counted half against each side, by commodity (here less paid × {r}, more paid × {m})",
-  refGross: "refugees at gross cost (before the host's gain on their work is taken off)", refCommon: "refugees at one common cost per person-year for every host (the hosts' average), not each host's actual cost", p26: "2026 at 2025 prices (without the Hormuz-crisis prices)", gold_actual: "gold valued at its actual price, not at its 2021 price (central banks' buying after Russia's reserves were frozen is linked to the war)", gdp2024: "2024 GDP as the denominator, not the 2022–2024 average", nk_paid_observed: "North Korea paid only what was seen flowing back",
+  refGross: "refugees at gross cost (before the host's gain on their work is taken off)", refCommon: "refugees at one common cost per person-year for every host (the hosts' average), not each host's actual cost", p26: "2026 at 2025 prices (without the Hormuz-crisis prices)", gold_actual: "gold valued at its actual price, not at its 2021 price (central banks' buying after Russia's reserves were frozen is linked to the war)", gdp2024: "2024 GDP as the denominator, not the 2022–2024 average", nk_paid_observed: "North Korea paid only what was seen flowing back", ua_route: "purchases from Ukraine: the land neighbours measured against Ukraine's exports to its neighbours (the 2022 overland rerouting treated as forced)",
 };
 // round 38 (owner: "yes fix all that"): the choices that move the net as one strip of dots instead of a list: the official
 // net is the bar, each dot the net under one other choice (its name on hover or tap), the two ends named underneath
@@ -4212,7 +4223,7 @@ const HOW = {
   laund: "Fuel refined from Russian crude in other countries (India, Türkiye, China, the UAE and, before the ban, EU refineries) or passed on by trading hubs is charged to the final buyer. It is measured in volumes against its pre-war level, at Russia's gain on the crude.",
   energy: "Not in the totals or on the map: the extra a country paid to replace Russian energy (the volume replaced times the price premium, by fuel and month), minus the discount gained by buying cheaper Russian oil. The figures are in the full data download.",
   sold: "Goods sold to Russia, or sales given up, against the no-war level. A sale counts at the seller's net gain times the share that is genuinely extra, so €10bn of lost sales is not a €10bn sacrifice. Goods re-exported through trade hubs count for the country that made them.",
-  buy: "Extra goods bought from Ukraine above the pre-war level count at Ukraine's net gain, like any sale.",
+  buy: "Goods bought from Ukraine count against the no-war level at Ukraine's net gain, like any sale: more counts for a country, less against it. The no-war level is each buyer's pre-war share of what Ukraine could still export.",
   services: "Services bought from and sold to Russia (transport, business services, tourism), against the pre-war level, at the seller's net gain: the same rule as goods.",
   shipping: "Income from carrying, insuring and financing Russia's seaborne oil and gas, counted for the country of the owner, manager, insurer or lender (never the flag), at their net gain.",
   companytax: "Taxes that foreign-owned companies still pay in Russia (profit tax plus half of other taxes), from KSE Institute and B4Ukraine reports, against the pre-war level.",
@@ -4566,11 +4577,12 @@ function chanceSentence(c, y, q) {
 // the other way from its middle value
 function headVerb(c, y, q, v) {
   if (q === "ua" && v > 0 && multilatOnly(c, y)) return { key: "uaMultilat", s: v, flip: false };
+  const ul = q === "ua" && uaLess(c, y), uq = ul ? "uaLess" : q;
   const i = PARTY_TO_WAR.has(c.iso3) ? null : chanceInfo(c, y, q);
-  if (!i || i.level !== "lean") return { key: q, s: v, flip: false };
+  if (!i || i.level !== "lean") return { key: uq, s: v, flip: false };
   const ss = i.side === "ukraine" ? 1 : -1;
-  if (ss * v > 0) return { key: q === "net" ? "netLean" : q === "rus" ? "rusLean" : q, s: v, flip: false };
-  return { key: q + (q === "net" ? "LeanMid" : "LeanMid"), s: ss, flip: true };
+  if (ss * v > 0) return { key: q === "net" ? "netLean" : q === "rus" ? "rusLean" : uq, s: v, flip: false };
+  return { key: (ul ? "uaLess" : q) + "LeanMid", s: ss, flip: true };
 }
 // Round 42 (owner: "add a 'what decides it' line"): the smallest change to one part that flips the sign: the largest
 // part on the number's side shrinking, or the largest part against it growing, whichever needs less
@@ -4816,6 +4828,7 @@ function partTiles(c, k, y) {
   // the same gradient bar as the parts, in the bar colour of its direction (the fade for a range across zero is barHtml's)
   const bar = (v, lo, hi, neg) => `<span class="tbar" aria-hidden="true">${barHtml(ax, G(v), v >= 0 ? "var(--ukr)" : neg, G(lo), G(hi))}</span>`;
   const ua = !state.netBack ? t("aid, refugees, loans as gifts and purchases from Ukraine (money flowing back not subtracted)")
+    : k.uaGave < 0 ? t("Gave {gave}; bought less from Ukraine than without the war: {buy}", { gave: eur(k.uaGave - ((k.shiftParts.find(p => p.k === "buy") || { v: 0 }).v), true), buy: eur(-((k.shiftParts.find(p => p.k === "buy") || { v: 0 }).v)) })
     : !k.earnerUa ? t("Net contributing: gave {gave}, earned back {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) })
     : t("Net earning from the war effort: gave {gave}, earned {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) });
   const w = rusWords(c, k), ru = w.kind === "paid" ? t("Russia kept more")
@@ -5132,7 +5145,7 @@ function targetPanel(side) {
       <section class="section"><h3>${state.lens === "support" ? t("As on the map: ") : ""}${t("Support for Ukraine")}</h3>
         ${measureTabs()}
         ${rankList(list, c => K.get(c).uaBal, state.rankMeasure, () => "var(--ukr)", 20, null, "ua")}
-        <p class="key" style="margin-top:8px">${t("What each country did for Ukraine since before the war: aid (loans as gifts), its share of EU-level aid, refugee hosting and extra purchases from Ukraine{back}. Russia's earnings from trade has its own map and is not in this list.", { back: state.netBack ? t(", minus money flowing back") : "" })}</p></section>
+        <p class="key" style="margin-top:8px">${t("What each country did for Ukraine since before the war: aid (loans as gifts), its share of EU-level aid, refugee hosting and purchases from Ukraine against the no-war level{back}. Russia's earnings from trade have their own map and are not in this list.", { back: state.netBack ? t(", minus money flowing back") : "" })}</p></section>
     </div>`;
   }
   // at pre-war prices, against the expected level (pre-war level x trend), as on the map
@@ -5250,7 +5263,7 @@ document.getElementById("show-taken").onchange = e => { state.taken = e.target.c
 const COUNTED = [
   { id: "aid", side: "ua", label: "Government aid (loans as gifts)", keys: ["aid", "aidge"] }, { id: "euaid", side: "ua", label: "Share of EU-level aid", keys: ["euaid"] },
   { id: "loans", side: "ua", label: "Share of IMF and World Bank lending", keys: ["multilat"] }, { id: "extra", side: "ua", label: "Undisclosed military aid, private donations", keys: ["undisc", "priv"] },
-  { id: "ref", side: "ua", label: "Hosting refugees", keys: ["ref", "refsp"] }, { id: "buy", side: "ua", label: "Buying more from Ukraine", keys: ["buy", "tariff"] },
+  { id: "ref", side: "ua", label: "Hosting refugees", keys: ["ref", "refsp"] }, { id: "buy", side: "ua", label: "Purchases from Ukraine", keys: ["buy", "tariff"] },
   { id: "back", side: "ua", label: "Minus: earned back from the war effort", keys: [], netBack: true },
   { id: "paid", side: "rus", label: "Fuel and goods bought from Russia", keys: ["paid"] }, { id: "windfall", side: "rus", label: "War-time fuel price windfall", keys: ["windfall"] },
   { id: "laund", side: "rus", label: "Russian oil refined elsewhere", keys: ["laund"] }, { id: "sold", side: "rus", label: "Sales to Russia", keys: ["sold", "margin", "premium"] },

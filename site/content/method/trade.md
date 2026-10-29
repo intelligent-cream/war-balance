@@ -27,8 +27,20 @@ Each flow is compared with its expected no-war level, usually 2021 at pre-war pr
 |---|---|---|
 | bought from Russia | less or more paid to Russia | Russia's net gain on that mix of goods |
 | sold to Russia | income lost or gained | seller's net gain × genuinely extra |
-| bought from Ukraine | extra purchases from Ukraine | Ukraine's net gain; a fall is not held against a country |
+| bought from Ukraine | bought more or less from Ukraine than without the war | Ukraine's net gain; more counts for a country, less against it, against what Ukraine could export |
 | sold to Ukraine | extra sales to Ukraine | seller's net gain × genuinely extra, subtracted as money flowing back |
+
+### Purchases from Ukraine, both ways
+
+Purchases from Ukraine count both ways, like purchases from Russia (round 60): buying more than without the war counts toward Ukraine, buying less toward Russia, each at Ukraine's net gain on what it sells (2 to 7 cents per euro), so a shortfall of EUR 10bn counts as about EUR 0.5bn.
+
+**The no-war level takes out Ukraine's own losses.** Ukraine could not sell what it could not make or ship: its ports were blocked in 2022, farmland was occupied and the steel works of Mariupol were destroyed. In 2023 it exported 27% of its 2021 steel and 28% of its iron ore, but 77% of its grain and all its oilseeds. So each buyer's 2021 purchases are scaled, product group by group (grain, oilseeds, other food, iron ore, steel, other metals, wood, machinery, chemicals, other), by what Ukraine actually exported of that group each year against 2021: the **supply factor**. A country that kept its pre-war share of what Ukraine could still sell is neutral; one that took more helped Ukraine; one that took less (an import ban, a switch to other suppliers) counts the other way. The war's damage to Ukraine's exports is held against no one. Poland (+EUR 0.41bn<!-- n:POL.part_buy -->), Germany and Türkiye kept buying close to their 2021 amounts while Ukraine's exports fell; China (−EUR 0.57bn<!-- n:CHN.part_buy abs -->) and India bought far less of what Ukraine could sell.
+
+**Bans are measured against the no-war level.** Poland, Hungary and Slovakia have banned some Ukrainian farm goods (wheat, maize, rapeseed, sunflower seed) since September 2023. Before the war they bought almost none of them (Poland EUR 47m in 2021), so against a world without the war the bans change little (Poland about −EUR 0.01bn at Ukraine's gain). What they ended was the extra trade of 2022–2023, which counted for these countries in those years.
+
+**Belarus** bought almost nothing from Ukraine after the invasion, because Ukraine stopped trading with it. That counts (−EUR 0.16bn<!-- n:BLR.part_buy abs -->): Ukraine's embargo is a foreseeable answer to Belarus hosting the invasion, as Russia's gas cut-offs are counted for the buyers of Russian gas.
+
+**How sure.** The range keeps the measured band of the no-war level, applied to the lower expected level, and it is wide (China −3.4 to +0.2bn). The method band holds the other reasonable choice: the land neighbours (Poland, Hungary, Slovakia, Romania, Moldova) measured against Ukraine's exports to its neighbours and everyone else against its exports to the rest, which treats the overland rerouting of 2022 as forced. It lowers the neighbours' credit (Poland about −0.2bn instead of +0.4bn) and raises distant buyers'. The EU opened the land routes on purpose (Solidarity Lanes, duty-free access), so those purchases were partly a choice, and the central value uses all of Ukraine's exports.
 
 ## Profit, not revenue
 

@@ -800,10 +800,12 @@ ${foot("en")}`;
     ...countries.slice().sort((a, b) => a.iso.localeCompare(b.iso)).filter(c => !c.noData && c.years).flatMap(c => c.years.map(y => [c.iso, c.nameEn, y.y, !!y.ytd, y.uaBn, y.rusBn, y.frozenBn, y.netBn].map(csvq).join(",")))].join("\n");
   // round 58b: Russia's federal oil and gas revenue, month by month and by year (russia_revenue_r58.json)
   const REVCSV = REV ? RS.revenueCsv(REV) : null;
+  // round 60: the research files' countries under the site's English name, as in the other files and llms-full.txt
+  const csvName = F => iso => (byIso[iso] || {}).nameEn || (F.countries[iso] || {}).name || iso;
   const DL = [["war-balance-countries.csv", CSV.full, "dlCountries"], ["war-balance-parts.csv", CSV.parts, "dlParts"], ["war-balance-years.csv", yearsCsv, "dlYears"],
     ...(REVCSV ? [["russia-oil-gas-revenue-monthly.csv", REVCSV.monthly, "dlRevMonthly"], ["russia-oil-gas-revenue-yearly.csv", REVCSV.yearly, "dlRevYearly"]] : []),
     // round 59b: what each country bought by fuel and year, and support for Ukraine by type (the research files)
-    ...(FUEL ? [["war-balance-fuel-split.csv", RS.fuelCsv(FUEL), "dlFuel"]] : []), ...(MIL ? [["war-balance-military-split.csv", RS.milCsv(MIL), "dlMil"]] : []),
+    ...(FUEL ? [["war-balance-fuel-split.csv", RS.fuelCsv(FUEL, csvName(FUEL)), "dlFuel"]] : []), ...(MIL ? [["war-balance-military-split.csv", RS.milCsv(MIL, csvName(MIL)), "dlMil"]] : []),
     // round 60 (audit of the downloads): the cost of replacing Russian energy and the oil discount, every source, Russia's
     // budget balance and the National Wealth Fund (seo_downloads.mjs)
     ["war-balance-energy-cost.csv", DLX.energyCsv(countries, `2022-${lastYear}${data.frac && data.frac[data.frac.length - 1] < 1 ? ` (${lastYear}: January-${I.monthOnly(dataTo, "en")})` : ""}`), "dlEnergy"],

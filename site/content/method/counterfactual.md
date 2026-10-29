@@ -70,7 +70,7 @@ The expected level is never treated as exact. Its range comes from the models' o
 
 ### Belarus
 
-Belarus's imports from Russia (about EUR 18bn a year) are steadier than the average partner's, so they get a narrower band of their own (×0.72–1.44). Even so the range is wide enough to cross zero: its net is −3.60%<!-- n:BLR.net --> of GDP, likely −13.28%<!-- n:BLR.netLo --> to +7.34%<!-- n:BLR.netHi -->. Belarus is a party to the war and not ranked.
+Belarus's imports from Russia (about EUR 18bn a year) are steadier than the average partner's, so they get a narrower band of their own (×0.72–1.44). Even so the range is wide enough to cross zero: its net is −3.83%<!-- n:BLR.net --> of GDP, likely −13.53%<!-- n:BLR.netLo --> to +7.11%<!-- n:BLR.netHi -->. Belarus is a party to the war and not ranked.
 
 ### Trade with Ukraine
 

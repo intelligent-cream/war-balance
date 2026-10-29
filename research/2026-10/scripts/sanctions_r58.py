@@ -309,7 +309,7 @@ SOURCES = {
     ),
     "bs_gfsr_pdf": (
         "GFSR notice, directive on Russian business activities, 12 March 2022",
-        "https://www.centralbankbahamas.com/viewPDF/documents/2022-03-12-18-32-31-GFSR-Notiice---Directive-on-Russian-Business-Activities-12.3.2022-002.pdf",
+        "https://www.centralbankbahamas.com/news/press-releases/press-release-group-of-financial-services-regulators-directives-on-russian-business-activities",
         "search_extract",
         "search_extracts.json#x_bs_gfsr",
     ),
@@ -489,7 +489,7 @@ OWN = {
         "since": "2022-03-12",
         "scope": "financial sector only: directive not to deal with persons sanctioned by the US, Canada, UK, EU and others; no own designation list found",
         "basis": "Group of Financial Services Regulators directives of 12 March 2022",
-        "src": ["bs_gfsr", "bs_gfsr_pdf"],
+        "src": ["bs_gfsr"],  # round 60: the directive PDF is gone; its press release (bs_gfsr) is the one address
     },
     "SMR": {
         "since": "2022-03-15",

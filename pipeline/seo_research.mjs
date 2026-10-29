@@ -511,7 +511,7 @@ export function fuelCountry(l, F, iso, cfg, names, page) {
   return { title: R(l, "fCountryH"), html, faq };
 }
 // the CSV (the downloads): every country, year and fuel on the three bases, with the map's range and the quality
-export function fuelCsv(F) {
+export function fuelCsv(F, nameOf = iso => F.countries[iso].name) {
   const q = v => (v === null || v === undefined ? "" : String(v));
   const out = ["iso3,country,year,months,fuel,site_basis_fob_eur_bn,site_basis_low_eur_bn,site_basis_high_eur_bn,customs_cif_eur_bn,tracker_crea_eur_bn,quality"];
   for (const iso of Object.keys(F.countries).sort()) {
@@ -522,7 +522,7 @@ export function fuelCsv(F) {
       const months = x.partial_year ? x.partial_year : "January-December";
       for (const f of [...FUELS, "other", "total_site"]) {
         const s = x[f] || {}, g = x.gross_customs || {}, t = x.tracker_crea || {};
-        const name = /[",]/.test(c.name) ? `"${c.name.replace(/"/g, '""')}"` : c.name;
+        const nm = nameOf(iso), name = /[",]/.test(nm) ? `"${nm.replace(/"/g, '""')}"` : nm;
         out.push([iso, name, y, months, f === "total_site" ? "total" : f, q(s.central), q(s.low), q(s.high), q(f === "total_site" ? g.total : g[f]), q(f === "other" || f === "total_site" ? null : t[f]), x.quality].join(","));
       }
     }
@@ -616,12 +616,13 @@ ${types}
   return { title: R(l, "mTitle"), description: R(l, "mDesc"), h1: R(l, "mH1", { dataTo: o.dataTo }), intro: R(l, "mIntro", { dataTo: o.dataTo }), label: R(l, "mLabel"), body, faq, rows };
 }
 // the CSV (the downloads): every country's support by type, with Kiel's military figure, the range and the quality
-export function milCsv(M) {
+// round 60: the country's English name as the site writes it (llms-full.txt and the pages: "Türkiye", not "Turkey")
+export function milCsv(M, nameOf = iso => M.countries[iso].name) {
   const q = v => (v === null || v === undefined ? "" : String(v));
   // round 60: financial aid's share of IMF, World Bank and EBRD lending as its own column (of which)
   const out = ["iso3,country,military_eur_bn,military_low_eur_bn,military_high_eur_bn,military_record,kiel_military_eur_bn,military_pct_gdp,financial_eur_bn,financial_of_which_imf_world_bank_share_eur_bn,humanitarian_eur_bn,refugees_eur_bn,eu_share_eur_bn,other_eur_bn,flowback_eur_bn,support_total_eur_bn,basis,quality"];
   for (const iso of Object.keys(M.countries).sort()) {
-    const c = M.countries[iso], name = /[",]/.test(c.name) ? `"${c.name.replace(/"/g, '""')}"` : c.name;
+    const c = M.countries[iso], nm = nameOf(iso), name = /[",]/.test(nm) ? `"${nm.replace(/"/g, '""')}"` : nm;
     out.push([iso, name, q(c.military), q((c.military_range || [])[0]), q((c.military_range || [])[1]), milNoRecord(M, iso) ? "no record found" : "recorded", q(c.kiel_military), q(c.military_pct_gdp),
       q(c.financial), q((c.financial_parts || {}).imf_world_bank_ebrd_share), q(c.humanitarian), q(c.refugees), q(c.eu_share), q(milVal(M, iso, "other").v), q(c.flowback), q(c.total_site), c.basis, c.quality].join(","));
   }

@@ -38,7 +38,8 @@ export const MIN_GDP_RANK = 5;   // € bn, the map's ranking threshold (MIN_GDP
 export const MATERIAL = 0.001;   // a material amount: 0.1% of a year's GDP (the map's MAT)
 
 // ----- a figure, marked with what it shows: f is its format, k the model quantity (seo_check.py check_dyn) -----
-//   e €, unsigned · s € with its sign · m € with a minus only · p % of a year's GDP · ps the same, signed
+//   e €, unsigned · s € with its sign · m € with a minus only · p % of a year's GDP · ps the same, signed · pm the
+//   same with a minus only (round 60: support for Ukraine below zero)
 //   q a share (0.79 → 79%) · c a change in % (signed, whole) · n a whole count · k a rank number
 export function figText(l, f, v, gdp) {
   const sg = v >= 0 ? "+" : "−";
@@ -48,6 +49,7 @@ export function figText(l, f, v, gdp) {
     case "m": return (v < 0 ? "−" : "") + I.E(l, v);
     case "p": return I.P(l, (100 * v) / gdp);
     case "ps": return sg + I.P(l, (100 * v) / gdp);
+    case "pm": return (v < 0 && Math.abs((100 * v) / gdp) >= 0.01 ? "−" : "") + I.P(l, (100 * v) / gdp);
     case "q": return I.P(l, 100 * v);
     case "c": return sg + I.PI(l, v);
     case "n": return I.N(l, v);
@@ -334,7 +336,7 @@ function faqOf(c, x, o, F) {
   for (const p of picks) {
     let a = "";
     switch (p.id) {
-      case "gave": a = A("gave", { ua: F("e", "uaEur", x.ua), uaP: F("p", "uaEur", x.ua), uaRange: esc(c.ua.range), dataTo: esc(o.dataTo), NtCap: esc(cap(Nt)) }, { tiny: x.uaPct < 0.01 && x.ua < 0.05, eu: x.eu }); break;
+      case "gave": a = A("gave", { ua: F("m", "uaEur", x.ua), uaP: F("pm", "uaEur", x.ua), uaRange: esc(c.ua.range), dataTo: esc(o.dataTo), NtCap: esc(cap(Nt)) }, { tiny: Math.abs(x.uaPct) < 0.01 && Math.abs(x.ua) < 0.05, eu: x.eu }); break;
       case "trade": a = A("trade", { b1: F("e", "tb1", x.tb1), b0: F("e", "tb0", x.tb0), s1: x.ts1 != null ? F("e", "ts1", x.ts1) : "", y0, y1, kept: esc(c.kept) }, { sold: x.ts1 != null && x.ts1 >= 0.0005 }); break;
       case "help": a = A("help", { partyWhy: esc(c.partyWhy), netSigned: esc(c.net.signed), netWords: esc([c.net.range, c.net.chance].filter(Boolean).join(I.semi(l))), chance: esc(c.net.chanceSentence),
         keptCap: esc(cap(c.kept)), fair: esc(x.notes.fairness), armedEur: esc(I.E(l, o.armedFull || 0)) }, { party: x.party, chance: !!c.net.chanceSentence, fair: !!x.notes.fairness, armed: (o.armedFull || 0) >= 0.05 }); break;

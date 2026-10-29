@@ -77,7 +77,7 @@ Each part in a country's panel opens its own method. In short:
 | Hosting refugees | spending minus the host's gain | support | [refugees](#view=how&sec=m-aid-refugees-military-refugees) |
 | Undisclosed aid, private donations | estimates beyond Kiel | support | [aid](#view=how&sec=m-aid-refugees-military-undisclosed-aid-and-private-donations) |
 | New IMF, World Bank, EBRD lending | gift value, by shareholding | support | [loans](#view=how&sec=m-loans-new-lending-by-the-imf-and-world-bank) |
-| Extra purchases from Ukraine | Ukraine's net gain | support | [trade](#view=how&sec=m-trade) |
+| Bought more or less from Ukraine than without the war | Ukraine's net gain | support | [trade](#view=how&sec=m-trade) |
 | Flowing back (−) | seller's net gain × extra share | support | [flowback](#view=how&sec=m-aid-refugees-military-flowback) |
 | Less or more paid to Russia | Russia's net gain | trade | [trade](#view=how&sec=m-trade) |
 | War-time fuel prices | Russia's gain on the extra price | trade | [prices](#view=how&sec=m-prices-war-time-windfall) |
@@ -100,7 +100,7 @@ Labels that change no total: gas that **Russia cut off itself** (Poland, Bulgari
 Shown on the map and in the panel, added to nothing:
 
 - **Critical goods** (◆): sales to Russia of goods its weapons need; the money is already in the trade number ([marker](#view=how&sec=m-trade-goods-russias-weapons-need-the-critical-goods-marker)).
-- **Wages from Russia** (△): migrants' remittances. They are individuals' wages, not a country's choice, and would swamp the ranking: Tajikistan would be about −40% of GDP; without them it is −0.39%<!-- n:TJK.net --> ([remittances](#view=how&sec=m-trade-remittances-and-relocants)).
+- **Wages from Russia** (△): migrants' remittances. They are individuals' wages, not a country's choice, and would swamp the ranking: Tajikistan would be about −40% of GDP; without them it is −0.40%<!-- n:TJK.net --> ([remittances](#view=how&sec=m-trade-remittances-and-relocants)).
 - **Taken by Russia** (■): company assets Russia seized and forced-exit costs. Russia took them; the country did not choose to move them ([taken](#view=how&sec=m-russia-state-and-companies-taken-by-russia-not-in-the-totals)).
 
 ## One rule for every seller
@@ -151,7 +151,7 @@ Each country's payments take the gain of what it actually bought: its own mix of
 
 ## Two numbers
 
-- **Support for Ukraine**: aid, EU share, refugees, extra purchases from Ukraine, donations, new multilateral lending, minus money flowing back.
+- **Support for Ukraine**: aid, EU share, refugees, purchases from Ukraine above or below the no-war level, donations, new multilateral lending, minus money flowing back.
 - **Russia's earnings from trade**: everything else. Positive means the country cut what Russia earns; the panel says it in words ("cut Russia's earnings from trade by 1.6%"). It has two lines that add up to it: **Russia's own gain** (what Russia itself kept more or less: fuel and goods it sold, war-time prices, taxes it collected, Russian firms' profits) and **the country's own gain from Russia** (its sales, services, shipping and its firms' profits there). Both count; the split is on the [trade page](#view=how&sec=m-trade-russias-gain-and-the-countrys-own-gain).
 
 A negative support for Ukraine means the country **earned more from the war effort than it gave**, not money toward Russia; on the map such a country is grey.
@@ -166,13 +166,13 @@ The map shows changes, not gross totals, because gross totals include normal tra
 
 ## How the map shows it
 
-**One colour rule**: blue toward Ukraine, orange toward Russia, grey no clear change (or support below zero), faded where the direction is not certain. **Money streams** show the two numbers in euros, never gross trade. **What's counted** lets you switch parts off; every total, range and grade follows, and the page says "Custom mix, not the official figures".
+**One colour rule**: blue toward Ukraine, orange toward Russia, grey no clear change (or support below zero), faded where the direction is not very likely. **Money streams** show the two numbers in euros, never gross trade. **What's counted** lets you switch parts off; every total, range and grade follows, and the page says "Custom mix, not the official figures".
 
 ## Rules that apply everywhere
 
 - **Counted where used**: gas where it is burned, fuel resold by hubs at the final buyer, goods re-exported by hubs at the country that made them.
 - **Counted once**: automated checks test for double counting.
-- **Rankings** leave out economies under EUR 5bn GDP. Each headline number says how likely its direction is, from simulating its parts: **certain** at 95% or more with every method choice agreeing; otherwise ranked faded, labelled **leaning** (at least 65%), **near zero** or **uncertain**. Among 164<!-- n:WORLD.nBig --> economies above EUR 5bn, 94<!-- n:WORLD.uncNet --> are not certain on the net.
+- **Rankings** leave out economies under EUR 5bn GDP. Each headline number says how likely its direction is, from simulating its parts: **very likely** at 95% or more with every method choice agreeing and the likely range on that side; otherwise ranked faded, labelled **likely** (at least 65%), **too close to call**, **near zero** or **essentially zero** (the whole range within ±0.1% of GDP). Among 164<!-- n:WORLD.nBig --> economies above EUR 5bn, 95<!-- n:WORLD.uncNet --> are not very likely on the net.
 - **Parties to the war**, Belarus and North Korea, are listed under the ranking, not ranked. Russia invaded Ukraine from Belarus (UN resolution ES-11/1); North Korean troops fought for Russia in Kursk from late 2024.
 
 ## No data
@@ -189,7 +189,7 @@ The main choices, why they were made and what they did to the numbers when they 
 |---|---|---|
 | Compare with a world without the war, not with zero | buying as before is not a choice; buying less is money Russia did not get | every trade part is a change |
 | Forced losses of Russian supply count for neither side (strikes, Russia's sudden export bans, the 2026 Druzhba halt) | a country's figure reflects its own choices and the foreseeable answers to them | EUR 13bn of expected purchases taken out for 60 buyers (rounds 51–52) |
-| Total since 2022 as % of average 2022–2024 GDP | compares small and large economies; one bad currency year does not decide | Nigeria +0.44%<!-- n:NGA.net --> (+0.81% against 2024 GDP alone) |
+| Total since 2022 as % of average 2022–2024 GDP | compares small and large economies; one bad currency year does not decide | Nigeria +0.42%<!-- n:NGA.net --> (+0.81% against 2024 GDP alone) |
 | Trade at the seller's net gain | aid is a gift, trade an exchange | Lithuania +27.8% → +14.8%, Poland +8.1% → +4.1% (round 10) |
 | One rule for every seller, × the genuinely extra share | sales to Russia, to Ukraine and flowback on one scale | Belarus −18.5% → −5.6% (round 13) |
 | Aid from Kiel allocations, counted when delivered | the most complete database; much military aid arrives years later | US EUR 10.2bn, Germany 4.3bn not yet delivered |
@@ -206,6 +206,6 @@ The main choices, why they were made and what they did to the numbers when they 
 | Remittances only as a marker | individuals' wages, not a country's choice | Tajikistan −39.6% → −0.8% (round 13b) |
 | Frozen reserves: the return Russia lost, a third to the host | an EU decision; Belgium and Luxembourg carry the legal risk | Belgium EUR 7.4bn<!-- n:BEL.part_frozen --> |
 | No data, no number | no country is ranked on our guesses about it | 74 economies; at most 0.2 points above EUR 5bn GDP |
-| Uncertain numbers stay in the ranking, faded | hiding them hides information | 65% threshold is a judgement |
+| Numbers that are not very likely stay in the ranking, faded | hiding them hides information | 65% threshold is a judgement |
 | Belarus and North Korea are parties to the war | Russia attacked from Belarus; North Korean troops fought in Kursk | shown, not ranked |
 | No-war model uses actual 2022–2026 GDP and trade; ranges stay at the tested 90% | a war-shrunk economy is not a choice; widening every range for rare shocks blurs more than it helps | ranges cover 77–79% when Russia's own economy moves |

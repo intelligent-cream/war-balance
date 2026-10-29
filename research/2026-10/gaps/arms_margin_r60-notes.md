@@ -2,8 +2,7 @@
 
 Gathered on 2026-10-29. Output: [`arms_margin_r60.json`](arms_margin_r60.json), built by
 `scripts/arms_margin_r60.py` (`python -I ... extract <dir>`, then `build`). Extracts of the pages used are in
-`raw/arms_margin_r60/` (URL and retrieval date at the top of each). **Research only.** The pipeline does not read this
-file, and no one has reviewed it.
+`raw/arms_margin_r60/` (URL and retrieval date at the top of each). **Applied in round 60**: `apply_military_payment()` in `pipeline/build_data.py` reads `countries.<IRN|PRK>.gain_proposed`, with genuinely extra 0.9 (0.8-1.0) for these sales (the round-60 choice, the "extra_09" scenario below).
 
 ## The current method
 

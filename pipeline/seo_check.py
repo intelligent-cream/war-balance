@@ -475,14 +475,19 @@ def fig_allowed(f: str, k: str, c: dict, lang: str, ranks: dict, iso: str) -> se
         "m": lambda x: ("\u2212" if x < 0 else "") + fmt_eur(x, lang),
         "p": lambda x: fmt_pct(100 * x / gdp, lang),
         "ps": lambda x: _sg(x) + fmt_pct(100 * x / gdp, lang),
+        "pm": lambda x: ("\u2212" if x < 0 and abs(100 * x / gdp) >= 0.01 else "") + fmt_pct(100 * x / gdp, lang),
         "q": lambda x: fmt_pct(100 * x, lang),
         "n": lambda x: fmt_int(x, lang),
     }.get(f)
     if fmt is None:
         return set()
     out = {fmt(x) for x in vals}
-    if f in ("p", "ps") and k.endswith("Eur") and k[:-3] in c:  # the model's own share of GDP, too
-        out |= {(_sg(c[k[:-3]]) if f == "ps" else "") + fmt_pct(c[k[:-3]] + d, lang) for d in (-tol, 0, tol)}
+    if f in ("p", "ps", "pm") and k.endswith("Eur") and k[:-3] in c:  # the model's own share of GDP, too
+        out |= {
+            (_sg(c[k[:-3]]) if f == "ps" else "\u2212" if f == "pm" and c[k[:-3]] + d <= -0.01 else "")
+            + fmt_pct(c[k[:-3]] + d, lang)
+            for d in (-tol, 0, tol)
+        }
     return out
 
 
@@ -2143,10 +2148,13 @@ def check_research(site: Path, root: Path, cfg: dict, model: dict | None, langs:
                     out.append(f"llms-full.txt {fu}: the first buyer's customs figure is not the file's {v}")
     if mil:
         mc = site / "downloads" / "war-balance-military-split.csv"
+        # round 60: llms-full.txt and the CSV name a country as the site does ("Türkiye"); the file keeps the data's name
+        names = {x["name"]: i for i, x in mil["countries"].items()}
         if not mc.exists():
             out.append("downloads: war-balance-military-split.csv is missing")
         else:
             rows = {r["iso3"]: r for r in csv.DictReader(io.StringIO(mc.read_text().lstrip("\ufeff")))}
+            names.update({r["country"]: i for i, r in rows.items()})
             if set(rows) != set(mil["countries"]):
                 out.append("war-balance-military-split.csv: the countries are not the file's")
             for iso, x in mil["countries"].items():
@@ -2178,7 +2186,7 @@ def check_research(site: Path, root: Path, cfg: dict, model: dict | None, langs:
             for name, mv in re.findall(
                 r"(?m)^- ([^:\n]+): military aid (€[\d,.]+(?:bn|m)) \(delivered", full.read_text()
             ):
-                iso = next((i for i, x in mil["countries"].items() if x["name"] == name), None)
+                iso = names.get(name)
                 got = _research_num(mv, "eur", "en")
                 if iso is None or not got or abs(got[0] - mil["countries"][iso]["military"]) > got[1] + 1e-6:
                     out.append(f"llms-full.txt military {name}: {mv} is not the file's")

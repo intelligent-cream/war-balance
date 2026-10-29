@@ -5,8 +5,7 @@ Data file: `research/2026-10/gaps/ua_trade_sym_r60.json`. Script: `research/2026
 `research/2026-10/raw/ua_trade_sym_r60/` (not yet in `raw/MANIFEST.json`). The before/after on the site was computed
 with the site's own `calc()` on `site/data.json` of 2026-10-29 (scratchpad `r60/ba.mjs`, then `merge`).
 
-**Nothing here is read by the build, and no number on the site changes.** This is a design for the owner's decision
-of round 60, with the numbers it would give.
+**Applied in round 60** (owner: "Yes, we should definitely count buying less from Ukraine … just like Russia"): `ua_supply_share()` in `pipeline/build_data.py` reads `mix_2021` and `ukraine_export_ratio_vs_2021_eur` from this file, and `calc()` counts the part with its sign. Central: the share rule against all of Ukraine's exports; the route variant is the method-band alternative `ua_route`; Belarus counted. When written, this was a design for the owner's decision, with the numbers it would give.
 
 ## Summary
 
