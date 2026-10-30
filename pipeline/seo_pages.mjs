@@ -289,8 +289,9 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   // round 63: a page kept out of the index (noindex: a thin comparison, a territory without data of its own) is written and
   // reachable, but not in the sitemaps and without hreflang
   async function put(path, html, alternates = [], images = [], { noindex = false } = {}) {
-    const hash = createHash("sha256").update(html).digest("hex").slice(0, 16);
-    const prev = state[path], date = prev && prev[0] === hash ? prev[1] : today;
+    // round 65 (SEO audit, fix 1): the hash of what the page says (seo_templates.mjs pageContent: title, description and
+    // the text of <main>), not of its template, fonts or scripts, so only a real change of content moves its date
+    const hash = T.contentHash(html), date = T.lastmodOf(state[path], hash, today);
     newState[path] = [hash, date];
     const file = join(site, path.replace(/^\//, ""), path.endsWith("/") ? "index.html" : "");
     await mkdir(dirname(file), { recursive: true });
@@ -807,8 +808,11 @@ ${foot(l)}`;
   for (const e of COMPARES) {
     const path = pathOf(e), alts = e.index ? famAlts(path) : [];
     for (const l of T.LANGS) {
-      const a = LANG_DATA[l][e.a], b = LANG_DATA[l][e.b], A = nameL(e.a, l), B = nameL(e.b, l), copy = I.compareCopy(l, { A, B });
+      const a = LANG_DATA[l][e.a], b = LANG_DATA[l][e.b], A = nameL(e.a, l), B = nameL(e.b, l);
       const ok = c => c.net && !c.noData && !c.mostlyNoData;
+      // round 65 (SEO audit, fix 2): both headline nets in the description, with the map's direction words for each
+      const head = c => (ok(c) && c.fig && c.fig.cN ? { netP: I.P(l, c.fig.netPct), dir: c.fig.cN.dirWords || c.fig.cN.sideWords || "" } : null);
+      const copy = I.compareCopy(l, { A, B, a: head(a), b: head(b) });
       const lines = [a, b].filter(ok).map(c => `${c.name}: ${c.net.pre} ${c.net.big}${c.net.post ? " " + c.net.post : ""} ${T.L(l, "ofGdp")} (${[c.net.range, c.net.chance].filter(Boolean).join(I.semi(l))}).`);
       let line = "";
       if (ok(a) && ok(b) && !a.party && !b.party) {
@@ -1076,6 +1080,13 @@ ${foot(l)}`;
   // round 58: the guide for automated readers, linked from the map's head
   if (!idx.includes('href="/llms.txt"')) idx = idx.replace(/(<link rel="canonical" href="[^"]*">)/, '$1\n<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">');
   idx = idx.replace(/<!-- az:start -->[\s\S]*?<!-- az:end -->/, azBlock("en")).replace(/"dateModified": "[\d-]+"/, `"dateModified": "${data.generated}"`);
+  // round 65 (SEO audit, fix 4): the Dataset's downloads, the files this build wrote (data.json and every CSV file in
+  // /downloads/), each with its format and address; written in the map's JSON-LD style ("key": value)
+  const ldStr = o => (Array.isArray(o) ? `[${o.map(ldStr).join(", ")}]` : o && typeof o === "object" ? `{${Object.entries(o).map(([k, x]) => `${JSON.stringify(k)}: ${ldStr(x)}`).join(", ")}}` : JSON.stringify(o));
+  const dist = [{ "@type": "DataDownload", encodingFormat: "application/json", contentUrl: abs("data.json"), name: "Full data (JSON)" },
+    ...DL.filter(([f]) => f.endsWith(".csv")).map(([f]) => ({ "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: abs("downloads/" + f), name: f }))];
+  if (!/"distribution": \[[^\]]*\]/.test(idx)) throw new Error("index.html: the Dataset's distribution was not found");
+  idx = idx.replace(/"distribution": \[[^\]]*\]/, () => `"distribution": ${ldStr(dist).replace(/</g, "\\u003c")}`);
   await writeFile(idxPath, idx);
   const homeAlts = T.LANGS.map(l => [l, l === "en" ? U : U + l + "/"]).concat([["x-default", U]]);
   written.push({ path: "/", alternates: homeAlts, lastmod: null });
@@ -1098,9 +1109,10 @@ ${foot(l)}`;
     await writeFile(join(site, l, "index.html"), x);
     written.push({ path: "/" + l + "/", alternates: homeAlts, lastmod: null });
   }
-  // the home pages' lastmod: when the map's own text or the A–Z list changed (a hash of index.html), else kept
+  // the home pages' lastmod: when the map's own text or the A–Z list changed (round 65: the hash of what index.html
+  // says, seo_templates.mjs pageContent, not of its scripts, fonts or head), else kept
   {
-    const hash = createHash("sha256").update(idx).digest("hex").slice(0, 16), prev = state["/"], date = prev && prev[0] === hash ? prev[1] : today;
+    const hash = T.contentHash(idx), date = T.lastmodOf(state["/"], hash, today);
     for (const w of written.filter(w => w.lastmod === null)) { w.lastmod = date; newState[w.path] = [hash, date]; }
   }
 

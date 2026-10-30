@@ -231,7 +231,10 @@ export async function extractSite({ lang, isos }) {
     words: { leanU: t("Leaning toward Ukraine"), leanR: t("Leaning toward Russia"), near: t("near zero"), zero: t("essentially zero"), unc: t("too close to call"), party: t("Party to the war"),
       // round 57: the level words of a table cell ("very likely · 97%", "likely toward Russia · 80%"), without the figures,
       // so a page's sentences take every chance word from the map (the wording guard, seo_check.py)
-      sure: t("very likely · {p}", { p: "" }).replace(/\s*·\s*$/, ""), lean: t("likely {side} · {p}", { side: "", p: "" }).replace(/\s*·\s*$/, "").trim() },
+      sure: t("very likely · {p}", { p: "" }).replace(/\s*·\s*$/, ""), lean: t("likely {side} · {p}", { side: "", p: "" }).replace(/\s*·\s*$/, "").trim(),
+      // round 65 (SEO audit, fix 3b): a chance too close to call, in words a snippet cannot misread as a share of the
+      // money ("slightly more likely toward Russia (56% chance)"); its side and chance filled in per country
+      uncLean: t("slightly more likely {side} ({p} chance)", { side: "{side}", p: "{p}" }) },
     // the chance levels explained, in the map's words (index.html CHANCE_KEY), for the ranking pages
     chanceKey: typeof CHANCE_KEY === "function" ? CHANCE_KEY() : "",
     // round 57b: every source as the panel lists it (its name in this language, its key document's link, its tier:
