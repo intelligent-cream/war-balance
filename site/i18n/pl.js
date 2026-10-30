@@ -1184,6 +1184,7 @@ I18N.pl = {
   "Too close to call": "Zbyt blisko, by rozstrzygnąć",
   "too close to call": "zbyt blisko, by rozstrzygnąć",
   "too close to call · {p} {side}": "zbyt blisko · {p} {side}",
+  "slightly more likely {side} ({p} chance)": "nieco bardziej prawdopodobne {side} (szansa {p})",
   "essentially zero": "praktycznie zero",
   "Very likely, likely, too close to call": "Bardzo prawdopodobne, prawdopodobne, zbyt blisko",
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Too close to call: below that. Near zero: within ±0.5% of GDP. Essentially zero: under 0.1% of GDP and not certain.": "Bardzo prawdopodobne: co najmniej 95% i każdy inny wybór metody się zgadza. Prawdopodobne (skłania się): co najmniej 65%. Zbyt blisko, by rozstrzygnąć: poniżej. Blisko zera: w granicach ±0,5% PKB. Praktycznie zero: poniżej 0,1% PKB i niepewne.",

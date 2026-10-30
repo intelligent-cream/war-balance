@@ -1184,6 +1184,7 @@ I18N.fr = {
   "Too close to call": "Trop serré pour trancher",
   "too close to call": "trop serré pour trancher",
   "too close to call · {p} {side}": "trop serré · {p} {side}",
+  "slightly more likely {side} ({p} chance)": "légèrement plus probable {side} ({p} de probabilité)",
   "essentially zero": "quasi nul",
   "Very likely, likely, too close to call": "Très probable, probable, trop serré",
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Too close to call: below that. Near zero: within ±0.5% of GDP. Essentially zero: under 0.1% of GDP and not certain.": "Très probable : au moins 95 % et chaque autre choix de méthode concorde. Probable (penche) : au moins 65 %. Trop serré pour trancher : en dessous. Proche de zéro : à ±0,5 % du PIB. Quasi nul : moins de 0,1 % du PIB et pas certain.",

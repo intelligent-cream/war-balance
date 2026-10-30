@@ -1184,6 +1184,7 @@ I18N.nl = {
   "Too close to call": "Te krap om te zeggen",
   "too close to call": "te krap om te zeggen",
   "too close to call · {p} {side}": "te krap · {p} {side}",
+  "slightly more likely {side} ({p} chance)": "iets waarschijnlijker {side} (kans {p})",
   "essentially zero": "vrijwel nul",
   "Very likely, likely, too close to call": "Zeer waarschijnlijk, waarschijnlijk, te krap",
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Too close to call: below that. Near zero: within ±0.5% of GDP. Essentially zero: under 0.1% of GDP and not certain.": "Zeer waarschijnlijk: minstens 95% kans en elke andere methodekeuze is het ermee eens. Waarschijnlijk (neigend): minstens 65%. Te krap om te zeggen: daaronder. Bijna nul: binnen ±0,5% van het bbp. Vrijwel nul: minder dan 0,1% van het bbp en niet zeker.",
