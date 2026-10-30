@@ -90,6 +90,13 @@ footer{border-top:1px solid var(--line);padding:18px 16px 30px;font-size:14px;co
 .doc .cl-date{font:400 14px var(--fb);color:var(--soft);margin-left:6px}
 .az{columns:2 12em;column-gap:20px;font-size:15px;padding:0;list-style:none}.az li{break-inside:avoid;padding:1px 0}`;
 
+// round 64 (SEO audit, fix 8a): the fonts are self-hosted (site/fonts/: the woff2 files Google Fonts served, their
+// @font-face rules in fonts.css with font-display: swap, and their OFL licences), not a render-blocking stylesheet from
+// Google: the rules go into pages.css and the map's head (between <!-- fonts:start --> and <!-- fonts:end -->), and the
+// body font's Latin file is preloaded
+export const FONT_PRELOAD = '<link rel="preload" href="/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>';
+export const fontCss = async site => (await readFile(join(site, "fonts", "fonts.css"), "utf8")).replace(/^\/\*[\s\S]*?\*\/\n?/, "").trim();
+export const fontBlock = css => `<!-- fonts:start -->\n${FONT_PRELOAD}\n<style>${css}</style>\n<!-- fonts:end -->`;
 // round 56: the look is one shared file (pages.css, written with the pages; ?v= its hash), so each page carries only its words
 let CSS_HREF = "/pages.css";
 // round 58: every page's cite line ("War Balance, figures to August 2026, <its address>"), set by writeSeoPages with the
@@ -128,8 +135,7 @@ ${alternates.filter(([l]) => l !== lang && T.OG_LOCALE[l]).map(([l]) => `<meta p
 <meta name="twitter:image:alt" content="${esc(imageAlt)}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#14213d">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Sans+3:wght@400;600;700&display=swap">
+${FONT_PRELOAD}
 <link rel="stylesheet" href="${CSS_HREF}">${css ? `\n<style>${css}</style>` : ""}
 ${ld.map(jsonld).join("\n")}
 ${CF_BEACON}
@@ -162,6 +168,8 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const FUEL = await readRes(RCFG.fuel), MIL = await readRes(RCFG.military), DEF = await readRes(RCFG.deficit);
   // the research entry whose file has the budget's balance by year (seo_families.json research.revenue.balance)
   const BAL = RCFG.revenue && RCFG.revenue.balance ? await readRes(RCFG[RCFG.revenue.balance]) : null;
+  // round 64 (SEO audit, fix 7): governments' own published totals, for the country pages (seo_country.mjs officialText)
+  const OFFICIAL = await readRes({ file: "research/2026-10/seo/official_totals_r64.json" });
   if (RCFG.revenue && RCFG.revenue.balance && !(BAL && Array.isArray(BAL.yearly))) throw new Error(`seo_families.json research.revenue.balance: ${RCFG.revenue.balance} has no balance by year`);
   const RPAGES = [RCFG.sanctions, RCFG.revenue, RCFG.military].filter(x => x && x.slug);
   const RPAGE = [SANC && RCFG.sanctions && { key: "sanctions", cfg: RCFG.sanctions, path: "/" + RCFG.sanctions.slug + "/" }, REV && RCFG.revenue && { key: "revenue", cfg: RCFG.revenue, path: "/" + RCFG.revenue.slug + "/" },
@@ -271,6 +279,8 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     // round 59b: the fuel, military and budget balance tables (a range or a label beneath a figure)
     "\ntable.fuel td,table.mil td{font-size:14px}td.n .s{display:block;font-size:12.5px;line-height:1.35;color:var(--soft);white-space:normal;font-weight:400}table.fuel td:nth-child(2),table.mil td:nth-child(2){min-width:7em}";
   allCss += G.FIGURE_CSS;
+  const FONT_CSS = await fontCss(site);
+  allCss = FONT_CSS + "\n" + allCss;
   await writeFile(join(site, "pages.css"), allCss + "\n");
   CSS_HREF = "/pages.css?v=" + createHash("sha256").update(allCss).digest("hex").slice(0, 8);
 
@@ -489,7 +499,7 @@ ${ps.length ? `<h3>${esc(I.s(l, "partsRanked"))}</h3>${relList(l, ps)}` : ""}
       const milB = MIL ? RS.milCountry(l, MIL, c0.iso, names0, lp(l, "/" + RCFG.military.slug + "/")) : null;
       const dyn = countryDyn(c, { l, words: WORDS[l], dw: DYNW[l], srcs: SRCS[l], L: k => T.L(l, k), dataTo: dataToL[l], month: monthOnlyL(l), tradeYears: [data.years[0], data.years[4]],
         peers: { ...pr, groups: pr.groups.map(g => ({ slug: g.e.slug, label: labelOf(g.e, l), n: g.n, of: g.of })) }, row: iso => rowL(l, iso), home: home(l), fuelDefault,
-        demand: c0.demand, eu: EU27.has(c0.iso), armedFull: c0.armedFull, relations: (FAM.country || {}).relations, armed: armedItemsOf(c0.iso), regime, stock, ask: copy.ask, fuel: fuelB, mil: milB });
+        demand: c0.demand, eu: EU27.has(c0.iso), armedFull: c0.armedFull, relations: (FAM.country || {}).relations, armed: armedItemsOf(c0.iso), regime, stock, ask: copy.ask, fuel: fuelB, mil: milB, official: OFFICIAL && OFFICIAL.countries[c0.iso] });
       const faq = dyn.faq;
       const url = abs(cPath(c0, l));
       const crumbItems = [[T.L(l, "map"), home(l)], [T.L(l, "ranking"), lp(l, "/ranking/")], [c.name, cPath(c0, l)]];
@@ -1055,6 +1065,14 @@ ${foot(l)}`;
   // round 63: the ranking, the support and the trade page in the language first
   const topicsBlock = l => `<!-- topics:start -->\n        <nav id="topics" aria-label="Topics" data-i18n-aria="Topics">\n${[[lp(l, "/ranking/"), T.L(l, "ranking")], [lp(l, "/support-for-ukraine/"), T.L(l, "supportPage")], [lp(l, "/trade-with-russia/"), T.L(l, "tradePage")]].map(([h, t]) => `          <a href="${h}">${esc(t)}</a>\n`).join("")}${TOPICS.map(e => `          <a href="${lp(l, pathOf(e))}">${esc(labelOf(e, l))}</a>`).concat(RPAGE.map(x => `          <a href="${lp(l, x.path)}">${esc(rLabel(x, l))}</a>`)).join("\n")}\n          <a href="${lp(l, "/topics/")}"><b>${esc(I.s(l, "allTopics"))} →</b></a>\n        </nav>\n<!-- topics:end -->`;
   idx = idx.replace(/<!-- topics:start -->[\s\S]*?<!-- topics:end -->/, topicsBlock("en"));
+  // round 64 (SEO audit, fix 8b): the map's code is site/app.js (cached, deferred); its address names its hash, so a
+  // changed file is fetched again
+  const appHash = createHash("sha256").update(await readFile(join(site, "app.js"))).digest("hex").slice(0, 8);
+  if (!/<script src="app\.js\?v=\w*" defer><\/script>/.test(idx)) throw new Error("index.html: the app.js script was not found");
+  idx = idx.replace(/<script src="app\.js\?v=\w*" defer><\/script>/, `<script src="app.js?v=${appHash}" defer></script>`);
+  // round 64: the self-hosted fonts' rules in the map's head, from site/fonts/fonts.css
+  if (!/<!-- fonts:start -->[\s\S]*?<!-- fonts:end -->/.test(idx)) throw new Error("index.html: the fonts block was not found");
+  idx = idx.replace(/<!-- fonts:start -->[\s\S]*?<!-- fonts:end -->/, () => fontBlock(FONT_CSS));
   // round 58: the guide for automated readers, linked from the map's head
   if (!idx.includes('href="/llms.txt"')) idx = idx.replace(/(<link rel="canonical" href="[^"]*">)/, '$1\n<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">');
   idx = idx.replace(/<!-- az:start -->[\s\S]*?<!-- az:end -->/, azBlock("en")).replace(/"dateModified": "[\d-]+"/, `"dateModified": "${data.generated}"`);
@@ -1063,7 +1081,8 @@ ${foot(l)}`;
   written.push({ path: "/", alternates: homeAlts, lastmod: null });
   for (const l of NL) {
     const h = T.homeCopy(l, facts.n, dataToL[l]);
-    let x = idx.replace('<html lang="en">', `<html lang="${l}" data-lang="${l}">`).replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<base href="/">')
+    let x = staticI18n(idx, await mapDict(site, l));
+    x = x.replace('<html lang="en">', `<html lang="${l}" data-lang="${l}">`).replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<base href="/">')
       .replace(/<title>[^<]*<\/title>/, `<title>${esc(h.title)}</title>`)
       .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${esc(h.description)}">`)
       .replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${esc(h.title)}">`).replace(/<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${esc(h.title)}">`)
@@ -1072,8 +1091,9 @@ ${foot(l)}`;
       .replace(`<meta property="og:locale" content="en_GB">`, `<meta property="og:locale" content="${T.OG_LOCALE[l]}">`).replace(`<meta property="og:locale:alternate" content="${T.OG_LOCALE[l]}">`, `<meta property="og:locale:alternate" content="en_GB">`)
       .replace(/<!-- az:start -->[\s\S]*?<!-- az:end -->/, azBlock(l)).replace(/<!-- topics:start -->[\s\S]*?<!-- topics:end -->/, topicsBlock(l))
       // a link to a place on this page ("#view=how") stays on /de/ (the <base> would send it to /)
-      .replace("</body>", `<script>document.addEventListener("click", e => { const a = e.target.closest && e.target.closest('a[href^="#"]'); if (a && !e.defaultPrevented && !e.ctrlKey && !e.metaKey) { e.preventDefault(); location.hash = a.getAttribute("href"); } });</script>\n</body>`);
-    if (!x.includes("</body>")) x += `<script>document.addEventListener("click", e => { const a = e.target.closest && e.target.closest('a[href^="#"]'); if (a && !e.defaultPrevented && !e.ctrlKey && !e.metaKey) { e.preventDefault(); location.hash = a.getAttribute("href"); } });</script>\n`;
+      // (round 64: registered once the deferred scripts have run, after the map's own click handlers, as before)
+      .replace("</body>", `<script>document.addEventListener("DOMContentLoaded", () => document.addEventListener("click", e => { const a = e.target.closest && e.target.closest('a[href^="#"]'); if (a && !e.defaultPrevented && !e.ctrlKey && !e.metaKey) { e.preventDefault(); location.hash = a.getAttribute("href"); } }));</script>\n</body>`);
+    if (!x.includes("</body>")) x += `<script>document.addEventListener("DOMContentLoaded", () => document.addEventListener("click", e => { const a = e.target.closest && e.target.closest('a[href^="#"]'); if (a && !e.defaultPrevented && !e.ctrlKey && !e.metaKey) { e.preventDefault(); location.hash = a.getAttribute("href"); } }));</script>\n`;
     await mkdir(join(site, l), { recursive: true });
     await writeFile(join(site, l, "index.html"), x);
     written.push({ path: "/" + l + "/", alternates: homeAlts, lastmod: null });
@@ -1115,6 +1135,33 @@ ${foot(l)}`;
     `${count(/\/country\//)} country pages, ${count(/\/compare\//)} comparisons (${written.filter(w => /\/compare\//.test(w.path) && !w.noindex).length} indexed), ${PARTS.length} parts, ${YEARS.length} years and ${TOPICS.length} topics in ${T.LANGS.length} languages; ` +
     `${changed.length} new or changed since pipeline/seo_lastmod.json; ${secs(Date.now() - t0)} (reading the map ${secs(tExtract)}, countries ${secs(tCountries)}, families ${secs(tFamilies)}, images ${secs(tImages)})`);
   return { pages: written.length, changed, parts: PARTS.map(e => e.slug), compares: COMPARES.map(e => e.slug) };
+}
+
+// round 64 (SEO audit, fix 5): the map's static text (data-i18n, data-i18n-aria, -title, -ph: the H1, the tabs, the map
+// controls, the Filters drawer, "All countries, A to Z") written in the page's language at build time, from the map's own
+// dictionary (site/i18n/<lang>.js), so it is right before any script runs; applyStatic() (i18n.js) then sets the same words
+export async function mapDict(site, l) {
+  const { runInNewContext } = await import("node:vm");
+  const box = { I18N: {} };
+  runInNewContext(await readFile(join(site, "i18n", l + ".js"), "utf8"), box);
+  return box.I18N[l] || {};
+}
+const unesc = s => s.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+export function staticI18n(html, dict) {
+  const tr = k => esc(dict[unesc(k)] ?? unesc(k));
+  // only the page's markup: from the app's first element to the first script after it (the scripts build their own text)
+  const a = html.indexOf('<div class="app"'), b = html.indexOf("<script", a);
+  if (a < 0 || b < 0) throw new Error("index.html: the map's markup was not found");
+  const attr = (tag, data, name) => {
+    const m = tag.match(new RegExp(`\\s${data}="([^"]*)"`));
+    if (!m) return tag;
+    const v = tr(m[1]), re = new RegExp(`(\\s${name}=")[^"]*(")`);
+    return re.test(tag) ? tag.replace(re, `$1${v}$2`) : tag.replace(/\s*>$/, ` ${name}="${v}">`);
+  };
+  const mid = html.slice(a, b)
+    .replace(/<[a-zA-Z][^>]*>/g, tag => attr(attr(attr(tag, "data-i18n-aria", "aria-label"), "data-i18n-title", "title"), "data-i18n-ph", "placeholder"))
+    .replace(/(<[a-zA-Z][^>]*\sdata-i18n="([^"]*)"[^>]*>)([^<]*)(?=<\/)/g, (m, open, k) => open + tr(k));
+  return html.slice(0, a) + mid + html.slice(b);
 }
 
 // on its own: node pipeline/seo_pages.mjs (serves site/, opens the map in Chromium, writes the pages)

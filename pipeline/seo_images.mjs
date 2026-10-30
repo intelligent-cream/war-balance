@@ -13,7 +13,7 @@
 // git, like site/share/) at an address that stays the same from one deploy to the next (seo_i18n.mjs IMG_FILE).
 // The models (rankChart, countryChart) and the HTML (chartHtml) are pure: pipeline/test_seo.mjs tests them.
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import * as I from "./seo_i18n.mjs";
 
@@ -23,7 +23,13 @@ const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").re
 // hue where the direction is not certain, grey for no clear direction
 export const TONE = { ua: "#2a6fb0", uaF: "#7fa7cf", ru: "#d4601a", ruF: "#e6a274", grey: "#8795a0" };
 const PART_TONE = ["#1d5689", "#2a6fb0", "#6c9fd0", "#b9c7d4"];
-const FONTS = "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Sans+3:wght@400;600;700&display=block";
+// round 64: the site's own fonts (site/fonts/fonts.css and its woff2 files, inlined, font-display: block), not Google's
+const FONTS = "<!-- fonts -->";
+const fontStyle = async site => {
+  const css = await readFile(join(site, "fonts", "fonts.css"), "utf8"), files = [...new Set([...css.matchAll(/url\(\/fonts\/([\w.-]+)\)/g)].map(m => m[1]))];
+  const data = Object.fromEntries(await Promise.all(files.map(async f => [f, (await readFile(join(site, "fonts", f))).toString("base64")])));
+  return `<style>${css.replace(/url\(\/fonts\/([\w.-]+)\)/g, (m, f) => `url(data:font/woff2;base64,${data[f]})`).replace(/font-display:swap/g, "font-display:block")}</style>`;
+};
 
 // an image's address: /img/<name>.webp in English, /img/<lang>/<name>.webp in the other languages
 export const imgPath = (l, key, slug = "") => `/img/${l === "en" ? "" : l + "/"}${I.IMG_FILE[l][key].replace("{slug}", slug)}.webp`;
@@ -104,7 +110,7 @@ h1{margin-top:12px;font:800 31px/1.08 Archivo,"Helvetica Neue",Arial,sans-serif;
 .blk{margin:9px 0}
 .ft{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-top:8px;font-size:14.5px;color:#55636e;line-height:1.3}
 .ft .leg{display:flex;flex-wrap:wrap;gap:2px 14px}.ft .leg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}.ft .src{text-align:right;white-space:nowrap}`;
-export const PAGE_HTML = `<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="${FONTS}"><style>${CSS}</style></head><body><div id="c"></div></body></html>`;
+export const PAGE_HTML = `<!doctype html><html><head><meta charset="utf-8">${FONTS}<style>${CSS}</style></head><body><div id="c"></div></body></html>`;
 
 // a figure's text colour: its side's darker shade (readable on the light background), grey without a direction
 const inkOf = tone => (tone === "grey" ? "#55636e" : /^ru/.test(tone) ? "#b4500f" : "#1f5a94");
@@ -177,6 +183,7 @@ export const imageObject = (img, abs, extra = {}) => ({ "@type": "ImageObject", 
 // jobs: [{ path, model }]; site: the site folder; browser: Playwright's browser (its type launches the others)
 export async function renderImages(browser, jobs, { site, host, workers = 4, quality = 85, log = () => {} }) {
   const t0 = Date.now();
+  const pageHtml = PAGE_HTML.replace(FONTS, await fontStyle(site));
   const dirs = new Set(jobs.map(j => dirname(join(site, j.path))));
   for (const d of dirs) await mkdir(d, { recursive: true });
   const n = Math.max(1, Math.min(workers, Math.ceil(jobs.length / 50)));
@@ -186,7 +193,7 @@ export async function renderImages(browser, jobs, { site, host, workers = 4, qua
   const work = async b => {
     const ctx = await b.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 1, colorScheme: "light" });
     const page = await ctx.newPage();
-    await page.setContent(PAGE_HTML, { waitUntil: "networkidle" });
+    await page.setContent(pageHtml, { waitUntil: "networkidle" });
     const cdp = await ctx.newCDPSession(page);
     while (next < jobs.length) {
       const j = jobs[next++];

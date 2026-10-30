@@ -119,7 +119,7 @@ test("titles fit in 60 characters and descriptions in 155, for every category an
 });
 
 test("the country slugs are unique and plain", () => {
-  const html = readFileSync(join(HERE, "..", "site", "index.html"), "utf8");
+  const html = readFileSync(join(HERE, "..", "site", "app.js"), "utf8");   // round 64: the map's code, moved out of index.html
   const code = html.match(/^const SLUG_FIX = .*$/m)[0] + "\n" + html.match(/^const countrySlug = [\s\S]*?;\n/m)[0];
   const countrySlug = new Function(code + "; return countrySlug;")();
   const D = JSON.parse(readFileSync(join(HERE, "..", "site", "data.json"), "utf8"));
@@ -424,6 +424,29 @@ test("the country page's phrases: every language, the same placeholders, no mark
     assert.ok(r.faq.length >= 4 && r.sections.length >= 4, l);
     assert.ok(!/\{\w|undefined|NaN/.test(JSON.stringify(r)), l);
   }
+});
+
+// ----- round 64 (SEO audit, fix 7): a government's own total, from the research file, in every language -----
+test("round 64: the government's own total: its figures, what it covers, the map's figure and the source", () => {
+  const OFF = JSON.parse(readFileSync(join(HERE, "..", "research", "2026-10", "seo", "official_totals_r64.json"), "utf8")).countries;
+  for (const [iso, r] of Object.entries(OFF)) {
+    assert.ok(/^https:\/\//.test(r.source_url) && r.as_of && r.figures.length && r.figures.every(f => f.value > 0 && f.basis && f.covers && f.quote), iso);
+    for (const l of I.LANGS) assert.ok(r.publisher[l], iso + " " + l);
+  }
+  const de = OFF.DEU;
+  const en = SC.countryDyn(mkC(), OPT({ official: de, eu: true }));
+  const sec = en.sections.find(x => x.id === "official"), q = en.faq.find(x => x.id === "official");
+  assert.ok(sec && q, "a section and a question");
+  assert.match(sec.html, /Germany's federal government reports over €43\.3bn in bilateral civil support and about €57\.6bn in military support, as of 30 June 2026\./);
+  assert.match(sec.html, /leaves out its share of EU aid/);
+  assert.match(sec.html, /<span data-f="e" data-k="uaEur">/);
+  assert.ok(sec.html.includes(de.source_url));
+  for (const l of I.LANGS) {
+    const r = SC.countryDyn(mkC(), OPT({ l, official: de, eu: true }));
+    assert.ok(r.sections.some(x => x.id === "official") && !/\{\w|undefined|NaN/.test(JSON.stringify(r)), l);
+  }
+  // no official figure, or no support to compare: nothing
+  assert.ok(!SC.countryDyn(mkC(), OPT()).sections.some(x => x.id === "official"));
 });
 
 // ----- round 58: explainers and search wording; the Markdown versions -----

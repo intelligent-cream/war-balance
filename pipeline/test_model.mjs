@@ -14,7 +14,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const HERE = dirname(fileURLToPath(import.meta.url)), SITE = join(HERE, "..", "site");
-const html = readFileSync(join(SITE, "index.html"), "utf8");
+const html = readFileSync(join(SITE, "app.js"), "utf8");   // round 64: the map's code, moved out of index.html
 const code = html.slice(html.indexOf("// ===== Model ====="), html.indexOf("function lensValue")).replace(/^let YEARS.*$/m, "").replace(/^let DATA.*$/m, "");
 const D = JSON.parse(readFileSync(join(SITE, "data.json"), "utf8"));
 const det = JSON.parse(readFileSync(join(SITE, "detail.json"), "utf8"));

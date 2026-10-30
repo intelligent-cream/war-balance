@@ -997,6 +997,8 @@ const DYN = {
     qHub: "Does {Nt} help Russia get around sanctions?", aHub: "{hub}{if:chpl| {chpl}|}",
     qSanctions: "Did {Nt} cut trade with Russia because of sanctions?", aSanctions: "{sanction}{if:exempt| {exempt}|}",
     qNodata: "Why is there no number for {Nt}?", aNodata: "{text}",
+    // round 64 (SEO audit, fix 7): the government's own total, where research/2026-10/seo/official_totals_r64.json has it
+    tOfficial: "Why the government's own figure differs", qOfficial: "Why does {Nt}'s government give a different figure for its support to Ukraine?", offLead: "{src} reports {list}, as of {asOf}.", offCivil: "{v} in bilateral civil support", offMil: "{v} in military support", offNonmil: "{v} in non-military commitments", offOver: "over {v}", offAbout: "about {v}", offUpTo: "up to {v}", offAnd: "{a} and {b}", offForward: "Its military figure counts funds set aside for later years as well as what was delivered.", offFace: "It counts loans and guarantees at their face value.", offNoEu: "It leaves out its share of EU aid.", offRefFed: "Of the cost of hosting refugees it counts what the federal government paid, not the spending of states and municipalities.", offCommitted: "These are commitments, not a count of deliveries.", offOurs: "War Balance counts support delivered from 2022 to {dataTo}, valued as described in the method: weapons at market value when delivered, loans at their gift value{if:eu|, its share of EU aid|} and the cost of hosting refugees, minus money flowing back. For {Nt} that comes to {ua}.", offSource: "Source: {link}.",
   },
   de: {
     tDecide: "Was diese Zahl entscheidet", tTrade: "Handel mit Russland: vorher und nachher", tSanctions: "Sanktionen, Russlands eigene Lieferstopps oder eine Entscheidung",
@@ -1049,6 +1051,8 @@ const DYN = {
     qHub: "{N}: Hilft das Land Russland, Sanktionen zu umgehen?", aHub: "{hub}{if:chpl| {chpl}|}",
     qSanctions: "{N}: Wurde der Handel mit Russland wegen Sanktionen gekürzt?", aSanctions: "{sanction}{if:exempt| {exempt}|}",
     qNodata: "{N}: Warum gibt es keine Zahl?", aNodata: "{text}",
+    // round 64 (SEO audit, fix 7): the government's own total, where research/2026-10/seo/official_totals_r64.json has it
+    tOfficial: "Warum die Zahl der Regierung abweicht", qOfficial: "{N}: Warum nennt die Regierung eine andere Summe für die Unterstützung der Ukraine?", offLead: "{src} nennt {list}, Stand {asOf}.", offCivil: "{v} bilaterale zivile Unterstützung", offMil: "{v} militärische Unterstützung", offNonmil: "{v} nichtmilitärische Zusagen", offOver: "über {v}", offAbout: "rund {v}", offUpTo: "bis zu {v}", offAnd: "{a} und {b}", offForward: "Die Militärsumme enthält neben Geleistetem auch Mittel, die für die kommenden Jahre eingeplant sind.", offFace: "Kredite und Garantien zählen darin zum Nennwert.", offNoEu: "Der Anteil an der EU-Hilfe ist nicht enthalten.", offRefFed: "Von den Kosten der Aufnahme Geflüchteter ist enthalten, was der Bund zahlte, nicht aber die Ausgaben der Länder und Kommunen.", offCommitted: "Es sind Zusagen, keine Zählung des Gelieferten.", offOurs: "War Balance zählt die von 2022 bis {dataTo} geleistete Unterstützung, bewertet wie in der Methode beschrieben: Waffen zum Marktwert bei Lieferung, Kredite mit ihrem Geschenkwert{if:eu|, den Anteil an der EU-Hilfe|} und die Kosten der Aufnahme Geflüchteter, abzüglich zurückfließenden Geldes. Für {Nt} sind das {ua}.", offSource: "Quelle: {link}.",
   },
   fr: {
     tDecide: "Ce qui décide ce chiffre", tTrade: "Commerce avec la Russie, avant et après", tSanctions: "Sanctions, coupures décidées par la Russie, ou choix",
@@ -1101,6 +1105,8 @@ const DYN = {
     qHub: "{N} : ce pays aide-t-il la Russie à contourner les sanctions ?", aHub: "{hub}{if:chpl| {chpl}|}",
     qSanctions: "{N} : le commerce avec la Russie a-t-il reculé à cause des sanctions ?", aSanctions: "{sanction}{if:exempt| {exempt}|}",
     qNodata: "{N} : pourquoi n'y a-t-il pas de chiffre ?", aNodata: "{text}",
+    // round 64 (SEO audit, fix 7): the government's own total, where research/2026-10/seo/official_totals_r64.json has it
+    tOfficial: "Pourquoi le chiffre du gouvernement diffère", qOfficial: "{N} : pourquoi le gouvernement donne-t-il un autre total pour son soutien à l'Ukraine ?", offLead: "{src} indique {list} (situation : {asOf}).", offCivil: "{v} de soutien civil bilatéral", offMil: "{v} de soutien militaire", offNonmil: "{v} d'engagements non militaires", offOver: "plus de {v}", offAbout: "environ {v}", offUpTo: "jusqu'à {v}", offAnd: "{a} et {b}", offForward: "Son chiffre militaire compte, outre ce qui a été livré, des fonds prévus pour les années à venir.", offFace: "Il compte les prêts et les garanties à leur valeur nominale.", offNoEu: "Il ne compte pas sa part de l'aide de l'UE.", offRefFed: "Du coût de l'accueil des réfugiés, il compte ce que l'État fédéral a payé, pas les dépenses des Länder et des communes.", offCommitted: "Ce sont des engagements, pas un décompte de ce qui a été livré.", offOurs: "War Balance compte le soutien fourni de 2022 à {dataTo}, évalué comme le décrit la méthode : armes à leur valeur de marché à la livraison, prêts à leur valeur de don{if:eu|, sa part de l'aide de l'UE|} et coût de l'accueil des réfugiés, moins l'argent qui revient. Pour {Nt}, cela fait {ua}.", offSource: "Source : {link}.",
   },
   es: {
     tDecide: "Qué decide esta cifra", tTrade: "Comercio con Rusia, antes y después", tSanctions: "Sanciones, cortes de la propia Rusia o una decisión",
@@ -1153,6 +1159,8 @@ const DYN = {
     qHub: "{N}: ¿ayuda a Rusia a sortear las sanciones?", aHub: "{hub}{if:chpl| {chpl}|}",
     qSanctions: "{N}: ¿recortó el comercio con Rusia por las sanciones?", aSanctions: "{sanction}{if:exempt| {exempt}|}",
     qNodata: "{N}: ¿por qué no hay cifra?", aNodata: "{text}",
+    // round 64 (SEO audit, fix 7): the government's own total, where research/2026-10/seo/official_totals_r64.json has it
+    tOfficial: "Por qué difiere la cifra del gobierno", qOfficial: "{N}: ¿por qué el gobierno da otro total de su apoyo a Ucrania?", offLead: "{src} indica {list} (datos a {asOf}).", offCivil: "{v} en apoyo civil bilateral", offMil: "{v} en apoyo militar", offNonmil: "{v} en compromisos no militares", offOver: "más de {v}", offAbout: "unos {v}", offUpTo: "hasta {v}", offAnd: "{a} y {b}", offForward: "Su cifra militar cuenta, además de lo entregado, fondos previstos para los próximos años.", offFace: "Cuenta los préstamos y las garantías por su valor nominal.", offNoEu: "No incluye su parte de la ayuda de la UE.", offRefFed: "Del coste de acoger a refugiados cuenta lo que pagó el Gobierno federal, no el gasto de los estados federados y los municipios.", offCommitted: "Son compromisos, no un recuento de lo entregado.", offOurs: "War Balance cuenta el apoyo entregado de 2022 a {dataTo}, valorado como describe el método: armas a valor de mercado al entregarse, préstamos por su valor de donación{if:eu|, su parte de la ayuda de la UE|} y el coste de acoger a refugiados, menos el dinero que vuelve. Para {Nt} son {ua}.", offSource: "Fuente: {link}.",
   },
   pl: {
     tDecide: "Co przesądza o tej liczbie", tTrade: "Handel z Rosją przed wojną i w jej trakcie", tSanctions: "Sankcje, odcięcia przez samą Rosję czy własny wybór",
@@ -1205,6 +1213,8 @@ const DYN = {
     qHub: "{N}: czy pomaga Rosji obchodzić sankcje?", aHub: "{hub}{if:chpl| {chpl}|}",
     qSanctions: "{N}: czy handel z Rosją ograniczono z powodu sankcji?", aSanctions: "{sanction}{if:exempt| {exempt}|}",
     qNodata: "{N}: dlaczego nie ma liczby?", aNodata: "{text}",
+    // round 64 (SEO audit, fix 7): the government's own total, where research/2026-10/seo/official_totals_r64.json has it
+    tOfficial: "Dlaczego liczba rządu jest inna", qOfficial: "{N}: dlaczego rząd podaje inną sumę wsparcia dla Ukrainy?", offLead: "{src} podaje {list} (stan na {asOf}).", offCivil: "{v} dwustronnego wsparcia cywilnego", offMil: "{v} wsparcia wojskowego", offNonmil: "{v} zobowiązań niewojskowych", offOver: "ponad {v}", offAbout: "około {v}", offUpTo: "do {v}", offAnd: "{a} oraz {b}", offForward: "Suma wojskowa obejmuje, poza tym, co dostarczono, także środki zaplanowane na kolejne lata.", offFace: "Pożyczki i gwarancje liczone są według wartości nominalnej.", offNoEu: "Nie obejmuje udziału w pomocy UE.", offRefFed: "Z kosztów przyjęcia uchodźców obejmuje to, co zapłacił rząd federalny, bez wydatków krajów związkowych i gmin.", offCommitted: "To zobowiązania, a nie zestawienie tego, co dostarczono.", offOurs: "War Balance liczy wsparcie dostarczone od 2022 r. do {dataTo}, wycenione jak opisano w metodzie: broń według wartości rynkowej po dostarczeniu, pożyczki według wartości darowizny{if:eu|, udział w pomocy UE|} i koszt przyjęcia uchodźców, minus pieniądze, które wróciły. Według tej metody to {ua}.", offSource: "Źródło: {link}.",
   },
   nl: {
     tDecide: "Wat dit getal bepaalt", tTrade: "Handel met Rusland, voor en na", tSanctions: "Sancties, Ruslands eigen afsluitingen of een keuze",
@@ -1257,6 +1267,8 @@ const DYN = {
     qHub: "{N}: helpt het Rusland sancties te omzeilen?", aHub: "{hub}{if:chpl| {chpl}|}",
     qSanctions: "{N}: is de handel met Rusland door sancties ingekrompen?", aSanctions: "{sanction}{if:exempt| {exempt}|}",
     qNodata: "{N}: waarom is er geen getal?", aNodata: "{text}",
+    // round 64 (SEO audit, fix 7): the government's own total, where research/2026-10/seo/official_totals_r64.json has it
+    tOfficial: "Waarom het cijfer van de regering afwijkt", qOfficial: "{N}: waarom noemt de regering een ander totaal voor haar steun aan Oekraïne?", offLead: "{src} noemt {list} (stand {asOf}).", offCivil: "{v} aan bilaterale civiele steun", offMil: "{v} aan militaire steun", offNonmil: "{v} aan niet-militaire toezeggingen", offOver: "ruim {v}", offAbout: "ongeveer {v}", offUpTo: "tot {v}", offAnd: "{a} en {b}", offForward: "Het militaire cijfer telt naast wat geleverd is ook middelen die voor de komende jaren zijn gereserveerd.", offFace: "Leningen en garanties tellen daarin tegen hun nominale waarde.", offNoEu: "Het aandeel in de EU-hulp zit er niet in.", offRefFed: "Van de kosten van de opvang van vluchtelingen telt het wat de federale regering betaalde, niet de uitgaven van deelstaten en gemeenten.", offCommitted: "Het zijn toezeggingen, geen telling van wat geleverd is.", offOurs: "War Balance telt de steun die van 2022 tot {dataTo} geleverd is, gewaardeerd zoals de methode beschrijft: wapens tegen marktwaarde bij levering, leningen tegen hun schenkingswaarde{if:eu|, het aandeel in de EU-hulp|} en de kosten van de opvang van vluchtelingen, min geld dat terugvloeit. Voor {Nt} is dat {ua}.", offSource: "Bron: {link}.",
   },
   uk: {
     tDecide: "Що визначає це число", tTrade: "Торгівля з Росією до і після", tSanctions: "Санкції, власні відключення Росії чи вибір",
@@ -1309,6 +1321,8 @@ const DYN = {
     qHub: "{N}: чи допомагає Росії обходити санкції?", aHub: "{hub}{if:chpl| {chpl}|}",
     qSanctions: "{N}: чи скоротили торгівлю з Росією через санкції?", aSanctions: "{sanction}{if:exempt| {exempt}|}",
     qNodata: "{N}: чому немає числа?", aNodata: "{text}",
+    // round 64 (SEO audit, fix 7): the government's own total, where research/2026-10/seo/official_totals_r64.json has it
+    tOfficial: "Чому цифра уряду відрізняється", qOfficial: "{N}: чому уряд називає іншу суму підтримки України?", offLead: "{src} називає {list} (станом на {asOf}).", offCivil: "{v} двосторонньої цивільної підтримки", offMil: "{v} військової підтримки", offNonmil: "{v} невійськових зобов'язань", offOver: "понад {v}", offAbout: "близько {v}", offUpTo: "до {v}", offAnd: "{a} і {b}", offForward: "Військова сума, крім уже переданого, враховує кошти, заплановані на наступні роки.", offFace: "Кредити й гарантії в ній враховано за номінальною вартістю.", offNoEu: "Частки в допомозі ЄС у ній немає.", offRefFed: "З витрат на прийом біженців у ній враховано те, що сплатив федеральний уряд, без витрат земель і громад.", offCommitted: "Це зобов'язання, а не облік переданого.", offOurs: "War Balance рахує підтримку, передану з 2022 року до {dataTo}, оцінену так, як описано в методі: зброя за ринковою вартістю на момент передачі, кредити за їхньою вартістю дарунка{if:eu|, частка в допомозі ЄС|} і витрати на прийом біженців, мінус гроші, що повертаються. За цим методом це {ua}.", offSource: "Джерело: {link}.",
   },
 };
 // a DYN phrase in a language (English where a language has none)
@@ -1573,14 +1587,15 @@ for (const l of LANGS) Object.assign(DYN[l], DYN58[l]);
 // Amounts in other currencies, as each language writes them (€ amounts: E above): "$280bn", "RUB 7,924bn", "7.924 Mrd. RUB"
 export function CUR(l, bn, code) {
   if (code === "EUR") return E(l, bn);
-  const a = Math.abs(bn), sym = code === "USD" ? "$" : "RUB";
-  if (l === "es") return (a >= 0.1 ? group(Math.round(a * 10) * 100, l) : String(Math.round(a * 1000))) + (sym === "$" ? " M$" : " M RUB");
+  // round 64: and pounds, for a government's own total in its currency (official_totals_r64.json)
+  const a = Math.abs(bn), sym = code === "USD" ? "$" : code === "GBP" ? "£" : "RUB";
+  if (l === "es") return (a >= 0.1 ? group(Math.round(a * 10) * 100, l) : String(Math.round(a * 1000))) + (sym === "RUB" ? " M RUB" : " M" + sym);
   const big = a >= 0.1, s = !big ? String(Math.round(a * 1000)) : a >= 100 ? group(Math.round(a), l) : dec((a >= 1 ? a.toFixed(1) : a.toFixed(2)).replace(/\.0$/, ""), l);
   const u = {
-    en: sym === "$" ? (big ? ["$", "bn"] : ["$", "m"]) : (big ? ["RUB ", "bn"] : ["RUB ", "m"]),
-    de: big ? ["", " Mrd. " + sym] : ["", " Mio. " + sym], fr: sym === "$" ? (big ? ["", " Md$"] : ["", " M$"]) : (big ? ["", " Md RUB"] : ["", " M RUB"]),
-    pl: big ? ["", " mld " + sym] : ["", " mln " + sym], nl: sym === "$" ? (big ? ["$", " mld"] : ["$", " mln"]) : (big ? ["RUB ", " mld"] : ["RUB ", " mln"]),
-    uk: big ? ["", sym === "$" ? " млрд $" : " млрд руб."] : ["", sym === "$" ? " млн $" : " млн руб."],
+    en: sym !== "RUB" ? (big ? [sym, "bn"] : [sym, "m"]) : (big ? ["RUB ", "bn"] : ["RUB ", "m"]),
+    de: big ? ["", " Mrd. " + sym] : ["", " Mio. " + sym], fr: sym !== "RUB" ? (big ? ["", " Md" + sym] : ["", " M" + sym]) : (big ? ["", " Md RUB"] : ["", " M RUB"]),
+    pl: big ? ["", " mld " + sym] : ["", " mln " + sym], nl: sym !== "RUB" ? (big ? [sym, " mld"] : [sym, " mln"]) : (big ? ["RUB ", " mld"] : ["RUB ", " mln"]),
+    uk: big ? ["", sym === "RUB" ? " млрд руб." : " млрд " + sym] : ["", sym === "RUB" ? " млн руб." : " млн " + sym],
   }[l];
   return u[0] + s + u[1];
 }
