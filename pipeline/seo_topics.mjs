@@ -53,7 +53,9 @@ const inUnit = (c, v, sort) => (sort === "eur" ? v : sort === "pp" ? pp(v, c.pop
 // opts: dataTo (the data's last month), words (the map's chance words: {word:sure} ...), l (the language of the names),
 // armed (round 58: [{ iso, items }], the countries whose data have the kinds of supplies they sent to Russia, in the
 // config's order: seo_families.json armedItems, already checked against the data by armedOf below)
-export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en", armed = [] }) {
+// round 61: vars, values every text of the entry may use besides the table's ({y1} the data's last year; on the
+// frozen-assets page the research file's amounts, {euroclear} {euCbr} ...); a form needing one that is not given is left out
+export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en", armed = [], vars = {} }) {
   const byIso = Object.fromEntries(countries.map(c => [c.iso, c]));
   const year = e.year || null, mv0 = mv, mvY = (c, k) => mv0(c, k, year);
   const sort = e.sort || "gdp", key = e.rank || "net", minGdp = e.minGdp ?? (e.kind === "group" ? 0 : sort === "eur" ? 0 : 5);
@@ -146,16 +148,16 @@ export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en", ar
   const armedOne = x => (byIso[x.iso] ? armedPair(l, nameOf(byIso[x.iso]), x.items) : "");
   const armedList = armed.map(armedOne).filter(Boolean).join(", ");
   const text0 = text, num0 = num;
-  const text1 = ph => { let m; if (ph === "armedList") return armedList; if ((m = ph.match(/^armed:([A-Z]{3})$/))) { const x = armed.find(a => a.iso === m[1]); return x ? armedOne(x) : ""; } return text0(ph); };
+  const text1 = ph => { let m; if (vars[ph] !== undefined) return String(vars[ph]); if (ph === "armedList") return armedList; if ((m = ph.match(/^armed:([A-Z]{3})$/))) { const x = armed.find(a => a.iso === m[1]); return x ? armedOne(x) : ""; } return text0(ph); };
   const num1 = ph => { let m; if (ph === "nArmed") return armedList ? armed.length : 0; if ((m = ph.match(/^armed:([A-Z]{3})$/))) return armed.some(a => a.iso === m[1] && byIso[a.iso]) ? 1 : 0; return num0(ph); };
   const fill = s => { try { return capSentences(fmt(String(s), text1, num1)); } catch (err) { throw new Error(`seo_topics.json ${e.slug}: ${err.message}`); } };
-  const forms = x => (x == null ? [""] : Array.isArray(x) ? x : [x]).map(fill);
+  const forms = x => { const xs = x == null ? [""] : Array.isArray(x) ? x : [x], ok = xs.flatMap(f => { try { return [fill(f)]; } catch (err) { if (/unknown placeholder/.test(err.message)) return []; throw err; } }); if (!ok.length) return xs.map(fill); return ok; };
   // an entry of a generated family (seo_families.mjs) or a page in another language has its words from seo_i18n.mjs
   const title = fitTitle(forms(e.title)), description = fitDesc(forms(e.description));
   const totals = ["net", "ua", "rus", "frozen"].map(k => ({ key: k, ...sumOf(rows, k) }));
   const subtotals = (e.subtotals || []).filter(s => groups[s]).map(s => ({ slug: s, label: groups[s].label, n: subSet(s).length, sums: ["ua", "rus", "frozen", "net"].map(k => ({ key: k, ...sumOf(subSet(s), k) })) }));   // round 60: the group page's own lines, so support + trade + frozen = net
   return {
-    path: pathOf(e), kind: e.kind, slug: e.slug, label: e.label, key, keySide: sideOfKey(countries, key), sort, order: e.order || "desc", title, description, h1: fill(e.h1 || ""), intro: fill(e.intro || ""), year, side: e.side || "", moneyNote: e.moneyNote || "",
+    path: pathOf(e), kind: e.kind, slug: e.slug, label: e.label, key, keySide: sideOfKey(countries, key), sort, order: e.order || "desc", title, description, h1: forms(e.h1 || "")[0] || e.label, intro: forms(e.intro || "")[0], year, side: e.side || "", moneyNote: e.moneyNote || "",
     // a column every listed country has nothing in (frozen money in the Gulf states) is left out
     columns: (e.columns || (e.kind === "group" ? ["ua", "rus", "frozen"] : [])).filter(k => k !== key && rows.some(c => mvY(c, k) && Math.abs(mvY(c, k).v) >= 0.0005)), rows, party, noData, sides, missing, extra,
     faq: (e.faq || []).map(x => ({ q: fill(x.q), a: fill(x.a) })), sections: (e.sections || []).map(s => ({ h2: s.h2 && fill(s.h2), p: (s.p || []).map(fill), list: (s.list || []).map(fill) })),
