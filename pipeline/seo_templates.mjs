@@ -18,7 +18,7 @@
 // "Combien la France a donné à l'Ukraine ?"), by the volumes in seo_demand.json ask and the rule in seo_families.json
 // (country.phrasing); askOf below, the phrases in seo_i18n.mjs ASK.
 
-import { P as PL, E as EL, L as LL, cap, list3, inSentence, countryText, homeText, staticText, fit, askText, semi, grammar, countryIncl } from "./seo_i18n.mjs";
+import { P as PL, E as EL, L as LL, cap, list3, inSentence, inList, countryText, homeText, staticText, fit, askText, semi, grammar, countryIncl, countryLine, docDesc } from "./seo_i18n.mjs";
 
 export const TITLE_MAX = 60, DESC_MAX = 155;
 export const LANGS = ["en", "uk", "de", "fr", "pl", "nl", "es"];
@@ -38,9 +38,10 @@ const EU = new Set("AUT BEL BGR HRV CYP CZE DNK EST FIN FRA DEU GRC HUN IRL ITA 
 export const TRADE_FIRST = { minTrade: 400, ratio: 1.5, maxAid: 800 };
 // round 59's rule, in seo_families.json (country.phrasing): the phrasing people search in the page's language
 export const PHRASING = { minDemand: 50, minTrade: 100 };
-const HELP_CATS = new Set(["u_sure", "r_sure", "u_lean", "r_lean", "unc", "zero", "party"]);
-// the chance level's key in seo_i18n.mjs ASK (tHelp, h1Help): both leaning sides are "lean"
-const askCat = cat => (cat === "u_lean" || cat === "r_lean" ? "lean" : cat);
+const HELP_CATS = new Set(["u_sure", "u_net", "r_sure", "u_lean", "r_lean", "unc", "zero", "party"]);
+// the chance level's key in seo_i18n.mjs ASK (tHelp, h1Help): both leaning sides are "lean"; round 63: a net very likely
+// toward Ukraine without support above zero (u_net) answers the Russia question as u_sure does
+const askCat = cat => (cat === "u_lean" || cat === "r_lean" ? "lean" : cat === "u_net" ? "u_sure" : cat);
 
 // Round 59 (owner approved: "titles in the words people search"): which of a country page's phrasings the searches in
 // its language ask for (seo_demand.json ask: Google's monthly volumes). cat: the page's copy category (after the trade
@@ -93,21 +94,44 @@ export function countryCopy(l, f) {
   // of hosting refugees: the map's parts, f.parts), and the Kiel Institute's bilateral figure where the data have one
   const pt = f.parts || {}, uaPos = !!f.cN && (f.ua || 0) >= 0.0005, has = x => uaPos && (x || 0) >= 0.0005;
   const g = grammar(l, N);
-  Object.assign(v, { Na: g.Na, NaCap: cap(g.Na), euEur: EL(l, pt.eu || 0), refEur: EL(l, pt.ref || 0), kielEur: pt.kiel != null ? EL(l, pt.kiel) : "" });
+  // round 63: the name after the language's "with" ({Nd}: "mit den Vereinigten Staaten", "met de Verenigde Staten"), and
+  // the map's chance words for the net in a parenthesis ({chanceP}: " (very likely, >99%)", nothing where there are none)
+  const chW = String(net.chance || "").replace(/ · /g, ", ");
+  Object.assign(v, { Nd: inList(l, N), chanceP: chW ? ` (${chW})` : "", Na: g.Na, NaCap: cap(g.Na), euEur: EL(l, pt.eu || 0), refEur: EL(l, pt.ref || 0), kielEur: pt.kiel != null ? EL(l, pt.kiel) : "" });
   Object.assign(nums, { uaPos, euX: has(pt.eu), refX: has(pt.ref), aidX: has(pt.aid), kiel: pt.kiel != null && pt.kiel >= 0.0005, plural: g.plural, fem: g.fem, neu: g.neu });
   nums.nX = (nums.euX ? 1 : 0) + (nums.refX ? 1 : 0);
   v.xLong = countryIncl(l, "incl", v, nums); v.xShort = countryIncl(l, "inclS", v, nums);
   // round 56: where searches ask far more whether it trades with Russia than what it gave (seo_demand.json), and both
   // numbers are very likely, the English title asks that and answers it with what Russia kept
   const dm = f.demand || {}, R = f.tradeFirst || TRADE_FIRST;
+  // round 63 (audit: Nigeria "How much has Nigeria given to Ukraine? −€50m"): the question about what it gave is the
+  // title only where its support is above zero; a net very likely toward Ukraine without it asks "Ukraine or Russia?"
+  if (cat === "u_sure" && !uaPos) cat = "u_net";
   if (l === "en" && cat === "u_sure" && cR.level === "sure" && (dm.trade || 0) >= R.minTrade && dm.trade >= R.ratio * Math.max(dm.aid || 0, dm.help || 0) && (dm.aid || 0) < R.maxAid) cat = "u_trade";
   let c = countryText(l, cat, v, nums);
   // round 59: the phrasing people search in this language (seo_families.json country.phrasing), where the data answer it
   const ask = askOf(l, cat, dm, f.phrasing || PHRASING);
   if (ask.title) c = { ...c, ...askText(l, ask.title, askCat(cat), v, nums, c.title) };
-  const out = { ...c, intro: c.intro || (cat === "nodata" ? v.noDataText : ""), category: category(f), ask };
+  // round 63 (audit: "Does China support Russia?" opened with "Bought less from Ukraine than without the war"): a page
+  // whose title asks the Russia question answers it first: what Russia kept from trade with it and the net, with its
+  // direction and the map's chance words, as its description does; then the support sentence. Only a page whose title
+  // asks what it gave (and whose support is above zero) opens with that
+  const russiaFirst = russiaLead(cat, ask, uaPos);
+  if (russiaFirst) {
+    c = { ...c, intro: [countryLine(l, "introRu", v, nums), c.intro].filter(Boolean).join(" "), intro2: countryLine(l, "intro2Ru", v, nums) };
+  }
+  const out = { ...c, intro: c.intro || (cat === "nodata" ? v.noDataText : ""), category: category(f), ask, russiaFirst };
   out.og_title = out.title; out.og_description = out.description;
   return out;
+}
+
+// round 63: whether a country page opens with the answer to the Russia question (its trade with Russia and the net) rather
+// than with its support for Ukraine: every page with figures (not a party to the war, not without data) except one whose
+// title asks what it gave Ukraine (the chance level u_sure, or the searched phrasing "given") with support above zero
+export function russiaLead(cat, ask, uaPos) {
+  if (cat === "party" || cat === "nodata") return false;
+  const givenTitle = (cat === "u_sure" && !(ask && (ask.title === "support" || ask.title === "helping"))) || !!(ask && ask.title === "given");
+  return !(uaPos && givenTitle);
 }
 
 // the countries with a page in every language: every country (round 56)
@@ -137,8 +161,10 @@ export function staticCopy(page, x, l = "en") {
   return { ...T, og_title: T.title, og_description: T.description };
 }
 
-// a document page (a method page, the limitations, the changelog): its title from its heading
-export function docCopy(heading, firstPara) {
+// a document page (a method page, the limitations, the changelog): its title from its heading; its description the
+// first sentences of its first paragraph, or (round 63) its own where seo_i18n.mjs DOC_DESC has one (key: its address
+// without slashes, "method/reading")
+export function docCopy(heading, firstPara, key = "") {
   const clean = s => s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
   const h = clean(heading), p = clean(firstPara || "");
   const title = fit([`${h} | ${LL("en", "methodSuffix")}`, `${h} | War Balance`, h, h.slice(0, TITLE_MAX - 1).replace(/\s+\S*$/, "") + "…"], TITLE_MAX);
@@ -146,6 +172,7 @@ export function docCopy(heading, firstPara) {
   let description = "";
   for (const s of sentences) { if ((description + s).trim().length > DESC_MAX) break; description = (description + s).trim(); }
   if (!description) description = p.slice(0, DESC_MAX - 1).replace(/\s+\S*$/, "") + "…";
+  if (docDesc(key)) description = docDesc(key);
   return { title, description, h1: h, og_title: title, og_description: description };
 }
 

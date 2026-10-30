@@ -95,11 +95,16 @@ check 37 in `check_data.py` holds the rules.
 - **Chart images (round 62).** `pipeline/seo_images.mjs` draws 1200×630 WebP charts at deploy into `site/img/`
   (`site/img/<lang>/` for the other languages; not committed, like `site/share/`), from the figures the pages show and
   in the map's colours and fonts: support for Ukraine by country in euros, as a share of GDP and per person, the
-  money that moved toward Russia and the frozen Russian assets (each in all seven languages), the net (English, on
-  `/ranking/`), and one per country page with data. Their file names (`seo_i18n.mjs` `IMG_FILE`) carry no date, so an
+  money that moved toward Russia and the frozen Russian assets (each in all seven languages), the net (on
+  `/ranking/`; round 63: in every language), and one per country page with data. Their file names (`seo_i18n.mjs` `IMG_FILE`) carry no date, so an
   address stays the same as the data change. Each is shown near the top of its page with alt text that states the
   figures, is its `og:image` and `primaryImageOfPage`, and is listed in the sitemaps (`image:image`); every generated
   page has `max-image-preview:large`. Check 48 reads them (`check_images`).
+- **Thin pages and languages (round 63).** Only the comparison pairs listed in `seo_families.json` `compare.pairs`
+  (searched pairs, neighbours and rivals) are indexed; the other pairs of the largest donors and the pages of
+  territories without any data of their own are written with `noindex, follow`, without hreflang, out of the
+  sitemaps and the hub lists. `/ranking/` and `/trade-with-russia/` are in all seven languages (with the net chart
+  in each), and a country page whose title asks the Russia question opens with the trade with Russia and the net.
 - **Structured data.** The map's head has JSON-LD for the website, the publishing organisation ("War Balance",
   no personal names) and the Dataset (licence CC BY 4.0, coverage 2022 to August 2026 (all of 2022), the JSON
   download). Each country page has a WebPage that is part of the Dataset.

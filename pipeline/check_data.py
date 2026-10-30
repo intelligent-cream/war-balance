@@ -944,8 +944,10 @@ if _pages:
         _bad.append("robots.txt")
     # round 56: sitemap.xml is an index of one sitemap per language (seo_check.site_urls reads them all)
     _sm = "\n".join(f"<loc>{u}</loc>" for u in seo_check.site_urls(ROOT / "site", _su)) if _smap.exists() else ""
-    # every country page is in it (check 48 names any missing), and the old share links are not
-    if _sm.count(f"<loc>{_su}country/") < len(_pages) or f"<loc>{_su}c/" in _sm:
+    # every country page is in it (check 48 names any missing), and the old share links are not; round 63: except a
+    # territory without any data of its own, whose page is noindex (check 48 checks it is noindex and out of the sitemap)
+    _indexable = [_p for _p in _pages if '<meta name="robots" content="noindex' not in _p.read_text()]
+    if _sm.count(f"<loc>{_su}country/") < len(_indexable) or f"<loc>{_su}c/" in _sm:
         _bad.append("sitemap: country pages missing or old c/ links listed")
 else:
     _seo_missing.append("share cards, robots.txt and sitemap.xml not generated (run node pipeline/share_cards.mjs)")

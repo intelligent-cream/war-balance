@@ -51,6 +51,7 @@ def head(text: str) -> dict:
         "alternates": dict(re.findall(r'<link rel="alternate" hreflang="([\w-]+)" href="([^"]*)"', text)),
         "refresh": bool(re.search(r'<meta http-equiv="refresh"', text, re.IGNORECASE)),
         "iso": iso.group(1) if iso else None,
+        "noindex": "noindex" in (meta("name", "robots") or ""),
     }
 
 
@@ -274,8 +275,10 @@ def numbers_for(c: dict, q: str, extra: float = 0.0, lang: str = "en") -> set[st
     return out
 
 
-def family_pages(model: dict, topics: list[dict], fam: dict) -> list[str]:
-    """Round 56: the paths of every generated page, by the rules of seo_families.mjs, from the model."""
+def family_pages(model: dict, topics: list[dict], fam: dict, indexed_only: bool = True) -> list[str]:
+    """Round 56: the paths of every generated page, by the rules of seo_families.mjs, from the model. Round 63: the
+    indexed ones (indexed_only): of the comparisons only the listed pairs (compare.pairs); the other pairs of the largest
+    donors are written noindex and kept out of the sitemaps."""
     cs = model["countries"]
     ranked = {e["rank"][5:] for e in topics if str(e.get("rank", "")).startswith("part:")}
     out = [topic_path(e) for e in topics]
@@ -293,7 +296,8 @@ def family_pages(model: dict, topics: list[dict], fam: dict) -> list[str]:
     )
     donors = donors[: fam["compare"]["pairwiseTop"]]
     pairs = [(a, b) for a, b in fam["compare"]["pairs"] if a in cs and b in cs and a != b]
-    pairs += [(donors[i], donors[j]) for i in range(len(donors)) for j in range(i + 1, len(donors))]
+    if not indexed_only:
+        pairs += [(donors[i], donors[j]) for i in range(len(donors)) for j in range(i + 1, len(donors))]
     seen = set()
     for a, b in pairs:
         if frozenset((a, b)) in seen:
@@ -592,6 +596,18 @@ def check_site(
             for lang in langs:
                 pre = "" if lang == "en" else lang + "/"
                 u = f"{site_url}{pre}country/{c['slug']}/"
+                # round 63: a territory without any data of its own is written noindex, out of the sitemaps
+                if c.get("noOwnData"):
+                    f = site / pre / "country" / c["slug"] / "index.html"
+                    if not f.exists():
+                        p["missing"].append(f"{pre}country/{c['slug']}/ ({iso})")
+                    elif u in heads:
+                        p["hreflang"].append(f"/{pre}country/{c['slug']}/: no data of its own, but in the sitemap")
+                    elif not head(f.read_text())["noindex"] or head(f.read_text())["alternates"]:
+                        p["hreflang"].append(
+                            f"/{pre}country/{c['slug']}/: no data of its own, but not noindex or with hreflang"
+                        )
+                    continue
                 if u not in heads:
                     p["missing"].append(f"{pre}country/{c['slug']}/ ({iso})")
     for u, h in heads.items():
@@ -602,6 +618,9 @@ def check_site(
             p["length"].append(f"{name} description {len(h['description'] or '')}")
         if h["refresh"]:
             p["refresh"].append(name)
+        # round 63: a page in the sitemap is indexable
+        if h["noindex"]:
+            p["hreflang"].append(f"{name}: noindex but in the sitemap")
         if h["canonical"] != u:
             p["canonical"].append(f"{name} -> {h['canonical']}")
         alts = h["alternates"]
@@ -612,6 +631,8 @@ def check_site(
                 if lang == "x-default":
                     continue
                 other = heads.get(v)
+                if other is not None and other["noindex"]:
+                    p["hreflang"].append(f"{name} -> {lang} {urlparse(v).path} is noindex")
                 if other is None:
                     p["hreflang"].append(f"{name} -> {lang} {urlparse(v).path} not in the sitemap")
                 elif other["alternates"] != alts:
@@ -645,8 +666,10 @@ def check_site(
         paths = family_pages(model, topics, families) if (families is not None and model) else None
         p["topics"] = check_topics(site, site_url, model, topics, set(urls), paths, langs, words)
         # round 58: every table's own sanity, in every language (phrases: the order words, seo_i18n.mjs)
+        # (round 63: the noindex comparisons too: written and reachable, so their tables must be right)
+        all_paths = family_pages(model, topics, families, indexed_only=False) if paths is not None else None
         p["sanity"] = check_sanity(
-            site, model, paths if paths is not None else [topic_path(e) for e in topics], phrases
+            site, model, all_paths if all_paths is not None else [topic_path(e) for e in topics], phrases
         )
         # round 58b: and the figures and pages from the research files (seo_families.json research)
         if families is not None and families.get("research"):
@@ -659,7 +682,12 @@ def check_site(
     p["downloads"] = check_downloads(site, model)
     idx = (site / "index.html").read_text()
     if model:
-        p["az"] = [c["slug"] for c in model["countries"].values() if f'href="/country/{c["slug"]}/"' not in idx]
+        # round 63: a territory without any data of its own is not in the A-Z list (its page is noindex)
+        p["az"] = [
+            c["slug"]
+            for c in model["countries"].values()
+            if (f'href="/country/{c["slug"]}/"' in idx) == bool(c.get("noOwnData"))
+        ]
     if topics:
         p["az"] += [f"topic {topic_path(e)}" for e in topics if f'href="/{topic_path(e)}"' not in idx]
     return p
@@ -1763,11 +1791,12 @@ def check_sanity(
         f = site / path / "index.html"
         if f.exists():
             out += check_rank_lists(f.read_text(), "/" + path)
-    # round 61: the page of support by country in every language
+    # round 61: the page of support by country in every language (round 63: and the ranking and the trade page)
     for lang in [x for x in LANGS if x != "en"]:
-        f = site / lang / "support-for-ukraine" / "index.html"
-        if f.exists():
-            out += check_rank_lists(f.read_text(), f"/{lang}/support-for-ukraine/", lang)
+        for path in ("ranking/", "support-for-ukraine/", "trade-with-russia/"):
+            f = site / lang / path / "index.html"
+            if f.exists():
+                out += check_rank_lists(f.read_text(), f"/{lang}/{path}", lang)
     return out
 
 

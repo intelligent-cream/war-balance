@@ -45,6 +45,7 @@
   },
   "years": [2022, 2023, 2024, 2025, 2026],
   "compare": {
+    "_note": "Round 63 (audit: 1,505 near-identical comparison pages): only the pairs listed here are indexed: the pairs people search (seo_demand.json, queries naming both countries) and obvious neighbours and rivals. The other pairs of the pairwiseTop largest donors are written but noindex, out of the sitemaps and not linked from the hubs or country pages.",
     "pairwiseTop": 20,
     "pairs": [
       ["DEU", "FRA"], ["USA", "DEU"], ["GBR", "DEU"], ["POL", "DEU"], ["IND", "CHN"], ["TUR", "IND"], ["USA", "CHN"], ["IND", "USA"],

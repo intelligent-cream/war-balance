@@ -96,7 +96,7 @@ let CSS_HREF = "/pages.css";
 // data's month in each language; in the page (before the end of <main>), in its Markdown version and in its JSON-LD
 let CITE = null;
 const mdHref = canonical => { try { const u = new URL(canonical); return u.pathname.endsWith("/") ? u.pathname + "index.md" : ""; } catch { return ""; } };
-function shell({ lang, title, description, canonical, alternates = [], image, imageAlt, ld = [], body, ogType = "website", iso = "", css = "" }) {
+function shell({ lang, title, description, canonical, alternates = [], image, imageAlt, ld = [], body, ogType = "website", iso = "", css = "", noindex = false }) {
   const cite = CITE ? CITE(lang, canonical) : "", md = mdHref(canonical);
   if (cite && ld[0] && /Page|Article/.test(ld[0]["@type"] || "")) ld = [{ ...ld[0], creditText: cite }, ...ld.slice(1)];
   if (cite) body = body.replace("</main>", `<p class="cite">${esc(cite)}</p>\n</main>`);
@@ -108,7 +108,7 @@ function shell({ lang, title, description, canonical, alternates = [], image, im
 <script>try { document.documentElement.dataset.theme = localStorage.getItem("ftm-theme") || "dark"; } catch (e) { document.documentElement.dataset.theme = "dark"; }</script>
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
-<meta name="robots" content="max-image-preview:large">
+<meta name="robots" content="${noindex ? "noindex, follow" : "max-image-preview:large"}">
 <link rel="canonical" href="${canonical}">${md ? `\n<link rel="alternate" type="text/markdown" href="${md}">` : ""}
 ${alternates.map(([l, u]) => `<link rel="alternate" hreflang="${l}" href="${u}">`).join("\n")}
 <meta property="og:type" content="${ogType}">
@@ -195,11 +195,12 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     parts: { aid: mOf(c, "part:aid") || 0, eu: mOf(c, "part:euaid") || 0, ref: mOf(c, "part:ref") || 0, kiel: mOf(c, "kiel") } });
   const LANG_DATA = { en: byIso }, WORDS = { en: EN.words }, RANK = { en: EN.rank.net }, DYNW = { en: EN.dynWords }, SRCS = { en: EN.srcs };
   // round 61: the support ranking and the chance key in every language (the page of support by country in every language)
-  const RANK_UA = { en: EN.rank.ua }, CHKEY = { en: EN.chanceKey || "" };
+  // round 63: and the trade ranking (the ranking and the trade page in every language)
+  const RANK_UA = { en: EN.rank.ua }, RANK_RU = { en: EN.rank.rus }, CHKEY = { en: EN.chanceKey || "" };
   for (const l of NL) {
     const r = await page.evaluate(extractSite, { lang: l, isos: countries.map(c => c.iso) });
     LANG_DATA[l] = Object.fromEntries(r.countries.map(c => [c.iso, c]));
-    WORDS[l] = r.words; RANK[l] = r.rank.net; DYNW[l] = r.dynWords; SRCS[l] = r.srcs; RANK_UA[l] = r.rank.ua; CHKEY[l] = r.chanceKey || "";
+    WORDS[l] = r.words; RANK[l] = r.rank.net; DYNW[l] = r.dynWords; SRCS[l] = r.srcs; RANK_UA[l] = r.rank.ua; RANK_RU[l] = r.rank.rus; CHKEY[l] = r.chanceKey || "";
   }
   const tExtract = Date.now() - t0;
   const LC = l => countries.map(c => LANG_DATA[l][c.iso] || c);   // the countries as a language has them
@@ -217,7 +218,10 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const PARTS = partEntries(FAM, countries, TOPICS), YEARS = yearEntries(FAM, lastYear), COMPARES = compareEntries(FAM, countries);
   const topSlugs = new Set(TOPICS.filter(e => e.kind === "topic").map(e => e.slug));
   for (const e of [...PARTS, ...YEARS]) if (RESERVED.has(e.slug) || topSlugs.has(e.slug) || slugs.has(e.slug)) throw new Error("seo_families.json: slug taken " + e.slug);
-  const FAMILY = [...TOPICS, ...PARTS, ...YEARS, ...COMPARES];
+  // round 63: the comparisons that are indexed (seo_families.mjs compareEntries: the listed pairs); the others are written
+  // noindex and are not linked from the hubs
+  const COMPARES_IX = COMPARES.filter(e => e.index);
+  const FAMILY = [...TOPICS, ...PARTS, ...YEARS, ...COMPARES_IX];
   // round 58: the countries whose data have the kinds of supplies they sent to Russia (seo_families.json armedItems)
   const ARMED = armedOf(FAM.armedItems, countries, Object.fromEntries(Object.entries(data.countries).map(([iso, c]) => [iso, (c.military_rus && c.military_rus.src) || []])));
   const armedItemsOf = iso => (ARMED.find(x => x.iso === iso) || {}).items || null;
@@ -272,7 +276,9 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
 
   // ----- writing, with lastmod from a hash of what the page says -----
   const written = [];   // { path, alternates: [[lang, url]] }
-  async function put(path, html, alternates = [], images = []) {
+  // round 63: a page kept out of the index (noindex: a thin comparison, a territory without data of its own) is written and
+  // reachable, but not in the sitemaps and without hreflang
+  async function put(path, html, alternates = [], images = [], { noindex = false } = {}) {
     const hash = createHash("sha256").update(html).digest("hex").slice(0, 16);
     const prev = state[path], date = prev && prev[0] === hash ? prev[1] : today;
     newState[path] = [hash, date];
@@ -282,14 +288,14 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     await writeFile(file, out);
     // round 58: its Markdown version (not in the sitemap; the HTML stays canonical)
     if (path.endsWith("/")) await writeFile(join(dirname(file), "index.md"), htmlToMarkdown(out, abs(path)));
-    written.push({ path, alternates, lastmod: date, images });
+    written.push({ path, alternates, lastmod: date, images, noindex });
   }
   const human = l => `__WB_LASTMOD_HUMAN_${l}__`;
 
   const home = l => (l === "en" ? "/" : "/" + l + "/");
   const top = l => `<header class="top"><a class="brand" href="${home(l)}"><img src="/favicon.svg" alt="" width="20" height="20">War Balance</a>
-<nav aria-label="Site"><a href="${home(l)}">${T.L(l, "map")}</a><a href="/ranking/">${T.L(l, "ranking")}</a><a href="${lp(l, "/topics/")}">${esc(I.s(l, "topics"))}</a><a href="/how-it-works/">${T.L(l, "how")}</a></nav></header>`;
-  const foot = l => `<footer><div class="in"><nav aria-label="More"><a href="/ranking/">${T.L(l, "ranking")}</a><a href="${lp(l, "/support-for-ukraine/")}">${T.L(l, "supportPage")}</a><a href="/trade-with-russia/">${T.L(l, "tradePage")}</a><a href="${lp(l, "/topics/")}">${esc(I.s(l, "allTopics"))}</a><a href="/how-it-works/">${T.L(l, "how")}</a><a href="/limitations/">${T.L(l, "limitations")}</a><a href="/changelog/">${T.L(l, "changelog")}</a></nav>
+<nav aria-label="Site"><a href="${home(l)}">${T.L(l, "map")}</a><a href="${lp(l, "/ranking/")}">${T.L(l, "ranking")}</a><a href="${lp(l, "/topics/")}">${esc(I.s(l, "topics"))}</a><a href="/how-it-works/">${T.L(l, "how")}</a></nav></header>`;
+  const foot = l => `<footer><div class="in"><nav aria-label="More"><a href="${lp(l, "/ranking/")}">${T.L(l, "ranking")}</a><a href="${lp(l, "/support-for-ukraine/")}">${T.L(l, "supportPage")}</a><a href="${lp(l, "/trade-with-russia/")}">${T.L(l, "tradePage")}</a><a href="${lp(l, "/topics/")}">${esc(I.s(l, "allTopics"))}</a><a href="/how-it-works/">${T.L(l, "how")}</a><a href="/limitations/">${T.L(l, "limitations")}</a><a href="/changelog/">${T.L(l, "changelog")}</a></nav>
 <p>${T.L(l, "preview")} ${T.L(l, "dataTo", { to: fmtDate(dataTo, l), upd: human(l) })}. ${T.L(l, "licence", { link: '<a href="/data.json">data.json</a>' })}</p></div></footer>`;
   const crumbs = (l, items) => `<nav class="crumbs" aria-label="Breadcrumb">${items.map(([n, h], i) => (h && i < items.length - 1 ? `<a href="${h}">${esc(n)}</a>` : `<span aria-current="page">${esc(n)}</span>`)).join(" › ")}</nav>`;
   const crumbLd = items => ({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: items.map(([n, h], i) => ({ "@type": "ListItem", position: i + 1, name: n, item: abs(h) })) });
@@ -316,7 +322,10 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const inRows = {};   // iso -> [entries whose table lists it]
   for (const e of [...PARTS]) for (const c of MODELS[pathOf(e)].en.rows) (inRows[c.iso] = inRows[c.iso] || []).push(e);
   const groupsOf = {}; for (const e of TOPICS.filter(x => x.kind === "group")) for (const i of e.members) (groupsOf[i] = groupsOf[i] || []).push(e);
-  const comparesOf = {}; for (const e of COMPARES) for (const i of [e.a, e.b]) (comparesOf[i] = comparesOf[i] || []).push(e);
+  const comparesOf = {}; for (const e of COMPARES_IX) for (const i of [e.a, e.b]) (comparesOf[i] = comparesOf[i] || []).push(e);
+  // round 63: a territory without any data of its own (not "mostly no data"): its page is noindex, out of the sitemaps and
+  // the hubs' lists, without hreflang
+  const noOwn = c => !!(c && c.noData && !c.mostlyNoData);
 
   // ----- round 62: the chart images (seo_images.mjs), from the figures the pages show; drawn at the end of the run -----
   const HOST = new URL(siteUrl).host, JOBS = [];
@@ -378,21 +387,21 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
       RIMG[l].frozen = addImg(m, G.imgPath(l, "frozen"));
     }
   }
-  // the net (the ranking page, in English): the map's own groups "Toward Ukraine" and "Toward Russia" (very likely), the
-  // furthest 8 of each among economies of €5bn and more, with their likely range
-  {
-    const gs = EN.rank.net.groups, g0 = gs.find(g => g.g === 0), g6 = gs.find(g => g.g === 6), fg = iso => byIso[iso].fig;
-    const row = r => ({ rank: r.rank, name: byIso[r.iso].name, v: r.pct, lo: fg(r.iso).netLoPct, hi: fg(r.iso).netHiPct, value: r.value, tone: G.toneOf(r.pct, true) });
+  // the net (the ranking page; round 63: in every language): the map's own groups "Toward Ukraine" and "Toward Russia"
+  // (very likely), the furthest 8 of each among economies of €5bn and more, with their likely range
+  for (const l of T.LANGS) {
+    const gs = RANK[l].groups, g0 = gs.find(g => g.g === 0), g6 = gs.find(g => g.g === 6), fg = iso => byIso[iso].fig;
+    const row = r => ({ rank: r.rank, name: nameL(r.iso, l), v: r.pct, lo: fg(r.iso).netLoPct, hi: fg(r.iso).netHiPct, value: r.value, tone: G.toneOf(r.pct, true) });
     const up = g0 ? g0.rows.filter(r => r.rank).sort((a, b) => a.rank - b.rank).slice(0, 8).map(row) : [];
     const down = g6 ? g6.rows.filter(r => r.rank).sort((a, b) => a.rank - b.rank).slice(0, 8).map(row) : [];
     if (down.length) down[0].sepBefore = g6.label;
     if (up.length) up[0].sepBefore = g0.label;
     const rows = [...up, ...down];
     if (rows.length) {
-      const m = G.rankChart({ key: "net", l: "en", title: I.img("en", "tNet"), unit: I.img("en", "uNet"), period: imgPeriod("en"), source: imgSource("en"), rows,
-        legend: [{ text: I.s("en", "legendSigned") }, { text: I.img("en", "range") }], alt: rankAlt("en", "aNet", rows) });
-      m.caption = `${I.img("en", "aNet")}, ${imgPeriod("en")}`;
-      RIMG.en.net = addImg(m, G.imgPath("en", "net"));
+      const m = G.rankChart({ key: "net", l, title: I.img(l, "tNet"), unit: I.img(l, "uNet"), period: imgPeriod(l), source: imgSource(l), rows,
+        legend: [{ text: I.s(l, "legendSigned") }, { text: I.img(l, "range") }], alt: rankAlt(l, "aNet", rows) });
+      m.caption = `${I.img(l, "aNet")}, ${imgPeriod(l)}`;
+      RIMG[l].net = addImg(m, G.imgPath(l, "net"));
     }
   }
   // a country's chart in a language: the map's words for its three numbers and the parts of its support
@@ -461,8 +470,8 @@ ${ps.length ? `<h3>${esc(I.s(l, "partsRanked"))}</h3>${relList(l, ps)}` : ""}
   // round 61: each country page's heading in each language, the words other pages link it with (year and compare pages)
   const H1 = Object.fromEntries(T.LANGS.map(l => [l, {}]));
   for (const c0 of countries) {
-    const ls = T.countryLangs(fOf(c0)), alts = ls.map(l => [l, abs(cPath(c0, l))]);
-    if (ls.length > 1) alts.push(["x-default", abs(cPath(c0))]);
+    const ls = T.countryLangs(fOf(c0)), thin = noOwn(c0), alts = thin ? [] : ls.map(l => [l, abs(cPath(c0, l))]);
+    if (ls.length > 1 && !thin) alts.push(["x-default", abs(cPath(c0))]);
     for (const l of ls) {
       const c = LANG_DATA[l][c0.iso], f = { ...fOf(c0), nameL: c.name, words: WORDS[l], loc: c, tradeFirst: FAM.country && FAM.country.tradeFirst, phrasing: FAM.country && FAM.country.phrasing }, copy = T.countryCopy(l, f);
       H1[l][c0.iso] = copy.h1;
@@ -483,7 +492,7 @@ ${ps.length ? `<h3>${esc(I.s(l, "partsRanked"))}</h3>${relList(l, ps)}` : ""}
         demand: c0.demand, eu: EU27.has(c0.iso), armedFull: c0.armedFull, relations: (FAM.country || {}).relations, armed: armedItemsOf(c0.iso), regime, stock, ask: copy.ask, fuel: fuelB, mil: milB });
       const faq = dyn.faq;
       const url = abs(cPath(c0, l));
-      const crumbItems = [[T.L(l, "map"), home(l)], [T.L(l, "ranking"), "/ranking/"], [c.name, cPath(c0, l)]];
+      const crumbItems = [[T.L(l, "map"), home(l)], [T.L(l, "ranking"), lp(l, "/ranking/")], [c.name, cPath(c0, l)]];
       const g = groupOfL[l][c0.iso], i = order.indexOf(c0.iso);
       const near = i < 0 ? [] : order.slice(Math.max(0, i - 3), i + 4);
       const cls = c.net ? (c0.earner ? "mid" : c.net.unc ? (c.net.pos ? "fpos" : "fneg") : c.net.pos ? "pos" : "neg") : "mid";
@@ -524,18 +533,18 @@ ${main}
 ${faq.length ? `<section class="faq" id="faq"><h2>${esc(T.L(l, "faq"))}</h2>${faq.map(x => `<h3>${esc(x.q)}</h3><p>${x.a}</p>`).join("\n")}</section>` : ""}
 <h2>${esc(T.L(l, "nearby"))}</h2>
 ${g ? `<p class="sub">${esc(g.label)}${g.rank ? " · " + esc(T.L(l, "rankOf", { r: g.rank, n: groupSize(l, g) })) : ""}</p><ol class="rk">${near.map(iso => { const x = groupOfL[l][iso], cc = LANG_DATA[l][iso] || byIso[iso]; return `<li${iso === c0.iso ? ' class="here"' : ""}><span class="r">${x.rank ? x.rank + "." : ""}</span>${iso === c0.iso ? esc(cc.name) : `<a href="${cPath(byIso[iso], l)}">${esc(cc.name)}</a>`}<span class="v">${esc(x.row.value)}</span><span class="e">${esc(x.label)} · ${esc(x.row.eur)}${x.row.sure ? "" : " · " + esc(x.row.chance)}</span></li>`; }).join("")}</ol>`
-    : `<p>${esc(c0.party ? T.L(l, "party") : T.L(l, "notRanked"))}. <a href="/ranking/">${esc(T.L(l, "ranking"))}</a></p>`}
+    : `<p>${esc(c0.party ? T.L(l, "party") : T.L(l, "notRanked"))}. <a href="${lp(l, "/ranking/")}">${esc(T.L(l, "ranking"))}</a></p>`}
 ${moreAbout(l, c0)}
 ${(c0.noData || c0.mostlyNoData) && c.sources && c.sources.length ? `<h2>${esc(T.L(l, "sources"))}</h2><ul class="src">${c.sources.map(s => `<li><a href="${esc(s.url || home(l) + "#" + c0.iso)}"${s.url ? ' rel="noopener"' : ""}>${esc(s.name)}</a></li>`).join("")}</ul>` : ""}
 ${c.nSources ? `<p class="sub">${esc(T.L(l, "moreSources", { n: c.nSources }))} <a href="${home(l)}#${c0.iso}">${esc(T.L(l, "openMap"))}</a> · <a href="/how-it-works/">${esc(T.L(l, "measured"))}</a></p>` : ""}
-${ls.length > 1 ? `<p class="langs" aria-label="${esc(T.L(l, "languages"))}">${ls.filter(x => x !== l).map(x => `<a href="${cPath(c0, x)}" hreflang="${x}" lang="${x}">${T.LANG_NAMES[x]}</a>`).join("")}</p>` : ""}
+${ls.length > 1 && !thin ? `<p class="langs" aria-label="${esc(T.L(l, "languages"))}">${ls.filter(x => x !== l).map(x => `<a href="${cPath(c0, x)}" hreflang="${x}" lang="${x}">${T.LANG_NAMES[x]}</a>`).join("")}</p>` : ""}
 </main>
 ${foot(l)}`;
       const ld = [{ "@context": "https://schema.org", "@type": "WebPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: l, dateModified: DATE_TOKEN,
         image: cimg ? [abs(cimg.path), abs(`share/${c0.iso.toLowerCase()}.png`)] : abs(`share/${c0.iso.toLowerCase()}.png`), ...imgLd(cimg), isPartOf: DATASET, about: { "@type": "Country", name: c0.nameEn } }, crumbLd(crumbItems)];
       if (faq.length) ld.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(x => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: plainText(x.a) } })) });
       await put(cPath(c0, l), shell({ lang: l, title: copy.title, description: copy.description, canonical: url, alternates: ls.length > 1 ? alts : [], image: cimg ? abs(cimg.path) : abs(`share/${c0.iso.toLowerCase()}.png`),
-        imageAlt: cimg ? cimg.alt : c0.net ? T.L("en", "imgCountry", { name: c0.name, what: c0.net.pre + " " + c0.net.big }) : T.L("en", "imgNoData", { name: c0.name }), ld, body, ogType: "article", iso: c0.iso }), ls.length > 1 ? alts : [], cimg ? [cimg] : []);
+        imageAlt: cimg ? cimg.alt : c0.net ? T.L("en", "imgCountry", { name: c0.name, what: c0.net.pre + " " + c0.net.big }) : T.L("en", "imgNoData", { name: c0.name }), ld, body, ogType: "article", iso: c0.iso, noindex: thin }), ls.length > 1 ? alts : [], cimg ? [cimg] : [], { noindex: thin });
     }
     // the old share link (round 30's c/<iso>.html): kept for links already shared, sent on to the country page
     const copy = T.countryCopy("en", { ...fOf(c0), nameL: c0.name, words: WORDS.en, loc: c0, tradeFirst: FAM.country && FAM.country.tradeFirst, phrasing: FAM.country && FAM.country.phrasing }), to = cPath(c0), iso = c0.iso.toLowerCase();
@@ -560,19 +569,25 @@ ${foot(l)}`;
 
   // ----- the ranking and the two lens pages -----
   const nm = iso => byIso[iso].name, ttl = iso => I.inSentence("en", nm(iso));
-  const G0 = EN.rank.net.groups.find(g => g.g === 0), G5 = EN.rank.net.groups.find(g => g.g === 5);
+  // round 63: the Russia end is the group "Toward Russia" (g 6; it was g 5, "Leaning toward Russia"), its furthest three
+  const G0 = EN.rank.net.groups.find(g => g.g === 0), G6 = EN.rank.net.groups.find(g => g.g === 6);
   const uaRows = EN.rank.ua.groups.flatMap(g => g.rows), ruRows = EN.rank.rus.groups.flatMap(g => g.rows);
   const big = r => byIso[r.iso].gdp >= 5;   // the map's ranking threshold for lists by size (MIN_GDP_RANK, € 5bn)
+  // round 63: the facts by country code, named in each language (the ranking and the trade page in every language)
+  const fIso = {
+    topUa: (G0 ? G0.rows.filter(r => !r.small).slice(0, 3) : []).map(r => r.iso),
+    topRu: (G6 ? G6.rows.filter(r => !r.small).slice(-3).reverse() : []).map(r => r.iso),
+    parties: EN.rank.net.party.map(r => r.iso),
+    // round 57: the lists are what their words say (Russia kept more: below zero; less: above)
+    ruMore: ruRows.filter(r => r.eurBn < 0).sort((a, b) => a.eurBn - b.eurBn).slice(0, 2).map(r => [r.iso, r.eurBn]),
+    ruLess: ruRows.filter(r => r.eurBn > 0).sort((a, b) => b.eurBn - a.eurBn).slice(0, 1).map(r => [r.iso, r.eurBn])[0],
+  };
   const facts = {
     n: EN.rank.net.order.length,
-    topUa: (G0 ? G0.rows.filter(r => !r.small).slice(0, 3) : []).map(r => nm(r.iso)),
-    topRu: (G5 ? G5.rows.filter(r => !r.small).slice(-3).reverse() : []).map(r => nm(r.iso)),
-    parties: EN.rank.net.party.map(r => nm(r.iso)),
+    topUa: fIso.topUa.map(nm), topRu: fIso.topRu.map(nm), parties: fIso.parties.map(nm),
     euroTop: uaRows.slice().sort((a, b) => b.eurBn - a.eurBn).slice(0, 2).map(r => [ttl(r.iso), r.eurBn]),
     shareTop: uaRows.filter(r => r.sure && big(r)).sort((a, b) => b.pct - a.pct).slice(0, 3).map(r => nm(r.iso)),
-    // round 57: the lists are what their words say (Russia kept more: below zero; less: above)
-    ruMore: ruRows.filter(r => r.eurBn < 0).sort((a, b) => a.eurBn - b.eurBn).slice(0, 2).map(r => [ttl(r.iso), r.eurBn]),
-    ruLess: ruRows.filter(r => r.eurBn > 0).sort((a, b) => b.eurBn - a.eurBn).slice(0, 1).map(r => [ttl(r.iso), r.eurBn])[0],
+    ruMore: fIso.ruMore.map(([i, b]) => [ttl(i), b]), ruLess: fIso.ruLess ? [ttl(fIso.ruLess[0]), fIso.ruLess[1]] : undefined,
   };
   // round 60: seven groups, the map's chance levels (rankGroup in index.html), essentially zero among them
   const GROUP_ID = ["toward-ukraine", "leaning-toward-ukraine", "near-zero", "essentially-zero", "too-close-to-call", "leaning-toward-russia", "toward-russia"];
@@ -589,14 +604,16 @@ ${foot(l)}`;
   // round 61 (CTR): the facts of the page of support by country in a language (the names and figures the map's)
   const factsL = l => {
     if (l === "en") return { ...facts, euroTop3: uaRows.slice().sort((a, b) => b.eurBn - a.eurBn).slice(0, 3).map(r => [ttl(r.iso), r.eurBn]), y1: lastYear, dataTo: dataToL.en };
-    const rows = RANK_UA[l].groups.flatMap(g => g.rows), byEur = rows.slice().sort((a, b) => b.eurBn - a.eurBn), nIn = iso => I.inSentence(l, nameL(iso, l));
+    // round 63 (audit: "met Verenigde Staten"): a name in a list after "with" in the language's form (seo_i18n.mjs inList)
+    const rows = RANK_UA[l].groups.flatMap(g => g.rows), byEur = rows.slice().sort((a, b) => b.eurBn - a.eurBn), nIn = iso => I.inList(l, nameL(iso, l)), nB = iso => nameL(iso, l);
     return { ...facts, euroTop: byEur.slice(0, 2).map(r => [nIn(r.iso), r.eurBn]), euroTop3: byEur.slice(0, 3).map(r => [nIn(r.iso), r.eurBn]),
-      shareTop: rows.filter(r => r.sure && big(r)).sort((a, b) => b.pct - a.pct).slice(0, 3).map(r => nameL(r.iso, l)), y1: lastYear, dataTo: dataToL[l] };
+      shareTop: rows.filter(r => r.sure && big(r)).sort((a, b) => b.pct - a.pct).slice(0, 3).map(r => nIn(r.iso)), y1: lastYear, dataTo: dataToL[l],
+      topUa: fIso.topUa.map(nB), topRu: fIso.topRu.map(nB), parties: fIso.parties.map(nB), ruMore: fIso.ruMore.map(([i, b]) => [nIn(i), b]), ruLess: fIso.ruLess ? [nIn(fIso.ruLess[0]), fIso.ruLess[1]] : undefined };
   };
   // round 59: faq, questions in the words people search (seo_i18n.mjs TOPIC_X), visible and as JSON-LD from one array
   async function rankPage(path, pageKey, rk, ids, rowExtra, extraTop = "", mapHash = "#view=rank", faq = [], l = "en", alts = [], imgs = { top: null, more: [] }) {
     const copy = T.staticCopy(pageKey, factsL(l), l), url = abs(lp(l, path));
-    const crumb = pageKey === "support-for-ukraine" ? T.L(l, "supportPage") : copy.h1.split(":")[0];
+    const crumb = pageKey === "support-for-ukraine" ? T.L(l, "supportPage") : copy.h1.split(":")[0].trim();
     const items = [[T.L(l, "map"), home(l)], [crumb, lp(l, path)]];
     const rowsAll = rk.groups.flatMap(g => g.rows), chanceKey = CHKEY[l] || "";
     const body = `${top(l)}
@@ -616,9 +633,9 @@ ${rk.groups.filter(g => g.rows.some(r => !r.small)).map(g => { const big = g.row
 <p class="sub">${esc(T.L(l, "smallerNote"))}</p>
 <ol class="rk">${rk.groups.flatMap(g => g.rows.filter(r => r.small).map(r => rankLi(r, " · " + esc(g.label) + rowExtra(r), l))).join("")}</ol>
 ${rk.party.length ? `<h2 id="party">${esc(I.s(l, "party"))}</h2><ul class="plain">${rk.party.map(r => `<li><a href="${cPath(byIso[r.iso], l)}">${esc(nmL(r.iso, l))}</a> ${esc(r.value)} · ${esc(r.eur)}</li>`).join("")}</ul>` : ""}
-${rk.noData.filter(i => byIso[i]).length ? `<h2 id="no-data">${esc(T.L(l, "noData"))}</h2><p class="sub">${esc(T.L(l, "noDataRank"))}</p><p>${rk.noData.filter(i => byIso[i]).map(i => `<a href="${cPath(byIso[i], l)}">${esc(nmL(i, l))}</a>`).join(", ")}</p>` : ""}
+${rk.noData.filter(i => byIso[i]).length ? `<h2 id="no-data">${esc(T.L(l, "noData"))}</h2><p class="sub">${esc(T.L(l, "noDataRank"))}</p><p>${rk.noData.filter(i => byIso[i]).map(i => (noOwn(byIso[i]) ? esc(nmL(i, l)) : `<a href="${cPath(byIso[i], l)}">${esc(nmL(i, l))}</a>`)).join(", ")}</p>` : ""}
 ${faq.length ? `<section class="faq" id="faq"><h2>${esc(I.s(l, "questions"))}</h2>${faq.map(x => `<h3>${esc(x.q)}</h3><p>${esc(x.a)}</p>`).join("\n")}</section>` : ""}
-<p><a href="/ranking/">${esc(T.L(l, "ranking"))}</a> · <a href="${lp(l, "/support-for-ukraine/")}">${esc(T.L(l, "supportPage"))}</a> · <a href="/trade-with-russia/">${esc(T.L(l, "tradePage"))}</a> · <a href="/how-it-works/">${esc(T.L(l, "how"))}</a></p>
+<p><a href="${lp(l, "/ranking/")}">${esc(T.L(l, "ranking"))}</a> · <a href="${lp(l, "/support-for-ukraine/")}">${esc(T.L(l, "supportPage"))}</a> · <a href="${lp(l, "/trade-with-russia/")}">${esc(T.L(l, "tradePage"))}</a> · <a href="/how-it-works/">${esc(T.L(l, "how"))}</a></p>
 ${topicLinks("", l)}
 ${alts.length ? langLinks(l, path) : ""}
 </main>
@@ -630,7 +647,9 @@ ${foot(l)}`;
         ...(faq.length ? [{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(x => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) }] : [])], body,
     }), alts, pImgs);
   }
-  await rankPage("/ranking/", "ranking", EN.rank.net, GROUP_ID, () => "", "", "#view=rank", [], "en", [], { top: RIMG.en.net, more: [] });
+  // round 63: the ranking in every language, with reciprocal hreflang and x-default (as the support page in round 61), its
+  // net chart in each language
+  for (const l of T.LANGS) await rankPage("/ranking/", "ranking", RANK[l], GROUP_ID, () => "", "", "#view=rank", [], l, famAlts("/ranking/"), { top: RIMG[l].net || null, more: [] });
   const euroTable = (rows, id, title, fmt, l = "en") => `<h2 id="${id}">${esc(title)}</h2><div class="tbl"><table><thead><tr><th>#</th><th>${esc(T.L(l, "country"))}</th><th class="n">€</th><th class="n">${esc(T.L(l, "share"))}</th></tr></thead><tbody>${rows.map((r, i) => `<tr><td>${i + 1}</td><td><a href="${cPath(byIso[r.iso], l)}">${esc(nmL(r.iso, l))}</a></td><td class="n">${esc(fmt(r))}</td><td class="n">${esc(r.value)}</td></tr>`).join("")}</tbody></table></div>`;
   // round 59: "Ukraine allies" and who gives the most, answered from this page's list (the tracker's questions, TOPIC_X)
   // round 61 (CTR): the all-years page of support by country in every language, with reciprocal hreflang (it was English
@@ -640,16 +659,20 @@ ${foot(l)}`;
     for (const l of T.LANGS) {
       const rk = RANK_UA[l], rows = rk.groups.flatMap(g => g.rows), byEur = rows.slice().sort((a, b) => b.eurBn - a.eurBn);
       const tops = byEur.slice(0, 3).map(r => I.inSentence(l, nmL(r.iso, l)));
-      const faq = I.topicExtra(l, "ukraine-support-tracker", { n: rows.length, tops: I.list3(l, tops), t1: tops[0] || "", topV: byEur[0] ? I.E(l, byEur[0].eurBn) : "", sumUa: I.E(l, rows.reduce((a, r) => a + r.eurBn, 0)) }, {}).faq;
+      const faq = I.topicExtra(l, "ukraine-support-tracker", { n: rows.length, tops: I.list3(l, tops.map(x => I.inList(l, x))), t1: tops[0] || "", topV: byEur[0] ? I.E(l, byEur[0].eurBn) : "", sumUa: I.E(l, rows.reduce((a, r) => a + r.eurBn, 0)) }, {}).faq;
       const extra = l === "en" ? r => (r.pp ? " · " + r.pp.replace(/ pp$/, "") + " per person" : "") : r => (r.pp ? " · " + r.pp : "");
       await rankPage(path, "support-for-ukraine", rk, GROUP_ID_UA, extra,
         euroTable(byEur.slice(0, 15), "in-euros", T.L(l, "inEuros"), r => r.eur.replace(/^\+/, ""), l) + `<h2>${esc(T.L(l, "shareWithPp"))}</h2>` +
         G.figureHtml(RIMG[l].gdp, { lazy: true, caption: RIMG[l].gdp ? RIMG[l].gdp.caption : "" }), "#view=rank&lens=support", faq, l, alts, { top: RIMG[l].eur, more: [RIMG[l].gdp] });
     }
   }
-  await rankPage("/trade-with-russia/", "trade-with-russia", EN.rank.rus, GROUP_ID, () => "",
-    euroTable(ruRows.filter(r => r.eurBn < 0).sort((a, b) => a.eurBn - b.eurBn).slice(0, 10), "russia-kept-more", T.L("en", "keptMoreEur"), r => r.eur.replace(/^−/, "")) + euroTable(ruRows.filter(r => r.eurBn > 0).sort((a, b) => b.eurBn - a.eurBn).slice(0, 10), "russia-kept-less", T.L("en", "keptLessEur"), r => r.eur.replace(/^\+/, "")) + `<h2>${esc(T.L("en", "asShare"))}</h2>`,
-    "#view=rank&lens=payments");
+  // round 63: the trade page in every language too
+  for (const l of T.LANGS) {
+    const rr = RANK_RU[l].groups.flatMap(g => g.rows);
+    await rankPage("/trade-with-russia/", "trade-with-russia", RANK_RU[l], GROUP_ID, () => "",
+      euroTable(rr.filter(r => r.eurBn < 0).sort((a, b) => a.eurBn - b.eurBn).slice(0, 10), "russia-kept-more", T.L(l, "keptMoreEur"), r => r.eur.replace(/^−/, ""), l) + euroTable(rr.filter(r => r.eurBn > 0).sort((a, b) => b.eurBn - a.eurBn).slice(0, 10), "russia-kept-less", T.L(l, "keptLessEur"), r => r.eur.replace(/^\+/, ""), l) + `<h2>${esc(T.L(l, "asShare"))}</h2>`,
+      "#view=rank&lens=payments", [], l, famAlts("/trade-with-russia/"));
+  }
 
 
   // ----- the topic and group pages (round 55) and the generated families (round 56), in every language -----
@@ -672,7 +695,7 @@ ${foot(l)}`;
     const side = e.onlySide || (e.order === "asc" ? "russia" : "ukraine"), names = m.rows.slice(0, 3).map(c => rowName(l, c));
     const nSure = m.rows.filter(c => { const x = mv(c, m.key, m.year); return x && x.level === "sure" && x.side === side; }).length;
     const ua = m.totals.find(x => x.key === "ua") || { v: 0 }, pw = WORDS[l].party || "";
-    const vars = { n: m.rows.length, tops: I.list3(l, names), t1: names[0] || "", topV: topV(l, m), sumUa: I.E(l, ua.v), nSure, sureWord: WORDS[l].sure || "",
+    const vars = { n: m.rows.length, tops: I.list3(l, names.map(x => I.inList(l, x))), t1: names[0] || "", topV: topV(l, m), sumUa: I.E(l, ua.v), nSure, sureWord: WORDS[l].sure || "",
       partyList: I.list3(l, m.party.map(c => rowName(l, c))), partyWord: pw, partyWordLc: pw.charAt(0).toLowerCase() + pw.slice(1), ...(FROZ && I.TOPIC_X_NEEDS[e.slug] === "frozen" ? RS.frozenVars(l, FROZ) : {}) };
     // round 59b: the buyers of each fuel by their customs records (fuel_split_r59.json)
     const fv = I.TOPIC_X_NEEDS[e.slug] === "fuel" ? RS.fuelVars(l, FUEL, iso => nameIn(iso, l), RCFG.fuel.rows || 15) : { vars: {}, nums: {} };
@@ -757,7 +780,7 @@ ${stockCols ? `<p class="sub">${esc(I.res(l, "stockNote"))}</p>` : ""}
 ${milCols ? `<p class="sub">${esc(I.res(l, "mTrackerNote"))} <a href="${lp(l, "/" + RCFG.military.slug + "/")}">${esc(I.res(l, "mAll"))} →</a></p>` : ""}
 ${fuelHtml}
 ${rel.length ? `<h2 id="related">${esc(I.s(l, "related"))}</h2>${relList(l, rel)}` : ""}
-<p><a href="/ranking/">${esc(T.L(l, "ranking"))}</a> · <a href="${lp(l, "/support-for-ukraine/")}">${esc(T.L(l, "supportPage"))}</a> · <a href="/trade-with-russia/">${esc(T.L(l, "tradePage"))}</a> · <a href="${hub}">${esc(I.s(l, "allTopics"))}</a> · <a href="/how-it-works/">${esc(T.L(l, "how"))}</a></p>
+<p><a href="${lp(l, "/ranking/")}">${esc(T.L(l, "ranking"))}</a> · <a href="${lp(l, "/support-for-ukraine/")}">${esc(T.L(l, "supportPage"))}</a> · <a href="${lp(l, "/trade-with-russia/")}">${esc(T.L(l, "tradePage"))}</a> · <a href="${hub}">${esc(I.s(l, "allTopics"))}</a> · <a href="/how-it-works/">${esc(T.L(l, "how"))}</a></p>
 ${langLinks(l, path)}
 </main>
 ${foot(l)}`;
@@ -772,7 +795,7 @@ ${foot(l)}`;
 
   // ----- round 56: two countries side by side -----
   for (const e of COMPARES) {
-    const path = pathOf(e), alts = famAlts(path);
+    const path = pathOf(e), alts = e.index ? famAlts(path) : [];
     for (const l of T.LANGS) {
       const a = LANG_DATA[l][e.a], b = LANG_DATA[l][e.b], A = nameL(e.a, l), B = nameL(e.b, l), copy = I.compareCopy(l, { A, B });
       const ok = c => c.net && !c.noData && !c.mostlyNoData;
@@ -816,12 +839,12 @@ ${renderTopic(m, { esc, cPath: c => cPath(c, l), l }).replace(/<h2 id="table">[^
 ${partsTable}
 ${yearTable}
 <h2 id="related">${esc(I.s(l, "related"))}</h2><ul class="rel"><li><a href="${cPath(byIso[e.a], l)}">${esc(a.name)}</a></li><li><a href="${cPath(byIso[e.b], l)}">${esc(b.name)}</a></li>${groupsBoth.concat(others).map(x => `<li><a href="${lp(l, pathOf(x))}">${esc(labelOf(x, l))}</a></li>`).join("")}<li><a href="${hub}">${esc(I.s(l, "allTopics"))}</a></li></ul>
-${langLinks(l, path)}
+${e.index ? langLinks(l, path) : ""}
 </main>
 ${foot(l)}`;
       const ld = [{ "@context": "https://schema.org", "@type": "WebPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: l, dateModified: DATE_TOKEN, isPartOf: DATASET, image: abs("share/world.png"),
         about: [{ "@type": "Country", name: byIso[e.a].nameEn }, { "@type": "Country", name: byIso[e.b].nameEn }] }, crumbLd(items)];
-      await put(lp(l, path), shell({ lang: l, title: copy.title, description: copy.description, canonical: url, alternates: alts, image: abs("share/world.png"), imageAlt: T.L("en", "imgPair", { a: byIso[e.a].name, b: byIso[e.b].name }), ld, body, ogType: "article" }), alts);
+      await put(lp(l, path), shell({ lang: l, title: copy.title, description: copy.description, canonical: url, alternates: alts, image: abs("share/world.png"), imageAlt: T.L("en", "imgPair", { a: byIso[e.a].name, b: byIso[e.b].name }), ld, body, ogType: "article", noindex: !e.index }), alts, [], { noindex: !e.index });
     }
   }
 
@@ -831,7 +854,7 @@ ${foot(l)}`;
     for (const l of T.LANGS) {
       const n = FAMILY.length + 3 + RPAGE.length, copy = I.hubCopy(l, n), url = abs(lp(l, path));
       const sec = (id, h, list) => (list.length ? `<h2 id="${id}">${esc(h)} · ${list.length}</h2>${relList(l, list)}` : "");
-      const ranks = l === "en" ? I.s("en", "rankings") : [[T.L(l, "ranking"), "/ranking/"], [T.L(l, "supportPage"), lp(l, "/support-for-ukraine/")], [T.L(l, "tradePage"), "/trade-with-russia/"]];
+      const ranks = l === "en" ? I.s("en", "rankings") : [[T.L(l, "ranking"), lp(l, "/ranking/")], [T.L(l, "supportPage"), lp(l, "/support-for-ukraine/")], [T.L(l, "tradePage"), lp(l, "/trade-with-russia/")]];
       const items = [[T.L(l, "map"), home(l)], [I.s(l, "topics"), lp(l, path)]];
       const body = `${top(l)}
 <main class="wrap">
@@ -844,8 +867,8 @@ ${sec("topics-list", I.s(l, "hubTopics"), TOPICS.filter(e => e.kind === "topic")
 ${sec("groups", I.s(l, "hubGroups"), TOPICS.filter(e => e.kind === "group"))}
 ${sec("parts", I.s(l, "hubParts"), PARTS)}
 ${sec("years", I.s(l, "hubYears"), YEARS)}
-${sec("compare", I.s(l, "hubCompare"), COMPARES)}
-<h2 id="countries">${esc(I.s(l, "hubCountries"))}</h2><ul class="rel">${countries.slice().sort((x, y) => LANG_DATA[l][x.iso].name.localeCompare(LANG_DATA[l][y.iso].name, l)).map(c => `<li><a href="${cPath(c, l)}">${esc(LANG_DATA[l][c.iso].name)}</a></li>`).join("")}</ul>
+${sec("compare", I.s(l, "hubCompare"), COMPARES_IX)}
+<h2 id="countries">${esc(I.s(l, "hubCountries"))}</h2><ul class="rel">${countries.filter(c => !noOwn(c)).sort((x, y) => LANG_DATA[l][x.iso].name.localeCompare(LANG_DATA[l][y.iso].name, l)).map(c => `<li><a href="${cPath(c, l)}">${esc(LANG_DATA[l][c.iso].name)}</a></li>`).join("")}</ul>
 ${langLinks(l, path)}
 </main>
 ${foot(l)}`;
@@ -896,7 +919,7 @@ ${foot(l)}`;
 
   // ----- How it works, the method pages, the limitations, the changelog -----
   const docPage = async (path, heading, html, first, items, extra = "") => {
-    const copy = T.docCopy(heading, first), url = abs(path);
+    const copy = T.docCopy(heading, first, path.replace(/^\/|\/$/g, "")), url = abs(path);
     const body = `${top("en")}
 <main class="wrap doc">
 ${crumbs("en", items)}
@@ -1026,10 +1049,11 @@ ${foot(l)}`;
   // ----- the map: the A–Z list, the Topics list and the data date in index.html, and a copy per language -----
   const idxPath = join(site, "index.html");
   let idx = await readFile(idxPath, "utf8");
-  const az = countries.slice().sort((a, b) => a.name.localeCompare(b.name, "en"));
+  const az = countries.filter(c => !noOwn(c)).sort((a, b) => a.name.localeCompare(b.name, "en"));
   const azBlock = l => `<!-- az:start -->\n        <p class="sub" id="az-intro">${esc(T.homeCopy(l, facts.n, dataToL[l]).intro)}</p>\n        <nav id="az" aria-label="${esc(T.L(l, "allCountries"))}">\n${az.map(c => `          <a href="${cPath(c, l)}" data-iso="${c.iso}">${esc(c.name)}</a>`).join("\n")}\n        </nav>\n<!-- az:end -->`;
   // round 56: the topics in each language's own words and addresses, then the Topics page with everything else
-  const topicsBlock = l => `<!-- topics:start -->\n        <nav id="topics" aria-label="Topics" data-i18n-aria="Topics">\n${TOPICS.map(e => `          <a href="${lp(l, pathOf(e))}">${esc(labelOf(e, l))}</a>`).concat(RPAGE.map(x => `          <a href="${lp(l, x.path)}">${esc(rLabel(x, l))}</a>`)).join("\n")}\n          <a href="${lp(l, "/topics/")}"><b>${esc(I.s(l, "allTopics"))} →</b></a>\n        </nav>\n<!-- topics:end -->`;
+  // round 63: the ranking, the support and the trade page in the language first
+  const topicsBlock = l => `<!-- topics:start -->\n        <nav id="topics" aria-label="Topics" data-i18n-aria="Topics">\n${[[lp(l, "/ranking/"), T.L(l, "ranking")], [lp(l, "/support-for-ukraine/"), T.L(l, "supportPage")], [lp(l, "/trade-with-russia/"), T.L(l, "tradePage")]].map(([h, t]) => `          <a href="${h}">${esc(t)}</a>\n`).join("")}${TOPICS.map(e => `          <a href="${lp(l, pathOf(e))}">${esc(labelOf(e, l))}</a>`).concat(RPAGE.map(x => `          <a href="${lp(l, x.path)}">${esc(rLabel(x, l))}</a>`)).join("\n")}\n          <a href="${lp(l, "/topics/")}"><b>${esc(I.s(l, "allTopics"))} →</b></a>\n        </nav>\n<!-- topics:end -->`;
   idx = idx.replace(/<!-- topics:start -->[\s\S]*?<!-- topics:end -->/, topicsBlock("en"));
   // round 58: the guide for automated readers, linked from the map's head
   if (!idx.includes('href="/llms.txt"')) idx = idx.replace(/(<link rel="canonical" href="[^"]*">)/, '$1\n<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">');
@@ -1073,7 +1097,7 @@ ${foot(l)}`;
   written.sort((a, b) => rankOf(a) - rankOf(b) || a.path.localeCompare(b.path));
   const maps = [];
   for (const l of T.LANGS) {
-    const ws = written.filter(w => langOf(w) === l);
+    const ws = written.filter(w => langOf(w) === l && !w.noindex);
     const urls = ws.map(w => `  <url>\n    <loc>${xmlEsc(abs(w.path))}</loc>\n    <lastmod>${w.lastmod}</lastmod>\n${w.alternates.map(([al, u]) => `    <xhtml:link rel="alternate" hreflang="${al}" href="${xmlEsc(u)}"/>\n`).join("")}${(w.images || []).map(im => `    <image:image>\n      <image:loc>${xmlEsc(abs(im.path))}</image:loc>\n    </image:image>\n`).join("")}  </url>`);
     await writeFile(join(site, `sitemap-${l}.xml`), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls.join("\n")}\n</urlset>\n`);
     maps.push({ file: `sitemap-${l}.xml`, lastmod: ws.map(w => w.lastmod).sort().pop() || today, n: ws.length });
@@ -1086,8 +1110,9 @@ ${foot(l)}`;
   await writeFile(statePath, JSON.stringify(sorted, null, 0).replace(/\],"/g, '],\n"').replace(/^\{/, "{\n") .replace(/\}$/, "\n}") + "\n");
   const count = re => written.filter(w => re.test(w.path)).length;
   const secs = ms => (ms / 1000).toFixed(1) + "s";
-  log(`seo: ${written.length} pages in ${maps.length} sitemaps (${maps.map(m => m.file.replace(/^sitemap-|\.xml$/g, "") + " " + m.n).join(", ")}): ` +
-    `${count(/\/country\//)} country pages, ${count(/\/compare\//)} comparisons, ${PARTS.length} parts, ${YEARS.length} years and ${TOPICS.length} topics in ${T.LANGS.length} languages; ` +
+  const nNoindex = written.filter(w => w.noindex).length;
+  log(`seo: ${written.length} pages (${nNoindex} noindex, out of the sitemaps) in ${maps.length} sitemaps (${maps.map(m => m.file.replace(/^sitemap-|\.xml$/g, "") + " " + m.n).join(", ")}): ` +
+    `${count(/\/country\//)} country pages, ${count(/\/compare\//)} comparisons (${written.filter(w => /\/compare\//.test(w.path) && !w.noindex).length} indexed), ${PARTS.length} parts, ${YEARS.length} years and ${TOPICS.length} topics in ${T.LANGS.length} languages; ` +
     `${changed.length} new or changed since pipeline/seo_lastmod.json; ${secs(Date.now() - t0)} (reading the map ${secs(tExtract)}, countries ${secs(tCountries)}, families ${secs(tFamilies)}, images ${secs(tImages)})`);
   return { pages: written.length, changed, parts: PARTS.map(e => e.slug), compares: COMPARES.map(e => e.slug) };
 }

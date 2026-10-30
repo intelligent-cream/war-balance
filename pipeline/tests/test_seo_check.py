@@ -242,6 +242,27 @@ def test_every_family_page_is_expected():
     ]
 
 
+def test_round63_only_listed_pairs_are_indexed():
+    model = {
+        "countries": {
+            "SVK": {**SVK, "uaEur": 1.0},
+            "POL": {**SVK, "slug": "poland", "uaEur": 9.0},
+            "CZE": {**SVK, "slug": "czechia", "uaEur": 5.0},
+        }
+    }
+    fam = {
+        "parts": {"minCountries": 9, "minTotal": 9, "list": []},
+        "years": [],
+        "compare": {"pairwiseTop": 3, "pairs": [["SVK", "POL"]]},
+    }
+    cmp = [x for x in sc.family_pages(model, [], fam) if x.startswith("compare/")]
+    assert cmp == ["compare/slovakia-vs-poland/"]
+    every = [x for x in sc.family_pages(model, [], fam, indexed_only=False) if x.startswith("compare/")]
+    assert every == ["compare/slovakia-vs-poland/", "compare/poland-vs-czechia/", "compare/czechia-vs-slovakia/"]
+    assert sc.head('<meta name="robots" content="noindex, follow">')["noindex"]
+    assert not sc.head('<meta name="robots" content="max-image-preview:large">')["noindex"]
+
+
 # ----- round 57: the wording guard -----
 ROOT = Path(__file__).resolve().parents[2]
 CW = {"de": ["sehr wahrscheinlich", "wahrscheinlich", "zu knapp für eine Aussage", "Tendenz"]}
