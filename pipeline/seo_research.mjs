@@ -607,8 +607,10 @@ ${types}
   const byK = isos.filter(i => C[i].kiel_military != null).sort((a, b) => C[b].kiel_military - C[a].kiel_military);
   const byG = isos.filter(i => (C[i].gdp_eur_bn || 0) >= (o.gdpMin ?? 5) && (C[i].military || 0) >= 0.0005).sort((a, b) => C[b].military_pct_gdp - C[a].military_pct_gdp);
   const P = T.military_parts, gbr = isos.filter(i => C[i].kiel_military != null && Math.abs(C[i].kiel_military - C[i].military_parts.kiel_allocated_less_era) >= 0.05);
-  const v1 = { tops: I.list3(l, rows.slice(0, 3).map(nmT)), t1: nmT(rows[0]), t1v: E(C[rows[0]].military), k1: nmT(byK[0]), k1v: E(C[byK[0]].kiel_military),
-    gTops: I.list3(l, byG.slice(0, 3).map(nmT)), g1: nmT(byG[0]), g1v: I.P(l, C[byG[0]].military_pct_gdp), gdpMin: I.E(l, o.gdpMin ?? 5), period: R(l, "fPeriod", { to: o.dataTo }), dataTo: o.dataTo };
+  // round 63: a list after "with" in the language's form ("met de Verenigde Staten", seo_i18n.mjs inList)
+  const nmL = iso => I.inList(l, nmT(iso));
+  const v1 = { tops: I.list3(l, rows.slice(0, 3).map(nmL)), t1: nmT(rows[0]), t1v: E(C[rows[0]].military), k1: nmT(byK[0]), k1v: E(C[byK[0]].kiel_military),
+    gTops: I.list3(l, byG.slice(0, 3).map(nmL)), g1: nmT(byG[0]), g1v: I.P(l, C[byG[0]].military_pct_gdp), gdpMin: I.E(l, o.gdpMin ?? 5), period: R(l, "fPeriod", { to: o.dataTo }), dataTo: o.dataTo };
   const v2 = { ...v1, kielAll: E(T.kiel_military), siteAll: E(T.military), undelivered: E(Math.abs(P.not_yet_delivered)), market: E(Math.abs(P.weapons_at_market_value)), undisc: E(P.undisclosed_estimate),
     eraName: gbr.length ? cap(nmT(gbr[0])) : "", era: gbr.length ? E(C[gbr[0]].kiel_military - C[gbr[0]].military_parts.kiel_allocated_less_era) : "", nUndisc: isos.filter(i => (C[i].military_parts.undisclosed_estimate || 0) > 0).length };
   const v3 = { ...v1, total: E(T.total_site), mil: E(T.military), fin: E(T.financial), hum: E(T.humanitarian), ref: E(T.refugees), eu: E(T.eu_share) };
