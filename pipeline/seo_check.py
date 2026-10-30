@@ -571,6 +571,7 @@ def check_site(
         "llms": [],
         "downloads": [],
         "sanity": [],
+        "images": [],
     }
     smap = site / "sitemap.xml"
     if not smap.exists():
@@ -652,6 +653,8 @@ def check_site(
             p["sanity"] += check_research(site, site.parent, families["research"], model, langs)
     # round 58: every page's cite line and Markdown version; llms.txt; the downloads
     p["cite"], p["markdown"] = check_cite_markdown(site, site_url, urls)
+    # round 62: the chart images, on their pages, in the head, the JSON-LD and the sitemaps
+    p["images"] = check_images(site, site_url, urls)
     p["llms"] = check_llms(site, site_url, model) if model else []
     p["downloads"] = check_downloads(site, model)
     idx = (site / "index.html").read_text()
@@ -660,6 +663,59 @@ def check_site(
     if topics:
         p["az"] += [f"topic {topic_path(e)}" for e in topics if f'href="/{topic_path(e)}"' not in idx]
     return p
+
+
+# ----- round 62: the chart images (seo_images.mjs) -----
+_FIG = re.compile(r'<figure class="chart"><img src="([^"]+)" alt="([^"]*)" width="(\d+)" height="(\d+)"([^>]*)>')
+
+
+def check_images(site: Path, site_url: str, urls: list[str]) -> list[str]:
+    """Every chart image a page shows exists, with its alt text and size; the first one is not lazy (it is near the top),
+    the others are; a page that shows one names it as og:image and as primaryImageOfPage in its JSON-LD, and lists it in
+    its sitemap entry; every image a sitemap lists exists."""
+    out: list[str] = []
+    base = site_url.rstrip("/")
+
+    def local(u: str) -> Path:
+        return site / urlparse(u).path.lstrip("/")
+
+    for u in urls:
+        f = file_for(site, site_url, u)
+        if not f.exists() or f.name != "index.html":
+            continue
+        text = f.read_text()
+        figs = _FIG.findall(text)
+        if '<meta name="robots" content="max-image-preview:large">' not in text:
+            out.append(f"{urlparse(u).path}: no robots max-image-preview:large")
+        if not figs:
+            continue
+        name = urlparse(u).path
+        for i, (src, alt, w, h, rest) in enumerate(figs):
+            if not (site / src.lstrip("/")).exists():
+                out.append(f"{name}: {src} missing")
+            if len(html.unescape(alt).strip()) < 20 or (w, h) != ("1200", "630"):
+                out.append(f"{name}: {src} without alt text or size")
+            if (i == 0) == ("loading=" in rest):
+                out.append(f"{name}: {src} lazy loading on the first image, or not on a later one")
+        og = re.search(r'<meta property="og:image" content="([^"]+)"', text)
+        if not og or og.group(1) != base + figs[0][0]:
+            out.append(f"{name}: og:image is not its first chart")
+        if f'"primaryImageOfPage":{{"@type":"ImageObject","contentUrl":"{base}{figs[0][0]}"' not in text:
+            out.append(f"{name}: no primaryImageOfPage for its chart")
+    for sm in sorted(site.glob("sitemap-*.xml")):
+        text = sm.read_text()
+        for entry in re.findall(r"<url>(.*?)</url>", text, re.DOTALL):
+            imgs = re.findall(r"<image:loc>([^<]+)</image:loc>", entry)
+            for im in imgs:
+                if not local(im).exists():
+                    out.append(f"{sm.name}: {im} missing")
+            loc = re.search(r"<loc>([^<]+)</loc>", entry)
+            pf = file_for(site, site_url, loc.group(1)) if loc else None
+            if pf and pf.exists() and pf.name == "index.html":
+                shown = {base + x[0] for x in _FIG.findall(pf.read_text())}
+                if shown != set(imgs):
+                    out.append(f"{sm.name}: {urlparse(loc.group(1)).path} lists other images than it shows")
+    return out
 
 
 # ----- round 58: the cite line, the Markdown versions, llms.txt and the downloads -----

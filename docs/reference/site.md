@@ -13,6 +13,7 @@ What a reader sees is described on the site itself (How it works). This note say
 | `site/content/` | the long-form text of How it works: `method/*.md`, `limitations.md`, `changelog.md` |
 | `site/data.json`, `site/detail.json` | built by `pipeline/build_data.py`; never edit by hand |
 | `pipeline/share_cards.mjs` | the share images and a page per country (`site/share/`, `site/c/`), made by the Pages deploy |
+| `pipeline/seo_images.mjs` | the chart images for image search (`site/img/`), drawn in the same run (round 62) |
 
 ## How it works and its content
 
@@ -91,6 +92,14 @@ check 37 in `check_data.py` holds the rules.
   Topics page (`/topics/`), each in all seven languages at `/<lang>/<same path>/`; the frames of the pages in each
   language are in `pipeline/seo_i18n.mjs`, everything said about a country is the map's own text in that language.
   Check 48 (`pipeline/seo_check.py`) holds the rules.
+- **Chart images (round 62).** `pipeline/seo_images.mjs` draws 1200×630 WebP charts at deploy into `site/img/`
+  (`site/img/<lang>/` for the other languages; not committed, like `site/share/`), from the figures the pages show and
+  in the map's colours and fonts: support for Ukraine by country in euros, as a share of GDP and per person, the
+  money that moved toward Russia and the frozen Russian assets (each in all seven languages), the net (English, on
+  `/ranking/`), and one per country page with data. Their file names (`seo_i18n.mjs` `IMG_FILE`) carry no date, so an
+  address stays the same as the data change. Each is shown near the top of its page with alt text that states the
+  figures, is its `og:image` and `primaryImageOfPage`, and is listed in the sitemaps (`image:image`); every generated
+  page has `max-image-preview:large`. Check 48 reads them (`check_images`).
 - **Structured data.** The map's head has JSON-LD for the website, the publishing organisation ("War Balance",
   no personal names) and the Dataset (licence CC BY 4.0, coverage 2022 to August 2026 (all of 2022), the JSON
   download). Each country page has a WebPage that is part of the Dataset.

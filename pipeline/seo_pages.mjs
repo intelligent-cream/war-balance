@@ -19,6 +19,9 @@
 //   round 59b: military-aid-to-ukraine-by-country/ (every language), the fuel tables on russian-oil-gas-buyers/, the
 //   support by type on the support tracker and the country pages, what each country bought by fuel on its page, the
 //   budget balance and the National Wealth Fund on russia-oil-gas-revenue/, and the fuel and military CSV files
+//   round 62: img/ (img/<lang>/ in the other languages), the chart images (seo_images.mjs): support for Ukraine by
+//   country in euros, as a share of GDP and per person, the net, the money toward Russia and the frozen assets, and one
+//   per country page; each shown near the top of its page, its og:image, in its JSON-LD and in the sitemaps
 // and, in git, the A–Z list of country pages and the data date in site/index.html (between markers; unchanged unless the
 // data change) and pipeline/seo_lastmod.json (each page's content hash and the date it last changed, for lastmod).
 
@@ -36,6 +39,7 @@ import * as I from "./seo_i18n.mjs";
 import { countryDyn, plainText, mapRank, rankable, sameRegion, similarOf } from "./seo_country.mjs";
 import * as RS from "./seo_research.mjs";
 import * as DLX from "./seo_downloads.mjs";
+import * as G from "./seo_images.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -104,6 +108,7 @@ function shell({ lang, title, description, canonical, alternates = [], image, im
 <script>try { document.documentElement.dataset.theme = localStorage.getItem("ftm-theme") || "dark"; } catch (e) { document.documentElement.dataset.theme = "dark"; }</script>
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
+<meta name="robots" content="max-image-preview:large">
 <link rel="canonical" href="${canonical}">${md ? `\n<link rel="alternate" type="text/markdown" href="${md}">` : ""}
 ${alternates.map(([l, u]) => `<link rel="alternate" hreflang="${l}" href="${u}">`).join("\n")}
 <meta property="og:type" content="${ogType}">
@@ -114,12 +119,13 @@ ${alternates.filter(([l]) => l !== lang && T.OG_LOCALE[l]).map(([l]) => `<meta p
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${image}">
-<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">${/\.webp$/.test(image) ? `\n<meta property="og:image:type" content="image/webp">` : ""}
 <meta property="og:image:alt" content="${esc(imageAlt)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title.replace(/ \| War Balance.*$/, ""))}">
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${image}">
+<meta name="twitter:image:alt" content="${esc(imageAlt)}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#14213d">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,7 +167,7 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const RPAGE = [SANC && RCFG.sanctions && { key: "sanctions", cfg: RCFG.sanctions, path: "/" + RCFG.sanctions.slug + "/" }, REV && RCFG.revenue && { key: "revenue", cfg: RCFG.revenue, path: "/" + RCFG.revenue.slug + "/" },
     MIL && RCFG.military && { key: "military", cfg: RCFG.military, path: "/" + RCFG.military.slug + "/" }].filter(Boolean);
   const rLabel = (x, l) => I.res(l, { sanctions: "sLabel", revenue: "rLabel", military: "mLabel" }[x.key]);
-  const RESERVED = new Set([...RPAGES.map(x => x.slug), "c", "country", "group", "compare", "topics", "downloads", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", "content", "i18n", "share", ...T.LANGS]);
+  const RESERVED = new Set([...RPAGES.map(x => x.slug), "c", "country", "group", "compare", "topics", "downloads", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", "content", "i18n", "share", "img", ...T.LANGS]);
   for (const e of TOPICS) {
     if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(e.slug) || (e.kind === "topic" && RESERVED.has(e.slug)) || !["topic", "group"].includes(e.kind)) throw new Error("seo_topics.json: bad slug or kind " + e.slug);
     if (TOPICS.filter(x => pathOf(x) === pathOf(e)).length > 1) throw new Error("seo_topics.json: two pages at " + pathOf(e));
@@ -232,7 +238,7 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const famAlts = path => T.LANGS.map(l => [l, abs(lp(l, path))]).concat([["x-default", abs(path)]]);
 
   // the generated folders start empty, so a renamed page leaves nothing behind
-  for (const d of ["c", "country", "group", "compare", "topics", "downloads", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", ...NL])
+  for (const d of ["c", "country", "group", "compare", "topics", "downloads", "img", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", ...NL])
     await rm(join(site, d), { recursive: true, force: true });
   // a topic page's folder holds its index.html only (anything else there is not ours: stop rather than delete it)
   // (round 56: every part the config lists, also one that has no page this time, so a page that is no longer made goes)
@@ -244,7 +250,7 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     await rm(d, { recursive: true, force: true });
   }
   // the shared look
-  const allCss = CSS + "\n" + TOPIC_CSS + "\nul.rel{display:flex;flex-wrap:wrap;gap:6px 16px;list-style:none;padding:0}\n.more h3{font:700 14px/1.3 var(--fd);margin:14px 0 4px;color:var(--soft)}" +
+  let allCss = CSS + "\n" + TOPIC_CSS + "\nul.rel{display:flex;flex-wrap:wrap;gap:6px 16px;list-style:none;padding:0}\n.more h3{font:700 14px/1.3 var(--fd);margin:14px 0 4px;color:var(--soft)}" +
     // round 57b: the country page's sections, folded below its top, with its story tags, data coverage and sources by tier
     "\ndetails.fold{border-top:1px solid var(--line)}details.fold>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:2px 0}" +
     "details.fold>summary::-webkit-details-marker{display:none}details.fold>summary h2{flex:1;margin:14px 0}details.fold>summary::after{content:\"+\";font:700 20px/1 var(--fd);color:var(--soft)}" +
@@ -260,12 +266,13 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     "\ntable.sanc td,table.rev td{font-size:14px}table.sanc td:first-child{min-width:8em}table.rev td.n{white-space:nowrap}p.stock a,div.sanc a{overflow-wrap:anywhere}" +
     // round 59b: the fuel, military and budget balance tables (a range or a label beneath a figure)
     "\ntable.fuel td,table.mil td{font-size:14px}td.n .s{display:block;font-size:12.5px;line-height:1.35;color:var(--soft);white-space:normal;font-weight:400}table.fuel td:nth-child(2),table.mil td:nth-child(2){min-width:7em}";
+  allCss += G.FIGURE_CSS;
   await writeFile(join(site, "pages.css"), allCss + "\n");
   CSS_HREF = "/pages.css?v=" + createHash("sha256").update(allCss).digest("hex").slice(0, 8);
 
   // ----- writing, with lastmod from a hash of what the page says -----
   const written = [];   // { path, alternates: [[lang, url]] }
-  async function put(path, html, alternates = []) {
+  async function put(path, html, alternates = [], images = []) {
     const hash = createHash("sha256").update(html).digest("hex").slice(0, 16);
     const prev = state[path], date = prev && prev[0] === hash ? prev[1] : today;
     newState[path] = [hash, date];
@@ -275,7 +282,7 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     await writeFile(file, out);
     // round 58: its Markdown version (not in the sitemap; the HTML stays canonical)
     if (path.endsWith("/")) await writeFile(join(dirname(file), "index.md"), htmlToMarkdown(out, abs(path)));
-    written.push({ path, alternates, lastmod: date });
+    written.push({ path, alternates, lastmod: date, images });
   }
   const human = l => `__WB_LASTMOD_HUMAN_${l}__`;
 
@@ -310,6 +317,91 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   for (const e of [...PARTS]) for (const c of MODELS[pathOf(e)].en.rows) (inRows[c.iso] = inRows[c.iso] || []).push(e);
   const groupsOf = {}; for (const e of TOPICS.filter(x => x.kind === "group")) for (const i of e.members) (groupsOf[i] = groupsOf[i] || []).push(e);
   const comparesOf = {}; for (const e of COMPARES) for (const i of [e.a, e.b]) (comparesOf[i] = comparesOf[i] || []).push(e);
+
+  // ----- round 62: the chart images (seo_images.mjs), from the figures the pages show; drawn at the end of the run -----
+  const HOST = new URL(siteUrl).host, JOBS = [];
+  // the map's two-letter codes (site/i18n.js ISO2), and those of holders too small for the map's atlas
+  const ISO2M = { LIE: "LI", ...(await page.evaluate(() => (typeof ISO2 !== "undefined" ? ISO2 : {}))) };
+  const imgPeriod = l => I.img(l, "period", { dataTo: dataToL[l] }), imgSource = l => I.img(l, "source", { host: HOST, date: fmtDate(dataTo, l) });
+  const addImg = (model, path) => { if (!model) return null; JOBS.push({ path, model }); return { path, alt: model.alt, l: model.l, caption: model.caption || "" }; };
+  const sureRow = x => !!x && x.level === "sure";
+  // a ranking chart's alt text: what it shows, its period, then every row as its figure is written on the chart
+  const rankAlt = (l, k, rows) => `${I.img(l, k)}, ${imgPeriod(l)}: ${rows.map(r => `${r.name} ${r.value}`).join(", ")}.`;
+  const rankImg = (l, key, title, unitKey, altKey, rows, extraLegend = []) => {
+    const pale = rows.some(r => /F$/.test(r.tone));
+    const legend = [{ text: I.img(l, "range") }, ...(pale ? [{ text: I.img(l, "paler") }] : []), ...extraLegend];
+    const m = G.rankChart({ key, l, title, unit: I.img(l, unitKey), period: imgPeriod(l), source: imgSource(l), rows, legend, alt: rankAlt(l, altKey, rows) });
+    m.caption = `${I.img(l, altKey)}, ${imgPeriod(l)}`;
+    return addImg(m, G.imgPath(l, key));
+  };
+  const RIMG = Object.fromEntries(T.LANGS.map(l => [l, {}]));
+  for (const l of T.LANGS) {
+    const nmI = iso => nameL(iso, l), uaAll = RANK_UA[l].groups.flatMap(g => g.rows), fg = iso => byIso[iso].fig, gdpOf = iso => byIso[iso].gdp;
+    // support for Ukraine in euros (the table "In euros" of the page of support by country) and as a share of GDP
+    // (its ranking, economies of €5bn and more), each with its likely range
+    RIMG[l].eur = rankImg(l, "eur", I.img(l, "tEur"), "uEur", "aEur", uaAll.slice().sort((a, b) => b.eurBn - a.eurBn).slice(0, 15)
+      .map(r => ({ name: nmI(r.iso), v: r.eurBn, lo: fg(r.iso).uaLo, hi: fg(r.iso).uaHi, value: r.eur.replace(/^\+/, ""), note: r.sure ? "" : r.words, tone: G.toneOf(r.eurBn, r.sure) })));
+    RIMG[l].gdp = rankImg(l, "gdp", I.img(l, "tGdp"), "uGdp", "aGdp", uaAll.filter(r => !r.small).sort((a, b) => b.pct - a.pct).slice(0, 15)
+      .map(r => ({ name: nmI(r.iso), v: r.pct, lo: (100 * fg(r.iso).uaLo) / gdpOf(r.iso), hi: (100 * fg(r.iso).uaHi) / gdpOf(r.iso), value: r.value.replace(/^\+/, ""), note: r.sure ? "" : r.words, tone: G.toneOf(r.pct, r.sure) })));
+    // per person: the rows of the per-capita page (seo_topics.json ukraine-aid-per-capita)
+    const ppM = (MODELS["/ukraine-aid-per-capita/"] || {})[l];
+    if (ppM) RIMG[l].pp = rankImg(l, "pp", I.img(l, "tPp"), "uPp", "aPp", ppM.rows.slice(0, 15).map(c => {
+      const x = mv(c, "ua"), per = v => (v * 1000) / c.pop;
+      return { name: c.name, v: per(x.v), lo: x.lo == null ? null : per(x.lo), hi: x.hi == null ? null : per(x.hi), value: I.PP(l, per(x.v)), note: sureRow(x) ? "" : x.chance, tone: G.toneOf(x.v, sureRow(x)) };
+    }));
+    // the money that moved toward Russia: the rows of countries-helping-russia/ (the net below zero, parties apart), by
+    // euros, drawn as the size toward Russia
+    const ruM = (MODELS["/countries-helping-russia/"] || {})[l];
+    if (ruM) RIMG[l].rus = rankImg(l, "rus", I.img(l, "tRus"), "uRus", "aRus", ruM.rows.slice().sort((a, b) => mv(a, "net").v - mv(b, "net").v).slice(0, 15).map(c => {
+      const x = mv(c, "net");
+      return { name: c.name, v: -x.v, lo: -x.hi, hi: -x.lo, value: "−" + I.E(l, x.v), note: sureRow(x) ? "" : x.chance, tone: sureRow(x) ? "ru" : "ruF" };
+    }));
+    // the Russian assets frozen in each holding country (frozen_amounts_r58.json, the two columns of frozen-russian-assets/):
+    // the central bank reserves and the private assets, each the country's official figure; no figure is not zero
+    if (FROZ && RCFG.frozen) {
+      const fr = Object.keys(FROZ.countries).map(iso => ({ iso, f: RS.frozenOf(FROZ, iso) })).filter(x => x.f && !x.f.none)
+        .map(({ iso, f }) => { const cb = f.cbr && f.cbr.v != null ? f.cbr : null, pv = f.priv && f.priv.v != null ? f.priv : null; return { iso, cb, pv, tot: (cb ? cb.v : 0) + (pv ? pv.v : 0) }; })
+        .filter(x => x.cb || x.pv).sort((a, b) => b.tot - a.tot || a.iso.localeCompare(b.iso)).slice(0, 15);
+      const none = Object.keys(FROZ.countries).filter(iso => { const f = RS.frozenOf(FROZ, iso); return f && !f.none && !(f.cbr && f.cbr.v != null) && !(f.priv && f.priv.v != null); })
+        .concat((FROZ.no_public_figure || {}).list || []);
+      // (a holder without a page, such as Liechtenstein: its name in the language from its two-letter code)
+      const frName = iso => { const n = nameAnyL(iso, l); if (n !== iso) return n; const two = ISO2M[iso]; try { if (two) return new Intl.DisplayNames([l], { type: "region" }).of(two); } catch { /* the file's own name */ } return ((FROZ.countries[iso] || {}).name || iso).replace(/ \(.*$/, ""); };
+      const fig = x => (x ? RS.stockText(l, x).fig : "–"), rng = (x, k) => (x ? (x[k] != null ? x[k] : x.v) : 0);
+      const C2 = "#8fb5da";
+      const rows = fr.map(x => ({ name: frName(x.iso), v: x.tot, lo: rng(x.cb, "lo") + rng(x.pv, "lo"), hi: rng(x.cb, "hi") + rng(x.pv, "hi"), segs: [{ v: x.cb ? x.cb.v : 0, color: G.TONE.ua }, { v: x.pv ? x.pv.v : 0, color: C2 }],
+        value: `${fig(x.cb)} + ${fig(x.pv)}`, label: `<b style="color:#1f5a94">${esc(fig(x.cb))}</b> + <b style="color:#4f7fae">${esc(fig(x.pv))}</b>`, tone: "ua" }));
+      const m = G.rankChart({ key: "frozen", l, title: I.img(l, "tFrozen"), unit: I.img(l, "uFrozen"), period: imgPeriod(l), source: imgSource(l), rows,
+        legend: [{ color: G.TONE.ua, text: I.res(l, "colCbr") }, { color: C2, text: I.res(l, "colPriv") }, ...(none.length ? [{ text: `${I.cap(I.res(l, "noFig"))}: ${I.list3(l, none.map(frName))}` }] : [])],
+        alt: `${I.img(l, "aFrozen")}, ${imgPeriod(l)} (${I.res(l, "colCbr")} + ${I.res(l, "colPriv")}): ${rows.map(r => `${r.name} ${r.value}`).join(", ")}.` });
+      m.caption = `${I.img(l, "aFrozen")}, ${imgPeriod(l)}`;
+      m.space = 330;
+      RIMG[l].frozen = addImg(m, G.imgPath(l, "frozen"));
+    }
+  }
+  // the net (the ranking page, in English): the map's own groups "Toward Ukraine" and "Toward Russia" (very likely), the
+  // furthest 8 of each among economies of €5bn and more, with their likely range
+  {
+    const gs = EN.rank.net.groups, g0 = gs.find(g => g.g === 0), g6 = gs.find(g => g.g === 6), fg = iso => byIso[iso].fig;
+    const row = r => ({ rank: r.rank, name: byIso[r.iso].name, v: r.pct, lo: fg(r.iso).netLoPct, hi: fg(r.iso).netHiPct, value: r.value, tone: G.toneOf(r.pct, true) });
+    const up = g0 ? g0.rows.filter(r => r.rank).sort((a, b) => a.rank - b.rank).slice(0, 8).map(row) : [];
+    const down = g6 ? g6.rows.filter(r => r.rank).sort((a, b) => a.rank - b.rank).slice(0, 8).map(row) : [];
+    if (down.length) down[0].sepBefore = g6.label;
+    if (up.length) up[0].sepBefore = g0.label;
+    const rows = [...up, ...down];
+    if (rows.length) {
+      const m = G.rankChart({ key: "net", l: "en", title: I.img("en", "tNet"), unit: I.img("en", "uNet"), period: imgPeriod("en"), source: imgSource("en"), rows,
+        legend: [{ text: I.s("en", "legendSigned") }, { text: I.img("en", "range") }], alt: rankAlt("en", "aNet", rows) });
+      m.caption = `${I.img("en", "aNet")}, ${imgPeriod("en")}`;
+      RIMG.en.net = addImg(m, G.imgPath("en", "net"));
+    }
+  }
+  // a country's chart in a language: the map's words for its three numbers and the parts of its support
+  const CW = Object.fromEntries(T.LANGS.map(l => [l, { period: imgPeriod(l), source: imgSource(l), unit: I.img(l, "uCountry"), legendSigned: I.s(l, "legendSigned"), range: I.img(l, "range"),
+    support: T.L(l, "support"), trade: T.L(l, "trade"), frozen: T.L(l, "frozen"), net: T.L(l, "net"), ofGdp: T.L(l, "ofGdp"), party: T.L(l, "party"),
+    partNames: { aid: I.partName(l, "aid"), euaid: I.partName(l, "euaid"), ref: I.partName(l, "ref") }, other: I.img(l, "other") }]));
+  const countryImg = (l, c0, c, title) => addImg(G.countryChart({ c, l, earner: !!c0.earner, words: { ...CW[l], title } }), G.imgPath(l, "country", c0.slug));
+  // the ImageObject of a page's main image (its primaryImageOfPage), and a figure's caption
+  const imgLd = img => (img ? { primaryImageOfPage: G.imageObject(img, abs, { creditText: "War Balance", copyrightNotice: "War Balance" }) } : {});
 
   const groupOfMap = {}; for (const g of EN.rank.net.groups) for (const r of g.rows) groupOfMap[r.iso] = r;
   // ----- round 57b: each country's neighbours by land (the map's own borders, countries-50m.json), its place in the
@@ -374,6 +466,8 @@ ${ps.length ? `<h3>${esc(I.s(l, "partsRanked"))}</h3>${relList(l, ps)}` : ""}
     for (const l of ls) {
       const c = LANG_DATA[l][c0.iso], f = { ...fOf(c0), nameL: c.name, words: WORDS[l], loc: c, tradeFirst: FAM.country && FAM.country.tradeFirst, phrasing: FAM.country && FAM.country.phrasing }, copy = T.countryCopy(l, f);
       H1[l][c0.iso] = copy.h1;
+      // round 62: its chart (support with its parts, trade, frozen money and the net), titled with the page's question
+      const cimg = c0.noData || c0.mostlyNoData ? null : countryImg(l, c0, c, copy.h1);
       // round 57b: the page's sections and questions (seo_country.mjs), from the map's data in this language
       const pr = PEERS[c0.iso];
       // round 58b: its sanctions on Russia (sanctions_r58.json) and the amounts frozen there (frozen_amounts_r58.json)
@@ -424,6 +518,7 @@ ${dyn.sections.map(x => fold(x.id, x.title, x.html)).join("\n")}`;
 ${crumbs(l, crumbItems)}
 <h1>${esc(copy.h1)}</h1>
 <p class="intro">${esc(copy.intro)}</p>${copy.intro2 ? `\n<p>${esc(copy.intro2)}</p>` : ""}
+${G.figureHtml(cimg)}
 <p><a class="btn" href="${home(l)}#${c0.iso}">${esc(T.L(l, "openMap"))} →</a></p>
 ${main}
 ${faq.length ? `<section class="faq" id="faq"><h2>${esc(T.L(l, "faq"))}</h2>${faq.map(x => `<h3>${esc(x.q)}</h3><p>${x.a}</p>`).join("\n")}</section>` : ""}
@@ -437,10 +532,10 @@ ${ls.length > 1 ? `<p class="langs" aria-label="${esc(T.L(l, "languages"))}">${l
 </main>
 ${foot(l)}`;
       const ld = [{ "@context": "https://schema.org", "@type": "WebPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: l, dateModified: DATE_TOKEN,
-        image: abs(`share/${c0.iso.toLowerCase()}.png`), isPartOf: DATASET, about: { "@type": "Country", name: c0.nameEn } }, crumbLd(crumbItems)];
+        image: cimg ? [abs(cimg.path), abs(`share/${c0.iso.toLowerCase()}.png`)] : abs(`share/${c0.iso.toLowerCase()}.png`), ...imgLd(cimg), isPartOf: DATASET, about: { "@type": "Country", name: c0.nameEn } }, crumbLd(crumbItems)];
       if (faq.length) ld.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(x => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: plainText(x.a) } })) });
-      await put(cPath(c0, l), shell({ lang: l, title: copy.title, description: copy.description, canonical: url, alternates: ls.length > 1 ? alts : [], image: abs(`share/${c0.iso.toLowerCase()}.png`),
-        imageAlt: c0.net ? T.L("en", "imgCountry", { name: c0.name, what: c0.net.pre + " " + c0.net.big }) : T.L("en", "imgNoData", { name: c0.name }), ld, body, ogType: "article", iso: c0.iso }), ls.length > 1 ? alts : []);
+      await put(cPath(c0, l), shell({ lang: l, title: copy.title, description: copy.description, canonical: url, alternates: ls.length > 1 ? alts : [], image: cimg ? abs(cimg.path) : abs(`share/${c0.iso.toLowerCase()}.png`),
+        imageAlt: cimg ? cimg.alt : c0.net ? T.L("en", "imgCountry", { name: c0.name, what: c0.net.pre + " " + c0.net.big }) : T.L("en", "imgNoData", { name: c0.name }), ld, body, ogType: "article", iso: c0.iso }), ls.length > 1 ? alts : [], cimg ? [cimg] : []);
     }
     // the old share link (round 30's c/<iso>.html): kept for links already shared, sent on to the country page
     const copy = T.countryCopy("en", { ...fOf(c0), nameL: c0.name, words: WORDS.en, loc: c0, tradeFirst: FAM.country && FAM.country.tradeFirst, phrasing: FAM.country && FAM.country.phrasing }), to = cPath(c0), iso = c0.iso.toLowerCase();
@@ -499,7 +594,7 @@ ${foot(l)}`;
       shareTop: rows.filter(r => r.sure && big(r)).sort((a, b) => b.pct - a.pct).slice(0, 3).map(r => nameL(r.iso, l)), y1: lastYear, dataTo: dataToL[l] };
   };
   // round 59: faq, questions in the words people search (seo_i18n.mjs TOPIC_X), visible and as JSON-LD from one array
-  async function rankPage(path, pageKey, rk, ids, rowExtra, extraTop = "", mapHash = "#view=rank", faq = [], l = "en", alts = []) {
+  async function rankPage(path, pageKey, rk, ids, rowExtra, extraTop = "", mapHash = "#view=rank", faq = [], l = "en", alts = [], imgs = { top: null, more: [] }) {
     const copy = T.staticCopy(pageKey, factsL(l), l), url = abs(lp(l, path));
     const crumb = pageKey === "support-for-ukraine" ? T.L(l, "supportPage") : copy.h1.split(":")[0];
     const items = [[T.L(l, "map"), home(l)], [crumb, lp(l, path)]];
@@ -509,6 +604,7 @@ ${foot(l)}`;
 ${crumbs(l, items)}
 <h1>${esc(copy.h1)}</h1>
 <p class="intro">${esc(copy.intro)}</p>
+${G.figureHtml(imgs.top, { caption: imgs.top ? imgs.top.caption : "" })}
 <p><a class="btn" href="${home(l)}${mapHash}">${esc(T.L(l, "openMap"))} →</a></p>
 <p class="note">${esc(T.L(l, "rankMoney"))}</p>
 ${chanceKey ? `<p class="sub">${esc(chanceKey)}</p>` : ""}
@@ -527,12 +623,14 @@ ${topicLinks("", l)}
 ${alts.length ? langLinks(l, path) : ""}
 </main>
 ${foot(l)}`;
-    await put(lp(l, path), shell({ lang: l, title: copy.title, description: copy.description, canonical: url, alternates: alts, image: abs("share/world.png"), imageAlt: T.L("en", "imgWorld"),
-      ld: [{ "@context": "https://schema.org", "@type": "CollectionPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: l, dateModified: DATE_TOKEN, isPartOf: DATASET }, crumbLd(items), itemList(rowsAll, l),
+    const pImgs = [imgs.top, ...(imgs.more || [])].filter(Boolean);
+    await put(lp(l, path), shell({ lang: l, title: copy.title, description: copy.description, canonical: url, alternates: alts, image: imgs.top ? abs(imgs.top.path) : abs("share/world.png"), imageAlt: imgs.top ? imgs.top.alt : T.L("en", "imgWorld"),
+      ld: [{ "@context": "https://schema.org", "@type": "CollectionPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: l, dateModified: DATE_TOKEN, isPartOf: DATASET,
+        ...(pImgs.length ? { image: pImgs.map(x => G.imageObject(x, abs)) } : {}), ...imgLd(imgs.top) }, crumbLd(items), itemList(rowsAll, l),
         ...(faq.length ? [{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(x => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) }] : [])], body,
-    }), alts);
+    }), alts, pImgs);
   }
-  await rankPage("/ranking/", "ranking", EN.rank.net, GROUP_ID, () => "");
+  await rankPage("/ranking/", "ranking", EN.rank.net, GROUP_ID, () => "", "", "#view=rank", [], "en", [], { top: RIMG.en.net, more: [] });
   const euroTable = (rows, id, title, fmt, l = "en") => `<h2 id="${id}">${esc(title)}</h2><div class="tbl"><table><thead><tr><th>#</th><th>${esc(T.L(l, "country"))}</th><th class="n">€</th><th class="n">${esc(T.L(l, "share"))}</th></tr></thead><tbody>${rows.map((r, i) => `<tr><td>${i + 1}</td><td><a href="${cPath(byIso[r.iso], l)}">${esc(nmL(r.iso, l))}</a></td><td class="n">${esc(fmt(r))}</td><td class="n">${esc(r.value)}</td></tr>`).join("")}</tbody></table></div>`;
   // round 59: "Ukraine allies" and who gives the most, answered from this page's list (the tracker's questions, TOPIC_X)
   // round 61 (CTR): the all-years page of support by country in every language, with reciprocal hreflang (it was English
@@ -545,7 +643,8 @@ ${foot(l)}`;
       const faq = I.topicExtra(l, "ukraine-support-tracker", { n: rows.length, tops: I.list3(l, tops), t1: tops[0] || "", topV: byEur[0] ? I.E(l, byEur[0].eurBn) : "", sumUa: I.E(l, rows.reduce((a, r) => a + r.eurBn, 0)) }, {}).faq;
       const extra = l === "en" ? r => (r.pp ? " · " + r.pp.replace(/ pp$/, "") + " per person" : "") : r => (r.pp ? " · " + r.pp : "");
       await rankPage(path, "support-for-ukraine", rk, GROUP_ID_UA, extra,
-        euroTable(byEur.slice(0, 15), "in-euros", T.L(l, "inEuros"), r => r.eur.replace(/^\+/, ""), l) + `<h2>${esc(T.L(l, "shareWithPp"))}</h2>`, "#view=rank&lens=support", faq, l, alts);
+        euroTable(byEur.slice(0, 15), "in-euros", T.L(l, "inEuros"), r => r.eur.replace(/^\+/, ""), l) + `<h2>${esc(T.L(l, "shareWithPp"))}</h2>` +
+        G.figureHtml(RIMG[l].gdp, { lazy: true, caption: RIMG[l].gdp ? RIMG[l].gdp.caption : "" }), "#view=rank&lens=support", faq, l, alts, { top: RIMG[l].eur, more: [RIMG[l].gdp] });
     }
   }
   await rankPage("/trade-with-russia/", "trade-with-russia", EN.rank.rus, GROUP_ID, () => "",
@@ -605,9 +704,12 @@ ${foot(l)}`;
     if (e.kind === "year") return YEARS.filter(x => x !== e && (x.yearKind === e.yearKind || x.year === e.year));
     return (e.related || []).map(related).filter(Boolean);
   };
+  // round 62: the topic pages that answer with a chart (seo_images.mjs): the image shown near the top and as og:image
+  const TOPIC_IMG = { "ukraine-support-tracker": "eur", "ukraine-aid-per-capita": "pp", "countries-helping-russia": "rus", "frozen-russian-assets": "frozen" };
   for (const e of [...TOPICS, ...PARTS, ...YEARS]) {
     const path = pathOf(e), alts = famAlts(path);
     for (const l of T.LANGS) {
+      const timg = e.kind === "topic" && TOPIC_IMG[e.slug] ? RIMG[l][TOPIC_IMG[e.slug]] || null : null;
       const m = MODELS[path][l], tops = m.rows.slice(0, 3).map(c => rowName(l, c));
       let copy;
       if (e.kind === "part") copy = { ...I.partCopy(l, { key: e.key, n: m.rows.length, top: tops, topV: topV(l, m), dataTo: dataToL[l] }), intro: I.partIntro(l, { key: e.key, side: e.side, n: m.rows.length, top: tops, dataTo: dataToL[l] }) };
@@ -643,6 +745,7 @@ ${foot(l)}`;
 ${crumbs(l, items)}
 <h1>${esc(copy.h1)}</h1>
 <p class="intro">${esc(copy.intro)}</p>
+${G.figureHtml(timg, { caption: timg ? timg.caption : "" })}
 ${e.kind === "year" && e.yearKind === "ua" ? yearTotals(l, e) : ""}
 ${X.note ? `<p>${esc(X.note)}</p>` : ""}
 ${yearPrices(e, l)}
@@ -658,11 +761,12 @@ ${rel.length ? `<h2 id="related">${esc(I.s(l, "related"))}</h2>${relList(l, rel)
 ${langLinks(l, path)}
 </main>
 ${foot(l)}`;
-      const ld = [{ "@context": "https://schema.org", "@type": "WebPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: l, dateModified: DATE_TOKEN, isPartOf: DATASET, image: abs("share/world.png") },
+      const ld = [{ "@context": "https://schema.org", "@type": "WebPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: l, dateModified: DATE_TOKEN, isPartOf: DATASET,
+        image: timg ? abs(timg.path) : abs("share/world.png"), ...imgLd(timg) },
         crumbLd(items), { "@context": "https://schema.org", "@type": "ItemList", numberOfItems: m.rows.length, itemListElement: m.rows.map((c, i) => ({ "@type": "ListItem", position: i + 1, url: abs(cPath(c, l)), name: rowName(l, c) })) }];
       const faqLd = explains.filter(x => x.faq).map(x => ({ q: x.q, a: x.a })).concat(m.faq);
       if (faqLd.length) ld.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqLd.map(x => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
-      await put(lp(l, path), shell({ lang: l, title: copy.title, description: copy.description, canonical: url, alternates: alts, image: abs("share/world.png"), imageAlt: T.L("en", "imgWorld"), ld, body }), alts);
+      await put(lp(l, path), shell({ lang: l, title: copy.title, description: copy.description, canonical: url, alternates: alts, image: timg ? abs(timg.path) : abs("share/world.png"), imageAlt: timg ? timg.alt : T.L("en", "imgWorld"), ld, body }), alts, timg ? [timg] : []);
     }
   }
 
@@ -956,6 +1060,11 @@ ${foot(l)}`;
     for (const w of written.filter(w => w.lastmod === null)) { w.lastmod = date; newState[w.path] = [hash, date]; }
   }
 
+  // ----- round 62: the chart images, drawn in the same Chromium (a few pages side by side) -----
+  const tImg0 = Date.now();
+  await G.renderImages(page.context().browser(), JOBS, { site, host: HOST, workers: +(process.env.WB_IMG_WORKERS || 4), log });
+  const tImages = Date.now() - tImg0;
+
   // ----- the sitemaps (round 56: an index, sitemap.xml, and one sitemap per language) and robots.txt -----
   const xmlEsc = s => s.replace(/&/g, "&amp;");
   const langOf = w => { const m = w.path.match(/^\/(\w\w)\//); return m && T.LANGS.includes(m[1]) ? m[1] : "en"; };
@@ -965,8 +1074,8 @@ ${foot(l)}`;
   const maps = [];
   for (const l of T.LANGS) {
     const ws = written.filter(w => langOf(w) === l);
-    const urls = ws.map(w => `  <url>\n    <loc>${xmlEsc(abs(w.path))}</loc>\n    <lastmod>${w.lastmod}</lastmod>\n${w.alternates.map(([al, u]) => `    <xhtml:link rel="alternate" hreflang="${al}" href="${xmlEsc(u)}"/>\n`).join("")}  </url>`);
-    await writeFile(join(site, `sitemap-${l}.xml`), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join("\n")}\n</urlset>\n`);
+    const urls = ws.map(w => `  <url>\n    <loc>${xmlEsc(abs(w.path))}</loc>\n    <lastmod>${w.lastmod}</lastmod>\n${w.alternates.map(([al, u]) => `    <xhtml:link rel="alternate" hreflang="${al}" href="${xmlEsc(u)}"/>\n`).join("")}${(w.images || []).map(im => `    <image:image>\n      <image:loc>${xmlEsc(abs(im.path))}</image:loc>\n    </image:image>\n`).join("")}  </url>`);
+    await writeFile(join(site, `sitemap-${l}.xml`), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls.join("\n")}\n</urlset>\n`);
     maps.push({ file: `sitemap-${l}.xml`, lastmod: ws.map(w => w.lastmod).sort().pop() || today, n: ws.length });
   }
   await writeFile(join(site, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${maps.map(m => `  <sitemap>\n    <loc>${abs(m.file)}</loc>\n    <lastmod>${m.lastmod}</lastmod>\n  </sitemap>`).join("\n")}\n</sitemapindex>\n`);
@@ -979,7 +1088,7 @@ ${foot(l)}`;
   const secs = ms => (ms / 1000).toFixed(1) + "s";
   log(`seo: ${written.length} pages in ${maps.length} sitemaps (${maps.map(m => m.file.replace(/^sitemap-|\.xml$/g, "") + " " + m.n).join(", ")}): ` +
     `${count(/\/country\//)} country pages, ${count(/\/compare\//)} comparisons, ${PARTS.length} parts, ${YEARS.length} years and ${TOPICS.length} topics in ${T.LANGS.length} languages; ` +
-    `${changed.length} new or changed since pipeline/seo_lastmod.json; ${secs(Date.now() - t0)} (reading the map ${secs(tExtract)}, countries ${secs(tCountries)}, families ${secs(tFamilies)})`);
+    `${changed.length} new or changed since pipeline/seo_lastmod.json; ${secs(Date.now() - t0)} (reading the map ${secs(tExtract)}, countries ${secs(tCountries)}, families ${secs(tFamilies)}, images ${secs(tImages)})`);
   return { pages: written.length, changed, parts: PARTS.map(e => e.slug), compares: COMPARES.map(e => e.slug) };
 }
 

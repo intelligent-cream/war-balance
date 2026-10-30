@@ -772,3 +772,83 @@ test("round 59b: the budget balance, the plans labelled, the fund; the CSV files
   assert.ok(mc.some(r => /,no record found,/.test(r)));
   assert.match(RS.fuelLlms(FUEL, i => FUEL.countries[i].name)[0], /^- Crude oil, 2022 to August 2026: China €257bn customs \(CIF\), €217bn map basis \(FOB\), €236bn CREA tracker; India /);
 });
+
+// ----- round 62: the chart images (seo_images.mjs) -----
+import * as GI from "./seo_images.mjs";
+
+// France as the map gave it (round 61 data): its three numbers in the panel's words, and the parts of its support
+const chartC = (o = {}) => ({ iso: "FRA", name: "France", party: false, noData: false, mostlyNoData: false,
+  fig: { net: 43.63, netLo: 22.54, netHi: 65.31, ua: 16.87, uaLo: 12.9, uaHi: 24.75, rus: 20.22, rusLo: -0.39, rusHi: 40.39, frozen: 6.53 },
+  net: { pre: "Toward Ukraine by", big: "1.6%", post: "", eur: "€43.6bn", range: "likely 0.80% to 2.3% toward Ukraine", chance: "very likely · >99%", unc: false, info: { level: "sure" } },
+  ua: { pre: "Supported Ukraine with", big: "0.60%", post: "", eur: "€16.9bn", range: "likely 0.46% to 0.88%", chance: "very likely · >99%", unc: false, info: { level: "sure" } },
+  rus: { pre: "Probably cut Russia's earnings from trade by", big: "0.72%", post: "", eur: "€20.2bn", range: "likely from 0.01% toward Russia to 1.4% toward Ukraine", unc: true, info: { level: "lean" } },
+  frozen: { verb: "Froze Russian money: Russia lost 0.23% of GDP in returns", eur: "€6.5bn" },
+  measures: { "part:aid": { v: 4.261 }, "part:euaid": { v: 9.822 }, "part:ref": { v: 1.804 } }, ...o });
+const chartW = l => ({ title: "How much has France given to Ukraine since 2022?", period: I.img(l, "period", { dataTo: "August 2026" }), source: I.img(l, "source", { host: "warbalance.org", date: "31 August 2026" }),
+  unit: I.img(l, "uCountry"), legendSigned: I.s(l, "legendSigned"), range: I.img(l, "range"), support: T.L(l, "support"), trade: T.L(l, "trade"), frozen: T.L(l, "frozen"), net: T.L(l, "net"),
+  ofGdp: T.L(l, "ofGdp"), party: T.L(l, "party"), partNames: { aid: I.partName(l, "aid"), euaid: I.partName(l, "euaid"), ref: I.partName(l, "ref") }, other: I.img(l, "other") });
+
+test("round 62: every chart phrase in every language, with the same placeholders; file names plain, stable and distinct", () => {
+  const ph = s => [...s.matchAll(/\{(\w+)\}/g)].map(m => m[1]).sort().join(",");
+  for (const k of Object.keys(I.IMG.en)) for (const l of I.LANGS) {
+    assert.ok(I.IMG[l] && typeof I.IMG[l][k] === "string" && I.IMG[l][k].trim(), l + " " + k);
+    assert.equal(ph(I.IMG[l][k]), ph(I.IMG.en[k]), l + " " + k);
+  }
+  for (const l of I.LANGS) {
+    assert.deepEqual(Object.keys(I.IMG_FILE[l]).sort(), Object.keys(I.IMG_FILE.en).sort(), l);
+    const paths = Object.keys(I.IMG_FILE[l]).map(k => GI.imgPath(l, k, "france"));
+    assert.equal(new Set(paths).size, paths.length, l);
+    for (const p of paths) assert.match(p, l === "en" ? /^\/img\/[a-z0-9-]+\.webp$/ : new RegExp(`^/img/${l}/[a-z0-9-]+\\.webp$`), p);
+  }
+  // the address does not carry the data's date, so it stays the same when the data change
+  assert.equal(GI.imgPath("en", "eur"), "/img/ukraine-aid-by-country.webp");
+  assert.equal(GI.imgPath("de", "country", "france"), "/img/de/france-ukraine-hilfe-und-handel-mit-russland.webp");
+});
+
+test("round 62: a country's chart: support with parts that add up, trade, frozen money and the net, in the map's words", () => {
+  const m = GI.countryChart({ c: chartC(), l: "en", words: chartW("en") });
+  assert.deepEqual(m.rows.map(r => r.key), ["ua", "rus", "frozen", "net"]);
+  const ua = m.rows[0];
+  assert.equal(ua.value, "+€16.9bn");
+  assert.ok(Math.abs(ua.parts.reduce((a, p) => a + p.v, 0) - 16.87) < 1e-9, "the parts add up to the support");
+  assert.deepEqual(ua.parts.map(p => p.k), ["aid", "euaid", "ref", "other"]);
+  assert.equal(ua.segs.length, 4);
+  // + toward Ukraine; a direction that is not certain is paler
+  assert.equal(m.rows[1].tone, "uaF");
+  assert.equal(m.rows[3].tone, "ua");
+  assert.match(m.rows[3].words, /^Toward Ukraine by 1\.6% of a year's GDP since 2022 · likely 0\.80% to 2\.3% toward Ukraine · very likely/);
+  assert.match(m.alt, /^France, 2022 to August 2026\. Supported Ukraine with 0\.60% .*\(€16\.9bn\): Government aid to Ukraine \+€4\.3bn, Share of EU aid to Ukraine \+€9\.8bn, Cost of hosting refugees from Ukraine \+€1\.8bn/);
+  // toward Russia: orange and "−"; a part below zero is listed, not stacked
+  const ru = GI.countryChart({ c: chartC({ fig: { ...chartC().fig, net: -11.4, netLo: -18.6, netHi: -1.4, rus: -12.3, rusLo: -19.5, rusHi: -2.3 },
+    net: { ...chartC().net, pre: "Toward Russia by", eur: "€11.4bn" }, measures: { "part:aid": { v: -0.5 } } }), l: "en", words: chartW("en") });
+  assert.equal(ru.rows.find(r => r.key === "net").value, "−€11.4bn");
+  assert.equal(ru.rows.find(r => r.key === "net").tone, "ru");
+  assert.equal(ru.rows[0].segs, null);
+  // no data: no chart (the page keeps its share card); a party to the war says so unless the title does
+  assert.equal(GI.countryChart({ c: chartC({ noData: true }), l: "en", words: chartW("en") }), null);
+  assert.equal(GI.countryChart({ c: chartC({ party: true }), l: "en", words: chartW("en") }).party, T.L("en", "party"));
+  assert.equal(GI.countryChart({ c: chartC({ party: true }), l: "en", words: { ...chartW("en"), title: "Does Belarus support Russia? Party to the war (with Russia)" } }).party, "");
+  // every language draws, with nothing left unfilled
+  for (const l of I.LANGS) {
+    const x = GI.countryChart({ c: chartC(), l, words: chartW(l) });
+    assert.ok(!/\{\w|undefined|NaN/.test(JSON.stringify(x) + GI.chartHtml(x, "warbalance.org")), l);
+  }
+});
+
+test("round 62: a ranking chart's axis holds every bar and range with zero; the first image on a page is not lazy", () => {
+  const d = GI.domain([{ v: 5, lo: 2, hi: 9 }, { v: -3, lo: -6, hi: 1 }]);
+  assert.deepEqual(d, { lo: -6, hi: 9 });
+  const d2 = GI.domain([{ v: 2, lo: 1, hi: 3 }], 0.5);
+  assert.equal(d2.lo, 0);
+  assert.equal(d2.hi, 4.5);
+  const m = GI.rankChart({ key: "eur", l: "en", title: I.img("en", "tEur"), unit: I.img("en", "uEur"), period: "2022 to August 2026", source: "s", alt: "a",
+    rows: [{ name: "A & B", v: 2, lo: 1, hi: 3, value: "€2bn", tone: "ua" }] });
+  assert.equal(m.rows[0].rank, 1);
+  assert.ok(GI.chartHtml(m, "warbalance.org").includes("A &amp; B"));
+  const img = { path: "/img/x.webp", alt: "Support \"x\"", l: "en" };
+  assert.match(GI.figureHtml(img), /fetchpriority="high"/);
+  assert.doesNotMatch(GI.figureHtml(img), /loading=/);
+  assert.match(GI.figureHtml(img, { lazy: true }), /loading="lazy"/);
+  assert.match(GI.figureHtml(img), /alt="Support &quot;x&quot;" width="1200" height="630"/);
+  assert.equal(GI.imageObject(img, p => "https://warbalance.org" + p).contentUrl, "https://warbalance.org/img/x.webp");
+});

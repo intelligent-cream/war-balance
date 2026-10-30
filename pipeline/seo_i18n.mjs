@@ -2850,6 +2850,133 @@ export function topicExtra(l, slug, vars, nums) {
   return { note: x.note ? fmt(x.note, vars, nums) : "", faq: (x.faq || []).map(f => ({ q: fmt(f.q, vars, nums), a: fmt(f.a, vars, nums) })) };
 }
 
+// ----- round 62 (chart images for image search, seo_images.mjs): the charts' titles (each a question), units, period,
+// source line and legend, and the start of their alt text; every figure and country name in them comes from the map.
+// t*: a chart's title; u*: what its bars measure; a*: the start of its alt text (the figures follow from the data)
+export const IMG = {
+  en: {
+    tEur: "Which countries have given the most to Ukraine since 2022?", tGdp: "Which countries have given Ukraine the most for the size of their economy?",
+    tPp: "Which countries have given Ukraine the most per person?", tNet: "Where did each country's money move since 2022: toward Ukraine or toward Russia?",
+    tRus: "Which countries' money moved toward Russia since 2022?", tFrozen: "Where are Russia's frozen assets held?",
+    uEur: "support for Ukraine in euros, total", uGdp: "support for Ukraine as a share of a year's GDP, total", uPp: "support for Ukraine in euros per person, total",
+    uNet: "support for Ukraine and the change in what Russia kept from trade, added up, as a share of a year's GDP",
+    uRus: "the net in euros: support for Ukraine and the change in what Russia kept from trade, added up",
+    uFrozen: "amounts frozen in euros: each country's official figure at its own date", uCountry: "in euros, total",
+    period: "2022 to {dataTo}", source: "Source: {host} · figures to {date}", range: "Bar: middle estimate · line: range of estimates",
+    paler: "Pale bars: chance beside the figure", other: "Other parts, net of money flowing back",
+    aEur: "Support for Ukraine by country, in euros", aGdp: "Support for Ukraine by country, as a share of GDP", aPp: "Support for Ukraine by country, per person",
+    aNet: "The net by country, as a share of GDP (+ toward Ukraine, − toward Russia)", aRus: "{q:Money moved toward Russia by country, in euros}",
+    aFrozen: "Frozen Russian assets by country, in euros",
+  },
+  de: {
+    tEur: "Welche Länder haben der Ukraine seit 2022 am meisten gegeben?", tGdp: "Welche Länder haben der Ukraine gemessen an ihrer Wirtschaftsleistung am meisten gegeben?",
+    tPp: "Welche Länder haben der Ukraine pro Kopf am meisten gegeben?", tNet: "Wohin floss das Geld jedes Landes seit 2022: Richtung Ukraine oder Russland?",
+    tRus: "Von welchen Ländern floss seit 2022 Geld Richtung Russland?", tFrozen: "Wo sind Russlands eingefrorene Vermögen?",
+    uEur: "Unterstützung für die Ukraine in Euro, insgesamt", uGdp: "Unterstützung für die Ukraine als Anteil eines Jahres-BIP, insgesamt", uPp: "Unterstützung für die Ukraine in Euro pro Kopf, insgesamt",
+    uNet: "Unterstützung für die Ukraine und die Veränderung dessen, was Russland am Handel behielt, zusammen, als Anteil eines Jahres-BIP",
+    uRus: "Saldo in Euro: Unterstützung für die Ukraine und die Veränderung dessen, was Russland am Handel behielt, zusammen",
+    uFrozen: "eingefrorene Beträge in Euro: die amtliche Zahl jedes Landes zu ihrem Stichtag", uCountry: "in Euro, insgesamt",
+    period: "2022 bis {dataTo}", source: "Quelle: {host} · Zahlen bis {date}", range: "Balken: mittlere Schätzung · Linie: Spanne der Schätzungen",
+    paler: "Blasse Balken: Wahrscheinlichkeit neben der Zahl", other: "Weitere Teile, abzüglich zurückfließenden Geldes",
+    aEur: "Unterstützung für die Ukraine nach Land, in Euro", aGdp: "Unterstützung für die Ukraine nach Land, als Anteil am BIP", aPp: "Unterstützung für die Ukraine nach Land, pro Kopf",
+    aNet: "Saldo nach Land, als Anteil am BIP (+ Richtung Ukraine, − Richtung Russland)", aRus: "{q:Geld Richtung Russland nach Land, in Euro}",
+    aFrozen: "Eingefrorene russische Vermögen nach Land, in Euro",
+  },
+  fr: {
+    tEur: "Quels pays ont le plus donné à l'Ukraine depuis 2022 ?", tGdp: "Quels pays ont le plus donné à l'Ukraine au regard de la taille de leur économie ?",
+    tPp: "Quels pays ont le plus donné à l'Ukraine par habitant ?", tNet: "Où est allé l'argent de chaque pays depuis 2022 : vers l'Ukraine ou vers la Russie ?",
+    tRus: "L'argent de quels pays est allé vers la Russie depuis 2022 ?", tFrozen: "Où sont gelés les avoirs russes ?",
+    uEur: "soutien à l'Ukraine en euros, total", uGdp: "soutien à l'Ukraine en part d'une année de PIB, total", uPp: "soutien à l'Ukraine en euros par habitant, total",
+    uNet: "soutien à l'Ukraine et variation de ce que la Russie a gardé du commerce, additionnés, en part d'une année de PIB",
+    uRus: "le solde en euros : soutien à l'Ukraine et variation de ce que la Russie a gardé du commerce, additionnés",
+    uFrozen: "montants gelés en euros : le chiffre officiel de chaque pays à sa propre date", uCountry: "en euros, total",
+    period: "de 2022 à {dataTo}", source: "Source : {host} · chiffres jusqu'au {date}", range: "Barre : estimation centrale · trait : fourchette des estimations",
+    paler: "Barres pâles : probabilité à côté du chiffre", other: "Autres composantes, déduction faite de l'argent qui revient",
+    aEur: "Soutien à l'Ukraine par pays, en euros", aGdp: "Soutien à l'Ukraine par pays, en part du PIB", aPp: "Soutien à l'Ukraine par pays, par habitant",
+    aNet: "Solde par pays, en part du PIB (+ vers l'Ukraine, − vers la Russie)", aRus: "{q:Argent allé vers la Russie par pays, en euros}",
+    aFrozen: "Avoirs russes gelés par pays, en euros",
+  },
+  es: {
+    tEur: "¿Qué países han dado más a Ucrania desde 2022?", tGdp: "¿Qué países han dado más a Ucrania en relación con el tamaño de su economía?",
+    tPp: "¿Qué países han dado más a Ucrania por persona?", tNet: "¿Adónde fue el dinero de cada país desde 2022: hacia Ucrania o hacia Rusia?",
+    tRus: "¿El dinero de qué países fue hacia Rusia desde 2022?", tFrozen: "¿Dónde están congelados los activos rusos?",
+    uEur: "apoyo a Ucrania en euros, total", uGdp: "apoyo a Ucrania como parte de un año de PIB, total", uPp: "apoyo a Ucrania en euros por persona, total",
+    uNet: "apoyo a Ucrania y cambio en lo que Rusia se quedó del comercio, sumados, como parte de un año de PIB",
+    uRus: "el neto en euros: apoyo a Ucrania y cambio en lo que Rusia se quedó del comercio, sumados",
+    uFrozen: "importes congelados en euros: la cifra oficial de cada país en su propia fecha", uCountry: "en euros, total",
+    period: "de 2022 a {dataTo}", source: "Fuente: {host} · cifras hasta el {date}", range: "Barra: estimación central · línea: rango de estimaciones",
+    paler: "Barras pálidas: probabilidad junto a la cifra", other: "Otras partes, descontado el dinero que vuelve",
+    aEur: "Apoyo a Ucrania por país, en euros", aGdp: "Apoyo a Ucrania por país, como parte del PIB", aPp: "Apoyo a Ucrania por país, por persona",
+    aNet: "Neto por país, como parte del PIB (+ hacia Ucrania, − hacia Rusia)", aRus: "{q:Dinero hacia Rusia por país, en euros}",
+    aFrozen: "Activos rusos congelados por país, en euros",
+  },
+  pl: {
+    tEur: "Które kraje dały Ukrainie najwięcej od 2022 roku?", tGdp: "Które kraje dały Ukrainie najwięcej w stosunku do wielkości swojej gospodarki?",
+    tPp: "Które kraje dały Ukrainie najwięcej na osobę?", tNet: "Dokąd płynęły pieniądze każdego kraju od 2022 roku: na rzecz Ukrainy czy Rosji?",
+    tRus: "Pieniądze których krajów płynęły w stronę Rosji od 2022 roku?", tFrozen: "Gdzie są zamrożone rosyjskie aktywa?",
+    uEur: "wsparcie dla Ukrainy w euro, łącznie", uGdp: "wsparcie dla Ukrainy jako udział rocznego PKB, łącznie", uPp: "wsparcie dla Ukrainy w euro na osobę, łącznie",
+    uNet: "wsparcie dla Ukrainy i zmiana tego, co Rosja zatrzymała z handlu, razem, jako udział rocznego PKB",
+    uRus: "saldo w euro: wsparcie dla Ukrainy i zmiana tego, co Rosja zatrzymała z handlu, razem",
+    uFrozen: "zamrożone kwoty w euro: oficjalna liczba każdego kraju według jej daty", uCountry: "w euro, łącznie",
+    period: "od 2022 do {dataTo}", source: "Źródło: {host} · dane do {date}", range: "Słupek: szacunek środkowy · linia: zakres szacunków",
+    paler: "Blade słupki: prawdopodobieństwo obok liczby", other: "Pozostałe składniki, po odjęciu pieniędzy, które wracają",
+    aEur: "Wsparcie dla Ukrainy według kraju, w euro", aGdp: "Wsparcie dla Ukrainy według kraju, jako udział w PKB", aPp: "Wsparcie dla Ukrainy według kraju, na osobę",
+    aNet: "Saldo według kraju, jako udział w PKB (+ na rzecz Ukrainy, − na rzecz Rosji)", aRus: "{q:Pieniądze w stronę Rosji według kraju, w euro}",
+    aFrozen: "Zamrożone rosyjskie aktywa według krajów, w euro",
+  },
+  nl: {
+    tEur: "Welke landen hebben Oekraïne sinds 2022 het meest gegeven?", tGdp: "Welke landen hebben Oekraïne het meest gegeven naar de omvang van hun economie?",
+    tPp: "Welke landen hebben Oekraïne het meest gegeven per persoon?", tNet: "Waar ging het geld van elk land sinds 2022 naartoe: richting Oekraïne of Rusland?",
+    tRus: "Van welke landen ging sinds 2022 geld richting Rusland?", tFrozen: "Waar zijn de bevroren Russische tegoeden?",
+    uEur: "steun aan Oekraïne in euro, totaal", uGdp: "steun aan Oekraïne als deel van een jaar bbp, totaal", uPp: "steun aan Oekraïne in euro per persoon, totaal",
+    uNet: "steun aan Oekraïne en de verandering in wat Rusland aan de handel overhield, samen, als deel van een jaar bbp",
+    uRus: "het saldo in euro: steun aan Oekraïne en de verandering in wat Rusland aan de handel overhield, samen",
+    uFrozen: "bevroren bedragen in euro: het officiële cijfer van elk land op zijn eigen datum", uCountry: "in euro, totaal",
+    period: "2022 tot {dataTo}", source: "Bron: {host} · cijfers tot {date}", range: "Balk: middelste schatting · lijn: bandbreedte van de schattingen",
+    paler: "Bleke balken: kans naast het cijfer", other: "Overige onderdelen, na aftrek van terugvloeiend geld",
+    aEur: "Steun aan Oekraïne per land, in euro", aGdp: "Steun aan Oekraïne per land, als deel van het bbp", aPp: "Steun aan Oekraïne per land, per persoon",
+    aNet: "Saldo per land, als deel van het bbp (+ richting Oekraïne, − richting Rusland)", aRus: "{q:Geld richting Rusland per land, in euro}",
+    aFrozen: "Bevroren Russische tegoeden per land, in euro",
+  },
+  uk: {
+    tEur: "Які країни дали Україні найбільше з 2022 року?", tGdp: "Які країни дали Україні найбільше відносно розміру своєї економіки?",
+    tPp: "Які країни дали Україні найбільше на особу?", tNet: "Куди рухалися гроші кожної країни з 2022 року: на користь України чи Росії?",
+    tRus: "Гроші яких країн рухалися на бік Росії з 2022 року?", tFrozen: "Де заморожені російські активи?",
+    uEur: "підтримка України в євро, загалом", uGdp: "підтримка України як частка річного ВВП, загалом", uPp: "підтримка України в євро на особу, загалом",
+    uNet: "підтримка України та зміна того, що Росія залишила собі з торгівлі, разом, як частка річного ВВП",
+    uRus: "сальдо в євро: підтримка України та зміна того, що Росія залишила собі з торгівлі, разом",
+    uFrozen: "заморожені суми в євро: офіційна цифра кожної країни на її дату", uCountry: "в євро, загалом",
+    period: "з 2022 до {dataTo}", source: "Джерело: {host} · дані до {date}", range: "Стовпчик: середня оцінка · лінія: діапазон оцінок",
+    paler: "Бліді стовпчики: імовірність поруч із цифрою", other: "Інші складники, за вирахуванням грошей, що повертаються",
+    aEur: "Підтримка України за країнами, в євро", aGdp: "Підтримка України за країнами, як частка ВВП", aPp: "Підтримка України за країнами, на особу",
+    aNet: "Сальдо за країнами, як частка ВВП (+ на користь України, − на бік Росії)", aRus: "{q:Гроші на бік Росії за країнами, в євро}",
+    aFrozen: "Заморожені російські активи за країнами, в євро",
+  },
+};
+export const img = (l, k, vars, nums) => {
+  const x = (IMG[l] && IMG[l][k] !== undefined ? IMG[l] : IMG.en)[k];
+  if (x === undefined) throw new Error("seo_i18n.mjs IMG: no phrase " + k);
+  return fmt(x, vars || {}, nums || {});
+};
+// the images' file names in each language (addresses, not text: kept the same from one deploy to the next so a link or
+// an image search result stays valid; ASCII only). {slug} is the country page's own slug
+export const IMG_FILE = {
+  en: { eur: "ukraine-aid-by-country", gdp: "ukraine-aid-by-country-share-of-gdp", pp: "ukraine-aid-per-capita-by-country", net: "net-balance-ukraine-or-russia-by-country",
+    rus: "countries-money-toward-russia", frozen: "frozen-russian-assets-by-country", country: "{slug}-ukraine-aid-and-russia-trade" },
+  de: { eur: "ukraine-hilfe-nach-land", gdp: "ukraine-hilfe-nach-land-anteil-am-bip", pp: "ukraine-hilfe-pro-kopf-nach-land", net: "saldo-ukraine-oder-russland-nach-land",
+    rus: "laender-geld-richtung-russland", frozen: "eingefrorene-russische-vermoegen-nach-land", country: "{slug}-ukraine-hilfe-und-handel-mit-russland" },
+  fr: { eur: "aide-ukraine-par-pays", gdp: "aide-ukraine-par-pays-part-du-pib", pp: "aide-ukraine-par-habitant-par-pays", net: "solde-ukraine-ou-russie-par-pays",
+    rus: "pays-argent-vers-la-russie", frozen: "avoirs-russes-geles-par-pays", country: "{slug}-aide-a-l-ukraine-et-commerce-avec-la-russie" },
+  es: { eur: "ayuda-ucrania-por-pais", gdp: "ayuda-ucrania-por-pais-porcentaje-del-pib", pp: "ayuda-ucrania-por-persona-por-pais", net: "saldo-ucrania-o-rusia-por-pais",
+    rus: "paises-dinero-hacia-rusia", frozen: "activos-rusos-congelados-por-pais", country: "{slug}-ayuda-a-ucrania-y-comercio-con-rusia" },
+  pl: { eur: "pomoc-dla-ukrainy-wedlug-kraju", gdp: "pomoc-dla-ukrainy-wedlug-kraju-udzial-w-pkb", pp: "pomoc-dla-ukrainy-na-osobe-wedlug-kraju", net: "saldo-ukraina-czy-rosja-wedlug-kraju",
+    rus: "kraje-pieniadze-w-strone-rosji", frozen: "zamrozone-rosyjskie-aktywa-wedlug-kraju", country: "{slug}-pomoc-dla-ukrainy-i-handel-z-rosja" },
+  nl: { eur: "steun-aan-oekraine-per-land", gdp: "steun-aan-oekraine-per-land-deel-van-bbp", pp: "steun-aan-oekraine-per-persoon-per-land", net: "saldo-oekraine-of-rusland-per-land",
+    rus: "landen-geld-richting-rusland", frozen: "bevroren-russische-tegoeden-per-land", country: "{slug}-steun-aan-oekraine-en-handel-met-rusland" },
+  uk: { eur: "dopomoha-ukraini-za-krainamy", gdp: "dopomoha-ukraini-za-krainamy-chastka-vvp", pp: "dopomoha-ukraini-na-osobu-za-krainamy", net: "saldo-ukraina-chy-rosiia-za-krainamy",
+    rus: "krainy-hroshi-na-bik-rosii", frozen: "zamorozheni-rosiiski-aktyvy-za-krainamy", country: "{slug}-dopomoha-ukraini-i-torhivlia-z-rosiieiu" },
+};
+
 // ----- every phrase above, for the wording guard (seo_check.py: node prints phraseList() as JSON) -----
 export function phraseList() {
   const out = [];
@@ -2858,7 +2985,7 @@ export function phraseList() {
     else if (Array.isArray(x)) x.forEach((y, i) => walk(y, `${key}[${i}]`, lang));
     else if (x && typeof x === "object") for (const [k, y] of Object.entries(x)) walk(y, `${key}.${k}`, lang);
   };
-  for (const [name, table] of Object.entries({ S, MEASURE, PART, SIDE, COPY, LABELS, DYN, EXPLAIN, LLMS, RES })) for (const [l, t] of Object.entries(table)) walk(t, name, l);
+  for (const [name, table] of Object.entries({ S, MEASURE, PART, SIDE, COPY, LABELS, DYN, EXPLAIN, LLMS, RES, IMG })) for (const [l, t] of Object.entries(table)) walk(t, name, l);
   for (const [slug, byLang] of Object.entries(TOPIC_T)) for (const [l, t] of Object.entries(byLang)) walk(t, `TOPIC_T.${slug}`, l);
   for (const [l, t] of Object.entries(ASK)) walk(t, "ASK", l);
   for (const [slug, byLang] of Object.entries(TOPIC_X)) for (const [l, t] of Object.entries(byLang)) walk(t, `TOPIC_X.${slug}`, l);
@@ -2868,4 +2995,4 @@ export function phraseList() {
 // the strings above that a native speaker should read before they are relied on (new in round 56; reworded in round 57
 // by the wording guard: the sort phrases, the comparison line, the year and part intros, every frame that said "first",
 // "largest", "only" or a chance word)
-export const REVIEW = ["S (page frames: de, fr, es, pl, nl, uk)", "MEASURE", "PART (37 part names)", "SIDE", "COPY.part", "COPY.year", "COPY.compare", "COPY.hub", "TOPIC_T (20 topics × 6 languages)", "COPY.topic", "COPY.country (7 chance levels)", "COPY.home", "LABELS", "DYN (round 57b: the country page's sections and questions, 6 languages)", "EXPLAIN (round 58: six explainers, 6 languages)", "S58 and DYN58 (round 58: armed items, cite line, downloads page, relations and armed questions, 6 languages)", "RES (round 58b: the sanctions section and page, the frozen amounts, the explainers' amounts, the oil and gas revenue page, 6 languages)", "ASK, TOPIC_X, RES59 and the retitled RES pages (round 59: the questions people search, 6 languages; the French, Dutch and Polish name rules of grammar())", "RES59B (round 59b: the fuel tables, the military aid page and the support by type, the budget balance and the National Wealth Fund, 6 languages) and RES59.rA4", "Round 61 (CTR): COPY.<l>.country intro, intro2, incl, inclS and u_sure descriptions, the year titles, COPY.<l>.static support-for-ukraine, S61, LABELS61, TOPIC_T tracker, per capita and frozen assets (6 languages)"];
+export const REVIEW = ["S (page frames: de, fr, es, pl, nl, uk)", "MEASURE", "PART (37 part names)", "SIDE", "COPY.part", "COPY.year", "COPY.compare", "COPY.hub", "TOPIC_T (20 topics × 6 languages)", "COPY.topic", "COPY.country (7 chance levels)", "COPY.home", "LABELS", "DYN (round 57b: the country page's sections and questions, 6 languages)", "EXPLAIN (round 58: six explainers, 6 languages)", "S58 and DYN58 (round 58: armed items, cite line, downloads page, relations and armed questions, 6 languages)", "RES (round 58b: the sanctions section and page, the frozen amounts, the explainers' amounts, the oil and gas revenue page, 6 languages)", "ASK, TOPIC_X, RES59 and the retitled RES pages (round 59: the questions people search, 6 languages; the French, Dutch and Polish name rules of grammar())", "RES59B (round 59b: the fuel tables, the military aid page and the support by type, the budget balance and the National Wealth Fund, 6 languages) and RES59.rA4", "IMG (round 62: the chart images' titles, units, legend and alt text starts, 6 languages)", "Round 61 (CTR): COPY.<l>.country intro, intro2, incl, inclS and u_sure descriptions, the year titles, COPY.<l>.static support-for-ukraine, S61, LABELS61, TOPIC_T tracker, per capita and frozen assets (6 languages)"];

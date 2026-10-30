@@ -18,6 +18,7 @@ def page(
     links = "".join(f'<link rel="alternate" hreflang="{lang}" href="{u}">' for lang, u in alts)
     return (
         f'<!doctype html><html><head><title>{title}</title><meta name="description" content="{desc}">'
+        '<meta name="robots" content="max-image-preview:large">'
         f'<link rel="canonical" href="{canonical or U + path}">'
         f'<link rel="alternate" type="text/markdown" href="/{path}index.md">{links}'
         + ('<meta http-equiv="refresh" content="0; url=/">' if refresh else "")
@@ -771,3 +772,42 @@ def test_the_fuel_rule_of_the_country_pages_is_the_scripts():
     assert sc.fuel_shown(doc, "IND", cfg) == (True, True)
     assert sc.fuel_shown(doc, "XXA", cfg) is None  # no split by fuel
     assert sc.fuel_shown(doc, "XXB", cfg) is None  # too little fuel
+
+
+def test_a_chart_image_must_exist_be_described_and_be_the_pages_main_image(tmp_path):
+    """Round 62: a page's chart exists, has its alt text and size, the first is not lazy, it is the og:image and the
+    primaryImageOfPage, and the sitemap lists the images the page shows."""
+    src = "/img/slovakia-ukraine-aid-and-russia-trade.webp"
+    fig = (
+        f'<figure class="chart"><img src="{src}" alt="Slovakia, 2022 to August 2026: support for Ukraine €0.95bn"'
+        ' width="1200" height="630" fetchpriority="high"></figure>'
+    )
+    head = (
+        f'<meta property="og:image" content="{U[:-1]}{src}">'
+        f'<script type="application/ld+json">{{"primaryImageOfPage":{{"@type":"ImageObject","contentUrl":"{U[:-1]}{src}"}}}}</script>'
+    )
+
+    def build(html: str, image: bool = True, listed: bool = True) -> Path:
+        d = tmp_path / str(len(list(tmp_path.iterdir())))
+        d.mkdir()
+        f = d / "country" / "slovakia" / "index.html"
+        f.parent.mkdir(parents=True)
+        f.write_text(html)
+        if image:
+            (d / "img").mkdir()
+            (d / src.lstrip("/")).write_bytes(b"RIFF")
+        loc = f"<image:image><image:loc>{U[:-1]}{src}</image:loc></image:image>" if listed else ""
+        (d / "sitemap-en.xml").write_text(f"<urlset><url><loc>{U}country/slovakia/</loc>{loc}</url></urlset>")
+        return d
+
+    good = page("country/slovakia/", "Slovakia").replace("</head>", head + "</head>").replace("<main>", "<main>" + fig)
+    urls = [U + "country/slovakia/"]
+    assert sc.check_images(build(good), U, urls) == []
+    assert any("missing" in x for x in sc.check_images(build(good, image=False), U, urls))
+    assert any("lists other images" in x for x in sc.check_images(build(good, listed=False), U, urls))
+    lazy = good.replace('fetchpriority="high"', 'loading="lazy"')
+    assert any("lazy" in x for x in sc.check_images(build(lazy), U, urls))
+    no_og = good.replace('<meta property="og:image"', '<meta property="og:other"')
+    assert any("og:image" in x for x in sc.check_images(build(no_og), U, urls))
+    no_robots = good.replace('<meta name="robots" content="max-image-preview:large">', "")
+    assert any("max-image-preview" in x for x in sc.check_images(build(no_robots), U, urls))
