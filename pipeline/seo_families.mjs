@@ -3,7 +3,8 @@
 // written per page: a part of the panel, a year or a pair of countries becomes a page by rule.
 //   parts:    /<slug>/ one per part of the panel that enough countries have (and that no topic page already ranks)
 //   years:    /ukraine-aid-<year>/ and /trade-with-russia-<year>/
-//   compare:  /compare/<a>-vs-<b>/ for the searched pairs and every pair of the largest donors
+//   compare:  /compare/<a>-vs-<b>/ for the searched pairs and every pair of the largest donors (round 63: only the
+//             listed pairs indexed)
 // Pure (pipeline/test_seo.mjs tests it); seo_pages.mjs writes the pages.
 
 const SIZE = 0.0005;   // the smallest amount shown (€0.5m)
@@ -39,20 +40,25 @@ export function yearEntries(fam, lastYear) {
   ]);
 }
 
-// the pairs: the searched ones in their order, then every pair of the largest donors in euros (the larger first)
+// the pairs: the searched ones in their order, then every pair of the largest donors in euros (the larger first).
+// Round 63 (audit: 1,505 near-identical comparison pages): only the pairs listed in seo_families.json compare.pairs are
+// indexed (index: true): the pairs people search (seo_demand.json, the queries naming two countries) and the obvious
+// neighbours and rivals. The other pairs of the largest donors are still written, but noindex, out of the sitemaps and
+// not linked from the hubs (seo_pages.mjs)
 export function compareEntries(fam, countries) {
   const by = Object.fromEntries(countries.map(c => [c.iso, c]));
   const ok = i => by[i] && by[i].gdp;
   const donors = countries.filter(c => c.gdp && !c.party && !c.noData && !c.mostlyNoData && c.measures && c.measures.ua)
     .sort((a, b) => b.measures.ua.v - a.measures.ua.v).slice(0, fam.compare.pairwiseTop).map(c => c.iso);
   const pairs = fam.compare.pairs.filter(([a, b]) => ok(a) && ok(b) && a !== b);
+  const listed = new Set(pairs.map(p => p.slice().sort().join("-")));
   for (let i = 0; i < donors.length; i++) for (let j = i + 1; j < donors.length; j++) pairs.push([donors[i], donors[j]]);
   const seen = new Set(), out = [];
   for (const [a, b] of pairs) {
     const k = [a, b].sort().join("-");
     if (seen.has(k)) continue;
     seen.add(k);
-    out.push({ kind: "compare", slug: `${by[a].slug}-vs-${by[b].slug}`, a, b });
+    out.push({ kind: "compare", slug: `${by[a].slug}-vs-${by[b].slug}`, a, b, index: listed.has(k) });
   }
   return out;
 }

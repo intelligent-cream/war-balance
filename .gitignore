@@ -6,6 +6,8 @@ data/
 site/node_modules/
 site/dist/
 site/share/
+# round 62: the chart images for image search (pipeline/seo_images.mjs), generated with the pages like site/share/
+site/img/
 site/c/
 # generated with the share cards (pipeline/share_cards.mjs), like site/c/
 site/robots.txt

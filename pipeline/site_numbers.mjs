@@ -56,7 +56,9 @@ for (const [k, c] of Object.entries(by)) {
   const head = { ua: [x.uaBal, x.uaLo, x.uaHi], rus: [x.rusBal, x.rusLo, x.rusHi], net: [x.shift, x.shiftLo, x.shiftHi] };
   const o = { slug: M.countrySlug(c), gdp: c.gdp, gdp_2024: c.gdp_2024 ?? null, grades: M.grades(c, Y), party: M.PARTY_TO_WAR.has(k),
     // round 41: no data, or mostly no data (only small rough estimates): drawn hatched and not ranked
-    noData: !!(x.noData || x.mostlyNoData) };
+    noData: !!(x.noData || x.mostlyNoData),
+    // round 63: no data of its own at all (not "mostly no data"): its page is noindex and out of the sitemaps
+    noOwnData: !!x.noData && !x.mostlyNoData };
   for (const [q, [v, lo, hi]] of Object.entries(head)) {
     // the ranking rule written out again, independently of uncertain(): round 42 (owner: "decide 'certain' with the
     // simulation alone"): the simulation over the parts gives the value's own sign at least a 95% chance, and every

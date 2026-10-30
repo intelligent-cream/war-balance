@@ -56,7 +56,7 @@ export async function extractSite({ lang, isos }) {
   }
   const pct = p => (p >= 0.995 ? ">99%" : Math.floor(p * 100) + "%");
   // round 61: the support ranking in every language too (the page of support by country is in every language)
-  const rank = { net: ranking("net"), ua: ranking("ua"), rus: lang === "en" ? ranking("rus") : null };
+  const rank = { net: ranking("net"), ua: ranking("ua"), rus: ranking("rus") };
   // (round 56: the net ranking in each language gives the country pages' "nearby" lists their group names)
   // ----- one country, as its panel shows it -----
   function country(c) {

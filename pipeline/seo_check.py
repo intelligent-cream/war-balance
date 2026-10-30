@@ -51,6 +51,7 @@ def head(text: str) -> dict:
         "alternates": dict(re.findall(r'<link rel="alternate" hreflang="([\w-]+)" href="([^"]*)"', text)),
         "refresh": bool(re.search(r'<meta http-equiv="refresh"', text, re.IGNORECASE)),
         "iso": iso.group(1) if iso else None,
+        "noindex": "noindex" in (meta("name", "robots") or ""),
     }
 
 
@@ -274,8 +275,10 @@ def numbers_for(c: dict, q: str, extra: float = 0.0, lang: str = "en") -> set[st
     return out
 
 
-def family_pages(model: dict, topics: list[dict], fam: dict) -> list[str]:
-    """Round 56: the paths of every generated page, by the rules of seo_families.mjs, from the model."""
+def family_pages(model: dict, topics: list[dict], fam: dict, indexed_only: bool = True) -> list[str]:
+    """Round 56: the paths of every generated page, by the rules of seo_families.mjs, from the model. Round 63: the
+    indexed ones (indexed_only): of the comparisons only the listed pairs (compare.pairs); the other pairs of the largest
+    donors are written noindex and kept out of the sitemaps."""
     cs = model["countries"]
     ranked = {e["rank"][5:] for e in topics if str(e.get("rank", "")).startswith("part:")}
     out = [topic_path(e) for e in topics]
@@ -293,7 +296,8 @@ def family_pages(model: dict, topics: list[dict], fam: dict) -> list[str]:
     )
     donors = donors[: fam["compare"]["pairwiseTop"]]
     pairs = [(a, b) for a, b in fam["compare"]["pairs"] if a in cs and b in cs and a != b]
-    pairs += [(donors[i], donors[j]) for i in range(len(donors)) for j in range(i + 1, len(donors))]
+    if not indexed_only:
+        pairs += [(donors[i], donors[j]) for i in range(len(donors)) for j in range(i + 1, len(donors))]
     seen = set()
     for a, b in pairs:
         if frozenset((a, b)) in seen:
@@ -571,6 +575,7 @@ def check_site(
         "llms": [],
         "downloads": [],
         "sanity": [],
+        "images": [],
     }
     smap = site / "sitemap.xml"
     if not smap.exists():
@@ -591,6 +596,18 @@ def check_site(
             for lang in langs:
                 pre = "" if lang == "en" else lang + "/"
                 u = f"{site_url}{pre}country/{c['slug']}/"
+                # round 63: a territory without any data of its own is written noindex, out of the sitemaps
+                if c.get("noOwnData"):
+                    f = site / pre / "country" / c["slug"] / "index.html"
+                    if not f.exists():
+                        p["missing"].append(f"{pre}country/{c['slug']}/ ({iso})")
+                    elif u in heads:
+                        p["hreflang"].append(f"/{pre}country/{c['slug']}/: no data of its own, but in the sitemap")
+                    elif not head(f.read_text())["noindex"] or head(f.read_text())["alternates"]:
+                        p["hreflang"].append(
+                            f"/{pre}country/{c['slug']}/: no data of its own, but not noindex or with hreflang"
+                        )
+                    continue
                 if u not in heads:
                     p["missing"].append(f"{pre}country/{c['slug']}/ ({iso})")
     for u, h in heads.items():
@@ -601,6 +618,9 @@ def check_site(
             p["length"].append(f"{name} description {len(h['description'] or '')}")
         if h["refresh"]:
             p["refresh"].append(name)
+        # round 63: a page in the sitemap is indexable
+        if h["noindex"]:
+            p["hreflang"].append(f"{name}: noindex but in the sitemap")
         if h["canonical"] != u:
             p["canonical"].append(f"{name} -> {h['canonical']}")
         alts = h["alternates"]
@@ -611,6 +631,8 @@ def check_site(
                 if lang == "x-default":
                     continue
                 other = heads.get(v)
+                if other is not None and other["noindex"]:
+                    p["hreflang"].append(f"{name} -> {lang} {urlparse(v).path} is noindex")
                 if other is None:
                     p["hreflang"].append(f"{name} -> {lang} {urlparse(v).path} not in the sitemap")
                 elif other["alternates"] != alts:
@@ -644,22 +666,84 @@ def check_site(
         paths = family_pages(model, topics, families) if (families is not None and model) else None
         p["topics"] = check_topics(site, site_url, model, topics, set(urls), paths, langs, words)
         # round 58: every table's own sanity, in every language (phrases: the order words, seo_i18n.mjs)
+        # (round 63: the noindex comparisons too: written and reachable, so their tables must be right)
+        all_paths = family_pages(model, topics, families, indexed_only=False) if paths is not None else None
         p["sanity"] = check_sanity(
-            site, model, paths if paths is not None else [topic_path(e) for e in topics], phrases
+            site, model, all_paths if all_paths is not None else [topic_path(e) for e in topics], phrases
         )
         # round 58b: and the figures and pages from the research files (seo_families.json research)
         if families is not None and families.get("research"):
             p["sanity"] += check_research(site, site.parent, families["research"], model, langs)
     # round 58: every page's cite line and Markdown version; llms.txt; the downloads
     p["cite"], p["markdown"] = check_cite_markdown(site, site_url, urls)
+    # round 62: the chart images, on their pages, in the head, the JSON-LD and the sitemaps
+    p["images"] = check_images(site, site_url, urls)
     p["llms"] = check_llms(site, site_url, model) if model else []
     p["downloads"] = check_downloads(site, model)
     idx = (site / "index.html").read_text()
     if model:
-        p["az"] = [c["slug"] for c in model["countries"].values() if f'href="/country/{c["slug"]}/"' not in idx]
+        # round 63: a territory without any data of its own is not in the A-Z list (its page is noindex)
+        p["az"] = [
+            c["slug"]
+            for c in model["countries"].values()
+            if (f'href="/country/{c["slug"]}/"' in idx) == bool(c.get("noOwnData"))
+        ]
     if topics:
         p["az"] += [f"topic {topic_path(e)}" for e in topics if f'href="/{topic_path(e)}"' not in idx]
     return p
+
+
+# ----- round 62: the chart images (seo_images.mjs) -----
+_FIG = re.compile(r'<figure class="chart"><img src="([^"]+)" alt="([^"]*)" width="(\d+)" height="(\d+)"([^>]*)>')
+
+
+def check_images(site: Path, site_url: str, urls: list[str]) -> list[str]:
+    """Every chart image a page shows exists, with its alt text and size; the first one is not lazy (it is near the top),
+    the others are; a page that shows one names it as og:image and as primaryImageOfPage in its JSON-LD, and lists it in
+    its sitemap entry; every image a sitemap lists exists."""
+    out: list[str] = []
+    base = site_url.rstrip("/")
+
+    def local(u: str) -> Path:
+        return site / urlparse(u).path.lstrip("/")
+
+    for u in urls:
+        f = file_for(site, site_url, u)
+        if not f.exists() or f.name != "index.html":
+            continue
+        text = f.read_text()
+        figs = _FIG.findall(text)
+        if '<meta name="robots" content="max-image-preview:large">' not in text:
+            out.append(f"{urlparse(u).path}: no robots max-image-preview:large")
+        if not figs:
+            continue
+        name = urlparse(u).path
+        for i, (src, alt, w, h, rest) in enumerate(figs):
+            if not (site / src.lstrip("/")).exists():
+                out.append(f"{name}: {src} missing")
+            if len(html.unescape(alt).strip()) < 20 or (w, h) != ("1200", "630"):
+                out.append(f"{name}: {src} without alt text or size")
+            if (i == 0) == ("loading=" in rest):
+                out.append(f"{name}: {src} lazy loading on the first image, or not on a later one")
+        og = re.search(r'<meta property="og:image" content="([^"]+)"', text)
+        if not og or og.group(1) != base + figs[0][0]:
+            out.append(f"{name}: og:image is not its first chart")
+        if f'"primaryImageOfPage":{{"@type":"ImageObject","contentUrl":"{base}{figs[0][0]}"' not in text:
+            out.append(f"{name}: no primaryImageOfPage for its chart")
+    for sm in sorted(site.glob("sitemap-*.xml")):
+        text = sm.read_text()
+        for entry in re.findall(r"<url>(.*?)</url>", text, re.DOTALL):
+            imgs = re.findall(r"<image:loc>([^<]+)</image:loc>", entry)
+            for im in imgs:
+                if not local(im).exists():
+                    out.append(f"{sm.name}: {im} missing")
+            loc = re.search(r"<loc>([^<]+)</loc>", entry)
+            pf = file_for(site, site_url, loc.group(1)) if loc else None
+            if pf and pf.exists() and pf.name == "index.html":
+                shown = {base + x[0] for x in _FIG.findall(pf.read_text())}
+                if shown != set(imgs):
+                    out.append(f"{sm.name}: {urlparse(loc.group(1)).path} lists other images than it shows")
+    return out
 
 
 # ----- round 58: the cite line, the Markdown versions, llms.txt and the downloads -----
@@ -1707,11 +1791,12 @@ def check_sanity(
         f = site / path / "index.html"
         if f.exists():
             out += check_rank_lists(f.read_text(), "/" + path)
-    # round 61: the page of support by country in every language
+    # round 61: the page of support by country in every language (round 63: and the ranking and the trade page)
     for lang in [x for x in LANGS if x != "en"]:
-        f = site / lang / "support-for-ukraine" / "index.html"
-        if f.exists():
-            out += check_rank_lists(f.read_text(), f"/{lang}/support-for-ukraine/", lang)
+        for path in ("ranking/", "support-for-ukraine/", "trade-with-russia/"):
+            f = site / lang / path / "index.html"
+            if f.exists():
+                out += check_rank_lists(f.read_text(), f"/{lang}/{path}", lang)
     return out
 
 

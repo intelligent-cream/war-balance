@@ -127,7 +127,7 @@ for (const d of cards) {
       <div style="margin-top:12px;font-size:21px;color:#15212b;line-height:1.3"><b style="color:${!d.uaPos ? grey : d.uaUnc ? fadeB : "#2a6fb0"}">${d.uaV}</b> (${d.uaRange})${d.uaUnc && !d.party ? " · " + d.uaDir : ""}${d.refX ? ` · hosted Ukrainian refugees (${d.refX}), not counted as support: co-belligerent` : ""}</div>
       <div style="margin-top:6px;font-size:21px;color:#15212b;line-height:1.3"><b style="color:${d.ruUnc ? (d.ruLess ? fadeB : fadeO) : d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ruV}</b> (${d.ruRange}): ${d.ruWhat}${d.ruUnc && !d.party && d.ruDir ? " · " + d.ruDir : ""}</div>
       ${d.fz ? `<div style="margin-top:6px;font-size:21px;color:#15212b;line-height:1.3"><b style="color:#2a6fb0">${d.fzV}</b>: the return Russia lost on its reserves frozen here, in the net only</div>` : ""}
-      <div style="margin-top:auto;font-size:16px;color:#55636e;line-height:1.35">2022 to August 2026 (about ${d.years} years) · figures to ${d.dataTo} · <b>Research preview</b>, compiled with AI assistance<br>${d.host}</div>
+      <div style="margin-top:auto;font-size:16px;color:#55636e;line-height:1.35">2022 to August 2026 (about ${d.years} years) · figures to ${d.dataTo} · <b>Research preview</b><br>${d.host}</div>
 `;
   }, d);
   await page.waitForTimeout(30);
