@@ -1185,6 +1185,7 @@ I18N.es = {
   "Too close to call": "Demasiado ajustado para decir",
   "too close to call": "demasiado ajustado para decir",
   "too close to call · {p} {side}": "demasiado ajustado · {p} {side}",
+  "slightly more likely {side} ({p} chance)": "ligeramente más probable {side} (probabilidad del {p})",
   "essentially zero": "prácticamente cero",
   "Very likely, likely, too close to call": "Muy probable, probable, demasiado ajustado",
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Too close to call: below that. Near zero: within ±0.5% of GDP. Essentially zero: under 0.1% of GDP and not certain.": "Muy probable: al menos 95 % y todas las demás opciones de método coinciden. Probable (tendencia): al menos 65 %. Demasiado ajustado para decir: por debajo. Cerca de cero: dentro de ±0,5 % del PIB. Prácticamente cero: menos del 0,1 % del PIB y no seguro.",

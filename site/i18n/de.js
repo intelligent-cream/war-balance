@@ -1183,6 +1183,7 @@ I18N.de = {
   "Too close to call": "Zu knapp für eine Aussage",
   "too close to call": "zu knapp für eine Aussage",
   "too close to call · {p} {side}": "zu knapp · {p} {side}",
+  "slightly more likely {side} ({p} chance)": "etwas wahrscheinlicher {side} (Wahrscheinlichkeit {p})",
   "essentially zero": "praktisch null",
   "Very likely, likely, too close to call": "Sehr wahrscheinlich, wahrscheinlich, zu knapp",
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Too close to call: below that. Near zero: within ±0.5% of GDP. Essentially zero: under 0.1% of GDP and not certain.": "Sehr wahrscheinlich: mindestens 95 % und jede andere Methodenwahl stimmt zu. Wahrscheinlich (Tendenz): mindestens 65 %. Zu knapp für eine Aussage: darunter. Nahe null: innerhalb von ±0,5 % des BIP. Praktisch null: unter 0,1 % des BIP und nicht sicher.",

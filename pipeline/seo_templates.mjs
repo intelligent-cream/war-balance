@@ -18,6 +18,7 @@
 // "Combien la France a donné à l'Ukraine ?"), by the volumes in seo_demand.json ask and the rule in seo_families.json
 // (country.phrasing); askOf below, the phrases in seo_i18n.mjs ASK.
 
+import { createHash } from "node:crypto";
 import { P as PL, E as EL, L as LL, cap, list3, inSentence, inList, countryText, homeText, staticText, fit, askText, semi, grammar, countryIncl, countryLine, docDesc } from "./seo_i18n.mjs";
 
 export const TITLE_MAX = 60, DESC_MAX = 155;
@@ -85,7 +86,7 @@ export function countryCopy(l, f) {
     // round 60 (audit: Togo "The net is 0.46% toward Ukraine" for −0.46%): direction words follow the middle value's sign
     // (dirWords); a chance names the side it is the chance of (chDir: the simulation's side)
     ch: f.cN ? CH(f.cN.p) : "", netDir: cN.dirWords || cN.sideWords || "", chDir: cN.sideWords || "", sureWord: w.sure || "", sureWordCap: cap(w.sure || ""), leanWord: lean || "", leanWordLc: lc(lean || ""),
-    uncWord: w.unc || "", uncWordCap: cap(w.unc || ""), zeroWord: zero || "", zeroWordCap: cap(zero || ""), partyWord: w.party || "", partyWordLc: lc(w.party || ""),
+    uncWord: w.unc || "", uncWordCap: cap(w.unc || ""), uncLean: f.cN ? (w.uncLean || "").replace("{side}", cN.sideWords || "").replace("{p}", CH(cN.p != null ? cN.p : f.cN.p)) : "", zeroWord: zero || "", zeroWordCap: cap(zero || ""), partyWord: w.party || "", partyWordLc: lc(w.party || ""),
     dirWords: cN.level === "sure" ? cN.sideWords || "" : lc(lean || ""), netRange: net.range || "", netWords: [net.range, net.chance].filter(Boolean).join(semi(l)),
     kept: loc.kept || "", keptCap: cap(loc.kept || ""), uaVerb: loc.uaVerb || "", uaEur: (loc.ua && loc.ua.eur) || "", netSigned: net.signed || "", partyWhy: loc.partyWhy || "",
     armedEur: EL(l, f.armedFull || 0), frozenEur: EL(l, f.frozen || 0), noDataText: LL(l, "noDataText") };
@@ -178,3 +179,22 @@ export function docCopy(heading, firstPara, key = "") {
 
 // this file's phrases for the wording guard: none (round 57: they are all in seo_i18n.mjs)
 export const phraseList = () => [];
+
+// round 65 (SEO audit, fix 1: honest lastmod): what a page says, for its content hash in pipeline/seo_lastmod.json: its
+// title, its description and the text of its <main> (the H1, the copy, the tables' numbers, images' alt text), without
+// the head's assets (stylesheet and font links, scripts, JSON-LD), the header's and footer's navigation or any markup.
+// A change to the template, the fonts or the scripts alone leaves the hash, and so the page's date, as it was.
+const ent = s => s.replace(/&nbsp;|&#160;/g, " ").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
+export function pageContent(html) {
+  const pick = re => ((html.match(re) || [])[1] || "");
+  const title = pick(/<title>([\s\S]*?)<\/title>/i), desc = pick(/<meta name="description" content="([^"]*)"/i);
+  const mains = [...html.matchAll(/<main\b[^>]*>([\s\S]*?)<\/main>/gi)].map(m => m[1]);
+  const main = (mains.length ? mains.join("\n") : pick(/<body\b[^>]*>([\s\S]*?)<\/body>/i))
+    .replace(/<!--[\s\S]*?-->/g, " ").replace(/<(script|style|template)\b[\s\S]*?<\/\1>/gi, " ")
+    .replace(/<img\b[^>]*?\balt="([^"]*)"[^>]*>/gi, " $1 ").replace(/<[^>]+>/g, " ");
+  return [title, desc, main].map(s => ent(s).replace(/\s+/g, " ").trim()).join("\n");
+}
+export const contentHash = html => createHash("sha256").update(pageContent(html)).digest("hex").slice(0, 16);
+// a page's date in the sitemap, in its dateModified and on its "updated" line (one date): the stored one while its content
+// hash is the same, else today. prev: its entry in pipeline/seo_lastmod.json ([hash, date])
+export const lastmodOf = (prev, hash, today) => (prev && prev[0] === hash && prev[1] ? prev[1] : today);

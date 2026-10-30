@@ -16,8 +16,8 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const FX = {"DEU": {"net": 152.586452, "netLo": 110.001732, "netHi": 208.69428, "ua": 74.665985, "uaLo": 66.894458, "uaHi": 97.502093, "rus": 72.626997, "rusLo": 30.785978, "rusHi": 123.867238, "frozen": 5.29347, "netPct": 3.651077, "netLoPct": 2.632113, "netHiPct": 4.99362, "uaPct": 1.786602, "rusPct": 1.737813, "frozenPct": 0.126662, "paidRussia": 69.31617, "cN": {"level": "sure", "p": 0.9999999983704664, "side": "ukraine", "pct": ">99%", "sideWords": "toward Ukraine"}, "cU": {"level": "sure", "p": 1, "side": "ukraine", "pct": ">99%", "sideWords": "above zero"}, "cR": {"level": "sure", "p": 0.9980676168634317, "side": "ukraine", "pct": ">99%", "sideWords": "toward Ukraine"}, "iso": "DEU", "name": "Germany", "party": false, "armedFull": 0}, "SVK": {"net": 0.168944, "netLo": -4.912093, "netHi": 5.695532, "ua": 0.948305, "uaLo": 0.491138, "uaHi": 1.619087, "rus": -0.911641, "rusLo": -5.971931, "rusHi": 4.574044, "frozen": 0.13228, "netPct": 0.139353, "netLoPct": -4.051712, "netHiPct": 4.697927, "uaPct": 0.782204, "rusPct": -0.751962, "frozenPct": 0.10911, "paidRussia": 14.44335, "cN": {"level": "unc", "p": 0.575, "side": "ukraine", "pct": "57%", "sideWords": "toward Ukraine"}, "cU": {"level": "sure", "p": 0.9997388125000701, "side": "ukraine", "pct": ">99%", "sideWords": "above zero"}, "cR": {"level": "unc", "p": 0.5880000000000001, "side": "russia", "pct": "58%", "sideWords": "toward Russia"}, "iso": "SVK", "name": "Slovakia", "party": false, "armedFull": 0}, "HUN": {"net": -11.403334, "netLo": -18.599457, "netHi": -1.38342, "ua": 0.670354, "uaLo": 0.485758, "uaHi": 0.995372, "rus": -12.272198, "rusLo": -19.465735, "rusHi": -2.257611, "frozen": 0.19851, "netPct": -5.991349, "netLoPct": -9.772215, "netHiPct": -0.726854, "uaPct": 0.352206, "rusPct": -6.447853, "frozenPct": 0.104298, "paidRussia": 30.6162, "cN": {"level": "sure", "p": 0.97, "side": "russia", "pct": "97%", "sideWords": "toward Russia"}, "cU": {"level": "sure", "p": 0.9999999991573219, "side": "ukraine", "pct": ">99%", "sideWords": "above zero"}, "cR": {"level": "sure", "p": 0.971, "side": "russia", "pct": "97%", "sideWords": "toward Russia"}, "iso": "HUN", "name": "Hungary", "party": false, "armedFull": 0}, "BLR": {"net": -2.517572, "netLo": -9.280928, "netHi": 5.130518, "ua": 0, "uaLo": 0, "uaHi": 0, "rus": -2.517572, "rusLo": -9.280928, "rusHi": 5.130518, "frozen": 0, "netPct": -3.601677, "netLoPct": -13.277437, "netHiPct": 7.339797, "uaPct": 0, "rusPct": -3.601677, "frozenPct": 0, "paidRussia": 109.525, "cN": {"level": "lean", "p": 0.775, "side": "russia", "pct": "77%", "sideWords": "toward Russia"}, "cU": {"level": "zero", "p": 0.5, "side": "ukraine", "pct": "50%", "sideWords": "above zero"}, "cR": {"level": "lean", "p": 0.775, "side": "russia", "pct": "77%", "sideWords": "toward Russia"}, "iso": "BLR", "name": "Belarus", "party": true, "armedFull": 1.2725}, "AUS": {"net": -0.604227, "netLo": -1.423452, "netHi": 0.550267, "ua": 1.289895, "uaLo": 0.998386, "uaHi": 2.118225, "rus": -1.909523, "rusLo": -2.675068, "rusHi": -1.108664, "frozen": 0.0154, "netPct": -0.037471, "netLoPct": -0.088274, "netHiPct": 0.034124, "uaPct": 0.079992, "rusPct": -0.118418, "frozenPct": 0.000955, "paidRussia": 6.92175, "cN": {"level": "zero", "p": 0.7090000000000001, "side": "russia", "pct": "70%", "sideWords": "toward Russia"}, "cU": {"level": "sure", "p": 0.9999999999999117, "side": "ukraine", "pct": ">99%", "sideWords": "above zero"}, "cR": {"level": "sure", "p": 0.9999551286473811, "side": "russia", "pct": ">99%", "sideWords": "toward Russia"}, "iso": "AUS", "name": "Australia", "party": false, "armedFull": 0}};
 
 // the map's chance words (seo_extract.mjs words), in English and German
-const W = { leanU: "Leaning toward Ukraine", leanR: "Leaning toward Russia", near: "near zero", zero: "essentially zero", unc: "too close to call", party: "Party to the war", sure: "very likely", lean: "likely" };
-const W_DE = { leanU: "Tendenz Richtung Ukraine", leanR: "Tendenz Richtung Russland", near: "nahe null", zero: "praktisch null", unc: "zu knapp für eine Aussage", party: "Kriegspartei", sure: "sehr wahrscheinlich", lean: "wahrscheinlich" };
+const W = { leanU: "Leaning toward Ukraine", leanR: "Leaning toward Russia", near: "near zero", zero: "essentially zero", unc: "too close to call", party: "Party to the war", sure: "very likely", lean: "likely", uncLean: "slightly more likely {side} ({p} chance)" };
+const W_DE = { leanU: "Tendenz Richtung Ukraine", leanR: "Tendenz Richtung Russland", near: "nahe null", zero: "praktisch null", unc: "zu knapp für eine Aussage", party: "Kriegspartei", sure: "sehr wahrscheinlich", lean: "wahrscheinlich", uncLean: "etwas wahrscheinlicher {side} (Wahrscheinlichkeit {p})" };
 const en = f => T.countryCopy("en", { ...f, words: W });
 
 test("the templates give the copy of the one country template", () => {
@@ -31,7 +31,8 @@ test("the templates give the copy of the one country template", () => {
   assert.equal(en(FX.HUN).title, "Is Hungary helping Russia? 6.0% of GDP toward Russia");
   assert.equal(en(FX.BLR).title, "Is Belarus helping Russia? Party to the war, 3.6% of GDP");
   // round 57: Australia's hand-written override is gone; it has the title of its chance level
-  assert.equal(en(FX.AUS).title, "Australia: Ukraine or Russia? Net essentially zero");
+  // round 65 (SEO audit, fix 3d): the question its heading asks, where it fits in 60 characters
+  assert.equal(en(FX.AUS).title, "Does Australia support Russia or Ukraine? Essentially zero");
   // round 57: the ten most searched countries use the same template as every other country (their names the map's)
   assert.equal(T.countryCopy("de", { ...FX.DEU, nameL: "Deutschland", words: W_DE }).title, "Deutschland: Wie viel Hilfe für die Ukraine? 74,7\u00a0Mrd.\u00a0€");
   assert.equal(T.countryCopy("pl", { ...FX.HUN, nameL: "Węgry", words: W_DE }).h1, "Węgry: czy ten kraj pomaga Rosji? Co pokazują przepływy pieniędzy");
@@ -94,8 +95,8 @@ test("direction words follow the sign of the middle value; the chance names its 
   assert.match(c.intro, /The net is 0\.46% of GDP toward Russia \(/);
   assert.match(c.intro, /the middle value is toward Russia, but the simulations lean slightly toward Ukraine \(51%\)/);
   assert.doesNotMatch(c.intro + c.intro2, /GDP toward Ukraine \(/);
-  // the description's chance is the simulation's side
-  assert.match(c.description, /\(51% toward Ukraine\)/);
+  // the description's chance is the simulation's side (round 65: in words, not as a share of the money)
+  assert.match(c.description, /^Too close to call: slightly more likely toward Ukraine \(51% chance\)\. Middle estimate: 0\.46% of GDP toward Russia/);
 });
 
 test("titles fit in 60 characters and descriptions in 155, for every category and long names", () => {
@@ -966,4 +967,53 @@ test("round 63: the ranking and the trade page in every language fit; the method
     assert.ok(d.length >= 120 && d.length <= 155 && !/\d{4}/.test(d), key + " " + d.length);
   }
   assert.equal(T.docCopy("H", "One. Two.").description, "One. Two.");
+});
+
+// round 65 (SEO audit, fix 1): a page's lastmod moves only when what it says changes, not its template, fonts or scripts
+test("round 65: the content hash covers the title, description and main text, not the head, scripts or navigation", () => {
+  const page = ({ title = "Does Benin support Ukraine or Russia?", desc = "Too close to call.", css = "/pages.css?v=aaaa", font = "a.woff2", nav = "Map", num = "0.36%", ld = "2026-10-01" } = {}) =>
+    `<!doctype html><html><head><title>${title}</title><meta name="description" content="${desc}"><link rel="preload" href="/fonts/${font}"><link rel="stylesheet" href="${css}">` +
+    `<script type="application/ld+json">{"dateModified":"${ld}"}</script></head><body><header class="top"><nav><a href="/">${nav}</a></nav></header>` +
+    `<main class="wrap"><h1>Benin</h1><p>Net ${num} of GDP.</p><img src="/img/benin.webp?v=${css}" alt="Chart: net ${num}"><script>var x = "${css}";</script></main><footer>Updated ${ld}</footer></body></html>`;
+  const h0 = T.contentHash(page());
+  // the template, the fonts, the scripts, the navigation, the JSON-LD and the footer's date: the same hash
+  assert.equal(T.contentHash(page({ css: "/pages.css?v=bbbb", font: "b.woff2", nav: "Karte", ld: "2026-10-30" })), h0);
+  // a number in the main text, the title or the description: another hash
+  for (const x of [{ num: "0.37%" }, { title: "Benin: Ukraine or Russia?" }, { desc: "Leaning toward Ukraine." }]) assert.notEqual(T.contentHash(page(x)), h0, JSON.stringify(x));
+  assert.match(T.pageContent(page()), /Net 0\.36% of GDP\. Chart: net 0\.36%/);
+  assert.doesNotMatch(T.pageContent(page()), /pages\.css|woff2|dateModified|Updated/);
+  // the stored date stays while the hash is the same; a new or changed page takes today
+  assert.equal(T.lastmodOf([h0, "2026-10-01"], h0, "2026-10-30"), "2026-10-01");
+  assert.equal(T.lastmodOf(["0000", "2026-10-01"], h0, "2026-10-30"), "2026-10-30");
+  assert.equal(T.lastmodOf(undefined, h0, "2026-10-30"), "2026-10-30");
+});
+
+// round 65 (SEO audit, fix 3): snippets say "of GDP", lead with the verdict and the middle value, and a chance too close to
+// call is said in words (not "56% toward Russia", easily read as 56% of the money)
+test("round 65: descriptions: the chance in words, the verdict and middle value first, of GDP", () => {
+  const benin = { ...FX.SVK, iso: "XBN", name: "Benin", netPct: 0.36, uaPct: 0.004,
+    cN: { level: "unc", p: 0.56, side: "russia", sideWords: "toward Russia", dirWords: "toward Ukraine", disagree: true },
+    loc: { net: { range: "likely from 1.5% toward Russia to 3.4% toward Ukraine" } } };
+  const c = en(benin);
+  assert.match(c.description, /^Too close to call: slightly more likely toward Russia \(56% chance\)\./);
+  assert.doesNotMatch(c.description, /\(\d+% toward|likely from|one year's GDP|…/);
+  const de = T.countryCopy("de", { ...benin, nameL: "Benin", words: W_DE });
+  assert.match(de.description, /etwas wahrscheinlicher toward Russia \(Wahrscheinlichkeit 56%\)/);
+  assert.doesNotMatch(de.description, /eines Jahres-BIP/);
+  for (const f of [FX.AUS, FX.BLR, { ...FX.SVK, cN: { ...FX.SVK.cN, level: "lean" } }]) {
+    const d = en({ ...f, loc: { net: { range: "likely from 0.26% toward Russia to 1.4% toward Ukraine" } } }).description;
+    assert.doesNotMatch(d, /one year's GDP|likely from/, d);
+  }
+});
+
+// round 65 (SEO audit, fix 2): a comparison's description gives both headline numbers, in every language, uncut
+test("round 65: comparison descriptions give both headline nets, without an ellipsis", () => {
+  const c = I.compareCopy("en", { A: "Germany", B: "France", a: { netP: "3.7%", dir: "toward Ukraine" }, b: { netP: "1.6%", dir: "toward Ukraine" } });
+  assert.equal(c.description, "Germany: 3.7% of GDP toward Ukraine; France: 1.6% toward Ukraine. Aid and trade with Russia since 2022, compared.");
+  for (const l of T.LANGS) for (const [A, B] of [["Germany", "France"], ["Saint Vincent and the Grenadines", "Bosnia and Herzegovina"]]) {
+    const x = I.compareCopy(l, { A, B, a: { netP: "<0.01%", dir: "toward Russia" }, b: { netP: "12.3%", dir: "toward Ukraine" } });
+    assert.ok(x.description.length <= 150 && !x.description.includes("…") && x.description.includes("12.3%"), l + " " + x.description);
+  }
+  // without the figures of one of them: the description without numbers
+  assert.doesNotMatch(I.compareCopy("en", { A: "Germany", B: "Nauru", a: { netP: "3.7%", dir: "toward Ukraine" }, b: null }).description, /3\.7%/);
 });
