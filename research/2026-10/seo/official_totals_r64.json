@@ -1,0 +1,84 @@
+{
+  "_note": "Round 64 (SEO audit, fix 7): governments' own published totals of their support for Ukraine, so a country page can say why the official figure differs from the map's. Only figures read in the government's own document are listed, with what each covers as the document states it. value: in billions of the currency; qualifier: how the document words the amount (over, about, up to); basis: delivered (geleistet), delivered_or_committed (delivered, or set aside or committed for later years), committed; flags (the document's own words in note): forward (counts funds earmarked for later years), face_value (counts loans, guarantees or export cover at face value), no_eu_share (leaves out its share of EU aid), refugees_federal (counts refugee costs paid by the central government, not those of states and municipalities). Read by pipeline/seo_pages.mjs (country pages: a section and a question). Checked: 2026-10-30.",
+  "checked": "2026-10-30",
+  "countries": {
+    "DEU": {
+      "publisher": {
+        "en": "Germany's federal government",
+        "de": "Die Bundesregierung",
+        "fr": "Le gouvernement fédéral allemand",
+        "es": "El Gobierno federal alemán",
+        "pl": "Rząd federalny Niemiec",
+        "nl": "De Duitse bondsregering",
+        "uk": "Федеральний уряд Німеччини"
+      },
+      "as_of": "2026-06-30",
+      "published": "2026-08-24",
+      "source_name": "Bundesregierung: Bilaterale Unterstützungsleistungen der Bundesregierung für die Ukraine und Menschen aus der Ukraine (Stand 30.06.2026)",
+      "source_url": "https://www.bundesregierung.de/breg-de/schwerpunkte/krieg-in-der-ukraine/deutschland-hilft-der-ukraine-2160274",
+      "document_url": "https://www.bundesregierung.de/resource/blob/975228/2423058/b49e873efda519b0e6be3a12d1e306ee/2026-04-24-ukraine-unterstuetzung-data.pdf?download=1",
+      "currency": "EUR",
+      "figures": [
+        {
+          "kind": "civil",
+          "value": 43.3,
+          "qualifier": "over",
+          "basis": "delivered",
+          "covers": "bilateral civil support from 24 February 2022, including federal support for refugees from Ukraine and about EUR 1.3bn of contingent liabilities (export and investment guarantees)",
+          "period": "2022-02-24 to 2026-06-30",
+          "quote": "bilaterale zivile Unterstützung für die Ukraine in Höhe von über 43,3 Milliarden Euro geleistet"
+        },
+        {
+          "kind": "military",
+          "value": 57.6,
+          "qualifier": "about",
+          "basis": "delivered_or_committed",
+          "covers": "military support delivered or provided for the coming years: budget funds including funds planned for later years, the value of equipment from Bundeswehr stocks, and training costs",
+          "period": "from 2022-02-24, including funds planned for later years",
+          "quote": "militärische Unterstützung in Höhe von rund 57,6 Milliarden Euro geleistet bzw. für die kommenden Jahre bereitgestellt"
+        }
+      ],
+      "flags": ["forward", "face_value", "no_eu_share", "refugees_federal"],
+      "note": "The document: 'Deutsche Leistungen, die die Ukraine im Rahmen des regulären deutschen Mitgliedsbeitrags an internationale Organisationen wie die EU ... unterstützen, sind in dieser Übersicht nicht erfasst. Dies gilt auch für Ausgaben der Bundesländer und Kommunen v.a. für die Unterstützung der Geflüchteten aus der Ukraine'; 'In der zivilen Gesamtsumme sind Eventualverbindlichkeiten (Garantien, Bürgschaften) in Höhe von ca. 1,3 Milliarden Euro enthalten'; military: 'Haushaltsmitteln für militärische Unterstützungsleistungen an die Ukraine, inkl. eingeplanter Mittel für die Folgejahre'."
+    },
+    "GBR": {
+      "publisher": {
+        "en": "The UK government",
+        "de": "Die britische Regierung",
+        "fr": "Le gouvernement britannique",
+        "es": "El Gobierno británico",
+        "pl": "Rząd Wielkiej Brytanii",
+        "nl": "De Britse regering",
+        "uk": "Уряд Великої Британії"
+      },
+      "as_of": "2026-07",
+      "published": "2026-07",
+      "source_name": "GOV.UK: UK support to Ukraine factsheet (July 2026)",
+      "source_url": "https://assets.publishing.service.gov.uk/media/6a6346a3e2d191f0bc8b6ea7/UKsupport_to_Ukraine_factsheet_072026.pdf",
+      "document_url": "https://assets.publishing.service.gov.uk/media/6a6346a3e2d191f0bc8b6ea7/UKsupport_to_Ukraine_factsheet_072026.pdf",
+      "currency": "GBP",
+      "figures": [
+        {
+          "kind": "military",
+          "value": 16,
+          "qualifier": "",
+          "basis": "committed",
+          "covers": "military support, including the GBP 2.26bn ERA loan (the UK's part of the G7 loans repaid from frozen Russian assets' proceeds)",
+          "period": "since February 2022",
+          "quote": "£16bn* Military *includes £2.26bn ERA Loan"
+        },
+        {
+          "kind": "nonmil",
+          "value": 5.6,
+          "qualifier": "",
+          "basis": "committed",
+          "covers": "non-military commitments, including up to GBP 4.1bn of fiscal support through World Bank loan guarantees and up to GBP 1.5bn of bilateral assistance",
+          "period": "since February 2022",
+          "quote": "£5.6bn in non-military commitments since Feb 22. This includes: up to £4.1bn in fiscal support through World Bank loan guarantees & up to £1.5bn in bilateral assistance."
+        }
+      ],
+      "flags": ["face_value"],
+      "note": "The factsheet's headline 'In total, up to £25bn support of Ukraine' also counts a GBP 3.5bn export finance cover limit; the two figures above are its military and non-military commitments. It gives no figure for the cost of hosting refugees."
+    }
+  }
+}

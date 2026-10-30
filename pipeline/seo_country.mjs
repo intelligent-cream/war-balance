@@ -228,6 +228,9 @@ export function countryDyn(c, o) {
     if (x.notes.undelivered) s.push(esc(x.notes.undelivered));
     sec("kiel", I.dyn(l, "tKiel"), P(s.join(" ")));
   }
+  // round 64 (SEO audit, fix 7): the government's own published total, and why it differs from the map's
+  const off = officialText(c, x, o, F);
+  if (off) sec("official", I.dyn(l, "tOfficial"), P(off));
   // money flowing back from the war effort
   if (x.flowback && x.flowback.gross >= 0.01) sec("flowback", I.dyn(l, "tFlowback"), P(D(l, "flowback", { gross: F("e", "flowGross", x.flowback.gross), kept: F("e", "flowKept", x.flowback.kept), Nt: esc(Nt) })));
   // companies, Russia and Russian owners: their parts, and what Russia took (a marker)
@@ -263,9 +266,30 @@ export function countryDyn(c, o) {
   out.faq = faqOf(c, x, o, F);
   // round 59b: how much Russian oil it buys, by year from its customs, where the fuel section shows the crude by year
   if (o.fuel && o.fuel.faq) out.faq.push({ id: "fuel", fam: "fuel", score: 0, q: o.fuel.faq.q, a: o.fuel.faq.a.replace(/[ \t\r\n]+/g, " ").trim() });
+  if (off) out.faq.push({ id: "official", fam: "official", score: 0, q: I.fmt(I.dyn(l, "qOfficial"), { N: name, Nt, NtCap: cap(Nt) }), a: off.replace(/[ \t\r\n]+/g, " ").trim() });
   // the sanctions question after the pool's picks (not one of them: every page has it)
   if (o.regime) out.faq.push({ id: "regime", fam: "regime", score: 0, q: o.regime.q, a: o.regime.a.replace(/[ \t\r\n]+/g, " ").trim() });
   return out;
+}
+
+// round 64 (SEO audit, fix 7): a government's own total (o.official: its entry in research/2026-10/seo/
+// official_totals_r64.json), what it covers in the document's own terms (flags), and what the map counts instead. The
+// official amounts are the document's, in its currency, not the model's (so not marked); the map's total is marked
+const OFF_KIND = { civil: "offCivil", military: "offMil", nonmil: "offNonmil" }, OFF_QUAL = { over: "offOver", about: "offAbout", upto: "offUpTo" };
+const OFF_FLAG = { forward: "offForward", face_value: "offFace", no_eu_share: "offNoEu", refugees_federal: "offRefFed", committed: "offCommitted" };
+export function officialText(c, x, o, F) {
+  const r = o.official, l = o.l;
+  if (!r || !x.data || x.ua < 0.0005 || !(r.figures || []).length) return "";
+  const amt = f => { const v = I.CUR(l, f.value, r.currency); return f.qualifier ? D(l, OFF_QUAL[f.qualifier.replace(/\W/g, "")], { v }) : v; };
+  const items = r.figures.map(f => D(l, OFF_KIND[f.kind], { v: amt(f) }));
+  const list = items.length === 1 ? items[0] : items.reduce((a, b) => D(l, "offAnd", { a, b }));
+  const flags = [...(r.flags || []), ...(r.figures.every(f => f.basis === "committed") ? ["committed"] : [])];
+  const Nt = I.inSentence(l, c.name);
+  const link = `<a href="${esc(r.source_url)}" rel="noopener">${esc(r.source_name)}</a>`;
+  return [D(l, "offLead", { src: esc((r.publisher || {})[l] || r.publisher.en), list: esc(list), asOf: esc(I.dateL(r.as_of, l)) }),
+    ...flags.map(k => D(l, OFF_FLAG[k])),
+    D(l, "offOurs", { dataTo: esc(o.dataTo), Nt: esc(Nt), ua: F("e", "uaEur", x.ua) }, { eu: o.eu ? 1 : 0 }),
+    D(l, "offSource", { link })].join(" ");
 }
 
 const partLine = (l, p, F) => D(l, "partLine", { name: esc(p.name), v: F("e", "part_" + p.k, p.v), p: F("p", "part_" + p.k, p.v) });
