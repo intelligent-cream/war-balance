@@ -358,7 +358,8 @@ for _iso, _d in _cf.items():
     )
     if (_sz and "seized" not in _has) or (_ex and "exits" not in _has):
         _missing.append(_iso)
-_html = (ROOT / "site" / "index.html").read_text()
+# round 64 (SEO audit, fix 8b): the map's code moved from index.html into site/app.js; the checks read both
+_html = (ROOT / "site" / "index.html").read_text() + "\n" + (ROOT / "site" / "app.js").read_text()
 _shift_block = _html[_html.index("const shiftParts = [") : _html.index("const sell3")]
 _cost_block = _html[_html.index("const takenParts = ") : _html.index("const live = parts")]
 _neg = [x["c"] for c in countries.values() for x in c.get("taken") or [] if sum(x["c"]) < 0]
@@ -927,7 +928,7 @@ for _f in [
     _txt = _f.read_text()
     for _old in (u.rstrip("/") for u in _ous):
         _n = _txt.count(_old)
-        if _n > (1 if _f.name == "index.html" else 0):
+        if _n > (1 if _f.name == "app.js" else 0):
             _bad.append(f"{_f.name}: old address {_old} {_n}x")
 # round 54: an old share link (c/<iso>.html) names its country page as canonical and sends the reader there
 for _p in _old_pages:
