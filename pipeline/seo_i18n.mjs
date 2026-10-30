@@ -486,7 +486,7 @@ const COPY = {
         h1: "{N}: no data yet on its money toward Ukraine or Russia" },
       // round 61 (CTR): the first paragraph answers first (the total in euros, what it holds beyond its own aid, Kiel's
       // bilateral figure), a full sentence Google can quote; the trade and the net follow in a paragraph of their own
-      intro: "{if:uaPos|{NtCap} has given Ukraine {ua} since 2022 ({uaP} of GDP).{if:nX| {if:aidX|Beyond its own aid, that|That} total includes {xLong}.|}|{NtCap}'s support for Ukraine since 2022: {ua} ({uaP} of GDP).}{if:kiel| The Kiel Institute counts {kielEur} in bilateral aid.|}",
+      intro: "{if:uaPos|{NtCap} has given Ukraine {ua} since 2022 ({uaP} of GDP).{if:nX| {if:aidX|Beyond its own aid, that|That} total includes {xLong}.|}|{uaVerb} ({uaEur}).}{if:kiel| The Kiel Institute counts {kielEur} in bilateral aid.|}",
       intro2: "{keptCap}{if:frozen|; Russia also lost {frozenEur} of return on reserves frozen there|}. The net is {netP} of a year's GDP {netDir} ({netWords}).",
       incl: { eu: "its share of EU aid ({euEur})", ref: "the cost of hosting refugees ({refEur})" },
       inclS: { eu: "{euEur} as its EU share", ref: "{refEur} for refugees" },
