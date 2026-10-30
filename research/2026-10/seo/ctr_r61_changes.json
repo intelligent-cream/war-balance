@@ -1,0 +1,63 @@
+{
+  "_note": "Round 61: search-result click-rate (CTR) changes, by page family, for the weekly Search Console reports to compare CTR before and after (per family, same position band; exclude the rosstat bot queries). Inputs: ctr/serp_compare.md and ctr/best_practice.md (30 October 2026). Every figure on these pages comes from data.json or the research files at deploy; no figure is written in the copy.",
+  "date": "2026-10-30",
+  "round": "r61",
+  "families": [
+    {
+      "family": "country",
+      "pages": "/country/<slug>/ and /<lang>/country/<slug>/ (7 languages, every country)",
+      "changed": ["first paragraph", "second paragraph (new)", "meta description (u_sure level)", "title (es u_sure, nl u_sure; en lean, unc, zero)", "h1 (es u_sure, nl u_sure; en lean, unc, zero)"],
+      "what": "First paragraph answers first: the total given since 2022 in euros (% of GDP), then what it includes beyond its own aid (its share of EU aid, the cost of hosting refugees, each only where the data have it), then the Kiel Institute's bilateral figure where Kiel lists the country (41 countries). The trade with Russia and the net moved to a second paragraph. The u_sure description uses the same answer-first form, no 'one year's GDP' or certainty words. Spanish title and heading ask '¿Cuánto dinero ha dado X a Ucrania?'; Dutch 'Hoeveel heeft X aan Oekraïne gegeven?'; English lean, too-close-to-call and essentially-zero pages ask 'Does X support Ukraine or Russia?'. English essentially-zero description names support and trade amounts and says it measures money, not politics.",
+      "examples": ["/country/france/", "/fr/country/france/", "/es/country/france/", "/nl/country/france/", "/country/albania/", "/country/sweden/", "/country/italy/"]
+    },
+    {
+      "family": "support-for-ukraine",
+      "pages": "/support-for-ukraine/ and /<lang>/support-for-ukraine/ (6 new language versions, reciprocal hreflang with x-default)",
+      "changed": ["title", "description", "h1", "first paragraph", "new localized pages", "internal links (footer, topic pages, Topics hub, country pages, year and compare pages now link the page in their own language)"],
+      "what": "The all-years 'by country' page: '2022–<last data year>' in the title, the searched question as heading ('How much has each country given to Ukraine since 2022?'), the answer first (the list in euros and as a share of GDP). Decision on the overlap with /ukraine-support-tracker/: differentiate, not canonicalize. This page takes 'total aid / support by country'; the tracker takes the tracker angle (Kiel data plus EU shares, refugees and trade).",
+      "examples": ["/support-for-ukraine/", "/fr/support-for-ukraine/", "/nl/support-for-ukraine/", "/de/support-for-ukraine/"]
+    },
+    {
+      "family": "ukraine-support-tracker",
+      "pages": "/ukraine-support-tracker/ and /<lang>/ukraine-support-tracker/",
+      "changed": ["title", "description (en)", "h1", "label (other languages)", "related links (shadow fleet)"],
+      "what": "'Ukraine aid tracker 2022–<year>: Kiel data, refugees, trade' instead of Kiel's product name 'Ukraine support tracker'; localized titles moved from 'by country' wording (now the support-for-ukraine page's) to the tracker angle. Links /shadow-fleet/ in its related list; /military-aid-to-ukraine-by-country/ stays linked from its support-by-type note (both also on the home page's Topics list and the support-for-ukraine page).",
+      "examples": ["/ukraine-support-tracker/", "/fr/ukraine-support-tracker/", "/de/ukraine-support-tracker/"]
+    },
+    {
+      "family": "ukraine-aid-per-capita",
+      "pages": "/ukraine-aid-per-capita/ and /<lang>/ukraine-aid-per-capita/",
+      "changed": ["title", "first paragraph (en)", "FAQ answer (en)"],
+      "what": "'2022–<year>' in the title; the first paragraph gives the euros per person of the first three countries, not of the first only.",
+      "examples": ["/ukraine-aid-per-capita/", "/nl/ukraine-aid-per-capita/"]
+    },
+    {
+      "family": "year-ua",
+      "pages": "/ukraine-aid-<year>/ and /<lang>/ukraine-aid-<year>/",
+      "changed": ["title", "description", "h1", "new link line after the first paragraph"],
+      "what": "Titles, descriptions and headings say the page counts that year alone (not the total since 2022); French no longer uses 'combien chaque pays a donné' in the title. A line after the first paragraph links the support-by-country page in the page's language and the country pages most searched as 'how much has X given' in that language (seo_demand.json ask, at least the phrasing threshold), each by its own heading: /fr/ year pages link /fr/country/france/ as 'Combien la France a donné à l'Ukraine depuis 2022 ?'.",
+      "examples": ["/fr/ukraine-aid-2022/", "/ukraine-aid-2026/", "/nl/ukraine-aid-2026/", "/de/ukraine-aid-2026/"]
+    },
+    {
+      "family": "compare",
+      "pages": "/compare/<a>-vs-<b>/ and /<lang>/compare/<a>-vs-<b>/",
+      "changed": ["new link line after the first paragraph"],
+      "what": "Links both countries' pages by their headings and the support-by-country page in the page's language.",
+      "examples": ["/de/compare/germany-vs-austria/"]
+    },
+    {
+      "family": "frozen-russian-assets",
+      "pages": "/frozen-russian-assets/ and /<lang>/frozen-russian-assets/",
+      "changed": ["title", "description", "h1", "first paragraph", "FAQ question (en)"],
+      "what": "Leads with the amount frozen (Euroclear's balance and the Bank of Russia reserves immobilised in the EU, from frozen_amounts_r58.json), then the return Russia lost per country.",
+      "examples": ["/frozen-russian-assets/", "/fr/frozen-russian-assets/"]
+    },
+    {
+      "family": "topic-descriptions-other-languages",
+      "pages": "/<lang>/<topic>/ and /<lang>/<part>/ (non-English topic, group and part pages)",
+      "changed": ["description"],
+      "what": "No quoted measure name and no leading '+' on the first figure in the description.",
+      "examples": ["/fr/ukraine-support-tracker/", "/de/group/eu/"]
+    }
+  ]
+}

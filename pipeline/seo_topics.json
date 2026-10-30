@@ -5,12 +5,12 @@
       "slug": "ukraine-support-tracker",
       "kind": "topic",
       "label": "Ukraine support tracker",
-      "title": ["Ukraine support tracker: total aid to Ukraine by country", "Total aid to Ukraine by country: support tracker"],
+      "title": ["Ukraine aid tracker 2022–{y1}: Kiel data, refugees, trade", "Ukraine aid tracker 2022–{y1}"],
       "description": [
-        "Support for Ukraine since 2022 by country, sorted by euros, with % of GDP, per person and trade with Russia vs a no-war world. Ranges, sources.",
-        "Support for Ukraine since 2022 by country, in euros, % of GDP and per person, with trade with Russia counted. Ranges and sources."
+        "Every country's support for Ukraine 2022–{y1}, built on Kiel Institute data and adding EU shares, refugee hosting and trade with Russia. Ranges, sources.",
+        "Every country's support for Ukraine since 2022, built on Kiel Institute data, with EU shares, refugees and trade with Russia. Ranges and sources."
       ],
-      "h1": "Ukraine support tracker: aid, refugees and trade with Russia, every country",
+      "h1": "Ukraine aid tracker 2022–{y1}: Kiel data plus EU shares, refugees and trade with Russia",
       "intro": "Support for Ukraine from 2022 to {dataTo} for every country, sorted by euros: its own aid (loans at their gift value), its share of EU aid and the cost of hosting refugees, minus money flowing back, each also as a share of GDP and per person. Beside it, the net: support plus how much less, or more, Russia kept from trade with that country than in a world without the war. In euros, the table starts with {top3list}.",
       "rank": "ua",
       "order": "desc",
@@ -42,7 +42,7 @@
           ]
         }
       ],
-      "related": ["europe-energy-payments-vs-aid", "frozen-russian-assets", "russia-war-income", "eu", "g7", "nato"]
+      "related": ["europe-energy-payments-vs-aid", "frozen-russian-assets", "russia-war-income", "shadow-fleet", "eu", "g7", "nato"]
     },
     {
       "slug": "russian-oil-gas-buyers",
@@ -86,13 +86,13 @@
       "slug": "frozen-russian-assets",
       "kind": "topic",
       "label": "Frozen Russian assets",
-      "title": ["Frozen Russian assets and Euroclear by country", "Frozen Russian assets by country"],
+      "title": ["Frozen Russian assets by country: {euroclear} at Euroclear", "Frozen Russian assets and Euroclear by country", "Frozen Russian assets by country"],
       "description": [
-        "Russian reserves and private money frozen abroad since 2022: the return Russia lost in each country. {top1}: {top1_eur}. Ranges and sources.",
-        "Russian reserves and private money frozen abroad since 2022: the return Russia lost in each country, with ranges and sources."
+        "Russia's central bank reserves frozen in the EU: about {euCbr}; Euroclear in Belgium holds {euroclear}. Amounts frozen and the return lost, by country.",
+        "Russian reserves and private money frozen abroad since 2022: the amounts in each country and the return Russia lost, with ranges and sources."
       ],
-      "h1": "Frozen Russian assets and Euroclear: the return Russia lost in each country",
-      "intro": "Russia's central bank reserves and Russian private assets frozen abroad since 2022 earn Russia nothing. The number here is the return Russia lost on them from 2022 to {dataTo}, not the amount frozen: {sum:frozen_eur} across the {n} countries listed; in {top1} it comes to {top1_eur}.",
+      "h1": "Frozen Russian assets by country: {euroclear} at Euroclear, and the return Russia lost",
+      "intro": "About {euCbr} of Russia's central bank reserves are immobilised in the EU ({euCbrDate}); Euroclear, the securities depository in Belgium, reports {euroclear} of sanctioned Russian assets ({euroclearDate}). The table shows the amounts frozen in each country and the return Russia lost on its frozen money from 2022 to {dataTo}: {sum:frozen_eur} across the {n} countries listed; in {top1} it comes to {top1_eur}.",
       "explain": ["frozenAssets", "reparationsLoan"],
       "rank": "frozen",
       "order": "desc",
@@ -105,7 +105,7 @@
       "faq": [
         { "q": "Where are frozen Russian assets held?", "a": "By the return Russia lost on them since 2022, the table starts with {top3list}. In {top1} the lost return comes to {top1_eur} ({top1_pct} of one year's GDP)." },
         { "q": "Is the frozen money counted as aid to Ukraine?", "a": "No. The return Russia lost on frozen money is its own line, added to the net: it is not support for Ukraine and not part of what Russia kept from trade. Loans to Ukraine repaid from the proceeds of Russian assets are left out of donors' aid, since Russia pays for them." },
-        { "q": "Why not show the amount frozen?", "a": "The scale of the site is money moved toward Ukraine or Russia over the war. A frozen amount is a stock that still belongs to Russia; what Russia loses each year is the return it would have earned, so that is what is counted." }
+        { "q": "Why does the net count the return lost, not the amount frozen?", "a": "The table shows both: the amounts frozen in each country, and the return Russia lost on them. The scale of the site is money moved toward Ukraine or Russia over the war. A frozen amount is a stock that still belongs to Russia; what Russia loses each year is the return it would have earned, so that is what enters the net." }
       ],
       "notes": [
         "The return Russia lost, since 2022: reserves (central bank) and private Russian assets, each with its range."
@@ -393,7 +393,8 @@
       "kind": "topic",
       "label": "Aid to Ukraine per person",
       "title": [
-        "Ukraine aid per capita: which country gives most per person?",
+        "Ukraine aid per capita 2022–{y1}: who gives most per person?",
+        "Ukraine aid per capita 2022–{y1}, by country",
         "Aid to Ukraine per person, by country"
       ],
       "description": [
@@ -401,7 +402,7 @@
         "Support for Ukraine since 2022 per person in each country, with refugee hosting and loans at gift value. Ranges and sources."
       ],
       "h1": "Ukraine aid per capita: which countries give the most per person?",
-      "intro": "Support for Ukraine from 2022 to {dataTo}, divided by each country's population. Per person the table starts with {top1} ({top1_pp}), {top2} and {top3}; the order differs from the order in euros.",
+      "intro": "Per person, the support for Ukraine from 2022 to {dataTo} starts with {top1} ({top1_pp}), {top2} ({top2_pp}) and {top3} ({top3_pp}). Each figure is a country's support divided by its population; the order differs from the order in euros.",
       "rank": "ua",
       "order": "desc",
       "sort": "pp",
@@ -409,7 +410,7 @@
       "limit": 50,
       "map": "#view=rank&lens=support",
       "faq": [
-        { "q": "Which country gives the most to Ukraine per person?", "a": "Per person since 2022 the table starts with {top1} ({top1_pp} per resident), then {top2} and {top3}." }
+        { "q": "Which country gives the most to Ukraine per person?", "a": "Per person since 2022 the table starts with {top1} ({top1_pp}), then {top2} ({top2_pp}) and {top3} ({top3_pp})." }
       ],
       "related": ["ukraine-support-tracker", "eu-vs-us-aid"]
     },

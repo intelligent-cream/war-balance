@@ -1707,6 +1707,11 @@ def check_sanity(
         f = site / path / "index.html"
         if f.exists():
             out += check_rank_lists(f.read_text(), "/" + path)
+    # round 61: the page of support by country in every language
+    for lang in [x for x in LANGS if x != "en"]:
+        f = site / lang / "support-for-ukraine" / "index.html"
+        if f.exists():
+            out += check_rank_lists(f.read_text(), f"/{lang}/support-for-ukraine/", lang)
     return out
 
 
