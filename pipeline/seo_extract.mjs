@@ -55,7 +55,8 @@ export async function extractSite({ lang, isos }) {
       noData: nod.map(m => m.c.iso3), order: rows.map(m => m.c.iso3) };
   }
   const pct = p => (p >= 0.995 ? ">99%" : Math.floor(p * 100) + "%");
-  const rank = { net: ranking("net"), ua: lang === "en" ? ranking("ua") : null, rus: lang === "en" ? ranking("rus") : null };
+  // round 61: the support ranking in every language too (the page of support by country is in every language)
+  const rank = { net: ranking("net"), ua: ranking("ua"), rus: lang === "en" ? ranking("rus") : null };
   // (round 56: the net ranking in each language gives the country pages' "nearby" lists their group names)
   // ----- one country, as its panel shows it -----
   function country(c) {

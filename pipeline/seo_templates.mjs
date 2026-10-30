@@ -18,7 +18,7 @@
 // "Combien la France a donné à l'Ukraine ?"), by the volumes in seo_demand.json ask and the rule in seo_families.json
 // (country.phrasing); askOf below, the phrases in seo_i18n.mjs ASK.
 
-import { P as PL, E as EL, L as LL, cap, list3, inSentence, countryText, homeText, staticText, fit, askText, semi } from "./seo_i18n.mjs";
+import { P as PL, E as EL, L as LL, cap, list3, inSentence, countryText, homeText, staticText, fit, askText, semi, grammar, countryIncl } from "./seo_i18n.mjs";
 
 export const TITLE_MAX = 60, DESC_MAX = 155;
 export const LANGS = ["en", "uk", "de", "fr", "pl", "nl", "es"];
@@ -89,6 +89,14 @@ export function countryCopy(l, f) {
     kept: loc.kept || "", keptCap: cap(loc.kept || ""), uaVerb: loc.uaVerb || "", uaEur: (loc.ua && loc.ua.eur) || "", netSigned: net.signed || "", partyWhy: loc.partyWhy || "",
     armedEur: EL(l, f.armedFull || 0), frozenEur: EL(l, f.frozen || 0), noDataText: LL(l, "noDataText") };
   const nums = { rusX: f.rus || 0, eu: EU.has(f.iso), armed: (f.armedFull || 0) > 0.5, frozen: Math.abs(f.frozen || 0) >= 0.05, mostly: !!f.mostly };
+  // round 61 (CTR): the answer first. The total it gave, what it holds beyond its own aid (its share of EU aid, the cost
+  // of hosting refugees: the map's parts, f.parts), and the Kiel Institute's bilateral figure where the data have one
+  const pt = f.parts || {}, uaPos = !!f.cN && (f.ua || 0) >= 0.0005, has = x => uaPos && (x || 0) >= 0.0005;
+  const g = grammar(l, N);
+  Object.assign(v, { Na: g.Na, NaCap: cap(g.Na), euEur: EL(l, pt.eu || 0), refEur: EL(l, pt.ref || 0), kielEur: pt.kiel != null ? EL(l, pt.kiel) : "" });
+  Object.assign(nums, { uaPos, euX: has(pt.eu), refX: has(pt.ref), aidX: has(pt.aid), kiel: pt.kiel != null && pt.kiel >= 0.0005, plural: g.plural, fem: g.fem, neu: g.neu });
+  nums.nX = (nums.euX ? 1 : 0) + (nums.refX ? 1 : 0);
+  v.xLong = countryIncl(l, "incl", v, nums); v.xShort = countryIncl(l, "inclS", v, nums);
   // round 56: where searches ask far more whether it trades with Russia than what it gave (seo_demand.json), and both
   // numbers are very likely, the English title asks that and answers it with what Russia kept
   const dm = f.demand || {}, R = f.tradeFirst || TRADE_FIRST;
@@ -116,13 +124,16 @@ export function homeCopy(l, n, dataTo = "") {
   return { ...H, og_title: H.title, og_description: H.description };
 }
 // facts: { n, topUa: [names], topRu: [names], parties: [names], euroTop: [[name, bn]x2], shareTop: [names], ruMore: [[name, bn]x2], ruLess: [name, bn] }
-export function staticCopy(page, x) {
-  const en = a => list3("en", a);
-  const v = { n: x.n, topUa: en(x.topUa || []), topRu: en(x.topRu || []), parties: en(x.parties || []), euroTop: en((x.euroTop || []).map(([n, b]) => `${n} (${E(b)})`)), shareTop: en(x.shareTop || []) };
+// round 61: and euroTop3 ([[name, bn]x3]), y1 (the data's last year) and dataTo; l the page's language (the page of support
+// by country is in every language: its names and figures in that language)
+export function staticCopy(page, x, l = "en") {
+  const ls = a => list3(l, a), E1 = b => (l === "en" ? E(b) : EL(l, b));
+  const v = { n: x.n, topUa: ls(x.topUa || []), topRu: ls(x.topRu || []), parties: ls(x.parties || []), euroTop: ls((x.euroTop || []).map(([n, b]) => `${n} (${E1(b)})`)),
+    euroTop3: ls((x.euroTop3 || x.euroTop || []).map(([n, b]) => `${n} (${E1(b)})`)), shareTop: ls(x.shareTop || []), y1: x.y1 || "", dataTo: x.dataTo || "" };
   const nums = { nParty: (x.parties || []).length };
   const r = [...(x.ruMore || []), ...(x.ruLess ? [x.ruLess] : [])];
-  r.forEach(([n, b], i) => { v["n" + (i + 1)] = n; v["e" + (i + 1)] = E(b); nums["x" + (i + 1)] = b; });
-  const T = staticText(page, v, nums);
+  r.forEach(([n, b], i) => { v["n" + (i + 1)] = n; v["e" + (i + 1)] = E1(b); nums["x" + (i + 1)] = b; });
+  const T = staticText(page, v, nums, l);
   return { ...T, og_title: T.title, og_description: T.description };
 }
 
