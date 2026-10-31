@@ -104,19 +104,19 @@ def fmt_eur(bn: float, lang: str = "en") -> str:
     a = abs(bn)
     if 0 < a < 0.0005:  # round 60: an amount that is not zero but under €0.5m is "<€1m"
         return "<" + fmt_eur(0.001, lang)
-    if lang == "es":
-        return (_group(_round(a * 10) * 100, lang) if a >= 0.1 else str(_round(a * 1000))) + NB + "M€"
-    big = a >= 0.1
+    # round 68: under €1bn in millions, as the map writes amounts (seo_i18n.mjs E)
+    big = a >= 0.9995
     if not big:
         s = str(_round(a * 1000))
     elif a >= 100:
         s = _group(_round(a), lang)
     else:
-        s = (f"{a:.1f}" if a >= 1 else f"{a:.2f}").removesuffix(".0")
+        s = f"{a:.1f}".removesuffix(".0")
         if lang != "en":
             s = s.replace(".", ",")
     unit = {
         "en": ("€", "bn" if big else "m"),
+        "es": ("", NB + ("mil" + NB + "M€" if big else "M€")),
         "de": ("", NB + ("Mrd." if big else "Mio.") + NB + "€"),
         "fr": ("", NB + ("Md€" if big else "M€")),
         "pl": ("", NB + ("mld" if big else "mln") + NB + "€"),
@@ -147,7 +147,10 @@ def allowed_numbers(c: dict, lang: str = "en") -> set[str]:
     out = set()
     for k in ("net", "ua", "rus"):
         for d in (-5e-5, 0, 5e-5):
-            out.add(fmt_pct(c[k] + d, lang))
+            p = fmt_pct(c[k] + d, lang)
+            out.add(p)
+            # round 68 (QA review): a title writes "10%", not "10.0%" (seo_templates.mjs countryCopy)
+            out.add(re.sub(r"^(\d+)[.,]0(?=\D)", r"\1", p))
             out.add(fmt_eur(c[k + "Eur"] + d, lang))
     return out
 
@@ -158,7 +161,7 @@ _G = r"\d+(?:[.\u202f\u00a0]\d{3})*(?:,\d+)?"
 NUM_L = {
     "de": re.compile(rf"<?{_G}\u00a0(?:Mrd\.|Mio\.)\u00a0€|<?\d+(?:,\d+)?\u00a0%"),
     "fr": re.compile(rf"<?{_G}\u00a0M[d]?€|<?\d+(?:,\d+)?\u00a0%"),
-    "es": re.compile(rf"<?{_G}\u00a0M€|<?\d+(?:,\d+)?\u00a0%"),
+    "es": re.compile(rf"<?{_G}\u00a0(?:mil\u00a0)?M€|<?\d+(?:,\d+)?\u00a0%"),
     "pl": re.compile(rf"<?{_G}\u00a0(?:mld|mln)\u00a0€|<?\d+(?:,\d+)?%"),
     "nl": re.compile(rf"<?€{_G}\u00a0(?:mld|mln)|<?\d+(?:,\d+)?%"),
     "uk": re.compile(rf"<?{_G}\u00a0(?:млрд|млн)\u00a0€|<?\d+(?:,\d+)?%"),
@@ -242,12 +245,91 @@ def title_problems_lang(title: str, c: dict, lang: str, words: dict) -> list[str
     map's chance words in it exactly where the map says them."""
     out = [f"number {n}" for n in numbers(title, lang) if n not in allowed_numbers(c, lang)]
     lv = "party" if c.get("party") else level(c)
-    low = title.lower()
+    # (round 68: the pages write the map's French words with the phrase table's straight apostrophe)
+    low = title.lower().replace("’", "'")
+    lw = lambda w: w.lower().replace("’", "'")  # noqa: E731
     for k, ws in words["title"].items():
-        if k != lv and any(w and w.lower() in low for w in ws):
+        if k != lv and any(w and lw(w) in low for w in ws):
             out.append(f"says {k} words, the map says {lv}")
-    if lv in words["title"] and not any(w and w.lower() in low for w in words["title"][lv]):
+    if lv in words["title"] and not any(w and lw(w) in low for w in words["title"][lv]):
         out.append(f"does not say the {lv} words")
+    return out
+
+
+def intro_of(text: str) -> str:
+    """A page's opening paragraphs: <p class="intro"> and the paragraph right after it, as plain text."""
+    m = re.search(r'<p class="intro">(.*?)</p>(?:\s*<p>(.*?)</p>)?', text, re.DOTALL)
+    return " ".join(x for x in (m.groups() if m else ()) if x)
+
+
+def headline_concepts(c: dict) -> dict[str, tuple[float, float | None]]:
+    """Round 68: the quantities a country page's title, description and opening paragraphs speak of, from the model:
+    {name: (€ bn, % of a year's GDP)}: the net, support for Ukraine, trade with Russia, the share of EU aid and refugee
+    hosting (Kiel's figure and the frozen money are the pages' own measures, checked by check_dyn)."""
+    out: dict[str, tuple[float, float | None]] = {
+        k: (c[k + "Eur"], c[k]) for k in ("net", "ua", "rus") if c.get(k + "Eur") is not None
+    }
+    gdp = c.get("gdp") or 0
+    for k, mk in (("euaid", "part_euaid"), ("ref", "part_ref")):
+        v = c.get(mk)
+        if v is not None and abs(v) >= 0.0005:
+            out[k] = (v, 100 * v / gdp if gdp else None)
+    return out
+
+
+def headline_problems(title: str, desc: str, intro: str, lang: str = "en", c: dict | None = None) -> list[str]:
+    """Round 68 (QA review: "one figure per concept"): the title, the description and the opening paragraphs write each
+    quantity with one value. With the model's country (c), a figure close to one of its quantities but not a rounding of
+    it ("€15.3bn" beside support of €16.9bn is fine, "0.70%" for a net of 0.71% is not), or one quantity written in two
+    roundings ("€0.52bn" and "€522m"), is flagged. Without it, any two figures of a kind that differ by a rounding step."""
+    figs = []
+    for where, t in (("title", title), ("description", desc), ("intro", intro)):
+        figs += [(where, f) for f in figs_in(t or "", lang) if not f["tiny"] and f["kind"] in ("pct", "eur")]
+    out = []
+    if c is None:
+        for i, (wa, a) in enumerate(figs):
+            for wb, b in figs[i + 1 :]:
+                if a["kind"] != b["kind"] or abs(a["v"] - b["v"]) < 1e-9:
+                    continue
+                if abs(a["v"] - b["v"]) <= max(a["step"], b["step"]) + 1e-9:
+                    unit = "%" if a["kind"] == "pct" else " (€ bn)"
+                    out.append(f"{wa} {a['v']:g}{unit} and {wb} {b['v']:g}{unit}: the same quantity with two values?")
+        return out
+    con = headline_concepts(c)
+    seen: dict[tuple[str, str], tuple[str, dict]] = {}
+    for where, f in figs:
+        vals = {
+            k: abs(e if f["kind"] == "eur" else (p if p is not None else float("nan"))) for k, (e, p) in con.items()
+        }
+        exact = [k for k, v in vals.items() if abs(f["v"] - v) <= f["step"] / 2 + 1e-4 * max(1.0, v) + 5e-5]
+        if exact:
+            for k in exact:
+                prev = seen.get((k, f["kind"]))
+                # ("€2bn" is "€2.0bn" without its ".0": a whole number of billions is not a rounding of its own)
+                if (
+                    prev
+                    and f["kind"] == "eur"
+                    and len(exact) == 1
+                    and max(prev[1]["step"], f["step"]) < 1
+                    and abs(prev[1]["step"] - f["step"]) > 1e-12
+                    and abs(prev[1]["v"] - f["v"]) > 1e-9
+                ):
+                    out.append(
+                        f"{k}: {prev[0]} {prev[1]['v']:g} and {where} {f['v']:g} (€ bn): one amount in two roundings"
+                    )
+                seen.setdefault((k, f["kind"]), (where, f))
+            continue
+        # one rounding step off the quantity's own rounding, and within 2% of it: the same quantity, another value
+        near = [
+            k
+            for k, v in vals.items()
+            if v and abs(f["v"] - v) <= 1.5 * f["step"] + 1e-9 and abs(f["v"] - v) <= 0.02 * v
+        ]
+        for k in near:
+            unit = "%" if f["kind"] == "pct" else " (€ bn)"
+            out.append(
+                f"{where} {f['v']:g}{unit} is close to {k} ({vals[k]:.4g}) but not its value: a second value for it?"
+            )
     return out
 
 
@@ -576,6 +658,7 @@ def check_site(
         "downloads": [],
         "sanity": [],
         "images": [],
+        "headline": [],
     }
     smap = site / "sitemap.xml"
     if not smap.exists():
@@ -645,6 +728,22 @@ def check_site(
             elif c and not c.get("noData") and lm and lm.group(1) in words:
                 p["title"] += [
                     f"{name}: {x}" for x in title_problems_lang(h["title"] or "", c, lm.group(1), words[lm.group(1)])
+                ]
+        # round 68 (QA review): a country page's title, description and opening paragraphs give each figure once
+        if "/country/" in name and h["iso"]:
+            f = file_for(site, site_url, u)
+            lm2 = re.match(r"^/(\w\w)/country/", name)
+            hc = (model or {}).get("countries", {}).get(h["iso"]) if model else None
+            if hc and not hc.get("noData"):
+                p["headline"] += [
+                    f"{name}: {x}"
+                    for x in headline_problems(
+                        h["title"] or "",
+                        h["description"] or "",
+                        intro_of(f.read_text()),
+                        lm2.group(1) if lm2 else "en",
+                        hc,
+                    )
                 ]
     # round 57b: every country page's sections and questions, in every language
     if model:
@@ -1319,13 +1418,13 @@ EUR_RX = {
     "nl": re.compile(r"^€(?P<n>\d[\d.,]*) (?P<u>mld|mln)(?![\w])"),
     "de": re.compile(r"^(?P<n>\d[\d.,]*) (?P<u>Mrd\.|Mio\.) €"),
     "fr": re.compile(r"^(?P<n>\d[\d., ]*?) (?P<u>Md€|M€)"),
-    "es": re.compile(r"^(?P<n>\d[\d.,]*) (?P<u>M€)"),
+    "es": re.compile(r"^(?P<n>\d[\d.,]*) (?P<u>mil M€|M€)"),
     "pl": re.compile(r"^(?P<n>\d[\d., ]*?) (?P<u>mld|mln) €"),
     "uk": re.compile(r"^(?P<n>\d[\d., ]*?) (?P<u>млрд|млн) €"),
 }
 PP_RX = {"en": re.compile(r"^€(?P<n>\d[\d.,]*)"), "nl": re.compile(r"^€(?P<n>\d[\d.,]*)")}
 PP_RX_OTHER = re.compile(r"^(?P<n>\d[\d., ]*?) €")
-BIG_UNITS = {"bn", "mld", "Mrd.", "Md€", "млрд"}
+BIG_UNITS = {"bn", "mld", "Mrd.", "Md€", "млрд", "mil M€"}
 CHANCE_Q = {"net", "ua", "rus"}
 # the cost view's parts below zero by construction (a gain that lowers the cost), shown on their pages as the gain
 GAIN_PARTS = {"disc"}
@@ -1360,8 +1459,7 @@ def parse_fig(piece: str, lang: str) -> dict | None:
         v, d = _num(m.group("n"), lang)
         if m.group("u") in BIG_UNITS:
             return {"kind": "eur", "v": v, "step": 10.0**-d, "sign": sign, "tiny": tiny, "rest": t[m.end() :]}
-        step = 0.1 if lang == "es" and v >= 100 else 0.001
-        return {"kind": "eur", "v": v / 1000, "step": step, "sign": sign, "tiny": tiny, "rest": t[m.end() :]}
+        return {"kind": "eur", "v": v / 1000, "step": 0.001, "sign": sign, "tiny": tiny, "rest": t[m.end() :]}
     m = PCT_RX.match(t)
     if m:
         v, d = _num(m.group("n"), lang)
