@@ -832,6 +832,14 @@ def test_a_chart_image_must_exist_be_described_and_be_the_pages_main_image(tmp_p
     assert any("og:image" in x for x in sc.check_images(build(no_og), U, urls))
     no_robots = good.replace('<meta name="robots" content="max-image-preview:large">', "")
     assert any("max-image-preview" in x for x in sc.check_images(build(no_robots), U, urls))
+    # round 69: a square chart, its 1200×630 copy as og:image; another size or another og:image is not accepted
+    square = good.replace('height="630"', 'height="1200"').replace(
+        f'og:image" content="{U[:-1]}{src}"', f'og:image" content="{U[:-1]}{src[:-5]}-wide.webp"'
+    )
+    assert sc.check_images(build(square), U, urls) == []
+    assert any("size" in x for x in sc.check_images(build(good.replace('height="630"', 'height="700"')), U, urls))
+    other_og = good.replace(f'og:image" content="{U[:-1]}{src}"', f'og:image" content="{U[:-1]}/img/other.webp"')
+    assert any("og:image" in x for x in sc.check_images(build(other_og), U, urls))
 
 
 def test_headline_problems_one_value_per_quantity():
