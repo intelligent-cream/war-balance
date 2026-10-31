@@ -21,7 +21,9 @@ export function partEntries(fam, countries, topics) {
     const vs = countries.filter(c => c.gdp).map(c => partV(c, p.key)).filter(v => Math.abs(v) >= SIZE);
     const total = vs.reduce((a, v) => a + Math.abs(v), 0), sum = vs.reduce((a, v) => a + v, 0);
     if (vs.length < fam.parts.minCountries || total < fam.parts.minTotal) continue;
-    const col = { ua: ["ua", "net"], back: ["ua", "net"], rus: ["rus", "net"], frozen: ["frozen", "net"], cost: ["net"] }[p.side];
+    // round 68: the frozen reserves page with the part's two pieces beside it (the return on reserves held here, and the
+    // share of the return on reserves held at Euroclear and Clearstream)
+    const col = p.key === "frozen" ? ["part:frozen_own", "part:frozen_eu", "frozen", "net"] : { ua: ["ua", "net"], back: ["ua", "net"], rus: ["rus", "net"], frozen: ["frozen", "net"], cost: ["net"] }[p.side];
     // the order, by side (round 58: said in the side's own words by seo_topics.mjs): support and frozen money high to
     // low; money flowing back (below zero: subtracted from support) from the most subtracted; trade parts by size either
     // way; a cost high to low, or low to high where it is mostly below zero (a gain, such as the oil discount)

@@ -412,6 +412,11 @@ function calc(c, y, opt = {}) {
   const [rusEarned, rusEarnedLo, rusEarnedHi] = lineEarned.length ? total(lineEarned) : [0, 0, 0];
   const frozenParts = live(shiftParts.filter(p => OWN_LINE.has(p.k)));
   const [frozen, frozenLo, frozenHi] = frozenParts.length ? total(frozenParts) : [0, 0, 0];
+  // round 68 (presentation only): the frozen reserves part in its two pieces (data.json extra "frozen": own, eu), each
+  // [middle, low, high] like the part: the return on reserves held here, and the share of the return on reserves held at
+  // Euroclear and Clearstream (allocated by share of EU aid); they add up to the part. null when the part is not counted
+  const fzX = frozenParts.some(p => p.k === "frozen") ? (c.extra || []).find(x => x.k === "frozen" && x.own && x.eu) : null;
+  const frozenSplit = fzX ? { own: sum3(fzX.own), eu: sum3(fzX.eu) } : null;
   const flow = total(backParts);
   // a label only (round 13): the part of "less paid to Russia" for gas that Russia itself cut off or that stopped when
   // Ukraine's gas transit ended (sanctions_share.json "cut"); the totals do not change
@@ -439,7 +444,7 @@ function calc(c, y, opt = {}) {
     // and sold) has no observation of its own and what is left is rough estimates only (D), or less than 0.1% of its
     // GDP: "mostly no data", treated like no data on the map and in the ranking; the panel still lists the small parts
     mostlyNoData: !!(c.no_data && c.no_data.includes("paid") && c.no_data.includes("sold")) && shiftAll.length > 0 && (shiftAll.every(p => p.cert === "D") || Math.abs(total(shiftAll)[0]) < 0.001 * (c.gdp || Infinity)),
-    uaBal, uaLo, uaHi, uaGave, uaBack, rusBal, rusLo, rusHi, frozen, frozenLo, frozenHi, frozenParts,
+    uaBal, uaLo, uaHi, uaGave, uaBack, rusBal, rusLo, rusHi, frozen, frozenLo, frozenHi, frozenParts, frozenSplit,
     rusPaid, rusPaidLo, rusPaidHi, rusEarned, rusEarnedLo, rusEarnedHi, milPaidShare: fPaid, undelivered: -(und3[0] + undEu3[0]),
     // negative overall mainly because it earned from the war effort, not because of money toward Russia
     // (only when it matters: at least EUR 10m and 0.05% of a year's GDP)
@@ -2514,7 +2519,19 @@ Object.entries({
 function frozenLine(c, k) {
   if (Math.abs(k.frozen) < 0.0005) return "";
   const p = k.frozenParts[0];
-  return `<p class="note frozen-line"><b>${t("Russian money frozen")}</b>${p ? howLink("frozen") + flowLink("frozen") + chip(p.cert) + ref(p.src) : ""}: ${t("{pct} of a year's GDP ({eur}; likely {lo} to {hi}): the return Russia lost on its central-bank reserves and on Russian private assets frozen here. Not a payment, so it is on its own line, added to the net only.", { pct: fmtMeasure(c, Math.abs(k.frozen), "gdp"), eur: eur(Math.abs(k.frozen)), lo: eur(Math.abs(k.frozenLo)), hi: eur(Math.abs(k.frozenHi)) })}</p>`;
+  return `<p class="note frozen-line"><b>${t("Russian money frozen")}</b>${p ? howLink("frozen") + flowLink("frozen") + chip(p.cert) + ref(p.src) : ""}: ${t("{pct} of a year's GDP ({eur}; likely {lo} to {hi}): the return Russia lost on its central-bank reserves and on Russian private assets frozen here. Not a payment, so it is on its own line, added to the net only.", { pct: fmtMeasure(c, Math.abs(k.frozen), "gdp"), eur: eur(Math.abs(k.frozen)), lo: eur(Math.abs(k.frozenLo)), hi: eur(Math.abs(k.frozenHi)) })}${frozenSplitText(k)}</p>`;
+}
+// round 68 (owner: Germany's €3.1bn read as the return on its own €0.2bn): where a country has a share of the return on
+// reserves held at Euroclear and Clearstream, the return on its central-bank reserves in its two pieces, and how that
+// share is allocated (the method, russia-state-and-companies.md: the host's share, the rest to all EU members by their
+// share of EU aid)
+const FRAC_WORD = x => { for (const d of [2, 3, 4, 5, 6, 8, 10]) { const n = Math.round(x * d); if (n > 0 && Math.abs(x * d - n) < 1e-9) return n + "/" + d; } return Math.round(x * 100) + "%"; };
+function frozenSplitText(k) {
+  const s = k.frozenSplit;
+  if (!s || Math.abs(s.eu[0]) < 0.0005) return "";
+  const host = META.frozen_host_share || 1 / 3;
+  return " " + t("The return on central-bank reserves splits into: return on reserves held here, {own}; share of the return on reserves held at Euroclear and Clearstream (allocated by share of EU aid), {eu}.", { own: eur(Math.abs(s.own[0])), eu: eur(Math.abs(s.eu[0])) })
+    + " " + t("The freeze is an EU decision, so {euPart} of the return on reserves held at Euroclear (Belgium) and Clearstream (Luxembourg) goes to all EU members by their share of EU aid, and {hostPart} to the host.", { euPart: FRAC_WORD(1 - host), hostPart: FRAC_WORD(host) });
 }
 // sales to Russia of goods its weapons need (Common High Priority List): a marker, not in the totals
 function chplNote(c) {

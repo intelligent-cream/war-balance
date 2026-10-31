@@ -172,11 +172,15 @@ export function countryDyn(c, o) {
     return out;
   }
   // its story in short: the map's story tags, the first five
-  out.story = x.story.slice(0, 5).map(t => ({ label: t.label, body: sentenceCase(t.body) }));
+  out.story = x.story.slice(0, 5).map(t => ({ label: t.label, body: storyBody(l, t, c, x) }));
   // what decides it: the panel's lines under the net, for a number that is not very likely
   if (x.decide) {
     const parts = [c.net.chanceSentence, x.decide.why, x.decide.flip].filter(Boolean).map(esc);
     if (x.level === "zero" || x.level === "near") parts.push(D(l, "zeroSize", { range: esc(c.net.range) }));
+    // round 68 (QA review: Egypt "likely toward Russia · 95%" beside "very likely · 95%"): the site's rule (index.html
+    // uncertain, chanceInfo) calls a number very likely only when its likely range stays on one side of zero; the same
+    // chance can then be "very likely" for the trade and "likely" for the net, and the page says why
+    if (x.level === "lean" && c.rus && c.rus.info && c.rus.info.level === "sure" && c.rus.info.side === x.side) parts.push(D(l, "leanVsSure", { sure: esc(o.words.sure || ""), lean: esc(o.words.lean || "") }));
     out.decide = P(parts.join(" "));
   }
   // year by year: the sentences beside the table (the table is seo_pages.mjs's)
@@ -270,6 +274,22 @@ export function countryDyn(c, o) {
   // the sanctions question after the pool's picks (not one of them: every page has it)
   if (o.regime) out.faq.push({ id: "regime", fam: "regime", score: 0, q: o.regime.q, a: o.regime.a.replace(/[ \t\r\n]+/g, " ").trim() });
   return out;
+}
+
+// round 68 (QA review: "one figure per concept"): a story tag whose amount is a part of a headline figure says so. The
+// sanctions split is of what Russia kept on purchases and sales, a part of the trade figure (France: €19.7bn of €20.2bn);
+// the aid tag is a part of the support total (France: aid €15.3bn of €16.9bn). Every other tag is the map's own text
+export function storyBody(l, t, c, x) {
+  const fx = (c.dyn && c.dyn.facts) || {};
+  if (["sanct", "own", "mixed"].includes(t.key) && fx.sanct) {
+    const sp = fx.sanct;
+    return D(l, "storySanct", { v: I.E(l, sp.tot), m: I.PI(l, sp.m), o: I.PI(l, sp.o), who: sp.who, ex: sp.ex }) + (sp.g >= 1 ? " " + D(l, "storySanctCut", { g: I.PI(l, sp.g) }) : "");
+  }
+  if (t.key === "aid" && fx.aidTag && fx.aidTag.r) {
+    const a = fx.aidTag;
+    return D(l, "storyAid", { ua: I.E(l, x.ua), v: I.E(l, a.v), p: I.P(l, (100 * a.v) / c.gdp), r: a.r, n: a.n });
+  }
+  return sentenceCase(t.body);
 }
 
 // round 64 (SEO audit, fix 7): a government's own total (o.official: its entry in research/2026-10/seo/

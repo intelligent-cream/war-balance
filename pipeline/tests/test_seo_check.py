@@ -37,7 +37,7 @@ def site(tmp: Path, pages: dict[str, str], az=("slovakia",)) -> Path:
     # round 58: llms.txt, llms-full.txt and the downloads, with Slovakia's figures as the model has them
     (tmp / "llms.txt").write_text(f"# War Balance\n\n- [Map]({U}): the map\n")
     (tmp / "llms-full.txt").write_text(
-        f"- Slovakia: net +0.14% of a year's GDP (too close to call) | support for Ukraine €0.95bn | x | {U}country/slovakia/\n"
+        f"- Slovakia: net +0.14% of a year's GDP (too close to call) | support for Ukraine €948m | x | {U}country/slovakia/\n"
     )
     (tmp / "downloads").mkdir(exist_ok=True)
     (tmp / "downloads" / "index.html").write_text('<a href="/downloads/war-balance-countries.csv">csv</a>')
@@ -128,7 +128,7 @@ def test_hreflang_must_be_reciprocal(tmp_path):
 
 def test_number_formats_match_the_copy():
     assert [sc.fmt_pct(x) for x in (3.651, 0.1394, 0.004)] == ["3.7%", "0.14%", "<0.01%"]
-    assert [sc.fmt_eur(x) for x in (127.6, 74.67, 0.948, 0.0912)] == ["€128bn", "€74.7bn", "€0.95bn", "€91m"]
+    assert [sc.fmt_eur(x) for x in (127.6, 74.67, 0.948, 0.0912)] == ["€128bn", "€74.7bn", "€948m", "€91m"]
     assert sc.level(SVK) == "unc"
 
 
@@ -145,7 +145,7 @@ def topic_page(cell: str, total: str = "+0.14%") -> str:
 
 
 GOOD_CELL = (
-    '<td class="m" data-q="net" data-level="unc"><b>+0.14%</b><span class="s">+€0.17bn of GDP</span>'
+    '<td class="m" data-q="net" data-level="unc"><b>+0.14%</b><span class="s">+€169m of GDP</span>'
     '<span class="s">likely 4.1% toward Russia to 4.7% toward Ukraine · too close to call · 57% toward Ukraine</span></td>'
 )
 
@@ -174,7 +174,7 @@ def test_every_topic_entry_must_be_written(tmp_path):
 def test_number_formats_in_every_language():
     assert sc.fmt_eur(74.666, "de") == "74,7 Mrd. €"
     assert sc.fmt_eur(1234.4, "fr") == "1 234 Md€"
-    assert sc.fmt_eur(74.666, "es") == "74.700 M€"
+    assert sc.fmt_eur(74.666, "es") == "74,7 mil M€"
     assert sc.fmt_eur(0.05, "nl") == "€50 mln"
     assert sc.fmt_pct(0.1394, "de") == "0,14 %"
     assert sc.fmt_pct(3.651, "uk") == "3,7%"
@@ -371,7 +371,7 @@ def dyn_page(
 
 def test_a_country_pages_figures_must_be_the_models(tmp_path):
     ok = (
-        '<span data-f="e" data-k="uaEur">€0.95bn</span> <span data-f="p" data-k="part_ref">0.30%</span> '
+        '<span data-f="e" data-k="uaEur">€948m</span> <span data-f="p" data-k="part_ref">0.30%</span> '
         '<span data-f="e" data-k="tb0">€3bn</span> <span data-f="c" data-k="tbc">−32%</span>'
     )
     assert sc.check_dyn(dyn_page(ok), "/x/", "SVK", {"countries": {"SVK": DYN_SVK}}, "en", {}, tmp_path) == []
@@ -800,7 +800,7 @@ def test_a_chart_image_must_exist_be_described_and_be_the_pages_main_image(tmp_p
     primaryImageOfPage, and the sitemap lists the images the page shows."""
     src = "/img/slovakia-ukraine-aid-and-russia-trade.webp"
     fig = (
-        f'<figure class="chart"><img src="{src}" alt="Slovakia, 2022 to August 2026: support for Ukraine €0.95bn"'
+        f'<figure class="chart"><img src="{src}" alt="Slovakia, 2022 to August 2026: support for Ukraine €948m"'
         ' width="1200" height="630" fetchpriority="high"></figure>'
     )
     head = (
@@ -832,3 +832,65 @@ def test_a_chart_image_must_exist_be_described_and_be_the_pages_main_image(tmp_p
     assert any("og:image" in x for x in sc.check_images(build(no_og), U, urls))
     no_robots = good.replace('<meta name="robots" content="max-image-preview:large">', "")
     assert any("max-image-preview" in x for x in sc.check_images(build(no_robots), U, urls))
+
+
+def test_headline_problems_one_value_per_quantity():
+    """Round 68 (QA review): the title, description and intro give each quantity one value."""
+    # Côte d'Ivoire as it was: the net 0.71% in the title, the trade 0.70% in the description; €0.52bn and €522m
+    bad = sc.headline_problems(
+        "Is Côte d'Ivoire helping Russia? 0.71% of GDP toward Russia",
+        "Very likely toward Russia (>99%): Russia kept €0.52bn more from trade (0.70% of GDP).",
+        "Russia kept €522m (0.70% of GDP) more than without the war.",
+    )
+    assert any("0.71%" in x and "0.7%" in x for x in bad)
+    assert any("0.52" in x and "0.522" in x for x in bad)
+    # as it is now: one value per quantity; different quantities far apart are fine
+    assert (
+        sc.headline_problems(
+            "Is Côte d'Ivoire helping Russia? 0.71% of GDP toward Russia",
+            "Very likely toward Russia (>99%): Russia kept €522m more from trade since 2022 than without the war.",
+            "Russia kept €522m more in taxes and profit from trade. The net is 0.71% of GDP toward Russia.",
+        )
+        == []
+    )
+    assert (
+        sc.headline_problems(
+            "France: €16.9bn", "France has given Ukraine €16.9bn (0.60% of GDP).", "€20.2bn (0.72% of GDP)"
+        )
+        == []
+    )
+    # the other languages' formats
+    assert sc.headline_problems("Kirgisistan: 10 %", "", "Saldo 10,1 % des BIP", "de")
+    assert sc.intro_of('<p class="intro">A.</p>\n<p>B.</p>') == "A. B."
+
+
+def test_headline_problems_with_the_model():
+    """Round 68: with the model's country, a quantity written in two roundings, or one step off its value, is flagged."""
+    civ = {
+        "netEur": -0.5253,
+        "net": -0.7092,
+        "uaEur": -0.0021,
+        "ua": -0.0028,
+        "rusEur": -0.5221,
+        "rus": -0.7049,
+        "gdp": 74.07,
+    }
+    old = sc.headline_problems(
+        "Is Côte d'Ivoire helping Russia? 0.71% of GDP toward Russia",
+        "Very likely toward Russia (>99%): Russia kept €0.52bn more from trade with Côte d'Ivoire since 2022.",
+        "Russia kept €522m (0.70% of GDP) more than without the war.",
+        "en",
+        civ,
+    )
+    assert old == ["rus: description 0.52 and intro 0.522 (€ bn): one amount in two roundings"]
+    new = sc.headline_problems(
+        "Is Côte d'Ivoire helping Russia? 0.71% of GDP toward Russia",
+        "Very likely toward Russia (>99%): Russia kept €522m more from trade with Côte d'Ivoire since 2022.",
+        "Russia kept €522m more in taxes and profit from trade. The net is 0.71% of GDP toward Russia (very likely).",
+        "en",
+        civ,
+    )
+    assert new == []
+    assert sc.headline_problems("x: 0.72% of GDP", "", "", "en", civ) == [
+        "title 0.72% is close to net (0.7092) but not its value: a second value for it?"
+    ]
