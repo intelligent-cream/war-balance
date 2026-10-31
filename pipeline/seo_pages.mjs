@@ -421,7 +421,7 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     partNames: { aid: I.partName(l, "aid"), euaid: I.partName(l, "euaid"), ref: I.partName(l, "ref") }, other: I.img(l, "other") }]));
   const countryImg = (l, c0, c, title) => addImg(G.countryChart({ c, l, earner: !!c0.earner, words: { ...CW[l], title } }), G.imgPath(l, "country", c0.slug));
   // the ImageObject of a page's main image (its primaryImageOfPage), and a figure's caption
-  const imgLd = img => (img ? { primaryImageOfPage: G.imageObject(img, abs, { creditText: "War Balance", copyrightNotice: "War Balance" }) } : {});
+  const imgLd = img => (img ? { primaryImageOfPage: G.imageObject(img, abs) } : {});
 
   const groupOfMap = {}; for (const g of EN.rank.net.groups) for (const r of g.rows) groupOfMap[r.iso] = r;
   // ----- round 57b: each country's neighbours by land (the map's own borders, countries-50m.json), its place in the

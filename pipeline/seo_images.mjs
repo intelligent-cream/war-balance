@@ -176,7 +176,10 @@ export function figureHtml(img, { lazy = false, caption = "" } = {}) {
 }
 export const FIGURE_CSS = "\nfigure.chart{margin:14px 0 16px}figure.chart img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fbfcfc}figure.chart figcaption{font-size:13.5px;color:var(--soft);margin-top:5px}";
 // schema.org: the image as an ImageObject (the page's primaryImageOfPage)
-export const imageObject = (img, abs, extra = {}) => ({ "@type": "ImageObject", contentUrl: abs(img.path), url: abs(img.path), width: W, height: H, encodingFormat: "image/webp", caption: img.alt, inLanguage: img.l, ...extra });
+// (with Google's image-metadata fields: the charts are under the data licence, CC BY 4.0, explained on /downloads/)
+export const imageObject = (img, abs, extra = {}) => ({ "@type": "ImageObject", contentUrl: abs(img.path), url: abs(img.path), width: W, height: H, encodingFormat: "image/webp", caption: img.alt, inLanguage: img.l,
+  creator: { "@type": "Organization", name: "War Balance", url: abs("/") }, creditText: "War Balance", copyrightNotice: "War Balance, CC BY 4.0",
+  license: "https://creativecommons.org/licenses/by/4.0/", acquireLicensePage: abs("/downloads/"), ...extra });
 
 // ----- drawing: a few Chromium processes side by side (pages of one browser share its compositor and take turns), each
 // image captured as WebP -----

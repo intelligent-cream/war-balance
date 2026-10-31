@@ -876,6 +876,8 @@ test("round 62: a ranking chart's axis holds every bar and range with zero; the 
   assert.match(GI.figureHtml(img, { lazy: true }), /loading="lazy"/);
   assert.match(GI.figureHtml(img), /alt="Support &quot;x&quot;" width="1200" height="630"/);
   assert.equal(GI.imageObject(img, p => "https://warbalance.org" + p).contentUrl, "https://warbalance.org/img/x.webp");
+  { const io = GI.imageObject(img, p => "https://warbalance.org" + p);  // Google's image metadata: creator, licence and where to get it
+    assert.equal(io.creator.name, "War Balance"); assert.match(io.license, /creativecommons\.org\/licenses\/by\/4\.0/); assert.equal(io.acquireLicensePage, "https://warbalance.org/downloads/"); }
 });
 
 // ----- round 63 (independent SEO audit) -----
