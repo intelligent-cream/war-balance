@@ -190,7 +190,7 @@ export function frozenCells(l, F, iso) {
   const f = frozenOf(F, iso) || { iso };
   const cell = (key, x) => {
     const t = stockText(l, x), when = x && x.v !== null && x.v !== undefined && x.date ? I.dateL(x.date, l) : "";
-    return `<td class="k"${rv("frozen", `countries.${iso}.${key}.v`, x ? x.v : null, "eur")}>${esc(t.fig)}${t.est || when ? `<span class="s">${esc(t.est || when)}</span>` : ""}</td>`;
+    return `<td class="k"${rv("frozen", `countries.${iso}.${key}.v`, x ? x.v : null, "eur")}>${esc(t.fig)}${t.est || when ? ` <span class="s">${esc(t.est || when)}</span>` : ""}</td>`;
   };
   return cell("cbr_eur", f.cbr) + cell("private_eur", f.priv);
 }
@@ -354,7 +354,7 @@ function cellOf(l, file, path, v, u, o = {}) {
   if (v === null || v === undefined) return `<td class="${cls}"${rv(file, path, null)}>${esc(o.none || "–")}</td>`;
   const sg = o.sg || 1, x = v * sg;
   const attrs = rv(file, path, v, u) + (sg !== 1 ? ` data-sg="${sg}"` : "") + (u === "pp" ? ` data-pop="${o.pop}"` : "");
-  return `<td class="${cls}"${attrs}>${esc(figText(l, x, u, o.pop))}${o.sub ? `<span class="s">${esc(o.sub)}</span>` : ""}</td>`;
+  return `<td class="${cls}"${attrs}>${esc(figText(l, x, u, o.pop))}${o.sub ? ` <span class="s">${esc(o.sub)}</span>` : ""}</td>`;
 }
 // a marked figure in a sentence (the same reading as a cell)
 function figSpan(l, file, path, v, u, o = {}) {

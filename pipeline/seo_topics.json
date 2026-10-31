@@ -4,6 +4,7 @@
     {
       "slug": "ukraine-support-tracker",
       "kind": "topic",
+      "compact": true,
       "label": "Ukraine support tracker",
       "title": ["Ukraine aid tracker 2022–{y1}: Kiel data, refugees, trade", "Ukraine aid tracker 2022–{y1}"],
       "description": [
@@ -11,7 +12,7 @@
         "Every country's support for Ukraine since 2022, built on Kiel Institute data, with EU shares, refugees and trade with Russia. Ranges and sources."
       ],
       "h1": "Ukraine aid tracker 2022–{y1}: Kiel data plus EU shares, refugees and trade with Russia",
-      "intro": "Support for Ukraine from 2022 to {dataTo} for every country, sorted by euros: its own aid (loans at their gift value), its share of EU aid and the cost of hosting refugees, minus money flowing back, each also as a share of GDP and per person. Beside it, the net: support plus how much less, or more, Russia kept from trade with that country than in a world without the war. In euros, the table starts with {top3list}.",
+      "intro": "The breakdown of each country's support for Ukraine from 2022 to {dataTo}, set beside the Kiel Institute's figure: the aid counted here, Kiel's bilateral figure, and the support by type, from military aid to refugee hosting and its share of EU aid, minus money flowing back. Kiel counts aid when it is allocated and loans at their face value; this table counts aid as it is delivered and loans at their value as a gift. In euros, the table starts with {top3list}.",
       "rank": "ua",
       "order": "desc",
       "sort": "eur",

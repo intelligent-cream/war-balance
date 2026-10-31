@@ -228,7 +228,9 @@ export function renderTopic(m, { esc, cPath, l = "en", extra = null }) {
     const f = { gdp: pct == null ? "" : say(k, x.v, Pl(pct)), eur: say(k, x.v, El(x.v)), pp: per == null ? "" : say(k, x.v, PPl(per), " " + T("perPerson")) };
     const unit = main ? m.sort : "eur", first = f[unit];
     const rest = ["gdp", "eur", "pp"].filter(u => u !== unit && f[u] && (main || u === "gdp")).map(u => (u === "gdp" ? say(k, x.v, Pl(pct), " " + T("ofGdp")) : f[u]));
-    const rg = main && !m.year ? rangeOf(c, k, x, unit) : "", ch = x.chance || "";
+    // round 68 (QA review: the tracker's first cell held four values): a compact table (seo_topics.json "compact") keeps
+    // the figure, one small line beside it and the chance; the range is on the country's page
+    const rg = main && !m.year && !m.compact ? rangeOf(c, k, x, unit) : "", ch = x.chance || "";
     const data = ` data-v="${+x.v.toFixed(6)}"` + (main ? `${!m.year && x.lo != null && x.hi != null && !CHANCE_KEYS.includes(k) ? ` data-lo="${+Math.min(x.lo, x.hi).toFixed(6)}" data-hi="${+Math.max(x.lo, x.hi).toFixed(6)}"` : ""}` : "");
     return `<td class="m" data-q="${k}"${yr}${x.level ? ` data-level="${x.level}"` : ""} data-st="${style(k)}"${data}><b class="${style(k) !== "amount" ? cls(x.v) : ""}">${esc(first)}</b><span class="s">${rest.map(keep).join(" · ")}</span>${rg ? `<span class="s rg">${esc(rg).replace(/\u0001/g, "<i>").replace(/\u0002/g, "</i>")}</span>` : ""}${ch ? `<span class="s ch">${esc(ch)}</span>` : ""}</td>`;
   };
