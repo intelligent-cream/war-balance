@@ -1,0 +1,13 @@
+{
+  "upload_type": "dataset",
+  "title": "War Balance: where each country's money moved since 2022, toward Ukraine or toward Russia",
+  "creators": [{ "name": "War Balance" }],
+  "description": "For every country, its support for Ukraine and how much less, or more, Russia kept from trade with it (taxes and profit above a normal return, not the full price), plus Russian money frozen there, against a world without the war, from February 2022 to the latest data month, as totals against one year's GDP. Every number has a likely range, a certainty letter, a method band and its sources. Interactive map and pages: https://warbalance.org/. Data CC BY 4.0, code MIT.",
+  "license": "cc-by-4.0",
+  "access_right": "open",
+  "keywords": ["Ukraine", "Russia", "war", "aid to Ukraine", "sanctions", "trade with Russia", "frozen assets", "open data"],
+  "related_identifiers": [
+    { "identifier": "https://warbalance.org/", "relation": "isDocumentedBy", "resource_type": "other" },
+    { "identifier": "https://github.com/intelligent-cream/war-balance", "relation": "isSupplementTo", "resource_type": "software" }
+  ]
+}

@@ -1,4 +1,4 @@
-# round 41: how to cite War Balance. Each release on warbalance.org is a git tag (round-NN); cite the tag you used.
+# round 41: how to cite War Balance. Each release on warbalance.org is a git tag (round-NN); cite the tag you used, or the Zenodo DOI 10.5281/zenodo.23832992 (all versions).
 cff-version: 1.2.0
 message: "If you use these figures, please cite War Balance and the release (git tag round-NN) you used."
 title: "War Balance: where each country's money moved since 2022, toward Ukraine or toward Russia"
@@ -8,8 +8,13 @@ authors:
 url: "https://warbalance.org/"
 repository-code: "https://github.com/intelligent-cream/war-balance"
 license: CC-BY-4.0
-version: "round-41"
-date-released: "2026-10-24"
+doi: "10.5281/zenodo.23832992"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23832992"
+    description: "All versions on Zenodo (resolves to the latest)"
+version: "round-66"
+date-released: "2026-10-31"
 keywords:
   - Ukraine
   - Russia
