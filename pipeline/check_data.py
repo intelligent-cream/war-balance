@@ -643,6 +643,30 @@ check(
     f"own line: {_own.group(1) if _own else 'missing'}",
 )
 
+# 34b. round 68 (presentation only): the frozen reserves part carries its two pieces, the return on reserves held in the
+# country (own) and its share of the return on reserves held at Euroclear and Clearstream (eu); they add up to the part
+# exactly, year by year and at each end of the range, and only EU members have an EU share
+_fz_bad = []
+for _iso, _c in countries.items():
+    for _x in _c.get("extra") or []:
+        if _x.get("k") != "frozen":
+            continue
+        if not isinstance(_x.get("own"), dict) or not isinstance(_x.get("eu"), dict):
+            _fz_bad.append(f"{_iso} no split")
+            continue
+        for _b in ("c", "l", "h"):
+            if len(_x["own"][_b]) != len(_x[_b]) or len(_x["eu"][_b]) != len(_x[_b]):
+                _fz_bad.append(f"{_iso} {_b} length")
+            elif any(abs(o + e - t) > 1e-9 for t, o, e in zip(_x[_b], _x["own"][_b], _x["eu"][_b])):
+                _fz_bad.append(f"{_iso} {_b} does not add up")
+        if _iso not in bd.EU27 and any(abs(v) > 1e-9 for v in _x["eu"]["c"]):
+            _fz_bad.append(f"{_iso} EU share outside the EU")
+check(
+    "frozen reserves: return on reserves held here + EU share (Euroclear, Clearstream) = the part",
+    not _fz_bad,
+    f"problems: {_fz_bad[:8] or 'none'}",
+)
+
 # 35. round 16 (raised by review 5, M3): the real gain subtracted from refugee spending in the host economy stays small
 # (the owner's expectation: about 2-4% of the hosting cost counted)
 _num = _den = 0.0

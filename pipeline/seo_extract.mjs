@@ -7,7 +7,8 @@
    noDataAt, scaled, rankGroup, RANK_GROUPS, evMark, hubText, cName, gainSplit, fmtMeasure, rangeWords, eur, headVerb, verbAround, verb, netSentence, keptWords, leadLine, partSections, plainName,
    partGrade, evidence, UA_PARTS, OWN_LINE, kielLine, partSourceIds, SRC, tData, docsOf, yearsOf, YEARS, FRAC, yi, PARTY_TO_WAR, PARTY_WHY, t, countrySlug,
    HEAD3, refs, kielFigure, REGION_OF, storyTags, decideLine, uncReason, frozenLine, sanctionNote, chplNote, remitNote, takenNote, noDataLine,
-   fairnessNote, structuralNote, dualUseNote, partNote, dataText, num, money, METHOD_INPUTS, srcTier, REPO */
+   fairnessNote, structuralNote, dualUseNote, partNote, dataText, num, money, METHOD_INPUTS, srcTier, REPO,
+   sanctionSplit, regimeOf, REGIME_WORDS, OWN_REGIME, aidRank, AID_KEYS */
 
 export async function extractSite({ lang, isos }) {
   if (lang !== "en") await loadLang(lang);
@@ -107,6 +108,9 @@ export async function extractSite({ lang, isos }) {
     const sideOf = p => (back.has(p.k) ? "back" : UA_PARTS.has(p.k) ? "ua" : OWN_LINE.has(p.k) ? "frozen" : "rus");
     const PM = (p, side) => ({ v: p.v, lo: Math.min(p.lo, p.hi), hi: Math.max(p.lo, p.hi), range: "", chance: "", level: "", side: "", partSide: side });
     for (const p of k.shiftParts.concat(k.backShift)) out.measures["part:" + p.k] = PM(p, sideOf(p));
+    // round 68: the frozen reserves part in its two pieces (calc() frozenSplit): the return on reserves held here, and the
+    // share of the return on reserves held at Euroclear and Clearstream (allocated by share of EU aid); they add up to it
+    if (k.frozenSplit) for (const [key, s] of [["frozen_own", k.frozenSplit.own], ["frozen_eu", k.frozenSplit.eu]]) out.measures["part:" + key] = PM({ v: s[0], lo: s[1], hi: s[2] }, "frozen");
     // round 56 (more findable pages): the parts outside the totals (the oil discount, the cost of replacing Russian
     // energy, what Russia took from companies), marked as such, for their own pages
     // round 58: the cost view counts the discount gained on Russian oil below zero (it lowers the cost; calc() gives
@@ -220,6 +224,22 @@ export async function extractSite({ lang, isos }) {
     d.facts.fuelShare = c.to_rus && c.to_rus.gain && c.to_rus.gain.fossil_share != null ? c.to_rus.gain.fossil_share : null;
     d.facts.flowback = k.flowback > 0.0005 ? { gross: k.flowback, kept: k.flowbackProfit } : null;
     d.facts.hub = !!c.hub;
+    // round 68 (QA review: one figure per concept): the numbers behind two story tags, so the page can say what each
+    // amount is a part of ("Of the €19.7bn less ..." beside the trade figure €20.2bn; "Major aid giver: €15.3bn" beside
+    // the support total €16.9bn): the sanctions split (index.html sanctionSplit, storyTags sanctBody) and the aid rank
+    // (storyTags "aid": AID_KEYS, aidRank)
+    if (typeof sanctionSplit === "function") {
+      const sp = sanctionSplit(c, k), reg = typeof regimeOf === "function" ? regimeOf(c.iso3) : null;
+      if (sp) {
+        const mP = Math.round(sp.mand * 100), gP = Math.round(sp.cut * 100);
+        d.facts.sanct = { tot: sp.tot, m: mP, g: gP, o: Math.max(0, 100 - mP - gP), who: t(REGIME_WORDS[reg]),
+          ex: reg === "own" ? " (" + t(OWN_REGIME[c.iso3]) + ")" : reg === "eu" ? " (" + t("Council Regulation 833/2014") + ")" : "" };
+      }
+    }
+    if (typeof aidRank === "function" && typeof AID_KEYS !== "undefined") {
+      const aidV = k.shiftParts.filter(p => AID_KEYS.includes(p.k)).reduce((x, p) => x + p.v, 0);
+      if ((c.gdp || 0) >= 5 && aidV > 0) { const R = aidRank(Y); d.facts.aidTag = { v: aidV, r: R.rank[c.iso3], n: R.n }; }
+    }
     // the parts, largest first, with their plain names, letters and sources (for the sections and "Sources, by part")
     d.parts = all.filter(p => Math.abs(p.v) >= 0.0005).sort((x, z) => Math.abs(z.v) - Math.abs(x.v))
       .map(p => ({ k: p.k, v: p.v, name: plain(plainName(p, c)), grade: partGrade(p), src: (p.src || []).filter(id => SRC[id]) }));

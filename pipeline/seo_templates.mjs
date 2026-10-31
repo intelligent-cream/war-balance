@@ -97,9 +97,17 @@ export function countryCopy(l, f) {
   const g = grammar(l, N);
   // round 63: the name after the language's "with" ({Nd}: "mit den Vereinigten Staaten", "met de Verenigde Staten"), and
   // the map's chance words for the net in a parenthesis ({chanceP}: " (very likely, >99%)", nothing where there are none)
-  const chW = String(net.chance || "").replace(/ · /g, ", ");
+  // round 68 (QA review: "plain-language opening paragraphs"): the opening prose says the chance level in words only;
+  // the probability and the range stay in the card and the tables
+  const chW = String(net.chance || "").replace(/\s*·\s*[<>]?\d[\d.,]*\s?%.*$/u, "").replace(/ · /g, ", ");
   Object.assign(v, { Nd: inList(l, N), chanceP: chW ? ` (${chW})` : "", Na: g.Na, NaCap: cap(g.Na), euEur: EL(l, pt.eu || 0), refEur: EL(l, pt.ref || 0), kielEur: pt.kiel != null ? EL(l, pt.kiel) : "" });
   Object.assign(nums, { uaPos, euX: has(pt.eu), refX: has(pt.ref), aidX: has(pt.aid), kiel: pt.kiel != null && pt.kiel >= 0.0005, plural: g.plural, fem: g.fem, neu: g.neu });
+  // round 68 (QA review: Sweden €8.8bn beside Kiel's €11.3bn): where Kiel's bilateral figure is above the whole total,
+  // one sentence says why (Kiel counts aid when allocated and loans at face value; site/content/method/aid-refugees-military.md)
+  nums.kielMore = nums.kiel && uaPos && pt.kiel > (f.ua || 0) + 0.0005;
+  // support for Ukraine below zero (it bought less from Ukraine than without the war): a description says it in words
+  nums.uaNeg = !!f.cN && (f.ua || 0) < 0 && Math.abs(f.uaPct || 0) >= 0.01;
+  v.uaVerbLc = lc(loc.uaVerb || "");
   nums.nX = (nums.euX ? 1 : 0) + (nums.refX ? 1 : 0);
   v.xLong = countryIncl(l, "incl", v, nums); v.xShort = countryIncl(l, "inclS", v, nums);
   // round 56: where searches ask far more whether it trades with Russia than what it gave (seo_demand.json), and both
@@ -118,13 +126,24 @@ export function countryCopy(l, f) {
   // direction and the map's chance words, as its description does; then the support sentence. Only a page whose title
   // asks what it gave (and whose support is above zero) opens with that
   const russiaFirst = russiaLead(cat, ask, uaPos);
+  // round 68 (QA review): a support figure under 0.01% of GDP or under €1m is left out of the opening of a page that is
+  // not about support ("Bought less from Ukraine ...; below zero by <0.01% (€1m)"); where the title asks "Does ...
+  // support Russia or Ukraine?" and support is above zero (Albania: €20m), the support figure comes first, then the
+  // trade, then the net
+  const negligible = !!f.cN && (Math.abs(f.uaPct || 0) < 0.01 || Math.abs(f.ua || 0) < 0.001);
+  const supportLead = russiaFirst && uaPos && !negligible && BOTH_SIDES.has(cat);
   if (russiaFirst) {
-    c = { ...c, intro: [countryLine(l, "introRu", v, nums), c.intro].filter(Boolean).join(" "), intro2: countryLine(l, "intro2Ru", v, nums) };
+    const ru = countryLine(l, "introRu", v, nums), ua = negligible ? "" : c.intro;
+    c = { ...c, intro: (supportLead ? [ua, ru] : [ru, ua]).filter(Boolean).join(" "), intro2: countryLine(l, "intro2Ru", v, nums) };
   }
-  const out = { ...c, intro: c.intro || (cat === "nodata" ? v.noDataText : ""), category: category(f), ask, russiaFirst };
+  const out = { ...c, intro: c.intro || (cat === "nodata" ? v.noDataText : ""), category: category(f), ask, russiaFirst, supportLead };
+  // round 68 (QA review): a title writes "10%", not "10.0%"
+  out.title = out.title.replace(/(\d+)[.,]0(?=\s?%)/gu, "$1");
   out.og_title = out.title; out.og_description = out.description;
   return out;
 }
+// round 68: the chance levels whose title asks about both sides ("Does ... support Ukraine or Russia?")
+const BOTH_SIDES = new Set(["zero", "u_lean", "r_lean", "unc", "u_net"]);
 
 // round 63: whether a country page opens with the answer to the Russia question (its trade with Russia and the net) rather
 // than with its support for Ukraine: every page with figures (not a party to the war, not without data) except one whose
