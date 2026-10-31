@@ -5,6 +5,8 @@ War Balance has no connection to Follow the Money (ftm.nl / ftm.eu). During its 
 An interactive map: did each country's money move toward Ukraine or toward Russia since 2022, against a world without
 the war? Every number has its sources, a range and a certainty letter.
 
+Cite the data as: War Balance, https://warbalance.org/, [doi:10.5281/zenodo.23832992](https://doi.org/10.5281/zenodo.23832992) (all versions on Zenodo).
+
 **Website: https://warbalance.org/** · Research preview: check the sources before quoting a figure
 ([limitations](https://warbalance.org/#view=how&sec=limitations)).
 
