@@ -842,7 +842,13 @@ test("round 62: a country's chart: support with parts that add up, trade, frozen
   assert.equal(m.rows[1].tone, "uaF");
   assert.equal(m.rows[3].tone, "ua");
   assert.match(m.rows[3].words, /^Toward Ukraine by 1\.6% of a year's GDP since 2022 · likely 0\.80% to 2\.3% toward Ukraine · very likely/);
-  assert.match(m.alt, /^France, 2022 to August 2026\. Supported Ukraine with 0\.60% .*\(€16\.9bn\): Government aid to Ukraine \+€4\.3bn, Share of EU aid to Ukraine \+€9\.8bn, Cost of hosting refugees from Ukraine \+€1\.8bn/);
+  // round 68: the full breakdown is the ImageObject's description; the alt text is short, with every row's figure
+  assert.match(m.desc, /^France, 2022 to August 2026\. Supported Ukraine with 0\.60% .*\(€16\.9bn\): Government aid to Ukraine \+€4\.3bn, Share of EU aid to Ukraine \+€9\.8bn, Cost of hosting refugees from Ukraine \+€1\.8bn/);
+  assert.equal(m.alt, "Bar chart: France, 2022 to August 2026: Support for Ukraine +€16.9bn; Trade with Russia +€20.2bn; Russian money frozen +€6.5bn; The net +€43.6bn (+ toward Ukraine)");
+  assert.ok(m.alt.length <= 170, m.alt.length);
+  // a part is in the key only where its bar shows; the Ukrainian description has no second full stop after "р."
+  assert.deepEqual(ua.parts.filter(p => p.shown).map(p => p.k), ["aid", "euaid", "ref", "other"]);
+  assert.equal(GI.joinSentences(["з 2022 до серпня 2026 р.", "Підтримка"]), "з 2022 до серпня 2026 р. Підтримка.");
   // toward Russia: orange and "−"; a part below zero is listed, not stacked
   const ru = GI.countryChart({ c: chartC({ fig: { ...chartC().fig, net: -11.4, netLo: -18.6, netHi: -1.4, rus: -12.3, rusLo: -19.5, rusHi: -2.3 },
     net: { ...chartC().net, pre: "Toward Russia by", eur: "€11.4bn" }, measures: { "part:aid": { v: -0.5 } } }), l: "en", words: chartW("en") });
