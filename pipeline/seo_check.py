@@ -797,8 +797,8 @@ _FIG = re.compile(r'<figure class="chart"><img src="([^"]+)" alt="([^"]*)" width
 
 
 def check_images(site: Path, site_url: str, urls: list[str]) -> list[str]:
-    """Every chart image a page shows exists, with its alt text and size; the first one is not lazy (it is near the top),
-    the others are; a page that shows one names it as og:image and as primaryImageOfPage in its JSON-LD, and lists it in
+    """Every chart image a page shows exists, with its alt text and size (1200×630, or square since round 69); the first
+    one is not lazy (it is near the top), the others are; a page that shows one names it (or its wide copy) as og:image and as primaryImageOfPage in its JSON-LD, and lists it in
     its sitemap entry; every image a sitemap lists exists."""
     out: list[str] = []
     base = site_url.rstrip("/")
@@ -820,12 +820,13 @@ def check_images(site: Path, site_url: str, urls: list[str]) -> list[str]:
         for i, (src, alt, w, h, rest) in enumerate(figs):
             if not (site / src.lstrip("/")).exists():
                 out.append(f"{name}: {src} missing")
-            if len(html.unescape(alt).strip()) < 20 or (w, h) != ("1200", "630"):
+            if len(html.unescape(alt).strip()) < 20 or (w, h) not in (("1200", "630"), ("1200", "1200")):
                 out.append(f"{name}: {src} without alt text or size")
             if (i == 0) == ("loading=" in rest):
                 out.append(f"{name}: {src} lazy loading on the first image, or not on a later one")
         og = re.search(r'<meta property="og:image" content="([^"]+)"', text)
-        if not og or og.group(1) != base + figs[0][0]:
+        # round 69: a square chart's link preview is its 1200×630 copy (<name>-wide.webp), beside it
+        if not og or og.group(1) not in (base + figs[0][0], base + figs[0][0].replace(".webp", "-wide.webp")):
             out.append(f"{name}: og:image is not its first chart")
         if f'"primaryImageOfPage":{{"@type":"ImageObject","contentUrl":"{base}{figs[0][0]}"' not in text:
             out.append(f"{name}: no primaryImageOfPage for its chart")
