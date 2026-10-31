@@ -1,0 +1,56 @@
+{
+  "_note": "Round 69 (SERP review: the results above our France page quote smaller, sourced figures, and revueconflits.com ranks first by explaining why estimates of France's aid range from EUR 6.5bn to EUR 26bn): other well-sourced published totals of a country's support for Ukraine, beside the Kiel Institute's figure (in data.json) and the governments' own totals (official_totals_r64.json), for the 'Why the figures differ' table at the top of the country pages (pipeline/seo_country.mjs differText). Only figures read in the source itself are listed, with its own words in quote. value: billions of the currency; as_of: the end of the period the figure covers (or, for a press report without one, the report's date, with as_of_kind 'reported'); cover: the phrase key (seo_i18n.mjs DYN) that says what the figure counts; epf: true where the figure includes payments to the European Peace Facility, which War Balance leaves out (it reimburses weapons already in the members' own aid; site/content/method/aid-refugees-military.md). tier: official (the government's own document) or press. Checked: 2026-10-31.",
+  "checked": "2026-10-31",
+  "countries": {
+    "FRA": [
+      {
+        "id": "fra_minarm_2026",
+        "tier": "official",
+        "value": 6.5,
+        "currency": "EUR",
+        "as_of": "2025-12-31",
+        "as_of_kind": "period_end",
+        "period": "2022-02-24 to 2025-12-31",
+        "cover": "covMilEpf",
+        "epf": true,
+        "publisher": {
+          "en": "France's Ministry of the Armed Forces",
+          "de": "Das französische Verteidigungsministerium",
+          "fr": "Le ministère des Armées",
+          "es": "El Ministerio de las Fuerzas Armadas de Francia",
+          "pl": "Francuskie Ministerstwo Sił Zbrojnych",
+          "nl": "Het Franse ministerie van Strijdkrachten",
+          "uk": "Міністерство збройних сил Франції"
+        },
+        "source_name": "Ministère des Armées et des Anciens combattants: Rapport au Parlement 2026 sur les exportations d'armement de la France (p. 34)",
+        "source_url": "https://www.vie-publique.fr/files/rapport/pdf/304339_0.pdf",
+        "quote": "Entre le 24 février 2022 et le 31 décembre 2025, le soutien militaire de la France peut être estimé à une valeur totale de 6,5 Md€, incluant les engagements de la France au titre du financement de la FEP (le financement français correspond à environ 18 % des engagements des États membres et pourrait atteindre jusqu'à 2,1 Md€ sur toute la période).",
+        "note": "Military support only (transfers of equipment, EPF contributions, use of the interest on frozen Russian assets, equipment bought for Ukraine with other states' funds, training, transport, maintenance and acquisitions). Civil aid, France's share of EU aid and refugee costs are not in it."
+      },
+      {
+        "id": "fra_france24_2025",
+        "tier": "press",
+        "value": 8.6,
+        "currency": "EUR",
+        "as_of": "2025-09-19",
+        "as_of_kind": "reported",
+        "period": "from 24 February 2022; the defence ministry's 2025 report to Parliament on arms exports (to the end of 2024), as reported by Les Echos",
+        "cover": "covMilFinEpf",
+        "epf": true,
+        "publisher": {
+          "en": "France 24",
+          "de": "France 24",
+          "fr": "France 24",
+          "es": "France 24",
+          "pl": "France 24",
+          "nl": "France 24",
+          "uk": "France 24"
+        },
+        "source_name": "France 24: From weapons to military training: Tracking French support for Ukraine (19 September 2025)",
+        "source_url": "https://www.france24.com/en/europe/20250919-from-weapons-to-military-training-the-true-scale-of-french-aid-to-ukraine-russia-war",
+        "quote": "France has committed €8.6 billion in military and financial aid to Ukraine since Russia's 2022 invasion ... Of that total, €5.9 billion covered weapons transfers, maintenance and training ... including France's €2.3 billion contribution to the European Peace Facility",
+        "note": "The article attributes the figure to a forthcoming annual report of the French defence ministry seen by Les Echos; the rest of the total (EUR 2.7bn) is financial support. The ministry's 2026 report gives EUR 6.5bn to the end of 2025 for military support; the reports do not explain the difference."
+      }
+    ]
+  }
+}
