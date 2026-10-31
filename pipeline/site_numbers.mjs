@@ -84,6 +84,9 @@ for (const [k, c] of Object.entries(by)) {
     rusGain: r4(x.rusPaid * g), rusGainLo: r4(x.rusPaidLo * g), rusGainHi: r4(x.rusPaidHi * g),
     ownGain: r4(x.rusEarned * g), ownGainLo: r4(x.rusEarnedLo * g), ownGainHi: r4(x.rusEarnedHi * g) });
   for (const p of x.shiftParts.concat(x.backShift)) Object.assign(o, { ["part_" + p.k]: r4(p.v), ["part_" + p.k + "Lo"]: r4(p.lo), ["part_" + p.k + "Hi"]: r4(p.hi) });
+  // round 68: the frozen reserves part in its two pieces (calc() frozenSplit: the return on reserves held here, and the
+  // share of the return on reserves held at Euroclear and Clearstream), as the frozen-assets page's columns show them
+  if (x.frozenSplit) for (const [k, s] of [["frozen_own", x.frozenSplit.own], ["frozen_eu", x.frozenSplit.eu]]) Object.assign(o, { ["part_" + k]: r4(s[0]), ["part_" + k + "Lo"]: r4(s[1]), ["part_" + k + "Hi"]: r4(s[2]) });
   // round 56 (more findable pages): the parts outside the totals (the oil discount, the cost of replacing Russian
   // energy, what Russia took from companies), and each year's cumulative support, trade and net (round 58: and frozen
   // money, so a page by year's columns can be added up) (EUR bn) for the

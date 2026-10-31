@@ -1920,7 +1920,12 @@ def build() -> dict:
         "data_to": DATA_TO,
         "years": YEARS,
         "frac": FRAC,
-        "meta": {"tariff_rate": tariff_rate(countries), "lost_margin": 0.2, **META_R16},
+        "meta": {
+            "tariff_rate": tariff_rate(countries),
+            "lost_margin": 0.2,
+            "frozen_host_share": HOST_SHARE,
+            **META_R16,
+        },
         "status_html": status,
         "sources": src.items,
         "countries": {k: v for k, v in sorted(countries.items())},
@@ -4636,6 +4641,10 @@ def apply_frozen_reserves(countries: dict[str, dict], src: Sources) -> None:
     )
     bands = ("low", "central", "high")
     credit = {i: {b: [0.0] * len(YEARS) for b in bands} for i in countries}
+    # round 68 (presentation only): the part's two pieces, carried beside it; own (the return on reserves held in the
+    # country: all of it, or the host's third at Euroclear and Clearstream) + eu (its share of the EU members' two
+    # thirds) = the part, year by year and at each end of the range
+    own = {i: {b: [0.0] * len(YEARS) for b in bands} for i in countries}
     eu = {i: c["aid"]["eu_share"] for i, c in countries.items() if i in EU27 and (c.get("aid") or {}).get("eu_share")}
     eu_sum = sum(eu.values()) or 1
     cert = {}
@@ -4651,11 +4660,13 @@ def apply_frozen_reserves(countries: dict[str, dict], src: Sources) -> None:
                 v = max(0.0, r.get(b, 0.0) - tax) * (0.8 if b == "low" else 1.0)
                 if iso3 in ("BEL", "LUX"):
                     credit[iso3][b][i] += v * HOST_SHARE
+                    own[iso3][b][i] += v * HOST_SHARE
                     for j, sh in eu.items():
                         credit[j][b][i] += v * (1 - HOST_SHARE) * sh / eu_sum
                         cert.setdefault(j, "C")
                 else:
                     credit[iso3][b][i] += v
+                    own[iso3][b][i] += v
     for iso3, cr in credit.items():
         if not any(cr["high"]):
             continue
@@ -4671,6 +4682,17 @@ def apply_frozen_reserves(countries: dict[str, dict], src: Sources) -> None:
             cert.get(iso3, "C"),
             sid,
         )
+        split_frozen_part(countries[iso3]["extra"][-1], own[iso3])
+
+
+def split_frozen_part(part: dict, own: dict[str, list[float]]) -> None:
+    """Round 68 (presentation only, no number changes): the frozen part's two pieces, as the part stores them (c, l, h,
+    + toward Ukraine): "own", the return on reserves held in the country, and "eu", its share of the return on reserves
+    held at Euroclear and Clearstream (allocated by share of EU aid). eu is the part less own at the stored precision,
+    so the two add up to the part exactly (check_data.py checks it)."""
+    o = {"c": own["central"], "l": own["low"], "h": own["high"]}
+    part["own"] = {b: [round(v, 5) for v in o[b]] for b in ("c", "l", "h")}
+    part["eu"] = {b: [round(t - v, 5) for t, v in zip(part[b], part["own"][b])] for b in ("c", "l", "h")}
 
 
 def apply_frozen_private(countries: dict[str, dict], src: Sources) -> None:

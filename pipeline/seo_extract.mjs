@@ -108,6 +108,9 @@ export async function extractSite({ lang, isos }) {
     const sideOf = p => (back.has(p.k) ? "back" : UA_PARTS.has(p.k) ? "ua" : OWN_LINE.has(p.k) ? "frozen" : "rus");
     const PM = (p, side) => ({ v: p.v, lo: Math.min(p.lo, p.hi), hi: Math.max(p.lo, p.hi), range: "", chance: "", level: "", side: "", partSide: side });
     for (const p of k.shiftParts.concat(k.backShift)) out.measures["part:" + p.k] = PM(p, sideOf(p));
+    // round 68: the frozen reserves part in its two pieces (calc() frozenSplit): the return on reserves held here, and the
+    // share of the return on reserves held at Euroclear and Clearstream (allocated by share of EU aid); they add up to it
+    if (k.frozenSplit) for (const [key, s] of [["frozen_own", k.frozenSplit.own], ["frozen_eu", k.frozenSplit.eu]]) out.measures["part:" + key] = PM({ v: s[0], lo: s[1], hi: s[2] }, "frozen");
     // round 56 (more findable pages): the parts outside the totals (the oil discount, the cost of replacing Russian
     // energy, what Russia took from companies), marked as such, for their own pages
     // round 58: the cost view counts the discount gained on Russian oil below zero (it lowers the cost; calc() gives

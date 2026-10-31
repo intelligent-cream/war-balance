@@ -100,7 +100,7 @@
       "sort": "eur",
       "minGdp": 0,
       "nonzero": true,
-      "columns": ["part:frozen", "part:frozen_priv", "net"],
+      "columns": ["part:frozen", "part:frozen_own", "part:frozen_eu", "part:frozen_priv", "net"],
       "limit": 40,
       "map": "#view=rank&tags=frozen",
       "faq": [

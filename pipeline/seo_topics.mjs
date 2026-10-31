@@ -22,7 +22,7 @@ export const label = (key, l = "en") => measureName(l, key);
 // without the war: "€5.2bn more"), or "amount" (a plain sum). Round 56: every part of the panel is signed (a part such as
 // shipping income is the shipping country's, not Russia's, so "Russia kept more" would be wrong); frozen money and the
 // parts outside the totals are plain sums
-const AMOUNT_PART = new Set(["frozen", "frozen_priv", "prem", "disc", "seized", "exits", "trapped", "aidge", "margin", "tariff"]);
+const AMOUNT_PART = new Set(["frozen", "frozen_priv", "frozen_own", "frozen_eu", "prem", "disc", "seized", "exits", "trapped", "aidge", "margin", "tariff"]);
 export const style = k => (k === "net" || k === "ua" ? "signed" : k === "rus" || k === "paidGain" ? "kept"
   : k.startsWith("part:") ? (AMOUNT_PART.has(k.slice(5)) ? "amount" : "signed") : "amount");
 // measures whose cell carries the panel's chance (checked against the model by check 48); only these have the map's

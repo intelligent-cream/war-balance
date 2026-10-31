@@ -43,6 +43,8 @@ import * as G from "./seo_images.mjs";
 
 // the dataset's Zenodo DOI (all versions; resolves to the latest release), in every page's cite line
 export const DATA_DOI = "10.5281/zenodo.23832992";
+// round 68: the same dataset on Hugging Face (downloads page, beside the DOI; the map's Dataset JSON-LD sameAs)
+export const DATA_HF = "https://huggingface.co/datasets/Intelligent222/war-balance-ukraine";
 const HERE = dirname(fileURLToPath(import.meta.url));
 const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const jsonld = o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, "\\u003c")}</script>`;
@@ -167,6 +169,12 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const t0 = Date.now();
   const U = siteUrl.replace(/\/$/, "") + "/", abs = p => U + p.replace(/^\//, "");
   const data = JSON.parse(await readFile(join(site, "data.json"), "utf8"));
+  // round 68: how the return on reserves held at Euroclear and Clearstream is allocated (build_data.py HOST_SHARE: the host's
+  // share, the rest to all EU members by their share of EU aid), as fractions for the frozen-assets pages' note
+  const FRAC_OF = x => { for (const d of [2, 3, 4, 5, 6, 8, 10]) { const n = Math.round(x * d); if (n > 0 && Math.abs(x * d - n) < 1e-9) return n + "/" + d; } return Math.round(x * 100) + "%"; };
+  const FZ_HOST = (data.meta || {}).frozen_host_share;
+  if (!(FZ_HOST > 0 && FZ_HOST < 1)) throw new Error("data.json meta.frozen_host_share missing");
+  const FROZEN_SHARES = { euPart: FRAC_OF(1 - FZ_HOST), hostPart: FRAC_OF(FZ_HOST) };
   const DEMAND = JSON.parse(await readFile(join(HERE, "seo_demand.json"), "utf8"));
   const FAM = JSON.parse(await readFile(join(HERE, "seo_families.json"), "utf8"));
   const statePath = join(HERE, "seo_lastmod.json");
@@ -877,6 +885,7 @@ ${explains.map(x => `<section class="explain" id="what-${x.id}"><h2>${esc(x.q)}<
 ${renderTopic(m, { esc, cPath: c => cPath(c, l), l, extra: stockCols || milCols })}
 ${howFold(l, [moneyNote(l, m)])}
 ${stockCols ? `<p class="sub">${esc(I.res(l, "stockNote"))}</p>` : ""}
+${stockCols || e.key === "frozen" ? `<p class="sub" data-note="frozen-eu">${esc(I.res(l, "frozenEuNote", FROZEN_SHARES))}</p>` : ""}
 ${milCols ? `<p class="sub">${esc(I.res(l, "mTrackerNote"))} <a href="${lp(l, "/" + RCFG.military.slug + "/")}">${esc(I.res(l, "mAll"))} →</a></p>` : ""}
 ${fuelHtml}
 ${rel.length ? `<h2 id="related">${esc(I.s(l, "related"))}</h2>${relList(l, rel)}` : ""}
@@ -1098,6 +1107,9 @@ ${foot("en")}`;
   const SUMS = [...DL.map(([f, text]) => [f, dlBody(f, text)]), ["../data.json", dataJsonText]].map(([f, b]) => ({ f, sha: DLX.sha256(b), kb: Buffer.byteLength(b) / 1024 }));
   await writeFile(join(site, "downloads", "SHA256SUMS.txt"), SUMS.map(x => `${x.sha}  ${x.f.replace(/^\.\.\//, "")}`).join("\n") + "\n");
   const sumOf = f => SUMS.find(x => x.f === f);
+  // round 68: where else the dataset is: Zenodo (the DOI, all versions) and Hugging Face, each address a link
+  const linkIn = (text, url, shown) => text.replace(esc(shown), `<a href="${esc(url)}">${esc(shown)}</a>`);
+  const archiveLine = l => [linkIn(esc(I.s(l, "dlZenodo", { doi: "doi:" + DATA_DOI })), "https://doi.org/" + DATA_DOI, "doi:" + DATA_DOI), linkIn(esc(I.s(l, "dlHf", { hf: DATA_HF })), DATA_HF, DATA_HF)].join(" · ");
   const meta = (l, f) => { const x = sumOf(f); return x ? ` <span class="sub">(${esc(I.N(l, Math.max(1, Math.round(x.kb))))} kB · SHA-256 <code>${x.sha.slice(0, 16)}…</code>)</span>` : ""; };
   {
     const path = "/downloads/", alts = famAlts(path);
@@ -1114,6 +1126,7 @@ ${crumbs(l, items)}
 <ul class="bul">${I.s(l, "dlFields").map(x => `<li>${esc(I.fmt(x, { dataTo: dataToL[l] }))}</li>`).join("")}</ul>
 <p>${esc(I.s(l, "dlDictLine"))} <a href="/downloads/war-balance-data-dictionary.csv" download>war-balance-data-dictionary.csv</a> · <a href="/downloads/war-balance-data-dictionary.md">war-balance-data-dictionary.md</a> · <a href="/downloads/data-json-schema.md">data-json-schema.md</a></p>
 <p>${esc(I.s(l, "dlLicence"))}</p>
+<p>${archiveLine(l)}</p>
 <p><a href="/how-it-works/">${esc(T.L(l, "how"))}</a> · <a href="/limitations/">${esc(T.L(l, "limitations"))}</a> · <a href="${lp(l, "/topics/")}">${esc(I.s(l, "allTopics"))}</a></p>
 ${langLinks(l, path)}
 </main>

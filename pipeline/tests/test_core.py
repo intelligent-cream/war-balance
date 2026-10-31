@@ -36,6 +36,27 @@ def test_aid_categories_add_up(data, iso3):
     assert sum(a["cats"].values()) == pytest.approx(sum(a["years"]), rel=0.05)
 
 
+def test_frozen_split_adds_up(data):
+    """Round 68: the frozen reserves part's two pieces (the return on reserves held in the country, and its share of
+    the return on reserves held at Euroclear and Clearstream) add up to the part exactly, every year and range end."""
+    parts = [x for c in data["countries"].values() for x in c.get("extra") or [] if x["k"] == "frozen"]
+    assert parts
+    for x in parts:
+        for b in ("c", "l", "h"):
+            assert len(x["own"][b]) == len(x["eu"][b]) == len(x[b])
+            for t, o, e in zip(x[b], x["own"][b], x["eu"][b]):
+                assert o + e == pytest.approx(t, abs=1e-9)
+
+
+def test_split_frozen_part_toy(bd):
+    """The pieces of a toy part: own as given, eu the rest, at the stored precision."""
+    part = {"c": [0.0, 1.23456, 2.0], "l": [0.0, 1.0, 1.6], "h": [0.0, 1.5, 2.4]}
+    bd.split_frozen_part(part, {"central": [0.0, 0.2, 0.123456], "low": [0.0, 0.16, 0.1], "high": [0.0, 0.2, 0.2]})
+    assert part["own"]["c"] == [0.0, 0.2, 0.12346]
+    for b in ("c", "l", "h"):
+        assert [o + e for o, e in zip(part["own"][b], part["eu"][b])] == pytest.approx(part[b], abs=1e-9)
+
+
 @pytest.mark.parametrize("total,shape", [(10.0, [1, 2, 3, 4]), (3.3, [0.5, 0.5]), (7.0, [0, 0, 1])])
 def test_spread_conserves_total(bd, total, shape):
     out = bd.spread(total, shape)
