@@ -345,15 +345,25 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   // the map's two-letter codes (site/i18n.js ISO2), and those of holders too small for the map's atlas
   const ISO2M = { LIE: "LI", ...(await page.evaluate(() => (typeof ISO2 !== "undefined" ? ISO2 : {}))) };
   const imgPeriod = l => I.img(l, "period", { dataTo: dataToL[l] }), imgSource = l => I.img(l, "source", { host: HOST, date: fmtDate(dataTo, l) });
-  const addImg = (model, path) => { if (!model) return null; JOBS.push({ path, model }); return { path, alt: model.alt, l: model.l, caption: model.caption || "" }; };
+  const addImg = (model, path) => { if (!model) return null; JOBS.push({ path, model }); return { path, alt: model.alt, l: model.l, caption: model.caption || "", desc: model.desc || "" }; };
   const sureRow = x => !!x && x.level === "sure";
-  // a ranking chart's alt text: what it shows, its period, then every row as its figure is written on the chart
-  const rankAlt = (l, k, rows) => `${I.img(l, k)}, ${imgPeriod(l)}: ${rows.map(r => `${r.name} ${r.value}`).join(", ")}.`;
+  // a ranking chart's description (the ImageObject's): what it shows, its period, then every row as its figure is
+  // written on the chart; round 68: its alt text is short, the first rows (two of each group) and "…"
+  const rankDesc = (l, k, rows, fig = r => r.value) => `${I.img(l, k)}, ${imgPeriod(l)}: ${rows.map(r => `${r.name} ${fig(r)}`).join(", ")}.`;
+  const rankAlt = (l, k, rows, fig = r => r.value, n = 3) => {
+    const firsts = rows.some(r => r.sepBefore) ? rows.filter((r, i) => r.sepBefore || (i > 0 && rows[i - 1].sepBefore)) : rows.slice(0, n);
+    return `${I.img(l, "bar")}: ${I.img(l, k)}, ${imgPeriod(l)}: ${firsts.map(r => `${r.name} ${fig(r)}`).join(", ")}${firsts.length < rows.length ? " …" : ""}`;
+  };
+  const N_ROWS = 10;
+  // the key of a striped bar in the map's own words ("Faded: not certain", site/i18n/<lang>.js)
+  const FADED = {};
+  for (const l of T.LANGS) FADED[l] = (l === "en" ? null : await mapDict(site, l).catch(() => ({})))?.["Faded: not certain"] || "Faded: not certain";
+  const paler = l => I.img(l, "paler", { faded: FADED[l] });
   const rankImg = (l, key, title, unitKey, altKey, rows, extraLegend = []) => {
     const pale = rows.some(r => /F$/.test(r.tone));
-    const legend = [{ text: I.img(l, "range") }, ...(pale ? [{ text: I.img(l, "paler") }] : []), ...extraLegend];
-    const m = G.rankChart({ key, l, title, unit: I.img(l, unitKey), period: imgPeriod(l), source: imgSource(l), rows, legend, alt: rankAlt(l, altKey, rows) });
-    m.caption = `${I.img(l, altKey)}, ${imgPeriod(l)}`;
+    const legend = [{ text: I.img(l, "range") }, ...(pale ? [{ color: G.TONE[rows.find(r => /F$/.test(r.tone)).tone], pale: true, text: paler(l) }] : []), ...extraLegend];
+    const m = G.rankChart({ key, l, title, unit: I.img(l, unitKey), period: imgPeriod(l), source: imgSource(l), rows, legend, alt: rankAlt(l, altKey, rows), desc: rankDesc(l, altKey, rows),
+      caption: `${I.img(l, altKey)}, ${imgPeriod(l)}` });
     return addImg(m, G.imgPath(l, key));
   };
   const RIMG = Object.fromEntries(T.LANGS.map(l => [l, {}]));
@@ -361,67 +371,80 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     const nmI = iso => nameL(iso, l), uaAll = RANK_UA[l].groups.flatMap(g => g.rows), fg = iso => byIso[iso].fig, gdpOf = iso => byIso[iso].gdp;
     // support for Ukraine in euros (the table "In euros" of the page of support by country) and as a share of GDP
     // (its ranking, economies of €5bn and more), each with its likely range
-    RIMG[l].eur = rankImg(l, "eur", I.img(l, "tEur"), "uEur", "aEur", uaAll.slice().sort((a, b) => b.eurBn - a.eurBn).slice(0, 15)
+    RIMG[l].eur = rankImg(l, "eur", I.img(l, "tEur"), "uEur", "aEur", uaAll.slice().sort((a, b) => b.eurBn - a.eurBn).slice(0, N_ROWS)
       .map(r => ({ name: nmI(r.iso), v: r.eurBn, lo: fg(r.iso).uaLo, hi: fg(r.iso).uaHi, value: r.eur.replace(/^\+/, ""), note: r.sure ? "" : r.words, tone: G.toneOf(r.eurBn, r.sure) })));
-    RIMG[l].gdp = rankImg(l, "gdp", I.img(l, "tGdp"), "uGdp", "aGdp", uaAll.filter(r => !r.small).sort((a, b) => b.pct - a.pct).slice(0, 15)
+    RIMG[l].gdp = rankImg(l, "gdp", I.img(l, "tGdp"), "uGdp", "aGdp", uaAll.filter(r => !r.small).sort((a, b) => b.pct - a.pct).slice(0, N_ROWS)
       .map(r => ({ name: nmI(r.iso), v: r.pct, lo: (100 * fg(r.iso).uaLo) / gdpOf(r.iso), hi: (100 * fg(r.iso).uaHi) / gdpOf(r.iso), value: r.value.replace(/^\+/, ""), note: r.sure ? "" : r.words, tone: G.toneOf(r.pct, r.sure) })));
     // per person: the rows of the per-capita page (seo_topics.json ukraine-aid-per-capita)
     const ppM = (MODELS["/ukraine-aid-per-capita/"] || {})[l];
-    if (ppM) RIMG[l].pp = rankImg(l, "pp", I.img(l, "tPp"), "uPp", "aPp", ppM.rows.slice(0, 15).map(c => {
+    if (ppM) RIMG[l].pp = rankImg(l, "pp", I.img(l, "tPp"), "uPp", "aPp", ppM.rows.slice(0, N_ROWS).map(c => {
       const x = mv(c, "ua"), per = v => (v * 1000) / c.pop;
       return { name: c.name, v: per(x.v), lo: x.lo == null ? null : per(x.lo), hi: x.hi == null ? null : per(x.hi), value: I.PP(l, per(x.v)), note: sureRow(x) ? "" : x.chance, tone: G.toneOf(x.v, sureRow(x)) };
     }));
     // the money that moved toward Russia: the rows of countries-helping-russia/ (the net below zero, parties apart), by
-    // euros, drawn as the size toward Russia
+    // euros, drawn as the size toward Russia (round 68: without a minus sign, the subtitle says "toward Russia")
     const ruM = (MODELS["/countries-helping-russia/"] || {})[l];
-    if (ruM) RIMG[l].rus = rankImg(l, "rus", I.img(l, "tRus"), "uRus", "aRus", ruM.rows.slice().sort((a, b) => mv(a, "net").v - mv(b, "net").v).slice(0, 15).map(c => {
+    if (ruM) RIMG[l].rus = rankImg(l, "rus", I.img(l, "tRus"), "uRus", "aRus", ruM.rows.slice().sort((a, b) => mv(a, "net").v - mv(b, "net").v).slice(0, N_ROWS).map(c => {
       const x = mv(c, "net");
-      return { name: c.name, v: -x.v, lo: -x.hi, hi: -x.lo, value: "−" + I.E(l, x.v), note: sureRow(x) ? "" : x.chance, tone: sureRow(x) ? "ru" : "ruF" };
+      return { name: c.name, v: -x.v, lo: -x.hi, hi: -x.lo, value: I.E(l, x.v), note: sureRow(x) ? "" : x.chance, tone: sureRow(x) ? "ru" : "ruF" };
     }));
     // the Russian assets frozen in each holding country (frozen_amounts_r58.json, the two columns of frozen-russian-assets/):
     // the central bank reserves and the private assets, each the country's official figure; no figure is not zero
     if (FROZ && RCFG.frozen) {
       const fr = Object.keys(FROZ.countries).map(iso => ({ iso, f: RS.frozenOf(FROZ, iso) })).filter(x => x.f && !x.f.none)
         .map(({ iso, f }) => { const cb = f.cbr && f.cbr.v != null ? f.cbr : null, pv = f.priv && f.priv.v != null ? f.priv : null; return { iso, cb, pv, tot: (cb ? cb.v : 0) + (pv ? pv.v : 0) }; })
-        .filter(x => x.cb || x.pv).sort((a, b) => b.tot - a.tot || a.iso.localeCompare(b.iso)).slice(0, 15);
+        .filter(x => x.cb || x.pv).sort((a, b) => b.tot - a.tot || a.iso.localeCompare(b.iso)).slice(0, N_ROWS);
       const none = Object.keys(FROZ.countries).filter(iso => { const f = RS.frozenOf(FROZ, iso); return f && !f.none && !(f.cbr && f.cbr.v != null) && !(f.priv && f.priv.v != null); })
         .concat((FROZ.no_public_figure || {}).list || []);
       // (a holder without a page, such as Liechtenstein: its name in the language from its two-letter code)
       const frName = iso => { const n = nameAnyL(iso, l); if (n !== iso) return n; const two = ISO2M[iso]; try { if (two) return new Intl.DisplayNames([l], { type: "region" }).of(two); } catch { /* the file's own name */ } return ((FROZ.countries[iso] || {}).name || iso).replace(/ \(.*$/, ""); };
-      const fig = x => (x ? RS.stockText(l, x).fig : "–"), rng = (x, k) => (x ? (x[k] != null ? x[k] : x.v) : 0);
-      const C2 = "#8fb5da";
-      const rows = fr.map(x => ({ name: frName(x.iso), v: x.tot, lo: rng(x.cb, "lo") + rng(x.pv, "lo"), hi: rng(x.cb, "hi") + rng(x.pv, "hi"), segs: [{ v: x.cb ? x.cb.v : 0, color: G.TONE.ua }, { v: x.pv ? x.pv.v : 0, color: C2 }],
-        value: `${fig(x.cb)} + ${fig(x.pv)}`, label: `<b style="color:#1f5a94">${esc(fig(x.cb))}</b> + <b style="color:#4f7fae">${esc(fig(x.pv))}</b>`, tone: "ua" }));
-      const m = G.rankChart({ key: "frozen", l, title: I.img(l, "tFrozen"), unit: I.img(l, "uFrozen"), period: imgPeriod(l), source: imgSource(l), rows,
-        legend: [{ color: G.TONE.ua, text: I.res(l, "colCbr") }, { color: C2, text: I.res(l, "colPriv") }, ...(none.length ? [{ text: `${I.cap(I.res(l, "noFig"))}: ${I.list3(l, none.map(frName))}` }] : [])],
-        alt: `${I.img(l, "aFrozen")}, ${imgPeriod(l)} (${I.res(l, "colCbr")} + ${I.res(l, "colPriv")}): ${rows.map(r => `${r.name} ${r.value}`).join(", ")}.` });
-      m.caption = `${I.img(l, "aFrozen")}, ${imgPeriod(l)}`;
-      m.space = 330;
+      // round 68: the two amounts in two columns beside the bars, "n/a" where there is no public figure; the range line
+      // is the total's; the amounts are stocks at each country's latest date (the subtitle says so), not a total since 2022
+      const fig = x => (x ? RS.stockText(l, x).fig : I.img(l, "na")), rng = (x, k) => (x ? (x[k] != null ? x[k] : x.v) : 0);
+      const [C1, C2] = G.FROZEN_TONE, ink = ["#1d5689", "#40709f"];
+      const rows = fr.map(x => ({ name: frName(x.iso), v: x.tot, lo: rng(x.cb, "lo") + rng(x.pv, "lo"), hi: rng(x.cb, "hi") + rng(x.pv, "hi"), segs: [{ v: x.cb ? x.cb.v : 0, color: C1 }, { v: x.pv ? x.pv.v : 0, color: C2 }],
+        value: `${I.img(l, "cbShort")} ${fig(x.cb)}, ${I.img(l, "privShort")} ${fig(x.pv)}`, cells: [x.cb, x.pv].map((y, i) => ({ text: fig(y), na: !y, color: y ? ink[i] : "" })), tone: "ua" }));
+      const m = G.rankChart({ key: "frozen", l, title: I.img(l, "tFrozen"), unit: I.img(l, "uFrozen"), period: "", source: imgSource(l), rows,
+        cols: [{ color: C1, text: I.img(l, "cbShort") }, { color: C2, text: I.img(l, "privShort") }],
+        legend: [{ text: I.img(l, "rangeTotal") }, ...(rows.some(r => r.cells.some(x => x.na)) ? [{ text: I.img(l, "naKey") }] : []),
+          ...(none.length ? [{ text: `${I.cap(I.res(l, "noFig"))}: ${I.list3(l, none.map(frName))}` }] : [])],
+        alt: rankAlt(l, "aFrozen", rows, r => `(${r.value})`, 2), desc: `${I.img(l, "aFrozen")}, ${I.img(l, "uFrozen")} (${I.res(l, "colCbr")}, ${I.res(l, "colPriv")}): ${rows.map(r => `${r.name} (${r.value})`).join(", ")}.`,
+        caption: I.img(l, "cFrozen") });
       RIMG[l].frozen = addImg(m, G.imgPath(l, "frozen"));
     }
   }
   // the net (the ranking page; round 63: in every language): the map's own groups "Toward Ukraine" and "Toward Russia"
-  // (very likely), the furthest 8 of each among economies of €5bn and more, with their likely range
+  // (very likely), the furthest 5 of each among economies of €5bn and more (round 68: 8), with their likely range
   for (const l of T.LANGS) {
     const gs = RANK[l].groups, g0 = gs.find(g => g.g === 0), g6 = gs.find(g => g.g === 6), fg = iso => byIso[iso].fig;
     const row = r => ({ rank: r.rank, name: nameL(r.iso, l), v: r.pct, lo: fg(r.iso).netLoPct, hi: fg(r.iso).netHiPct, value: r.value, tone: G.toneOf(r.pct, true) });
-    const up = g0 ? g0.rows.filter(r => r.rank).sort((a, b) => a.rank - b.rank).slice(0, 8).map(row) : [];
-    const down = g6 ? g6.rows.filter(r => r.rank).sort((a, b) => a.rank - b.rank).slice(0, 8).map(row) : [];
+    const up = g0 ? g0.rows.filter(r => r.rank).sort((a, b) => a.rank - b.rank).slice(0, N_ROWS / 2).map(row) : [];
+    const down = g6 ? g6.rows.filter(r => r.rank).sort((a, b) => a.rank - b.rank).slice(0, N_ROWS / 2).map(row) : [];
     if (down.length) down[0].sepBefore = g6.label;
     if (up.length) up[0].sepBefore = g0.label;
     const rows = [...up, ...down];
     if (rows.length) {
       const m = G.rankChart({ key: "net", l, title: I.img(l, "tNet"), unit: I.img(l, "uNet"), period: imgPeriod(l), source: imgSource(l), rows,
-        legend: [{ text: I.s(l, "legendSigned") }, { text: I.img(l, "range") }], alt: rankAlt(l, "aNet", rows) });
-      m.caption = `${I.img(l, "aNet")}, ${imgPeriod(l)}`;
+        legend: [{ text: I.s(l, "legendSigned") }, { text: I.img(l, "range") }], alt: rankAlt(l, "aNet", rows), desc: rankDesc(l, "aNet", rows), caption: `${I.img(l, "aNet")}, ${imgPeriod(l)}` });
       RIMG[l].net = addImg(m, G.imgPath(l, "net"));
     }
   }
   // a country's chart in a language: the map's words for its three numbers and the parts of its support
-  const CW = Object.fromEntries(T.LANGS.map(l => [l, { period: imgPeriod(l), source: imgSource(l), unit: I.img(l, "uCountry"), legendSigned: I.s(l, "legendSigned"), range: I.img(l, "range"),
+  const CW = Object.fromEntries(T.LANGS.map(l => [l, { paler: paler(l), period: imgPeriod(l), source: imgSource(l), unit: I.img(l, "uCountry"), legendSigned: I.s(l, "legendSigned"), range: I.img(l, "range"),
     support: T.L(l, "support"), trade: T.L(l, "trade"), frozen: T.L(l, "frozen"), net: T.L(l, "net"), ofGdp: T.L(l, "ofGdp"), party: T.L(l, "party"),
     partNames: { aid: I.partName(l, "aid"), euaid: I.partName(l, "euaid"), ref: I.partName(l, "ref") }, other: I.img(l, "other") }]));
-  const countryImg = (l, c0, c, title) => addImg(G.countryChart({ c, l, earner: !!c0.earner, words: { ...CW[l], title } }), G.imgPath(l, "country", c0.slug));
+  // round 68: its title says what it shows (the page's question is the page's)
+  const countryImg = (l, c0, c) => addImg(G.countryChart({ c, l, earner: !!c0.earner, words: { ...CW[l], title: I.img(l, "tCountry", { name: c.name }) } }), G.imgPath(l, "country", c0.slug));
+  // round 68: the sanctions page's chart: the number of countries and territories in each group of the page, in its order
+  // (sanctions_r58.json, seo_research.mjs sanctionsPage counts), in a neutral grey (a count, not money toward a side)
+  const sancImg = (l, counts) => {
+    const checked = fmtDate(SANC.generated, l), rows = Object.entries(counts).map(([cat, n]) => ({ name: "", v: n, tone: "grey", value: String(n), cat: I.res(l, "lab_" + cat),
+      label: `<b style="color:#15212b">${n}</b><span class="t">${esc(I.res(l, "lab_" + cat))}</span>` }));
+    const m = G.rankChart({ key: "sanc", l, title: I.img(l, "tSanc"), unit: I.img(l, "uSanc", { date: checked }), period: "", source: imgSource(l), rows, legend: [],
+      alt: `${I.img(l, "bar")}: ${I.img(l, "aSanc")}: ${rows.slice(0, 3).map(r => `${r.cat} ${r.value}`).join(", ")} …`, desc: `${I.img(l, "aSanc")}, ${checked}: ${rows.map(r => `${r.cat} ${r.value}`).join(", ")}.`,
+      caption: I.img(l, "cSanc", { date: checked }) });
+    return addImg(m, G.imgPath(l, "sanc"));
+  };
   // the ImageObject of a page's main image (its primaryImageOfPage), and a figure's caption
   const imgLd = img => (img ? { primaryImageOfPage: G.imageObject(img, abs) } : {});
 
@@ -489,7 +512,7 @@ ${ps.length ? `<h3>${esc(I.s(l, "partsRanked"))}</h3>${relList(l, ps)}` : ""}
       const c = LANG_DATA[l][c0.iso], f = { ...fOf(c0), nameL: c.name, words: WORDS[l], loc: c, tradeFirst: FAM.country && FAM.country.tradeFirst, phrasing: FAM.country && FAM.country.phrasing }, copy = T.countryCopy(l, f);
       H1[l][c0.iso] = copy.h1;
       // round 62: its chart (support with its parts, trade, frozen money and the net), titled with the page's question
-      const cimg = c0.noData || c0.mostlyNoData ? null : countryImg(l, c0, c, copy.h1);
+      const cimg = c0.noData || c0.mostlyNoData ? null : countryImg(l, c0, c);
       // round 57b: the page's sections and questions (seo_country.mjs), from the map's data in this language
       const pr = PEERS[c0.iso];
       // round 58b: its sanctions on Russia (sanctions_r58.json) and the amounts frozen there (frozen_amounts_r58.json)
@@ -910,6 +933,8 @@ ${foot(l)}`;
               dataTo: dataToL[l], stepsMin: x.cfg.stepsMin, gdpMin: x.cfg.gdpMin })
             : RS.revenuePage(l, REV, { warIncome: lp(l, "/" + x.cfg.warIncome + "/"), published: published ? published[1] : "", months: x.cfg.months || 24, yearWord: T.L(l, "year"), deficit: BAL });
         const explains = (x.cfg.explain || []).map(id => explainOf(l, id));
+        // round 68: the sanctions page's chart, the number of countries and territories in each of its groups
+        const simg = x.key === "sanctions" && pg.counts ? sancImg(l, pg.counts) : null;
         const rel = (x.cfg.related || []).map(sl => { const t = related(sl); if (t) return [labelOf(t, l), lp(l, pathOf(t))]; const r2 = RPAGE.find(y => y.cfg.slug === sl); return r2 ? [rLabel(r2, l), lp(l, r2.path)] : null; }).filter(Boolean);
         const items = [[T.L(l, "map"), home(l)], [I.s(l, "topics"), hub], [pg.label, lp(l, path)]];
         const body = `${top(l)}
@@ -917,6 +942,7 @@ ${foot(l)}`;
 ${crumbs(l, items)}
 <h1>${esc(pg.h1)}</h1>
 <p class="intro">${esc(pg.intro)}</p>
+${G.figureHtml(simg)}
 ${explains.map(e2 => `<section class="explain" id="what-${e2.id}"><h2>${esc(e2.q)}</h2><p>${esc(e2.a)}</p></section>`).join("\n")}
 ${pg.body}
 <section class="faq" id="faq"><h2>${esc(I.s(l, "questions"))}</h2>${pg.faq.map(q => `<h3>${esc(q.q)}</h3><p${x.key === "sanctions" ? "" : ` data-rq="${x.key}"`}>${esc(q.a)}</p>`).join("\n")}</section>
@@ -925,9 +951,9 @@ ${langLinks(l, path)}
 </main>
 ${foot(l)}`;
         const faqLd = explains.filter(e2 => e2.faq).map(e2 => ({ q: e2.q, a: e2.a })).concat(pg.faq);
-        const ld = [{ "@context": "https://schema.org", "@type": "WebPage", "@id": url, url, name: pg.title, description: pg.description, inLanguage: l, dateModified: DATE_TOKEN, isPartOf: DATASET, image: abs("share/world.png") }, crumbLd(items),
+        const ld = [{ "@context": "https://schema.org", "@type": "WebPage", "@id": url, url, name: pg.title, description: pg.description, inLanguage: l, dateModified: DATE_TOKEN, isPartOf: DATASET, image: simg ? [G.imageObject(simg, abs)] : abs("share/world.png"), ...imgLd(simg) }, crumbLd(items),
           { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqLd.map(q => ({ "@type": "Question", name: q.q, acceptedAnswer: { "@type": "Answer", text: q.a } })) }];
-        await put(lp(l, path), shell({ lang: l, title: pg.title, description: pg.description, canonical: url, alternates: alts, image: abs("share/world.png"), imageAlt: T.L("en", "imgWorld"), ld, body }), alts);
+        await put(lp(l, path), shell({ lang: l, title: pg.title, description: pg.description, canonical: url, alternates: alts, image: simg ? abs(simg.path) : abs("share/world.png"), imageAlt: simg ? simg.alt : T.L("en", "imgWorld"), ld, body }), alts, simg ? [simg] : []);
       }
     }
   }
