@@ -273,7 +273,66 @@ export function countryDyn(c, o) {
   if (off) out.faq.push({ id: "official", fam: "official", score: 0, q: I.fmt(I.dyn(l, "qOfficial"), { N: name, Nt, NtCap: cap(Nt) }), a: off.replace(/[ \t\r\n]+/g, " ").trim() });
   // the sanctions question after the pool's picks (not one of them: every page has it)
   if (o.regime) out.faq.push({ id: "regime", fam: "regime", score: 0, q: o.regime.q, a: o.regime.a.replace(/[ \t\r\n]+/g, " ").trim() });
+  // round 69: why the published figures differ, at the top of the page (seo_pages.mjs puts it under the intro), and its
+  // question (the pool's Kiel question says less, so it goes)
+  const dif = differText(c, x, o, F);
+  if (dif) {
+    out.differ = dif.html;
+    out.faq = out.faq.filter(q => q.id !== "kiel");
+    const g = out.faq.findIndex(q => q.id === "gave"), at = g >= 0 ? g + 1 : Math.min(1, out.faq.length);
+    out.faq.splice(at, 0, { id: "differ", fam: "differ", score: 0, q: dif.q, a: dif.a });
+  }
   return out;
+}
+
+// round 69 (SERP review: revueconflits.com ranks first for "how much has France given to Ukraine" by explaining why the
+// estimates range from €6.5bn to €26bn; our "Why this differs from the Kiel tracker" was the 13th heading): a small table
+// of the published figures for its support, ours with its parts, the Kiel Institute's bilateral figure, the government's
+// own total (official_totals_r64.json) and other sourced totals (published_figures_r69.json), then why they differ. The
+// map's figures are marked (check 48); the others are their sources' own, in their currency, each with its link
+export const KIEL_URL = "https://www.kielinstitut.de/research/topics/war-against-ukraine/ukraine-support-tracker/";
+export function differText(c, x, o, F) {
+  const l = o.l, off = o.official, pubs = (o.published || []).filter(p => p && p.value > 0 && p.source_url);
+  const kiel = x.kielFig >= 0.05 ? x.kielFig : 0;
+  if (!x.data || x.ua < 0.05 || !(kiel || (off && (off.figures || []).length) || pubs.length)) return null;
+  const m = k => (c.measures && c.measures[k] && c.measures[k].v != null ? c.measures[k].v : 0);
+  const aid = m("part:aid"), eu = m("part:euaid"), ref = m("part:ref"), other = x.ua - aid - eu - ref;
+  const has = v => Math.abs(v) >= 0.0005;
+  const link = (href, text) => `<a href="${esc(href)}" rel="noopener">${esc(text)}</a>`;
+  const rows = [], vals = [x.ua];
+  // ours, with its parts (each a model quantity; "other" is what the parts named do not cover, so not marked). Kiel's
+  // figure is Kiel's published one with the G7 loans Russia repays (the map's kielFigure, as the intro says it), not the
+  // model's kielEur without them, so it is not marked either
+  const parts = [has(aid) && D(l, "difAid", { v: F("m", "part_aid", aid) }), has(eu) && D(l, "difEu", { v: F("m", "part_euaid", eu) }), has(ref) && D(l, "difRef", { v: F("m", "part_ref", ref) }),
+    Math.abs(other) >= 0.05 && D(l, "difOther", { v: esc((other < 0 ? "−" : "") + I.E(l, other)) })].filter(Boolean);
+  rows.push({ src: esc(I.dyn(l, "difOurs")), srcText: I.dyn(l, "difOurs"), v: F("e", "uaEur", x.ua), cov: D(l, "difOursCov", { dataTo: esc(o.dataTo), list: parts.join(", ") }) });
+  if (kiel) { rows.push({ src: link(KIEL_URL, I.dyn(l, "difKiel")), srcText: I.dyn(l, "difKiel"), v: esc(I.E(l, kiel)), cov: D(l, "difKielCov", { dataTo: esc(o.dataTo) }) }); vals.push(kiel); }
+  if (off && (off.figures || []).length) {
+    const amt = f => { const v = I.CUR(l, f.value, off.currency); return f.qualifier ? D(l, OFF_QUAL[f.qualifier.replace(/\W/g, "")], { v }) : v; };
+    const KIND = { civil: "kindCivil", military: "kindMil", nonmil: "kindNonmil" }, fl = off.flags || [];
+    const pub = (off.publisher || {})[l] || off.publisher.en;
+    rows.push({ src: link(off.source_url, pub), srcText: pub, v: esc(off.figures.map(amt).join(" + ")),
+      cov: D(l, "difOffCov", { list: esc(I.list3(l, off.figures.map(f => I.dyn(l, KIND[f.kind])))), asOf: esc(I.dateL(off.as_of, l)) },
+        { face: fl.includes("face_value"), noeu: fl.includes("no_eu_share"), committed: off.figures.every(f => f.basis === "committed") }) });
+    if (off.figures.length === 1 && off.currency === "EUR") vals.push(off.figures[0].value);
+  }
+  for (const p of pubs.slice().sort((a, b) => b.value - a.value)) {
+    const pub = (p.publisher || {})[l] || p.publisher.en;
+    rows.push({ src: link(p.source_url, pub), srcText: pub, v: esc(I.CUR(l, p.value, p.currency)), cov: D(l, p.cover, { asOf: esc(I.dateL(p.as_of, l)) }) });
+    if (p.currency === "EUR") vals.push(p.value);
+  }
+  if (rows.length < 2) return null;
+  const lo = Math.min(...vals), hi = Math.max(...vals), range = vals.length >= 2 && lo > 0 && hi > 1.1 * lo;
+  const Nt = I.inSentence(l, c.name), names = { N: esc(c.name), Nt: esc(Nt) };
+  const rv = { ...names, lo: esc(I.E(l, lo)), hi: esc(I.E(l, hi)) };
+  const lead = D(l, "difLead", rv, { range });
+  const adds = [has(eu) && I.dyn(l, "difAddEu"), has(ref) && I.dyn(l, "difAddRef")].filter(Boolean);
+  const why = D(l, "difWhy", { adds: esc(I.list3(l, adds)) }, { adds: adds.length ? 1 : 0, era: (o.kielAdj || {}).era >= 0.0005, epf: pubs.some(p => p.epf) });
+  const table = `<div class="tbl"><table class="differ"><thead><tr><th>${esc(I.dyn(l, "thSource"))}</th><th class="n">${esc(I.dyn(l, "thFigure"))}</th><th>${esc(I.dyn(l, "thCovers"))}</th></tr></thead><tbody>${rows.map((r, i) => `<tr${i === 0 ? ' class="here"' : ""}><td>${i === 0 ? `<b>${r.src}</b>` : r.src}</td><td class="n">${r.v}</td><td>${r.cov}</td></tr>`).join("")}</tbody></table></div>`;
+  const html = `<section class="differ" aria-labelledby="why-figures-differ"><h2 id="why-figures-differ">${esc(I.dyn(l, "tDiffer"))}</h2><p>${lead}</p>${table}<p>${why}</p></section>`;
+  const q = I.fmt(I.dyn(l, range ? "qDifferRange" : "qDiffer"), { N: c.name, Nt, lo: I.E(l, lo), hi: I.E(l, hi) }).replace(/\u00a0/g, " ");   // plain spaces: the JSON-LD's name is compared as written
+  const a = [lead, ...rows.map(r => D(l, "difRow", { src: esc(r.srcText), v: r.v, cov: r.cov })), why].join(" ").replace(/[ \t\r\n]+/g, " ").trim();
+  return { html, q, a };
 }
 
 // round 68 (QA review: "one figure per concept"): a story tag whose amount is a part of a headline figure says so. The

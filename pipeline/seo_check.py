@@ -106,6 +106,13 @@ def fmt_eur(bn: float, lang: str = "en") -> str:
         return "<" + fmt_eur(0.001, lang)
     # round 68: under €1bn in millions, as the map writes amounts (seo_i18n.mjs E)
     big = a >= 0.9995
+    if lang == "es":  # round 69: Spanish writes every amount in millions, "16.900 M€" (seo_i18n.mjs E)
+        s = (
+            str(_round(a * 1000))
+            if not big
+            else _group((_round(a) * 10 if a >= 100 else _round(float(f"{a:.1f}") * 10)) * 100, lang)
+        )
+        return s + NB + "M€"
     if not big:
         s = str(_round(a * 1000))
     elif a >= 100:
@@ -116,7 +123,7 @@ def fmt_eur(bn: float, lang: str = "en") -> str:
             s = s.replace(".", ",")
     unit = {
         "en": ("€", "bn" if big else "m"),
-        "es": ("", NB + ("mil" + NB + "M€" if big else "M€")),
+        "es": ("", NB + "M€"),
         "de": ("", NB + ("Mrd." if big else "Mio.") + NB + "€"),
         "fr": ("", NB + ("Md€" if big else "M€")),
         "pl": ("", NB + ("mld" if big else "mln") + NB + "€"),
@@ -797,8 +804,8 @@ _FIG = re.compile(r'<figure class="chart"><img src="([^"]+)" alt="([^"]*)" width
 
 
 def check_images(site: Path, site_url: str, urls: list[str]) -> list[str]:
-    """Every chart image a page shows exists, with its alt text and size; the first one is not lazy (it is near the top),
-    the others are; a page that shows one names it as og:image and as primaryImageOfPage in its JSON-LD, and lists it in
+    """Every chart image a page shows exists, with its alt text and size (1200×630, or square since round 69); the first
+    one is not lazy (it is near the top), the others are; a page that shows one names it (or its wide copy) as og:image and as primaryImageOfPage in its JSON-LD, and lists it in
     its sitemap entry; every image a sitemap lists exists."""
     out: list[str] = []
     base = site_url.rstrip("/")
@@ -820,12 +827,13 @@ def check_images(site: Path, site_url: str, urls: list[str]) -> list[str]:
         for i, (src, alt, w, h, rest) in enumerate(figs):
             if not (site / src.lstrip("/")).exists():
                 out.append(f"{name}: {src} missing")
-            if len(html.unescape(alt).strip()) < 20 or (w, h) != ("1200", "630"):
+            if len(html.unescape(alt).strip()) < 20 or (w, h) not in (("1200", "630"), ("1200", "1200")):
                 out.append(f"{name}: {src} without alt text or size")
             if (i == 0) == ("loading=" in rest):
                 out.append(f"{name}: {src} lazy loading on the first image, or not on a later one")
         og = re.search(r'<meta property="og:image" content="([^"]+)"', text)
-        if not og or og.group(1) != base + figs[0][0]:
+        # round 69: a square chart's link preview is its 1200×630 copy (<name>-wide.webp), beside it
+        if not og or og.group(1) not in (base + figs[0][0], base + figs[0][0].replace(".webp", "-wide.webp")):
             out.append(f"{name}: og:image is not its first chart")
         if f'"primaryImageOfPage":{{"@type":"ImageObject","contentUrl":"{base}{figs[0][0]}"' not in text:
             out.append(f"{name}: no primaryImageOfPage for its chart")
@@ -1459,6 +1467,17 @@ def parse_fig(piece: str, lang: str) -> dict | None:
         v, d = _num(m.group("n"), lang)
         if m.group("u") in BIG_UNITS:
             return {"kind": "eur", "v": v, "step": 10.0**-d, "sign": sign, "tiny": tiny, "rest": t[m.end() :]}
+        if (
+            lang == "es" and v >= 1000
+        ):  # round 69: billions in millions, "16.900 M€", to the €100m (from €100bn the €1bn)
+            return {
+                "kind": "eur",
+                "v": v / 1000,
+                "step": 1.0 if v >= 100000 else 0.1,
+                "sign": sign,
+                "tiny": tiny,
+                "rest": t[m.end() :],
+            }
         return {"kind": "eur", "v": v / 1000, "step": 0.001, "sign": sign, "tiny": tiny, "rest": t[m.end() :]}
     m = PCT_RX.match(t)
     if m:
