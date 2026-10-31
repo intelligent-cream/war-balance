@@ -191,7 +191,10 @@ test("numbers are written the way each language writes them", () => {
   assert.equal(I.E("en", 0.05), "€50m");
   assert.equal(I.E("de", 74.666), "74,7 Mrd. €");
   assert.equal(I.E("fr", 0.05), "50 M€");
-  assert.equal(I.E("es", 74.666), "74,7 mil M€");
+  // round 69: Spanish in millions, "74.700 M€" (it was "74,7 mil M€"); the map's own form is turned into it on the pages
+  assert.equal(I.E("es", 74.666), "74.700\u00a0M€");
+  assert.equal(I.E("es", 115.38), "115.000\u00a0M€");
+  assert.equal(I.E("es", 0.522), "522\u00a0M€");
   assert.equal(I.E("en", 0.522), "€522m");   // round 68: under €1bn in millions, as the map writes it
   assert.equal(I.E("pl", 547.2), "547 mld €");
   assert.equal(I.P("en", 3.651), "3.7%");
@@ -1116,4 +1119,30 @@ test("round 68: plain opening paragraphs: no '10.0%' in a title, negative suppor
     assert.ok(/Kiel|Кіль/.test(x.intro) && !/\{|undefined/.test(x.intro + x.intro2), l);
     assert.ok(!/eines Jahres-BIP|d'une année de PIB|de un año de PIB|van een jaar bbp|rocznego PKB|річного ВВП|of a year's GDP/.test(x.intro2), l + " " + x.intro2);
   }
+});
+
+// ----- round 69: why the published figures differ (seo_country.mjs differText), Spanish amounts on the pages -----
+test("country page: the published figures and why they differ, with every source a link", () => {
+  const c = mkC({ name: "France", iso: "FRA", fig: { ...mkC().fig, ua: 16.9, uaPct: 0.6 },
+    measures: { "part:aid": { v: 4.3 }, "part:euaid": { v: 9.8 }, "part:ref": { v: 1.8 }, kiel: { v: 7.91 } } });
+  const x = { ...SC.facts(c, { l: "en", fuelDefault: 0.1, tradeYears: [2021, 2025] }), data: true };
+  const F = (f, k, v) => SC.fig("en", f, k, v, c.gdp);
+  const pub = [{ value: 6.5, currency: "EUR", as_of: "2025-12-31", cover: "covMilEpf", epf: true, publisher: { en: "France's Ministry of the Armed Forces" }, source_url: "https://example.org/r.pdf" }];
+  const d = SC.differText(c, x, { l: "en", dataTo: "31 August 2026", published: pub, kielAdj: { era: 0 } }, F);
+  assert.ok(d, "a block where other figures exist");
+  assert.equal(d.q, "Why do estimates of France's aid to Ukraine range from €6.5bn to €16.9bn?");
+  const t = SC.plainText(d.html);
+  assert.match(t, /run from €6.5bn to €16.9bn/);
+  assert.match(t, /own aid €4.3bn, its share of EU aid €9.8bn, hosting refugees €1.8bn, other parts €1bn/);
+  assert.match(t, /European Peace Facility/);
+  assert.ok(d.html.includes(`href="${SC.KIEL_URL}"`) && d.html.includes('href="https://example.org/r.pdf"'));
+  // no other figure: no block
+  assert.equal(SC.differText({ ...c, measures: { "part:aid": { v: 4.3 } } }, { ...x, kielFig: 0 }, { l: "en", dataTo: "", published: [] }, F), null);
+});
+test("Spanish amounts in millions on the pages, also the map's own (typoText)", async () => {
+  const P = await import("./seo_pages.mjs");
+  assert.equal(P.typoText("es", "16,9 mil M€ y 16,1–17,8 mil M€; 115 mil M€"), "16.900 M€ y 16.100–17.800 M€; 115.000 M€");
+  assert.equal(T.publishedOf(["h", "2026-10-30", "2026-10-26"], "2026-10-31"), "2026-10-26");
+  assert.equal(T.publishedOf(["h", "2026-10-27"], "2026-10-31"), "2026-10-27");
+  assert.equal(T.publishedOf(undefined, "2026-10-31"), "2026-10-31");
 });

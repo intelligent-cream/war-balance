@@ -174,7 +174,9 @@ def test_every_topic_entry_must_be_written(tmp_path):
 def test_number_formats_in_every_language():
     assert sc.fmt_eur(74.666, "de") == "74,7 Mrd. €"
     assert sc.fmt_eur(1234.4, "fr") == "1 234 Md€"
-    assert sc.fmt_eur(74.666, "es") == "74,7 mil M€"
+    assert sc.fmt_eur(74.666, "es") == "74.700\u00a0M€"  # round 69: Spanish in millions
+    assert sc.fmt_eur(2.65, "es") == "2.600\u00a0M€" and sc.fmt_eur(115.38, "es") == "115.000\u00a0M€"
+    assert sc.parse_fig("16.900 M€", "es")["step"] == 0.1 and sc.parse_fig("522 M€", "es")["step"] == 0.001
     assert sc.fmt_eur(0.05, "nl") == "€50 mln"
     assert sc.fmt_pct(0.1394, "de") == "0,14 %"
     assert sc.fmt_pct(3.651, "uk") == "3,7%"
