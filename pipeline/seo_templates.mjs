@@ -217,3 +217,6 @@ export const contentHash = html => createHash("sha256").update(pageContent(html)
 // a page's date in the sitemap, in its dateModified and on its "updated" line (one date): the stored one while its content
 // hash is the same, else today. prev: its entry in pipeline/seo_lastmod.json ([hash, date])
 export const lastmodOf = (prev, hash, today) => (prev && prev[0] === hash && prev[1] ? prev[1] : today);
+// round 69: a page's datePublished, the first date it appeared: the earliest date stored for it (its third entry in
+// pipeline/seo_lastmod.json, [hash, date, published], seeded from that file's history), else its date now; it never moves
+export const publishedOf = (prev, date) => (prev && prev[2] && prev[2] <= date ? prev[2] : prev && prev[1] && prev[1] < date && !prev[2] ? prev[1] : date);

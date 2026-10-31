@@ -191,7 +191,10 @@ test("numbers are written the way each language writes them", () => {
   assert.equal(I.E("en", 0.05), "€50m");
   assert.equal(I.E("de", 74.666), "74,7 Mrd. €");
   assert.equal(I.E("fr", 0.05), "50 M€");
-  assert.equal(I.E("es", 74.666), "74,7 mil M€");
+  // round 69: Spanish in millions, "74.700 M€" (it was "74,7 mil M€"); the map's own form is turned into it on the pages
+  assert.equal(I.E("es", 74.666), "74.700\u00a0M€");
+  assert.equal(I.E("es", 115.38), "115.000\u00a0M€");
+  assert.equal(I.E("es", 0.522), "522\u00a0M€");
   assert.equal(I.E("en", 0.522), "€522m");   // round 68: under €1bn in millions, as the map writes it
   assert.equal(I.E("pl", 547.2), "547 mld €");
   assert.equal(I.P("en", 3.651), "3.7%");
@@ -887,6 +890,54 @@ test("round 62: a ranking chart's axis holds every bar and range with zero; the 
     assert.equal(io.creator.name, "War Balance"); assert.match(io.license, /creativecommons\.org\/licenses\/by\/4\.0/); assert.equal(io.acquireLicensePage, "https://warbalance.org/downloads/"); }
 });
 
+// ----- round 69: square charts, flags, findings, the world map, the credit inside the file -----
+test("round 69: gridline values are round, a finding title comes from the data, a square chart keeps its wide copy", () => {
+  assert.deepEqual(GI.niceTicks(0, 82.6, 6), [0, 20, 40, 60, 80]);
+  assert.deepEqual(GI.niceTicks(-10, 12, 6), [-10, -5, 0, 5, 10]);
+  assert.equal(GI.tickText({ l: "en", unit: "eur" }, 0), "0");
+  assert.equal(GI.tickText({ l: "en", unit: "pct", signed: true }, 5), "+5%");
+  assert.equal(GI.tickText({ l: "de", unit: "eur" }, 20).replace(/\s/g, " "), "20 Mrd. €");
+  assert.equal(GI.widePath("/img/ukraine-aid-by-country.webp"), "/img/ukraine-aid-by-country-wide.webp");
+  // the finding: every language fills the country and its figure (no placeholder left, the same ones as English)
+  for (const l of I.LANGS) {
+    const t = I.img(l, "fPp", { N: "Norway", v: "€2,298" });
+    assert.ok(t.includes("Norway") && t.includes("€2,298") && !/[{}]/.test(t), l + " " + t);
+  }
+  const m = GI.rankChart({ key: "eur", l: "en", title: "t", source: "s", alt: "a", tick: { l: "en", unit: "eur" }, outline: true,
+    rows: [{ name: "Germany", flag: "de", v: 10, lo: 8, hi: 12, value: "€10bn", tone: "ua", segs: [{ v: 6, color: GI.PART_TONE[0] }, { v: 5, color: GI.PART_TONE[1] }, { v: -1, back: true }] }] });
+  const html = GI.chartHtml(m, "warbalance.org", { flags: { de: "data:image/svg+xml;base64,AA" }, ukr: { d: "M0 0L1 1Z", w: 1, h: 1 } }, "sq");
+  assert.match(html, /class="f"><img src="data:image\/svg\+xml/);
+  assert.match(html, /class="b bk"/);          // money flowing back: striped over the end of the parts
+  assert.match(html, /class="axl"/);           // the gridlines' values
+  assert.match(html, /class="ukr"/);           // Ukraine's outline
+  assert.match(html, /CC BY 4\.0/);
+  const sq = GI.figureHtml({ path: "/img/x.webp", alt: "x", l: "en", w: 1200, h: 1200 });
+  assert.match(sq, /width="1200" height="1200"/);
+  assert.equal(GI.imageObject({ path: "/img/x.webp", alt: "x", l: "en", w: 1200, h: 1200 }, p => "https://warbalance.org" + p).thumbnail.height, 800);
+});
+
+test("round 69: the world map from the map's atlas (Crimea with Ukraine), and the credit written into a WebP file", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const topo = JSON.parse(await readFile(new URL("../site/countries-50m.json", import.meta.url), "utf8"));
+  const w = GI.worldShapes(topo);
+  assert.ok(w.shapes.length > 200 && w.h > 400 && w.h < 600, w.h);
+  assert.ok(!w.shapes.some(s => s.id === "010"), "no Antarctica");
+  const ua = GI.ukraineOutline(topo);
+  assert.ok((ua.d.match(/M/g) || []).length >= 2, "Ukraine with Crimea");
+  const map = GI.mapChart({ l: "en", title: "t", source: "s", alt: "a", countries: { "156": "g6" }, tones: { g6: { color: GI.TONE.ru, text: "Toward Russia" } }, labels: [{ id: "156", name: "China", value: "€128bn" }] });
+  assert.match(GI.chartHtml(map, "warbalance.org", { world: w }, "sq"), /China <tspan class="v">€128bn/);
+  // a simple lossy WebP (VP8) becomes an extended one with its XMP chunk; the image data is kept
+  const vp8 = Buffer.from("RIFF\0\0\0\0WEBPVP8 \x04\0\0\0abcd", "latin1"); vp8.writeUInt32LE(vp8.length - 8, 4);
+  const out = GI.webpWithXmp(vp8, 1200, 1200, GI.xmpPacket({ ...GI.XMP_RIGHTS, title: "t" }));
+  assert.equal(out.toString("ascii", 12, 16), "VP8X");
+  assert.equal(out[20] & 0x04, 0x04);
+  assert.equal(out.readUIntLE(24, 3) + 1, 1200);
+  assert.ok(out.includes(Buffer.from("VP8 \x04\0\0\0abcd", "latin1")));
+  assert.equal(out.readUInt32LE(4), out.length - 8);
+  const x = out.toString("utf8");
+  for (const f of ["<photoshop:Credit>War Balance (warbalance.org)</photoshop:Credit>", "War Balance, CC BY 4.0", "<xmpRights:WebStatement>https://warbalance.org/downloads/</xmpRights:WebStatement>", "<rdf:li>War Balance</rdf:li>"]) assert.ok(x.includes(f), f);
+});
+
 // ----- round 63 (independent SEO audit) -----
 const LOC_HUN = { net: { chance: "very likely · 97%", range: "likely 0.72% to 9.8% toward Russia" }, kept: "Russia kept €12.3bn (6.4% of GDP) more than without the war", uaVerb: "Support", ua: { eur: "€0.67bn" } };
 test("round 63: a page whose title asks the Russia question opens with the trade with Russia and the net, in every language", () => {
@@ -1068,4 +1119,30 @@ test("round 68: plain opening paragraphs: no '10.0%' in a title, negative suppor
     assert.ok(/Kiel|Кіль/.test(x.intro) && !/\{|undefined/.test(x.intro + x.intro2), l);
     assert.ok(!/eines Jahres-BIP|d'une année de PIB|de un año de PIB|van een jaar bbp|rocznego PKB|річного ВВП|of a year's GDP/.test(x.intro2), l + " " + x.intro2);
   }
+});
+
+// ----- round 69: why the published figures differ (seo_country.mjs differText), Spanish amounts on the pages -----
+test("country page: the published figures and why they differ, with every source a link", () => {
+  const c = mkC({ name: "France", iso: "FRA", fig: { ...mkC().fig, ua: 16.9, uaPct: 0.6 },
+    measures: { "part:aid": { v: 4.3 }, "part:euaid": { v: 9.8 }, "part:ref": { v: 1.8 }, kiel: { v: 7.91 } } });
+  const x = { ...SC.facts(c, { l: "en", fuelDefault: 0.1, tradeYears: [2021, 2025] }), data: true };
+  const F = (f, k, v) => SC.fig("en", f, k, v, c.gdp);
+  const pub = [{ value: 6.5, currency: "EUR", as_of: "2025-12-31", cover: "covMilEpf", epf: true, publisher: { en: "France's Ministry of the Armed Forces" }, source_url: "https://example.org/r.pdf" }];
+  const d = SC.differText(c, x, { l: "en", dataTo: "31 August 2026", published: pub, kielAdj: { era: 0 } }, F);
+  assert.ok(d, "a block where other figures exist");
+  assert.equal(d.q, "Why do estimates of France's aid to Ukraine range from €6.5bn to €16.9bn?");
+  const t = SC.plainText(d.html);
+  assert.match(t, /run from €6.5bn to €16.9bn/);
+  assert.match(t, /own aid €4.3bn, its share of EU aid €9.8bn, hosting refugees €1.8bn, other parts €1bn/);
+  assert.match(t, /European Peace Facility/);
+  assert.ok(d.html.includes(`href="${SC.KIEL_URL}"`) && d.html.includes('href="https://example.org/r.pdf"'));
+  // no other figure: no block
+  assert.equal(SC.differText({ ...c, measures: { "part:aid": { v: 4.3 } } }, { ...x, kielFig: 0 }, { l: "en", dataTo: "", published: [] }, F), null);
+});
+test("Spanish amounts in millions on the pages, also the map's own (typoText)", async () => {
+  const P = await import("./seo_pages.mjs");
+  assert.equal(P.typoText("es", "16,9 mil M€ y 16,1–17,8 mil M€; 115 mil M€"), "16.900 M€ y 16.100–17.800 M€; 115.000 M€");
+  assert.equal(T.publishedOf(["h", "2026-10-30", "2026-10-26"], "2026-10-31"), "2026-10-26");
+  assert.equal(T.publishedOf(["h", "2026-10-27"], "2026-10-31"), "2026-10-27");
+  assert.equal(T.publishedOf(undefined, "2026-10-31"), "2026-10-31");
 });
