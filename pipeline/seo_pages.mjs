@@ -41,6 +41,8 @@ import * as RS from "./seo_research.mjs";
 import * as DLX from "./seo_downloads.mjs";
 import * as G from "./seo_images.mjs";
 
+// the dataset's Zenodo DOI (all versions; resolves to the latest release), in every page's cite line
+export const DATA_DOI = "10.5281/zenodo.23832992";
 const HERE = dirname(fileURLToPath(import.meta.url));
 const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const jsonld = o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, "\\u003c")}</script>`;
@@ -316,7 +318,7 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
 
   // ----- round 56: the family pages' models, built once per language (their rows tell the country pages what links them) -----
   const dataToL = Object.fromEntries(T.LANGS.map(l => [l, monthL(l)]));
-  CITE = (l, url) => I.s(l, "cite", { dataTo: dataToL[l] || dataToL.en, url });
+  CITE = (l, url) => I.s(l, "cite", { dataTo: dataToL[l] || dataToL.en, doi: DATA_DOI, url });
   const MODELS = {};   // path -> { l: model }
   // round 61 (CTR): the values a topic's title and text may use besides its table: the data's last year ("2022–2026"),
   // and on the frozen-assets page the amounts frozen (frozen_amounts_r58.json: Euroclear, the reserves in the EU)
@@ -1034,7 +1036,7 @@ ${foot(l)}`;
     const X = I.LLMS.en, f = (k, v = {}) => I.fmt(X[k], v), link = (name, p, what) => `- [${name}](${abs(p)}): ${what}`;
     const head = [`# War Balance`, "", `> ${X.summary}`, "", f("dataLine", { dataTo: dataToL.en }), "",
       `## ${X.hMeasures}`, "", ...X.defs.map(d => "- " + d), "- " + f("chance", { chanceKey: EN.chanceKey || "" }), "",
-      `## ${X.hCite}`, "", f("cite", { dataTo: dataToL.en }), "",
+      `## ${X.hCite}`, "", f("cite", { dataTo: dataToL.en, doi: DATA_DOI }), "",
       `## ${X.hPages}`, "", link("Map", "/", X.pages.home), link(T.L("en", "ranking"), "/ranking/", X.pages.ranking), link(T.L("en", "supportPage"), "/support-for-ukraine/", X.pages.support),
       link(T.L("en", "tradePage"), "/trade-with-russia/", X.pages.trade), link(I.s("en", "allTopics"), "/topics/", X.pages.topics), link(I.s("en", "downloads"), "/downloads/", X.pages.downloads),
       ...TOPICS.map(e => `- [${e.label}](${abs(pathOf(e))})`), ...RPAGE.map(x => link(rLabel(x, "en"), x.path, X.pages[x.key])), "", X.markdown, X.langs, "",
