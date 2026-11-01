@@ -1185,3 +1185,22 @@ test("the plain layer: lead, verdict and plain words follow the data", async () 
   // a support figure that rounds to nothing is not a headline
   assert.equal(SC.leadOf({ party: false, ua: 0.0001, uaPct: 0.0001 }, false), "net");
 });
+// round 70b: the shared plain blocks, and the country page's plain opening
+test("the plain blocks: bars from zero both ways, experts folded, a plain opening without shares of GDP", async () => {
+  const PLB = await import("./seo_plain.mjs"), SC = await import("./seo_country.mjs");
+  const b = PLB.bars([{ name: "A", v: 2, value: "+2", tone: "ua" }, { name: "B <x>", v: -1, value: "−1", tone: "ru" }]);
+  assert.match(b, /class="z" style="left:33.3%"/);
+  assert.match(b, /B &lt;x&gt;/);
+  assert.equal(PLB.experts("en", "  "), "");
+  assert.match(PLB.experts("en", "<p>x</p>"), /<details class="experts" id="experts"><summary><h2>For experts: ranges, certainty and method<\/h2>/);
+  assert.equal(PLB.bars([]), "");
+  const words = { sure: "very likely", lean: "likely", zero: "essentially zero" };
+  const gr = { N: "France", Nt: "France", NtCap: "France", Na: "France", NaCap: "France", Nd: "France", plural: 0, fem: 0, neu: 0 };
+  const c = { fig: { rus: 20.2 } }, x = { ua: 16.9, uaPct: 0.6, netEur: 43.6, level: "sure", sideWords: "toward Ukraine" };
+  const t = SC.plainIntro(c, x, { l: "en", words, gr, lead: "ua", dirWords: "toward Ukraine" });
+  assert.equal(t, "France has given Ukraine €16.9bn since 2022. With its trade with Russia added, the overall balance is €43.6bn toward Ukraine (very likely).");
+  assert.doesNotMatch(t, /%/);
+  const cn = SC.plainIntro({ fig: { rus: -128 } }, { ua: -0.52, uaPct: -0.004, netEur: -128.5, level: "sure", sideWords: "toward Russia" }, { l: "en", words, gr: { ...gr, Nt: "China" }, lead: "net", dirWords: "toward Russia" });
+  assert.match(cn, /add up to €129bn toward Russia \(very likely\)\. Russia kept €128bn more from their trade/);
+  assert.doesNotMatch(cn, /has given/);
+});

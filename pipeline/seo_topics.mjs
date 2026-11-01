@@ -185,7 +185,7 @@ td.k,th.k{text-align:right;min-width:7.5em}td.k .s{display:block;font-size:12.5p
 // l: the page's language; the countries in m are that language's (their names, ranges and chance words the map's)
 // extra (round 58b): columns beside the model's, from a research file ({ heads: [label], cell: country => '<td>…</td>…' }):
 // the amounts frozen on /frozen-russian-assets/ (seo_research.mjs frozenCells), outside the checked figure cells (td.m)
-export function renderTopic(m, { esc, cPath, l = "en", extra = null }) {
+export function renderTopic(m, { esc, cPath, l = "en", extra = null, parts = false }) {
   const T = (k, v, n) => S(l, k, v, n), Pl = x => PL(l, x), El = x => EL(l, x), PPl = x => PPL(l, x), lab = k => label(k, l);
   const name = c => (l === "en" ? c.nameEn : c.name || c.nameEn);
   const cls = v => (v >= 0.0005 ? "pos" : v <= -0.0005 ? "neg" : "");
@@ -259,7 +259,11 @@ export function renderTopic(m, { esc, cPath, l = "en", extra = null }) {
   const legendOf = k => { const st = style(k), sd = sideOfKey(m.rows, k); return st === "kept" ? "legendKept" : st !== "signed" ? "" : sd === "back" ? "legendBack" : sd === "ua" || k === "ua" ? "legendUa" : "legendSigned"; };
   const legend = [...new Set([m.key, ...m.columns].map(legendOf))].filter(Boolean).map(x => T(x));
   const rankNote = `${m.year ? T("rankByYear", { m: lab(m.key), unit: T("unit")[m.sort], order: ord, y: m.yearL || m.year }) : T("rankBy", { m: lab(m.key), unit: T("unit")[m.sort], order: ord, to: m.dataToL || "" })}${m.kind !== "group" && m.minGdp > 0 ? " " + T("minGdp", { gdpMin: El(m.minGdp) }) : ""} ${legend.length ? cap1(legend.join("; ")) + "." : ""}`;
-  return `${tot}
+  // round 70b: the parts apart (parts: true), so a page can show its sections and questions and fold the table under
+  // "For experts"
+  const secHtml = m.sections.map(s => `${s.h2 ? `<h2>${esc(s.h2)}</h2>` : ""}${s.p.map(p => `<p>${esc(p)}</p>`).join("")}${s.list.length ? `<ul class="bul">${s.list.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}`).join("\n");
+  const faqHtml = m.faq.length ? `<section class="faq"><h2>${esc(T("questions"))}</h2>${m.faq.map(x => `<h3>${esc(x.q)}</h3><p${x.rq ? ` data-rq="${x.rq}"` : ""}>${esc(x.a)}</p>`).join("\n")}</section>` : "";
+  const tableHtml = `${tot}
 ${subs}
 <h2 id="table">${esc(m.kind === "group" ? T("members") : T("ranking"))} · ${m.rows.length}</h2>
 <p class="sub" data-note="order">${esc(rankNote.trim())}</p>
@@ -267,8 +271,10 @@ ${m.side === "cost" ? `<p class="sub">${esc(T("notInTotals"))}</p>` : ""}
 ${m.notes.map(n => `<p class="sub">${esc(n)}</p>`).join("")}
 <div class="tbl"><table class="topic" data-order="${m.order}" data-sort="${m.sort}" data-key="${m.key}"${side0 ? ` data-side="${side0}"` : ""}>${head}<tbody>${m.rows.map(row).join("")}</tbody></table></div>
 <p class="sub">${esc(m.year ? T("eachRowYear") : CHANCE_KEYS.includes(m.key) ? T("eachRow") : T("eachRowPart"))}</p>
-${others}
-${m.sections.map(s => `${s.h2 ? `<h2>${esc(s.h2)}</h2>` : ""}${s.p.map(p => `<p>${esc(p)}</p>`).join("")}${s.list.length ? `<ul class="bul">${s.list.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}`).join("\n")}
-${m.faq.length ? `<section class="faq"><h2>${esc(T("questions"))}</h2>${m.faq.map(x => `<h3>${esc(x.q)}</h3><p${x.rq ? ` data-rq="${x.rq}"` : ""}>${esc(x.a)}</p>`).join("\n")}</section>` : ""}`;
+${others}`;
+  if (parts) return { table: tableHtml, sections: secHtml, faq: faqHtml };
+  return `${tableHtml}
+${secHtml}
+${faqHtml}`;
 }
 const cap1 = s => s.charAt(0).toUpperCase() + s.slice(1);

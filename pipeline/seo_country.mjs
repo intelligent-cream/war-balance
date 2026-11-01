@@ -499,7 +499,7 @@ export function verdictOf(c, x, words) {
   return { text: cap(lv === "unc" ? w.unc : lv === "near" ? w.near : w.zero || ""), cls: "mid" };
 }
 // the map's chance word for a level (very likely, likely, too close to call, near zero, essentially zero)
-const chanceWord = (w, lv) => (lv === "sure" ? w.sure : lv === "lean" ? w.lean : lv === "unc" ? w.unc : lv === "near" ? w.near : lv === "zero" ? w.zero : "") || "";
+export const chanceWord = (w, lv) => (lv === "sure" ? w.sure : lv === "lean" ? w.lean : lv === "unc" ? w.unc : lv === "near" ? w.near : lv === "zero" ? w.zero : "") || "";
 // which number the card leads with: what it gave Ukraine where the page asks that (seo_templates.mjs russiaLead) and its
 // support is above zero, else the overall balance
 export const leadOf = (x, russiaFirst) => (!russiaFirst && !x.party && x.ua >= MAT0 && !(Math.abs(x.uaPct) < 0.01 && Math.abs(x.ua) < 0.05) ? "ua" : "net");
@@ -560,6 +560,19 @@ export function breakdownHtml(c, x, o, F) {
   return `<section class="brk" aria-labelledby="where-from"><h2 id="where-from">${esc(PX(l, "tBreak"))}</h2>
 <ol class="wf">${rows.join("")}</ol>
 <p class="sub">${esc(PX(l, "bkKey"))} ${esc(PX(l, "bkHow"))}</p></section>`;
+}
+
+// round 70b (owner: the two dense paragraphs under the card repeated it in jargon): the page's opening, a short plain
+// sentence pair under the card (Google's snippet): the headline figure the title asks for, then the other side of the
+// balance; no share of GDP. Plain text, each amount written as the title and the card write it (one figure per concept)
+export function plainIntro(c, x, o) {
+  const l = o.l, w = o.words || {}, gr = o.gr, rus = (c.fig || {}).rus || 0, word = chanceWord(w, x.level);
+  const tiny = Math.abs(x.uaPct) < 0.01 && Math.abs(x.ua) < 0.05;
+  const v = { ...gr, ua: (x.ua < 0 && Math.abs(x.ua) >= MAT0 ? "−" : "") + I.E(l, x.ua), net: I.E(l, x.netEur), rus: I.E(l, rus), side: o.dirWords || x.sideWords, word };
+  const n = { ...gr, word: word ? 1 : 0, less: rus >= 0 ? 1 : 0, uaPos: x.ua >= MAT0 && !tiny ? 1 : 0 };
+  if (o.lead === "ua") return [PX(l, "introGave", v, n), PX(l, "introBal", v, n)].join(" ");
+  const first = x.party && c.partyWhy ? [c.partyWhy] : [];
+  return [...first, PX(l, "introNet", v, n), Math.abs(rus) >= MAT0 ? PX(l, "introNet2", v, n) : ""].filter(Boolean).join(" ");
 }
 
 // three sentences, each a condition on the data: what its support is made of (or that it is about nothing, or below
@@ -629,6 +642,7 @@ ol.cmp li{grid-template-areas:"l v" "t t" "s s";padding:8px 0}ol.cmp .cs{grid-ar
 ol.cmp li.here{font-weight:700;background:var(--surface);margin:0 -8px;padding:8px}
 ul.pwl{list-style:none;padding:0;margin:8px 0 6px}ul.pwl li{position:relative;padding:0 0 0 30px;margin:0 0 12px;font-size:18px;line-height:1.5}
 ul.pwl li::before{content:"";position:absolute;left:4px;top:.42em;width:12px;height:12px;border-radius:50%;background:var(--ukr);box-shadow:0 0 0 4px var(--ukr-lo)}
+.t-grey{background:#6d8193}.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin:14px 0 20px}.pair .ans{margin:0}.pair .abig{font-size:clamp(38px,10vw,52px)}
 ol.hb{list-style:none;padding:0;margin:10px 0 12px}ol.hb li{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"l v" "t t" "s s";gap:4px 12px;padding:8px 0;border-bottom:1px solid var(--line);align-items:center}
 ol.hb .cn{grid-area:l;font-weight:600}ol.hb .ht{grid-area:t;display:block;height:16px}ol.hb .hs{position:relative;display:flex;height:100%;min-width:3px;border-radius:3px;overflow:hidden}ol.hb .hs i{display:block;height:100%}ol.hb .hb-back{position:absolute;top:0}
 ol.hb .cs{grid-area:s;font-size:14px;color:var(--soft)}.lg{display:inline-flex;align-items:center;gap:6px;margin-right:12px;white-space:nowrap}

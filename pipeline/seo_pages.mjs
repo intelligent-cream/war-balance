@@ -39,7 +39,8 @@ import { buildTopic, renderTopic, TOPIC_CSS, pathOf, mv, armedOf, style, style a
 import { htmlToMarkdown } from "./seo_markdown.mjs";
 import { partEntries, yearEntries, compareEntries } from "./seo_families.mjs";
 import * as I from "./seo_i18n.mjs";
-import { countryDyn, plainText, mapRank, rankable, sameRegion, similarOf, plainCard, breakdownHtml, plainBullets, yearBars, compareBars, leadOf, PLAIN_CSS, facts as factsOf, fig } from "./seo_country.mjs";
+import { countryDyn, plainText, mapRank, rankable, sameRegion, similarOf, plainCard, breakdownHtml, plainBullets, yearBars, compareBars, leadOf, PLAIN_CSS, facts as factsOf, fig, plainIntro, verdictOf, chanceWord } from "./seo_country.mjs";
+import * as PL from "./seo_plain.mjs";
 import * as RS from "./seo_research.mjs";
 import * as DLX from "./seo_downloads.mjs";
 import * as G from "./seo_images.mjs";
@@ -780,7 +781,7 @@ ${nearHtml}`;
         // ranges, chances, grades, the full parts table, the method notes and the sources folded under "For experts"
         const P = plainOf(l, c0, c, copy, pr);
         reading = `${plainCard(c, P.x, P.o, P.F)}
-${introHtml}
+<p class="intro">${esc(plainIntro(c, P.x, P.o))}</p>
 ${breakdownHtml(c, P.x, P.o, P.F)}
 ${plainBullets(c, P.x, P.o, P.F)}
 ${cimg ? `<section class="chartsec" aria-labelledby="in-one-chart"><h2 id="in-one-chart">${esc(I.plain(l, "tChart"))}</h2>
@@ -794,6 +795,7 @@ ${faqHtml}
 <details class="experts" id="experts"><summary><h2>${esc(I.plain(l, "tExperts"))}</h2></summary>
 <p class="sub">${esc(I.plain(l, "expertsNote"))}</p>
 ${partyHtml}
+<p>${esc(copy.intro)}</p>${copy.intro2 ? `\n<p>${esc(copy.intro2)}</p>` : ""}
 ${main}
 </details>`;
       }
@@ -901,6 +903,22 @@ ${foot(l)}`;
       const ppZero = /^[+−]?€?\s?0[.,]0(?!\d)|^[+−]?0[.,]0\s/.test(String(r.pp || "").trim());
       return { ...r, value: un(r.value), eur: under(un(r.eur)), pp: ppZero ? "" : un(r.pp) };
     };
+    // round 70b: the ranking and the trade page's plain layer: how many countries are in each of the map's groups (the
+    // groups' own labels), the two ends of the list and the parties to the war shown apart
+    if (!plainTop) {
+      // (every row counts, the smaller economies too: the intro's number of countries ranked; the lists' tops are the larger ones)
+      const big = g => g.rows.filter(r => !r.small), n = rk.groups.reduce((a, g) => a + g.rows.length, 0);
+      const g0 = rk.groups.find(g => g.g === 0), g6 = rk.groups.find(g => g.g === 6), TONE_G = ["ua", "uaF", "grey", "grey", "grey", "ruF", "ru"];
+      if (n && g0) {
+        const tops = rows => I.list3(l, rows.slice(0, 3).map(r => `${I.inList(l, nmL(r.iso, l))} (${String(r.value)})`));
+        plainTop = {
+          card: PL.card({ l, cls: "pos", pre: I.plain(l, "rkPre", { n }), big: esc(String(g0.rows.length)), post: g0.label, ctx: g6 ? esc(I.plain(l, "rkCtx", { n6: g6.rows.length, label6: g6.label })) : "" }),
+          bars: PL.section("groups-at-a-glance", I.plain(l, "tGroups"), PL.bars(rk.groups.filter(g => g.rows.length).map(g => ({ name: g.label, href: "#" + ids[g.g], v: g.rows.length, value: esc(String(g.rows.length)), tone: TONE_G[g.g] })))),
+          bullets: PL.plainWords(l, [esc(I.plain(l, "rkStarts", { label: g0.label, tops: tops(big(g0)) })), g6 && big(g6).length ? esc(I.plain(l, "rkStarts", { label: g6.label, tops: tops(big(g6).slice().reverse()) })) : "",
+            rk.party.length ? esc(I.plain(l, "rkParty", { n: rk.party.length })) : ""]),
+        };
+      }
+    }
     const lists = `${rk.groups.filter(g => g.rows.some(r => !r.small)).map(g => { const big = g.rows.filter(r => !r.small), list = g.g === 6 ? big.slice().reverse() : big;
   // round 60 (audit: the "Toward Russia" group numbered 33 down to 1): it is listed from number 1, the furthest toward Russia
   return `<h2 id="${ids[g.g]}">${esc(gHead(g, big.length))}</h2>${g.g === 6 ? `<p class="sub">${esc(T.L(l, "rankRussiaOrder", { one: 1 }))}</p>` : ""}<ol class="rk">${list.map(r => rankLi(plainRow(r, g), rowExtra(plainRow(r, g)), l)).join("")}</ol>`; }).join("\n")}
@@ -1080,6 +1098,36 @@ ${foot(l)}`;
   // round 62: the topic pages that answer with a chart (seo_images.mjs): the image shown near the top and as og:image
   // round 69: the support tracker its own chart (the site's figures beside the Kiel Institute's), countries helping Russia
   // the world map (its bar chart second), and every other page with a table a chart of its first rows
+  // round 70b (owner: "this is the right style, apply this to all pages"): a topic, part, year or group page's plain layer,
+  // from its own table: the card is its first row (the figure as its table and chart write it), the bars its first ten
+  // rows, and three sentences, each a condition on the rows (seo_i18n.mjs PLAIN; seo_plain.mjs)
+  const topicPlain = (e, l, m, copy) => {
+    const rows = m.rows, key = m.key, unit = m.sort, st = styleOf(key), sideK = m.keySide, signed = st === "signed";
+    const xOf = c => mv(c, key, m.year), inU = (c, v) => (unit === "eur" ? v : unit === "pp" ? (c.pop ? (v * 1000) / c.pop : null) : c.gdp ? (100 * v) / c.gdp : null);
+    const fmtU = v => (unit === "eur" ? I.E(l, Math.abs(v)) : unit === "pp" ? I.PP(l, Math.abs(v)) : I.P(l, Math.abs(v)));
+    const items = rows.map(c => { const x = xOf(c); if (!x) return null; const v = inU(c, x.v); if (v == null || !isFinite(v)) return null;
+      const sg = Math.abs(x.v) < 0.0005 ? "" : signed || st === "kept" ? (x.v > 0 ? "+" : "−") : x.v < 0 ? "−" : "";
+      const tone = signed || st === "kept" ? PL.toneOf(x.v, sureRow(m.year ? null : x)) : sideK === "rus" ? "ru" : sideK === "back" || sideK === "cost" ? "grey" : "ua";
+      return { c, x, v, eur: x.v, sg, value: sg + fmtU(v), tone }; }).filter(Boolean);
+    if (!items.length) return null;
+    // a list where every amount is above zero needs no "+" (as the page of support by country writes it)
+    if (items.every(it => it.eur >= 0) && st !== "kept") for (const it of items) it.value = it.value.replace(/^\+/, "");
+    const nm = it => rowName(l, it.c), t = items[0];
+    const cls = /^ua/.test(t.tone) ? (t.tone === "ua" ? "pos" : "fpos") : /^ru/.test(t.tone) ? (t.tone === "ru" ? "neg" : "fneg") : "mid";
+    const ctx = esc(m.year ? I.plain(l, "unitYear", { y: m.yearL || m.year }) : unit === "gdp" ? I.plain(l, "unitGdp") : unit === "pp" ? I.plain(l, "unitPp") : I.plain(l, "unitEur", { dataTo: dataToL[l] }));
+    const card = PL.card({ l, cls, chip: { text: I.measureName(l, key), cls }, pre: cap(nm(t)), big: esc(t.value), post: I.plain(l, "tpPost", { k: 1, n: items.length }), ctx });
+    const barsH = PL.section("at-a-glance", I.plain(l, "tGlance"), PL.bars(items.slice(0, 10).map((it, i) => ({ name: it.c.name || it.c.nameEn, href: cPath(it.c, l), rank: i + 1, v: it.v, value: esc(it.value), tone: it.tone }))), "glance");
+    const words = [esc(I.plain(l, "listStarts", { tops: I.list3(l, items.slice(0, 3).map(it => `${I.inList(l, it.c.name)} (${it.value})`)) }))];
+    const allPos = items.every(it => it.eur >= 0), sum = items.reduce((a, it) => a + it.eur, 0);
+    const mixed = items.some(it => it.eur >= 0.0005) && items.some(it => it.eur <= -0.0005);
+    if (signed && mixed) words.push(esc(I.plain(l, "signs", { n: items.length, nPos: items.filter(it => it.eur >= 0.0005).length, nNeg: items.filter(it => it.eur <= -0.0005).length })));
+    else if (st !== "kept" && (allPos || items.every(it => it.eur <= 0)) && Math.abs(sum) >= 0.0005) words.push(esc(I.plain(l, "sumAll", { n: items.length, sum: (sum < 0 ? "−" : "") + I.E(l, sum) })));
+    if (CHANCE.has(key) && !m.year) words.push(esc(I.plain(l, "sureCount", { n: items.length, nSure: items.filter(it => it.x.level === "sure").length, word: WORDS[l].sure })));
+    else if (st !== "kept" && allPos && sum >= 0.0005 && t.eur / sum >= 0.01) words.push(esc(I.plain(l, "topShare", { N: cap(nm(t)), q: I.PI(l, (100 * t.eur) / sum) })));
+    else if (m.party.length) words.push(esc(I.plain(l, "partyApart", { n: m.party.length })));
+    return { card, bars: barsH, words: PL.plainWords(l, words.slice(0, 3)) };
+  };
+  const CHANCE = new Set(["net", "ua", "rus"]);
   const TOPIC_IMG = { "ukraine-aid-per-capita": "pp", "countries-helping-russia": "map", "frozen-russian-assets": "frozen" };
   for (const e of [...TOPICS, ...PARTS, ...YEARS]) {
     const path = pathOf(e), alts = famAlts(path);
@@ -1119,12 +1167,15 @@ ${foot(l)}`;
       // tables on the buyers page (fuel_split_r59.json)
       const milCols = MIL && RCFG.military && e.slug === RCFG.military.support ? { heads: RS.milHeads(l), cell: c => RS.milCells(l, MIL, c.iso) } : null;
       const fuelHtml = FUEL && RCFG.fuel && e.slug === RCFG.fuel.topic ? RS.fuelSection(l, FUEL, { nameOf: iso => nameAnyL(iso, l), href: iso => (byIso[iso] ? cPath(byIso[iso], l) : ""), rows: RCFG.fuel.rows }) : "";
+      const tp = topicPlain(e, l, m, copy), RT = renderTopic(m, { esc, cPath: c => cPath(c, l), l, extra: stockCols || milCols, parts: true });
       const body = `${top(l)}
-<main class="wrap">
+<main class="wrap plain">
 ${crumbs(l, items)}
 <h1>${esc(copy.h1)}</h1>
 ${dated(l)}
+${tp ? tp.card : ""}
 <p class="intro">${esc(copy.intro)}</p>
+${tp ? tp.bars + "\n" + tp.words : ""}
 ${G.figureHtml(timg, { caption: timg ? timg.caption : "" })}
 ${timg2 ? G.figureHtml(timg2, { lazy: true, caption: timg2.caption }) : ""}
 ${timg && e.slug === (RCFG.frozen || {}).topic && RIMG[l].frozenNone ? `<p class="sub">${esc(RIMG[l].frozenNone)}</p>` : ""}
@@ -1133,12 +1184,14 @@ ${X.note ? `<p>${esc(X.note)}</p>` : ""}
 ${yearPrices(e, l)}
 ${explains.map(x => `<section class="explain" id="what-${x.id}"><h2>${esc(x.q)}</h2><p>${esc(x.a)}${x.link ? ` <a href="#table">${esc(x.link)} ↓</a>` : ""}</p></section>`).join("\n")}
 <p><a class="btn" href="${home(l)}${m.map}">${esc(T.L(l, "openMap"))} →</a></p>
-${renderTopic(m, { esc, cPath: c => cPath(c, l), l, extra: stockCols || milCols })}
+${RT.sections}
+${RT.faq}
+${PL.experts(l, `${RT.table}
 ${howFold(l, [moneyNote(l, m)])}
 ${stockCols ? `<p class="sub">${esc(I.res(l, "stockNote"))}</p>` : ""}
 ${stockCols || e.key === "frozen" ? `<p class="sub" data-note="frozen-eu">${esc(I.res(l, "frozenEuNote", FROZEN_SHARES))}</p>` : ""}
 ${milCols ? `<p class="sub">${esc(I.res(l, "mTrackerNote"))} <a href="${lp(l, "/" + RCFG.military.slug + "/")}">${esc(I.res(l, "mAll"))} →</a></p>` : ""}
-${fuelHtml}
+${fuelHtml}`)}
 ${rel.length ? `<h2 id="related">${esc(I.s(l, "related"))}</h2>${relList(l, rel)}` : ""}
 <p><a href="${lp(l, "/ranking/")}">${esc(T.L(l, "ranking"))}</a> · <a href="${lp(l, "/support-for-ukraine/")}">${esc(T.L(l, "supportPage"))}</a> · <a href="${lp(l, "/trade-with-russia/")}">${esc(T.L(l, "tradePage"))}</a> · <a href="${hub}">${esc(I.s(l, "allTopics"))}</a> · <a href="/how-it-works/">${esc(T.L(l, "how"))}</a></p>
 ${langLinks(l, path)}
@@ -1188,19 +1241,34 @@ ${foot(l)}`;
       const groupsBoth = (groupsOf[e.a] || []).filter(g => (groupsOf[e.b] || []).includes(g));
       const url = abs(lp(l, path)), hub = lp(l, "/topics/");
       const items = [[T.L(l, "map"), home(l)], [I.s(l, "topics"), hub], [copy.label, lp(l, path)]];
+      // round 70b: the two countries' answer cards side by side (the overall balance, its verdict in the map's words),
+      // their numbers as bars, and a plain sentence for each
+      const cmpOk = [a, b].filter(ok), cx = c => factsOf(c, { l, fuelDefault, peers: PEERS[c.iso] });
+      const F2 = (c, f, k, v) => fig(l, f, k, v, c.gdp, c.iso);
+      const cards = cmpOk.map(c => { const x = cx(c), vd = verdictOf(c, x, WORDS[l]), cN = c.fig.cN || {};
+        return PL.card({ l, cls: vd.cls, chip: vd, pre: c.name, big: F2(c, "e", "netEur", x.netEur), post: cN.dirWords || cN.sideWords || "", ctx: I.plain(l, "cmpCtx", { p: F2(c, "p", "netEur", x.netEur) }) }); });
+      const lvOf = (c, q) => ((c.fig || {})[{ ua: "cU", rus: "cR", net: "cN" }[q]] || {}).level;
+      const mBars = [["ua", "uaEur", T.L(l, "support")], ["rus", "rusEur", T.L(l, "trade")], ["frozen", "frozenEur", T.L(l, "frozen")], ["net", "netEur", T.L(l, "net")]]
+        .filter(([q]) => cmpOk.some(c => Math.abs(c.fig[q === "net" ? "net" : q] || 0) >= 0.0005))
+        .map(([q, k, lab]) => `<h3>${esc(lab)}</h3>${PL.bars(cmpOk.map(c => { const v = c.fig[q === "net" ? "net" : q] || 0; return { name: c.name, href: cPath(byIso[c.iso], l), v, value: F2(c, "s", k, v), tone: q === "frozen" ? "frozen" : PL.toneOf(v, c.party || q === "frozen" || lvOf(c, q) === "sure") }; }))}`).join("");
+      const cmpWords = cmpOk.map(c => { const x = cx(c), w = chanceWord(WORDS[l], x.level), cN = c.fig.cN || {};
+        return !c.party && ["unc", "near", "zero"].includes(x.level) ? esc(I.plain(l, "cmpClose", { N: c.name, word: w })) : esc(I.plain(l, "cmpSide", { N: c.name, side: cN.dirWords || cN.sideWords || "", word: w }, { word: w ? 1 : 0 })); });
       const body = `${top(l)}
-<main class="wrap">
+<main class="wrap plain">
 ${crumbs(l, items)}
 <h1>${esc(copy.h1)}</h1>
-<p class="intro">${esc(lines.join(" "))}</p>
-${line ? `<p>${esc(line)}</p>` : ""}
+${cards.length ? PL.pair(cards) : ""}
+<p class="intro">${cmpWords.length ? cmpWords.join(" ") : esc(lines.join(" "))}</p>
 <p class="sub">${esc(I.s(l, "compareOwn"))} ${[[cPath(byIso[e.a], l), (byIso[e.a].fig.ua || 0) > 0 ? givenText(l, e.a) : a.name], [cPath(byIso[e.b], l), (byIso[e.b].fig.ua || 0) > 0 ? givenText(l, e.b) : b.name], [lp(l, "/support-for-ukraine/"), T.L(l, "supportPage")]].map(([h, t]) => `<a href="${h}">${esc(t)}</a>`).join(" · ")}</p>
+${PL.section("side-by-side-bars", I.plain(l, "tCmpBars"), mBars, "glance")}
+${PL.plainWords(l, [...cmpWords, line ? esc(line) : esc(I.plain(l, "cmpSize"))])}
 <p><a class="btn" href="${home(l)}#${e.a}">${esc(a.name)} →</a> <a class="btn" href="${home(l)}#${e.b}">${esc(b.name)} →</a></p>
+${PL.experts(l, `${cmpWords.length ? `<p>${esc(lines.join(" "))}</p>` : ""}
 <h2 id="side-by-side">${esc(I.s(l, "sideBySide"))}</h2>
 ${renderTopic(m, { esc, cPath: c => cPath(c, l), l }).replace(/<h2 id="table">[^<]*<\/h2>\n<p class="sub"[^>]*>[^<]*<\/p>\n/, "")}
 ${partsTable}
 ${yearTable}
-${howFold(l, [I.s(l, "moneyOnly")])}
+${howFold(l, [I.s(l, "moneyOnly")])}`)}
 <h2 id="related">${esc(I.s(l, "related"))}</h2><ul class="rel"><li><a href="${cPath(byIso[e.a], l)}">${esc(a.name)}</a></li><li><a href="${cPath(byIso[e.b], l)}">${esc(b.name)}</a></li>${groupsBoth.concat(others).map(x => `<li><a href="${lp(l, pathOf(x))}">${esc(labelOf(x, l))}</a></li>`).join("")}<li><a href="${hub}">${esc(I.s(l, "allTopics"))}</a></li></ul>
 ${e.index ? langLinks(l, path) : ""}
 </main>
@@ -1220,7 +1288,7 @@ ${foot(l)}`;
       const ranks = l === "en" ? I.s("en", "rankings") : [[T.L(l, "ranking"), lp(l, "/ranking/")], [T.L(l, "supportPage"), lp(l, "/support-for-ukraine/")], [T.L(l, "tradePage"), lp(l, "/trade-with-russia/")]];
       const items = [[T.L(l, "map"), home(l)], [I.s(l, "topics"), lp(l, path)]];
       const body = `${top(l)}
-<main class="wrap">
+<main class="wrap plain">
 ${crumbs(l, items)}
 <h1>${esc(copy.h1)}</h1>
 <p class="intro">${esc(copy.description)}</p>
@@ -1261,15 +1329,40 @@ ${foot(l)}`;
         const simg = x.key === "sanctions" && pg.counts ? sancImg(l, pg.counts, lp(l, path)) : x.key === "military" ? milImg(l, lp(l, path)) : null;
         const rel = (x.cfg.related || []).map(sl => { const t = related(sl); if (t) return [labelOf(t, l), lp(l, pathOf(t))]; const r2 = RPAGE.find(y => y.cfg.slug === sl); return r2 ? [rLabel(r2, l), lp(l, r2.path)] : null; }).filter(Boolean);
         const items = [[T.L(l, "map"), home(l)], [I.s(l, "topics"), hub], [pg.label, lp(l, path)]];
+        // round 70b: the research pages' plain layer, from the page's own research file (seo_i18n.mjs PLAIN)
+        let rp = null;
+        if (x.key === "military" && MIL && pg.rows && pg.rows.length) {
+          const C = MIL.countries, TT = MIL.totals, r0 = pg.rows[0], nmI = iso => I.inSentence(l, nameAny(iso, l));
+          const byG = Object.keys(C).filter(i => (C[i].gdp_eur_bn || 0) >= (x.cfg.gdpMin ?? 5) && (C[i].military || 0) >= 0.0005).sort((p1, p2) => C[p2].military_pct_gdp - C[p1].military_pct_gdp);
+          rp = { card: PL.card({ l, cls: "pos", pre: I.plain(l, "milPre"), big: esc(I.E(l, TT.military)), ctx: esc(I.plain(l, "milCtx", { t1: cap(nmI(r0)), t1v: I.E(l, C[r0].military) })) }),
+            bars: PL.section("at-a-glance", I.plain(l, "tGlance"), PL.bars(pg.rows.filter(i => (C[i].military || 0) >= 0.0005).slice(0, 10).map((i, k) => ({ name: nameAny(i, l), href: byIso[i] ? cPath(byIso[i], l) : "", rank: k + 1, v: C[i].military, value: esc(I.E(l, C[i].military)), tone: "ua" }))), "glance"),
+            words: [I.plain(l, "listStarts", { tops: I.list3(l, pg.rows.slice(0, 3).map(i => `${I.inList(l, nmI(i))} (${I.E(l, C[i].military)})`)) }),
+              byG.length ? I.plain(l, "hubShare", { tops: I.list3(l, byG.slice(0, 3).map(i => `${I.inList(l, nmI(i))} (${I.P(l, C[i].military_pct_gdp)})`)) }) : "",
+              TT.kiel_military != null ? I.plain(l, "milKiel", { kielAll: I.E(l, TT.kiel_military), siteAll: I.E(l, TT.military) }) : ""] };
+        } else if (x.key === "sanctions" && pg.counts) {
+          const n = pg.counts, k = c => n[c] || 0, tot = k("eu_member") + k("adopts_eu_measures") + k("own_regime") + k("territory_uk_order");
+          rp = { card: PL.card({ l, cls: "pos", pre: I.plain(l, "sancPre"), big: esc(String(tot)), ctx: esc(I.plain(l, "sancCtx", {}, { uk: k("territory_uk_order") ? 1 : 0 })) }),
+            bars: PL.section("at-a-glance", I.plain(l, "tGlance"), PL.bars(Object.entries(n).map(([c, v]) => ({ name: I.res(l, "lab_" + c), href: "#" + c.replace(/_/g, "-"), v, value: esc(String(v)), tone: "grey" }))), "glance"),
+            words: [I.plain(l, "sEu", { n: k("eu_member") }), I.plain(l, "sAd", { n: k("adopts_eu_measures") }), I.plain(l, "sOwn", { n: k("own_regime") })] };
+        } else if (x.key !== "sanctions" && x.key !== "military" && pg.model && pg.model.lastFull) {
+          const M0 = pg.model, lf = M0.lastFull, full = M0.years.filter(y => y.complete), ytd = M0.ytd, f0 = full[0];
+          const yl = y => (y.complete ? String(y.y) : I.res(l, "partYear", { y: y.y, month: I.monthOnly(`${M0.latest}-15`, l) }));
+          rp = { card: PL.card({ l, cls: "neg", pre: I.plain(l, "revPre", { y: lf.y }), big: esc(I.E(l, lf.og_rev_eur)), ctx: esc(I.plain(l, "revCtx", { share: I.P(l, 100 * lf.share) })) }),
+            bars: PL.section("at-a-glance", I.plain(l, "tGlance"), PL.bars(M0.years.filter(y => y.og_rev_eur != null).map(y => ({ name: yl(y), v: y.og_rev_eur, value: esc(I.E(l, y.og_rev_eur)), tone: y.complete ? "ru" : "ruF" }))), "glance"),
+            words: [f0 && f0 !== lf ? I.plain(l, "revFromTo", { y0: f0.y, v0: I.E(l, f0.og_rev_eur), y1: lf.y, v1: I.E(l, lf.og_rev_eur) }) : "",
+              ytd ? I.plain(l, "revYtd", { y: ytd.y, month: I.monthOnly(`${M0.latest}-15`, l), v: I.E(l, ytd.og_rev_eur) }) : "", I.plain(l, "revNote")] };
+        }
         const body = `${top(l)}
-<main class="wrap">
+<main class="wrap${rp ? " plain" : ""}">
 ${crumbs(l, items)}
 <h1>${esc(pg.h1)}</h1>
 ${dated(l)}
+${rp ? rp.card : ""}
 <p class="intro">${esc(pg.intro)}</p>
+${rp ? rp.bars + "\n" + PL.plainWords(l, rp.words.filter(Boolean).map(esc)) : ""}
 ${G.figureHtml(simg)}
 ${explains.map(e2 => `<section class="explain" id="what-${e2.id}"><h2>${esc(e2.q)}</h2><p>${esc(e2.a)}</p></section>`).join("\n")}
-${pg.body}
+${rp ? PL.experts(l, pg.body) : pg.body}
 <section class="faq" id="faq"><h2>${esc(I.s(l, "questions"))}</h2>${pg.faq.map(q => `<h3>${esc(q.q)}</h3><p${x.key === "sanctions" ? "" : ` data-rq="${x.key}"`}>${esc(q.a)}</p>`).join("\n")}</section>
 <h2 id="related">${esc(I.s(l, "related"))}</h2><ul class="rel">${rel.map(([t, h]) => `<li><a href="${h}">${esc(t)}</a></li>`).join("")}<li><a href="${lp(l, "/downloads/")}">${esc(I.s(l, "downloads"))}</a></li><li><a href="${hub}">${esc(I.s(l, "allTopics"))}</a></li></ul>
 ${langLinks(l, path)}
@@ -1369,7 +1462,7 @@ ${foot("en")}`;
       const url = abs(lp(l, path)), items = [[T.L(l, "map"), home(l)], [I.s(l, "downloads"), lp(l, path)]];
       const title = I.s(l, "dlTitle"), description = I.s(l, "dlDescription");
       const body = `${top(l)}
-<main class="wrap">
+<main class="wrap plain">
 ${crumbs(l, items)}
 <h1>${esc(I.s(l, "dlH1"))}</h1>
 <p class="intro">${esc(I.s(l, "dlIntro", { dataTo: dataToL[l] }))}</p>
@@ -1396,7 +1489,7 @@ ${foot(l)}`;
       const title = I.img(l, "chTitle"), description = I.img(l, "chDesc"), groups = [G_MAIN(l), G_TOPIC(l), G_PART(l), G_YEAR(l), G_CTRY(l)];
       const list = CHARTS[l], first = list.find(x => x.group === G_MAIN(l)) || list[0];
       const body = `${top(l)}
-<main class="wrap">
+<main class="wrap plain">
 ${crumbs(l, items)}
 <h1>${esc(I.img(l, "chH1"))}</h1>
 <p class="intro">${esc(I.img(l, "chIntro"))}</p>
