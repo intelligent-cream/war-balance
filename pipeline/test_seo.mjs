@@ -1146,3 +1146,42 @@ test("Spanish amounts in millions on the pages, also the map's own (typoText)", 
   assert.equal(T.publishedOf(["h", "2026-10-27"], "2026-10-31"), "2026-10-27");
   assert.equal(T.publishedOf(undefined, "2026-10-31"), "2026-10-31");
 });
+// round 70: the plain layer says only what the data say, for each kind of country (seo_country.mjs plainCard ...)
+test("the plain layer: lead, verdict and plain words follow the data", async () => {
+  const SC = await import("./seo_country.mjs");
+  const words = { sure: "very likely", lean: "likely", unc: "too close to call", near: "near zero", zero: "essentially zero", leanU: "Leaning toward Ukraine", leanR: "Leaning toward Russia", party: "Party to the war" };
+  const gr = { N: "X", Nt: "X", NtCap: "X", Na: "X", NaCap: "X", Nd: "X", plural: 0, fem: 0, neu: 0 };
+  const mk = (o) => {
+    const c = { gdp: 100, measures: { "part:aid": { v: o.aid || 0 }, "part:euaid": { v: o.eu || 0 }, "part:ref": { v: o.ref || 0 } }, ua: {}, rus: {}, net: {},
+      fig: { rus: o.rus, cR: { level: o.rl || "sure" }, cN: { level: o.level, side: o.net >= 0 ? "ukraine" : "russia", sideWords: o.net >= 0 ? "toward Ukraine" : "toward Russia" } }, years: [] };
+    const x = { party: !!o.party, ua: o.ua, uaPct: o.ua, netEur: o.net, frozen: o.frozen || 0, level: o.level, side: c.fig.cN.side, sideWords: c.fig.cN.sideWords, gdp: 100 };
+    return { c, x };
+  };
+  const run = (o, lead) => { const { c, x } = mk(o); const F = (f, k, v) => SC.fig("en", f, k, v, 100); const oo = { l: "en", words, lead: lead || SC.leadOf(x, true), gr, dirWords: x.sideWords };
+    return { lead: SC.leadOf(x, false), card: SC.plainText(SC.plainCard(c, x, oo, F)), bul: SC.plainText(SC.plainBullets(c, x, oo, F)), brk: SC.plainText(SC.breakdownHtml(c, x, oo, F)) }; };
+  // a donor: leads with what it gave; the largest part named with its share
+  const fr = run({ ua: 16.9, aid: 4.3, eu: 9.8, ref: 1.8, rus: 20.2, rl: "lean", net: 43.6, frozen: 6.5, level: "sure" });
+  assert.equal(fr.lead, "ua");
+  assert.match(fr.bul, /58% of its support for Ukraine is its share of EU aid/);
+  assert.match(fr.bul, /Russia kept €20.2bn less .*\(likely\)/);
+  assert.match(fr.bul, /Overall, its money moved toward Ukraine \(very likely\)/);
+  assert.match(fr.brk, /\+€43.6bn/);
+  // support below zero (China): leads with the overall balance, never "has given"
+  const cn = run({ ua: -0.52, aid: 0.002, rus: -128, net: -128.5, level: "sure" });
+  assert.equal(cn.lead, "net");
+  assert.doesNotMatch(cn.card + cn.bul, /has given/);
+  assert.match(cn.bul, /adds up to −€520m/);
+  assert.match(cn.bul, /toward Russia \(very likely\)/);
+  // essentially zero: no direction claimed overall
+  const sv = run({ ua: -0.0001, rus: 0.011, rl: "zero", net: 0.011, level: "zero" });
+  assert.match(sv.bul, /almost nothing/);
+  assert.match(sv.bul, /Overall, the result is essentially zero/);
+  assert.doesNotMatch(sv.bul, /moved toward/);
+  assert.match(sv.card, /Essentially zero/);
+  // a party to the war: the chip says so, the overall sentence carries its chance word
+  const by = run({ party: true, ua: -0.16, rus: -2.5, rl: "lean", net: -2.7, level: "lean" });
+  assert.match(by.card, /Party to the war/);
+  assert.match(by.bul, /moved toward Russia \(likely\)/);
+  // a support figure that rounds to nothing is not a headline
+  assert.equal(SC.leadOf({ party: false, ua: 0.0001, uaPct: 0.0001 }, false), "net");
+});

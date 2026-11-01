@@ -479,3 +479,163 @@ function faqOf(c, x, o, F) {
   }
   return out;
 }
+
+// ----- round 70 (owner: "made for experts with a lot of figures ... it should be understandable for the average Joe,
+// with the breakdown and a clear structure, and mostly a visual structure"): the plain reading layer at the top of a
+// country page. An answer card (one headline number, the overall verdict in the map's own words, one sentence of context,
+// its ranks), "Where the number comes from" (a waterfall in HTML and CSS: the parts of support, then trade and frozen
+// money, then the overall balance), "In plain words" (three sentences, each a condition on the data), and small bars by
+// year and beside its neighbours in the ranking. Every figure is marked as the sections' are (check 48), every phrase is
+// seo_i18n.mjs PLAIN (no number, the direction and chance words through placeholders), and nothing needs JavaScript.
+// The colours are the chart images' (seo_images.mjs TONE, PART_TONE, FROZEN_TONE), as CSS classes (pages.css PLAIN_CSS)
+const PX = (l, k, vars, nums) => I.plain(l, k, vars, nums);
+const MAT0 = 0.0005;   // €0.5m: below it an amount is written "<€1m" and not drawn
+// the verdict chip: the map's own words for the overall balance (its chance level and side)
+export function verdictOf(c, x, words) {
+  const w = words || {}, lv = x.level, side = x.side;
+  if (x.party) return { text: w.party || "", cls: "mid" };
+  if (lv === "sure") return { text: cap(x.sideWords || ""), cls: side === "russia" ? "neg" : "pos" };
+  if (lv === "lean") return { text: side === "russia" ? w.leanR : w.leanU, cls: side === "russia" ? "fneg" : "fpos" };
+  return { text: cap(lv === "unc" ? w.unc : lv === "near" ? w.near : w.zero || ""), cls: "mid" };
+}
+// the map's chance word for a level (very likely, likely, too close to call, near zero, essentially zero)
+const chanceWord = (w, lv) => (lv === "sure" ? w.sure : lv === "lean" ? w.lean : lv === "unc" ? w.unc : lv === "near" ? w.near : lv === "zero" ? w.zero : "") || "";
+// which number the card leads with: what it gave Ukraine where the page asks that (seo_templates.mjs russiaLead) and its
+// support is above zero, else the overall balance
+export const leadOf = (x, russiaFirst) => (!russiaFirst && !x.party && x.ua >= MAT0 && !(Math.abs(x.uaPct) < 0.01 && Math.abs(x.ua) < 0.05) ? "ua" : "net");
+// the support parts the page names (the rest is "other"), from the map's measures
+export function supportParts(c, x) {
+  const m = k => (c.measures && c.measures[k] && c.measures[k].v != null ? c.measures[k].v : 0);
+  const aid = m("part:aid"), eu = m("part:euaid"), ref = m("part:ref");
+  return { aid, eu, ref, other: x.ua - aid - eu - ref };
+}
+
+// o: { l, words, lead, gr (name forms: N Nt NtCap Na NaCap Nd plural fem neu), pp (€ per person, the map's), rankEur
+// ({ n, of } by amount given, as the page of support by country numbers it), world (the map's rank), party (label) }
+export function plainCard(c, x, o, F) {
+  const l = o.l, v = verdictOf(c, x, o.words), gdpP = k => F("p", k, k === "uaEur" ? x.ua : x.netEur);
+  const ua = o.lead === "ua";
+  const pre = ua ? PX(l, "gavePre", o.gr, o.gr) : PX(l, "netPre", o.gr, o.gr);
+  const post = ua ? PX(l, "gavePost", o.gr, o.gr) : PX(l, "netPost", { ...o.gr, side: esc(o.dirWords || x.sideWords) }, o.gr);
+  const big = ua ? F("e", "uaEur", x.ua) : F("e", "netEur", x.netEur);
+  const ctx = ua ? PX(l, "ctxGave", { pp: esc(o.pp || ""), p: gdpP("uaEur") }, { pp: o.pp ? 1 : 0 })
+    : PX(l, "ctxNet", { pp: esc(o.pp || ""), p: gdpP("netEur") }, { pp: o.pp ? 1 : 0, frozen: Math.abs(x.frozen) >= MAT0 });
+  const stats = [];
+  if (ua && o.rankEur) stats.push(PX(l, "rankEur", { n: esc(String(o.rankEur.n)), of: esc(String(o.rankEur.of)) }));
+  if (o.world) stats.push(PX(l, "rankNet", { n: F("k", "rank:all", o.world.n), of: F("k", "of:all", o.world.of), side: esc(x.sideWords) }));
+  const cls = v.cls === "mid" ? "mid" : ua ? "pos" : v.cls;
+  return `<section class="ans ${cls}" aria-label="${esc(PX(l, "tAnswer"))}">
+<p class="vline"><span class="vlab">${esc(PX(l, "overall"))}:</span> <span class="vchip ${v.cls}">${esc(v.text)}</span></p>
+<p class="apre">${esc(pre)}</p><p class="abig">${big}</p><p class="apost">${esc(post)}</p>
+<p class="actx">${ctx}</p>${stats.length ? `\n<ul class="astats">${stats.map(s => `<li>${s}</li>`).join("")}</ul>` : ""}
+</section>`;
+}
+
+// the waterfall: each step a row with its colour, plain label, bar (from the running total) and signed amount
+export function breakdownHtml(c, x, o, F) {
+  const l = o.l, sp = supportParts(c, x), fg = c.fig || {}, unc = q => { const i = fg[{ ua: "cU", rus: "cR", net: "cN" }[q]]; return !!(c[q] && c[q].unc) || !!(i && i.level && i.level !== "sure"); };
+  const steps = [];
+  const piece = (k, key, label, val, tone) => { if (Math.abs(val) >= MAT0) steps.push({ k, key, label, v: val, tone: val >= 0 ? tone : "back" }); };
+  piece("aid", "part_aid", PX(l, "bkAid"), sp.aid, "aid");
+  piece("eu", "part_euaid", PX(l, "bkEu"), sp.eu, "eu");
+  piece("ref", "part_ref", PX(l, "bkRef"), sp.ref, "ref");
+  piece("other", "", PX(l, "bkOther"), sp.other, "other");
+  steps.push({ k: "ua", key: "uaEur", label: PX(l, "bkUa"), v: x.ua, total: true, tone: x.ua >= 0 ? (unc("ua") ? "uaF" : "ua") : unc("ua") ? "ruF" : "ru" });
+  const rus = (c.fig || {}).rus || 0;
+  steps.push({ k: "rus", key: "rusEur", label: PX(l, rus >= 0 ? "bkRusLess" : "bkRusMore"), v: rus, tone: rus >= 0 ? (unc("rus") ? "uaF" : "ua") : unc("rus") ? "ruF" : "ru" });
+  if (Math.abs(x.frozen) >= MAT0) steps.push({ k: "frozen", key: "frozenEur", label: PX(l, "bkFrozen"), v: x.frozen, tone: x.frozen >= 0 ? "frozen" : "ru" });
+  steps.push({ k: "net", key: "netEur", label: PX(l, "bkNet"), v: x.netEur, total: true, tone: x.party ? (x.netEur >= 0 ? "ua" : "ru") : x.netEur >= 0 ? (unc("net") ? "uaF" : "ua") : unc("net") ? "ruF" : "ru" });
+  // the running total: pieces of support from zero up to the support total, then trade and frozen money from it
+  let run = 0;
+  for (const s of steps) {
+    if (s.total) { s.a = 0; s.b = s.v; run = s.v; } else { s.a = run; s.b = run + s.v; run = s.b; }
+  }
+  const lo = Math.min(0, ...steps.flatMap(s => [s.a, s.b])), hi = Math.max(0, ...steps.flatMap(s => [s.a, s.b])), span = hi - lo || 1;
+  const pc = v => Math.round(((v - lo) / span) * 1000) / 10;
+  const amt = s => (s.key ? F("s", s.key, s.v) : esc((s.v >= 0 ? "+" : "−") + I.E(l, s.v)));
+  const rows = steps.map(s => {
+    const left = pc(Math.min(s.a, s.b)), width = Math.max(0.6, pc(Math.max(s.a, s.b)) - left);
+    return `<li class="${s.total ? "wsum" : "wpc"} k-${s.k}"><span class="wl"><i class="sw t-${s.tone}" aria-hidden="true"></i>${esc(s.label)}</span><span class="wt" aria-hidden="true"><i class="z" style="left:${pc(0)}%"></i><i class="b t-${s.tone}" style="left:${left}%;width:${Math.round(width * 10) / 10}%"></i></span><span class="wv">${amt(s)}</span></li>`;
+  });
+  return `<section class="brk" aria-labelledby="where-from"><h2 id="where-from">${esc(PX(l, "tBreak"))}</h2>
+<ol class="wf">${rows.join("")}</ol>
+<p class="sub">${esc(PX(l, "bkKey"))} ${esc(PX(l, "bkHow"))}</p></section>`;
+}
+
+// three sentences, each a condition on the data: what its support is made of (or that it is about nothing, or below
+// zero), what its trade did to what Russia kept, and the overall balance in the map's words
+export function plainBullets(c, x, o, F) {
+  const l = o.l, w = o.words || {}, out = [], sp = supportParts(c, x);
+  const tiny = Math.abs(x.uaPct) < 0.01 && Math.abs(x.ua) < 0.05;
+  if (x.ua >= MAT0 && !tiny) {
+    const named = [["aid", "pwAid", sp.aid], ["eu", "pwEu", sp.eu], ["ref", "pwRef", sp.ref]].filter(p => p[2] >= MAT0).sort((a, b) => b[2] - a[2]);
+    const top = named[0], q = top ? top[2] / x.ua : 0;
+    if (top && q >= 0.01 && q <= 1) out.push(PX(l, "piece", { q: esc(I.PI(l, 100 * q)), what: esc(PX(l, top[1])) }));
+  } else if (tiny) out.push(PX(l, "uaSmall", { v: F("m", "uaEur", x.ua) }));
+  else out.push(PX(l, "uaNeg", { v: F("m", "uaEur", x.ua), why: esc(o.uaWhy || "") }, { why: o.uaWhy ? 1 : 0 }));
+  const rus = (c.fig || {}).rus || 0, rl = ((c.fig || {}).cR || {}).level;
+  if (Math.abs(rus) >= MAT0) out.push(PX(l, rus >= 0 ? "rusLess" : "rusMore", { v: F("e", "rusEur", rus), Nd: esc(o.gr.Nd), word: esc(chanceWord(w, rl)) }, { word: chanceWord(w, rl) ? 1 : 0 }));
+  if (!x.party && ["unc", "near", "zero"].includes(x.level)) out.push(PX(l, "netClose", { word: esc(chanceWord(w, x.level)) }));
+  else out.push(PX(l, "netSide", { side: esc(o.dirWords || x.sideWords), word: esc(chanceWord(w, x.level)) }, { word: chanceWord(w, x.level) ? 1 : 0 }));
+  return `<section class="pw" aria-labelledby="plain-words"><h2 id="plain-words">${esc(PX(l, "tPlain"))}</h2><ul class="pwl">${out.map(s => `<li>${s}</li>`).join("")}</ul></section>`;
+}
+
+// small bars, one per year, of the number the card leads with (a year's own amount: no range)
+export function yearBars(c, x, o, F) {
+  const l = o.l, q = o.lead === "ua" ? "ua" : "net", rows = (c.years || []).map(y => ({ y: y.y, ytd: y.ytd, v: q === "ua" ? y.uaBn : y.netBn }));
+  if (!rows.length || rows.every(r => Math.abs(r.v) < MAT0)) return "";
+  const lo = Math.min(0, ...rows.map(r => r.v)), hi = Math.max(0, ...rows.map(r => r.v)), span = hi - lo || 1, pc = v => Math.round(((v - lo) / span) * 1000) / 10;
+  const li = rows.map(r => { const a = pc(Math.min(0, r.v)), wdt = Math.max(0.6, pc(Math.max(0, r.v)) - a), t = r.v >= 0 ? "ua" : "ru";
+    return `<li><span class="yl">${r.y}${r.ytd ? "*" : ""}</span><span class="wt" aria-hidden="true"><i class="z" style="left:${pc(0)}%"></i><i class="b t-${t}" style="left:${a}%;width:${Math.round(wdt * 10) / 10}%"></i></span><span class="wv">${F("s", `y${r.y}:${q}`, r.v)}</span></li>`; }).join("");
+  return `<p class="sub">${esc(PX(l, q === "ua" ? "yearsUa" : "yearsNet"))}</p><ol class="yb">${li}</ol>${rows.some(r => r.ytd) && o.yearNote ? `<p class="sub">${esc(o.yearNote)}</p>` : ""}`;
+}
+
+// its neighbours in the map's ranking as small bars (rows: { name, href, here, rank, pct, value, sure, sub })
+export function compareBars(l, rows) {
+  if (!rows.length) return "";
+  const lo = Math.min(0, ...rows.map(r => r.pct)), hi = Math.max(0, ...rows.map(r => r.pct)), span = hi - lo || 1, pc = v => Math.round(((v - lo) / span) * 1000) / 10;
+  return `<ol class="cmp">${rows.map(r => { const a = pc(Math.min(0, r.pct)), wdt = Math.max(0.6, pc(Math.max(0, r.pct)) - a), t = (r.pct >= 0 ? "ua" : "ru") + (r.sure ? "" : "F");
+    return `<li${r.here ? ' class="here"' : ""}><span class="cn"><span class="r">${r.rank ? r.rank + "." : ""}</span>${r.here ? esc(r.name) : `<a href="${r.href}">${esc(r.name)}</a>`}</span><span class="wt" aria-hidden="true"><i class="z" style="left:${pc(0)}%"></i><i class="b t-${t}" style="left:${a}%;width:${Math.round(wdt * 10) / 10}%"></i></span><span class="wv">${esc(r.value)}</span><span class="cs">${esc(r.sub)}</span></li>`; }).join("")}</ol>`;
+}
+
+// the plain layer's look (written into pages.css by seo_pages.mjs): readable type, mobile first, the chart images' tones
+const TONES = { aid: ["#0b3d77", "#4a86cf"], eu: ["#1a62c4", "#6aa3e6"], ref: ["#3a8bd0", "#9cc8ef"], other: ["#6d8193", "#8fa1b0"], ua: ["#2a6fb0", "#6aa8e0"], uaF: ["#5c8cbd", "#7d9fc2"],
+  ru: ["#d4601a", "#f39a52"], ruF: ["#cc7a40", "#c99063"], frozen: ["#1d5689", "#5a92c8"] };
+const toneCss = i => Object.entries(TONES).map(([k, v]) => `.t-${k}{background:${v[i]}}`).join("");
+export const PLAIN_CSS = `
+main.plain{font-size:17.5px;line-height:1.6}main.plain .intro{font-size:18.5px}main.plain p.sub{font-size:15px}
+main.plain>h2,main.plain>section>h2,main.plain>section>div>h2{font:800 22px/1.25 var(--fd);letter-spacing:-.005em;text-transform:none;color:var(--ink);margin:40px 0 12px}
+.ans{background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--mid);border-radius:14px;padding:16px 18px 18px;margin:14px 0 20px}
+.ans.pos{border-top-color:var(--ukr)}.ans.neg{border-top-color:var(--rus)}.ans.fpos{border-top-color:color-mix(in srgb,var(--ukr) 55%,var(--mid))}.ans.fneg{border-top-color:color-mix(in srgb,var(--rus) 55%,var(--mid))}
+.ans p{margin:0}.vline{font-size:15px;color:var(--soft);margin-bottom:12px!important}.vlab{font-weight:600;margin-right:2px}
+.vchip{display:inline-block;font-weight:800;font-size:15.5px;line-height:1.3;border-radius:999px;padding:3px 13px;background:var(--line);color:var(--ink)}
+.vchip.pos{background:var(--ukr-lo);color:var(--ukr)}.vchip.neg{background:var(--rus-lo);color:var(--rus-t)}.vchip.fpos{background:transparent;color:var(--ukr);box-shadow:inset 0 0 0 2px var(--ukr-lo)}.vchip.fneg{background:transparent;color:var(--rus-t);box-shadow:inset 0 0 0 2px var(--rus-lo)}
+.apre,.apost{font-weight:700;font-size:19px;line-height:1.3}.abig{font:800 clamp(46px,13vw,70px)/1.04 var(--fd);letter-spacing:-.03em;margin:4px 0 2px!important;color:var(--soft)}
+.ans.pos .abig{color:var(--ukr)}.ans.neg .abig{color:var(--rus-t)}.ans.fpos .abig{color:color-mix(in srgb,var(--ukr) 65%,var(--soft))}.ans.fneg .abig{color:color-mix(in srgb,var(--rus-t) 65%,var(--soft))}
+.actx{margin-top:12px!important;font-size:17.5px}.astats{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.astats li{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:5px 12px;font-size:15px;font-weight:600;line-height:1.35}
+ol.wf,ol.yb,ol.cmp{list-style:none;padding:0;margin:10px 0 12px}
+ol.wf li,ol.cmp li{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"l v" "t t";gap:5px 12px;padding:10px 0;border-bottom:1px solid var(--line);align-items:center}
+ol.wf .wl,ol.cmp .cn{grid-area:l;display:flex;gap:9px;align-items:center;line-height:1.3}.wv{grid-area:v;font-weight:700;white-space:nowrap;text-align:right}
+.wt{grid-area:t;position:relative;height:14px;display:block}.wt .b{position:absolute;top:0;bottom:0;border-radius:3px;display:block}.wt .z{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:var(--soft);opacity:.55;display:block}
+ol.wf li.wsum{font-weight:700;border-top:2px solid var(--ink);margin-top:-1px}ol.wf li.wsum .wt{height:22px}ol.wf li.wsum .wv{font-size:18px}ol.wf li.k-net{border-bottom:2px solid var(--ink)}ol.wf li.k-net .wv{font-size:19px}
+.sw{display:inline-block;width:15px;height:15px;border-radius:4px;flex:none}
+.t-back{background:repeating-linear-gradient(135deg,var(--mid) 0 3px,transparent 3px 7px);box-shadow:inset 0 0 0 1.5px var(--soft)}
+${toneCss(0)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) ${toneCss(1).replace(/\}\./g, "}:root:not([data-theme=\"light\"]) .")}}
+${toneCss(1).replace(/^\./, ':root[data-theme="dark"] .').replace(/\}\./g, '}:root[data-theme="dark"] .')}
+ol.yb li{display:grid;grid-template-columns:3.6em minmax(0,1fr) 6.8em;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}ol.yb .yl{font-weight:600}ol.yb .wt,ol.yb .wv{grid-area:auto}
+ol.cmp li{grid-template-areas:"l v" "t t" "s s";padding:8px 0}ol.cmp .cs{grid-area:s;font-size:14px;color:var(--soft);line-height:1.35}ol.cmp .r{color:var(--soft);font-size:14px;min-width:2.2em}
+ol.cmp li.here{font-weight:700;background:var(--surface);margin:0 -8px;padding:8px}
+ul.pwl{list-style:none;padding:0;margin:8px 0 6px}ul.pwl li{position:relative;padding:0 0 0 30px;margin:0 0 12px;font-size:18px;line-height:1.5}
+ul.pwl li::before{content:"";position:absolute;left:4px;top:.42em;width:12px;height:12px;border-radius:50%;background:var(--ukr);box-shadow:0 0 0 4px var(--ukr-lo)}
+ol.hb{list-style:none;padding:0;margin:10px 0 12px}ol.hb li{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"l v" "t t" "s s";gap:4px 12px;padding:8px 0;border-bottom:1px solid var(--line);align-items:center}
+ol.hb .cn{grid-area:l;font-weight:600}ol.hb .ht{grid-area:t;display:block;height:16px}ol.hb .hs{position:relative;display:flex;height:100%;min-width:3px;border-radius:3px;overflow:hidden}ol.hb .hs i{display:block;height:100%}ol.hb .hb-back{position:absolute;top:0}
+ol.hb .cs{grid-area:s;font-size:14px;color:var(--soft)}.lg{display:inline-flex;align-items:center;gap:6px;margin-right:12px;white-space:nowrap}
+details.experts{margin:40px 0 10px;border:2px solid var(--line);border-radius:12px;padding:0 16px;background:var(--surface)}
+details.experts>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px}details.experts>summary::-webkit-details-marker{display:none}
+details.experts>summary h2{flex:1;font:800 19px/1.3 var(--fd);text-transform:none;letter-spacing:0;color:var(--ink);margin:16px 0}
+details.experts>summary::after{content:"+";font:800 26px/1 var(--fd);color:var(--soft)}details.experts[open]>summary::after{content:"\\2212"}details.experts>summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+details.experts[open]{padding-bottom:14px}details.experts .card,details.experts .tile{background:var(--bg)}
+@media (min-width:640px){ol.hb li{grid-template-columns:minmax(0,11em) minmax(0,1fr) 6.4em;grid-template-areas:"l t v" "s s s"}ol.wf li{grid-template-columns:minmax(0,17em) minmax(0,1fr) 7.6em;grid-template-areas:"l t v"}ol.cmp li{grid-template-columns:minmax(0,13em) minmax(0,1fr) 5.6em;grid-template-areas:"l t v" "s s s"}
+.ans{padding:20px 26px 22px}}`;
