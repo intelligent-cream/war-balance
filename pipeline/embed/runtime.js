@@ -348,11 +348,13 @@
       const w = view.clientWidth || 600, h = narrow() ? Math.max(170, Math.round(w * 0.52)) : Math.max(260, Math.min(470, Math.round(w * 0.56)));
       const proj = d3.geoEqualEarth().fitExtent([[4, 4], [w - 4, h - 4]], { type: "FeatureCollection", features: feats });
       path = d3.geoPath(proj);
-      const svg = svgEl(w, h); mapSvg = svg;
+      // the map is clipped to its own frame: zoomed in, it must not draw over the header or the country list
+      const svg = svgEl(w, h).style("overflow", "hidden"); mapSvg = svg;
+      svg.append("clipPath").attr("id", "emb-map-clip").append("rect").attr("width", w).attr("height", h);
       svg.append("defs").append("pattern").attr("id", "emb-hatch").attr("width", 5).attr("height", 5).attr("patternUnits", "userSpaceOnUse").attr("patternTransform", "rotate(45)")
         .call(p => { p.append("rect").attr("width", 5).attr("height", 5).attr("fill", cssv("--nodata")); p.append("rect").attr("width", 1.4).attr("height", 5).attr("fill", cssv("--line")); });
       svg.append("rect").attr("width", w).attr("height", h).attr("fill", cssv("--sea"));
-      mapG = svg.append("g");
+      mapG = svg.append("g").attr("clip-path", "url(#emb-map-clip)").append("g");
       mapG.selectAll("path").data(feats).join("path").attr("d", path).attr("class", "ex-c").attr("stroke", cssv("--edge")).attr("stroke-width", 0.4).attr("vector-effect", "non-scaling-stroke")
         .on("pointermove", (e, f) => showTip(e, mapTip(f))).on("pointerleave", hideTip)
         .on("click", (e, f) => { const c = dataOf(f); if (c && !narrow()) { if (st.sel.has(c.iso)) st.sel.delete(c.iso); else st.sel.add(c.iso); markList(); colorMap(); save(); } else showTip(e, mapTip(f)); });
