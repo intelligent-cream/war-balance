@@ -613,7 +613,10 @@ def check_dyn(text: str, name: str, iso: str, model: dict, lang: str, ranks: dic
             out.append(f"{name}: {k} written {html.unescape(txt)!r}, the model says {sorted(allowed)[:2]}")
     sec = re.search(r'<section class="faq" id="faq"><h2>[^<]*</h2>(.*?)</section>', text, re.DOTALL)
     seen = (
-        [(_plain(q), _plain(a)) for q, a in re.findall(r"<h3>(.*?)</h3><p>(.*?)</p>", sec.group(1), re.DOTALL)]
+        [
+            (_plain(q), _plain(a))
+            for q, a in re.findall(r"<h3>(.*?)</h3>(?:</summary>)?<p>(.*?)</p>", sec.group(1), re.DOTALL)
+        ]
         if sec
         else []
     )

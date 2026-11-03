@@ -42,3 +42,58 @@ ${html}
 // a bar's tone: + toward Ukraine blue, − toward Russia orange, paler where the map is not very sure; a plain amount in
 // the tone of the side it belongs to
 export const toneOf = (v, sure = true) => (v >= 0 ? "ua" : "ru") + (sure ? "" : "F");
+
+// ----- round 71b (owner: "the Kiel page still looks cleaner"): the reading rhythm, one pattern for every template -----
+// A page reads: the H1 (the page's question), a dek (one smaller line: the finding), the date line, the answer card and
+// one row of actions (one coloured button, the rest plain links); then sections that each follow one rhythm: a heading,
+// one plain sentence, ONE visual (an embed or a card), at most one small note (a <details> that folds a dense
+// explanation away). Each fact is shown once: tables, long lists and static bars that repeat a visual go under "For
+// experts" (kept in the HTML). The look is CLEAN_CSS (pages.css), mobile first, light by default.
+// a section in the rhythm: id and title (text), lead (HTML: one sentence), visual (HTML), note (HTML, e.g. why())
+export const rhythm = ({ id, title, lead = "", visual = "", note = "", cls = "" }) => (visual ? `<section class="rs${cls ? " " + cls : ""}" aria-labelledby="${id}"><h2 id="${id}">${esc(title)}</h2>
+${lead ? `<p class="rs-lead">${lead}</p>\n` : ""}${visual}${note ? "\n" + note : ""}</section>` : "");
+// a small folded note under a visual: summary text, body HTML
+export const why = (summary, html, id = "") => (String(html || "").trim() ? `<details class="why"${id ? ` id="${id}"` : ""}><summary>${esc(summary)}</summary>
+<div class="why-in">${html}</div></details>` : "");
+// a section written with a heading of its own (<section ...><h2 id="x">T</h2>...</section>) as a folded note
+export const foldSection = html => {
+  const m = String(html || "").match(/^<section[^>]*><h2 id="([\w-]+)">([\s\S]*?)<\/h2>([\s\S]*)<\/section>\s*$/);
+  return m ? `<details class="why" id="${m[1]}"><summary>${m[2]}</summary>\n<div class="why-in">${m[3]}</div></details>` : html || "";
+};
+// the dek under the H1: the finding, smaller, linked to the page that has it
+export const dek = (text, href = "") => (text ? `<p class="dek">${href ? `<a href="${href}">${esc(text)}</a>` : esc(text)}</p>` : "");
+// one row of actions: one primary button [href, text], then plain links [[href, text], ...]
+export const actions = (primary, links = []) => `<p class="acts">${primary ? `<a class="btn" href="${primary[0]}">${esc(primary[1])} →</a>` : ""}${links.map(([h, t]) => `<a class="lnk" href="${h}">${esc(t)}</a>`).join("")}</p>`;
+// the light/dark switch in the page header (the map's own key, ftm-theme: a reader's choice wins on every page and in
+// the map); THEME_JS switches it, remembers it and tells the embeds on the page
+export const themeButton = label => `<button class="theme" type="button" aria-label="${esc(label)}" title="${esc(label)}"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>`;
+export const THEME_JS = `<script>(function(){var b=document.querySelector("button.theme");if(!b)return;b.addEventListener("click",function(){var d=document.documentElement,n=d.dataset.theme==="dark"?"light":"dark";d.dataset.theme=n;try{localStorage.setItem("ftm-theme",n)}catch(e){}document.querySelectorAll("iframe").forEach(function(f){try{f.contentWindow.postMessage({type:"wb-theme",theme:n},location.origin)}catch(e){}})})})();</script>`;
+export const CLEAN_CSS = `
+main.plain{max-width:920px;font-size:17.5px;line-height:1.6}
+main.plain h1{font-size:clamp(28px,4.6vw,40px);line-height:1.12;margin:12px 0 10px}
+main.plain .dek{font:600 clamp(18px,2.4vw,21px)/1.35 var(--fd);letter-spacing:-.005em;margin:0 0 10px;color:var(--ink);max-width:46em}
+main.plain .dek a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}main.plain .dek a:hover{text-decoration-color:var(--ukr)}
+main.plain p.dated{color:var(--soft);font-size:14.5px;margin:0 0 22px}
+main.plain .ans{border:1px solid var(--line);border-radius:12px;box-shadow:none;margin:0 0 18px}
+main.plain .ans,main.plain .ans.pos,main.plain .ans.neg,main.plain .ans.fpos,main.plain .ans.fneg{border-top:1px solid var(--line)}
+main.plain .astats li{background:transparent}
+.acts{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;margin:0 0 8px}.acts .btn{padding:9px 18px;border-radius:999px}
+.acts .lnk{font-weight:600;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}.acts .lnk:hover{text-decoration-color:var(--ukr)}
+main.plain section.rs,main.plain>section.pw,main.plain>section.faq,main.plain>.rs{margin:64px 0 0}
+main.plain .rs>h2,main.plain>section>h2,main.plain section.faq>h2{font:800 23px/1.25 var(--fd);letter-spacing:-.01em;text-transform:none;color:var(--ink);margin:0 0 8px}
+main.plain .rs-lead{margin:0 0 16px;color:var(--soft);font-size:16.5px;max-width:46em}
+main.plain .emb-slot{margin:0}main.plain .emb-cap{display:none}
+details.why{margin:12px 0 0;font-size:15px}details.why>summary{cursor:pointer;color:var(--ukr);font-weight:600;list-style:none;display:inline-flex;gap:6px;align-items:center}
+details.why>summary::-webkit-details-marker{display:none}details.why>summary::before{content:"+";font:700 17px/1 var(--fd)}details.why[open]>summary::before{content:"\\2212"}
+details.why .why-in{padding:8px 0 0;color:var(--ink)}details.why .why-in p{margin:6px 0}details.why h2,details.why h3{font-size:16px;text-transform:none;letter-spacing:0;color:var(--ink);margin:10px 0 4px}
+main.plain details.experts{margin:72px 0 10px;border:0;border-top:1px solid var(--line);border-radius:0;padding:0;background:none}
+main.plain details.experts .card,main.plain details.experts .tile,main.plain details.experts .ans{background:var(--surface)}
+main.plain section.faq h3{font-size:17px;margin:18px 0 4px}
+.top .theme{margin-left:auto;width:34px;height:32px;border:1px solid var(--line);border-radius:8px;background:none;color:var(--ink);cursor:pointer;display:inline-grid;place-items:center}
+@media (max-width:640px){main.plain{font-size:17px}main.plain section.rs,main.plain>section.pw,main.plain>section.faq{margin-top:48px}main.plain .rs>h2,main.plain>section>h2{font-size:21px}}`;
+// the questions (FAQPage in the JSON-LD): each answer folded under its question; items: [{ q: text, a: HTML }]
+export const faq = (title, items) => (items.length ? `<section class="faq" id="faq"><h2>${esc(title)}</h2>${items.map(x => `<details class="qa"><summary><h3>${esc(x.q)}</h3></summary><p>${x.a}</p></details>`).join("\n")}</section>` : "");
+export const FAQ_CSS = `
+main.plain details.qa{border-bottom:1px solid var(--line)}main.plain details.qa>summary{cursor:pointer;list-style:none;display:flex;gap:12px;align-items:baseline;padding:12px 0}
+main.plain details.qa>summary::-webkit-details-marker{display:none}main.plain details.qa>summary h3{flex:1;margin:0;font-size:17px}
+main.plain details.qa>summary::after{content:"+";font:700 19px/1 var(--fd);color:var(--soft)}main.plain details.qa[open]>summary::after{content:"\\2212"}main.plain details.qa>p{margin:0 0 14px}`;

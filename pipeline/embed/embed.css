@@ -1,8 +1,8 @@
 /* Round 71: the interactive embeds' look (seo_embeds.mjs writes it to site/embed/embed.css). The map's tokens (index.html
    :root, the pages' CSS), light and dark; the chart images' tones (seo_images.mjs PART_TONE, FROZEN_TONE, TONE); a framed
    card with generous space and the display type of the site (Archivo), as the owner asked ("this vibe") */
-:root{--bg:#f4f6f8;--surface:#fff;--ink:#15212b;--soft:#55636e;--line:#d3dae0;--ukr:#2a6fb0;--ukr-lo:#d6e6f4;--rus:#d4601a;--rus-t:#b4500f;--rus-lo:#fde2c6;--mid:#c9d0d6;--focus:#0d4f66;
---ukr-f:#7d9fc2;--rus-f:#d9955f;--ukr-d:#0b3d77;--ukr-l:#a9c8e6;--rus-d:#8f3a08;--rus-l:#f5c39b;--zero:#eef1f3;--target:#39424a;--sea:#f7f9fa;--edge:#fff;--nodata:#eef1f3;
+:root{--bg:#fafbfc;--surface:#fff;--ink:#15212b;--soft:#55636e;--line:#dfe4e8;--ukr:#2a6fb0;--ukr-lo:#d6e6f4;--rus:#d4601a;--rus-t:#b4500f;--rus-lo:#fde2c6;--mid:#c9d0d6;--focus:#0d4f66;
+--ukr-f:#7d9fc2;--rus-f:#d9955f;--ukr-d:#0b3d77;--ukr-l:#a9c8e6;--rus-d:#8f3a08;--rus-l:#f5c39b;--zero:#eef1f3;--target:#aab4bc;--sea:#f7f9fa;--edge:#fff;--nodata:#eef1f3;
 --t-aid:#0b3d77;--t-eu:#1a62c4;--t-ref:#3a8bd0;--t-other:#6d8193;--fz1:#1d5689;--fz2:#5c8cbd;
 --c1:#1a62c4;--c2:#d4601a;--c3:#2f8f6f;--c4:#7b62c4;--c5:#b8862a;--c6:#c2416b;--c7:#3a8bd0;--c8:#55636e;--c9:#8a6d3b;--c10:#0b3d77;
 --fd:"Archivo","Helvetica Neue",Arial,sans-serif;--fb:"Source Sans 3","Segoe UI",system-ui,sans-serif}

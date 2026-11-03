@@ -100,7 +100,7 @@ export function pageHtml({ l, name, kind, title, sub, subBase = "", period, note
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="${canonical}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script>(function(){var d=document.documentElement,t=null;try{t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("ftm-theme")}catch(e){}d.dataset.theme=t==="light"?"light":"dark";if(window.self===window.top)d.className="solo"})()</script>
+<script>(function(){var d=document.documentElement,t=null;try{t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("ftm-theme")}catch(e){}d.dataset.theme=t==="dark"?"dark":"light";if(window.self===window.top)d.className="solo"})()</script>
 <link rel="preload" href="/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>${fontCss}html.solo body{background:var(--bg);padding:16px}</style>
 <link rel="stylesheet" href="/embed/embed.css?v=${v.css}">
@@ -143,11 +143,11 @@ export async function writeEmbeds({ site, siteUrl, data, pages, S, fontCss }) {
   return { n: pages.length, bytes: { data: dataTxt.length, js: js.length, css: css.length } };
 }
 
-// ----- on a page: the slot, the loader and their look -----
+// ----- on a page: the slot, the loader and their look (the page's rhythm is seo_plain.mjs) -----
 // fallback: the static chart (figureHtml) or other HTML shown without JavaScript and until the embed has drawn
-export function slot({ l, name, title, fallback = "", caption = "", h, wide = false }) {
+export function slot({ l, name, title, fallback = "", caption = "", h }) {
   const src = embedPath(l, name);
-  return `<div class="emb-slot${wide ? " emb-wide" : ""}" data-emb="${src}" data-emb-h="${h || EMB_H[name.split("/")[0]] || 640}" data-emb-title="${esc(I.emb(l, "iframeTitle", { title }))}">
+  return `<div class="emb-slot" data-emb="${src}" data-emb-h="${h || EMB_H[name.split("/")[0]] || 640}" data-emb-title="${esc(I.emb(l, "iframeTitle", { title }))}">
 <div class="emb-fb">${fallback}<p class="emb-open"><a href="${src}">${esc(I.emb(l, "open"))} →</a></p></div>
 </div>${caption ? `\n<p class="emb-cap">${esc(caption)}</p>` : ""}`;
 }
@@ -159,24 +159,4 @@ addEventListener("message",function(e){if(e.origin!==location.origin||!e.data||e
 export const PAGE_CSS = `
 .emb-slot{position:relative;margin:16px 0 6px}.emb-slot iframe{display:block;width:100%;border:0;position:absolute;left:0;top:0;visibility:hidden;color-scheme:normal}
 .emb-slot.emb-on iframe{position:static;visibility:visible}.emb-slot.emb-on>.emb-fb{display:none}
-.emb-fb figure.chart{margin:0}.emb-open{margin:6px 0 0;font-size:14.5px}.emb-cap{font-size:15px;color:var(--soft);margin:6px 0 22px}
-.emb-wide{width:min(1180px,calc(100vw - 48px));margin-left:calc((100% - min(1180px,calc(100vw - 48px))) / 2)}
-main.hub h1{font-size:clamp(30px,5.6vw,46px);letter-spacing:-.025em;margin:14px 0 18px}
-.hero{border-top:1px solid var(--line);padding:18px 0 8px;margin:0 0 10px}.hero .dated{margin:0 0 10px;font-weight:600;color:var(--ink)}
-main.plain .hero .hero-h,.hero-h{font:800 clamp(27px,5.2vw,44px)/1.08 var(--fd);font-stretch:104%;letter-spacing:-.025em;margin:0 0 14px;color:var(--ink);text-wrap:balance;text-transform:none}
-.hero-h a{color:inherit;text-decoration:none}.hero-h a:hover{text-decoration:underline;text-decoration-thickness:2px}
-.hero-p{font-size:18px;line-height:1.55;margin:0 0 16px;max-width:44em}
-.pills{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0 0 6px}.pill{display:inline-block;border-radius:999px;padding:8px 16px;font-weight:700;text-decoration:none;background:var(--line);color:var(--ink);font-size:15px}
-.pill.p1{background:var(--ukr);color:#fff}.pill.p2{background:var(--rus);color:#fff}
-:root[data-theme="dark"] .pill.p1,:root[data-theme="dark"] .pill.p2{color:#0e161d}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pill.p1,:root:not([data-theme="light"]) .pill.p2{color:#0e161d}}
-main.plain .emb-h2{margin-top:44px}`;
-
-// ----- the hub's hero: the data's date, a headline stating the finding, a short paragraph and pill links -----
-export function hero(l, { dated, head, href = "", text, pills }) {
-  return `<section class="hero" aria-labelledby="hero-h">
-${dated}
-<h2 class="hero-h" id="hero-h">${href ? `<a href="${href}">${esc(head)}</a>` : esc(head)}</h2>
-<p class="hero-p">${esc(text)}</p>
-<p class="pills">${pills.map(([h, t], i) => `<a class="pill${i < 2 ? " p" + (i + 1) : ""}" href="${h}">${esc(t)}</a>`).join("")}</p>
-</section>`;
-}
+.emb-fb figure.chart{margin:0}.emb-open{margin:6px 0 0;font-size:14.5px}.emb-cap{font-size:15px;color:var(--soft);margin:6px 0 22px}`;

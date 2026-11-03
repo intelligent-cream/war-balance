@@ -1229,3 +1229,16 @@ test("the embeds: the pages' number formats, years that add up to the totals, wo
   assert.match(html, /<meta name="robots" content="noindex, follow">/); assert.match(html, /<link rel="canonical" href="https:\/\/warbalance.org\/support-for-ukraine\/">/);
   assert.match(html, /\/vendor\/d3-7\.9\.0\.min\.js/); assert.match(html, /topojson-client/);
 });
+// round 71b: the reading rhythm, the pattern every template follows (seo_plain.mjs)
+test("the reading rhythm: one visual per section, folded notes and answers, one primary action", async () => {
+  const PLB = await import("./seo_plain.mjs");
+  const r = PLB.rhythm({ id: "x", title: "T <b>", lead: "One sentence.", visual: "<div>V</div>", note: PLB.why("Why", "<p>n</p>") });
+  assert.match(r, /^<section class="rs" aria-labelledby="x"><h2 id="x">T &lt;b&gt;<\/h2>\n<p class="rs-lead">One sentence.<\/p>\n<div>V<\/div>\n<details class="why"><summary>Why<\/summary>/);
+  assert.equal(PLB.rhythm({ id: "x", title: "T", visual: "" }), "");
+  assert.equal(PLB.why("Why", " "), "");
+  assert.match(PLB.foldSection('<section class="differ" aria-labelledby="w"><h2 id="w">Why they differ</h2><p>a</p></section>'), /^<details class="why" id="w"><summary>Why they differ<\/summary>/);
+  const a = PLB.actions(["/", "Open"], [["/d/", "Data"], ["/h/", "How"]]);
+  assert.equal((a.match(/class="btn"/g) || []).length, 1); assert.equal((a.match(/class="lnk"/g) || []).length, 2);
+  assert.match(PLB.faq("Questions", [{ q: "Q?", a: "A" }]), /<section class="faq" id="faq"><h2>Questions<\/h2><details class="qa"><summary><h3>Q\?<\/h3><\/summary><p>A<\/p><\/details><\/section>/);
+  assert.match(PLB.THEME_JS, /ftm-theme/); assert.match(PLB.THEME_JS, /wb-theme/);
+});

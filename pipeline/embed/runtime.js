@@ -345,7 +345,7 @@
       view.innerHTML = `<p class="emb-load">${esc(S.loading)}</p>`;
       await loadWorld();
       if (st.tab !== "map") return;
-      const w = view.clientWidth || 600, h = narrow() ? Math.max(170, Math.round(w * 0.52)) : Math.max(260, Math.min(470, Math.round(w * 0.56)));
+      const w = view.clientWidth || 600, h = narrow() ? Math.max(170, Math.round(w * 0.52)) : Math.max(260, Math.min(470, Math.round(w * 0.5)));
       const proj = d3.geoEqualEarth().fitExtent([[4, 4], [w - 4, h - 4]], { type: "FeatureCollection", features: feats });
       path = d3.geoPath(proj);
       // the map is clipped to its own frame: zoomed in, it must not draw over the header or the country list
@@ -625,6 +625,8 @@
   }
 
   function setView(v) { view = v; }
+  // the page that holds the frame switches its theme (seo_plain.mjs THEME_JS): follow it and draw again in its colours
+  window.addEventListener("message", e => { if (e.source !== window.parent || !e.data || e.data.type !== "wb-theme") return; document.documentElement.dataset.theme = e.data.theme === "dark" ? "dark" : "light"; if (D) redraw(); });
   new MutationObserver(() => { const e = $(".emb-sub", root), t = e.textContent; if (t && t[0] !== t[0].toUpperCase()) e.textContent = t[0].toUpperCase() + t.slice(1); }).observe($(".emb-sub", root), { childList: true, characterData: true, subtree: true });
   const KINDS = { explorer, "support-by-country": stacked, "totals-over-time": overTime, "per-person": () => ranked("pp"), "toward-russia": () => ranked("rus"), "frozen-assets": frozen, country };
   fetch(CFG.data).then(r => r.json()).then(d => {

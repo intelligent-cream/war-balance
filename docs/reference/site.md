@@ -45,6 +45,20 @@ canonical to their page and a visible link back.
   `/frozen-russian-assets/`, the explorer with `#m=rus` on `/trade-with-russia/` and `#tab=table` on `/ranking/`; a topic
   page's table can become an explorer view by its measure (the hash keeps `tab`, `m`, `u`, `y` and `c`).
 
+## The reading rhythm (round 71b)
+
+Every generated reading page follows one pattern (`pipeline/seo_plain.mjs`, look in `CLEAN_CSS`): the H1 (the page's
+question), a dek (`dek()`: the finding, one smaller line), the date line, the answer card and one row of actions
+(`actions()`: one coloured button, the rest plain links); then sections in one rhythm (`rhythm()`: a heading, one plain
+sentence, ONE visual, at most one small note, usually a `why()` or `foldSection()` that folds a dense explanation away).
+Each fact is shown once: tables, long lists and static bars that repeat a visual go under "For experts" (still in the
+HTML); questions fold under each heading (`faq()`). One content width (920px) for text and embeds. Wired into
+`/support-for-ukraine/` and the country pages; the other templates follow by building their body from the same helpers.
+
+Generated pages are light by default; the map stays dark. Both read the reader's choice from `ftm-theme`, which the
+map's switch and the pages' switch (`themeButton()`, `THEME_JS`) set; a page tells its embeds (`wb-theme` message), and
+the slot loader passes the theme to each iframe (`?theme=`).
+
 ## How it works and its content
 
 `site/content/*.md` is the one place the method, the limitations and the changelog are written. The site loads it only
