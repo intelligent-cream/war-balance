@@ -45,6 +45,7 @@ import * as RS from "./seo_research.mjs";
 import * as DLX from "./seo_downloads.mjs";
 import * as G from "./seo_images.mjs";
 import * as CH from "./seo_charts.mjs";
+import * as EM from "./seo_embeds.mjs";
 
 // the dataset's Zenodo DOI (all versions; resolves to the latest release), in every page's cite line
 export const DATA_DOI = "10.5281/zenodo.23832992";
@@ -151,7 +152,7 @@ ${ld.map(jsonld).join("\n")}
 ${CF_BEACON}
 </head>
 <body${iso ? ` data-iso="${iso}"` : ""}>
-${body}
+${body}${body.includes('class="emb-slot') ? "\n" + EM.LOADER : ""}
 </body>
 </html>
 `.replace(/\n{2,}/g, "\n");
@@ -216,7 +217,7 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const RPAGE = [SANC && RCFG.sanctions && { key: "sanctions", cfg: RCFG.sanctions, path: "/" + RCFG.sanctions.slug + "/" }, REV && RCFG.revenue && { key: "revenue", cfg: RCFG.revenue, path: "/" + RCFG.revenue.slug + "/" },
     MIL && RCFG.military && { key: "military", cfg: RCFG.military, path: "/" + RCFG.military.slug + "/" }].filter(Boolean);
   const rLabel = (x, l) => I.res(l, { sanctions: "sLabel", revenue: "rLabel", military: "mLabel" }[x.key]);
-  const RESERVED = new Set([...RPAGES.map(x => x.slug), "c", "country", "group", "compare", "topics", "downloads", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", "content", "i18n", "share", "img", ...T.LANGS]);
+  const RESERVED = new Set([...RPAGES.map(x => x.slug), "c", "country", "group", "compare", "topics", "downloads", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", "content", "i18n", "share", "img", "embed", "vendor", ...T.LANGS]);
   for (const e of TOPICS) {
     if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(e.slug) || (e.kind === "topic" && RESERVED.has(e.slug)) || !["topic", "group"].includes(e.kind)) throw new Error("seo_topics.json: bad slug or kind " + e.slug);
     if (TOPICS.filter(x => pathOf(x) === pathOf(e)).length > 1) throw new Error("seo_topics.json: two pages at " + pathOf(e));
@@ -330,6 +331,8 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   // round 70: the plain reading layer of the country pages and the page of support by country (seo_country.mjs)
   allCss += PLAIN_CSS;
   allCss += G.FIGURE_CSS + CH.CHARTS_CSS;
+  // round 71: the interactive embeds' slots on a page and the hub's hero (seo_embeds.mjs)
+  allCss += EM.PAGE_CSS;
   const FONT_CSS = await fontCss(site);
   allCss = FONT_CSS + "\n" + allCss;
   await writeFile(join(site, "pages.css"), allCss + "\n");
@@ -446,6 +449,8 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     return [...ps, other].map((v, i) => (i === 3 && v < 0 ? { v: v * scale, back: true } : { v: Math.max(0, v) * scale, color: G.PART_TONE[i] }));
   };
   const RIMG = Object.fromEntries(T.LANGS.map(l => [l, {}]));
+  // round 71: what the frozen-assets embed shows, from the chart's own rows (seo_embeds.mjs embedData)
+  const EMB_FZ = { rows: [], total: 0, hero: null, lang: {} };
   const G_MAIN = l => T.L(l, "ranking"), G_TOPIC = l => I.s(l, "topics"), G_PART = l => T.L(l, "parts"), G_YEAR = l => T.L(l, "byYear"), G_CTRY = l => T.L(l, "allCountries");
   for (const l of T.LANGS) {
     const nmI = iso => nameL(iso, l), uaAll = RANK_UA[l].groups.flatMap(g => g.rows), fg = iso => byIso[iso].fig, gdpOf = iso => byIso[iso].gdp;
@@ -511,6 +516,9 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
         .map(({ iso, f }) => { const cb = f.cbr && f.cbr.v != null ? f.cbr : null, pv = f.priv && f.priv.v != null ? f.priv : null; return { iso, cb, pv, tot: (cb ? cb.v : 0) + (pv ? pv.v : 0) }; })
         .filter(x => x.cb || x.pv).sort((a, b) => b.tot - a.tot || a.iso.localeCompare(b.iso));
       const fr = all.slice(0, 10), total = all.reduce((a, x) => a + x.tot, 0);
+      // round 71: the same holders for the frozen-assets embed (every holder with a figure, not only the chart's ten)
+      EMB_FZ.rows = all.map(x => ({ iso: x.iso, cb: x.cb ? x.cb.v : null, pv: x.pv ? x.pv.v : null, lo: (x.cb ? (x.cb.lo ?? x.cb.v) : 0) + (x.pv ? (x.pv.lo ?? x.pv.v) : 0), hi: (x.cb ? (x.cb.hi ?? x.cb.v) : 0) + (x.pv ? (x.pv.hi ?? x.pv.v) : 0) }));
+      EMB_FZ.total = total; EMB_FZ.hero = { v: RS.frozenFacts(FROZ).euroclear };
       // (a holder without a page, such as Liechtenstein: its name in the language from its two-letter code)
       const frName = iso => { const n = nameAnyL(iso, l); if (n !== iso) return n; const two = ISO2M[iso]; try { if (two) return new Intl.DisplayNames([l], { type: "region" }).of(two); } catch { /* the file's own name */ } return ((FROZ.countries[iso] || {}).name || iso).replace(/ \(.*$/, ""); };
       const fig = x => (x ? RS.stockText(l, x).fig : I.img(l, "na")), rng = (x, k) => (x ? (x[k] != null ? x[k] : x.v) : 0);
@@ -526,6 +534,7 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
       RIMG[l].frozen = addImg(m, G.imgPath(l, "frozen"), { sq: true, page: lp(l, "/frozen-russian-assets/"), group: G_MAIN(l) });
       const none = Object.keys(FROZ.countries).filter(iso => { const f = RS.frozenOf(FROZ, iso); return f && !f.none && !(f.cbr && f.cbr.v != null) && !(f.priv && f.priv.v != null); }).concat((FROZ.no_public_figure || {}).list || []);
       RIMG[l].frozenNone = none.length ? `${I.cap(I.res(l, "noFig"))}: ${I.list3(l, none.map(frName))}` : "";
+      EMB_FZ.lang[l] = { date: I.dateL(RS.frozenFacts(FROZ).euroclearDate, l), none: RIMG[l].frozenNone, names: Object.fromEntries(all.filter(x => !byIso[x.iso]).map(x => [x.iso, frName(x.iso)])) };
     }
   }
   // the net (the ranking page; round 63: in every language): the map's own groups "Toward Ukraine" and "Toward Russia"
@@ -703,6 +712,8 @@ ${ps.length ? `<h3>${esc(I.s(l, "partsRanked"))}</h3>${relList(l, ps)}` : ""}
       yearNote: T.L(l, "yearNote", { y: lastYear, month: monthOnlyL(l) }) };
     return { x, o, F: (f, k, v, iso) => fig(l, f, k, v, iso ? rowL(l, iso).gdp : c.gdp, iso) };
   };
+  // round 71: every embed page to write (seo_embeds.mjs), and the words of a method note's last year ("2026 runs to August")
+  const EMB_PAGES = [], embYM = l => ({ y: lastYear, month: monthOnlyL(l) });
   // round 61: each country page's heading in each language, the words other pages link it with (year and compare pages)
   const H1 = Object.fromEntries(T.LANGS.map(l => [l, {}]));
   for (const c0 of countries) {
@@ -780,13 +791,18 @@ ${nearHtml}`;
         // the number comes from, in plain words, the chart, why other figures differ, by year and how it compares; the
         // ranges, chances, grades, the full parts table, the method notes and the sources folded under "For experts"
         const P = plainOf(l, c0, c, copy, pr);
+        // round 71 (owner: "the data embeds ... the different charts"): the country's interactive chart under the card, its
+        // parts and its totals by year (seo_embeds.mjs, /embed/country/<slug>/); the chart image stays in it as the
+        // fallback without JavaScript and for search engines
+        EMB_PAGES.push({ l, name: "country/" + c0.slug, kind: "country", iso: c0.iso, title: I.img(l, "tCountry", { name: c.name }), sub: `${I.img(l, "uCountry")} · ${imgPeriod(l)}`,
+          note: I.emb(l, "nCountry", embYM(l)), canonical: abs(cPath(c0, l)), source: srcLine(l, "srcNet") });
         reading = `${plainCard(c, P.x, P.o, P.F)}
 <p class="intro">${esc(plainIntro(c, P.x, P.o))}</p>
+${cimg ? `<section class="chartsec" aria-labelledby="in-one-chart"><h2 id="in-one-chart" class="emb-h2">${esc(I.plain(l, "tChart"))}</h2>
+${EM.slot({ l, name: "country/" + c0.slug, title: I.img(l, "tCountry", { name: c.name }), fallback: G.figureHtml(cimg), caption: I.emb(l, "capCountry") })}</section>` : ""}
 ${breakdownHtml(c, P.x, P.o, P.F)}
 ${plainBullets(c, P.x, P.o, P.F)}
-${cimg ? `<section class="chartsec" aria-labelledby="in-one-chart"><h2 id="in-one-chart">${esc(I.plain(l, "tChart"))}</h2>
-${G.figureHtml(cimg)}
-<p><a class="btn" href="${home(l)}#${c0.iso}">${esc(T.L(l, "openMap"))} →</a></p></section>` : `<p><a class="btn" href="${home(l)}#${c0.iso}">${esc(T.L(l, "openMap"))} →</a></p>`}
+<p><a class="btn" href="${home(l)}#${c0.iso}">${esc(T.L(l, "openMap"))} →</a></p>
 ${dyn.differ || ""}
 ${(() => { const yb = yearBars(c, P.x, P.o, P.F); return yb ? `<section class="years" aria-labelledby="by-year-bars"><h2 id="by-year-bars">${esc(T.L(l, "byYear"))}</h2>${yb}</section>` : ""; })()}
 <section class="compare" aria-labelledby="how-it-compares"><h2 id="how-it-compares">${esc(I.plain(l, "tCompare"))}</h2>
@@ -884,7 +900,7 @@ ${foot(l)}`;
   // round 59: faq, questions in the words people search (seo_i18n.mjs TOPIC_X), visible and as JSON-LD from one array
   // round 69: answer, a table shown directly under the intro's first sentence (the one-sentence answer Google can quote
   // with it), the intro's other sentences after it
-  async function rankPage(path, pageKey, rk, ids, rowExtra, extraTop = "", mapHash = "#view=rank", faq = [], l = "en", alts = [], imgs = { top: null, more: [] }, answer = "", plainTop = null) {
+  async function rankPage(path, pageKey, rk, ids, rowExtra, extraTop = "", mapHash = "#view=rank", faq = [], l = "en", alts = [], imgs = { top: null, more: [] }, answer = "", plainTop = null, emb = null) {
     const copy = T.staticCopy(pageKey, factsL(l), l), url = abs(lp(l, path));
     const cut = String(copy.intro).search(/(?<=[.?!])\s+(?=\p{Lu})/u), introHead = cut > 0 ? copy.intro.slice(0, cut) : copy.intro, introRest = cut > 0 ? copy.intro.slice(cut).trim() : "";
     const crumb = pageKey === "support-for-ukraine" ? T.L(l, "supportPage") : copy.h1.split(":")[0].trim();
@@ -929,12 +945,12 @@ ${howFold(l, [T.L(l, "rankMoney"), chanceKey])}
 ${rk.party.length ? `<h2 id="party">${esc(I.s(l, "party"))}</h2><ul class="plain">${rk.party.map(r => `<li><a href="${cPath(byIso[r.iso], l)}">${esc(nmL(r.iso, l))}</a> ${esc(r.value)} · ${esc(r.eur)}</li>`).join("")}</ul>` : ""}
 ${rk.noData.filter(i => byIso[i]).length ? `<h2 id="no-data">${esc(T.L(l, "noData"))}</h2><p class="sub">${esc(T.L(l, "noDataRank"))}</p><p>${rk.noData.filter(i => byIso[i]).map(i => (noOwn(byIso[i]) ? esc(nmL(i, l)) : `<a href="${cPath(byIso[i], l)}">${esc(nmL(i, l))}</a>`)).join(", ")}</p>` : ""}`;
     const body = `${top(l)}
-<main class="wrap${plainTop ? " plain" : ""}">
+<main class="wrap${plainTop ? " plain" : ""}${emb ? " hub" : ""}">
 ${crumbs(l, items)}
 <h1>${esc(copy.h1)}</h1>
-${dated(l)}
-${plainTop ? plainTop.card + "\n" : ""}${answer ? `<p class="intro">${esc(introHead)}</p>\n${answer}${introRest ? `\n<p>${esc(introRest)}</p>` : ""}` : `<p class="intro">${esc(copy.intro)}</p>`}${plainTop ? "\n" + plainTop.bars + "\n" + plainTop.bullets : ""}
-${G.figureHtml(imgs.top, { caption: imgs.top ? imgs.top.caption : "" })}
+${emb ? emb.hero + "\n" + emb.explorer : dated(l)}
+${plainTop ? plainTop.card + "\n" : ""}${answer ? `<p class="intro">${esc(introHead)}</p>\n${answer}${introRest ? `\n<p>${esc(introRest)}</p>` : ""}` : `<p class="intro">${esc(copy.intro)}</p>`}${plainTop ? "\n" + (emb ? emb.stack : plainTop.bars) + "\n" + plainTop.bullets : ""}
+${emb ? emb.more : G.figureHtml(imgs.top, { caption: imgs.top ? imgs.top.caption : "" })}
 <p><a class="btn" href="${home(l)}${mapHash}">${esc(T.L(l, "openMap"))} →</a></p>
 ${extraTop}
 ${plainTop ? "" : lists}
@@ -994,6 +1010,33 @@ ${foot(l)}`;
 <li>${esc(I.plain(l, "hubCounts"))}</li></ul></section>`;
     return { card, bars, bullets };
   };
+  // round 71 (owner: "I would love if we can transform the pages to have this vibe"): the page of support by country as
+  // an editorial hub: a hero (the data's date, a headline stating the finding, a short paragraph, pill links), the data
+  // explorer, then the focused embeds, each with a plain caption; each embed keeps its chart image as the fallback.
+  // The headline's figures are the page "Has Europe paid Russia more than it gave Ukraine?" (seo_topics.json
+  // europe-energy-payments-vs-aid: its countries, its sums of the map's "Paid to Russia since 2022" and support), and link to it
+  const EU_VS = "/europe-energy-payments-vs-aid/";
+  const hubEmb = (l, rows) => {
+    const m = (MODELS[EU_VS] || {})[l], sum = k => (m ? m.rows.reduce((a, c) => a + ((mv(c, k) || {}).v || 0), 0) : 0);
+    const paid = sum("paid"), ua = sum("ua");
+    const head = m ? I.emb(l, paid > ua ? "heroHeadA" : "heroHeadB", { paid: I.E(l, paid), ua: I.E(l, ua) }) : I.plain(l, "tHubBars");
+    const pills = [[home(l), T.L(l, "openMap")], [lp(l, "/downloads/"), I.s(l, "dlH1")], ["/how-it-works/", T.L(l, "how")], [lp(l, "/charts/"), I.img(l, "chLink")]];
+    const ph = (id, t) => `<h2 id="${id}" class="emb-h2">${esc(t)}</h2>`;
+    const fig = img => (img ? G.figureHtml(img, { lazy: true, caption: img.caption }) : "");
+    const imgs = [RIMG[l].pp, RIMG[l].rus, RIMG[l].frozen].filter(Boolean);
+    return {
+      imgs,
+      hero: EM.hero(l, { dated: dated(l), head, href: m ? lp(l, EU_VS) : "", text: I.emb(l, "heroText"), pills }),
+      explorer: `${ph("data-explorer", I.emb(l, "explorer"))}\n${EM.slot({ l, name: "explorer", title: I.img(l, "tNet"), caption: I.emb(l, "capExplorer"), wide: true })}`,
+      stack: `<section class="brk" aria-labelledby="who-gave-what">${ph("who-gave-what", I.plain(l, "tHubBars"))}\n${EM.slot({ l, name: "support-by-country", title: I.img(l, "tEur"), fallback: G.figureHtml(RIMG[l].eur, { caption: RIMG[l].eur ? RIMG[l].eur.caption : "" }), caption: I.emb(l, "capStack") })}</section>`,
+      more: [
+        ph("over-time", T.L(l, "byYear")) + EM.slot({ l, name: "totals-over-time", title: I.emb(l, "tLines"), caption: I.emb(l, "capLines") }),
+        ph("per-person", I.img(l, "aPp")) + EM.slot({ l, name: "per-person", title: I.img(l, "tPp"), fallback: fig(RIMG[l].pp), caption: I.emb(l, "capPp") }),
+        ph("toward-russia", I.img(l, "aRus")) + EM.slot({ l, name: "toward-russia", title: I.img(l, "tRus"), fallback: fig(RIMG[l].rus), caption: I.emb(l, "capRus") }),
+        ph("frozen-assets", I.img(l, "aFrozen")) + EM.slot({ l, name: "frozen-assets", title: I.img(l, "tFrozen"), fallback: fig(RIMG[l].frozen), caption: I.emb(l, "capFrozen") }),
+      ].join("\n"),
+    };
+  };
   // round 59: "Ukraine allies" and who gives the most, answered from this page's list (the tracker's questions, TOPIC_X)
   // round 61 (CTR): the all-years page of support by country in every language, with reciprocal hreflang (it was English
   // only, so searches in other languages landed on year pages); the tracker keeps the angle of the Kiel figures
@@ -1018,9 +1061,10 @@ ${foot(l)}`;
         return w.length ? `<li>${esc(I.fmt(I.dyn(l, "kielGap"), { N: nmL(g.r.iso, l), ours: I.E(l, g.r.eurBn), kiel: I.E(l, g.k), why: w.join(I.semi(l)) }))}</li>` : ""; };
       const gapLis = gap.map(gapLi).filter(Boolean);
       const gapHtml = gapLis.length ? `<p class="sub" id="kiel-gap">${esc(I.dyn(l, "kielGapLead"))}</p><ul class="kgap">${gapLis.join("")}</ul>` : "";
+      const emb = hubEmb(l, rows);
       await rankPage(path, "support-for-ukraine", rk, GROUP_ID_UA, extra,
         givenLinks(l, byEur.slice(0, 5).map(r => r.iso)) + `<h2>${esc(T.L(l, "shareWithPp"))}</h2>` +
-        G.figureHtml(RIMG[l].gdp, { lazy: true, caption: RIMG[l].gdp ? RIMG[l].gdp.caption : "" }), "#view=rank&lens=support", faq, l, alts, { top: RIMG[l].eur, more: [RIMG[l].gdp] }, hubTable + gapHtml, hubPlain(l, rows, byEur));
+        G.figureHtml(RIMG[l].gdp, { lazy: true, caption: RIMG[l].gdp ? RIMG[l].gdp.caption : "" }), "#view=rank&lens=support", faq, l, alts, { top: RIMG[l].eur, more: [RIMG[l].gdp, ...emb.imgs] }, hubTable + gapHtml, hubPlain(l, rows, byEur), emb);
     }
   }
   // round 63: the trade page in every language too
@@ -1595,6 +1639,30 @@ ${foot(l)}`;
   await G.renderImages(page.context().browser(), JOBS, { site, host: HOST, workers: +(process.env.WB_IMG_WORKERS || 4), log });
   const tImages = Date.now() - tImg0;
 
+  // ----- round 71: the interactive embeds (seo_embeds.mjs): their data, from the figures these pages show, and a page per
+  // embed and language (noindex, out of the sitemaps; the country embeds were listed with the country pages) -----
+  {
+    const ruM = (MODELS["/countries-helping-russia/"] || {}).en;
+    const ru = ruM ? ruM.rows.map(c => { const x = mv(c, "net"); return x ? { iso: c.iso, v: x.v, lo: x.lo ?? x.v, hi: x.hi ?? x.v, sure: sureRow(x) ? 1 : 0 } : null; }).filter(Boolean) : [];
+    const embData = EM.embedData({ countries, names: Object.fromEntries(T.LANGS.map(l => [l, Object.fromEntries(countries.map(c => [c.iso, nameL(c.iso, l)]))])),
+      num: Object.fromEntries(Object.entries(data.countries).map(([iso, c]) => [iso, String(c.n)])), years: data.years, frac: data.frac, dataTo, included: data.included_in,
+      frozen: EMB_FZ.rows.length ? { rows: EMB_FZ.rows, hero: EMB_FZ.hero, total: EMB_FZ.total, names: Object.fromEntries(T.LANGS.map(l => [l, (EMB_FZ.lang[l] || {}).names || {}])) } : null, ru });
+    const S = {};
+    for (const l of T.LANGS) {
+      S[l] = { ...EM.strings(l, { T, unitBn: unitBn(l), faded: FADED[l], gdpMin: I.E(l, 5) }), fzDate: (EMB_FZ.lang[l] || {}).date || "", fzNone: (EMB_FZ.lang[l] || {}).none || "" };
+      const per = imgPeriod(l), hub = abs(lp(l, "/support-for-ukraine/")), gdpMin = I.E(l, 5);
+      EMB_PAGES.push(
+        { l, name: "explorer", kind: "explorer", title: I.img(l, "tNet"), sub: "", note: I.emb(l, "nExplorer", embYM(l)), canonical: hub, source: srcLine(l, "srcNet") },
+        { l, name: "support-by-country", kind: "support-by-country", title: I.img(l, "tEur"), sub: `${I.img(l, "uParts")} · ${per}`, subBase: `${I.img(l, "uParts")} · ${per}`, note: I.emb(l, "nStack", { gdpMin }), canonical: hub, source: srcLine(l, "srcUa") },
+        { l, name: "totals-over-time", kind: "totals-over-time", title: I.emb(l, "tLines"), sub: per, note: I.emb(l, "nLines", embYM(l)), canonical: hub, source: srcLine(l, "srcNet") },
+        { l, name: "per-person", kind: "per-person", title: I.img(l, "tPp"), sub: per, note: I.emb(l, "nPp", { gdpMin, faded: FADED[l] }), canonical: abs(lp(l, "/ukraine-aid-per-capita/")), source: srcLine(l, "srcUa") },
+        { l, name: "toward-russia", kind: "toward-russia", title: I.img(l, "tRus"), sub: `${I.img(l, "uRus")} · ${per}`, subBase: `${I.img(l, "uRus")} · ${per}`, note: I.emb(l, "nRus", { faded: FADED[l] }), canonical: abs(lp(l, "/countries-helping-russia/")), source: srcLine(l, "srcNet") },
+        { l, name: "frozen-assets", kind: "frozen-assets", title: I.img(l, "tFrozen"), sub: `${I.img(l, "uFrozen2")} · ${unitBn(l)}`, note: I.emb(l, "nFrozen"), canonical: abs(lp(l, "/frozen-russian-assets/")), source: srcLine(l, "srcFrozen") });
+    }
+    for (const p of EMB_PAGES) Object.assign(p, { period: imgPeriod(p.l), dated: I.emb(p.l, "dated", { date: fmtDate(dataTo, p.l) }), month: monthOnlyL(p.l) });
+    const r = await EM.writeEmbeds({ site, siteUrl, data: embData, pages: EMB_PAGES, S, fontCss: FONT_CSS });
+    log(`embeds: ${r.n} pages; data.json ${(r.bytes.data / 1024).toFixed(0)} KB, embed.js ${(r.bytes.js / 1024).toFixed(0)} KB, embed.css ${(r.bytes.css / 1024).toFixed(0)} KB`);
+  }
   // ----- the sitemaps (round 56: an index, sitemap.xml, and one sitemap per language) and robots.txt -----
   const xmlEsc = s => s.replace(/&/g, "&amp;");
   const langOf = w => { const m = w.path.match(/^\/(\w\w)\//); return m && T.LANGS.includes(m[1]) ? m[1] : "en"; };

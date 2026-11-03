@@ -55,3 +55,6 @@ research/2026-10/raw/**/*.csv.gz
 
 # local check output
 /headline.json
+
+# round 71: the interactive embeds (pipeline/seo_embeds.mjs), generated with the pages
+site/embed/

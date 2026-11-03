@@ -14,6 +14,36 @@ What a reader sees is described on the site itself (How it works). This note say
 | `site/data.json`, `site/detail.json` | built by `pipeline/build_data.py`; never edit by hand |
 | `pipeline/share_cards.mjs` | the share images and a page per country (`site/share/`, `site/c/`), made by the Pages deploy |
 | `pipeline/seo_images.mjs` | the chart images for image search (`site/img/`), drawn in the same run (round 62) |
+| `pipeline/seo_embeds.mjs`, `pipeline/embed/` | the interactive embeds (`site/embed/`) and their runtime and look (round 71) |
+| `site/vendor/` | D3 and topojson-client for the embeds, self-hosted with their licences |
+
+## Interactive embeds (round 71, prototype)
+
+`pipeline/seo_embeds.mjs` writes, with the pages, a small page per embed and language at `/embed/<name>/` and
+`/<lang>/embed/<name>/` (git-ignored, like the pages): `explorer` (the data explorer: a country list with sort and
+select all/clear, tabs Table / Map / Line / Bar, a measure, a unit, a year slider with play), `support-by-country`
+(stacked parts), `totals-over-time` (lines), `per-person`, `toward-russia`, `frozen-assets` and `country/<slug>` (one per
+country page). Each is framed: title, subtitle (unit and period), the mark, a source line with the data's date, and a
+toolbar (method note, CSV and PNG download, link and `<iframe>` code, full screen). They are `noindex, follow`, with a
+canonical to their page and a visible link back.
+
+- **Data**: `/embed/data.json`, from the figures the pages show (`seo_extract.mjs`: each country's support, trade and
+  net by year, which `embedData()` checks add up to the page's totals; the parts of its support; names in every
+  language). Numbers are written by the pages' own format functions (`seo_i18n.mjs` `FMT_SOURCE`, copied into
+  `/embed/embed.js` before `pipeline/embed/runtime.js`). The look is `pipeline/embed/embed.css`.
+- **Libraries**: D3 7.9.0 and topojson-client 3.1.0 in `site/vendor/` (with their licences), loaded only by the embeds;
+  the map uses `countries-50m.json` (`countries-lite.json` on phones).
+- **Words**: `seo_i18n.mjs` `EMB` (7 languages, read by the wording guard), plus the chart images' `IMG` and the plain
+  layer's `PLAIN` phrases.
+- **On a page**: `slot()` puts the page's static chart image in a slot as the fallback without JavaScript and for search
+  engines; an inline loader (`LOADER`, added by `shell()` to pages with a slot) creates the iframe when the slot nears
+  the screen and swaps it in once the embed reports its height. Wired in: `/support-for-ukraine/` (a hero with the
+  finding of `/europe-energy-payments-vs-aid/`, then the explorer and the focused embeds) and every country page with data.
+- **Rolling out to other pages**: push a page entry to `EMB_PAGES` (or reuse an existing embed name) and put
+  `EM.slot({ l, name, title, fallback: G.figureHtml(img), caption })` where the page shows its chart, e.g. `per-person` on
+  `/ukraine-aid-per-capita/`, `toward-russia` on `/countries-helping-russia/`, `frozen-assets` on
+  `/frozen-russian-assets/`, the explorer with `#m=rus` on `/trade-with-russia/` and `#tab=table` on `/ranking/`; a topic
+  page's table can become an explorer view by its measure (the hash keeps `tab`, `m`, `u`, `y` and `c`).
 
 ## How it works and its content
 

@@ -1204,3 +1204,28 @@ test("the plain blocks: bars from zero both ways, experts folded, a plain openin
   assert.match(cn, /add up to €129bn toward Russia \(very likely\)\. Russia kept €128bn more from their trade/);
   assert.doesNotMatch(cn, /has given/);
 });
+// round 71: the interactive embeds: their number formats are the pages' own, their data add up to the pages' totals,
+// and their words exist in every language with the same placeholders
+test("the embeds: the pages' number formats, years that add up to the totals, words in every language", async () => {
+  const I = await import("./seo_i18n.mjs"), EM = await import("./seo_embeds.mjs");
+  const WBF = new Function(I.FMT_SOURCE() + "\nreturn { P, E, PP };")();
+  for (const l of I.LANGS) for (const v of [0, 0.0002, 0.0123, 0.5, 0.9996, 1.04, 16.87, 99.95, 128.4, 1234.5, -74.82]) {
+    assert.equal(WBF.E(l, v), I.E(l, v)); assert.equal(WBF.P(l, v), I.P(l, v)); assert.equal(WBF.PP(l, v * 100), I.PP(l, v * 100));
+  }
+  const row = (ua, years) => ({ iso: "FRA", slug: "france", gdp: 2800, pop: 68, region: "eu", fig: { ua, rus: 0, net: ua, frozen: 0, cU: { level: "sure" } }, measures: {},
+    years: years.map((v, i) => ({ y: 2022 + i, uaBn: v, rusBn: 0, netBn: v, frozenBn: 0 })) });
+  const args = { names: { en: { FRA: "France" } }, num: { FRA: "250" }, years: [2021, 2022, 2023, 2024, 2025, 2026], frac: [1, 1, 1, 1, 1, 0.6667], dataTo: "2026-08-31" };
+  const d = EM.embedData({ ...args, countries: [row(10, [1, 2, 3, 2, 2])] });
+  assert.deepEqual(d.c.FRA.y[0], [1, 2, 3, 2, 2]);
+  assert.equal(d.c.FRA.f[0], 10);
+  assert.deepEqual(d.ytd, [false, false, false, false, true]);
+  assert.throws(() => EM.embedData({ ...args, countries: [row(11, [1, 2, 3, 2, 2])] }), /add up/);
+  const ph = s => [...s.matchAll(/\{(\w+)\}/g)].map(m => m[1]).sort().join(",");
+  for (const l of I.LANGS) for (const k of I.EMB_KEYS) { assert.ok(I.EMB[l][k], `EMB.${l}.${k}`); assert.equal(ph(I.EMB[l][k]), ph(I.EMB.en[k]), `EMB.${l}.${k} placeholders`); }
+  const sl = EM.slot({ l: "de", name: "explorer", title: "T", fallback: "<p>x</p>", caption: "C" });
+  assert.match(sl, /data-emb="\/de\/embed\/explorer\/"/); assert.match(sl, /<div class="emb-fb"><p>x<\/p>/);
+  const html = EM.pageHtml({ l: "en", name: "explorer", kind: "explorer", title: "T", sub: "s", note: "N", canonical: "https://warbalance.org/support-for-ukraine/", self: "https://warbalance.org/embed/explorer/",
+    source: "S", dated: "D", month: "August", S: { loading: "L", back: "B", preview: "P", about: "a", download: "d", share: "s", full: "f" }, fontCss: "", v: { data: "1", js: "2", css: "3" }, home: "/" });
+  assert.match(html, /<meta name="robots" content="noindex, follow">/); assert.match(html, /<link rel="canonical" href="https:\/\/warbalance.org\/support-for-ukraine\/">/);
+  assert.match(html, /\/vendor\/d3-7\.9\.0\.min\.js/); assert.match(html, /topojson-client/);
+});
