@@ -64,8 +64,9 @@ a{color:var(--ukr)}button,select,input,textarea{font:inherit;color:inherit}
 .emb-row:hover rect:first-child{fill:var(--bg)}
 /* the explorer */
 .emb[data-kind="explorer"] .emb-main{padding:0}
-.ex{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:560px}
-.ex-side{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;max-height:640px;background:var(--surface)}
+.ex{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:520px}
+/* the list takes the height the chart column sets (height 0, then the whole grid row), and scrolls inside it */
+.ex-side{border-right:1px solid var(--line);display:flex;flex-direction:column;height:0;min-height:100%;background:var(--surface)}
 .ex-head{display:flex;justify-content:space-between;align-items:center;padding:14px 14px 6px}
 .ex-brand{font:800 17px/1.15 var(--fd);color:var(--ukr);margin:0}.ex-close{display:none;border:0;background:none;font-size:24px;cursor:pointer;color:var(--soft)}
 .ex-sort{display:flex;gap:6px;align-items:center;padding:4px 12px 8px;font-size:13px;color:var(--soft)}.ex-sort .emb-sel{flex:1;padding:5px 26px 5px 8px;font-size:13px}
@@ -102,7 +103,7 @@ a{color:var(--ukr)}button,select,input,textarea{font:inherit;color:inherit}
 @media (max-width:719px){
   .emb-head{padding:14px 14px 10px}.emb-main{padding:12px 14px 4px}.emb-foot{padding:10px 14px 12px}
   .ex{grid-template-columns:1fr;min-height:0}
-  .ex-side{position:absolute;inset:0;z-index:20;max-height:none;transform:translateX(-102%);transition:transform .22s ease;border-right:0;box-shadow:0 0 0 100vmax rgba(0,0,0,0)}
+  .ex-side{position:absolute;inset:0;z-index:20;height:auto;min-height:0;transform:translateX(-102%);transition:transform .22s ease;border-right:0;box-shadow:0 0 0 100vmax rgba(0,0,0,0)}
   .ex-side.open{transform:none;box-shadow:0 0 30px rgba(0,0,0,.35)}
   .ex-close,.ex-open{display:block}.ex-tabs{padding:0 6px;overflow-x:auto}.ex-tabs [role=tab]{padding:11px 9px 9px;font-size:14px}.ex-tabs [role=tab] svg{display:none}
   .ex-bar,.ex-view,.ex-legend{padding-left:12px;padding-right:12px}.ex-view{min-height:0}.ex-time{padding:10px 12px 12px}.ex-y1{min-width:6em}

@@ -35,7 +35,7 @@ export const D3_FILE = "/vendor/d3-7.9.0.min.js", TOPO_FILE = "/vendor/topojson-
 export const NAMES = ["explorer", "support-by-country", "totals-over-time", "per-person", "toward-russia", "frozen-assets"];
 export const embedPath = (l, name) => (l === "en" ? "" : "/" + l) + "/embed/" + name + "/";
 // a first height for the frame (it then takes the height the embed reports)
-export const EMB_H = { explorer: 780, "support-by-country": 760, "totals-over-time": 600, "per-person": 760, "toward-russia": 700, "frozen-assets": 640, country: 820 };
+export const EMB_H = { explorer: 780, "support-by-country": 760, "totals-over-time": 600, "per-person": 760, "toward-russia": 700, "frozen-assets": 640, country: 820, topic: 720, series: 560 };
 const MAT = 0.0005;
 const r6 = v => Math.round((+v || 0) * 1e6) / 1e6;
 
@@ -84,8 +84,9 @@ export function strings(l, { T, unitBn, faded, gdpMin }) {
 }
 
 // ----- one embed page -----
-export function pageHtml({ l, name, kind, title, sub, subBase = "", period, note, canonical, self, source, dated, month, S, fontCss, v, iso = "", home }) {
-  const cfg = { kind, name, l, s: S, data: "/embed/data.json?v=" + v.data, self, title, sub, subBase, period, source, dated, note, method: "/how-it-works/", month, iso };
+// extra: a page's own data for the "topic" and "series" kinds (rows, unit, signed, keys, colName, colValue; sets)
+export function pageHtml({ l, name, kind, title, sub, subBase = "", period, note, canonical, self, source, dated, month, S, fontCss, v, iso = "", home, extra = null }) {
+  const cfg = { kind, name, l, s: S, data: "/embed/data.json?v=" + v.data, self, title, sub, subBase, period, source, dated, note, method: "/how-it-works/", month, iso, ...(extra || {}) };
   const icon = d => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const tools = [["info", S.about, "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18M12 11v6M12 7.5v.5"], ["dl", S.download, "M12 4v11M7 10l5 5 5-5M5 20h14"],
     ["share", S.share, "M18 4a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5M6 9.5a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5M18 15a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5M8.2 11l7.6-4M8.2 13l7.6 4"],
@@ -145,15 +146,15 @@ export async function writeEmbeds({ site, siteUrl, data, pages, S, fontCss }) {
 
 // ----- on a page: the slot, the loader and their look (the page's rhythm is seo_plain.mjs) -----
 // fallback: the static chart (figureHtml) or other HTML shown without JavaScript and until the embed has drawn
-export function slot({ l, name, title, fallback = "", caption = "", h }) {
-  const src = embedPath(l, name);
-  return `<div class="emb-slot" data-emb="${src}" data-emb-h="${h || EMB_H[name.split("/")[0]] || 640}" data-emb-title="${esc(I.emb(l, "iframeTitle", { title }))}">
+export function slot({ l, name, title, fallback = "", caption = "", h, hash = "" }) {
+  const src = embedPath(l, name) + (hash ? "#" + hash.replace(/^#/, "") : "");
+  return `<div class="emb-slot" data-emb="${src}" data-emb-h="${h || EMB_H[name.split("/")[0]] || 620}" data-emb-title="${esc(I.emb(l, "iframeTitle", { title }))}">
 <div class="emb-fb">${fallback}<p class="emb-open"><a href="${src}">${esc(I.emb(l, "open"))} →</a></p></div>
 </div>${caption ? `\n<p class="emb-cap">${esc(caption)}</p>` : ""}`;
 }
 // the iframes, made once a slot is near the screen; each shows once it reports its height (embed.js report())
 export const LOADER = `<script>(function(){var s=document.querySelectorAll(".emb-slot[data-emb]");if(!s.length||!("IntersectionObserver" in window))return;var th=document.documentElement.dataset.theme||"";
-function go(x){if(x.querySelector("iframe"))return;var f=document.createElement("iframe");f.src=x.getAttribute("data-emb")+(th?"?theme="+th:"");f.title=x.getAttribute("data-emb-title");f.setAttribute("loading","lazy");f.setAttribute("allow","fullscreen; clipboard-write");f.setAttribute("allowfullscreen","");f.style.height=x.getAttribute("data-emb-h")+"px";x.appendChild(f)}
+function go(x){if(x.querySelector("iframe"))return;var f=document.createElement("iframe");var u=x.getAttribute("data-emb").split("#");f.src=u[0]+(th?"?theme="+th:"")+(u[1]?"#"+u[1]:"");f.title=x.getAttribute("data-emb-title");f.setAttribute("loading","lazy");f.setAttribute("allow","fullscreen; clipboard-write");f.setAttribute("allowfullscreen","");f.style.height=x.getAttribute("data-emb-h")+"px";x.appendChild(f)}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);go(e.target)}})},{rootMargin:"600px 0px"});s.forEach(function(x){io.observe(x)});
 addEventListener("message",function(e){if(e.origin!==location.origin||!e.data||e.data.type!=="wb-emb")return;document.querySelectorAll(".emb-slot iframe").forEach(function(f){if(f.contentWindow===e.source){f.style.height=e.data.h+"px";f.parentNode.classList.add("emb-on")}})})})();</script>`;
 export const PAGE_CSS = `

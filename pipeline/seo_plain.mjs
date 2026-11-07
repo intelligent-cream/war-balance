@@ -79,7 +79,7 @@ main.plain .ans,main.plain .ans.pos,main.plain .ans.neg,main.plain .ans.fpos,mai
 main.plain .astats li{background:transparent}
 .acts{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;margin:0 0 8px}.acts .btn{padding:9px 18px;border-radius:999px}
 .acts .lnk{font-weight:600;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}.acts .lnk:hover{text-decoration-color:var(--ukr)}
-main.plain section.rs,main.plain>section.pw,main.plain>section.faq,main.plain>.rs{margin:64px 0 0}
+main.plain section.rs,main.plain>section:not(.ans):not(.chartsec),main.plain>.rs,main.plain>.whys{margin:64px 0 0}main.plain>.whys details.why{margin:8px 0 0}
 main.plain .rs>h2,main.plain>section>h2,main.plain section.faq>h2{font:800 23px/1.25 var(--fd);letter-spacing:-.01em;text-transform:none;color:var(--ink);margin:0 0 8px}
 main.plain .rs-lead{margin:0 0 16px;color:var(--soft);font-size:16.5px;max-width:46em}
 main.plain .emb-slot{margin:0}main.plain .emb-cap{display:none}
@@ -97,3 +97,5 @@ export const FAQ_CSS = `
 main.plain details.qa{border-bottom:1px solid var(--line)}main.plain details.qa>summary{cursor:pointer;list-style:none;display:flex;gap:12px;align-items:baseline;padding:12px 0}
 main.plain details.qa>summary::-webkit-details-marker{display:none}main.plain details.qa>summary h3{flex:1;margin:0;font-size:17px}
 main.plain details.qa>summary::after{content:"+";font:700 19px/1 var(--fd);color:var(--soft)}main.plain details.qa[open]>summary::after{content:"\\2212"}main.plain details.qa>p{margin:0 0 14px}`;
+// a questions section already written (<section class="faq"><h2>…</h2><h3>q</h3><p …>a</p>…): each answer folded
+export const foldFaq = html => String(html || "").replace(/<section class="faq"(?! id=)/, '<section class="faq" id="faq"').replace(/<h3>([\s\S]*?)<\/h3>(<p[^>]*>[\s\S]*?<\/p>)/g, '<details class="qa"><summary><h3>$1</h3></summary>$2</details>');

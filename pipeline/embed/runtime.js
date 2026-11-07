@@ -26,6 +26,7 @@
   const UNIT = {
     eur: { of: (c, v) => v, fmt: (v, signed) => (v == null ? S.na : (signed ? sg(v) : v < 0 && Math.abs(v) >= MAT ? "−" : "") + F.E(L, v)) },
     pp: { of: (c, v) => (c.p ? (v * 1000) / c.p : null), fmt: (v, signed) => (v == null ? S.na : (signed ? sg(v) : v <= -0.5 ? "−" : "") + F.PP(L, v)) },
+    n: { of: (c, v) => v, fmt: v => (v == null ? S.na : String(Math.round(v))) },
     gdp: { of: (c, v) => (c.g ? (100 * v) / c.g : null), fmt: (v, signed) => (v == null ? S.na : (signed ? sg(v) : v < 0 && Math.abs(v) >= 0.01 ? "−" : "") + F.P(L, v)) },
   };
   const Q = { ua: 0, rus: 1, net: 2, fz: 3 };
@@ -210,18 +211,22 @@
     return svg.node();
   }
   // lines over the years: series { key, name, color, vals [v per year], dash }
-  function lines(series, { width, height, unit, signed, onTip }) {
+  function lines(series, { width, height, unit, signed, onTip, labels = null, fmt = null }) {
     const m = { t: 14, r: narrow() ? 14 : 24, b: 28, l: narrow() ? 58 : 74 }, w = width, h = height;
-    const xs = d3.scalePoint().domain(D.years.map((y, i) => i)).range([m.l, w - m.r]).padding(0.15);
+    const XL = labels || D.years.map((y, i) => (D.ytd[i] ? y + "*" : String(y)));
+    const xs = d3.scalePoint().domain(XL.map((y, i) => i)).range([m.l, w - m.r]).padding(0.15);
     const all = series.flatMap(s => s.vals).filter(v => v != null);
     const y = d3.scaleLinear().domain([Math.min(0, ...all), Math.max(0, ...all) || 1]).nice(5).range([h - m.b, m.t]);
     const svg = svgEl(w, h), soft = cssv("--soft"), line = cssv("--line");
     const ax = svg.append("g").attr("font-size", 11);
     for (const t of y.ticks(5)) {
       ax.append("line").attr("x1", m.l).attr("x2", w - m.r).attr("y1", y(t)).attr("y2", y(t)).attr("stroke", t === 0 ? soft : line).attr("stroke-width", t === 0 ? 1.2 : 1);
-      ax.append("text").attr("x", m.l - 6).attr("y", y(t) + 4).attr("text-anchor", "end").attr("fill", soft).text(tickFmt(unit, signed)(t));
+      ax.append("text").attr("x", m.l - 6).attr("y", y(t) + 4).attr("text-anchor", "end").attr("fill", soft).text(fmt ? fmt(t) : tickFmt(unit, signed)(t));
     }
-    D.years.forEach((yr, i) => ax.append("text").attr("x", xs(i)).attr("y", h - 8).attr("text-anchor", "middle").attr("fill", soft).text(D.ytd[i] ? yr + "*" : yr));
+    // as many labels as fit (a long series every few points), the last one only where it does not run into the one before
+    const longest = Math.max(...XL.map(x => String(x).length)), fit = Math.max(2, Math.floor((w - m.l - m.r) / (longest * 7 + 14)));
+    const every = Math.max(1, Math.ceil(XL.length / fit)), last = XL.length - 1;
+    XL.forEach((yr, i) => { if (i % every === 0 && (i === last || last - i >= every / 2 || every === 1)) ax.append("text").attr("x", xs(i)).attr("y", h - 8).attr("text-anchor", "middle").attr("fill", soft).text(yr); });
     const ln = d3.line().defined(v => v != null).x((v, i) => xs(i)).y(v => y(v));
     const g = svg.append("g");
     for (const s of series) {
@@ -230,7 +235,7 @@
     }
     const rule = svg.append("line").attr("y1", m.t).attr("y2", h - m.b).attr("stroke", soft).attr("stroke-dasharray", "3 3").attr("opacity", 0);
     const hit = svg.append("rect").attr("x", m.l).attr("y", m.t).attr("width", w - m.l - m.r).attr("height", h - m.t - m.b).attr("fill", "transparent");
-    const near = e => { const px = d3.pointer(e)[0]; let bi = 0, bd = 1e9; D.years.forEach((yr, i) => { const d = Math.abs(xs(i) - px); if (d < bd) { bd = d; bi = i; } }); return bi; };
+    const near = e => { const px = d3.pointer(e)[0]; let bi = 0, bd = 1e9; XL.forEach((yr, i) => { const d = Math.abs(xs(i) - px); if (d < bd) { bd = d; bi = i; } }); return bi; };
     if (onTip) hit.on("pointermove", e => { const i = near(e); rule.attr("x1", xs(i)).attr("x2", xs(i)).attr("opacity", 1); showTip(e, onTip(i)); })
       .on("pointerleave", () => { rule.attr("opacity", 0); hideTip(); });
     return { node: svg.node(), x: xs, y };
@@ -257,8 +262,8 @@
     const ranked = C.filter(c => !c.pt && !c.nd);
     const big = ranked.filter(c => c.g >= MIN_GDP);
     const defaultSel = big.slice().sort((a, b) => b.f[0] - a.f[0]).slice(0, 10).map(c => c.iso);
-    st.sel = new Set((hashState.c ? hashState.c.split(",").filter(i => byIso[i]) : defaultSel));
-    const save = () => setHash({ tab: st.tab, m: st.q, u: st.unit, y: st.yi === D.years.length - 1 ? "" : D.years[st.yi], s: st.sort === "value" ? "" : st.sort, d: st.dir === "desc" ? "" : st.dir, c: [...st.sel].join(",") });
+    st.sel = new Set(hashState.c === "all" ? ranked.map(c => c.iso) : hashState.c ? hashState.c.split(",").filter(i => byIso[i]) : defaultSel);
+    const save = () => setHash({ tab: st.tab, m: st.q, u: st.unit, y: st.yi === D.years.length - 1 ? "" : D.years[st.yi], s: st.sort === "value" ? "" : st.sort, d: st.dir === "desc" ? "" : st.dir, c: st.sel.size > 60 && st.sel.size >= ranked.length ? "all" : [...st.sel].join(",") });
     const val = (c, yi = st.yi, q = st.q, unit = st.unit) => (c.nd ? null : UNIT[unit].of(c, cum(c, q, yi)));
     const fv = (v, q = st.q) => UNIT[st.unit].fmt(v, SIGNED[q]);
     const colorOf = new Map();
@@ -624,11 +629,56 @@
     redrawFn = () => { drawWf(); drawLine(); }; redrawFn();
   }
 
+  // ===== a page's own ranked list (a topic, part, year or group page; the military aid page): its rows, as the page
+  // writes them (CFG.rows: name, iso, v in the page's unit, value, tone), first rows then every row =====
+  function topicBars() {
+    const R = CFG.rows || [], st = { all: hashState.all === "1" };
+    main.innerHTML = `<div class="emb-chart"></div><div class="emb-keyrow"></div><p class="emb-more"><button type="button" class="emb-link"></button></p>`;
+    $(".emb-more button", main).addEventListener("click", () => { st.all = !st.all; draw(); });
+    const TONE = { ua: "--ukr", uaF: "--ukr-f", ru: "--rus", ruF: "--rus-f", grey: "--t-other", frozen: "--fz1" };
+    let shown = [];
+    function draw() {
+      shown = st.all ? R : R.slice(0, narrow() ? 15 : 20);
+      const w = $(".emb-chart", main).clientWidth || 600;
+      const node = hbars(shown.map((r, i) => ({ key: String(i), name: r.name, v: r.v, label: r.value, color: cssv(TONE[r.tone] || "--ukr") })), { width: w, unit: CFG.unit || "eur", signed: !!CFG.signed,
+        onTip: r => { const x = shown[+r.key]; return `<b>${esc(x.name)}</b><br>${esc(x.value)}${x.sub ? `<br>${esc(x.sub)}` : ""}`; } });
+      const ch = $(".emb-chart", main); ch.innerHTML = ""; ch.appendChild(node);
+      const tones = [...new Set(shown.map(r => r.tone))];
+      $(".emb-keyrow", main).innerHTML = (CFG.keys || []).length ? legendHtml(CFG.keys.filter(k => tones.includes(k.tone)).filter((k, i, a) => a.findIndex(z => z.text === k.text) === i).map(k => ({ color: cssv(TONE[k.tone]), text: k.text }))) : "";
+      $(".emb-more button", main).textContent = st.all ? S.showFewer : fill(S.showAll, { n: R.length });
+      $(".emb-more", main).hidden = R.length <= 20;
+      setHash({ all: st.all ? "1" : "" });
+    }
+    setView({ name: "", svg: () => $(".emb-chart svg", main), csv: () => [[CFG.colName || S.country, CFG.colValue || S.sValue, "ISO3"]].concat(R.map(r => [r.name, r.raw ?? r.v, r.iso || ""])) });
+    redrawFn = draw; draw();
+  }
+  // ===== a series of its own (Russia's oil and gas revenue by month or year, its budget balance): CFG.sets, each
+  // { key, label, x: [labels], unit: "eur" | "pct", lines: [{ name, tone, vals }] }, a switch between the sets =====
+  function series() {
+    const sets = CFG.sets || [], st = { k: sets.some(x => x.key === hashState.set) ? hashState.set : (sets[0] || {}).key };
+    const TONE = { ua: "--ukr", ru: "--rus", ink: "--ink", grey: "--t-other" };
+    main.innerHTML = `<div class="emb-ctlrow"></div><div class="emb-chart"></div><div class="emb-keyrow"></div>`;
+    if (sets.length > 1) $(".emb-ctlrow", main).appendChild(controls(seg("se-set", sets.map(x => [x.key, x.label]), st.k, v => { st.k = v; draw(); }, S.view)));
+    let cur = null;
+    const fmtOf = u => v => (v == null ? S.na : u === "pct" ? F.P(L, v) : (v < 0 ? "−" : "") + F.E(L, v));
+    function draw() {
+      cur = sets.find(x => x.key === st.k) || sets[0]; if (!cur) return;
+      const ls = cur.lines.map(x => ({ name: x.name, color: cssv(TONE[x.tone] || "--ink"), vals: x.vals }));
+      const w = $(".emb-chart", main).clientWidth || 600, h = Math.max(220, Math.min(380, Math.round(w * 0.45))), f = fmtOf(cur.unit);
+      const out = lines(ls, { width: w, height: h, labels: cur.x, fmt: v => (Math.abs(v) < 1e-12 ? "0" : f(v)), onTip: i => tipRows(cur.x[i], ls.map(s => [s.name, f(s.vals[i])])) });
+      const ch = $(".emb-chart", main); ch.innerHTML = ""; ch.appendChild(out.node);
+      $(".emb-keyrow", main).innerHTML = legendHtml(ls.map(s => ({ color: s.color, text: s.name }))) + (cur.note ? `<p class="ex-note">${esc(cur.note)}</p>` : "");
+      $(".emb-sub", root).textContent = cur.sub || CFG.sub;
+      setHash({ set: st.k === (sets[0] || {}).key ? "" : st.k });
+    }
+    setView({ get name() { return st.k; }, svg: () => $(".emb-chart svg", main), csv: () => cur ? [[S.period].concat(cur.lines.map(x => x.name))].concat(cur.x.map((x, i) => [x].concat(cur.lines.map(s => s.vals[i] ?? "")))) : [] });
+    redrawFn = draw; draw();
+  }
   function setView(v) { view = v; }
   // the page that holds the frame switches its theme (seo_plain.mjs THEME_JS): follow it and draw again in its colours
   window.addEventListener("message", e => { if (e.source !== window.parent || !e.data || e.data.type !== "wb-theme") return; document.documentElement.dataset.theme = e.data.theme === "dark" ? "dark" : "light"; if (D) redraw(); });
   new MutationObserver(() => { const e = $(".emb-sub", root), t = e.textContent; if (t && t[0] !== t[0].toUpperCase()) e.textContent = t[0].toUpperCase() + t.slice(1); }).observe($(".emb-sub", root), { childList: true, characterData: true, subtree: true });
-  const KINDS = { explorer, "support-by-country": stacked, "totals-over-time": overTime, "per-person": () => ranked("pp"), "toward-russia": () => ranked("rus"), "frozen-assets": frozen, country };
+  const KINDS = { explorer, "support-by-country": stacked, "totals-over-time": overTime, "per-person": () => ranked("pp"), "toward-russia": () => ranked("rus"), "frozen-assets": frozen, country, topic: topicBars, series };
   fetch(CFG.data).then(r => r.json()).then(d => {
     D = d;
     C = Object.entries(d.c).map(([iso, c]) => ({ iso, ...c })).sort((a, b) => a.iso.localeCompare(b.iso));

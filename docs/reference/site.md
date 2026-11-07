@@ -39,11 +39,15 @@ canonical to their page and a visible link back.
   engines; an inline loader (`LOADER`, added by `shell()` to pages with a slot) creates the iframe when the slot nears
   the screen and swaps it in once the embed reports its height. Wired in: `/support-for-ukraine/` (a hero with the
   finding of `/europe-energy-payments-vs-aid/`, then the explorer and the focused embeds) and every country page with data.
-- **Rolling out to other pages**: push a page entry to `EMB_PAGES` (or reuse an existing embed name) and put
-  `EM.slot({ l, name, title, fallback: G.figureHtml(img), caption })` where the page shows its chart, e.g. `per-person` on
-  `/ukraine-aid-per-capita/`, `toward-russia` on `/countries-helping-russia/`, `frozen-assets` on
-  `/frozen-russian-assets/`, the explorer with `#m=rus` on `/trade-with-russia/` and `#tab=table` on `/ranking/`; a topic
-  page's table can become an explorer view by its measure (the hash keeps `tab`, `m`, `u`, `y` and `c`).
+- **Rolled out (round 71c)** to every generated reading page in all seven languages, each in the reading rhythm below:
+  topic, part, year and group pages (their own rows as ranked bars, `/embed/topic/<page>/`, or the focused embed of
+  their measure: `per-person`, `frozen-assets`, `support-by-country`, the explorer's map and `toward-russia` on
+  `/countries-helping-russia/`); `/ranking/` and `/trade-with-russia/` (the explorer on their measure, `#m=net` or
+  `#m=rus`); the comparisons (the explorer's line with the two countries, `#tab=line&c=DEU,FRA`); the research pages
+  (Russia's oil and gas revenue and budget balance as `/embed/series/<page>/`, the military aid rows as ranked bars, the
+  sanctions chart); `/charts/`, `/downloads/` and `/topics/` take the light pattern. The explorer's hash keeps `tab`,
+  `m`, `u`, `y` and `c` (`c=all` for every country). A new page type: build its body from `seo_plain.mjs` and push its
+  embed's entry to `EMB_PAGES` (`kind: "topic"` with `extra.rows`, or `kind: "series"` with `extra.sets`).
 
 ## The reading rhythm (round 71b)
 

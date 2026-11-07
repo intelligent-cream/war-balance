@@ -1242,3 +1242,13 @@ test("the reading rhythm: one visual per section, folded notes and answers, one 
   assert.match(PLB.faq("Questions", [{ q: "Q?", a: "A" }]), /<section class="faq" id="faq"><h2>Questions<\/h2><details class="qa"><summary><h3>Q\?<\/h3><\/summary><p>A<\/p><\/details><\/section>/);
   assert.match(PLB.THEME_JS, /ftm-theme/); assert.match(PLB.THEME_JS, /wb-theme/);
 });
+// round 71c: a questions section already written folds the same way (the topic and research pages), its data marks kept
+test("the rollout: a written questions section folds, with its id and data marks", async () => {
+  const PLB = await import("./seo_plain.mjs");
+  const f = PLB.foldFaq('<section class="faq"><h2>Questions</h2><h3>Q1?</h3><p data-rq="fuel">A1</p>\n<h3>Q2?</h3><p>A2</p></section>');
+  assert.match(f, /^<section class="faq" id="faq"><h2>Questions<\/h2><details class="qa"><summary><h3>Q1\?<\/h3><\/summary><p data-rq="fuel">A1<\/p><\/details>/);
+  assert.equal((f.match(/<details class="qa">/g) || []).length, 2);
+  const EM = await import("./seo_embeds.mjs");
+  assert.match(EM.slot({ l: "en", name: "explorer", title: "T", hash: "tab=line&c=DEU,FRA" }), /data-emb="\/embed\/explorer\/#tab=line&c=DEU,FRA"/);
+  assert.match(EM.LOADER, /split\("#"\)/);
+});
