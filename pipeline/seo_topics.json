@@ -6,13 +6,14 @@
       "kind": "topic",
       "compact": true,
       "label": "Ukraine support tracker",
-      "title": ["Ukraine aid tracker 2022–{y1}: Kiel data, refugees, trade", "Ukraine aid tracker 2022–{y1}"],
+      "title": ["Ukraine aid tracker: Kiel's figures vs aid delivered ({y1})", "Ukraine aid tracker: Kiel's figures vs aid delivered", "Ukraine aid tracker {y1}: Kiel vs aid delivered"],
       "description": [
-        "Every country's support for Ukraine 2022–{y1}, built on Kiel Institute data and adding EU shares, refugee hosting and trade with Russia. Ranges, sources.",
-        "Every country's support for Ukraine since 2022, built on Kiel Institute data, with EU shares, refugees and trade with Russia. Ranges and sources."
+        "Every country's aid to Ukraine, 2022 to {dataTo}, beside the Kiel Institute's figure: {top1} {top1_eur}, {top2} {top2_eur}. Adds EU shares, refugees, trade.",
+        "Every country's aid to Ukraine, 2022 to {dataTo}, beside the Kiel Institute's figure: {top1} {top1_eur}, {top2} {top2_eur}.",
+        "Every country's aid to Ukraine since 2022, beside the Kiel Institute's figure, with EU shares, refugees and trade with Russia. Ranges and sources."
       ],
-      "h1": "Ukraine aid tracker 2022–{y1}: Kiel data plus EU shares, refugees and trade with Russia",
-      "intro": "The breakdown of each country's support for Ukraine from 2022 to {dataTo}, set beside the Kiel Institute's figure: the aid counted here, Kiel's bilateral figure, and the support by type, from military aid to refugee hosting and its share of EU aid, minus money flowing back. Kiel counts aid when it is allocated and loans at their face value; this table counts aid as it is delivered and loans at their value as a gift. In euros, the table starts with {top3list}.",
+      "h1": "Ukraine aid tracker: Kiel's figures vs aid delivered ({y1})",
+      "intro": "Every country's aid to Ukraine, 2022 to {dataTo}, beside the Kiel Institute's figure: {top1} {top1_eur}, {top2} {top2_eur}. For each country: the aid counted here, Kiel's bilateral figure, and the support by type, from military aid to refugee hosting and its share of EU aid, minus money flowing back. Kiel counts aid when it is allocated and loans at their face value; this table counts aid as it is delivered and loans at their value as a gift. In euros, the table starts with {top3list}.",
       "rank": "ua",
       "order": "desc",
       "sort": "eur",

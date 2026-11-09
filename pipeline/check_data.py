@@ -1043,7 +1043,9 @@ else:
         _phr = seo_check.order_phrases(ROOT / "pipeline", _node) if _node else None
     except RuntimeError as _err:
         _phr, _wording = None, _wording + [f"seo_i18n.mjs order phrases did not load: {_err}"]
-    _seo = seo_check.check_site(ROOT / "site", _su, _m, _topics, _fam, _phr)
+    _seo = seo_check.check_site(
+        ROOT / "site", _su, _m, _topics, _fam, _phr, ROOT / "pipeline" / "seo_frozen_titles.json"
+    )
     _seo["wording"] = _wording
     _seo_bad = {k: v for k, v in _seo.items() if v}
     _smf = ROOT / "site" / "sitemap.xml"

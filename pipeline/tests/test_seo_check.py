@@ -23,7 +23,7 @@ def page(
         f'<link rel="alternate" type="text/markdown" href="/{path}index.md">{links}'
         + ('<meta http-equiv="refresh" content="0; url=/">' if refresh else "")
         + f"</head><body{f' data-iso={chr(34)}{iso}{chr(34)}' if iso else ''}>"
-        + f'<main><p>Net 0.14%.</p><p class="cite">Cite as: War Balance, figures to August 2026, {U + path}</p></main></body></html>'
+        + f'<main><p class="intro">{desc}</p><p>Net 0.14%.</p><p class="cite">Cite as: War Balance, figures to August 2026, {U + path}</p></main></body></html>'
     )
 
 
@@ -904,3 +904,41 @@ def test_headline_problems_with_the_model():
     assert sc.headline_problems("x: 0.72% of GDP", "", "", "en", civ) == [
         "title 0.72% is close to net (0.7092) but not its value: a second value for it?"
     ]
+
+
+def test_snippet_problems_the_opening_sentence_is_the_descriptions_first():
+    """Round 72 (CTR report 4.1): the description's first sentence and the page's opening sentence are the same."""
+    d = "Canada has given Ukraine €8.8bn since 2022, 11th of 192 countries: €6.6bn own aid. Kiel: €14.9bn bilateral."
+    i = "Canada has given Ukraine €8.8bn since 2022, 11th of 192 countries: €6.6bn own aid. With its trade added ..."
+    assert sc.snippet_problems(d, i) == []
+    assert sc.snippet_problems(d, "Canada has given Ukraine €8.8bn since 2022. With its trade ...")
+    assert sc.first_sentence("Albania&#39;s net is <b>€16m</b> (essentially zero). Russia kept €4m more.") == (
+        "Albania's net is €16m (essentially zero)."
+    )
+
+
+def test_frozen_titles_are_kept(tmp_path):
+    """Round 72 (CTR report 4.4): the pages the report keeps keep their titles."""
+    (tmp_path / "site" / "ukraine-aid-per-capita").mkdir(parents=True)
+    (tmp_path / "site" / "ukraine-aid-per-capita" / "index.html").write_text(
+        page("ukraine-aid-per-capita/", "Per capita 2022–2026")
+    )
+    spec = tmp_path / "frozen.json"
+    spec.write_text(json.dumps({"titles": {"/ukraine-aid-per-capita/": "Per capita 2022–2026"}}))
+    assert sc.frozen_title_problems(tmp_path / "site", spec) == []
+    spec.write_text(json.dumps({"titles": {"/ukraine-aid-per-capita/": "Other", "/fr/ukraine-aid-2026/": "x"}}))
+    out = sc.frozen_title_problems(tmp_path / "site", spec)
+    assert len(out) == 2 and "kept as “Other”" in out[0] and "missing" in out[1]
+    # the list in the repository names the pages of the report's section 4.4
+    real = json.loads((Path(__file__).resolve().parents[1] / "seo_frozen_titles.json").read_text())["titles"]
+    for p in (
+        "/ukraine-aid-per-capita/",
+        "/de/ukraine-aid-per-capita/",
+        "/ukraine-aid-2026/",
+        "/fr/ukraine-aid-2026/",
+        "/fr/support-for-ukraine/",
+        "/es/support-for-ukraine/",
+        "/de/eu-aid-to-ukraine-by-member/",
+        "/nl/eu-aid-to-ukraine-by-member/",
+    ):
+        assert p in real
