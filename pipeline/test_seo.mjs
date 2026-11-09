@@ -1013,7 +1013,7 @@ test("round 63: 'How much has X given to Ukraine?' only where its support is abo
     assert.equal(x.ask.title, null, l);
   }
   // round 72 (CTR report 4.2): the searched verb and the net in euros, whether or not the question about Russia is searched
-  assert.equal(T.countryCopy("en", { ...nga, words: W }).title, "Does Nigeria support Russia? €1.9bn net toward Ukraine");
+  assert.equal(T.countryCopy("en", { ...nga, words: W }).title, "Does Nigeria support Ukraine? €1.9bn net toward Ukraine");
   assert.equal(T.countryCopy("en", { ...nga, words: W }).h1, "Does Nigeria support Russia or Ukraine? €1.9bn net toward Ukraine");
   assert.match(T.countryCopy("en", { ...nga, words: W, demand: { ask: { en: { support: 500 } } } }).title, /^Does Nigeria support Russia\? €1\.9bn net toward Ukraine$/);
   // a positive support keeps the question about what it gave

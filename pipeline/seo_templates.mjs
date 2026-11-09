@@ -195,7 +195,7 @@ function ctrCopy(l, f, cat, lead, v0, nums0, c) {
   const leanNum = cN.level === "lean" && (cN.side === "russia") === ((f.net || 0) < 0);
   const nums = { ...nums0, qDel: q === "del", qRef: q === "ref", qEu: q === "eu", rankN: rk ? 1 : 0, nParts: partKeys.length >= 2 ? 1 : 0,
     partsAll: Math.abs(partKeys.reduce((x, [, y]) => x + y, 0) - (f.ua || 0)) <= 0.05 * Math.abs(f.ua || 0),
-    uaShow, rusShow: Math.abs(f.rus || 0) >= 0.0005, leanNum, sure: cN.level === "sure", pl: EN_PLURAL.test(v.N) };
+    uaShow, rusShow: Math.abs(f.rus || 0) >= 0.0005, leanNum, leanUa: cN.side === "ukraine", sure: cN.level === "sure", pl: EN_PLURAL.test(v.N) };
   const one = x => fmt(x, v, nums), all = xs => xs.map(one);
   if (lead === "ua") {
     const description = fitDesc(all(T.given.description));

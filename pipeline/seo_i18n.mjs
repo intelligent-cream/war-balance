@@ -545,9 +545,9 @@ const COPY = {
           part: { aid: "{aidEur} own aid", eu: "{euEur} EU share", ref: "{refEur} for refugees" } },
         net: {
           sureR: ["{if:pl|Do|Does} {Nt} support Russia? {net} net {netDir}", "{N}: {net} net {netDir}", "{N}: {netDir}"],
-          sureU: ["{if:pl|Do|Does} {Nt} support Russia or Ukraine? {net} net {netDir}", "{if:pl|Do|Does} {Nt} support Russia? {net} net {netDir}", "{N}: {net} net {netDir}", "{N}: {netDir}"],
-          lean: ["{if:pl|Do|Does} {Nt} support Russia or Ukraine? {if:leanNum|{net} net, {leanWordLc}|{leanWord}}", "{if:pl|Do|Does} {Nt} support Russia? {if:leanNum|{net} net, {leanWordLc}|{leanWord}}",
-            "{if:pl|Do|Does} {Nt} support Russia? {if:leanNum|{net}, {leanWordLc}|{leanWord}}", "{if:pl|Do|Does} {Nt} support Russia? {leanWord}", "{N}: {if:leanNum|{net} net, {leanWordLc}|{leanWordLc}}", "{N}: {leanWordLc}"],
+          sureU: ["{if:pl|Do|Does} {Nt} support Russia or Ukraine? {net} net {netDir}", "{if:pl|Do|Does} {Nt} support Ukraine? {net} net {netDir}", "{N}: {net} net {netDir}", "{N}: {netDir}"],
+          lean: ["{if:pl|Do|Does} {Nt} support Russia or Ukraine? {if:leanNum|{net} net, {leanWordLc}|{leanWord}}", "{if:pl|Do|Does} {Nt} support {if:leanUa|Ukraine|Russia}? {if:leanNum|{net} net, {leanWordLc}|{leanWord}}",
+            "{if:pl|Do|Does} {Nt} support {if:leanUa|Ukraine|Russia}? {if:leanNum|{net}, {leanWordLc}|{leanWord}}", "{if:pl|Do|Does} {Nt} support {if:leanUa|Ukraine|Russia}? {leanWord}", "{N}: {if:leanNum|{net} net, {leanWordLc}|{leanWordLc}}", "{N}: {leanWordLc}"],
           unc: ["{if:pl|Do|Does} {Nt} support Russia or Ukraine? {net} net, {uncWord}", "{if:pl|Do|Does} {Nt} support Russia? {net} net, {uncWord}", "{if:pl|Do|Does} {Nt} support Russia or Ukraine? {uncWordCap}",
             "{if:pl|Do|Does} {Nt} support Russia? {uncWordCap}", "{N}: {net} net, {uncWord}", "{N}: {uncWord}"],
           zero: ["{if:pl|Do|Does} {Nt} support Russia or Ukraine? {if:uaShow|{ua} aid, net|Net} {zeroWord}", "{if:pl|Do|Does} {Nt} support Russia? {if:uaShow|{ua} aid, net|Net} {zeroWord}",
