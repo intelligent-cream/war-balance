@@ -19,7 +19,7 @@
 // (country.phrasing); askOf below, the phrases in seo_i18n.mjs ASK.
 
 import { createHash } from "node:crypto";
-import { P as PL, E as EL, L as LL, cap, list3, inSentence, inList, countryText, homeText, staticText, fit, askText, semi, grammar, countryIncl, countryLine, docDesc } from "./seo_i18n.mjs";
+import { P as PL, E as EL, L as LL, cap, list3, inSentence, inList, countryText, homeText, staticText, fit, fitTitle, fitDesc, fmt, askText, askPhrase, semi, grammar, countryIncl, countryLine, docDesc, countryCtr, plain } from "./seo_i18n.mjs";
 
 export const TITLE_MAX = 60, DESC_MAX = 155;
 export const LANGS = ["en", "uk", "de", "fr", "pl", "nl", "es"];
@@ -136,11 +136,85 @@ export function countryCopy(l, f) {
     const ru = countryLine(l, "introRu", v, nums), ua = negligible ? "" : c.intro;
     c = { ...c, intro: (supportLead ? [ua, ru] : [ru, ua]).filter(Boolean).join(" "), intro2: countryLine(l, "intro2Ru", v, nums) };
   }
-  const out = { ...c, intro: c.intro || (cat === "nodata" ? v.noDataText : ""), category: category(f), ask, russiaFirst, supportLead };
+  // round 72 (CTR report 4.1-4.3): which number the page leads with (seo_country.mjs leadOf: what it gave where the title
+  // asks that and its support is above zero and not negligible, else the net), the English title, heading and
+  // description by template, and the headline number in the heading in every language
+  const tiny = Math.abs(f.uaPct || 0) < 0.01 && Math.abs(f.ua || 0) < 0.05;
+  const lead = cat === "nodata" ? "" : !russiaFirst && cat !== "party" && uaPos && !tiny ? "ua" : "net";
+  const ctr = lead ? ctrCopy(l, f, cat, lead, v, nums, c) : {};
+  c = { ...c, ...ctr };
+  const out = { ...c, intro: c.intro || (cat === "nodata" ? v.noDataText : ""), category: category(f), ask, russiaFirst, supportLead, lead };
   // round 68 (QA review): a title writes "10%", not "10.0%"
   out.title = out.title.replace(/(\d+)[.,]0(?=\s?%)/gu, "$1");
   out.og_title = out.title; out.og_description = out.description;
   return out;
+}
+// round 72 (CTR report 4.2): a donor page's qualifier, one fixed precedence: "delivered" where Kiel's bilateral figure or
+// the government's own total in euros (official_totals_r64.json) is above the total here, else "mostly for refugees"
+// where refugee hosting is at least half of it, else "incl. EU share" where its share of EU aid is at least 40% of it,
+// else "since 2022". ua: the total (€ bn); pt: its parts { eu, ref, kiel }; official: the government's total in € bn
+export const QUAL = { ref: 0.5, eu: 0.4 };
+export function ctrQual(ua, pt = {}, official = null) {
+  if (!(ua >= 0.0005)) return "since";
+  if ((pt.kiel != null && pt.kiel > ua + 0.0005) || (official != null && official > ua + 0.0005)) return "del";
+  if ((pt.ref || 0) >= QUAL.ref * ua) return "ref";
+  if ((pt.eu || 0) >= QUAL.eu * ua) return "eu";
+  return "since";
+}
+// an English name read as plural ("Do the Cook Islands support ...?")
+const EN_PLURAL = /Islands$|^(Bahamas|Maldives|Seychelles|Comoros|Philippines|Cocos)\b/;
+// English ordinal: 1st, 2nd, 3rd, 11th, 22nd
+export const ordinal = n => n + (n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] || "th");
+// the first form that fits; with a very long name, the last form with the name cut, never the words after it
+const fitName = (forms, N) => {
+  const t = fitTitle(forms), last = forms[forms.length - 1];
+  if (t.length <= TITLE_MAX && !t.endsWith("…")) return t;
+  if (!last.startsWith(N)) return t;
+  const rest = last.slice(N.length);
+  return N.slice(0, Math.max(8, TITLE_MAX - rest.length - 1)).trimEnd() + "…" + rest;
+};
+const firstSentence = s => { const i = String(s).search(/(?<=[.?!])\s+(?=\p{Lu})/u); return i > 0 ? s.slice(0, i) : String(s); };
+function ctrCopy(l, f, cat, lead, v0, nums0, c) {
+  const pt = f.parts || {}, cN = (f.loc && f.loc.fig && f.loc.fig.cN) || f.cN || {}, w = f.words || {};
+  const net = EL(l, Math.abs(f.net || 0));
+  if (l !== "en") {
+    // the heading ends with the headline number: what it gave, or the net (in place of "What the money flows show" where
+    // the net is very likely, after the map's words otherwise)
+    if (lead === "ua") return { h1: `${c.h1} ${v0.ua}` };
+    const flows = (askPhrase(l, "h1Help") || {}).r_sure || "", vv = { net, netDir: cN.dirWords || cN.sideWords || "" };
+    if (cat === "party") return { h1: `${c.h1} – ${cN.level === "sure" ? fmt(askPhrase(l, "h1NetSure"), vv) : fmt(askPhrase(l, "h1Net"), vv).replace(/^\((.*)\)$/, "$1")}` };
+    if (cat !== "party" && cN.level === "sure" && flows && c.h1.endsWith(flows)) return { h1: c.h1.slice(0, -flows.length).trimEnd() + " " + fmt(askPhrase(l, "h1NetSure"), vv) };
+    return { h1: `${c.h1} ${fmt(askPhrase(l, cat === "zero" ? "h1NetZero" : "h1Net"), vv)}` };
+  }
+  const T = countryCtr(), q = ctrQual(f.ua || 0, pt, f.official);
+  const rk = f.rankEur || null;
+  const partKeys = [["aid", pt.aid], ["eu", pt.eu], ["ref", pt.ref]].filter(([, x]) => (x || 0) >= 0.0005);
+  const v = { ...v0, net, rankOrd: rk ? ordinal(rk.n) : "", rankOf: rk ? String(rk.of) : "", aidEur: EL(l, pt.aid || 0) };
+  v.partList = partKeys.map(([k]) => fmt(T.given.part[k], v)).join(", ");
+  const uaShow = nums0.uaPos && !(Math.abs(f.uaPct || 0) < 0.01 || Math.abs(f.ua || 0) < 0.001);
+  const leanNum = cN.level === "lean" && (cN.side === "russia") === ((f.net || 0) < 0);
+  const nums = { ...nums0, qDel: q === "del", qRef: q === "ref", qEu: q === "eu", rankN: rk ? 1 : 0, nParts: partKeys.length >= 2 ? 1 : 0,
+    partsAll: Math.abs(partKeys.reduce((x, [, y]) => x + y, 0) - (f.ua || 0)) <= 0.05 * Math.abs(f.ua || 0),
+    uaShow, rusShow: Math.abs(f.rus || 0) >= 0.0005, leanNum, sure: cN.level === "sure", pl: EN_PLURAL.test(v.N) };
+  const one = x => fmt(x, v, nums), all = xs => xs.map(one);
+  if (lead === "ua") {
+    const description = fitDesc(all(T.given.description));
+    // u_trade keeps its title (it asks about its trade with Russia); its heading answers what it gave
+    const title = cat === "u_trade" ? c.title : fitName(all(T.given.title), v.N);
+    return { title, h1: one(cat === "u_trade" ? T.h1Trade : T.given.h1), description, first: firstSentence(description), qual: q };
+  }
+  // the opening sentence (seo_i18n.mjs PLAIN introNet), the description's first
+  const word = cN.level === "sure" ? w.sure : cN.level === "lean" ? w.lean : cN.level === "unc" ? w.unc : cN.level === "near" ? w.near : cN.level === "zero" ? w.zero : "";
+  let first = plain(l, "introNet", { ...v, side: v.netDir, word: word || "" }, { word: word ? 1 : 0 });
+  // (a sentence too long for a description, with a very long name: the description is cut, the intro keeps its own)
+  const vf = { ...v, first };
+  if (first.length > 155) first = "";
+  const description = fitDesc((cat === "party" ? T.net.descParty : T.net.description).map(x => fmt(x, vf, nums)));
+  if (cat === "u_trade") return { h1: one(T.h1Trade), description, first };
+  const key = cat === "party" ? "party" : cat === "zero" ? "zero" : cat === "unc" ? "unc" : cat === "u_lean" || cat === "r_lean" ? "lean" : cN.side === "russia" || cat === "r_sure" ? "sureR" : "sureU";
+  const forms = all(T.net[key]);
+  const h1 = key === "party" ? one(T.net.h1Party) : key === "zero" ? one(T.net.h1Zero) : key === "lean" && !leanNum ? one(T.net.h1Lean) : forms[0];
+  return { title: fitName(forms, v.N), h1, description, first };
 }
 // round 68: the chance levels whose title asks about both sides ("Does ... support Ukraine or Russia?")
 const BOTH_SIDES = new Set(["zero", "u_lean", "r_lean", "unc", "u_net"]);
@@ -174,6 +248,14 @@ export function staticCopy(page, x, l = "en") {
   const ls = a => list3(l, a), E1 = b => (l === "en" ? E(b) : EL(l, b));
   const v = { n: x.n, topUa: ls(x.topUa || []), topRu: ls(x.topRu || []), parties: ls(x.parties || []), euroTop: ls((x.euroTop || []).map(([n, b]) => `${n} (${E1(b)})`)),
     euroTop3: ls((x.euroTop3 || x.euroTop || []).map(([n, b]) => `${n} (${E1(b)})`)), shareTop: ls(x.shareTop || []), y1: x.y1 || "", dataTo: x.dataTo || "" };
+  // round 72 (CTR report 4.2): the page of support by country's two largest totals in its title (hubTop: [[name, short
+  // name, bn] x3], the map's names; short: seo_i18n.mjs SHORT_NAME), its years as "2022–26" ({yy}), the three largest in
+  // its description's first sentence and the number of countries that gave ({nGave})
+  if (x.hubTop) {
+    x.hubTop.forEach(([n, sh, b], i) => { v["t" + (i + 1)] = n; v["s" + (i + 1)] = sh || n; v["v" + (i + 1)] = E1(b); });
+    v.top3 = x.hubTop.map(([n, , b]) => `${n} ${E1(b)}`).join(", ");
+    v.yy = String(x.y1 || "").slice(-2); v.nGave = x.nGave ?? "";
+  }
   const nums = { nParty: (x.parties || []).length };
   const r = [...(x.ruMore || []), ...(x.ruLess ? [x.ruLess] : [])];
   r.forEach(([n, b], i) => { v["n" + (i + 1)] = n; v["e" + (i + 1)] = E1(b); nums["x" + (i + 1)] = b; });

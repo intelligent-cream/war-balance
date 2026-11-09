@@ -269,15 +269,48 @@ def intro_of(text: str) -> str:
     return " ".join(x for x in (m.groups() if m else ()) if x)
 
 
+def first_sentence(text: str) -> str:
+    """A text's first sentence: up to the first ., ? or ! that a space and a capital letter follow ("€8.8bn" does not end one)."""
+    t = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", text or ""))).strip()
+    m = re.search(r"(?<=[.?!])\s+(?=[A-Z\u00C0-\u024F\u0400-\u04FF])", t)
+    return t[: m.start()] if m else t
+
+
+def snippet_problems(desc: str, intro: str) -> list[str]:
+    """Round 72 (CTR report 4.1: "the first body paragraph must equal the description's first sentence"): the page's
+    opening sentence and its description's first sentence are the same."""
+    a, b = first_sentence(desc), first_sentence(intro)
+    return [] if a and a == b else [f"description opens “{a[:80]}”, the intro “{b[:80]}”"]
+
+
+def frozen_title_problems(site: Path, spec: Path) -> list[str]:
+    """Round 72 (CTR report 4.4, "what not to change"): the titles of the pages that already win clicks (pipeline/
+    seo_frozen_titles.json: path -> title) are exactly as listed. A deliberate change (the 1 January roll-over of a year
+    page) updates the list in the same commit."""
+    if not spec.exists():
+        return [f"{spec.name} missing"]
+    out = []
+    for path, want in json.loads(spec.read_text()).get("titles", {}).items():
+        f = site / path.strip("/") / "index.html"
+        if not f.exists():
+            out.append(f"{path}: missing")
+            continue
+        got = head(f.read_text())["title"]
+        if got != want:
+            out.append(f"{path}: title “{got}”, kept as “{want}”")
+    return out
+
+
 def headline_concepts(c: dict) -> dict[str, tuple[float, float | None]]:
     """Round 68: the quantities a country page's title, description and opening paragraphs speak of, from the model:
-    {name: (€ bn, % of a year's GDP)}: the net, support for Ukraine, trade with Russia, the share of EU aid and refugee
-    hosting (Kiel's figure and the frozen money are the pages' own measures, checked by check_dyn)."""
+    {name: (€ bn, % of a year's GDP)}: the net, support for Ukraine, trade with Russia, its own aid (round 72), the share of
+    EU aid and refugee hosting (Kiel's figure and the frozen money are the pages' own measures, checked by check_dyn)."""
     out: dict[str, tuple[float, float | None]] = {
         k: (c[k + "Eur"], c[k]) for k in ("net", "ua", "rus") if c.get(k + "Eur") is not None
     }
     gdp = c.get("gdp") or 0
-    for k, mk in (("euaid", "part_euaid"), ("ref", "part_ref")):
+    # round 72: and its own aid (the English description lists it beside the EU share and refugee hosting)
+    for k, mk in (("aid", "part_aid"), ("euaid", "part_euaid"), ("ref", "part_ref")):
         v = c.get(mk)
         if v is not None and abs(v) >= 0.0005:
             out[k] = (v, 100 * v / gdp if gdp else None)
@@ -648,6 +681,7 @@ def check_site(
     topics: list[dict] | None = None,
     families: dict | None = None,
     phrases: dict[str, dict[str, str]] | None = None,
+    frozen: Path | None = None,
 ) -> dict[str, list[str]]:
     """All problems, by check. model: site_numbers.mjs output (None: the title numbers are not checked); topics: the
     entries of seo_topics.json (round 55; None: not checked); families: pipeline/seo_families.json (round 56: every
@@ -669,6 +703,8 @@ def check_site(
         "sanity": [],
         "images": [],
         "headline": [],
+        "snippet": [],
+        "frozen": [],
     }
     smap = site / "sitemap.xml"
     if not smap.exists():
@@ -755,6 +791,19 @@ def check_site(
                         hc,
                     )
                 ]
+    # round 72 (CTR report 4.1): an English country page's opening sentence is its description's first sentence (Google
+    # quotes one or the other; both say the same), and the titles the report keeps (FROZEN_TITLES) are as they were
+    if model:
+        for u, h in heads.items():
+            name = urlparse(u).path
+            hc = model["countries"].get(h["iso"] or "") if re.match(r"^/country/", name) else None
+            if hc and not hc.get("noData"):
+                p["snippet"] += [
+                    f"{name}: {x}"
+                    for x in snippet_problems(h["description"] or "", intro_of(file_for(site, site_url, u).read_text()))
+                ]
+    if frozen is not None:
+        p["frozen"] += frozen_title_problems(site, frozen)
     # round 57b: every country page's sections and questions, in every language
     if model:
         ranks = {"all": map_ranks(model)}

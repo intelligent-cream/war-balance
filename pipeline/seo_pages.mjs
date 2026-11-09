@@ -241,8 +241,17 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   // round 61: with the parts of its support the copy names first (own aid, EU share, refugee hosting) and the Kiel
   // Institute's bilateral figure (null where Kiel does not list it): the map's own measures
   const mOf = (c, k) => (c.measures && c.measures[k] && c.measures[k].v != null ? c.measures[k].v : null);
+  // round 72 (CTR report 4.2): its rank by amount given (the map's support ranking, as the page of support by country
+  // and the country card number it) and its government's own total where it is in euros (official_totals_r64.json; a
+  // total in another currency is left out: no exchange rates yet), for the English title's qualifier and description
+  let rankEurOf = null;
+  const rankEur = iso => {
+    if (!rankEurOf) { const rows = RANK_UA.en.groups.flatMap(g => g.rows).slice().sort((a, b) => b.eurBn - a.eurBn); rankEurOf = Object.fromEntries(rows.map((r, i) => [r.iso, { n: i + 1, of: rows.length }])); }
+    return rankEurOf[iso] || null;
+  };
+  const officialEur = iso => { const o = OFFICIAL && OFFICIAL.countries[iso]; return o && o.currency === "EUR" && (o.figures || []).length ? o.figures.reduce((a, x) => a + (+x.value || 0), 0) : null; };
   const fOf = c => ({ ...c.fig, iso: c.iso, name: c.nameEn, party: c.party, armedFull: c.armedFull, noData: c.noData || c.mostlyNoData, mostly: c.mostlyNoData, demand: c.demand,
-    parts: { aid: mOf(c, "part:aid") || 0, eu: mOf(c, "part:euaid") || 0, ref: mOf(c, "part:ref") || 0, kiel: mOf(c, "kiel") } });
+    parts: { aid: mOf(c, "part:aid") || 0, eu: mOf(c, "part:euaid") || 0, ref: mOf(c, "part:ref") || 0, kiel: mOf(c, "kiel") }, rankEur: rankEur(c.iso), official: officialEur(c.iso) });
   const LANG_DATA = { en: byIso }, WORDS = { en: EN.words }, RANK = { en: EN.rank.net }, DYNW = { en: EN.dynWords }, SRCS = { en: EN.srcs };
   // round 61: the support ranking and the chance key in every language (the page of support by country in every language)
   // round 63: and the trade ranking (the ranking and the trade page in every language)
@@ -714,7 +723,9 @@ ${ps.length ? `<h3>${esc(I.s(l, "partsRanked"))}</h3>${relList(l, ps)}` : ""}
     const cN = (c.fig && c.fig.cN) || {}, pre = String((c.ua && c.ua.pre) || "");
     const o = { l, words: WORDS[l], lead, gr, pp: ppOf(lead === "ua" ? uaRows : netRows, c0.iso), rankEur: lead === "ua" && ri >= 0 ? { n: ri + 1, of: byEur.length } : null,
       world: pr.rankable ? pr.world : null, dirWords: cN.dirWords || cN.sideWords || "", uaWhy: x.ua < 0 && pre.includes(";") ? pre.split(";")[0].trim() : "",
-      yearNote: T.L(l, "yearNote", { y: lastYear, month: monthOnlyL(l) }) };
+      yearNote: T.L(l, "yearNote", { y: lastYear, month: monthOnlyL(l) }),
+      // round 72: the opening sentence is the description's first (seo_templates.mjs countryCopy first), where it leads with the same number
+      first: copy.first && copy.lead === lead ? copy.first : "" };
     return { x, o, F: (f, k, v, iso) => fig(l, f, k, v, iso ? rowL(l, iso).gdp : c.gdp, iso) };
   };
   // round 71: every embed page to write (seo_embeds.mjs), and the words of a method note's last year ("2026 runs to August")
@@ -903,7 +914,11 @@ ${foot(l)}`;
   const topicLinks = (skip = "", l = "en") => `<h2 id="topics">${esc(I.s(l, "topics"))}</h2><ul class="rel">${TOPICS.filter(e => pathOf(e) !== skip).map(e => `<li><a href="${lp(l, pathOf(e))}">${esc(labelOf(e, l))}</a></li>`).join("")}${RPAGE.map(x => `<li><a href="${lp(l, x.path)}">${esc(rLabel(x, l))}</a></li>`).join("")}<li><a href="${lp(l, "/topics/")}"><b>${esc(l === "en" ? T.L("en", "allTopicsLong") : I.s(l, "allTopics"))}</b></a></li></ul>`;
   // round 61 (CTR): the facts of the page of support by country in a language (the names and figures the map's)
   const factsL = l => {
-    if (l === "en") return { ...facts, euroTop3: uaRows.slice().sort((a, b) => b.eurBn - a.eurBn).slice(0, 3).map(r => [ttl(r.iso), r.eurBn]), y1: lastYear, dataTo: dataToL.en };
+    // round 72 (CTR report 4.2): and the three largest totals by their bare and short names (the title, the description's first
+    // sentence), and how many countries gave (the hub card's count)
+    if (l === "en") { const by = uaRows.slice().sort((a, b) => b.eurBn - a.eurBn);
+      return { ...facts, euroTop3: by.slice(0, 3).map(r => [ttl(r.iso), r.eurBn]), y1: lastYear, dataTo: dataToL.en,
+        hubTop: by.slice(0, 3).map(r => [nm(r.iso), I.shortName("en", r.iso, nm(r.iso)), r.eurBn]), nGave: uaRows.filter(r => r.eurBn >= 0.0005).length }; }
     // round 63 (audit: "met Verenigde Staten"): a name in a list after "with" in the language's form (seo_i18n.mjs inList)
     const rows = RANK_UA[l].groups.flatMap(g => g.rows), byEur = rows.slice().sort((a, b) => b.eurBn - a.eurBn), nIn = iso => I.inList(l, nameL(iso, l)), nB = iso => nameL(iso, l);
     return { ...facts, euroTop: byEur.slice(0, 2).map(r => [nIn(r.iso), r.eurBn]), euroTop3: byEur.slice(0, 3).map(r => [nIn(r.iso), r.eurBn]),
@@ -1136,6 +1151,8 @@ ${foot(l)}`;
   // round 68 (QA review: the Dutch per-capita intro had no figures): the per-person page's first three rows and their
   // amounts per person, for its intro in every language (the English one has them from seo_topics.json)
   const ppVars = (e, l, m) => {
+    // round 72 (CTR report 4.2): the tracker's two largest totals, by name and amount, in its description and intro
+    if (e.slug === "ukraine-support-tracker") { const o = {}; m.rows.slice(0, 2).forEach((c, i) => { const x = mv(c, "ua"); o[`t${i + 1}n`] = c.name; o[`t${i + 1}e`] = x ? I.E(l, x.v) : ""; }); return o; }
     if (e.slug !== "ukraine-aid-per-capita") return {};
     const o = {};
     m.rows.slice(0, 3).forEach((c, i) => { const x = mv(c, "ua"); o["top" + (i + 1)] = I.inList(l, c.name); o[`top${i + 1}_pp`] = x && c.pop ? I.PP(l, (x.v * 1000) / c.pop) : ""; });
@@ -1285,7 +1302,7 @@ ${foot(l)}`;
 ${crumbs(l, items)}
 <h1>${esc(copy.h1)}</h1>
 ${dated(l)}
-${tp ? tp.card : ""}
+${e.slug === "ukraine-support-tracker" ? `<p class="sub">${esc(T.L(l, "hubLinkPre"))} <a href="${lp(l, "/support-for-ukraine/")}">${esc(T.L(l, "hubLinkText"))}</a></p>\n` : ""}${tp ? tp.card : ""}
 <p class="intro">${esc(copy.intro)}</p>
 ${PL.actions([home(l) + m.map, T.L(l, "openMap")], [[lp(l, "/downloads/"), I.s(l, "dlH1")], [lp(l, "/charts/"), I.img(l, "chLink")]])}
 ${visual}
@@ -1320,7 +1337,8 @@ ${foot(l)}`;
       const a = LANG_DATA[l][e.a], b = LANG_DATA[l][e.b], A = nameL(e.a, l), B = nameL(e.b, l);
       const ok = c => c.net && !c.noData && !c.mostlyNoData;
       // round 65 (SEO audit, fix 2): both headline nets in the description, with the map's direction words for each
-      const head = c => (ok(c) && c.fig && c.fig.cN ? { netP: I.P(l, c.fig.netPct), dir: c.fig.cN.dirWords || c.fig.cN.sideWords || "" } : null);
+      // round 72 (CTR report 4.2): and each one's support for Ukraine in euros, for the title where both are above zero
+      const head = c => (ok(c) && c.fig && c.fig.cN ? { netP: I.P(l, c.fig.netPct), dir: c.fig.cN.dirWords || c.fig.cN.sideWords || "", ua: c.fig.ua } : null);
       const copy = I.compareCopy(l, { A, B, a: head(a), b: head(b) });
       const lines = [a, b].filter(ok).map(c => `${c.name}: ${c.net.pre} ${c.net.big}${c.net.post ? " " + c.net.post : ""} ${T.L(l, "ofGdp")} (${[c.net.range, c.net.chance].filter(Boolean).join(I.semi(l))}).`);
       let line = "";

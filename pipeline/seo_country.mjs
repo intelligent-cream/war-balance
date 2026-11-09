@@ -570,9 +570,11 @@ export function plainIntro(c, x, o) {
   const tiny = Math.abs(x.uaPct) < 0.01 && Math.abs(x.ua) < 0.05;
   const v = { ...gr, ua: (x.ua < 0 && Math.abs(x.ua) >= MAT0 ? "−" : "") + I.E(l, x.ua), net: I.E(l, x.netEur), rus: I.E(l, rus), side: o.dirWords || x.sideWords, word };
   const n = { ...gr, word: word ? 1 : 0, less: rus >= 0 ? 1 : 0, uaPos: x.ua >= MAT0 && !tiny ? 1 : 0 };
-  if (o.lead === "ua") return [PX(l, "introGave", v, n), PX(l, "introBal", v, n)].join(" ");
-  const first = x.party && c.partyWhy ? [c.partyWhy] : [];
-  return [...first, PX(l, "introNet", v, n), Math.abs(rus) >= MAT0 ? PX(l, "introNet2", v, n) : ""].filter(Boolean).join(" ");
+  // round 72 (CTR report 4.1): where the page's description opens with its own sentence (o.first), the intro opens with it
+  if (o.lead === "ua") return [o.first || PX(l, "introGave", v, n), PX(l, "introBal", v, n)].join(" ");
+  const why = x.party && c.partyWhy ? [c.partyWhy] : [];
+  if (o.first) return [o.first, ...why, Math.abs(rus) >= MAT0 ? PX(l, "introNet2", v, n) : ""].filter(Boolean).join(" ");
+  return [...why, PX(l, "introNet", v, n), Math.abs(rus) >= MAT0 ? PX(l, "introNet2", v, n) : ""].filter(Boolean).join(" ");
 }
 
 // three sentences, each a condition on the data: what its support is made of (or that it is about nothing, or below

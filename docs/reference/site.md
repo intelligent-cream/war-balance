@@ -153,6 +153,19 @@ check 37 in `check_data.py` holds the rules.
   territories without any data of their own are written with `noindex, follow`, without hreflang, out of the
   sitemaps and the hub lists. `/ranking/` and `/trade-with-russia/` are in all seven languages (with the net chart
   in each), and a country page whose title asks the Russia question opens with the trade with Russia and the net.
+- **Titles by template (round 72, from the search click-rate report).** Every figure in a title, heading or description
+  comes from the data. An English donor page asks "How much has X given to Ukraine?" with its total and one qualifier,
+  by one precedence: "delivered" where Kiel's bilateral figure or the government's own total in euros
+  (`official_totals_r64.json`) is above it, else "mostly for refugees" where refugee hosting is at least half of it,
+  else "incl. EU share" where its share of EU aid is at least 40% of it, else "since 2022" (`seo_templates.mjs`
+  `ctrQual`); its description gives its rank by amount, its parts and Kiel's figure. A page that asks about Russia asks
+  "Does X support Russia or Ukraine?" (or "Does X support Russia?" where that fits and the net is toward Russia) with
+  the net in euros and the map's words wherever the net is not very likely (leaning, too close to call, essentially or
+  near zero, party to the war). Every country page's heading, in every language, ends with its headline number; an
+  English page's opening sentence is its description's first (check 48, `snippet`). The page of support by country
+  names the two largest totals in its title; the tracker sets Kiel's figures beside the aid delivered and links the page
+  of support by country first. The pages that already win clicks keep their titles (`pipeline/seo_frozen_titles.json`,
+  check 48, `frozen`).
 - **Structured data.** The map's head has JSON-LD for the website, the publishing organisation ("War Balance",
   no personal names) and the Dataset (licence CC BY 4.0, coverage 2022 to August 2026 (all of 2022), the JSON
   download). Each country page has a WebPage that is part of the Dataset.
