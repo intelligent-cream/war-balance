@@ -1,0 +1,180 @@
+{
+  "_note": "Round 72: search-result click-rate (CTR) changes from the CTR report of 7 November 2026 (sections 4.1 to 4.5), by page family, for the Search Console reports to compare CTR before and after at matched position (CTR over the expected curve; exclude the rosstat bot queries). Every figure on these pages comes from data.json or the research files at deploy; the titles are templates, so the lists below are what the templates gave for the data of this build (to August 2026). Measure from the date Google shows the new titles, 28 days per wave; keep the titles, headings, intros and descriptions of these families frozen meanwhile.",
+  "date": "2026-11-09",
+  "round": "r72",
+  "families": [
+    {
+      "family": "country (English donor pages, 'How much has X given')",
+      "pages": "/country/<slug>/ where the title asks what it gave (support above zero, not negligible)",
+      "changed": [
+        "title (qualifier)",
+        "h1 (headline number)",
+        "meta description",
+        "first sentence of the intro"
+      ],
+      "what": "Title 'How much has {C} given to Ukraine? {N} {qualifier}', at most 60 characters (fallbacks: drop 'to', then \"{C}'s aid to Ukraine: {N}, {qualifier}\"). One precedence: 'delivered' where Kiel's bilateral figure or the government's own total in euros (official_totals_r64.json; only DEU is in euros, GBR's pounds are not compared: no exchange rates) is above the total; else 'mostly for refugees'/'most on refugees' where refugee hosting is at least 50%; else 'incl. EU share' where the EU share is at least 40%; else 'since 2022'. H1 'How much has {C} given to Ukraine since 2022? {N}'. Description: '{C} has given Ukraine {N} since 2022, {rank} of 192 countries: {own} own aid, {eu} EU share, {ref} for refugees. Kiel: {kiel} bilateral.' (', incl.' instead of ':' where the parts listed leave out more than 5% of the total; shorter forms to fit 155). The intro opens with the description's first sentence. No local currency (no FX field yet); Canada uses the generic template (no C$ wording).",
+      "qualifier": {
+        "delivered": [
+          "/country/canada/",
+          "/country/denmark/",
+          "/country/estonia/",
+          "/country/germany/",
+          "/country/japan/",
+          "/country/lithuania/",
+          "/country/sweden/",
+          "/country/united-kingdom/",
+          "/country/united-states/"
+        ],
+        "mostly_for_refugees": [
+          "/country/cyprus/",
+          "/country/czechia/",
+          "/country/iceland/",
+          "/country/malta/",
+          "/country/netherlands/",
+          "/country/poland/",
+          "/country/switzerland/"
+        ],
+        "incl_eu_share": [
+          "/country/france/",
+          "/country/italy/",
+          "/country/portugal/",
+          "/country/romania/",
+          "/country/spain/"
+        ],
+        "since_2022": [
+          "/country/belgium/",
+          "/country/croatia/",
+          "/country/finland/",
+          "/country/latvia/",
+          "/country/luxembourg/",
+          "/country/moldova/"
+        ]
+      },
+      "examples": [
+        "/country/canada/",
+        "/country/france/",
+        "/country/poland/",
+        "/country/switzerland/"
+      ]
+    },
+    {
+      "family": "country (English net pages, 'Does X support Russia or Ukraine')",
+      "pages": "/country/<slug>/ where the page leads with the net (every other English country page with data)",
+      "changed": [
+        "title",
+        "h1",
+        "meta description",
+        "first sentence of the intro (party pages: order)"
+      ],
+      "what": "Title 'Does {C} support Russia or Ukraine? {net} net toward {side}' (or 'Does {C} support Russia? ...' where that fits; the approved strongest form where the net is toward Russia: 'Does {C} support Russia? {net} net toward Russia'), with a euro figure instead of % of GDP and the map's words wherever the net is not very likely: leaning ('{net}, leaning toward ...'), too close to call ('{net} net, too close to call'), essentially or near zero ('{support} aid, net essentially zero', else '{net} net, essentially zero'), party to the war (no direction unless very likely). H1 the full question with its number. Description: the intro's first sentence (support and trade added up, the net with its side and the map's chance word), then what Russia kept from trade with it.",
+      "examples": [
+        "/country/albania/",
+        "/country/south-africa/",
+        "/country/mongolia/",
+        "/country/bulgaria/",
+        "/country/paraguay/"
+      ]
+    },
+    {
+      "family": "country (all languages)",
+      "pages": "/<lang>/country/<slug>/",
+      "changed": [
+        "h1 (headline number)",
+        "title (nl given pages: 'Hoeveel geld')"
+      ],
+      "what": "Every country page's heading ends with its headline number (what it gave, or the net); Dutch given titles and headings ask 'Hoeveel geld heeft {C} aan Oekraïne gegeven?'. Titles and descriptions of the other languages otherwise unchanged (DE/NL country pages are wave 3)."
+    },
+    {
+      "family": "support-for-ukraine (EN)",
+      "pages": "/support-for-ukraine/",
+      "changed": [
+        "title",
+        "description",
+        "first sentence of the intro"
+      ],
+      "what": "'Ukraine aid by country 2022–26: {top1} {N1}, {top2} {N2}' and 'How much each country has given Ukraine since 2022, in euros and % of GDP: {top3}. To {dataTo}.' The fr, es, de and nl pages are unchanged (seo_frozen_titles.json)."
+    },
+    {
+      "family": "ukraine-support-tracker (all languages)",
+      "pages": "/ukraine-support-tracker/ and /<lang>/ukraine-support-tracker/",
+      "changed": [
+        "title",
+        "h1",
+        "description",
+        "intro",
+        "first-line link to /support-for-ukraine/"
+      ],
+      "what": "EN 'Ukraine aid tracker: Kiel's figures vs aid delivered ({y1})', DE 'Ukraine-Hilfe-Tracker {y1}: Kiel-Zahlen vs. geleistete Hilfe', the other languages alike; the two largest totals beside Kiel's figure in the description and the intro's first sentence; a first line linking the page of support by country with the anchor 'aid to Ukraine by country' (localized). No 'total aid to Ukraine by country' wording."
+    },
+    {
+      "family": "ukraine-aid-spent-at-home (all languages)",
+      "pages": "/ukraine-aid-spent-at-home/ and /<lang>/ukraine-aid-spent-at-home/",
+      "changed": [
+        "title",
+        "h1"
+      ],
+      "what": "The narrower question ('Hoeveel verdiende elk land aan Oekraïne-steun in eigen land?', 'How much did each country earn on Ukraine aid spent at home?'), so generic 'support by country' searches go to the page of support by country. Success here is fewer wrong-intent impressions."
+    },
+    {
+      "family": "compare (EN)",
+      "pages": "/compare/<a>-vs-<b>/",
+      "changed": [
+        "title (where it fits)"
+      ],
+      "what": "'{A} vs {B} aid to Ukraine: {Na} vs {Nb} since 2022' where both supports are above zero and the title fits 60 characters; otherwise the title as before."
+    }
+  ],
+  "unchanged": "seo_frozen_titles.json (check 48): /ukraine-aid-per-capita/ in every language, the year pages /ukraine-aid-<year>/ in every language, /fr/, /es/, /de/ and /nl/support-for-ukraine/, /de/ and /nl/eu-aid-to-ukraine-by-member/.",
+  "test_plan": {
+    "wave1_treated_report": [
+      "/country/canada/",
+      "/country/france/",
+      "/country/italy/",
+      "/country/spain/",
+      "/country/poland/",
+      "/country/switzerland/",
+      "/country/sweden/",
+      "/ukraine-support-tracker/",
+      "/de/ukraine-support-tracker/",
+      "/support-for-ukraine/"
+    ],
+    "wave1_control_report": "All other EN 'given' pages, unchanged. Because the qualifier is a template, every EN donor page got the new H1 and description, and those with a qualifier a new title too; the closest control for the title is the 'since 2022' group, whose title is as before (only the H1 number and the description changed).",
+    "title_changed_with_qualifier": [
+      "/country/canada/",
+      "/country/cyprus/",
+      "/country/czechia/",
+      "/country/denmark/",
+      "/country/estonia/",
+      "/country/france/",
+      "/country/germany/",
+      "/country/iceland/",
+      "/country/italy/",
+      "/country/japan/",
+      "/country/lithuania/",
+      "/country/malta/",
+      "/country/netherlands/",
+      "/country/poland/",
+      "/country/portugal/",
+      "/country/romania/",
+      "/country/spain/",
+      "/country/sweden/",
+      "/country/switzerland/",
+      "/country/united-kingdom/",
+      "/country/united-states/"
+    ],
+    "title_unchanged_since_2022": [
+      "/country/belgium/",
+      "/country/croatia/",
+      "/country/finland/",
+      "/country/latvia/",
+      "/country/luxembourg/",
+      "/country/moldova/"
+    ],
+    "hub_control": [
+      "/fr/support-for-ukraine/",
+      "/es/support-for-ukraine/"
+    ],
+    "wave2": "Net pages ('Does X support'): the template applies to all English net pages at once in this round, so the report's split test (half of the net pages unchanged) is not available; compare against their own CTR before, at matched position.",
+    "measure": "Pages filter plus a query filter excluding the regex 'rosstat'; CTR over the expected curve; from the date the new titles show (check 5 SERPs per wave), 28 days; judge groups, not pages under 500 impressions or 15 expected clicks; success: +50% relative CTR over expected, impressions not down by more than 30% (except spent-at-home)."
+  }
+}

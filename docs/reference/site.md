@@ -14,6 +14,54 @@ What a reader sees is described on the site itself (How it works). This note say
 | `site/data.json`, `site/detail.json` | built by `pipeline/build_data.py`; never edit by hand |
 | `pipeline/share_cards.mjs` | the share images and a page per country (`site/share/`, `site/c/`), made by the Pages deploy |
 | `pipeline/seo_images.mjs` | the chart images for image search (`site/img/`), drawn in the same run (round 62) |
+| `pipeline/seo_embeds.mjs`, `pipeline/embed/` | the interactive embeds (`site/embed/`) and their runtime and look (round 71) |
+| `site/vendor/` | D3 and topojson-client for the embeds, self-hosted with their licences |
+
+## Interactive embeds (round 71, prototype)
+
+`pipeline/seo_embeds.mjs` writes, with the pages, a small page per embed and language at `/embed/<name>/` and
+`/<lang>/embed/<name>/` (git-ignored, like the pages): `explorer` (the data explorer: a country list with sort and
+select all/clear, tabs Table / Map / Line / Bar, a measure, a unit, a year slider with play), `support-by-country`
+(stacked parts), `totals-over-time` (lines), `per-person`, `toward-russia`, `frozen-assets` and `country/<slug>` (one per
+country page). Each is framed: title, subtitle (unit and period), the mark, a source line with the data's date, and a
+toolbar (method note, CSV and PNG download, link and `<iframe>` code, full screen). They are `noindex, follow`, with a
+canonical to their page and a visible link back.
+
+- **Data**: `/embed/data.json`, from the figures the pages show (`seo_extract.mjs`: each country's support, trade and
+  net by year, which `embedData()` checks add up to the page's totals; the parts of its support; names in every
+  language). Numbers are written by the pages' own format functions (`seo_i18n.mjs` `FMT_SOURCE`, copied into
+  `/embed/embed.js` before `pipeline/embed/runtime.js`). The look is `pipeline/embed/embed.css`.
+- **Libraries**: D3 7.9.0 and topojson-client 3.1.0 in `site/vendor/` (with their licences), loaded only by the embeds;
+  the map uses `countries-50m.json` (`countries-lite.json` on phones).
+- **Words**: `seo_i18n.mjs` `EMB` (7 languages, read by the wording guard), plus the chart images' `IMG` and the plain
+  layer's `PLAIN` phrases.
+- **On a page**: `slot()` puts the page's static chart image in a slot as the fallback without JavaScript and for search
+  engines; an inline loader (`LOADER`, added by `shell()` to pages with a slot) creates the iframe when the slot nears
+  the screen and swaps it in once the embed reports its height. Wired in: `/support-for-ukraine/` (a hero with the
+  finding of `/europe-energy-payments-vs-aid/`, then the explorer and the focused embeds) and every country page with data.
+- **Rolled out (round 71c)** to every generated reading page in all seven languages, each in the reading rhythm below:
+  topic, part, year and group pages (their own rows as ranked bars, `/embed/topic/<page>/`, or the focused embed of
+  their measure: `per-person`, `frozen-assets`, `support-by-country`, the explorer's map and `toward-russia` on
+  `/countries-helping-russia/`); `/ranking/` and `/trade-with-russia/` (the explorer on their measure, `#m=net` or
+  `#m=rus`); the comparisons (the explorer's line with the two countries, `#tab=line&c=DEU,FRA`); the research pages
+  (Russia's oil and gas revenue and budget balance as `/embed/series/<page>/`, the military aid rows as ranked bars, the
+  sanctions chart); `/charts/`, `/downloads/` and `/topics/` take the light pattern. The explorer's hash keeps `tab`,
+  `m`, `u`, `y` and `c` (`c=all` for every country). A new page type: build its body from `seo_plain.mjs` and push its
+  embed's entry to `EMB_PAGES` (`kind: "topic"` with `extra.rows`, or `kind: "series"` with `extra.sets`).
+
+## The reading rhythm (round 71b)
+
+Every generated reading page follows one pattern (`pipeline/seo_plain.mjs`, look in `CLEAN_CSS`): the H1 (the page's
+question), a dek (`dek()`: the finding, one smaller line), the date line, the answer card and one row of actions
+(`actions()`: one coloured button, the rest plain links); then sections in one rhythm (`rhythm()`: a heading, one plain
+sentence, ONE visual, at most one small note, usually a `why()` or `foldSection()` that folds a dense explanation away).
+Each fact is shown once: tables, long lists and static bars that repeat a visual go under "For experts" (still in the
+HTML); questions fold under each heading (`faq()`). One content width (920px) for text and embeds. Wired into
+`/support-for-ukraine/` and the country pages; the other templates follow by building their body from the same helpers.
+
+Generated pages are light by default; the map stays dark. Both read the reader's choice from `ftm-theme`, which the
+map's switch and the pages' switch (`themeButton()`, `THEME_JS`) set; a page tells its embeds (`wb-theme` message), and
+the slot loader passes the theme to each iframe (`?theme=`).
 
 ## How it works and its content
 
@@ -105,6 +153,19 @@ check 37 in `check_data.py` holds the rules.
   territories without any data of their own are written with `noindex, follow`, without hreflang, out of the
   sitemaps and the hub lists. `/ranking/` and `/trade-with-russia/` are in all seven languages (with the net chart
   in each), and a country page whose title asks the Russia question opens with the trade with Russia and the net.
+- **Titles by template (round 72, from the search click-rate report).** Every figure in a title, heading or description
+  comes from the data. An English donor page asks "How much has X given to Ukraine?" with its total and one qualifier,
+  by one precedence: "delivered" where Kiel's bilateral figure or the government's own total in euros
+  (`official_totals_r64.json`) is above it, else "mostly for refugees" where refugee hosting is at least half of it,
+  else "incl. EU share" where its share of EU aid is at least 40% of it, else "since 2022" (`seo_templates.mjs`
+  `ctrQual`); its description gives its rank by amount, its parts and Kiel's figure. A page that asks about Russia asks
+  "Does X support Russia or Ukraine?" (or "Does X support Russia?" where that fits and the net is toward Russia) with
+  the net in euros and the map's words wherever the net is not very likely (leaning, too close to call, essentially or
+  near zero, party to the war). Every country page's heading, in every language, ends with its headline number; an
+  English page's opening sentence is its description's first (check 48, `snippet`). The page of support by country
+  names the two largest totals in its title; the tracker sets Kiel's figures beside the aid delivered and links the page
+  of support by country first. The pages that already win clicks keep their titles (`pipeline/seo_frozen_titles.json`,
+  check 48, `frozen`).
 - **Structured data.** The map's head has JSON-LD for the website, the publishing organisation ("War Balance",
   no personal names) and the Dataset (licence CC BY 4.0, coverage 2022 to August 2026 (all of 2022), the JSON
   download). Each country page has a WebPage that is part of the Dataset.
