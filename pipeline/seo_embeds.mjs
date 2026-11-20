@@ -145,19 +145,21 @@ export async function writeEmbeds({ site, siteUrl, data, pages, S, fontCss }) {
 }
 
 // ----- on a page: the slot, the loader and their look (the page's rhythm is seo_plain.mjs) -----
-// fallback: the static chart (figureHtml) or other HTML shown without JavaScript and until the embed has drawn
+// fallback: the static chart (figureHtml) or other HTML. It stays the visible chart of the page (Google indexes the image
+// only when it is visible once the page has run its scripts); the interactive embed loads when the reader asks for it
 export function slot({ l, name, title, fallback = "", caption = "", h, hash = "" }) {
   const src = embedPath(l, name) + (hash ? "#" + hash.replace(/^#/, "") : "");
   return `<div class="emb-slot" data-emb="${src}" data-emb-h="${h || EMB_H[name.split("/")[0]] || 620}" data-emb-title="${esc(I.emb(l, "iframeTitle", { title }))}">
-<div class="emb-fb">${fallback}<p class="emb-open"><a href="${src}">${esc(I.emb(l, "open"))} →</a></p></div>
+<div class="emb-fb">${fallback}<p class="emb-open"><button type="button" class="emb-go" hidden>${esc(I.emb(l, "explore"))} →</button><a href="${src}">${esc(I.emb(l, "open"))} →</a></p></div>
 </div>${caption ? `\n<p class="emb-cap">${esc(caption)}</p>` : ""}`;
 }
-// the iframes, made once a slot is near the screen; each shows once it reports its height (embed.js report())
-export const LOADER = `<script>(function(){var s=document.querySelectorAll(".emb-slot[data-emb]");if(!s.length||!("IntersectionObserver" in window))return;var th=document.documentElement.dataset.theme||"";
-function go(x){if(x.querySelector("iframe"))return;var f=document.createElement("iframe");var u=x.getAttribute("data-emb").split("#");f.src=u[0]+(th?"?theme="+th:"")+(u[1]?"#"+u[1]:"");f.title=x.getAttribute("data-emb-title");f.setAttribute("loading","lazy");f.setAttribute("allow","fullscreen; clipboard-write");f.setAttribute("allowfullscreen","");f.style.height=x.getAttribute("data-emb-h")+"px";x.appendChild(f)}
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);go(e.target)}})},{rootMargin:"600px 0px"});s.forEach(function(x){io.observe(x)});
+// round 73: the iframes, made only when the reader presses "Explore interactively" (the static chart stays the page's
+// visible image until then); each shows once it reports its height (embed.js report())
+export const LOADER = `<script>(function(){var s=document.querySelectorAll(".emb-slot[data-emb]");if(!s.length)return;var th=document.documentElement.dataset.theme||"";
+function go(x){if(x.querySelector("iframe"))return;var f=document.createElement("iframe");var u=x.getAttribute("data-emb").split("#");f.src=u[0]+(th?"?theme="+th:"")+(u[1]?"#"+u[1]:"");f.title=x.getAttribute("data-emb-title");f.setAttribute("allow","fullscreen; clipboard-write");f.setAttribute("allowfullscreen","");f.style.height=x.getAttribute("data-emb-h")+"px";x.appendChild(f)}
+s.forEach(function(x){var b=x.querySelector(".emb-go");if(!b)return;b.hidden=false;b.addEventListener("click",function(){b.disabled=true;b.textContent="…";go(x)})});
 addEventListener("message",function(e){if(e.origin!==location.origin||!e.data||e.data.type!=="wb-emb")return;document.querySelectorAll(".emb-slot iframe").forEach(function(f){if(f.contentWindow===e.source){f.style.height=e.data.h+"px";f.parentNode.classList.add("emb-on")}})})})();</script>`;
 export const PAGE_CSS = `
 .emb-slot{position:relative;margin:16px 0 6px}.emb-slot iframe{display:block;width:100%;border:0;position:absolute;left:0;top:0;visibility:hidden;color-scheme:normal}
 .emb-slot.emb-on iframe{position:static;visibility:visible}.emb-slot.emb-on>.emb-fb{display:none}
-.emb-fb figure.chart{margin:0}.emb-open{margin:6px 0 0;font-size:14.5px}.emb-cap{font-size:15px;color:var(--soft);margin:6px 0 22px}`;
+.emb-fb figure.chart{margin:0}.emb-open{margin:8px 0 0;font-size:14.5px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}.emb-go{font:inherit;font-weight:700;color:var(--bg);background:var(--ukr);border:0;border-radius:999px;padding:9px 16px;cursor:pointer}.emb-go:disabled{opacity:.7;cursor:progress}.emb-go:focus-visible{outline:2px solid var(--focus);outline-offset:2px}.emb-cap{font-size:15px;color:var(--soft);margin:6px 0 22px}`;
