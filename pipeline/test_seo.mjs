@@ -1356,3 +1356,12 @@ test("round 72: the support page's title names the two largest totals; a compari
   // the other languages keep their comparison titles
   assert.equal(I.compareCopy("de", { A: "Frankreich", B: "Italien", a: { netP: "1%", dir: "x", ua: 16.9 }, b: { netP: "1%", dir: "x", ua: 12.7 } }).title.includes("€"), false);
 });
+
+test("round 73: the static chart stays the page's visible image; the embed loads only on the reader's click", async () => {
+  const EM = await import("./seo_embeds.mjs");
+  const sl = EM.slot({ l: "en", name: "explorer", title: "T", fallback: "<figure class=\"chart\"><img src=\"/img/x.webp\" alt=\"x\"></figure>" });
+  assert.match(sl, /<img src="\/img\/x\.webp"/);
+  assert.match(sl, /<button type="button" class="emb-go" hidden>Explore interactively →<\/button>/);
+  assert.doesNotMatch(EM.LOADER, /IntersectionObserver/);
+  assert.match(EM.LOADER, /addEventListener\("click"/);
+});
